@@ -751,3 +751,36 @@ cultural estricto + el modo Leer hecho en el motor.
 - Verificación integral: 21 temas × 11 modos + 21 POIs + 21 partidas de quiz
   enteras + rutina K9 + final de bomberos al libro de cuentos + 15 caras
   nuevas: 0 fallos, 0 errores de consola. Bundle: 5,2 MB.
+
+## v4.1 (3-9-2026, 13:50): los nombres suenan a su idioma y tres mapas de verdad
+
+- **🗣️ Pronunciación real de los nombres propios** (22-tts-names.js reescrito):
+  el enfoque anterior (transcribir "Chewbacca" como "Chubaca") sonaba forzado.
+  Ahora la frase se PARTE y cada nombre se dice con la VOZ DE SU IDIOMA,
+  aprovechando que el motor lleva es/ca/en/cs/fr embebidos: "Hoy vamos con
+  [inglés] Luke Skywalker, [francés] Marie Curie y [catalán] Joan Miró".
+  133 nombres cubiertos: 90 ingleses (Star Wars, Tolkien, anglosajones), 15
+  catalanes (Gaudí, Miró, Güell, Sagrada Família), 13 españoles (para cuando
+  se juega en otro idioma), 12 franceses (Vidocq, Escoffier, Braque) y los
+  rusos con la voz checa, la más cercana (Tereshkova, Gagarin, Vavílov).
+  Las frases sin nombres extranjeros no se parten: coste cero en el 95% del
+  juego. Funciona igual con voz robótica y con voz humana (hay voz de sistema
+  en los cinco idiomas).
+- **🎨 Mapas nuevos redibujados** (3 subagentes, ~20-25 min cada uno, con las
+  coordenadas de los POIs fijadas y los mapas veteranos como referencia):
+  - Policía: NO tenía decorado (fondo liso con iconos flotando). Ahora es una
+    ciudad: comisaría con letrero, bandera y fuente, acera con bordillo,
+    calzada de asfalto con línea discontinua (el paso de cebra cae sobre el
+    asfalto), edificios, tiendas con toldo, helipuerto con su H parpadeante y
+    parque con césped, estanque con ondas, patitos y pista K9.
+  - Bomberos: parque con puertas de garaje (el camión dentro), la barra que
+    baja desde el dormitorio por su hueco, trajes colgados, torre de prácticas
+    que continúa el icono, ciudad con árbol frondoso cuya rama sostiene al
+    gatito, y bosque con montañas, catorce pinos y lago con ondas.
+  - Cocina: pared alicatada, encimera corrida, campana con luz cálida, ventana
+    con jardín, armarios y tarros; rincón de la abuela con papel de flores,
+    alacena, mecedora y lámpara; mercado con toldos de rayas, banderines,
+    cajas de fruta y adoquines.
+  Los tres con ids de gradiente prefijados (pol/bmb/coc), sin colisiones,
+  ~40 KB de SVG cada uno y animaciones suaves. Verificados con capturas.
+- Regresión: 231 tema×modo + 21 POIs + 6 lecciones: 0 fallos, consola limpia.

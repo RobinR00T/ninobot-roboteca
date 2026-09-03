@@ -213,7 +213,7 @@ Object.assign(THEMES.policia.content, {
   /* ---------- MAPA DE EXPLORACIÓN: la ciudad amable ---------- */
   explore: {
     width: 2600, height: 1100, stars: false,
-    bgCss: "radial-gradient(ellipse 30% 25% at 82% 10%, rgba(255,241,118,.55), transparent), linear-gradient(180deg,#8ed0f2 0%,#c3e7f8 38%,#eaf3da 60%,#cfe6b8 80%,#b6d69e 100%)",
+    bgCss: "radial-gradient(ellipse 26% 22% at 82% 11%, rgba(255,241,118,.6), transparent 70%), linear-gradient(180deg,#7ec6ec 0%,#a6dbf5 26%,#cbe9f7 44%,#e6f2e6 54%,#dfeee4 100%)",
     cats: [
       { id: "comisaria", emoji: "🏢", x: 120, name: { es: "La comisaría", ca: "La comissaria", en: "The police station", cs: "Policejní stanice", fr: "Le commissariat" } },
       { id: "calle", emoji: "🚦", x: 1000, name: { es: "La calle", ca: "El carrer", en: "The street", cs: "Ulice", fr: "La rue" } },
@@ -445,7 +445,231 @@ Object.assign(THEMES.policia.content, {
           <path d="M60 51 L61.2 53.8 L64 54.2 L62 56 L62.6 58.8 L60 57.2 L57.4 58.8 L58 56 L56 54.2 L58.8 53.8 Z" fill="#1565c0"/>`, "0 0 120 104"),
         name: { es: "El caballo de la policía", ca: "El cavall de la policia", en: "The police horse", cs: "Policejní kůň", fr: "Le cheval de la police" },
         fact: { es: "Los caballos de la policía entrenan para estar tranquilos entre la gente. Pasean por parques y fiestas, y les encantan las zanahorias.", ca: "Els cavalls de la policia entrenen per estar tranquils entre la gent. Passegen per parcs i festes, i els encanten les pastanagues.", en: "Police horses train to stay calm among people. They stroll through parks and festivals, and they love carrots.", cs: "Policejní koně trénují, aby byli mezi lidmi klidní. Procházejí se parky a slavnostmi a milují mrkev.", fr: "Les chevaux de la police s'entraînent à rester calmes au milieu des gens. Ils se promènent dans les parcs et les fêtes, et ils adorent les carottes." } }
-    ]
+    ],
+    /* el escenario: una ciudad amable de día, de la comisaría al parque */
+    deco: function () {
+      let s = "";
+      /* las cajas de los puntos de interés: sirven para dejarles aire alrededor */
+      const cajas = [[140, 453, 120, 94], [380, 640, 100, 80], [384, 344, 92, 72], [606, 518, 88, 84], [784, 370, 92, 60], [817, 658, 66, 84],
+        [1031, 402, 58, 116], [1186, 622, 128, 76], [1386, 415, 128, 90], [1576, 643, 108, 74], [1252, 262, 76, 96], [1630, 259, 120, 82],
+        [1890, 516, 120, 88], [2146, 661, 128, 78], [2088, 354, 84, 92], [2375, 472, 110, 96]];
+      const libre = (x, y, w, h) => !cajas.some(c => x < c[0] + c[2] + 14 && x + w > c[0] - 14 && y < c[1] + c[3] + 14 && y + h > c[1] - 14);
+      /* una estrellita de cinco puntas, para el letrero y la bandera */
+      const estrella = (cx, cy, r, c) => {
+        let d = "";
+        for (let i = 0; i < 10; i++) {
+          const a = (i * 36 - 90) * Math.PI / 180, rr = i % 2 ? r * 0.45 : r;
+          d += (i ? "L" : "M") + (cx + rr * Math.cos(a)).toFixed(1) + " " + (cy + rr * Math.sin(a)).toFixed(1) + " ";
+        }
+        return `<path d="${d}Z" fill="${c}"/>`;
+      };
+      /* degradados propios: ids con prefijo pol para no chocar con otros mapas */
+      s += `<defs>
+        <radialGradient id="polSol" cx="45%" cy="40%" r="60%"><stop offset="0%" stop-color="#fffde7"/><stop offset="100%" stop-color="#ffd54f"/></radialGradient>
+        <linearGradient id="polAcera" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e9ebe6"/><stop offset="100%" stop-color="#c3c8c0"/></linearGradient>
+        <linearGradient id="polAsfalto" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7d8792"/><stop offset="100%" stop-color="#4e5761"/></linearGradient>
+        <linearGradient id="polCesped" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#9ccc65"/><stop offset="100%" stop-color="#5c9a3c"/></linearGradient>
+        <radialGradient id="polAgua" cx="50%" cy="36%" r="64%"><stop offset="0%" stop-color="#a8def3"/><stop offset="100%" stop-color="#4a9fce"/></radialGradient>
+      </defs>`;
+      /* ---------- CIELO: sol, nubes lentas y pájaros ---------- */
+      s += `<g transform="translate(2140 118)">
+        <circle r="106" fill="rgba(255,241,118,.20)"><animate attributeName="r" values="106;118;106" dur="9s" repeatCount="indefinite"/></circle>
+        <circle r="68" fill="url(#polSol)"/><circle cx="-24" cy="-22" r="15" fill="rgba(255,255,255,.5)"/></g>`;
+      const nube = (x, y, k) => `<g transform="translate(${x} ${y}) scale(${k})">
+        <ellipse cx="0" cy="0" rx="84" ry="30" fill="#fff"/><ellipse cx="-52" cy="10" rx="44" ry="21" fill="#fff"/>
+        <ellipse cx="46" cy="12" rx="50" ry="23" fill="#fff"/><ellipse cx="-6" cy="-22" rx="46" ry="26" fill="#fff"/></g>`;
+      [[300, 118, 1, .85, 54, 34], [880, 176, .72, .68, 70, 46], [1490, 112, .9, .78, 60, 38], [1980, 208, .6, .55, 78, 52], [2430, 158, .78, .66, 46, 30]].forEach(n => {
+        s += `<g opacity="${n[3]}"><animateTransform attributeName="transform" type="translate" values="0 0;${n[4]} 0;0 0" dur="${n[5]}s" repeatCount="indefinite"/>${nube(n[0], n[1], n[2])}</g>`;
+      });
+      [[620, 214], [1180, 244], [2288, 252], [980, 168]].forEach(p => {
+        s += `<path d="M${p[0]} ${p[1]} q-11 -11 -23 -6 M${p[0]} ${p[1]} q11 -11 23 -6" stroke="rgba(70,95,115,.5)" stroke-width="3.4" fill="none" stroke-linecap="round"/>`;
+      });
+      /* ---------- FONDO LEJANO: la ciudad en neblina ---------- */
+      for (let x = -30; x < 1900; x += 128) {
+        const h = 120 + (Math.abs(x * 13) % 150);
+        s += `<rect x="${x}" y="${606 - h}" width="108" height="${h}" rx="7" fill="rgba(146,176,196,.30)"/>`;
+      }
+      /* ---------- SUELO: acera clara de punta a punta, con su bordillo ---------- */
+      s += `<rect x="0" y="596" width="2600" height="504" fill="url(#polAcera)"/>
+        <rect x="0" y="590" width="2600" height="12" fill="#b5bbb2"/>`;
+      for (let x = 46; x < 1880; x += 94) s += `<line x1="${x}" y1="606" x2="${x}" y2="1100" stroke="rgba(255,255,255,.4)" stroke-width="2"/>`;
+      for (let y = 700; y < 1100; y += 96) s += `<line x1="0" y1="${y}" x2="1880" y2="${y}" stroke="rgba(255,255,255,.34)" stroke-width="2"/>`;
+      /* ---------- LA CALZADA: asfalto, bordillos y marcas ---------- */
+      s += `<rect x="986" y="600" width="854" height="206" fill="url(#polAsfalto)"/>
+        <rect x="986" y="588" width="854" height="14" rx="3" fill="#eceff1"/>
+        <rect x="986" y="806" width="554" height="14" rx="3" fill="#eceff1"/>
+        <rect x="1680" y="806" width="160" height="14" rx="3" fill="#eceff1"/>`;
+      /* el cruce que baja hacia el paseo */
+      s += `<rect x="1540" y="800" width="140" height="300" fill="url(#polAsfalto)"/>
+        <rect x="1528" y="820" width="13" height="280" rx="3" fill="#eceff1"/>
+        <rect x="1679" y="820" width="13" height="280" rx="3" fill="#eceff1"/>
+        <path d="M1610 906 V1086" stroke="#ffe082" stroke-width="7" stroke-dasharray="40 32" stroke-linecap="round"/>`;
+      /* el paso de peatones de la esquina */
+      for (let y = 838; y < 890; y += 17) s += `<rect x="1548" y="${y}" width="124" height="9" rx="3" fill="#fff" opacity=".55"/>`;
+      /* la línea discontinua central, partida donde cruza la gente */
+      s += `<path d="M1000 703 H1148 M1354 703 H1826" stroke="#ffe082" stroke-width="7" stroke-dasharray="44 34" stroke-linecap="round"/>`;
+      /* el paso de cebra pintado, ancho, justo bajo su icono */
+      for (let x = 1158; x < 1346; x += 34) s += `<rect x="${x}" y="604" width="18" height="198" rx="3" fill="#fff" opacity=".6"/>`;
+      s += `<path d="M1000 788 H1520 M1700 788 H1826" stroke="rgba(255,255,255,.45)" stroke-width="5"/>
+        <ellipse cx="1082" cy="768" rx="20" ry="9" fill="rgba(0,0,0,.2)"/><ellipse cx="1766" cy="752" rx="20" ry="9" fill="rgba(0,0,0,.2)"/>`;
+      /* ---------- EL PARQUE: césped, seto, camino y estanque ---------- */
+      s += `<path d="M1836 626 Q1970 548 2150 586 Q2340 626 2600 556 L2600 1100 L1836 1100 Z" fill="url(#polCesped)"/>
+        <path d="M1836 626 Q1970 548 2150 586 Q2340 626 2600 556 L2600 590 Q2340 660 2150 620 Q1970 582 1836 660 Z" fill="rgba(46,90,30,.3)"/>
+        <rect x="1826" y="592" width="30" height="508" rx="15" fill="#4e7d33"/>`;
+      for (let i = 0; i < 11; i++) s += `<circle cx="${1841 + (i % 2 ? 7 : -7)}" cy="${620 + i * 46}" r="17" fill="#5f9440" opacity=".85"/>`;
+      s += `<path d="M1856 930 Q2040 970 2210 926 Q2390 880 2600 906" stroke="#cdb28c" stroke-width="52" fill="none" stroke-linecap="round" opacity=".9"/>
+        <path d="M1856 930 Q2040 970 2210 926 Q2390 880 2600 906" stroke="rgba(255,255,255,.16)" stroke-width="20" fill="none" stroke-linecap="round"/>`;
+      /* la pista de entrenamiento K9: tierra, aro y vallitas */
+      s += `<ellipse cx="1946" cy="812" rx="128" ry="62" fill="#d7c39a" opacity=".8"/>
+        <ellipse cx="1898" cy="768" rx="16" ry="44" fill="none" stroke="#ef5350" stroke-width="9"/>
+        <ellipse cx="1898" cy="768" rx="16" ry="44" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="14 14"/>`;
+      [[1958, 826], [1876, 818]].forEach(v => {
+        s += `<g><rect x="${v[0]}" y="${v[1]}" width="6" height="32" rx="3" fill="#8d6e63"/><rect x="${v[0] + 50}" y="${v[1]}" width="6" height="32" rx="3" fill="#8d6e63"/>
+          <rect x="${v[0] - 4}" y="${v[1] + 4}" width="64" height="8" rx="4" fill="#42a5f5"/><rect x="${v[0] - 4}" y="${v[1] + 17}" width="64" height="8" rx="4" fill="#eceff1"/></g>`;
+      });
+      /* el estanque, con sus ondas y sus patitos dando vueltas */
+      s += `<ellipse cx="2210" cy="758" rx="198" ry="84" fill="url(#polAgua)"/>
+        <ellipse cx="2210" cy="758" rx="198" ry="84" fill="none" stroke="#4d8a3c" stroke-width="9" opacity=".55"/>
+        <path d="M2086 792 q22 -12 44 0 M2250 806 q22 -12 44 0 M2158 722 q20 -11 40 0" stroke="rgba(255,255,255,.6)" stroke-width="4" fill="none" stroke-linecap="round"><animate attributeName="opacity" values=".85;.3;.85" dur="4.2s" repeatCount="indefinite"/></path>`;
+      [[2068, 794, 28, 9], [2340, 808, -24, 11]].forEach(d => {
+        s += `<g><animateTransform attributeName="transform" type="translate" values="0 0;${d[2]} 0;0 0" dur="${d[3]}s" repeatCount="indefinite"/>
+          <path d="M${d[0] - 15} ${d[1] + 8} q15 7 31 0" stroke="rgba(255,255,255,.6)" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <ellipse cx="${d[0]}" cy="${d[1]}" rx="16" ry="9" fill="#fff8e1"/><circle cx="${d[0] + 12}" cy="${d[1] - 10}" r="7" fill="#fff8e1"/>
+          <path d="M${d[0] + 18} ${d[1] - 11} l10 3 l-10 3 z" fill="#fb8c00"/><circle cx="${d[0] + 14}" cy="${d[1] - 12}" r="1.6" fill="#3e2723"/></g>`;
+      });
+      [[2026, 812], [2394, 806], [2058, 704]].forEach(j => {
+        s += `<path d="M${j[0]} ${j[1]} q-4 -34 -12 -46 M${j[0] + 6} ${j[1]} q2 -38 10 -50 M${j[0] + 14} ${j[1]} q6 -30 14 -38" stroke="#4c8b3f" stroke-width="5" fill="none" stroke-linecap="round"/>`;
+      });
+      /* árboles y arbustos del parque */
+      const arbol = (x, y, k, c1, c2) => `<g transform="translate(${x} ${y}) scale(${k})">
+        <rect x="-11" y="-8" width="22" height="152" rx="10" fill="#7c5b3f"/>
+        <circle cx="0" cy="-48" r="62" fill="${c1}"/><circle cx="-48" cy="-8" r="42" fill="${c1}"/><circle cx="48" cy="-10" r="44" fill="${c1}"/>
+        <circle cx="-18" cy="-72" r="34" fill="${c2}"/><circle cx="34" cy="-48" r="28" fill="${c2}"/></g>`;
+      s += arbol(1874, 484, .8, "#4c8b3f", "#63a44a") + arbol(2312, 466, .95, "#448a3c", "#5da33f") + arbol(2544, 552, 1.05, "#4c8b3f", "#69ad4c");
+      [[1902, 698, 1], [2470, 862, .9], [2562, 692, .8], [1962, 1004, 1.05]].forEach(b => {
+        s += `<g transform="translate(${b[0]} ${b[1]}) scale(${b[2]})"><ellipse cx="0" cy="0" rx="42" ry="26" fill="#4e8a35"/>
+          <ellipse cx="-18" cy="-11" rx="24" ry="18" fill="#5da33f"/><ellipse cx="16" cy="-13" rx="22" ry="16" fill="#5da33f"/></g>`;
+      });
+      [[1900, 646], [1996, 692], [2326, 618], [2492, 664], [2566, 782], [2064, 1048], [2306, 1046]].forEach(f => {
+        s += `<g>${[0, 90, 180, 270].map(a => `<ellipse cx="${(f[0] + 9 * Math.cos(a * Math.PI / 180)).toFixed(1)}" cy="${(f[1] + 9 * Math.sin(a * Math.PI / 180)).toFixed(1)}" rx="5" ry="4" fill="#f8bbd0"/>`).join("")}<circle cx="${f[0]}" cy="${f[1]}" r="5" fill="#fff59d"/></g>`;
+      });
+      /* la vallita baja del paseo */
+      s += `<path d="M1874 1022 H2600 M1874 1046 H2600" stroke="#f7f7f5" stroke-width="7" stroke-linecap="round" opacity=".9"/>`;
+      for (let x = 1878; x < 2600; x += 62) s += `<rect x="${x}" y="1004" width="10" height="58" rx="5" fill="#fbfbf9" opacity=".95"/>`;
+      /* ---------- LA COMISARÍA: edificio grande, letrero azul y bandera ---------- */
+      s += `<rect x="40" y="312" width="600" height="284" rx="8" fill="#b9c8d4"/>
+        <rect x="26" y="292" width="628" height="26" rx="8" fill="#94a9b8"/>
+        <rect x="40" y="562" width="600" height="34" fill="#a5b7c4"/>
+        <rect x="186" y="238" width="300" height="50" rx="12" fill="#1565c0"/>
+        ${estrella(224, 263, 19, "#ffd54f")}
+        <rect x="256" y="250" width="90" height="10" rx="5" fill="#e3f2fd"/><rect x="256" y="268" width="136" height="10" rx="5" fill="#e3f2fd"/>
+        <rect x="404" y="250" width="60" height="10" rx="5" fill="#90caf9"/><rect x="404" y="268" width="42" height="10" rx="5" fill="#90caf9"/>`;
+      for (let r = 0; r < 3; r++) for (let c = 0; c < 6; c++) {
+        const wx = 68 + c * 96, wy = 330 + r * 82;
+        if (wx < 412 && wx + 56 > 268 && wy + 46 > 460) continue;
+        if (!libre(wx, wy, 56, 46)) continue;
+        s += `<rect x="${wx}" y="${wy}" width="56" height="46" rx="5" fill="#e8f4fb" stroke="#8fa6b5" stroke-width="3"/>
+          <path d="M${wx} ${wy + 23} h56 M${wx + 28} ${wy} v46" stroke="#8fa6b5" stroke-width="2.4"/>`;
+      }
+      /* la puerta con su marquesina y sus escalones */
+      s += `<rect x="262" y="452" width="156" height="18" rx="8" fill="#1565c0"/>
+        <rect x="276" y="470" width="128" height="126" rx="8" fill="#5d7f96"/>
+        <rect x="288" y="484" width="46" height="86" rx="6" fill="#cfe8f5"/><rect x="346" y="484" width="46" height="86" rx="6" fill="#cfe8f5"/>
+        <path d="M256 596 h168 l16 26 h-200 Z" fill="#d9ded6"/>`;
+      /* la bandera, meciéndose despacio */
+      s += `<rect x="596" y="172" width="9" height="146" rx="4" fill="#78909c"/>
+        <g transform="translate(605 212)"><g><animateTransform attributeName="transform" type="skewX" values="0;7;0;-7;0" dur="5s" repeatCount="indefinite"/>
+        <path d="M0 -27 h98 v54 h-98 Z" fill="#1e88e5"/>${estrella(49, 0, 17, "#fff")}</g></g>`;
+      /* el garaje de las patrullas, al lado */
+      s += `<rect x="690" y="452" width="250" height="144" rx="8" fill="#c9b9a6"/>
+        <rect x="678" y="434" width="274" height="22" rx="8" fill="#a99a88"/>
+        <rect x="726" y="496" width="180" height="100" rx="6" fill="#8d9aa6"/>`;
+      for (let i = 0; i < 5; i++) s += `<rect x="732" y="${504 + i * 19}" width="168" height="12" rx="5" fill="#aab6c1"/>`;
+      /* ---------- LA CALLE: edificios de distinta altura tras la calzada ---------- */
+      [[986, 300, 152, "#cdbfae"], [1146, 250, 138, "#a9c0d0"], [1292, 338, 122, "#d8b9a6"], [1422, 288, 164, "#bccbb6"], [1594, 382, 246, "#adbdca"]].forEach(b => {
+        s += `<rect x="${b[0]}" y="${b[1]}" width="${b[2]}" height="${596 - b[1]}" rx="6" fill="${b[3]}"/>
+          <rect x="${b[0] - 10}" y="${b[1] - 16}" width="${b[2] + 20}" height="20" rx="7" fill="rgba(60,80,95,.22)"/>`;
+        const cols = Math.max(2, Math.floor((b[2] - 20) / 42));
+        for (let r = 0; r < 6; r++) for (let c = 0; c < cols; c++) {
+          const wx = b[0] + 16 + c * 42, wy = b[1] + 30 + r * 56;
+          if (wy + 34 > 576) continue;
+          if (!libre(wx, wy, 26, 34)) continue;
+          s += `<rect x="${wx}" y="${wy}" width="26" height="34" rx="4" fill="rgba(255,255,255,.7)" stroke="rgba(90,110,125,.45)" stroke-width="2"/>`;
+        }
+      });
+      /* dos tiendecitas con toldo a rayas en los bajos */
+      [[1150, "#ef5350"], [1428, "#43a047"]].forEach(t => {
+        s += `<rect x="${t[0] + 6}" y="552" width="118" height="44" rx="4" fill="rgba(55,75,90,.4)"/>
+          <rect x="${t[0] + 16}" y="562" width="42" height="34" rx="3" fill="rgba(255,255,255,.45)"/>
+          <rect x="${t[0] + 70}" y="562" width="42" height="34" rx="3" fill="rgba(255,255,255,.45)"/>
+          <path d="M${t[0]} 552 L${t[0] + 12} 526 L${t[0] + 118} 526 L${t[0] + 130} 552 Z" fill="${t[1]}"/>
+          ${[0, 1, 2].map(i => `<path d="M${t[0] + 16 + i * 38} 552 L${t[0] + 26 + i * 36} 526 L${t[0] + 44 + i * 36} 526 L${t[0] + 36 + i * 38} 552 Z" fill="#fff" opacity=".85"/>`).join("")}
+          <path d="M${t[0]} 552 h130 v8 h-130 Z" fill="rgba(0,0,0,.15)"/>`;
+      });
+      /* el helipuerto de la azotea, con su H y sus luces */
+      s += `<rect x="1586" y="368" width="262" height="18" rx="7" fill="#8fa2af"/>
+        <ellipse cx="1714" cy="410" rx="98" ry="30" fill="#78909c"/>
+        <ellipse cx="1714" cy="410" rx="74" ry="21" fill="none" stroke="#eceff1" stroke-width="5"/>
+        <path d="M1692 400 v20 M1736 400 v20 M1692 410 h44" stroke="#eceff1" stroke-width="6" stroke-linecap="round"/>`;
+      [[1620, 410], [1808, 410], [1714, 384], [1714, 436]].forEach((l, i) => {
+        s += `<circle cx="${l[0]}" cy="${l[1]}" r="6" fill="#ffee58"><animate attributeName="opacity" values="1;.2;1" dur="2.4s" begin="${(i * .6).toFixed(1)}s" repeatCount="indefinite"/></circle>`;
+      });
+      /* ---------- MOBILIARIO: farolas, banco, buzón, señales y arbolitos ---------- */
+      const farola = (x, base) => `<g><ellipse cx="${x - 10}" cy="${base + 4}" rx="26" ry="8" fill="rgba(0,0,0,.12)"/>
+        <rect x="${x - 5}" y="${base - 180}" width="10" height="182" rx="5" fill="#6b7883"/>
+        <path d="M${x} ${base - 180} q0 -30 34 -30" stroke="#6b7883" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <ellipse cx="${x + 36}" cy="${base - 206}" rx="17" ry="11" fill="#ffe082"/><ellipse cx="${x + 36}" cy="${base - 200}" rx="24" ry="7" fill="rgba(255,241,118,.35)"/></g>`;
+      s += farola(130, 900) + farola(545, 922) + farola(950, 942) + farola(1240, 990) + farola(1790, 1000);
+      /* el banco de la plaza */
+      s += `<g><ellipse cx="335" cy="922" rx="100" ry="12" fill="rgba(0,0,0,.1)"/>
+        <rect x="250" y="864" width="170" height="16" rx="8" fill="#a1743f"/><rect x="250" y="834" width="170" height="14" rx="7" fill="#b3853f"/>
+        <rect x="262" y="878" width="12" height="36" rx="5" fill="#6d7b86"/><rect x="396" y="878" width="12" height="36" rx="5" fill="#6d7b86"/></g>`;
+      /* el buzón rojo */
+      s += `<g><ellipse cx="714" cy="934" rx="30" ry="8" fill="rgba(0,0,0,.12)"/>
+        <rect x="708" y="900" width="13" height="30" rx="6" fill="#8d6e63"/>
+        <rect x="684" y="824" width="60" height="80" rx="12" fill="#e53935"/>
+        <rect x="696" y="838" width="36" height="9" rx="4" fill="#ffcdd2"/><path d="M684 858 h60" stroke="#c62828" stroke-width="3"/></g>`;
+      /* la fuentecita de la plaza, con sus chorros */
+      s += `<ellipse cx="620" cy="982" rx="98" ry="44" fill="#ccd3ce"/>
+        <ellipse cx="620" cy="980" rx="80" ry="33" fill="url(#polAgua)"/>
+        <ellipse cx="620" cy="980" rx="80" ry="33" fill="none" stroke="#eceeea" stroke-width="9"/>
+        <rect x="613" y="934" width="14" height="46" rx="7" fill="#b9c1bb"/><ellipse cx="620" cy="932" rx="28" ry="10" fill="#ccd3ce"/>
+        <g stroke="rgba(255,255,255,.75)" stroke-width="5" fill="none" stroke-linecap="round">
+        <path d="M620 926 q-24 14 -30 44"><animate attributeName="opacity" values=".9;.45;.9" dur="2.6s" repeatCount="indefinite"/></path>
+        <path d="M620 926 q24 14 30 44"><animate attributeName="opacity" values=".45;.9;.45" dur="2.6s" repeatCount="indefinite"/></path></g>`;
+      /* dos jardineras y unas palomas en la plaza */
+      [[190, 1002], [880, 990]].forEach(j => {
+        s += `<g><rect x="${j[0]}" y="${j[1]}" width="96" height="42" rx="9" fill="#a1887f"/><rect x="${j[0] + 6}" y="${j[1] + 6}" width="84" height="10" rx="5" fill="#8d6e63"/>
+          <ellipse cx="${j[0] + 30}" cy="${j[1] - 8}" rx="26" ry="18" fill="#4e8a35"/><ellipse cx="${j[0] + 66}" cy="${j[1] - 6}" rx="22" ry="16" fill="#5da33f"/>
+          ${[[j[0] + 22, j[1] - 18], [j[0] + 46, j[1] - 16], [j[0] + 70, j[1] - 14]].map(f => `<circle cx="${f[0]}" cy="${f[1]}" r="6" fill="#f8bbd0"/><circle cx="${f[0]}" cy="${f[1]}" r="2.4" fill="#fff59d"/>`).join("")}</g>`;
+      });
+      [[350, 1044, 1, 7], [398, 1058, -1, 9], [1180, 1040, 1, 8]].forEach(p => {
+        s += `<g><animateTransform attributeName="transform" type="translate" values="0 0;${8 * p[2]} 0;0 0" dur="${p[3]}s" repeatCount="indefinite"/>
+          <g transform="translate(${p[0]} ${p[1]}) scale(${p[2]} 1)"><ellipse cx="0" cy="0" rx="15" ry="10" fill="#98a6b0"/>
+          <path d="M-14 -2 q10 -8 20 -2 q-8 8 -20 2 Z" fill="#7d8b95"/><circle cx="10" cy="-11" r="7" fill="#a7b4bd"/>
+          <path d="M16 -12 l9 3 l-9 3 z" fill="#ffb300"/><circle cx="12" cy="-13" r="1.6" fill="#37474f"/>
+          <path d="M-15 0 l-12 -4 l12 -3 Z" fill="#7d8b95"/></g></g>`;
+      });
+      /* dos señales sencillas en la acera */
+      s += `<g><rect x="1442" y="836" width="8" height="120" rx="4" fill="#90a4ae"/>
+        <circle cx="1446" cy="824" r="30" fill="#fff" stroke="#e53935" stroke-width="8"/><rect x="1428" y="818" width="36" height="12" rx="6" fill="#e53935"/></g>
+        <g><rect x="1330" y="852" width="8" height="104" rx="4" fill="#90a4ae"/>
+        <path d="M1334 788 L1370 850 L1298 850 Z" fill="#fff" stroke="#e53935" stroke-width="7" stroke-linejoin="round"/>
+        <circle cx="1334" cy="820" r="5" fill="#37474f"/><path d="M1334 826 v10 M1334 830 l-7 10 M1334 830 l7 10 M1328 828 h12" stroke="#37474f" stroke-width="3" stroke-linecap="round"/></g>`;
+      /* el semáforo pequeño de la esquina, guiñando sus luces */
+      s += `<g><rect x="1506" y="856" width="10" height="120" rx="5" fill="#546e7a"/>
+        <rect x="1490" y="768" width="42" height="94" rx="10" fill="#37474f"/>
+        <circle cx="1511" cy="792" r="12" fill="#e53935"><animate attributeName="opacity" values="1;1;.22;.22;1" dur="8s" repeatCount="indefinite"/></circle>
+        <circle cx="1511" cy="816" r="12" fill="#fdd835"><animate attributeName="opacity" values=".22;.22;1;.22;.22" dur="8s" repeatCount="indefinite"/></circle>
+        <circle cx="1511" cy="840" r="12" fill="#66bb6a"><animate attributeName="opacity" values=".22;1;.22;1;.22" dur="8s" repeatCount="indefinite"/></circle></g>`;
+      /* arbolitos de acera */
+      s += arbol(1080, 898, .62, "#4c8b3f", "#63a44a") + arbol(1700, 918, .58, "#448a3c", "#5da33f") + arbol(430, 940, .6, "#4c8b3f", "#69ad4c");
+      /* un pájaro cruzando el cielo sin prisa */
+      s += `<g><path d="M0 0 q-13 -12 -27 -6 M0 0 q13 -12 27 -6" stroke="rgba(60,85,105,.6)" stroke-width="4" fill="none" stroke-linecap="round">
+        <animate attributeName="d" values="M0 0 q-13 -12 -27 -6 M0 0 q13 -12 27 -6;M0 0 q-13 5 -27 11 M0 0 q13 5 27 11;M0 0 q-13 -12 -27 -6 M0 0 q13 -12 27 -6" dur="1.8s" repeatCount="indefinite"/></path>
+        <animateMotion dur="48s" repeatCount="indefinite" path="M 120 200 Q 800 118 1500 190 Q 2100 250 2560 168"/></g>`;
+      return decoSvg(s, 2600);
+    }
   },
 
   /* ---------- CHARLA ---------- */

@@ -12,7 +12,7 @@ const LANGS = {
   fr: { flag: "🇫🇷", code: "fr-FR", label: "Français" }
 };
 
-const APP_VERSION = "4.0";
+const APP_VERSION = "4.1";
 const STORE_KEY = "ninobot-roboteca-v1";
 
 const DEFAULTS = {
@@ -223,23 +223,28 @@ const Speech = {
        (en francés los reyes van con cardinal: "Ramsès deux" es lo correcto) */
     const ORD2 = { es: " segundo", ca: " segon", en: " the Second", cs: " druhý", fr: " deux" }[lang.slice(0, 2)];
     if (ORD2) clean = clean.replace(/\s+II\b\.?/g, ORD2);
-    /* nombres propios extranjeros: se DICEN con su pronunciación, no leídos
-       a la fonética del idioma activo (en pantalla se escriben correctos) */
-    if (typeof TTS_NAMES !== "undefined") {
-      const l2 = lang.slice(0, 2);
-      for (const [pat, tr] of TTS_NAMES) {
-        if (tr[l2] && clean.indexOf(pat) !== -1) clean = clean.split(pat).join(tr[l2]);
-      }
-    }
-    const maxChunk = lang.startsWith("cs") ? 50 : 60;
-    const re = new RegExp(".{1," + maxChunk + "}(?:[.,!?;:]|\\s|$)", "g");
-    const chunks = clean.match(re) || [clean];
-    const tune = {
+    const TUNE = {
       "es": { rate: 0.92, pitch: 1.02 }, "ca": { rate: 0.92, pitch: 1.02 },
       "en": { rate: 0.95, pitch: 1.05 }, "fr": { rate: 0.93, pitch: 1.02 },
       "cs": { rate: 0.9, pitch: 1.0 }
-    }[lang.slice(0, 2)] || { rate: 0.92, pitch: 1.0 };
-    chunks.forEach(c => this.queue.push({ text: c.trim(), lang, rate: tune.rate, pitch: tune.pitch, done: null, gen: this._gen }));
+    };
+    /* nombres propios: cada uno se dice con la voz de SU idioma, así que la
+       frase se parte en trozos y cada trozo lleva su idioma y su entonación */
+    const base2 = lang.slice(0, 2);
+    const segs = (typeof ttsSplit === "function") ? ttsSplit(clean, base2) : [{ t: clean, l: base2 }];
+    const antes = this.queue.length;
+    segs.forEach(seg => {
+      const lg = (LANGS[seg.l] && LANGS[seg.l].code) || lang;
+      const tune = TUNE[seg.l] || TUNE.es;
+      const maxChunk = lg.startsWith("cs") ? 50 : 60;
+      const re = new RegExp(".{1," + maxChunk + "}(?:[.,!?;:]|\\s|$)", "g");
+      const chunks = seg.t.match(re) || [seg.t];
+      chunks.forEach(c => {
+        const txt = c.trim();
+        if (txt) this.queue.push({ text: txt, lang: lg, rate: tune.rate, pitch: tune.pitch, done: null, gen: this._gen });
+      });
+    });
+    if (this.queue.length === antes) { if (o.onEnd) setTimeout(o.onEnd, 0); return; }
     if (o.onEnd) this.queue[this.queue.length - 1].done = o.onEnd;
     // Pequeña pausa tras un cancel: Chrome se atraganta si se habla justo después.
     clearTimeout(this._kick);
