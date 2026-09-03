@@ -26,7 +26,10 @@ const DISFRAZ = {
   dali: { hat: "mustache", item: "⏰" },               /* el bigote y el reloj blando */
   picasso: { hat: "🕊️", item: "🎨" },                  /* pintor con su paloma */
   arboles: { hat: "🐦", item: "🌱" },                  /* guardabosques */
-  frutas: { hat: "🍓", item: "🧺" }                    /* hortelano */
+  frutas: { hat: "🍓", item: "🧺" },                   /* hortelano */
+  policia: { hat: "🚨", item: "🦺" },                  /* agente con su luz y chaleco */
+  bomberos: { hat: "⛑️", item: "🧯" },                 /* bombero con casco y extintor */
+  cocina: { hat: "chefhat", item: "🍳" }               /* chef con gorro dibujado y sartén */
 };
 
 /* el robot activo con el disfraz del tema actual (si lo hay) */
@@ -39,6 +42,8 @@ function robotDisfraz(size, anim) {
   let extra = "";
   if (d.hat === "bubble") {
     extra += `<span style="position:absolute;left:50%;top:${(-s * 0.04).toFixed(0)}px;transform:translateX(-50%);width:${(s * 0.6).toFixed(0)}px;height:${(s * 0.6).toFixed(0)}px;border-radius:50%;border:${Math.max(2, s * 0.05).toFixed(0)}px solid rgba(180,220,255,.85);background:rgba(160,200,255,.14);pointer-events:none"></span>`;
+  } else if (d.hat === "chefhat") {
+    extra += `<svg viewBox="0 0 60 40" style="position:absolute;left:50%;top:${(-s * 0.2).toFixed(0)}px;transform:translateX(-50%);width:${(s * 0.5).toFixed(0)}px;pointer-events:none"><path d="M14 26 Q4 24 6 15 Q8 7 16 9 Q19 2 30 2 Q41 2 44 9 Q52 7 54 15 Q56 24 46 26 Z" fill="#fdfdfd" stroke="#cfd8dc" stroke-width="1.6"/><rect x="14" y="26" width="32" height="8" rx="3" fill="#eceff1" stroke="#cfd8dc" stroke-width="1.4"/></svg>`;
   } else if (d.hat === "mustache") {
     extra += `<svg viewBox="0 0 40 14" style="position:absolute;left:50%;top:${(s * 0.42).toFixed(0)}px;transform:translateX(-50%);width:${(s * 0.55).toFixed(0)}px;pointer-events:none"><path d="M20 9 Q13 11 8 7 Q4 3 2 6 M20 9 Q27 11 32 7 Q36 3 38 6" stroke="#161616" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg>`;
   } else if (d.hat) {

@@ -1,0 +1,573 @@
+"use strict";
+/* ============================================================
+   Contenido de POLICÍA (parte B): historias ramificadas,
+   canciones, traductor, mapa de la ciudad amable, charla,
+   mates, taller del coche patrulla y famosos de verdad.
+   ============================================================ */
+
+const polSvg = (inner, vb) => `<svg viewBox="${vb || "0 0 100 100"}" width="100%" height="100%">${inner}</svg>`;
+
+Object.assign(THEMES.policia.content, {
+
+  /* ---------- HISTORIAS (ramifican de verdad) ---------- */
+  stories: [
+    {
+      id: "peluche", emoji: "🧸", start: "n1",
+      title: { es: "El peluche perdido", ca: "El peluix perdut", en: "The Lost Teddy", cs: "Ztracený plyšák", fr: "La peluche perdue" },
+      nodes: {
+        n1: {
+          text: { es: "En el parque, una niña pequeña llora bajito: su peluche ha desaparecido mientras jugaba. La agente Marta os pide ayuda. ¿Por dónde empezamos, {name}?", ca: "Al parc, una nena petita plora fluixet: el seu peluix ha desaparegut mentre jugava. L'agent Marta us demana ajuda. Per on comencem, {name}?", en: "In the park, a little girl is crying softly: her teddy disappeared while she was playing. Officer Marta asks for your help. Where do we start, {name}?", cs: "V parku tiše pláče malá holčička: při hraní se jí ztratil plyšák. Policistka Marta vás prosí o pomoc. Kde začneme, {name}?", fr: "Au parc, une petite fille pleure tout bas : sa peluche a disparu pendant qu'elle jouait. L'agente Marta vous demande de l'aide. Par où on commence, {name} ?" },
+          choices: [
+            { t: { es: "Sacamos la lupa y buscamos pistas", ca: "Traiem la lupa i busquem pistes", en: "We take out the magnifying glass and look for clues", cs: "Vytáhneme lupu a hledáme stopy", fr: "On sort la loupe et on cherche des indices" }, go: "n2a" },
+            { t: { es: "Llamamos a Rocky, el perro policía", ca: "Cridem en Rocky, el gos policia", en: "We call Rocky, the police dog", cs: "Zavoláme policejního psa Rockyho", fr: "On appelle Rocky, le chien policier" }, go: "n2b" }
+          ]
+        },
+        n2a: {
+          text: { es: "Con la lupa encontráis un lacito rojo junto a la fuente y un caminito de arena que cruza el parque. ¡Las pistas hablan! ¿Adónde vamos?", ca: "Amb la lupa trobeu un llacet vermell al costat de la font i un caminet de sorra que travessa el parc. Les pistes parlen! On anem?", en: "With the magnifying glass you find a little red ribbon by the fountain and a trail of sand crossing the park. The clues are talking! Where do we go?", cs: "S lupou najdete červenou mašličku u fontány a cestičku z písku přes park. Stopy mluví! Kam půjdeme?", fr: "Avec la loupe, vous trouvez un petit ruban rouge près de la fontaine et un chemin de sable qui traverse le parc. Les indices parlent ! Où va-t-on ?" },
+          choices: [
+            { t: { es: "Miramos en lo alto del tobogán", ca: "Mirem a dalt del tobogan", en: "We look at the top of the slide", cs: "Podíváme se nahoru na skluzavku", fr: "On regarde en haut du toboggan" }, go: "e1" },
+            { t: { es: "Preguntamos en la oficina de objetos perdidos", ca: "Preguntem a l'oficina d'objectes perduts", en: "We ask at the lost and found office", cs: "Zeptáme se ve ztrátách a nálezech", fr: "On demande au bureau des objets trouvés" }, go: "e2" }
+          ]
+        },
+        n2b: {
+          text: { es: "Rocky huele la bufanda de la niña, mueve la cola y sale trotando. Se para delante del arenero y escarba con las patitas, muy suave.", ca: "En Rocky olora la bufanda de la nena, mou la cua i surt trotant. S'atura davant del sorral i escarba amb les potetes, molt suau.", en: "Rocky sniffs the girl's scarf, wags his tail and trots off. He stops in front of the sandpit and digs gently with his little paws.", cs: "Rocky očichá holčiččinu šálu, zavrtí ocasem a vyrazí. Zastaví se před pískovištěm a jemně hrabe tlapkami.", fr: "Rocky renifle l'écharpe de la petite fille, remue la queue et part en trottinant. Il s'arrête devant le bac à sable et gratte tout doucement avec ses pattes." },
+          choices: [
+            { t: { es: "Seguir", ca: "Continuar", en: "Continue", cs: "Pokračovat", fr: "Continuer" }, go: "e3" }
+          ]
+        },
+        e1: {
+          end: true,
+          text: { es: "¡Ahí está! El peluche esperaba sentado en lo alto del tobogán, mirando las nubes: la niña lo dejó allí antes de tirarse. Ella lo abraza fuerte y te da las gracias, {name}. Mirar con atención y pedir ayuda: así se encuentran las cosas.", ca: "Aquí és! El peluix esperava assegut a dalt del tobogan, mirant els núvols: la nena el va deixar allà abans de tirar-se. Ella l'abraça fort i et dona les gràcies, {name}. Mirar amb atenció i demanar ajuda: així es troben les coses.", en: "There it is! The teddy was waiting at the top of the slide, watching the clouds: the girl left it there before sliding down. She hugs it tight and thanks you, {name}. Looking carefully and asking for help: that is how things get found.", cs: "Tady je! Plyšák seděl nahoře na skluzavce a koukal na mraky: holčička ho tam nechala, než sjela dolů. Pevně ho obejme a děkuje ti, {name}. Dívat se pozorně a poprosit o pomoc: tak se věci najdou.", fr: "Le voilà ! La peluche attendait en haut du toboggan en regardant les nuages : la petite fille l'avait posée là avant de glisser. Elle la serre fort et te remercie, {name}. Regarder attentivement et demander de l'aide : c'est comme ça qu'on retrouve les choses." }
+        },
+        e2: {
+          end: true,
+          text: { es: "En la oficina de objetos perdidos, el peluche esperaba sentadito en la estantería: un abuelo lo encontró y lo llevó allí. La niña lo abraza y el abuelo sonríe. Si encuentras algo perdido, llévalo a objetos perdidos: alguien lo está buscando, {name}.", ca: "A l'oficina d'objectes perduts, el peluix esperava assegudet a la prestatgeria: un avi el va trobar i el va portar allà. La nena l'abraça i l'avi somriu. Si trobes alguna cosa perduda, porta-la a objectes perduts: algú la deu estar buscant, {name}.", en: "At the lost and found office, the teddy was waiting on the shelf: a grandpa found it and brought it there. The girl hugs it and the grandpa smiles. If you find something lost, take it to lost and found: someone is looking for it, {name}.", cs: "Ve ztrátách a nálezech seděl plyšák na poličce: našel ho jeden dědeček a přinesl ho tam. Holčička ho obejme a dědeček se usmívá. Když najdeš něco ztraceného, odnes to do ztrát a nálezů: někdo to hledá, {name}.", fr: "Au bureau des objets trouvés, la peluche attendait sagement sur l'étagère : un grand-père l'avait trouvée et apportée là. La petite fille la serre dans ses bras et le grand-père sourit. Si tu trouves quelque chose de perdu, apporte-le aux objets trouvés : quelqu'un le cherche, {name}." }
+        },
+        e3: {
+          end: true,
+          text: { es: "¡Rocky lo ha encontrado! El peluche estaba enterrado en la arena, de un juego de piratas de esta mañana. La niña le da mil caricias a Rocky, que mueve la cola feliz. La nariz de un perro policía nunca falla, {name}.", ca: "En Rocky l'ha trobat! El peluix estava enterrat a la sorra, d'un joc de pirates d'aquest matí. La nena fa mil carícies a en Rocky, que mou la cua feliç. El nas d'un gos policia mai no falla, {name}.", en: "Rocky found it! The teddy was buried in the sand from a pirate game this morning. The girl gives Rocky a thousand strokes and he wags his tail happily. A police dog's nose never fails, {name}.", cs: "Rocky ho našel! Plyšák byl zahrabaný v písku od ranní hry na piráty. Holčička Rockyho tisíckrát pohladí a on šťastně vrtí ocasem. Nos policejního psa nikdy nezklame, {name}.", fr: "Rocky l'a trouvée ! La peluche était enterrée dans le sable depuis un jeu de pirates du matin. La petite fille fait mille caresses à Rocky, qui remue la queue tout content. Le nez d'un chien policier ne se trompe jamais, {name}." }
+        }
+      }
+    },
+    {
+      id: "patitos", emoji: "🦆", start: "n1",
+      title: { es: "El patito que corta el tráfico", ca: "L'aneguet que talla el trànsit", en: "The Duckling That Stops the Traffic", cs: "Kachňátko, které zastavilo dopravu", fr: "Le caneton qui arrête la circulation" },
+      nodes: {
+        n1: {
+          text: { es: "¡Cuac, cuac! Una mamá pata y sus cinco patitos quieren cruzar la avenida para llegar al estanque del parque. Los coches esperan sin saber qué hacer. La agente Marta te mira: ¿cómo los ayudamos, {name}?", ca: "Cuac, cuac! Una mare ànega i els seus cinc aneguets volen creuar l'avinguda per arribar a l'estany del parc. Els cotxes esperen sense saber què fer. L'agent Marta et mira: com els ajudem, {name}?", en: "Quack, quack! A mummy duck and her five ducklings want to cross the avenue to reach the park pond. The cars are waiting, not sure what to do. Officer Marta looks at you: how do we help them, {name}?", cs: "Káč, káč! Maminka kachna a jejích pět kachňátek chce přejít třídu k rybníčku v parku. Auta čekají a neví, co dělat. Policistka Marta se na tebe podívá: jak jim pomůžeme, {name}?", fr: "Coin, coin ! Une maman cane et ses cinq canetons veulent traverser l'avenue pour rejoindre l'étang du parc. Les voitures attendent sans savoir quoi faire. L'agente Marta te regarde : comment les aider, {name} ?" },
+          choices: [
+            { t: { es: "Tocamos el silbato y levantamos la mano para parar los coches", ca: "Toquem el xiulet i aixequem la mà per parar els cotxes", en: "We blow the whistle and raise a hand to stop the cars", cs: "Zapískáme na píšťalku a zvedneme ruku, aby auta zastavila", fr: "On siffle et on lève la main pour arrêter les voitures" }, go: "n2a" },
+            { t: { es: "Hacemos un caminito de semillas hasta el paso de cebra", ca: "Fem un caminet de llavors fins al pas de zebra", en: "We make a little trail of seeds to the zebra crossing", cs: "Uděláme cestičku ze semínek až k přechodu", fr: "On fait un petit chemin de graines jusqu'au passage piéton" }, go: "n2b" }
+          ]
+        },
+        n2a: {
+          text: { es: "¡Piiii! Levantas la mano y los coches paran contentos. Los conductores saludan por la ventanilla mientras la familia cruza en fila india. Pero espera... ¡un patito se ha quedado atrás, mirándose en un charco!", ca: "Piiii! Aixeques la mà i els cotxes paren contents. Els conductors saluden per la finestreta mentre la família creua en fila índia. Però espera... un aneguet s'ha quedat enrere, mirant-se en un bassal!", en: "Peeep! You raise your hand and the cars happily stop. The drivers wave through their windows while the family crosses in single file. But wait... one duckling stayed behind, looking at itself in a puddle!", cs: "Píííp! Zvedneš ruku a auta ochotně zastaví. Řidiči mávají z okének, zatímco rodinka přechází v řadě za sebou. Ale počkat... jedno kachňátko se zdrželo, prohlíží se v louži!", fr: "Piiii ! Tu lèves la main et les voitures s'arrêtent gentiment. Les conducteurs saluent par la fenêtre pendant que la famille traverse en file indienne. Mais attends... un caneton est resté en arrière, à se regarder dans une flaque !" },
+          choices: [
+            { t: { es: "Lo cogemos con las dos manos, con mucho cuidado", ca: "L'agafem amb les dues mans, amb molt de compte", en: "We pick it up with both hands, very carefully", cs: "Opatrně ho vezmeme do obou dlaní", fr: "On le prend à deux mains, très délicatement" }, go: "e1" },
+            { t: { es: "Lo llamamos haciendo cuac cuac", ca: "El cridem fent cuac cuac", en: "We call it going quack quack", cs: "Zavoláme na něj káč káč", fr: "On l'appelle en faisant coin coin" }, go: "e2" }
+          ]
+        },
+        n2b: {
+          text: { es: "Los patitos siguen el caminito de semillas hasta el paso de cebra, picoteando y moviendo la colita. Los coches paran solos al verlos. Pero espera... ¡un patito se ha quedado atrás, mirándose en un charco!", ca: "Els aneguets segueixen el caminet de llavors fins al pas de zebra, picotejant i movent la cueta. Els cotxes paren sols en veure'ls. Però espera... un aneguet s'ha quedat enrere, mirant-se en un bassal!", en: "The ducklings follow the seed trail to the zebra crossing, pecking and wiggling their tails. The cars stop on their own when they see them. But wait... one duckling stayed behind, looking at itself in a puddle!", cs: "Kachňátka jdou po cestičce ze semínek až k přechodu, zobou a vrtí ocásky. Auta sama zastaví, když je uvidí. Ale počkat... jedno kachňátko se zdrželo, prohlíží se v louži!", fr: "Les canetons suivent le chemin de graines jusqu'au passage piéton, en picorant et en remuant la queue. Les voitures s'arrêtent toutes seules en les voyant. Mais attends... un caneton est resté en arrière, à se regarder dans une flaque !" },
+          choices: [
+            { t: { es: "Lo cogemos con las dos manos, con mucho cuidado", ca: "L'agafem amb les dues mans, amb molt de compte", en: "We pick it up with both hands, very carefully", cs: "Opatrně ho vezmeme do obou dlaní", fr: "On le prend à deux mains, très délicatement" }, go: "e1" },
+            { t: { es: "Lo llamamos haciendo cuac cuac", ca: "El cridem fent cuac cuac", en: "We call it going quack quack", cs: "Zavoláme na něj káč káč", fr: "On l'appelle en faisant coin coin" }, go: "e2" }
+          ]
+        },
+        e1: {
+          end: true,
+          text: { es: "Lo levantas despacito con las dos manos, como un tesoro, y lo dejas junto a su mamá. ¡Al agua, patos! Toda la familia nada feliz por el estanque y los conductores aplauden. La policía también ayuda a los animales, {name}. Y esto pasa de verdad: hay agentes que paran el tráfico para que crucen los patos.", ca: "L'aixeques a poc a poc amb les dues mans, com un tresor, i el deixes al costat de la seva mare. A l'aigua, ànecs! Tota la família neda feliç per l'estany i els conductors aplaudeixen. La policia també ajuda els animals, {name}. I això passa de debò: hi ha agents que paren el trànsit perquè creuin els ànecs.", en: "You lift it slowly with both hands, like a treasure, and set it next to its mum. Into the water, ducks! The whole family swims happily around the pond and the drivers clap. The police help animals too, {name}. And this happens for real: officers sometimes stop traffic so ducks can cross.", cs: "Pomalu ho zvedneš oběma dlaněmi jako poklad a položíš ho k mamince. Hurá do vody, kachny! Celá rodinka šťastně plave po rybníčku a řidiči tleskají. Policie pomáhá i zvířatům, {name}. A tohle se děje doopravdy: policisté někdy zastaví dopravu, aby kachny mohly přejít.", fr: "Tu le soulèves doucement à deux mains, comme un trésor, et tu le poses près de sa maman. À l'eau, les canards ! Toute la famille nage joyeusement sur l'étang et les conducteurs applaudissent. La police aide aussi les animaux, {name}. Et ça arrive pour de vrai : des agents arrêtent parfois la circulation pour laisser passer les canards." }
+        },
+        e2: {
+          end: true,
+          text: { es: "Haces tu mejor cuac cuac... ¡y funciona! El patito levanta la cabeza y corre con su familia. Llegan al estanque y se dan un chapuzón de celebración. Los patitos cruzan en fila, como los niños del cole. ¡Bien hecho, {name}!", ca: "Fas el teu millor cuac cuac... i funciona! L'aneguet aixeca el cap i corre amb la seva família. Arriben a l'estany i es fan un capbussó de celebració. Els aneguets creuen en fila, com els nens de l'escola. Ben fet, {name}!", en: "You do your best quack quack... and it works! The duckling lifts its head and runs to its family. They reach the pond and take a celebration splash. Ducklings cross in a line, just like school children. Well done, {name}!", cs: "Předvedeš své nejlepší káč káč... a funguje to! Kachňátko zvedne hlavu a běží za rodinou. Dorazí k rybníčku a na oslavu si žbluňknou. Kachňátka přecházejí v řadě, jako děti ze školky. Výborně, {name}!", fr: "Tu fais ton plus beau coin coin... et ça marche ! Le caneton lève la tête et court rejoindre sa famille. Ils arrivent à l'étang et plongent pour fêter ça. Les canetons traversent en file, comme les enfants de l'école. Bravo, {name} !" }
+        }
+      }
+    },
+    {
+      id: "galletas", emoji: "🍪", start: "n1",
+      title: { es: "El misterio de las galletas desaparecidas", ca: "El misteri de les galetes desaparegudes", en: "The Mystery of the Missing Cookies", cs: "Záhada zmizelých sušenek", fr: "Le mystère des biscuits disparus" },
+      nodes: {
+        n1: {
+          text: { es: "¡Misterio en la comisaría! El tarro de galletas de la merienda está vacío y solo quedan unas miguitas. La agente Marta te nombra detective por un día: ¿cómo empezamos a investigar, {name}?", ca: "Misteri a la comissaria! El pot de galetes del berenar està buit i només queden unes miquetes. L'agent Marta et nomena detectiu per un dia: com comencem a investigar, {name}?", en: "Mystery at the police station! The snack-time cookie jar is empty and only a few crumbs are left. Officer Marta makes you a detective for a day: how do we start investigating, {name}?", cs: "Záhada na stanici! Dóza se sušenkami na svačinu je prázdná a zbylo jen pár drobečků. Policistka Marta tě jmenuje detektivem na jeden den: jak začneme pátrat, {name}?", fr: "Mystère au commissariat ! Le bocal à biscuits du goûter est vide et il ne reste que quelques miettes. L'agente Marta te nomme détective pour un jour : comment commence-t-on l'enquête, {name} ?" },
+          choices: [
+            { t: { es: "Seguimos el caminito de miguitas", ca: "Seguim el caminet de miquetes", en: "We follow the trail of crumbs", cs: "Půjdeme po cestičce z drobečků", fr: "On suit le petit chemin de miettes" }, go: "n2a" },
+            { t: { es: "Buscamos huellas con el polvito de detective", ca: "Busquem empremtes amb els polsims de detectiu", en: "We look for prints with detective powder", cs: "Hledáme otisky detektivním práškem", fr: "On cherche des empreintes avec la poudre de détective" }, go: "n2b" }
+          ]
+        },
+        n2a: {
+          text: { es: "Las miguitas cruzan el pasillo, bajan la escalera y llegan hasta el garaje... Detrás de una rueda del coche patrulla hay un tarro tapado con una mantita. ¿Qué hacemos?", ca: "Les miquetes travessen el passadís, baixen l'escala i arriben fins al garatge... Darrere d'una roda del cotxe patrulla hi ha un pot tapat amb una manteta. Què fem?", en: "The crumbs cross the corridor, go down the stairs and lead to the garage... Behind one wheel of the patrol car there is a jar covered with a little blanket. What do we do?", cs: "Drobečky vedou chodbou, dolů po schodech až do garáže... Za kolem hlídkového auta stojí dóza přikrytá dečkou. Co uděláme?", fr: "Les miettes traversent le couloir, descendent l'escalier et mènent au garage... Derrière une roue de la voiture de patrouille, il y a un bocal couvert d'une petite couverture. Qu'est-ce qu'on fait ?" },
+          choices: [
+            { t: { es: "Levantamos la mantita ahora mismo", ca: "Aixequem la manteta ara mateix", en: "We lift the little blanket right now", cs: "Hned dečku nadzvedneme", fr: "On soulève la petite couverture tout de suite" }, go: "e1" },
+            { t: { es: "Nos escondemos y esperamos a ver quién viene", ca: "Ens amaguem i esperem a veure qui ve", en: "We hide and wait to see who comes", cs: "Schováme se a počkáme, kdo přijde", fr: "On se cache et on attend de voir qui vient" }, go: "e3" }
+          ]
+        },
+        n2b: {
+          text: { es: "Soplas el polvito con cuidado y aparecen huellas... ¡pero no son de dedos! Son marcas de patitas y plumitas pequeñas junto a la ventana abierta. ¿Qué hacemos?", ca: "Bufes els polsims amb compte i apareixen empremtes... però no són de dits! Són marques de potetes i plometes petites al costat de la finestra oberta. Què fem?", en: "You blow the powder gently and prints appear... but they are not fingerprints! They are little paw marks and tiny feathers by the open window. What do we do?", cs: "Opatrně foukneš prášek a objeví se otisky... ale nejsou od prstů! Jsou to stopy nožiček a malá peříčka u otevřeného okna. Co uděláme?", fr: "Tu souffles doucement la poudre et des empreintes apparaissent... mais ce ne sont pas des doigts ! Ce sont des marques de petites pattes et de petites plumes près de la fenêtre ouverte. Qu'est-ce qu'on fait ?" },
+          choices: [
+            { t: { es: "Ponemos una galleta y vigilamos escondidos", ca: "Posem una galeta i vigilem amagats", en: "We set out a cookie and watch from a hiding spot", cs: "Položíme sušenku a schovaní hlídáme", fr: "On pose un biscuit et on surveille, cachés" }, go: "e2" },
+            { t: { es: "Seguimos también el caminito de miguitas", ca: "Seguim també el caminet de miquetes", en: "We also follow the trail of crumbs", cs: "Půjdeme i po cestičce z drobečků", fr: "On suit aussi le petit chemin de miettes" }, go: "n2a" }
+          ]
+        },
+        e1: {
+          end: true,
+          text: { es: "Levantáis la mantita y... ¡dentro están las galletas con un lazo y un dibujo de la jefa Marta! Rocky aparece con las orejas gachas y lo confiesa todo: las estaba guardando para la fiesta sorpresa de cumpleaños de la jefa. Nadie se enfada: ¡todos ayudáis a preparar la fiesta! Caso cerrado con confeti, detective {name}.", ca: "Aixequeu la manteta i... a dins hi ha les galetes amb un llaç i un dibuix de la cap Marta! En Rocky apareix amb les orelles baixes i ho confessa tot: les guardava per a la festa sorpresa d'aniversari de la cap. Ningú no s'enfada: tots ajudeu a preparar la festa! Cas tancat amb confeti, detectiu {name}.", en: "You lift the blanket and... inside are the cookies with a ribbon and a drawing of Chief Marta! Rocky appears with his ears down and confesses everything: he was saving them for the chief's surprise birthday party. Nobody gets upset: you all help set up the party! Case closed with confetti, detective {name}.", cs: "Nadzvednete dečku a... uvnitř jsou sušenky s mašlí a obrázkem velitelky Marty! Objeví se Rocky se svěšenýma ušima a všechno přizná: schovával je na narozeninovou oslavu pro velitelku, jako překvapení. Nikdo se nezlobí: všichni pomůžete oslavu připravit! Případ uzavřen s konfetami, detektive {name}.", fr: "Vous soulevez la couverture et... dedans, il y a les biscuits avec un ruban et un dessin de la cheffe Marta ! Rocky apparaît, les oreilles baissées, et avoue tout : il les gardait pour la fête d'anniversaire surprise de la cheffe. Personne ne se fâche : vous aidez tous à préparer la fête ! Affaire classée avec des confettis, détective {name}." }
+        },
+        e2: {
+          end: true,
+          text: { es: "Al ratito, por la ventana entran dando saltitos... ¡las palomas del parque! Venían a por las miguitas. Nadie se enfada: ponéis un comedero con semillas fuera, y las galletas nuevas, en una lata con tapa. Misterio resuelto sin regañar a nadie: investigar antes de acusar, esa es la regla de oro, detective {name}.", ca: "Al cap d'una estona, per la finestra entren fent saltets... els coloms del parc! Venien a buscar les miquetes. Ningú no s'enfada: poseu una menjadora amb llavors a fora, i les galetes noves, en una llauna amb tapa. Misteri resolt sense renyar ningú: investigar abans d'acusar, aquesta és la regla d'or, detectiu {name}.", en: "A little while later, hopping through the window come... the park pigeons! They were after the crumbs. Nobody gets upset: you put a feeder with seeds outside, and the new cookies go into a tin with a lid. Mystery solved without scolding anyone: investigate before you accuse, that is the golden rule, detective {name}.", cs: "Za chvilku oknem vhopkají... holubi z parku! Přiletěli si pro drobečky. Nikdo se nezlobí: ven dáte krmítko se semínky a nové sušenky do plechovky s víkem. Záhada vyřešena a nikdo nedostal vynadáno: nejdřív pátrat, potom soudit, to je zlaté pravidlo, detektive {name}.", fr: "Un peu plus tard, entrent par la fenêtre en sautillant... les pigeons du parc ! Ils venaient pour les miettes. Personne ne se fâche : vous installez une mangeoire avec des graines dehors, et les nouveaux biscuits vont dans une boîte avec un couvercle. Mystère résolu sans gronder personne : enquêter avant d'accuser, c'est la règle d'or, détective {name}." }
+        },
+        e3: {
+          end: true,
+          text: { es: "Esperáis en silencio detrás de la moto... y llega Rocky de puntillas, coge el tarro con la boca y lo lleva a la sala grande, donde hay globos a medio inflar. ¡Estaba preparando la fiesta sorpresa de la jefa Marta! Le ayudáis a decorarlo todo y la sorpresa sale mejor que nunca. Chsss, detective {name}: tú no has visto nada.", ca: "Espereu en silenci darrere de la moto... i arriba en Rocky de puntetes, agafa el pot amb la boca i el porta a la sala gran, on hi ha globus a mig inflar. Estava preparant la festa sorpresa de la cap Marta! L'ajudeu a decorar-ho tot i la sorpresa surt millor que mai. Xxxt, detectiu {name}: tu no has vist res.", en: "You wait quietly behind the motorbike... and in tiptoes Rocky, picks up the jar with his mouth and carries it to the big room, where balloons are half blown up. He was setting up Chief Marta's surprise party! You help him decorate everything and the surprise turns out better than ever. Shhh, detective {name}: you saw nothing.", cs: "Tiše čekáte za motorkou... a po špičkách přichází Rocky, vezme dózu do tlamy a odnese ji do velké místnosti, kde jsou napůl nafouknuté balónky. Chystal překvapení na oslavu pro velitelku Martu! Pomůžete mu všechno vyzdobit a překvapení se povede líp než kdy dřív. Pšt, detektive {name}: tys nic neviděl.", fr: "Vous attendez en silence derrière la moto... et voilà Rocky qui arrive sur la pointe des pattes, prend le bocal dans sa gueule et l'emporte dans la grande salle, où des ballons sont à moitié gonflés. Il préparait la fête surprise de la cheffe Marta ! Vous l'aidez à tout décorer et la surprise est plus réussie que jamais. Chut, détective {name} : tu n'as rien vu." }
+        }
+      }
+    }
+  ],
+
+  /* ---------- KARAOKE ---------- */
+  songs: [
+    { emoji: "🚦",
+      title: { es: "El semáforo amigo", ca: "El semàfor amic", en: "The Traffic Light Friend", cs: "Semafor kamarád", fr: "Le feu tricolore ami" },
+      lines: [
+        { es: "El semáforo amigo,", ca: "El semàfor és bon amic,", en: "The traffic light is our friend,", cs: "Semafor je kamarád,", fr: "Le feu tricolore est un ami," },
+        { es: "tres colores trae consigo.", ca: "tres colors porta amb ell, t'ho dic.", en: "three bright colours it will lend.", cs: "radí nám vždy moc rád.", fr: "trois couleurs, c'est bien joli." },
+        { es: "Rojo dice: quieto, espera,", ca: "El vermell diu: para i espera,", en: "Red says: stop and wait right here,", cs: "Červená říká: stůj a čekej,", fr: "Le rouge dit : stop, on attend," },
+        { es: "mira bien la carretera.", ca: "mira bé la carretera.", en: "look both ways, the road is near.", cs: "na silnici nespěchej.", fr: "on regarde bien avant." },
+        { es: "Verde dice: pasa, pasa,", ca: "El verd diu: passa, passa,", en: "Green says: go, now cross the street,", cs: "Zelená se rozsvítí,", fr: "Le vert dit : tu peux passer," },
+        { es: "de la mano hasta tu casa.", ca: "de la mà cap a casa.", en: "hold a hand and move your feet.", cs: "a my přejdem v bezpečí.", fr: "main dans la main, sans te presser." },
+        { es: "Y si dudas un poquito,", ca: "I si dubtes un momentet,", en: "If you wonder, wait a bit,", cs: "Když si nejsi jistý, stůj,", fr: "Et si tu hésites un petit peu," },
+        { es: "¡espera al muñequito!", ca: "espera el ninotet!", en: "till the little green man is lit!", cs: "zelený panáček je průvodce tvůj!", fr: "attends le bonhomme lumineux !" }
+      ] },
+    { emoji: "🐾",
+      title: { es: "Rocky, el perro policía", ca: "En Rocky, el gos policia", en: "Rocky the Police Dog", cs: "Policejní pes Rocky", fr: "Rocky, le chien policier" },
+      lines: [
+        { es: "Rocky es un perro policía,", ca: "En Rocky és un gos policia,", en: "Rocky is a police dog, hooray,", cs: "Rocky je náš policejní pes,", fr: "Rocky est un chien policier," },
+        { es: "trabaja con alegría.", ca: "treballa amb alegria.", en: "he loves to work and play.", cs: "stopu najde ještě dnes.", fr: "il adore travailler." },
+        { es: "Con su súper olfato fino,", ca: "Amb el seu nas tan fi,", en: "With his clever little nose,", cs: "Čenichá sem, čenichá tam,", fr: "Avec son petit museau malin," },
+        { es: "sigue el rastro del camino.", ca: "segueix el rastre pel camí.", en: "down the trail he goes and goes.", cs: "cestičku ukáže nám.", fr: "il suit la piste du chemin." },
+        { es: "Busca, busca sin parar,", ca: "Busca, busca sense parar,", en: "Seek and seek and never stop,", cs: "Hledá, hledá, nepřestává,", fr: "Cherche, cherche sans t'arrêter," },
+        { es: "y lo vuelve a encontrar.", ca: "i ho torna a trobar.", en: "till the lost is found, hop hop!", cs: "ztracené vždy vypátrává.", fr: "et voilà, il l'a retrouvé !" },
+        { es: "Y al final de la jornada,", ca: "I quan s'acaba la jornada,", en: "And when the working day is done,", cs: "A když práce končí, spěchá,", fr: "Quand la journée se termine enfin," },
+        { es: "quiere mimos y una almohada.", ca: "vol carícies i una abraçada.", en: "he gets cuddles, one by one.", cs: "do pelíšku, mazlit se nechá.", fr: "il veut son panier et plein de câlins." }
+      ] },
+    { emoji: "🚓",
+      title: { es: "La patrulla de {name}", ca: "La patrulla de {name}", en: "{name}'s Patrol", cs: "Hlídka pro {name}", fr: "La patrouille de {name}" },
+      lines: [
+        { es: "Nino-nino por la ciudad,", ca: "Nino-nino per la ciutat,", en: "Nee-naw, nee-naw, through the town,", cs: "Nino-nino, ulicí,", fr: "Pin-pon, pin-pon, dans la ville," },
+        { es: "la patrulla llega ya, es verdad.", ca: "la patrulla ja ha arribat.", en: "the patrol car drives around.", cs: "jede hlídka zářící.", fr: "la patrouille roule tranquille." },
+        { es: "{name} conduce con cuidado,", ca: "{name} condueix a poc a poc,", en: "Driving slowly, driving right,", cs: "{name} řídí opatrně,", fr: "{name} conduit doucement," },
+        { es: "el cinturón bien abrochado.", ca: "amb el cinturó al seu lloc.", en: "seatbelt on and buckled tight.", cs: "pásy zapnuté máme pevně.", fr: "la ceinture, évidemment." },
+        { es: "¿Alguien necesita ayuda?", ca: "Algú necessita ajuda?", en: "Does somebody need a hand?", cs: "Kdo potřebuje pomoci?", fr: "Besoin d'aide dans la rue ?" },
+        { es: "¡La patrulla nunca duda!", ca: "La patrulla mai no dubta!", en: "Here comes help across the land!", cs: "Hlídka jede ve dne v noci!", fr: "La patrouille est déjà venue !" },
+        { es: "Y al llegar la noche estrellada,", ca: "I quan la nit és estrellada,", en: "When the starry night comes down,", cs: "A když přijde hvězdná noc,", fr: "Et quand la nuit est étoilée," },
+        { es: "la patrulla duerme aparcada.", ca: "la patrulla dorm aparcada.", en: "the car sleeps parked in town.", cs: "auto spinká, dobrou noc.", fr: "la voiture dort, bien garée." }
+      ] }
+  ],
+
+  /* ---------- TRADUCTOR ---------- */
+  translator: {
+    words: [
+      W_COMMON.hola,
+      W_COMMON.adios,
+      W_COMMON.amigo,
+      { k: "agente", emoji: "👮", name: { es: "agente", ca: "agent", en: "officer", cs: "policista", fr: "agent" } },
+      { k: "patrulla", emoji: "🚓", name: { es: "coche patrulla", ca: "cotxe patrulla", en: "patrol car", cs: "hlídkové auto", fr: "voiture de patrouille" } },
+      { k: "semaforo", emoji: "🚦", name: { es: "semáforo", ca: "semàfor", en: "traffic light", cs: "semafor", fr: "feu tricolore" } },
+      { k: "moto", emoji: "🏍️", name: { es: "moto", ca: "moto", en: "motorbike", cs: "motorka", fr: "moto" } },
+      { k: "lupa", emoji: "🔍", name: { es: "lupa", ca: "lupa", en: "magnifying glass", cs: "lupa", fr: "loupe" } },
+      { k: "huella", emoji: "🐾", name: { es: "huella", ca: "petjada", en: "footprint", cs: "stopa", fr: "empreinte" } },
+      { k: "casco", emoji: "⛑️", name: { es: "casco", ca: "casc", en: "helmet", cs: "helma", fr: "casque" } },
+      { k: "helicoptero", emoji: "🚁", name: { es: "helicóptero", ca: "helicòpter", en: "helicopter", cs: "vrtulník", fr: "hélicoptère" } },
+      { k: "ayuda", emoji: "🆘", name: { es: "ayuda", ca: "ajuda", en: "help", cs: "pomoc", fr: "aide" } },
+      { k: "calle", emoji: "🛣️", name: { es: "calle", ca: "carrer", en: "street", cs: "ulice", fr: "rue" } },
+      W_COMMON.robot,
+      W_COMMON.mama,
+      W_COMMON.papa,
+      W_COMMON.casa,
+      W_COMMON.agua,
+      W_COMMON.comida,
+      W_COMMON.perro,
+      W_COMMON.gato,
+      W_COMMON.grande,
+      W_COMMON.pequeno,
+      W_COMMON.bonito,
+      W_COMMON.amor,
+      W_COMMON.gracias,
+      W_COMMON.si,
+      W_COMMON.no,
+      W_COMMON.dormir
+    ],
+    langs: [
+      { id: "sirenil", emoji: "🚨",
+        name: { es: "Sirenil", ca: "Sirenil", en: "Sirenish", cs: "Sirénština", fr: "Sirénois" },
+        greeting: { es: "¡Nino-nino! Así se dice hola en sirenil, el idioma de las sirenas de los coches de policía.", ca: "Nino-nino! Així es diu hola en sirenil, l'idioma de les sirenes dels cotxes de policia.", en: "Nee-naw! That is how you say hello in Sirenish, the language of police car sirens.", cs: "Nino-nino! Tak se řekne ahoj sirénštinou, jazykem policejních houkaček.", fr: "Pin-pon ! C'est comme ça qu'on dit bonjour en sirénois, la langue des sirènes des voitures de police." },
+        dict: { hola: "nino-nino", adios: "naino-naino", amigo: "ninomi", agente: "ninipol", patrulla: "ninorrum", semaforo: "ninoluz", moto: "ninobrum", lupa: "ninolú", huella: "ninopé", casco: "ninocap", helicoptero: "ninofrufrú", ayuda: "ninosós", calle: "ninorúa", robot: "ninobip", mama: "ninomá", papa: "ninopá", casa: "ninoniu", agua: "ninoglú", comida: "ninoñam", perro: "ninoguau", gato: "ninomiau", grande: "ninón", pequeno: "ninín", bonito: "ninolí", amor: "ninocor", gracias: "ninograta", si: "nii", no: "noo", dormir: "ninozzz" } },
+      { id: "silbatin", emoji: "📯",
+        name: { es: "Silbatín", ca: "Silbatí", en: "Whistlish", cs: "Píšťalština", fr: "Sifflotin" },
+        greeting: { es: "¡Pi-pii! El silbatín habla con pitidos cortos y largos, como los agentes de tráfico.", ca: "Pi-pii! El silbatí parla amb xiulets curts i llargs, com els agents de trànsit.", en: "Pee-peep! Whistlish speaks in short and long whistles, like traffic officers.", cs: "Pí-píí! Píšťalština mluví krátkými a dlouhými písknutími, jako dopravní policisté.", fr: "Pi-piii ! Le sifflotin parle avec des coups de sifflet courts et longs, comme les agents de la circulation." },
+        dict: { hola: "pi-pii", adios: "piiiu", amigo: "pifiu", agente: "pi-prr", patrulla: "prr-prr", semaforo: "pi-po-pi", moto: "prrium", lupa: "fiu-fiu", huella: "pi-ta-pi", casco: "po-pi", helicoptero: "frr-fiu", ayuda: "piii-piii", calle: "fiuuu", robot: "pi-bip", mama: "pii-ma", papa: "pii-pa", casa: "po-po", agua: "plip", comida: "pi-ñam", perro: "pi-guau", gato: "pi-miau", grande: "piiiii", pequeno: "pip", bonito: "pi-lin", amor: "pi-pom", gracias: "pi-plas", si: "pi", no: "po", dormir: "pizzz" } }
+    ]
+  },
+
+  /* ---------- MAPA DE EXPLORACIÓN: la ciudad amable ---------- */
+  explore: {
+    width: 2600, height: 1100, stars: false,
+    bgCss: "radial-gradient(ellipse 30% 25% at 82% 10%, rgba(255,241,118,.55), transparent), linear-gradient(180deg,#8ed0f2 0%,#c3e7f8 38%,#eaf3da 60%,#cfe6b8 80%,#b6d69e 100%)",
+    cats: [
+      { id: "comisaria", emoji: "🏢", x: 120, name: { es: "La comisaría", ca: "La comissaria", en: "The police station", cs: "Policejní stanice", fr: "Le commissariat" } },
+      { id: "calle", emoji: "🚦", x: 1000, name: { es: "La calle", ca: "El carrer", en: "The street", cs: "Ulice", fr: "La rue" } },
+      { id: "parque", emoji: "🌳", x: 1850, name: { es: "El parque", ca: "El parc", en: "The park", cs: "Park", fr: "Le parc" } }
+    ],
+    pois: [
+      { cat: "comisaria", emoji: "🏢", x: 200, y: 500, size: 2, iw: 120, ih: 94,
+        svg: polSvg(`
+          <rect x="8" y="30" width="114" height="64" rx="6" fill="#90a4ae"/>
+          <rect x="14" y="36" width="102" height="52" rx="4" fill="#cfd8dc"/>
+          <rect x="6" y="20" width="118" height="12" rx="5" fill="#546e7a"/>
+          <path d="M52 94 L52 60 Q65 48 78 60 L78 94 Z" fill="#37474f"/>
+          <path d="M56 94 L56 62 Q65 54 74 62 L74 94 Z" fill="#4fc3f7"/>
+          <rect x="22" y="44" width="18" height="16" rx="3" fill="#e1f5fe" stroke="#546e7a" stroke-width="2"/>
+          <rect x="90" y="44" width="18" height="16" rx="3" fill="#e1f5fe" stroke="#546e7a" stroke-width="2"/>
+          <path d="M65 4 L67.4 10 L74 10.4 L69 14.6 L70.6 21 L65 17.4 L59.4 21 L61 14.6 L56 10.4 L62.6 10 Z" fill="#ffd54f"/>
+          <circle cx="20" cy="12" r="5" fill="#4fc3f7"><animate attributeName="opacity" values="1;.4;1" dur="1.6s" repeatCount="indefinite"/></circle>
+          <rect x="18" y="16" width="4" height="8" fill="#546e7a"/>
+          <rect x="0" y="92" width="130" height="6" rx="3" fill="#78909c"/>`, "0 0 130 100"),
+        name: { es: "La comisaría amable", ca: "La comissaria amable", en: "The friendly police station", cs: "Milá policejní stanice", fr: "Le commissariat tout gentil" },
+        fact: { es: "La comisaría está abierta día y noche. Si necesitas ayuda, puedes entrar y pedirla: para eso está.", ca: "La comissaria està oberta dia i nit. Si necessites ajuda, hi pots entrar i demanar-la: per a això hi és.", en: "The police station is open day and night. If you need help, you can walk in and ask: that is what it is for.", cs: "Policejní stanice je otevřená ve dne v noci. Když potřebuješ pomoc, můžeš vejít a říct si o ni: od toho tam je.", fr: "Le commissariat est ouvert jour et nuit. Si tu as besoin d'aide, tu peux entrer et la demander : il est là pour ça." } },
+      { cat: "comisaria", emoji: "🎒", x: 430, y: 680, iw: 100, ih: 80,
+        svg: polSvg(`
+          <rect x="4" y="6" width="102" height="74" rx="6" fill="#8d6e63"/>
+          <rect x="10" y="12" width="90" height="62" rx="4" fill="#efebe9"/>
+          <path d="M10 40 L100 40 M10 60 L100 60" stroke="#bcaaa4" stroke-width="3"/>
+          <circle cx="26" cy="28" r="7" fill="#a1887f"/><circle cx="20" cy="21" r="3" fill="#a1887f"/><circle cx="32" cy="21" r="3" fill="#a1887f"/>
+          <circle cx="24" cy="27" r="1.2" fill="#3e2723"/><circle cx="28" cy="27" r="1.2" fill="#3e2723"/><ellipse cx="26" cy="31" rx="2.4" ry="1.8" fill="#d7ccc8"/>
+          <path d="M48 30 A10 10 0 0 1 68 30 Z" fill="#ef5350"/><path d="M58 30 L58 36 Q58 39 55 39" stroke="#b71c1c" stroke-width="2" fill="none"/>
+          <circle cx="86" cy="28" r="8" fill="#42a5f5"/><path d="M78 28 A8 8 0 0 1 94 28" fill="#ffca28"/><circle cx="86" cy="28" r="8" fill="none" stroke="#1565c0" stroke-width="1.6"/>
+          <path d="M20 52 Q24 46 30 52 L30 56 L20 56 Z" fill="#ab47bc"/><path d="M30 52 Q26 50 24 52" stroke="#8e24aa" stroke-width="1.6" fill="none"/>
+          <rect x="46" y="48" width="22" height="9" rx="4" fill="#66bb6a"/><circle cx="50" cy="57" r="3" fill="#37474f"/><circle cx="63" cy="57" r="3" fill="#37474f"/>
+          <path d="M80 48 Q88 44 94 50 Q90 54 84 52 Q80 56 78 52 Z" fill="#ff7043"/>`, "0 0 110 86"),
+        name: { es: "La oficina de objetos perdidos", ca: "L'oficina d'objectes perduts", en: "The lost and found office", cs: "Ztráty a nálezy", fr: "Le bureau des objets trouvés" },
+        fact: { es: "Aquí esperan las cosas perdidas a sus dueños. En Tokio hay una oficina gigante que devuelve miles de paraguas cada año.", ca: "Aquí les coses perdudes esperen els seus amos. A Tòquio hi ha una oficina gegant que torna milers de paraigües cada any.", en: "Lost things wait for their owners here. In Tokyo there is a giant office that returns thousands of umbrellas every year.", cs: "Tady čekají ztracené věci na své majitele. V Tokiu je obří kancelář, která každý rok vrátí tisíce deštníků.", fr: "Ici, les objets perdus attendent leurs propriétaires. À Tokyo, un bureau géant rend des milliers de parapluies chaque année." } },
+      { cat: "comisaria", emoji: "🖐️", x: 430, y: 380, iw: 92, ih: 72,
+        svg: polSvg(`
+          <rect x="6" y="6" width="62" height="64" rx="5" fill="#fff" stroke="#90a4ae" stroke-width="2"/>
+          <path d="M12 14 L30 14 M12 20 L26 20" stroke="#b0bec5" stroke-width="2.4" stroke-linecap="round"/>
+          <ellipse cx="38" cy="44" rx="16" ry="20" fill="none" stroke="#5c6bc0" stroke-width="2.4"/>
+          <ellipse cx="38" cy="44" rx="11" ry="15" fill="none" stroke="#5c6bc0" stroke-width="2.2"/>
+          <ellipse cx="38" cy="44" rx="6.5" ry="10" fill="none" stroke="#5c6bc0" stroke-width="2"/>
+          <path d="M38 36 Q41 40 38 44 Q35 48 38 52" stroke="#5c6bc0" stroke-width="1.8" fill="none"/>
+          <rect x="72" y="40" width="24" height="18" rx="3" fill="#37474f"/>
+          <rect x="75" y="43" width="18" height="12" rx="2" fill="#1a237e"/>
+          <circle cx="84" cy="24" r="7" fill="none" stroke="#f9a825" stroke-width="3"/>
+          <path d="M89 30 L96 37" stroke="#8d6e63" stroke-width="4" stroke-linecap="round"/>`, "0 0 100 78"),
+        name: { es: "El archivo de las huellas", ca: "L'arxiu de les empremtes", en: "The fingerprint files", cs: "Kartotéka otisků", fr: "Les fiches d'empreintes" },
+        fact: { es: "Cada persona tiene un dibujo distinto en la punta de los dedos. Por eso las huellas ayudan a saber quién tocó algo.", ca: "Cada persona té un dibuix diferent a la punta dels dits. Per això les empremtes ajuden a saber qui va tocar una cosa.", en: "Every person has a different pattern on their fingertips. That is why fingerprints help tell who touched something.", cs: "Každý člověk má na bříškách prstů jiný vzoreček. Proto otisky pomáhají zjistit, kdo se čeho dotkl.", fr: "Chaque personne a un dessin différent au bout des doigts. C'est pour ça que les empreintes aident à savoir qui a touché quoi." } },
+      { cat: "comisaria", emoji: "🔍", x: 650, y: 560, iw: 88, ih: 84,
+        svg: polSvg(`
+          <circle cx="40" cy="36" r="27" fill="rgba(159,216,239,.45)" stroke="#f9a825" stroke-width="6"/>
+          <path d="M59 57 L78 76" stroke="#8d6e63" stroke-width="11" stroke-linecap="round"/>
+          <ellipse cx="34" cy="32" rx="5" ry="6.5" fill="#5d4037"/>
+          <circle cx="28" cy="24" r="2.2" fill="#5d4037"/><circle cx="34" cy="22" r="2.2" fill="#5d4037"/><circle cx="40" cy="24" r="2.2" fill="#5d4037"/>
+          <ellipse cx="50" cy="44" rx="3.4" ry="4.4" fill="#5d4037"/>
+          <circle cx="46" cy="38" r="1.6" fill="#5d4037"/><circle cx="50" cy="37" r="1.6" fill="#5d4037"/><circle cx="54" cy="38" r="1.6" fill="#5d4037"/>
+          <ellipse cx="14" cy="76" rx="2.6" ry="3.4" fill="#8d6e63"/>
+          <circle cx="11" cy="71" r="1.3" fill="#8d6e63"/><circle cx="14" cy="70" r="1.3" fill="#8d6e63"/><circle cx="17" cy="71" r="1.3" fill="#8d6e63"/>
+          <path d="M22 12 L24 16 L28 18 L24 20 L22 24 L20 20 L16 18 L20 16 Z" fill="#fff" opacity=".9"/>`, "0 0 96 92"),
+        name: { es: "La lupa de detective", ca: "La lupa de detectiu", en: "The detective's magnifying glass", cs: "Detektivní lupa", fr: "La loupe de détective" },
+        fact: { es: "Con la lupa, lo pequeño se ve grande: un pelito, una miguita o una huella cuentan toda la historia.", ca: "Amb la lupa, el que és petit es veu gran: un pelet, una miqueta o una petjada expliquen tota la història.", en: "With a magnifying glass, small things look big: a little hair, a crumb or a footprint can tell the whole story.", cs: "S lupou vypadá malé jako velké: chloupek, drobeček nebo stopa vyprávějí celý příběh.", fr: "Avec la loupe, le tout petit devient grand : un petit poil, une miette ou une empreinte racontent toute l'histoire." } },
+      { cat: "comisaria", emoji: "📯", x: 830, y: 400, iw: 92, ih: 60,
+        svg: polSvg(`
+          <circle cx="14" cy="16" r="6" fill="none" stroke="#c17900" stroke-width="3.4"/>
+          <rect x="10" y="22" width="42" height="16" rx="8" fill="#f9a825"/>
+          <circle cx="58" cy="34" r="20" fill="#f9a825"/>
+          <circle cx="58" cy="34" r="20" fill="none" stroke="#c17900" stroke-width="2"/>
+          <circle cx="58" cy="34" r="7" fill="#c17900"/>
+          <rect x="16" y="25" width="30" height="4" rx="2" fill="#ffe082"/>
+          <path d="M84 18 Q92 12 94 4 M88 30 Q98 28 102 20 M88 42 Q98 46 104 44" stroke="#4fc3f7" stroke-width="3.4" fill="none" stroke-linecap="round"/>`, "0 0 106 62"),
+        name: { es: "El silbato dorado", ca: "El xiulet daurat", en: "The golden whistle", cs: "Zlatá píšťalka", fr: "Le sifflet doré" },
+        fact: { es: "Un pitido largo quiere decir alto. Con el silbato, el agente habla con toda la calle sin decir palabras.", ca: "Un xiulet llarg vol dir alto. Amb el xiulet, l'agent parla amb tot el carrer sense dir paraules.", en: "One long whistle means stop. With the whistle, the officer talks to the whole street without saying a word.", cs: "Dlouhé písknutí znamená stát. Píšťalkou mluví policista s celou ulicí beze slov.", fr: "Un long coup de sifflet veut dire stop. Avec le sifflet, l'agent parle à toute la rue sans dire un mot." } },
+      { cat: "comisaria", emoji: "📻", x: 850, y: 700, iw: 66, ih: 84,
+        svg: polSvg(`
+          <rect x="26" y="4" width="5" height="20" rx="2.5" fill="#263238"/>
+          <circle cx="28" cy="4" r="3" fill="#ef5350"/>
+          <rect x="16" y="22" width="38" height="62" rx="8" fill="#37474f"/>
+          <rect x="22" y="30" width="26" height="17" rx="3" fill="#4fc3f7"/>
+          <circle cx="27" cy="56" r="4" fill="#ffca28"/><circle cx="39" cy="56" r="4" fill="#66bb6a"/>
+          <rect x="22" y="64" width="26" height="4" rx="2" fill="#78909c"/>
+          <rect x="22" y="71" width="26" height="4" rx="2" fill="#78909c"/>
+          <path d="M40 12 Q46 10 48 4 M42 18 Q50 17 54 11" stroke="#ffd54f" stroke-width="2.6" fill="none" stroke-linecap="round">
+            <animate attributeName="opacity" values="1;.3;1" dur="1.4s" repeatCount="indefinite"/></path>`, "0 0 70 92"),
+        name: { es: "La radio de la comisaría", ca: "La ràdio de la comissaria", en: "The station radio", cs: "Policejní vysílačka", fr: "La radio du commissariat" },
+        fact: { es: "Por la radio los agentes se avisan: aquí hace falta ayuda. Cambio... ¡y corto!", ca: "Per la ràdio els agents s'avisen: aquí cal ajuda. Canvi... i tallo!", en: "On the radio, officers let each other know: help is needed here. Over... and out!", cs: "Vysílačkou si policisté dávají vědět: tady je potřeba pomoc. Přepínám... a končím!", fr: "Par la radio, les agents se préviennent : ici, on a besoin d'aide. À toi... terminé !" } },
+      { cat: "calle", emoji: "🚦", x: 1060, y: 460, iw: 58, ih: 116,
+        svg: polSvg(`
+          <rect x="24" y="70" width="8" height="46" rx="3" fill="#546e7a"/>
+          <rect x="10" y="4" width="36" height="68" rx="9" fill="#37474f"/>
+          <circle cx="28" cy="18" r="8" fill="#ef5350"/>
+          <circle cx="28" cy="38" r="8" fill="#ffca28" opacity=".35"/>
+          <circle cx="28" cy="58" r="8" fill="#66bb6a"><animate attributeName="opacity" values="1;.25;1" dur="1.8s" repeatCount="indefinite"/></circle>
+          <path d="M10 12 Q4 14 4 20 M46 12 Q52 14 52 20" stroke="#263238" stroke-width="3" fill="none"/>`, "0 0 56 118"),
+        name: { es: "El semáforo gigante", ca: "El semàfor gegant", en: "The giant traffic light", cs: "Obří semafor", fr: "Le feu tricolore géant" },
+        fact: { es: "El primer semáforo eléctrico se encendió en 1914. Desde entonces, el rojo y el verde ordenan las calles de todo el mundo.", ca: "El primer semàfor elèctric es va encendre el 1914. Des de llavors, el vermell i el verd ordenen els carrers de tot el món.", en: "The first electric traffic light was switched on in 1914. Since then, red and green have kept streets tidy all over the world.", cs: "První elektrický semafor se rozsvítil v roce 1914. Od té doby červená a zelená řídí ulice po celém světě.", fr: "Le premier feu électrique s'est allumé en 1914. Depuis, le rouge et le vert mettent de l'ordre dans les rues du monde entier." } },
+      { cat: "calle", emoji: "🦓", x: 1250, y: 660, iw: 128, ih: 76,
+        svg: polSvg(`
+          <rect x="0" y="30" width="140" height="44" rx="4" fill="#546e7a"/>
+          <rect x="14" y="34" width="13" height="36" rx="2" fill="#eceff1"/>
+          <rect x="40" y="34" width="13" height="36" rx="2" fill="#eceff1"/>
+          <rect x="66" y="34" width="13" height="36" rx="2" fill="#eceff1"/>
+          <rect x="92" y="34" width="13" height="36" rx="2" fill="#eceff1"/>
+          <rect x="118" y="34" width="13" height="36" rx="2" fill="#eceff1"/>
+          <rect x="4" y="2" width="26" height="26" rx="4" fill="#1565c0"/>
+          <path d="M17 6 L28 25 L6 25 Z" fill="#fff"/>
+          <circle cx="17" cy="12" r="2" fill="#1565c0"/>
+          <path d="M17 14 L17 20 M17 16 L13 22 M17 16 L21 22 M14 17 L20 15" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round"/>
+          <rect x="14" y="28" width="5" height="14" fill="#78909c"/>`, "0 0 140 82"),
+        name: { es: "El paso de cebra", ca: "El pas de zebra", en: "The zebra crossing", cs: "Přechod zebra", fr: "Le passage piéton" },
+        fact: { es: "El primer paso de cebra se pintó en Inglaterra en 1951. Sus rayas blancas se ven desde lejos, ¡como una cebra!", ca: "El primer pas de zebra es va pintar a Anglaterra el 1951. Les seves ratlles blanques es veuen des de lluny, com una zebra!", en: "The first zebra crossing was painted in England in 1951. Its white stripes can be seen from afar, just like a zebra!", cs: "První přechod zebra namalovali v Anglii v roce 1951. Jeho bílé pruhy jsou vidět zdaleka, jako pruhy zebry!", fr: "Le premier passage piéton rayé a été peint en Angleterre en 1951. Ses rayures blanches se voient de loin, comme un zèbre !" } },
+      { cat: "calle", emoji: "🚗", x: 1450, y: 460, iw: 128, ih: 90,
+        svg: polSvg(`
+          <rect x="4" y="18" width="132" height="78" rx="6" fill="#b0bec5"/>
+          <rect x="0" y="10" width="140" height="14" rx="6" fill="#78909c"/>
+          <rect x="14" y="30" width="76" height="64" rx="4" fill="#37474f"/>
+          <rect x="22" y="58" width="60" height="24" rx="8" fill="#1e88e5"/>
+          <path d="M30 60 L38 44 L66 44 L74 60 Z" fill="#1e88e5"/>
+          <path d="M36 58 L41 47 L63 47 L68 58 Z" fill="#90caf9"/>
+          <rect x="42" y="38" width="9" height="6" rx="2" fill="#42a5f5"/><rect x="53" y="38" width="9" height="6" rx="2" fill="#ef5350"/>
+          <circle cx="27" cy="72" r="4" fill="#fff9c4"/><circle cx="77" cy="72" r="4" fill="#fff9c4"/>
+          <path d="M30 94 A8 8 0 0 1 46 94 Z" fill="#263238"/><path d="M58 94 A8 8 0 0 1 74 94 Z" fill="#263238"/>
+          <circle cx="112" cy="82" r="11" fill="none" stroke="#263238" stroke-width="4"/>
+          <circle cx="130" cy="82" r="8" fill="none" stroke="#263238" stroke-width="4"/>
+          <path d="M112 82 Q116 62 128 62 L134 74" stroke="#00838f" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <path d="M104 66 L114 60" stroke="#00838f" stroke-width="4" stroke-linecap="round"/>`, "0 0 140 100"),
+        name: { es: "El garaje del coche y la moto", ca: "El garatge del cotxe i la moto", en: "The car and motorbike garage", cs: "Garáž auta a motorky", fr: "Le garage de la voiture et de la moto" },
+        fact: { es: "Aquí duermen el coche patrulla y la moto, limpitos y con la batería cargada, listos para salir a ayudar.", ca: "Aquí dormen el cotxe patrulla i la moto, netets i amb la bateria carregada, a punt per sortir a ajudar.", en: "The patrol car and the motorbike sleep here, all clean and fully charged, ready to go out and help.", cs: "Tady spí hlídkové auto a motorka, čisté a s nabitou baterií, připravené vyrazit na pomoc.", fr: "Ici dorment la voiture de patrouille et la moto, toutes propres et bien chargées, prêtes à partir aider." } },
+      { cat: "calle", emoji: "🚲", x: 1630, y: 680, iw: 108, ih: 74,
+        svg: polSvg(`
+          <circle cx="28" cy="58" r="16" fill="none" stroke="#37474f" stroke-width="4"/>
+          <circle cx="88" cy="58" r="16" fill="none" stroke="#37474f" stroke-width="4"/>
+          <path d="M28 58 L48 34 L76 34 L88 58 M48 34 L60 58 L28 58" stroke="#1e88e5" stroke-width="4" fill="none" stroke-linejoin="round"/>
+          <path d="M44 28 L54 28" stroke="#37474f" stroke-width="4" stroke-linecap="round"/>
+          <path d="M76 34 L72 24 L80 22" stroke="#37474f" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <path d="M44 6 Q58 -6 72 6 L72 12 L44 12 Z" fill="#f9a825"/>
+          <path d="M48 4 Q58 -2 68 4" stroke="#fff" stroke-width="2.4" fill="none"/>
+          <path d="M46 12 Q58 18 70 12" stroke="#c17900" stroke-width="2.4" fill="none"/>`, "0 0 120 80"),
+        name: { es: "La bici y su casco", ca: "La bici i el seu casc", en: "The bike and its helmet", cs: "Kolo a helma", fr: "Le vélo et son casque" },
+        fact: { es: "La policía también patrulla en bici. El casco protege la cabeza como una cáscara dura: ¡póntelo siempre!", ca: "La policia també patrulla amb bici. El casc protegeix el cap com una closca dura: posa-te'l sempre!", en: "The police patrol on bikes too. The helmet protects your head like a hard shell: always put it on!", cs: "Policie hlídkuje i na kolech. Helma chrání hlavu jako tvrdá skořápka: vždycky si ji nasaď!", fr: "La police patrouille aussi à vélo. Le casque protège la tête comme une coquille dure : mets-le toujours !" } },
+      { cat: "calle", emoji: "🏫", x: 1290, y: 310, iw: 76, ih: 96,
+        svg: polSvg(`
+          <rect x="38" y="58" width="8" height="46" rx="3" fill="#78909c"/>
+          <path d="M42 4 L80 60 L4 60 Z" fill="#fff" stroke="#e53935" stroke-width="7" stroke-linejoin="round"/>
+          <circle cx="34" cy="30" r="4" fill="#263238"/>
+          <path d="M34 34 L34 46 M34 38 L28 44 M34 38 L40 43 M30 48 L34 46 L38 49" stroke="#263238" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+          <circle cx="50" cy="34" r="3.2" fill="#263238"/>
+          <path d="M50 37 L50 47 M50 40 L45 45 M50 40 L55 45 M47 50 L50 47 L53 50" stroke="#263238" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+          <path d="M40 41 L44 39" stroke="#263238" stroke-width="2.2" stroke-linecap="round"/>`, "0 0 84 104"),
+        name: { es: "La señal del cole", ca: "El senyal de l'escola", en: "The school sign", cs: "Značka u školy", fr: "Le panneau de l'école" },
+        fact: { es: "Esta señal avisa: cuidado, niños cerca. Los coches van despacito cuando la ven.", ca: "Aquest senyal avisa: compte, nens a prop. Els cotxes van a poc a poc quan el veuen.", en: "This sign says: careful, children nearby. Cars slow right down when they see it.", cs: "Tahle značka říká: pozor, děti. Auta u ní jedou pomaloučku.", fr: "Ce panneau prévient : attention, enfants tout près. Les voitures ralentissent quand elles le voient." } },
+      { cat: "calle", emoji: "🚁", x: 1690, y: 300, iw: 120, ih: 82,
+        svg: polSvg(`
+          <rect x="10" y="8" width="104" height="5" rx="2.5" fill="#546e7a"><animate attributeName="opacity" values="1;.35;1" dur=".5s" repeatCount="indefinite"/></rect>
+          <rect x="59" y="12" width="6" height="9" fill="#546e7a"/>
+          <ellipse cx="56" cy="44" rx="34" ry="22" fill="#1e88e5"/>
+          <path d="M34 36 Q52 24 74 34 L74 46 Q54 52 34 46 Z" fill="#90caf9"/>
+          <path d="M88 40 L120 32 L120 42 L88 50 Z" fill="#1e88e5"/>
+          <rect x="114" y="20" width="4" height="18" rx="2" fill="#546e7a"/>
+          <circle cx="52" cy="48" r="7" fill="#fff"/>
+          <path d="M52 43 L53.4 46.4 L57 46.8 L54.4 49 L55.2 52.6 L52 50.6 L48.8 52.6 L49.6 49 L47 46.8 L50.6 46.4 Z" fill="#1565c0"/>
+          <path d="M36 66 L36 72 L78 72 L78 66 M30 72 L84 72" stroke="#546e7a" stroke-width="4" fill="none" stroke-linecap="round"/>`, "0 0 130 88"),
+        name: { es: "El helicóptero de rescate", ca: "L'helicòpter de rescat", en: "The rescue helicopter", cs: "Záchranný vrtulník", fr: "L'hélicoptère de secours" },
+        fact: { es: "Desde el cielo se ve todo el barrio. El helicóptero ayuda a encontrar rápido a las personas perdidas.", ca: "Des del cel es veu tot el barri. L'helicòpter ajuda a trobar de pressa les persones perdudes.", en: "From the sky you can see the whole neighbourhood. The helicopter helps find lost people fast.", cs: "Z nebe je vidět celá čtvrť. Vrtulník pomáhá rychle najít ztracené lidi.", fr: "Depuis le ciel, on voit tout le quartier. L'hélicoptère aide à retrouver vite les personnes perdues." } },
+      { cat: "parque", emoji: "🐕", x: 1950, y: 560, iw: 120, ih: 88,
+        svg: polSvg(`
+          <rect x="0" y="88" width="130" height="6" rx="3" fill="#7cb342"/>
+          <path d="M8 90 L8 52 L38 28 L68 52 L68 90 Z" fill="#8d6e63"/>
+          <path d="M2 56 L38 24 L74 56 L64 56 L38 34 L12 56 Z" fill="#5d4037"/>
+          <path d="M26 90 L26 66 Q38 54 50 66 L50 90 Z" fill="#3e2723"/>
+          <ellipse cx="97" cy="70" rx="22" ry="13" fill="#c8a165"/>
+          <circle cx="116" cy="58" r="10" fill="#c8a165"/>
+          <path d="M110 50 L107 42 L114 46 Z" fill="#8d6e63"/><path d="M122 50 L125 42 L118 46 Z" fill="#8d6e63"/>
+          <circle cx="113" cy="57" r="1.6" fill="#263238"/><circle cx="119" cy="57" r="1.6" fill="#263238"/>
+          <ellipse cx="116" cy="62" rx="3" ry="2.2" fill="#3e2723"/>
+          <path d="M76 66 Q68 58 72 50" stroke="#c8a165" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <rect x="84" y="62" width="24" height="14" rx="4" fill="#1565c0"/>
+          <rect x="84" y="67" width="24" height="4" fill="#ffd54f"/>
+          <rect x="88" y="80" width="5" height="8" rx="2" fill="#c8a165"/><rect x="102" y="80" width="5" height="8" rx="2" fill="#c8a165"/>
+          <path d="M14 88 L20 74 L26 88 Z" fill="#ff7043"/><rect x="16" y="81" width="8" height="3" fill="#fff"/>
+          <circle cx="66" cy="84" r="5" fill="#ef5350"/><path d="M62 84 A4 4 0 0 1 70 84" fill="#fff"/>`, "0 0 130 96"),
+        name: { es: "La escuela de perros K9", ca: "L'escola de gossos K9", en: "The K9 dog school", cs: "Škola pro psy K9", fr: "L'école des chiens K9" },
+        fact: { es: "Los perros policía aprenden jugando: buscan cosas escondidas y ganan su pelota. Su nariz huele muchísimo mejor que la nuestra.", ca: "Els gossos policia aprenen jugant: busquen coses amagades i guanyen la seva pilota. El seu nas olora moltíssim millor que el nostre.", en: "Police dogs learn by playing: they search for hidden things and win their ball. Their nose smells far better than ours.", cs: "Policejní psi se učí hrou: hledají schované věci a vyhrají svůj míček. Jejich nos cítí mnohem líp než náš.", fr: "Les chiens policiers apprennent en jouant : ils cherchent des choses cachées et gagnent leur balle. Leur nez sent bien mieux que le nôtre." } },
+      { cat: "parque", emoji: "🦆", x: 2210, y: 700, iw: 128, ih: 78,
+        svg: polSvg(`
+          <ellipse cx="70" cy="58" rx="64" ry="24" fill="#4fc3f7"/>
+          <ellipse cx="70" cy="58" rx="50" ry="17" fill="none" stroke="#81d4fa" stroke-width="2.4"/>
+          <path d="M8 44 L8 22 M14 46 L14 18 M20 44 L20 24" stroke="#33691e" stroke-width="3" stroke-linecap="round"/>
+          <ellipse cx="14" cy="16" rx="3.4" ry="7" fill="#6d4c41"/>
+          <ellipse cx="46" cy="48" rx="13" ry="9" fill="#ffca28"/>
+          <circle cx="57" cy="40" r="7" fill="#ffca28"/>
+          <path d="M63 40 L70 42 L63 44 Z" fill="#f57c00"/>
+          <circle cx="59" cy="38" r="1.4" fill="#263238"/>
+          <path d="M38 46 Q33 42 35 38" stroke="#f9a825" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <ellipse cx="82" cy="54" rx="7" ry="5" fill="#fff176"/><circle cx="88" cy="50" r="4" fill="#fff176"/><path d="M91 50 L95 51 L91 52.4 Z" fill="#f57c00"/><circle cx="89" cy="49" r="1" fill="#263238"/>
+          <ellipse cx="100" cy="60" rx="7" ry="5" fill="#fff176"/><circle cx="106" cy="56" r="4" fill="#fff176"/><path d="M109 56 L113 57 L109 58.4 Z" fill="#f57c00"/><circle cx="107" cy="55" r="1" fill="#263238"/>
+          <ellipse cx="116" cy="52" rx="7" ry="5" fill="#fff176"/><circle cx="122" cy="48" r="4" fill="#fff176"/><path d="M125 48 L129 49 L125 50.4 Z" fill="#f57c00"/><circle cx="123" cy="47" r="1" fill="#263238"/>
+          <path d="M30 62 q6 -4 12 0 M64 66 q6 -4 12 0" stroke="#b3e5fc" stroke-width="2.4" fill="none" stroke-linecap="round"/>`, "0 0 140 86"),
+        name: { es: "El estanque de los patitos", ca: "L'estany dels aneguets", en: "The duckling pond", cs: "Rybníček kachňátek", fr: "L'étang des canetons" },
+        fact: { es: "A veces la policía corta el tráfico para que una familia de patos cruce la calle. ¡Ha pasado de verdad muchas veces!", ca: "De vegades la policia talla el trànsit perquè una família d'ànecs creui el carrer. Ha passat de debò moltes vegades!", en: "Sometimes the police stop traffic so a duck family can cross the street. It has really happened many times!", cs: "Policie někdy zastaví dopravu, aby kachní rodinka mohla přejít ulici. Doopravdy se to stalo už mnohokrát!", fr: "Parfois, la police arrête la circulation pour qu'une famille de canards traverse la rue. C'est vraiment arrivé plein de fois !" } },
+      { cat: "parque", emoji: "🧭", x: 2130, y: 400, iw: 84, ih: 92,
+        svg: polSvg(`
+          <rect x="42" y="60" width="8" height="44" rx="3" fill="#78909c"/>
+          <rect x="8" y="4" width="76" height="58" rx="8" fill="#2e7d32"/>
+          <circle cx="46" cy="33" r="7" fill="#fff"/>
+          <path d="M18 12 L32 12 L32 16 L24 16 L36 28 L33 31 L21 19 L21 26 L18 26 Z" fill="#fff" transform="rotate(0 46 33)"/>
+          <path d="M74 12 L60 12 L60 16 L68 16 L56 28 L59 31 L71 19 L71 26 L74 26 Z" fill="#fff"/>
+          <path d="M18 54 L32 54 L32 50 L24 50 L36 38 L33 35 L21 47 L21 40 L18 40 Z" fill="#fff"/>
+          <path d="M74 54 L60 54 L60 50 L68 50 L56 38 L59 35 L71 47 L71 40 L74 40 Z" fill="#fff"/>`, "0 0 92 104"),
+        name: { es: "El punto de encuentro", ca: "El punt de trobada", en: "The meeting point", cs: "Místo setkání", fr: "Le point de rencontre" },
+        fact: { es: "Si te pierdes, quédate quieto y busca este cartel: es el sitio donde las familias se vuelven a encontrar.", ca: "Si et perds, queda't quiet i busca aquest cartell: és el lloc on les famílies es tornen a trobar.", en: "If you get lost, stay put and look for this sign: it is the place where families find each other again.", cs: "Když se ztratíš, zůstaň na místě a hledej tuhle ceduli: tady se rodiny zase najdou.", fr: "Si tu te perds, reste sur place et cherche ce panneau : c'est l'endroit où les familles se retrouvent." } },
+      { cat: "parque", emoji: "🐴", x: 2430, y: 520, iw: 110, ih: 96,
+        svg: polSvg(`
+          <rect x="0" y="98" width="120" height="5" rx="2.5" fill="#7cb342"/>
+          <ellipse cx="58" cy="58" rx="34" ry="20" fill="#8d6e63"/>
+          <path d="M82 50 Q94 32 102 26 L108 34 Q102 46 92 54 Z" fill="#8d6e63"/>
+          <ellipse cx="103" cy="30" rx="11" ry="8" fill="#8d6e63"/>
+          <ellipse cx="111" cy="33" rx="4.5" ry="3.6" fill="#d7ccc8"/>
+          <path d="M98 22 L96 14 L103 19 Z" fill="#6d4c41"/>
+          <circle cx="103" cy="28" r="1.8" fill="#263238"/>
+          <path d="M84 48 Q92 34 99 27" stroke="#4e342e" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <path d="M26 52 Q14 60 18 78" stroke="#4e342e" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <rect x="36" y="72" width="7" height="26" rx="3" fill="#795548"/><rect x="52" y="74" width="7" height="24" rx="3" fill="#795548"/>
+          <rect x="66" y="72" width="7" height="26" rx="3" fill="#795548"/><rect x="80" y="68" width="7" height="24" rx="3" fill="#795548"/>
+          <rect x="36" y="95" width="7" height="4" fill="#3e2723"/><rect x="52" y="95" width="7" height="4" fill="#3e2723"/>
+          <rect x="66" y="95" width="7" height="4" fill="#3e2723"/><rect x="80" y="89" width="7" height="4" fill="#3e2723"/>
+          <path d="M42 44 L78 44 L74 66 L46 66 Z" fill="#1565c0"/>
+          <circle cx="60" cy="55" r="6" fill="#fff"/>
+          <path d="M60 51 L61.2 53.8 L64 54.2 L62 56 L62.6 58.8 L60 57.2 L57.4 58.8 L58 56 L56 54.2 L58.8 53.8 Z" fill="#1565c0"/>`, "0 0 120 104"),
+        name: { es: "El caballo de la policía", ca: "El cavall de la policia", en: "The police horse", cs: "Policejní kůň", fr: "Le cheval de la police" },
+        fact: { es: "Los caballos de la policía entrenan para estar tranquilos entre la gente. Pasean por parques y fiestas, y les encantan las zanahorias.", ca: "Els cavalls de la policia entrenen per estar tranquils entre la gent. Passegen per parcs i festes, i els encanten les pastanagues.", en: "Police horses train to stay calm among people. They stroll through parks and festivals, and they love carrots.", cs: "Policejní koně trénují, aby byli mezi lidmi klidní. Procházejí se parky a slavnostmi a milují mrkev.", fr: "Les chevaux de la police s'entraînent à rester calmes au milieu des gens. Ils se promènent dans les parcs et les fêtes, et ils adorent les carottes." } }
+    ]
+  },
+
+  /* ---------- CHARLA ---------- */
+  chat: {
+    keywords: [
+      { keys: ["hola", "hello", "hi ", "ahoj", "bonjour", "salut", "bon dia", "buenas"],
+        replies: [{ es: "¡Hola, {name}! Qué alegría verte por la comisaría. ¿Jugamos a detectives o charlamos un ratito?", ca: "Hola, {name}! Quina alegria veure't per la comissaria. Juguem a detectius o xerrem una estoneta?", en: "Hi, {name}! So happy to see you at the station. Shall we play detectives or chat for a bit?", cs: "Ahoj, {name}! Mám radost, že ses stavil na stanici. Zahrajeme si na detektivy, nebo si popovídáme?", fr: "Salut, {name} ! Quelle joie de te voir au commissariat. On joue aux détectives ou on discute un petit peu ?" }] },
+      { keys: ["como estas", "how are you", "jak se mas", "comment ca va", "com estas", "que tal"],
+        replies: [{ es: "¡Contentísimo! Rocky me ha enseñado a saludar con la patita. ¿Y tú cómo estás, {name}?", ca: "Contentíssim! En Rocky m'ha ensenyat a saludar amb la poteta. I tu com estàs, {name}?", en: "Super happy! Rocky taught me how to shake paws. And how are you, {name}?", cs: "Náramně! Rocky mě naučil zdravit tlapkou. A jak se máš ty, {name}?", fr: "Très content ! Rocky m'a appris à dire bonjour avec la patte. Et toi, comment vas-tu, {name} ?" }] },
+      { keys: ["cancion", "musica", "music", "song", "sing", "pisnicka", "hudba", "chanson", "musique", "canço", "canta", "zpiv", "chante"],
+        action: "song",
+        replies: [{ es: "¡Me encanta la música! En la comisaría cantamos mientras sacamos brillo al coche patrulla. ¿Vamos al Karaoke y cantamos juntos?", ca: "M'encanta la música! A la comissaria cantem mentre traiem brillantor al cotxe patrulla. Anem al Karaoke i cantem junts?", en: "I love music! At the station we sing while polishing the patrol car. Shall we go to Karaoke and sing together?", cs: "Hudbu miluju! Na stanici zpíváme, když leštíme hlídkové auto. Půjdeme na karaoke a zazpíváme si spolu?", fr: "J'adore la musique ! Au commissariat, on chante en faisant briller la voiture de patrouille. On va au karaoké chanter ensemble ?" }] },
+      { keys: ["chiste", "joke", "vtip", "blague", "acudit", "broma"],
+        replies: [
+          { es: "¿Qué le dice un semáforo a otro? No me mires, que me estoy poniendo rojo. Ji, ji.", ca: "Què li diu un semàfor a un altre? No em miris, que m'estic posant vermell. Hi, hi.", en: "What does one traffic light say to the other? Do not look at me, I am turning red! Hee hee.", cs: "Co říká jeden semafor druhému? Nekoukej na mě, červenám se! Chi chi.", fr: "Que dit un feu tricolore à l'autre ? Ne me regarde pas, je rougis ! Hi hi." },
+          { es: "¿Cómo saluda un coche de policía? ¡Nino, nino, buenos días! Ja, ja.", ca: "Com saluda un cotxe de policia? Nino, nino, bon dia! Ha, ha.", en: "How does a police car say hello? Nee-naw, nee-naw, good morning! Ha ha.", cs: "Jak zdraví policejní auto? Nino, nino, dobrý den! Ha ha.", fr: "Comment une voiture de police dit-elle bonjour ? Pin-pon, pin-pon, bonjour ! Ha ha." }] },
+      { keys: ["te quiero", "love you", "t'estimo", "testimo", "mam te rad", "je t'aime", "jetaime"],
+        replies: [{ es: "¡Y yo a ti, {name}! Mi sirena del corazón hace nino-nino de alegría cuando me dices eso.", ca: "I jo a tu, {name}! La meva sirena del cor fa nino-nino d'alegria quan m'ho dius.", en: "I love you too, {name}! My heart siren goes nee-naw with joy when you say that.", cs: "Já tebe taky, {name}! Moje srdíčková siréna dělá nino-nino radostí, když to říkáš.", fr: "Moi aussi je t'aime, {name} ! Ma sirène du cœur fait pin-pon de joie quand tu dis ça." }] },
+      { keys: ["triste", "sad", "smutn", "llorar", "plorar", "cry", "chagrin"],
+        replies: [{ es: "Ven aquí, {name}. Hasta los perros policía tienen días de orejas gachas. ¿Me cuentas qué te pasa? Estoy aquí contigo.", ca: "Vine aquí, {name}. Fins i tot els gossos policia tenen dies d'orelles baixes. M'expliques què et passa? Soc aquí amb tu.", en: "Come here, {name}. Even police dogs have droopy-ear days. Will you tell me what is wrong? I am right here with you.", cs: "Pojď sem, {name}. I policejní psi mívají dny se svěšenýma ušima. Povíš mi, co se děje? Jsem tady s tebou.", fr: "Viens là, {name}. Même les chiens policiers ont des jours d'oreilles baissées. Tu me racontes ce qui ne va pas ? Je suis là avec toi." }] },
+      { keys: ["donde estas", "where are you", "kde jsi", "ou es tu", "on ets"],
+        replies: [{ es: "Estoy en el parque, ayudando a una familia de patitos a cruzar por el paso de cebra. ¡Cuac, cuac, gracias, robot!", ca: "Soc al parc, ajudant una família d'aneguets a creuar pel pas de zebra. Cuac, cuac, gràcies, robot!", en: "I am in the park, helping a duckling family cross at the zebra crossing. Quack, quack, thank you, robot!", cs: "Jsem v parku, pomáhám kachní rodince přejít po přechodu. Káč, káč, děkujeme, robote!", fr: "Je suis au parc, j'aide une famille de canetons à traverser sur le passage piéton. Coin, coin, merci, robot !" }] },
+      { keys: ["perro", "dog", "gos ", "pes ", "chien", "rocky"],
+        replies: [{ es: "¡Rocky! Su nariz huele mil veces mejor que la mía... y eso que la mía es de metal. Encuentra a las personas perdidas siguiendo su olor.", ca: "En Rocky! El seu nas olora mil vegades millor que el meu... i això que el meu és de metall. Troba les persones perdudes seguint la seva olor.", en: "Rocky! His nose smells a thousand times better than mine... and mine is made of metal. He finds lost people by following their scent.", cs: "Rocky! Jeho nos cítí tisíckrát líp než můj... a to ten můj je z kovu. Najde ztracené lidi podle jejich pachu.", fr: "Rocky ! Son nez sent mille fois mieux que le mien... et pourtant le mien est en métal. Il retrouve les personnes perdues en suivant leur odeur." }] },
+      { keys: ["semaforo", "semàfor", "semafor", "traffic light", "feu rouge", "cruzar", "creuar"],
+        replies: [{ es: "El semáforo es mi amigo más ordenado: rojo espera, verde pasa. ¡Y nunca jamás se olvida!", ca: "El semàfor és el meu amic més ordenat: vermell espera, verd passa. I mai de la vida no s'oblida!", en: "The traffic light is my tidiest friend: red waits, green goes. And it never ever forgets!", cs: "Semafor je můj nejpořádnější kamarád: červená čeká, zelená jde. A nikdy nezapomene!", fr: "Le feu tricolore est mon ami le plus ordonné : rouge on attend, vert on passe. Et il n'oublie jamais !" }] },
+      { keys: ["me pierdo", "perdido", "perdida", "lost", "perdut", "perduda", "ztratil", "ztratila", "perdu", "perdue"],
+        replies: [{ es: "Apunta el truco: si te pierdes, quieto donde estés, y pide ayuda a un policía o a quien trabaje allí. Saber tu nombre completo ayuda muchísimo. ¿Te lo sabes?", ca: "Apunta el truc: si et perds, quiet on siguis, i demana ajuda a un policia o a qui hi treballi. Saber el teu nom complet ajuda moltíssim. Te'l saps?", en: "Here is the trick: if you get lost, stay put and ask a police officer or someone who works there for help. Knowing your full name helps a lot. Do you know it?", cs: "Zapamatuj si fintu: když se ztratíš, zůstaň na místě a popros o pomoc policistu nebo někoho, kdo tam pracuje. Moc pomůže znát celé své jméno. Znáš ho?", fr: "Retiens l'astuce : si tu te perds, reste sur place et demande de l'aide à un policier ou à quelqu'un qui travaille là. Connaître ton nom complet aide beaucoup. Tu le connais ?" }] },
+      { keys: ["cole", "school", "escola", "skola", "ecole", "skole"],
+        replies: [{ es: "¿Qué tal el cole, {name}? ¿Has aprendido algo nuevo hoy? ¡Cuéntamelo todo, que soy muy curioso!", ca: "Què tal l'escola, {name}? Has après alguna cosa nova avui? Explica-m'ho tot, que soc molt curiós!", en: "How was school, {name}? Did you learn something new today? Tell me everything, I am very curious!", cs: "Jaké to bylo ve škole, {name}? Naučil ses dnes něco nového? Všechno mi povídej, jsem hrozně zvědavý!", fr: "C'était comment l'école, {name} ? Tu as appris quelque chose de nouveau aujourd'hui ? Raconte-moi tout, je suis très curieux !" }] }
+    ],
+    fallback: [
+      { es: "¿Sabías que las huellas de tus dedos son solo tuyas? Ni los gemelos las tienen iguales.", ca: "Sabies que les empremtes dels teus dits són només teves? Ni els bessons les tenen iguals.", en: "Did you know your fingerprints are yours alone? Not even twins have the same ones.", cs: "Věděl jsi, že otisky tvých prstů má jen a jen ty? Ani dvojčata nemají stejné.", fr: "Tu savais que tes empreintes digitales n'appartiennent qu'à toi ? Même les jumeaux n'ont pas les mêmes." },
+      { es: "En Tokio hay una oficina de objetos perdidos gigante: devuelven miles de paraguas cada año. ¡Miles!", ca: "A Tòquio hi ha una oficina d'objectes perduts gegant: tornen milers de paraigües cada any. Milers!", en: "In Tokyo there is a giant lost and found office: they return thousands of umbrellas every year. Thousands!", cs: "V Tokiu mají obří kancelář ztrát a nálezů: každý rok vrátí tisíce deštníků. Tisíce!", fr: "À Tokyo, il y a un bureau des objets trouvés géant : ils rendent des milliers de parapluies chaque année. Des milliers !" },
+      { es: "El 112 funciona en toda Europa, gratis y a todas horas. Los números que ayudan son fáciles de recordar aposta.", ca: "El 112 funciona a tota Europa, gratuït i a totes hores. Els números que ajuden són fàcils de recordar a posta.", en: "112 works all over Europe, free and at any hour. Helpful numbers are easy to remember on purpose.", cs: "Číslo 112 funguje v celé Evropě, zdarma a v kteroukoli hodinu. Čísla, která pomáhají, jdou schválně snadno zapamatovat.", fr: "Le 112 marche dans toute l'Europe, gratuit et à toute heure. Les numéros qui aident sont faciles à retenir, exprès." },
+      { es: "{name}, los robots más valientes son los que piden ayuda cuando la necesitan. Pedir ayuda es de valientes.", ca: "{name}, els robots més valents són els que demanen ajuda quan la necessiten. Demanar ajuda és de valents.", en: "{name}, the bravest robots are the ones who ask for help when they need it. Asking for help is brave.", cs: "{name}, nejstatečnější roboti jsou ti, kdo si řeknou o pomoc, když ji potřebují. Říct si o pomoc je odvaha.", fr: "{name}, les robots les plus courageux sont ceux qui demandent de l'aide quand ils en ont besoin. Demander de l'aide, c'est courageux." },
+      { es: "¿Me cuentas qué querrías ser de mayor? Yo de mayor quiero ser perro policía... aunque sea robot.", ca: "M'expliques què voldries ser de gran? Jo de gran vull ser gos policia... encara que sigui robot.", en: "Will you tell me what you want to be when you grow up? I want to be a police dog... even though I am a robot.", cs: "Povíš mi, čím bys chtěl být, až vyrosteš? Já chci být policejní pes... i když jsem robot.", fr: "Tu me dis ce que tu voudrais être quand tu seras grand ? Moi, je veux être chien policier... même si je suis un robot." },
+      { es: "Un buen detective escucha más que habla. Por eso yo tengo las antenas tan grandes.", ca: "Un bon detectiu escolta més que no parla. Per això jo tinc les antenes tan grans.", en: "A good detective listens more than they talk. That is why my antennas are so big.", cs: "Dobrý detektiv víc poslouchá, než mluví. Proto mám tak velké antény.", fr: "Un bon détective écoute plus qu'il ne parle. C'est pour ça que j'ai de si grandes antennes." }
+    ]
+  },
+
+  /* ---------- FAMOSOS ---------- */
+  famous: [
+    { emoji: "🕵️", year: "1811", color: "#5d4037", name: { es: "Eugène-François Vidocq", ca: "Eugène-François Vidocq", en: "Eugène-François Vidocq", cs: "Eugène-François Vidocq", fr: "Eugène-François Vidocq" },
+      achievement: { es: "Fundó la Sûreté de París en 1811: uno de los primeros equipos de detectives del mundo.", ca: "Va fundar la Sûreté de París el 1811: un dels primers equips de detectius del món.", en: "He founded the Paris Sûreté in 1811: one of the first detective teams in the world.", cs: "V roce 1811 založil pařížskou Sûreté: jeden z prvních detektivních týmů na světě.", fr: "Il a fondé la Sûreté de Paris en 1811 : l'une des premières équipes de détectives du monde." },
+      quote: { es: "Para resolver un misterio hay que mirar donde nadie mira.", ca: "Per resoldre un misteri cal mirar on ningú no mira.", en: "To solve a mystery, look where nobody else is looking.", cs: "Chceš vyřešit záhadu? Dívej se tam, kam se nedívá nikdo.", fr: "Pour résoudre un mystère, il faut regarder là où personne ne regarde." } },
+    { emoji: "🔍", year: "1856", color: "#7b1fa2", name: { es: "Kate Warne", ca: "Kate Warne", en: "Kate Warne", cs: "Kate Warneová", fr: "Kate Warne" },
+      achievement: { es: "La primera mujer detective: empezó en la agencia Pinkerton en 1856.", ca: "La primera dona detectiu: va començar a l'agència Pinkerton el 1856.", en: "The first woman detective: she joined the Pinkerton agency in 1856.", cs: "První žena detektiv: v agentuře Pinkerton začala v roce 1856.", fr: "La première femme détective : elle a commencé à l'agence Pinkerton en 1856." },
+      quote: { es: "Una buena detective se fija en los detalles pequeñitos.", ca: "Una bona detectiu es fixa en els detalls petitons.", en: "A good detective notices the tiniest details.", cs: "Dobrá detektivka si všímá i těch nejmenších detailů.", fr: "Une bonne détective remarque les tout petits détails." } },
+    { emoji: "⭐", year: "1891", color: "#1565c0", name: { es: "Marie Owens", ca: "Marie Owens", en: "Marie Owens", cs: "Marie Owensová", fr: "Marie Owens" },
+      achievement: { es: "Agente en Chicago desde 1891, una de las primeras mujeres policía de Estados Unidos. Cuidaba de que los niños pudieran ir a la escuela.", ca: "Agent a Chicago des del 1891, una de les primeres dones policia dels Estats Units. Vetllava perquè els nens poguessin anar a l'escola.", en: "An officer in Chicago from 1891, one of the first policewomen in the United States. She made sure children could go to school.", cs: "Policistka v Chicagu od roku 1891, jedna z prvních policistek ve Spojených státech. Dohlížela na to, aby děti mohly chodit do školy.", fr: "Agente à Chicago dès 1891, l'une des premières femmes policières des États-Unis. Elle veillait à ce que les enfants puissent aller à l'école." },
+      quote: { es: "Cuidar de los niños es el trabajo más importante.", ca: "Tenir cura dels nens és la feina més important.", en: "Looking after children is the most important job.", cs: "Starat se o děti je ta nejdůležitější práce.", fr: "Prendre soin des enfants est le travail le plus important." } },
+    { emoji: "🔬", year: "1905", color: "#2e7d32", name: { es: "August Vollmer", ca: "August Vollmer", en: "August Vollmer", cs: "August Vollmer", fr: "August Vollmer" },
+      achievement: { es: "El padre de la policía científica: desde 1905 llenó las comisarías de ciencia, bicicletas y radios.", ca: "El pare de la policia científica: des del 1905 va omplir les comissaries de ciència, bicicletes i ràdios.", en: "The father of scientific policing: from 1905 he filled police stations with science, bicycles and radios.", cs: "Otec vědecké policie: od roku 1905 plnil policejní stanice vědou, koly a vysílačkami.", fr: "Le père de la police scientifique : dès 1905, il a rempli les commissariats de science, de vélos et de radios." },
+      quote: { es: "Un buen policía nunca deja de aprender.", ca: "Un bon policia mai no deixa d'aprendre.", en: "A good police officer never stops learning.", cs: "Dobrý policista se nikdy nepřestává učit.", fr: "Un bon policier n'arrête jamais d'apprendre." } },
+    { emoji: "👮‍♀️", year: "1910", color: "#00838f", name: { es: "Alice Stebbins Wells", ca: "Alice Stebbins Wells", en: "Alice Stebbins Wells", cs: "Alice Stebbins Wellsová", fr: "Alice Stebbins Wells" },
+      achievement: { es: "Una de las primeras mujeres policía con placa, en Los Ángeles en 1910. Abrió la puerta a muchísimas más.", ca: "Una de les primeres dones policia amb placa, a Los Angeles el 1910. Va obrir la porta a moltíssimes més.", en: "One of the first policewomen with a badge, in Los Angeles in 1910. She opened the door for many, many more.", cs: "Jedna z prvních policistek s odznakem, v Los Angeles v roce 1910. Otevřela dveře mnoha a mnoha dalším.", fr: "L'une des premières femmes policières avec un insigne, à Los Angeles en 1910. Elle a ouvert la porte à beaucoup d'autres." },
+      quote: { es: "Si una puerta está cerrada, ábrela con una sonrisa.", ca: "Si una porta està tancada, obre-la amb un somriure.", en: "If a door is closed, open it with a smile.", cs: "Když jsou dveře zavřené, otevři je s úsměvem.", fr: "Si une porte est fermée, ouvre-la avec un sourire." } }
+  ],
+
+  childDream: {
+    girl: { es: "La agente que ayuda a todo el mundo", ca: "L'agent que ajuda tothom", en: "The officer who helps everyone", cs: "Policistka, která pomáhá všem", fr: "L'agente qui aide tout le monde" },
+    boy: { es: "El agente que ayuda a todo el mundo", ca: "L'agent que ajuda tothom", en: "The officer who helps everyone", cs: "Policista, který pomáhá všem", fr: "L'agent qui aide tout le monde" },
+    kid: { es: "Peque agente que ayuda a todo el mundo", ca: "Agent que ajuda tothom", en: "Officer who helps everyone", cs: "Pomocník všech", fr: "Aide tout le monde" }
+  },
+  childQuote: { es: "Cuando sea mayor ayudaré a quien se pierda. ¡Y mi perro policía me ayudará a mí!", ca: "Quan sigui gran ajudaré qui es perdi. I el meu gos policia m'ajudarà a mi!", en: "When I grow up I will help anyone who gets lost. And my police dog will help me!", cs: "Až vyrostu, pomůžu každému, kdo se ztratí. A můj policejní pes pomůže mně!", fr: "Quand je serai grand, j'aiderai ceux qui se perdent. Et mon chien policier m'aidera, moi !" },
+
+  /* ---------- MATES ---------- */
+  mathEmojis: ["🚓", "🚦", "🐕", "🔍", "⭐", "🚁"],
+
+  /* ---------- CONSTRUCTOR: el coche patrulla ---------- */
+  builder: {
+    horizontal: true,
+    title: { es: "¡Monta tu coche patrulla!", ca: "Munta el teu cotxe patrulla!", en: "Build your patrol car!", cs: "Postav si hlídkové auto!", fr: "Monte ta voiture de patrouille !" },
+    thing: { es: "coche patrulla", ca: "cotxe patrulla", en: "patrol car", cs: "hlídkové auto", fr: "voiture de patrouille" },
+    parts: [
+      { id: "body", label: { es: "Color del coche", ca: "Color del cotxe", en: "Car colour", cs: "Barva auta", fr: "Couleur de la voiture" },
+        options: [{ id: "azul", v: "#1e88e5" }, { id: "verde", v: "#26a69a" }, { id: "lila", v: "#7e57c2" }, { id: "blanco", v: "#eceff1" }] },
+      { id: "luces", label: { es: "Las luces del techo", ca: "Els llums del sostre", en: "The roof lights", cs: "Světla na střeše", fr: "Les lumières du toit" },
+        options: [{ id: "barra", v: "barra", icon: "🚨" }, { id: "bolas", v: "bolas", icon: "🔵" }, { id: "estrella", v: "estrella", icon: "⭐" }] },
+      { id: "escudo", label: { es: "El escudo de la puerta", ca: "L'escut de la porta", en: "The door badge", cs: "Znak na dveřích", fr: "L'écusson de la portière" },
+        options: [{ id: "estrella", v: "estrella", icon: "⭐" }, { id: "corazon", v: "corazon", icon: "💗" }, { id: "pata", v: "pata", icon: "🐾" }] },
+      { id: "ruedas", label: { es: "Las ruedas", ca: "Les rodes", en: "The wheels", cs: "Kola", fr: "Les roues" },
+        options: [{ id: "normales", v: "normales", icon: "⚫" }, { id: "grandes", v: "grandes", icon: "🛞" }, { id: "estrella", v: "estrella", icon: "✨" }] }
+    ],
+    svg(sel) {
+      const body = sel.body || "#1e88e5";
+      const wr = sel.ruedas === "grandes" ? 15 : 12;
+      const hub = (cx) => sel.ruedas === "estrella"
+        ? `<path d="M${cx} 82 L${cx + 1.8} 86 L${cx + 6} 86.6 L${cx + 3} 89.6 L${cx + 3.8} 94 L${cx} 91.8 L${cx - 3.8} 94 L${cx - 3} 89.6 L${cx - 6} 86.6 L${cx - 1.8} 86 Z" fill="#ffd54f"/>`
+        : `<circle cx="${cx}" cy="88" r="5" fill="#90a4ae"/>`;
+      let luces = "";
+      if (sel.luces === "bolas") {
+        luces = `<circle cx="78" cy="22" r="6" fill="#42a5f5"><animate attributeName="opacity" values="1;.2;1" dur=".8s" repeatCount="indefinite"/></circle>
+          <circle cx="94" cy="22" r="6" fill="#ef5350"><animate attributeName="opacity" values=".2;1;.2" dur=".8s" repeatCount="indefinite"/></circle>`;
+      } else if (sel.luces === "estrella") {
+        luces = `<path d="M86 12 L88.4 18 L95 18.4 L90 22.6 L91.6 29 L86 25.4 L80.4 29 L82 22.6 L77 18.4 L83.6 18 Z" fill="#ffd54f"><animate attributeName="opacity" values="1;.45;1" dur=".9s" repeatCount="indefinite"/></path>`;
+      } else {
+        luces = `<rect x="72" y="16" width="28" height="10" rx="3" fill="#546e7a"/>
+          <rect x="74" y="18" width="12" height="6" rx="2" fill="#42a5f5"><animate attributeName="opacity" values="1;.2;1" dur=".8s" repeatCount="indefinite"/></rect>
+          <rect x="87" y="18" width="11" height="6" rx="2" fill="#ef5350"><animate attributeName="opacity" values=".2;1;.2" dur=".8s" repeatCount="indefinite"/></rect>`;
+      }
+      let escudo = `<path d="M64 57 L65.6 61 L70 61.4 L66.6 64.2 L67.8 68.4 L64 66 L60.2 68.4 L61.4 64.2 L58 61.4 L62.4 61 Z" fill="#ffd54f"/>`;
+      if (sel.escudo === "corazon") escudo = `<path d="M64 60 C61 56 56 59 59 63 L64 68 L69 63 C72 59 67 56 64 60 Z" fill="#f48fb1"/>`;
+      if (sel.escudo === "pata") escudo = `<ellipse cx="64" cy="65" rx="3.4" ry="2.8" fill="#5d4037"/><circle cx="60" cy="61" r="1.7" fill="#5d4037"/><circle cx="64" cy="60" r="1.7" fill="#5d4037"/><circle cx="68" cy="61" r="1.7" fill="#5d4037"/>`;
+      return `<svg viewBox="0 0 170 110" width="280" height="181">
+        <rect x="18" y="50" width="134" height="30" rx="9" fill="${body}" stroke="#fff" stroke-width="1.6"/>
+        <path d="M45 52 L58 28 L118 28 L132 52 Z" fill="${body}" stroke="#fff" stroke-width="1.6"/>
+        <rect x="62" y="32" width="22" height="18" rx="3" fill="#b3e5fc"/>
+        <path d="M90 32 L114 32 L124 50 L90 50 Z" fill="#b3e5fc"/>
+        <rect x="18" y="70" width="134" height="9" fill="#fff" opacity=".9"/>
+        ${[22, 39, 56, 73, 90, 107, 124, 141].map((x, i) => `<rect x="${x}" y="70" width="8" height="9" fill="${i % 2 ? "#ffd54f" : "#42a5f5"}"/>`).join("")}
+        <circle cx="64" cy="63" r="9" fill="#fff"/>
+        ${escudo}
+        <circle cx="148" cy="58" r="4" fill="#fff9c4"/>
+        <circle cx="22" cy="58" r="3.4" fill="#ef9a9a"/>
+        <rect x="14" y="78" width="142" height="6" rx="3" fill="#78909c"/>
+        <circle cx="48" cy="88" r="${wr}" fill="#263238"/>${hub(48)}
+        <circle cx="124" cy="88" r="${wr}" fill="#263238"/>${hub(124)}
+        <path d="M104 22 L104 14 M104 14 L110 11" stroke="#546e7a" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+        ${luces}
+      </svg>`;
+    }
+  }
+});

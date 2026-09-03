@@ -723,3 +723,31 @@ cultural estricto + el modo Leer hecho en el motor.
   robots ya no dicen que bailan "fatal" sino que bailan bailes robóticos
   divertidos a su manera, y el T-Rex bebé no se esconde "fatal": es su cola
   larguísima la que asoma.
+
+## v4.0 (3-9-2026, 12:55): Policía, Bomberos y Cocina: 21 aventuras
+
+- **Tres aventuras nuevas de oficios**, encargo de Daniel, escritas por 3
+  subagentes en paralelo (~13-32 min cada una) con la plantilla completa y
+  auditadas una a una:
+  - **🚓 Policía** (78-a/b + 98a-extra): la policía que AYUDA (perdidos,
+    tráfico, K9, detectives), sin armas ni malos. Mapa de la ciudad amable
+    con 16 POIs, historias del peluche perdido / el patito que corta el
+    tráfico / el misterio de las galletas (eran palomas y una fiesta),
+    famosos reales con cara: Vidocq, Kate Warne, Marie Owens, Vollmer y
+    Alice Stebbins Wells. Cuidar: el perro policía 🐕→🐕‍🦺. Disfraz: luz de
+    sirena y chaleco.
+  - **🚒 Bomberos** (79-a/b + 98b-extra): prevención y rescate sin miedo
+    (112, salir agachado, dálmata Chispa, forestales, helicóptero de agua).
+    16 POIs, historias del gatito / el globo del tejado / el simulacro,
+    famosos: Molly Williams, Braidwood, Manby, Red Adair y Sabrina
+    Cohen-Hatton. Cuidar: el camión y las botas listas. Disfraz: casco ⛑️
+    y extintor.
+  - **🍳 Cocina** (56-a/b + 98c-extra): el mercado, la levadura, el umami,
+    la abuela. 16 POIs (horno con ventanita, libro de recetas, huerto de la
+    ventana), historias de la sopa de la abuela / el pastel sorpresa / el
+    mercado, famosos: Escoffier, Eugénie Brazier, Julia Child, Simone Ortega
+    y Ferran Adrià. Cuidar: hoy cocinas tú (y se friega al final). Disfraz:
+    gorro de chef DIBUJADO en SVG y sartén.
+- Verificación integral: 21 temas × 11 modos + 21 POIs + 21 partidas de quiz
+  enteras + rutina K9 + final de bomberos al libro de cuentos + 15 caras
+  nuevas: 0 fallos, 0 errores de consola. Bundle: 5,2 MB.
