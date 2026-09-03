@@ -893,3 +893,41 @@ horizontal, y que haya transición entre etapas o escenarios".
   6 lecciones, libro (117 finales), misión, padres y llamada: 0 fallos. Cero
   ids de gradiente repetidos, cero referencias huérfanas, cero rayas, cero
   "Nina", consola limpia. Bundle: 5,72 MB.
+
+## v4.5 (3-9-2026, 22:00): accesibilidad, música a escala con gong, y el cuerpo con aire
+
+Tres avisos de Daniel: los instrumentos de música muy pequeños y el gong que no
+se podía tocar; el cuerpo de los órganos que "casi ni se ve"; y peces del océano
+tan pequeños que a un niño con poca visión o miopía le costarían (y lo mismo en
+el resto de mapas).
+
+- **♿ Accesibilidad, y es lo más importante de esta versión:**
+  - **Suelo de tamaño en pantalla**: ningún dibujo del mapa baja de 30 px
+    REALES, por muy reducido que se vea el mapa. Antes había 70 iconos por
+    debajo de 50 px (el cangrejo del océano 26, la hormiga del Amazonas 22, la
+    Luna 18). Medido: de 16 dibujos por debajo del umbral a 0.
+  - **Ajuste "🔍 Dibujos grandes"** en Ajustes (5 idiomas): el mapa entero se ve
+    con lupa (x1,5), decorado incluido, y se recorre en horizontal y vertical.
+    Se probó agrandar solo los iconos y era peor: pasaba de 7 a 85 solapes.
+    Con lupa todo crece en proporción y no se pisa nada.
+- **🎵 Música**: los iconos eran la mitad que en otros mapas y con proporciones
+  falsas (violín y guitarra casi iguales). Redibujados y a escala real: violín
+  92 < guitarra 118 < violonchelo 142 < arpa 170; piano 168, timbales 158, tuba
+  122. Es ya el mapa de iconos más grandes del juego. **El gong se añade como
+  punto seleccionable** (145x155, en percusión, sobre su tarima) con dato en 5
+  idiomas y **sonido propio**: voz nueva de gong en el sintetizador, con 8
+  parciales inarmónicos y 3,77 s de cola real (verificado sintetizando el audio).
+  Además: la duración declarada del gong ahora cuenta su cola (el robot ya no
+  hablaba encima del bronce), el piano dejó de saturar (pico 1,35 a 0,10 de
+  volumen) y el texto del xilófono concuerda con su dibujo.
+- **🫀 Cuerpo humano**: la silueta se pintaba con la piel al 30% de opacidad y
+  se perdía contra la pared clara de la consulta; ahora va al 62% con contorno
+  y sombra. Y el mapa se amplía de 1500 a 2600: las siluetas crecen (tronco de
+  260 a 400 px), se separan casi el doble, el panel de sistemas pasa a una
+  vitrina propia y los 26 puntos se recolocan. De 12 solapes a 2, y los 2 son
+  anatómicos (columna tras costillas, delgado dentro del grueso). Varios iconos
+  se dibujaban diminutos dentro de cajas enormes: ahora la tinta visible crece
+  más del doble de media y hasta 7 veces en húmero y columna.
+- Verificación final en ventana normal (1280x860), con lupa y sin ella: menor
+  dibujo 30 px, 0 diminutos, 0 etiquetas tapadas, 2 solapes anatómicos. Los 92
+  ficheros compilan y la consola queda limpia.

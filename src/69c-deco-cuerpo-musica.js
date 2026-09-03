@@ -410,17 +410,23 @@
   (function () {
 
     /* Los dos puntos que añade 66-musica-icons.js (el pentagrama y las
-       figuras) venían colocados para el lienzo antiguo de 2600 px.
-       Aquí se llevan a su sitio del escenario nuevo. */
-    const sitios = { "El pentagrama": [3170, 300], "Las figuras": [3860, 620] };
-    ((THEMES.musica.content.explore.pois) || []).forEach(function (p) {
-      const q = p.name && sitios[p.name.es];
-      if (q) { p.x = q[0]; p.y = q[1]; }
-    });
+       figuras) ya vienen colocados para este lienzo de 4200 px: sus
+       coordenadas viven junto al punto, no aquí. */
 
     THEMES.musica.content.explore.deco = function (e) {
       const W = e.width || 4200;
-      const libre = libreCon(cajas(e, 1.5, 18));
+      /* Cuánto va a agrandar el motor los iconos. Antes se daba por hecho el
+         tope de 1.5 y en una pantalla alta (donde el motor no los agranda)
+         los instrumentos quedaban un palmo por encima de su peana. Aquí se
+         repite su cuenta: manda el alto libre del carrusel. */
+      const KSOP = (function () {
+        try {
+          const alto = Math.max(320, window.innerHeight - 265);
+          const k = Math.min(1.3, Math.max(0.28, alto / (e.height || 1100)));
+          return Math.min(e.poikMax || 1.5, Math.max(1, 0.95 / k));
+        } catch (err) { return 1.5; }
+      })();
+      const libre = libreCon(cajas(e, KSOP, 18));
       const TABLAS = 706;      /* la línea del suelo del teatro */
       const ALTO = 1100;
       let s = "";
@@ -428,10 +434,12 @@
       /* Fronteras de las cuatro secciones y de los tres pasos que
          las separan, en proporción al ancho. */
       const F = function (r) { return Math.round(W * r); };
+      /* La percusión se lleva más metros que antes: ahora tiene cuatro
+         instrumentos grandes (gong, timbales, xilófono y platillos) y con
+         el reparto viejo se tocaban entre ellos. */
       const P1 = F(.257), P1b = F(.281),   /* cuerda  -> paso 1 -> viento */
-        P2 = F(.495), P2b = F(.519),       /* viento  -> paso 2 -> percusión */
-        P3 = F(.664), P3b = F(.690);       /* percusión -> paso 3 -> escenario */
-      const mez = function (a, b, t) { return a + (b - a) * t; };
+        P2 = F(.450), P2b = F(.474),       /* viento  -> paso 2 -> percusión */
+        P3 = F(.700), P3b = F(.726);       /* percusión -> paso 3 -> escenario */
 
       /* ---------- DEGRADADOS PROPIOS (prefijo musT, únicos) ---------- */
       s += `<defs>
@@ -497,7 +505,6 @@
          Cada punto tiene que apoyarse en algo: hornacina en la pared,
          peana de museo, tarima o soporte. Calculamos por dónde acaba
          el dibujo de cada punto para que la peana le quede justo debajo. */
-      const KSOP = 1.5;                  /* cuánto crecen los iconos: el mismo tope que pone el motor */
       const TINTA = tintas(e.pois);      /* dónde acaba el dibujo dentro de su caja */
       const punto = function (nombre) { return (e.pois || []).find(function (p) { return p.name && p.name.es === nombre; }); };
       const bajo = function (p) {
@@ -535,10 +542,14 @@
         const p = punto(nombre);
         if (p) basas.push([p.x, semi]);
       };
-      [["El violín", 48], ["El arpa", 63], ["La flauta", 60], ["La trompeta", 57], ["El saxofón", 48],
-        ["La tuba", 82], ["El xilófono", 91], ["Los timbales", 128], ["Los platillos", 62],
-        ["El violonchelo", 66], ["La guitarra", 54], ["El micrófono", 56], ["El podio de dirección", 92],
-        ["El piano de cola", 168], ["Las figuras", 136]].forEach(function (q) { apunta(q[0], q[1]); });
+      /* el medio ancho que ocupa cada punto en el suelo, ya con los iconos
+         grandes: es lo que hay que respetar para no plantarle encima una
+         silla o un atril */
+      [["El violín", 56], ["El arpa", 106], ["La flauta", 76], ["La trompeta", 68], ["El saxofón", 60],
+        ["La tuba", 97], ["El xilófono", 105], ["Los timbales", 128], ["Los platillos", 82],
+        ["El gong", 122], ["El violonchelo", 70], ["La guitarra", 62], ["El micrófono", 56],
+        ["El podio de dirección", 96], ["El piano de cola", 174], ["Las figuras", 136]]
+        .forEach(function (q) { apunta(q[0], q[1]); });
       const libreSuelo = function (x, semi) {
         return !basas.some(function (b) { return Math.abs(b[0] - x) < b[1] + semi; });
       };
@@ -564,12 +575,12 @@
           <path d="M${x + 9} 200 v330" stroke="rgba(0,0,0,.10)" stroke-width="5"/>`;
       }
       /* hornacinas de los instrumentos que se exponen en la pared */
-      [["El violín", 220], ["El arpa", 250]].forEach(function (h) {
+      [["El violín", 220], ["El arpa", 280]].forEach(function (h) {
         const p = punto(h[0]);
         if (p) s += hornacina(p.x, h[1], 196, bajo(p) + 26);
       });
       /* apliques de pared con su lucecita, entre hornacina y hornacina */
-      [120, 380, 620, 880].forEach(function (x, i) {
+      [90, 400, 530, 960].forEach(function (x, i) {
         s += `<g><circle cx="${x}" cy="300" r="46" fill="url(#musTVela)"><animate attributeName="opacity" values=".9;.6;.9" dur="${5 + i}s" repeatCount="indefinite"/></circle>
           <path d="M${x - 16} 292 q16 -22 32 0 q-16 10 -32 0 Z" fill="url(#musTOro)"/>
           <rect x="${x - 4}" y="292" width="8" height="34" rx="4" fill="#b58622"/></g>`;
@@ -582,11 +593,11 @@
       for (let i = 0; i < 5; i++) {
         s += `<line x1="${P1b + 40}" y1="${270 + i * 26}" x2="${P2 - 40}" y2="${270 + i * 26}" stroke="rgba(255,255,255,.16)" stroke-width="3"/>`;
       }
-      [["La flauta", 230], ["La trompeta", 220], ["El saxofón", 200]].forEach(function (h) {
+      [["La flauta", 180], ["La trompeta", 170], ["El saxofón", 140]].forEach(function (h) {
         const p = punto(h[0]);
         if (p) s += hornacina(p.x, h[1], 196, bajo(p) + 26);
       });
-      [1365, 1615, 1865].forEach(function (x) {
+      [1372, 1546].forEach(function (x) {
         s += `<rect x="${x - 26}" y="190" width="52" height="${TABLAS - 190}" rx="8" fill="url(#musTColumna)" opacity=".55"/>
           <rect x="${x - 12}" y="200" width="6" height="${TABLAS - 216}" fill="rgba(255,255,255,.12)"/>
           <rect x="${x + 4}" y="200" width="6" height="${TABLAS - 216}" fill="rgba(0,0,0,.18)"/>
@@ -594,27 +605,13 @@
       });
 
       /* ================= SECCIÓN DE PERCUSIÓN (P2b a P3) =================
-         Paneles de listones que rebotan el sonido y un gong colgado. */
+         Paneles de listones que rebotan el sonido. El gong que antes colgaba
+         aquí de adorno ya no hace falta: ahora es un punto del mapa, con su
+         soporte de madera dibujado en el propio icono, y se puede tocar. */
       for (let x = P2b + 40; x < P3 - 30; x += 34) {
         const alto = 250 + ((x * 7) % 90);
         s += `<rect x="${x}" y="${TABLAS - alto}" width="14" height="${alto}" rx="6" fill="rgba(255,255,255,.06)"/>
           <rect x="${x}" y="${TABLAS - alto}" width="4" height="${alto}" fill="rgba(255,255,255,.10)"/>`;
-      }
-      const gongX = Math.round(mez(P2b, P3, .5));
-      if (libre(gongX - 104, 200, 208, 300)) {
-        s += `<g>
-          <rect x="${gongX - 112}" y="${TABLAS - 40}" width="34" height="40" rx="8" fill="#4a2f1d"/>
-          <rect x="${gongX + 78}" y="${TABLAS - 40}" width="34" height="40" rx="8" fill="#4a2f1d"/>
-          <rect x="${gongX - 100}" y="228" width="12" height="${TABLAS - 268}" rx="6" fill="#5b3a24"/>
-          <rect x="${gongX + 88}" y="228" width="12" height="${TABLAS - 268}" rx="6" fill="#5b3a24"/>
-          <rect x="${gongX - 108}" y="216" width="216" height="16" rx="8" fill="#6f4526"/>
-          <path d="M${gongX - 62} 232 v34 M${gongX + 62} 232 v34" stroke="#e8c25c" stroke-width="5"/>
-          <g><animateTransform attributeName="transform" type="rotate" values="-1.4 ${gongX} 232;1.4 ${gongX} 232;-1.4 ${gongX} 232" dur="9s" repeatCount="indefinite"/>
-            <circle cx="${gongX}" cy="352" r="88" fill="url(#musTOro)" opacity=".92"/>
-            <circle cx="${gongX}" cy="352" r="88" fill="none" stroke="#8a5f14" stroke-width="6"/>
-            <circle cx="${gongX}" cy="352" r="62" fill="none" stroke="rgba(120,80,16,.5)" stroke-width="4"/>
-            <circle cx="${gongX}" cy="352" r="32" fill="none" stroke="rgba(120,80,16,.45)" stroke-width="4"/>
-            <circle cx="${gongX - 26}" cy="326" r="17" fill="rgba(255,255,255,.28)"/></g></g>`;
       }
 
       /* ================= EL ESCENARIO (P3b a W) =================
@@ -709,8 +706,8 @@
           <path d="M${x0 + 18} ${y0 + 14} H${x1 - 18} L${x1 - 40} ${y0 + alto - 14} H${x0 - 8} Z" fill="none" stroke="rgba(255,214,140,.35)" stroke-width="4"/>
           <path d="M${x0 + 40} ${y0 + 30} H${x1 - 40} L${x1 - 58} ${y0 + alto - 30} H${x0 + 14} Z" fill="none" stroke="rgba(255,214,140,.18)" stroke-width="3"/></g>`;
       };
-      s += alfombra(120, 960, 902, 112) + alfombra(1268, 2010, 892, 108)
-        + alfombra(2118, 2470, 856, 104) + alfombra(3250, 3660, 884, 104);
+      s += alfombra(120, 960, 902, 112) + alfombra(1270, 1840, 892, 108)
+        + alfombra(2060, 2500, 856, 104) + alfombra(3260, 3700, 884, 104);
       /* el suelo de percusión era la baldosa más lisa del teatro: se le
          añaden dos baquetas cruzadas y una pandereta dejadas en la alfombra */
       s += `<g><ellipse cx="2230" cy="928" rx="94" ry="15" fill="rgba(10,4,16,.28)"/>
@@ -725,8 +722,8 @@
         <ellipse cx="2420" cy="886" rx="31" ry="10" fill="#f2e2c8"/>
         ${[-34, -12, 12, 34].map(function (d) { return `<ellipse cx="${2420 + d}" cy="${d % 24 ? 876 : 896}" rx="7" ry="4" fill="url(#musTOro)"/>`; }).join("")}</g>`;
       /* el cable del micro, que se pierde por delante entre los bultos */
-      s += `<path d="M3630 706 q-58 96 -186 132 q-160 44 -224 156" stroke="rgba(12,6,20,.5)" stroke-width="8" fill="none" stroke-linecap="round"/>
-        <path d="M3630 706 q-58 96 -186 132 q-160 44 -224 156" stroke="rgba(126,116,136,.32)" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+      s += `<path d="M3615 706 q-58 96 -186 132 q-160 44 -224 156" stroke="rgba(12,6,20,.5)" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <path d="M3615 706 q-58 96 -186 132 q-160 44 -224 156" stroke="rgba(126,116,136,.32)" stroke-width="3" fill="none" stroke-linecap="round"/>`;
       /* estuches de instrumento cerrados, tumbados en el suelo */
       const estuche = function (cx, cy, ancho, giro) {
         const a = n(ancho), h = n(ancho * 0.38);
@@ -739,13 +736,13 @@
           <rect x="${n(-a * 0.32)}" y="-4" width="10" height="8" rx="3" fill="#e8c25c"/>
           <rect x="${n(a * 0.24)}" y="-4" width="10" height="8" rx="3" fill="#e8c25c"/></g>`;
       };
-      s += estuche(700, 962, 196, -3) + estuche(1880, 948, 176, 4) + estuche(2320, 986, 156, -5)
+      s += estuche(700, 962, 196, -3) + estuche(1760, 948, 176, 4) + estuche(2300, 986, 156, -5)
         + estuche(3120, 1004, 186, 3);
       /* la banqueta del piano y el cable del micro, que cruzan el primer plano */
-      s += `<g><ellipse cx="3392" cy="836" rx="104" ry="18" fill="rgba(10,4,16,.28)"/>
-        <rect x="3306" y="770" width="172" height="26" rx="11" fill="#7a1e2c"/>
-        <rect x="3312" y="774" width="160" height="9" rx="4" fill="rgba(255,255,255,.16)"/>
-        <path d="M3322 796 l-10 44 M3462 796 l10 44 M3348 796 l-6 42 M3436 796 l6 42" stroke="#4a2f1d" stroke-width="9" stroke-linecap="round"/></g>
+      s += `<g><ellipse cx="3420" cy="836" rx="104" ry="18" fill="rgba(10,4,16,.28)"/>
+        <rect x="3334" y="770" width="172" height="26" rx="11" fill="#7a1e2c"/>
+        <rect x="3340" y="774" width="160" height="9" rx="4" fill="rgba(255,255,255,.16)"/>
+        <path d="M3350 796 l-10 44 M3490 796 l10 44 M3376 796 l-6 42 M3464 796 l6 42" stroke="#4a2f1d" stroke-width="9" stroke-linecap="round"/></g>
 `;
 
       /* ---------- LOS PASOS DE UNA SECCIÓN A OTRA:
@@ -907,18 +904,18 @@
       /* ---------- CADA PUNTO, APOYADO EN ALGO ----------
          Peanas de exposición, tarimas y soportes debajo de lo que antes
          se quedaba flotando en el aire. */
-      [["El violín", 80], ["El arpa", 110], ["La flauta", 104], ["La trompeta", 98], ["El saxofón", 80]].forEach(function (q) {
+      [["El violín", 90], ["El arpa", 130], ["La flauta", 112], ["La trompeta", 104], ["El saxofón", 88]].forEach(function (q) {
         const p = punto(q[0]);
         if (p) s += peana(p.x, q[1], bajo(p) - 4);
       });
-      [["La tuba", 140], ["El xilófono", 158]].forEach(function (q) {
+      [["La tuba", 150], ["El xilófono", 170], ["El gong", 210]].forEach(function (q) {
         const p = punto(q[0]);
         if (p) s += tarimaBaja(p.x, q[1], bajo(p) - 4);
       });
       /* el chelo y la guitarra tampoco llegaban al suelo: se quedaban medio
          centenar de píxeles en el aire con la sombra muy por debajo. Ahora
          descansan en su tarima baja, como la tuba y el xilófono. */
-      [["El violonchelo", 124], ["La guitarra", 100]].forEach(function (q) {
+      [["El violonchelo", 132], ["La guitarra", 112]].forEach(function (q) {
         const p = punto(q[0]);
         if (p) s += tarimaBaja(p.x, q[1], bajo(p) - 4);
       });
@@ -965,10 +962,10 @@
       /* el pentagrama de la pared, dentro de su marco colgado */
       const pen = punto("El pentagrama");
       if (pen) {
-        s += `<g><path d="M${pen.x - 92} 232 V150 M${pen.x + 92} 232 V150" stroke="#b58622" stroke-width="5"/>
-          <rect x="${pen.x - 132}" y="228" width="264" height="152" rx="14" fill="rgba(12,5,22,.5)"/>
-          <rect x="${pen.x - 132}" y="228" width="264" height="152" rx="14" fill="none" stroke="url(#musTOro)" stroke-width="8"/>
-          <rect x="${pen.x - 119}" y="241" width="238" height="126" rx="9" fill="none" stroke="rgba(232,183,74,.28)" stroke-width="3"/></g>`;
+        s += `<g><path d="M${pen.x - 100} 216 V150 M${pen.x + 100} 216 V150" stroke="#b58622" stroke-width="5"/>
+          <rect x="${pen.x - 152}" y="214" width="304" height="172" rx="16" fill="rgba(12,5,22,.5)"/>
+          <rect x="${pen.x - 152}" y="214" width="304" height="172" rx="16" fill="none" stroke="url(#musTOro)" stroke-width="9"/>
+          <rect x="${pen.x - 138}" y="228" width="276" height="144" rx="10" fill="none" stroke="rgba(232,183,74,.28)" stroke-width="3"/></g>`;
       }
       /* la alfombra redonda donde se planta el piano */
       const pia = punto("El piano de cola");

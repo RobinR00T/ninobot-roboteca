@@ -850,8 +850,8 @@ function uiExplore(c) {
         ${starDots}
         ${e.pois.map((p, i) => `<button class="poi" style="left:${p.x}px;top:${p.y}px" onclick="NB.poi(${i})">
           ${p.svg
-            ? `<span class="picon" style="width:${p.iw}px;height:${p.ih}px">${p.svg}</span>`
-            : `<span class="pemoji" style="font-size:${(p.size || 1) * 2.2}rem">${p.emoji}</span>`}
+            ? `<span class="picon" style="width:${tamPoi(p).w}px;height:${tamPoi(p).h}px">${p.svg}</span>`
+            : `<span class="pemoji" style="font-size:${((p.size || 1) * 2.2 * (p.size ? 1 : 1.15)).toFixed(2)}rem">${p.emoji}</span>`}
           <span class="plabel ${M.visited.has(i) ? "seenlbl" : ""}">${esc(tx(p.name))}</span>
         </button>`).join("")}
       </div>
@@ -860,7 +860,11 @@ function uiExplore(c) {
     <p class="muted center" style="margin-top:6px">🧭 ${t("exploreHint")}</p>`;
   // El mapa se encaja entero a lo alto: solo queda un scroll, el horizontal.
   const sc = document.getElementById("mapscroll");
-  const k = Math.min(1.3, Math.max(0.28, sc.clientHeight / e.height));
+  sc.classList.toggle("conlupa", !!S.settings.bigIcons);
+  /* con "dibujos grandes" el mapa se ve como con lupa: crece todo a la vez
+     (decorado incluido), así que nada se pisa y se recorre con el dedo */
+  const lupa = S.settings.bigIcons ? 1.5 : 1;
+  const k = Math.min(1.3, Math.max(0.28, sc.clientHeight / e.height)) * lupa;
   M.mapK = k;
   const size = document.getElementById("mapsize");
   size.style.width = (e.width * k) + "px";
@@ -870,7 +874,10 @@ function uiExplore(c) {
   cv.style.transform = "scale(" + k + ")";
   /* tope de agrandado de los puntos: por encima de 1.5 empiezan a taparse entre
      ellos en pantallas bajas (con los mapas ya anchos no hace falta inflarlos) */
+  /* si el ajuste de dibujos grandes está puesto, todo el mapa se ve más grande:
+     pensado para quien tenga poca visión (se explora con scroll, no se pierde nada) */
   cv.style.setProperty("--poik", Math.min(e.poikMax || 1.5, Math.max(1, 0.95 / k)).toFixed(2));
+  cv.classList.toggle("poigrande", !!S.settings.bigIcons);
   let drag = null;
   sc.addEventListener("pointerdown", ev => { drag = { x: ev.clientX, l: sc.scrollLeft }; sc.classList.add("dragging"); });
   sc.addEventListener("pointermove", ev => { if (!drag) return; sc.scrollLeft = drag.l - (ev.clientX - drag.x); });
@@ -881,6 +888,17 @@ function uiExplore(c) {
      congela la animación un instante para medir con el tamaño definitivo. */
   cv.classList.add("nofx");
   void cv.offsetWidth;
+  /* suelo de tamaño EN PANTALLA: por muy reducido que se vea el mapa, ningún
+     dibujo baja de 30 px, que es lo que cuesta ver y acertar con el dedo */
+  const MIN_PX = 30;
+  document.querySelectorAll("#mapcanvas .poi .picon").forEach(el => {
+    const r = el.getBoundingClientRect();
+    const m = Math.min(r.width, r.height);
+    if (!m || m >= MIN_PX) return;
+    const f = Math.min(1.55, MIN_PX / m);
+    el.style.width = Math.round(parseFloat(el.style.width) * f) + "px";
+    el.style.height = Math.round(parseFloat(el.style.height) * f) + "px";
+  });
   acomodaEtiquetas();
   requestAnimationFrame(() => cv.classList.remove("nofx"));
 }
@@ -888,6 +906,16 @@ function uiExplore(c) {
 /* Las etiquetas se apartan solas cuando dos caen encima: la de arriba se sube
    sobre su dibujo y, si aún se tocan, se separan a los lados. Así ningún
    nombre tapa a otro por muy junto que esté el mapa. */
+/* Ningún dibujo del mapa puede quedar tan pequeño que cueste verlo o tocarlo:
+   los muy chiquitines crecen hasta un mínimo (sin pasarse, para no romper las
+   proporciones: la Luna sigue siendo mucho menor que Júpiter). */
+const POI_MIN = 46, POI_CREC = 1.7;
+function tamPoi(p) {
+  const w = p.iw || 44, h = p.ih || 44;
+  const f = Math.min(POI_CREC, Math.max(1, POI_MIN / Math.min(w, h)));
+  return { w: Math.round(w * f), h: Math.round(h * f) };
+}
+
 function acomodaEtiquetas() {
   const cv = document.getElementById("mapcanvas");
   if (!cv) return;
@@ -1877,6 +1905,7 @@ function openSettings() {
       ${S.settings.sound ? `<button class="opt" onclick="NB.toggleVoiceKind()">${S.settings.voiceKind === "robot" ? "🤖 " + t("voiceKindLabel") + ": " + t("voiceRobot") : "🙂 " + t("voiceKindLabel") + ": " + t("voiceHuman")}</button>` : ""}
       ${S.settings.sound && S.settings.voiceKind !== "robot" ? `<button class="opt" onclick="NB.cycleVoice()">🗣️ ${t("soundLabel")}: ${esc(currentVoiceName())} · ${Speech.listVoices(L()).length} ${LANGS[L()].label}</button>` : ""}
       <button class="opt" onclick="NB.editProfile()">✏️ ${t("editProfile")}</button>
+      <button class="opt" onclick="NB.toggleBigIcons()">${S.settings.bigIcons ? "🔍 " + t("bigIcons") + ": " + t("on") : "🔎 " + t("bigIcons") + ": " + t("off")}</button>
       <button class="opt" onclick="NB.parentsAsk()">🧑‍🧒 ${t("pTitle")}</button>
       <button class="opt" onclick="NB.askErase()">🗑️ ${t("eraseAll")}</button>
     </div>
@@ -1905,6 +1934,12 @@ function cycleVoice() {
 }
 
 function addTime() { sessionDeadline = (sessionDeadline || Date.now()) + 10 * 60000; openSettings(); }
+function toggleBigIcons() {
+  S.settings.bigIcons = !S.settings.bigIcons;
+  save(); openSettings();
+  if (S.screen === "adventure" && S.mode === "explore") renderMode();
+}
+
 function toggleMic() { S.settings.mic = !S.settings.mic; save(); openSettings(); if (S.screen === "hub") renderHub(); }
 function toggleSound() { S.settings.sound = !S.settings.sound; if (!S.settings.sound) Speech.stop(); save(); openSettings(); }
 function toggleVoiceKind() {
@@ -1956,7 +1991,7 @@ window.NB = {
   finishSetup, pickRobot, pickTheme, voiceCall, goHub, setMode,
   openCall, callRobot, callSend, callMic, hangUp, chipSay, buildView, buildDel, abcSay, famousSay,
   chatSend, chatMic, storyStart, storyGo, quizStart, quizPick, quizNext, cycleFantasy,
-  transLang, transSay, mapGoto, mapCat, poi, speakAgain, songOpen, songPlay, leerOpen, leerLesson, leerPick, leerHear, trazoClear, bookOpen, parentsAsk, parentsGo, careDo, careAgain,
+  toggleBigIcons, transLang, transSay, mapGoto, mapCat, poi, speakAgain, songOpen, songPlay, leerOpen, leerLesson, leerPick, leerHear, trazoClear, bookOpen, parentsAsk, parentsGo, careDo, careAgain,
   abc, mathStart, mathPick, buildSet, buildSave, famous,
   openSettings, openAbout, closeModal, addTime, toggleMic, toggleSound, toggleVoiceKind,
   cycleVoice, editProfile, askErase, doErase, byeBack

@@ -420,3 +420,6 @@ h2 { font-size: 1.25rem; margin: 6px 0 10px; }
 .poi .plabel.lblupright { top: -8px; left: auto; right: -6px; transform: translate(100%, -100%); }
 .poi .plabel.lblupleft { top: -8px; left: -6px; right: auto; transform: translate(-100%, -100%); }
 .poi .plabel.lbldown2 { top: calc(100% + 30px); }
+
+/* dibujos grandes: también el nombre se lee mejor */
+.mapcanvas.poigrande .poi .plabel { font-size: .92rem; padding: 3px 11px; }

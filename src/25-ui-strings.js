@@ -247,6 +247,7 @@ const T = {
   aboutContact: { es: "Sugerencias, errores o ideas:", ca: "Suggeriments, errors o idees:", en: "Suggestions, bugs or ideas:", cs: "Návrhy, chyby nebo nápady:", fr: "Suggestions, erreurs ou idées :" },
 
   /* --- modo cuidar (vida práctica) --- */
+  bigIcons: { es: "Dibujos grandes", ca: "Dibuixos grans", en: "Big pictures", cs: "Velké obrázky", fr: "Grands dessins" },
   mCare: { es: "Cuidar", ca: "Cuidar", en: "Care", cs: "Péče", fr: "Prendre soin" },
   careFirst: { es: "Primero toca:", ca: "Primer toca:", en: "First it's time to:", cs: "Nejdřív je na řadě:", fr: "D'abord, c'est le moment de :" },
   mChCare: { es: "Cuida algo en una aventura", ca: "Cuida alguna cosa en una aventura", en: "Take care of something in an adventure", cs: "Postarej se o něco v dobrodružství", fr: "Prends soin de quelque chose dans une aventure" }
