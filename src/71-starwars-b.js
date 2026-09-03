@@ -293,7 +293,8 @@ Object.assign(THEMES.starwars.content, {
 
   /* ---------- MAPA DE EXPLORACIÓN ---------- */
   explore: {
-    width: 2600, height: 1100, bg: "space",
+    width: 2600, height: 1100, stars: false,
+    bgCss: "radial-gradient(ellipse 22% 26% at 10% 14%, rgba(255,209,102,.55), transparent 70%), linear-gradient(180deg,#131a3f 0%,#2b3468 24%,#584f83 44%,#9c6c8a 60%,#e0925e 74%,#f9d093 100%)",
     cats: [
       { id: "planetas", emoji: "🪐", x: 120, name: { es: "Planetas", ca: "Planetes", en: "Planets", cs: "Planety", fr: "Planètes" } },
       { id: "naves", emoji: "🚀", x: 1150, name: { es: "Naves", ca: "Naus", en: "Ships", cs: "Vesmírné lodě", fr: "Vaisseaux" } },
@@ -349,50 +350,305 @@ Object.assign(THEMES.starwars.content, {
         name: { es: "Wookiee", ca: "Wookiee", en: "Wookiee", cs: "Wookiee", fr: "Wookiee" },
         fact: { es: "Los wookiees son gigantes peludos del planeta Kashyyyk. Dan los abrazos más fuertes y calentitos de toda la galaxia.", ca: "Els wookiees són gegants peluts del planeta Kashyyyk. Fan les abraçades més fortes i calentones de tota la galàxia.", en: "Wookiees are furry giants from the planet Kashyyyk. They give the strongest, warmest hugs in the whole galaxy.", cs: "Wookieeové jsou chlupatí obři z planety Kashyyyk. Umí nejsilnější a nejhřejivější objetí v celé galaxii.", fr: "Les Wookiees sont des géants poilus de la planète Kashyyyk. Ils font les câlins les plus forts et les plus chauds de toute la galaxie." } }
     ],
+    /* El escenario, de izquierda a derecha: el desierto de Tatooine, el
+       promontorio helado, el bosque gigante con pasarelas, la cascada de
+       Naboo, las torres de Coruscant, el hangar de las naves y, al final,
+       el bosque y la meseta donde viven las criaturas. */
     deco: function () {
       let s = "";
-      // cielo estrellado de punta a punta
-      [[120, 90], [340, 170], [560, 80], [820, 150], [1060, 100], [1300, 60], [1520, 160], [1740, 90], [1980, 140], [2220, 80], [2460, 160], [900, 270], [1650, 250], [2350, 270], [450, 310], [2050, 200]].forEach(p => {
-        s += `<circle cx="${p[0]}" cy="${p[1]}" r="3" fill="rgba(255,255,255,.65)"/>`;
+      /* Las cajas de los iconos: el decorado se aparta de ellas para no taparlos.
+         Cada punto queda apoyado en algo (duna, pasarela, plataforma, tejado). */
+      const cajas = [[119, 379, 82, 82], [323, 603, 74, 74], [482, 282, 76, 76], [665, 525, 70, 70], [841, 311, 78, 78],
+        [1000, 580, 80, 80], [1179, 397, 142, 106], [1372, 263, 96, 74], [1536, 456, 128, 128], [1718, 265, 84, 70],
+        [1863, 604, 34, 92], [1992, 347, 56, 66], [2161, 529, 38, 42], [2272, 309, 96, 82], [2427, 569, 46, 62], [2121, 730, 58, 100]];
+      const libre = (x, y, w, h) => !cajas.some(c => {
+        const mx = c[2] * .4 + 16, my = c[3] * .4 + 16;
+        return x < c[0] + c[2] + mx && x + w > c[0] - mx && y < c[1] + c[3] + my && y + h > c[1] - my;
       });
-      // la Estrella de la Muerte, lejísimos en el cielo (eso no es una luna...)
-      s += `<circle cx="2280" cy="170" r="80" fill="rgba(176,190,197,.18)" stroke="rgba(255,255,255,.15)" stroke-width="2"/>
-            <circle cx="2250" cy="140" r="18" fill="rgba(255,255,255,.12)"/>
-            <path d="M2200 176 L2360 176" stroke="rgba(255,255,255,.12)" stroke-width="4"/>`;
-      // los dos soles de Tatooine, a un lado
-      s += `<circle cx="150" cy="190" r="58" fill="rgba(255,213,79,.9)"/><circle cx="150" cy="190" r="92" fill="rgba(255,213,79,.14)"/>
-            <circle cx="268" cy="148" r="36" fill="rgba(255,167,38,.85)"/><circle cx="268" cy="148" r="60" fill="rgba(255,167,38,.14)"/>`;
-      // dunas de Tatooine (zona izquierda)
-      s += `<path d="M0 850 Q240 750 500 840 Q760 915 1020 845 L1060 1100 L0 1100 Z" fill="#d7a86e" opacity=".92"/>
-            <path d="M0 950 Q300 885 620 950 Q860 995 1060 945 L1060 1100 L0 1100 Z" fill="#c68d4f"/>`;
-      // la nieve de Hoth (zona central)
-      s += `<path d="M980 910 Q1200 800 1450 890 Q1670 960 1900 900 L1900 1100 L980 1100 Z" fill="#e3f2fd" opacity=".95"/>
-            <path d="M1130 905 L1215 765 L1300 905 Z" fill="#bbdefb"/>
-            <path d="M1500 915 L1560 815 L1620 915 Z" fill="#bbdefb"/>`;
-      // copos de nieve cayendo sobre Hoth
-      [[1100, 700], [1250, 640], [1420, 720], [1580, 660], [1750, 730]].forEach(p => {
-        s += `<circle cx="${p[0]}" cy="${p[1]}" r="4" fill="rgba(255,255,255,.75)"/>`;
+      /* una chispa de cuatro puntas para las estrellas grandes */
+      const chispa = (x, y, r, o) => `<path d="M${x} ${y - r} Q${x + r * .2} ${y - r * .2} ${x + r} ${y} Q${x + r * .2} ${y + r * .2} ${x} ${y + r} Q${x - r * .2} ${y + r * .2} ${x - r} ${y} Q${x - r * .2} ${y - r * .2} ${x} ${y - r} Z" fill="rgba(255,255,255,${o})"/>`;
+      /* degradados propios, con prefijo swX para no chocar con los de los iconos */
+      s += `<defs>
+        <linearGradient id="swXcielo" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#131a3f"/><stop offset="24%" stop-color="#2b3468"/><stop offset="44%" stop-color="#584f83"/>
+          <stop offset="60%" stop-color="#9c6c8a"/><stop offset="74%" stop-color="#e0925e"/><stop offset="100%" stop-color="#f9d093"/></linearGradient>
+        <radialGradient id="swXsolA" cx="42%" cy="36%" r="62%"><stop offset="0%" stop-color="#fffdf0"/><stop offset="100%" stop-color="#ffc258"/></radialGradient>
+        <radialGradient id="swXsolB" cx="42%" cy="36%" r="62%"><stop offset="0%" stop-color="#fff3e0"/><stop offset="100%" stop-color="#ff9846"/></radialGradient>
+        <linearGradient id="swXduna" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f4d192"/><stop offset="100%" stop-color="#d2a25c"/></linearGradient>
+        <linearGradient id="swXduna2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e2b56f"/><stop offset="100%" stop-color="#b57f3d"/></linearGradient>
+        <linearGradient id="swXroca" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#dda86c"/><stop offset="100%" stop-color="#9a6a37"/></linearGradient>
+        <linearGradient id="swXhielo" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f8fdff"/><stop offset="100%" stop-color="#b6d6e8"/></linearGradient>
+        <radialGradient id="swXcopa" cx="40%" cy="32%" r="68%"><stop offset="0%" stop-color="#63ac52"/><stop offset="100%" stop-color="#215330"/></radialGradient>
+        <linearGradient id="swXtronco" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#6d4b32"/><stop offset="45%" stop-color="#966844"/><stop offset="100%" stop-color="#553b27"/></linearGradient>
+        <linearGradient id="swXagua" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#eafaff"/><stop offset="100%" stop-color="#6cbfe4"/></linearGradient>
+        <linearGradient id="swXtorre" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7787b0"/><stop offset="100%" stop-color="#2a3157"/></linearGradient>
+        <linearGradient id="swXmetal" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#9aa8b9"/><stop offset="100%" stop-color="#495465"/></linearGradient>
+        <linearGradient id="swXsuelo" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#657182"/><stop offset="100%" stop-color="#323a46"/></linearGradient>
+        <linearGradient id="swXbruma" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#ffd7a4" stop-opacity="0"/><stop offset="50%" stop-color="#ffd7a4" stop-opacity=".3"/><stop offset="100%" stop-color="#ffd7a4" stop-opacity="0"/></linearGradient>
+      </defs>`;
+      /* ---------- CIELO: el fondo, las estrellas y los dos soles ---------- */
+      s += `<rect x="0" y="0" width="2600" height="1100" fill="url(#swXcielo)"/>`;
+      const estrellas = ["", "", ""];
+      for (let i = 0; i < 46; i++) {
+        const x = (i * 271 + 37) % 2590, y = 22 + (i * 113) % 486;
+        if (!libre(x - 5, y - 5, 10, 10)) continue;
+        estrellas[i % 3] += `<circle cx="${x}" cy="${y}" r="${i % 7 ? 2.2 : 3.4}"/>`;
+      }
+      [".34", ".56", ".82"].forEach((o, i) => { s += `<g fill="#fff" opacity="${o}">${estrellas[i]}</g>`; });
+      [[706, 96, 11], [1466, 74, 9], [2038, 132, 10], [1188, 168, 8]].forEach((e, i) => {
+        s += `<g>${chispa(e[0], e[1], e[2], .9)}<animate attributeName="opacity" values="1;.35;1" dur="${(3.4 + i).toFixed(1)}s" repeatCount="indefinite"/></g>`;
       });
-      // el bosque de Endor (zona derecha)
-      s += `<path d="M1900 940 Q2150 880 2400 930 Q2520 950 2600 935 L2600 1100 L1900 1100 Z" fill="#2e7d32" opacity=".85"/>`;
-      const pino = (x, y, k) => `<g transform="translate(${x} ${y}) scale(${k})">
-          <rect x="-7" y="-6" width="14" height="30" fill="#5d4037"/>
-          <path d="M0 -130 L48 -46 L-48 -46 Z" fill="#2e7d32"/>
-          <path d="M0 -92 L58 -4 L-58 -4 Z" fill="#388e3c"/></g>`;
-      s += pino(1960, 1000, 1) + pino(2080, 1030, 0.8) + pino(2250, 1010, 1.15) + pino(2420, 1035, 0.9) + pino(2560, 1010, 0.7);
-      // silueta del Halcón cruzando el cielo
-      s += `<g opacity=".8">
-          <path d="M-20 -8 Q0 -22 22 -8 L30 0 L22 8 Q0 20 -20 8 Z" fill="rgba(120,144,156,.55)"/>
-          <circle cx="26" cy="0" r="3" fill="rgba(129,212,250,.9)"/>
-          <animateMotion dur="30s" repeatCount="indefinite" rotate="auto" path="M -100 520 Q 700 420 1400 500 Q 2100 570 2750 430"/>
-        </g>`;
-      // silueta de un caza TIE volando en dirección contraria
-      s += `<g opacity=".7">
-          <rect x="-16" y="-14" width="6" height="28" rx="2" fill="rgba(96,125,139,.6)"/>
-          <rect x="10" y="-14" width="6" height="28" rx="2" fill="rgba(96,125,139,.6)"/>
-          <circle cx="0" cy="0" r="7" fill="rgba(96,125,139,.75)"/>
-          <animateMotion dur="42s" repeatCount="indefinite" rotate="auto" path="M 2750 260 Q 1900 340 1100 280 Q 400 230 -150 320"/>
-        </g>`;
+      /* los dos soles de Tatooine, uno grande y otro pequeño */
+      s += `<g transform="translate(250 176)">
+        <circle r="128" fill="#ffd166" opacity=".16"><animate attributeName="r" values="128;142;128" dur="10s" repeatCount="indefinite"/></circle>
+        <circle r="92" fill="#ffd166" opacity=".2"/><circle r="66" fill="url(#swXsolA)"/><circle cx="-20" cy="-20" r="15" fill="rgba(255,255,255,.55)"/></g>
+        <g transform="translate(408 118)">
+        <circle r="74" fill="#ff9846" opacity=".16"><animate attributeName="r" values="74;84;74" dur="8s" repeatCount="indefinite"/></circle>
+        <circle r="38" fill="url(#swXsolB)"/><circle cx="-12" cy="-11" r="8" fill="rgba(255,255,255,.5)"/></g>`;
+      /* nubecillas altas y planas, de atardecer */
+      [[880, 236, 1.1, .34], [1610, 200, .9, .28], [2300, 258, 1.2, .3], [520, 268, .8, .26]].forEach(n => {
+        s += `<g opacity="${n[3]}" transform="translate(${n[0]} ${n[1]}) scale(${n[2]})" fill="#ffd8b0">
+          <ellipse cx="0" cy="0" rx="120" ry="15"/><ellipse cx="-70" cy="14" rx="76" ry="11"/><ellipse cx="80" cy="12" rx="64" ry="10"/></g>`;
+      });
+      /* ---------- HORIZONTE LEJANO: mesetas y siluetas en la bruma ---------- */
+      s += `<path d="M0 648 L120 566 L210 596 L300 540 L420 610 L520 578 L640 640 L760 604 L900 652 L1040 620 L1180 662 L1180 720 L0 720 Z" fill="rgba(120,90,110,.34)"/>
+        <path d="M1180 662 L1320 588 L1460 630 L1600 570 L1760 626 L1900 584 L2060 636 L2220 596 L2380 640 L2600 606 L2600 720 L1180 720 Z" fill="rgba(110,86,108,.3)"/>`;
+      /* ---------- TATOOINE: dunas, ondulaciones y rocas ---------- */
+      s += `<path d="M-40 830 Q56 596 148 470 L206 474 Q262 542 306 692 Q356 762 404 712 Q456 664 500 690 Q560 726 640 762 L700 800 L700 1100 L-40 1100 Z" fill="url(#swXduna)"/>
+        <path d="M-40 830 Q56 596 148 470 L206 474 Q262 542 306 692 L306 742 Q240 786 180 742 Q104 686 40 650 Q0 630 -40 900 Z" fill="rgba(255,255,255,.16)"/>
+        <path d="M-40 946 Q140 862 320 906 Q500 950 660 900 Q740 876 800 892 L800 1100 L-40 1100 Z" fill="url(#swXduna2)"/>`;
+      /* el promontorio helado de Hoth, apoyado en la duna */
+      s += `<path d="M262 800 Q300 706 338 686 L390 686 Q436 714 452 796 Q470 830 420 836 Q352 850 290 836 Q248 826 262 800 Z" fill="url(#swXhielo)"/>
+        <path d="M300 742 L326 700 L352 742 Z" fill="#ffffff" opacity=".8"/><path d="M382 754 L404 716 L426 758 Z" fill="#ffffff" opacity=".7"/>
+        <path d="M286 806 Q330 792 372 806 M310 822 Q352 810 396 822" stroke="rgba(120,164,192,.5)" stroke-width="4" fill="none" stroke-linecap="round"/>`;
+      /* ondulaciones de la arena */
+      s += `<g stroke="rgba(150,102,44,.26)" stroke-width="5" fill="none" stroke-linecap="round">`;
+      for (let i = 0; i < 22; i++) {
+        const x = 10 + i * 34, y = 848 + ((i * 61) % 210);
+        if (libre(x - 6, y - 8, 76, 16)) s += `<path d="M${x} ${y} q22 -10 44 0"/>`;
+      }
+      s += `</g>`;
+      /* rocas y un arco de piedra tallado por el viento */
+      [[96, 900, 1.05], [212, 970, .8], [56, 1040, .9], [292, 1016, 1.15], [162, 1062, .7]].forEach(r => {
+        s += `<g transform="translate(${r[0]} ${r[1]}) scale(${r[2]})"><ellipse cx="0" cy="6" rx="58" ry="26" fill="rgba(120,80,40,.2)"/>
+          <path d="M-52 6 Q-44 -34 -8 -40 Q30 -46 46 -14 Q56 4 46 8 Z" fill="url(#swXroca)"/>
+          <path d="M-30 -12 Q-14 -30 8 -26" stroke="rgba(255,232,190,.4)" stroke-width="5" fill="none" stroke-linecap="round"/></g>`;
+      });
+      s += `<g transform="translate(236 916)"><path d="M-70 60 L-70 -30 Q-70 -78 -14 -80 Q46 -82 52 -26 L52 60 L26 60 L26 -20 Q22 -54 -12 -52 Q-44 -50 -44 -18 L-44 60 Z" fill="url(#swXroca)"/>
+        <path d="M-64 -34 Q-40 -66 -6 -68" stroke="rgba(255,236,198,.35)" stroke-width="6" fill="none" stroke-linecap="round"/></g>`;
+      /* vaporadores de humedad, los molinillos del desierto */
+      [[64, 812, .9], [186, 878, .7], [306, 962, .8]].forEach(v => {
+        s += `<g transform="translate(${v[0]} ${v[1]}) scale(${v[2]})"><ellipse cx="0" cy="4" rx="26" ry="9" fill="rgba(110,72,36,.25)"/>
+          <rect x="-13" y="-88" width="26" height="92" rx="10" fill="#b9a68c"/><rect x="-13" y="-64" width="26" height="8" fill="#8d7c66"/>
+          <ellipse cx="0" cy="-90" rx="21" ry="12" fill="#d6c7ad"/><rect x="-3" y="-116" width="6" height="26" rx="3" fill="#8d7c66"/>
+          <circle cx="0" cy="-120" r="6" fill="#ffd166"/></g>`;
+      });
+      /* ---------- BOSQUE DE ENDOR: árboles gigantes y pasarelas ---------- */
+      s += `<path d="M296 1100 Q356 908 476 850 Q640 792 780 798 Q960 802 1080 786 Q1140 778 1180 766 L1180 1100 Z" fill="#2f6b39"/>
+        <path d="M296 1100 Q356 908 476 850 Q640 792 780 798 Q960 802 1080 786 Q1140 778 1180 766 L1180 806 Q1040 828 860 828 Q620 828 400 906 Q344 962 330 1100 Z" fill="rgba(20,60,30,.35)"/>`;
+      const arbolote = (x, base, cima, ancho, k) => `<g>
+        <path d="M${x - ancho} ${base} Q${x - ancho * .5} ${base - 60} ${x - ancho * .42} ${cima + 40} L${x + ancho * .42} ${cima + 40} Q${x + ancho * .5} ${base - 60} ${x + ancho} ${base} Z" fill="url(#swXtronco)"/>
+        <path d="M${x - ancho * .2} ${base - 30} L${x - ancho * .2} ${cima + 60} M${x + ancho * .16} ${base - 60} L${x + ancho * .16} ${cima + 70}" stroke="rgba(60,38,22,.4)" stroke-width="5"/>
+        <circle cx="${x}" cy="${cima}" r="${72 * k}" fill="url(#swXcopa)"/>
+        <circle cx="${x - 58 * k}" cy="${cima + 34 * k}" r="${48 * k}" fill="url(#swXcopa)"/>
+        <circle cx="${x + 60 * k}" cy="${cima + 30 * k}" r="${50 * k}" fill="url(#swXcopa)"/>
+        <circle cx="${x - 20 * k}" cy="${cima - 40 * k}" r="${38 * k}" fill="#5aa54c" opacity=".7"/></g>`;
+      s += arbolote(410, 856, 196, 30, 1) + arbolote(646, 846, 158, 34, 1.15) + arbolote(858, 832, 246, 26, .85);
+      /* sotobosque: helechos, matas y un tronco caido */
+      s += `<g fill="#3d7f46"><ellipse cx="520" cy="906" rx="70" ry="26"/><ellipse cx="906" cy="884" rx="62" ry="22"/><ellipse cx="1112" cy="866" rx="54" ry="20"/></g>
+        <g stroke="#4d8a4a" stroke-width="6" fill="none" stroke-linecap="round">
+        <path d="M470 946 q-14 -40 -34 -56 M482 946 q0 -46 8 -64 M494 946 q14 -38 32 -50"/>
+        <path d="M960 918 q-14 -38 -32 -52 M972 918 q0 -44 8 -60 M984 918 q14 -36 30 -46"/>
+        <path d="M1140 900 q-12 -34 -28 -46 M1150 900 q0 -40 6 -54"/></g>
+        <g><rect x="596" y="962" width="216" height="30" rx="15" fill="#6d4b32"/><ellipse cx="596" cy="977" rx="13" ry="15" fill="#8f6543"/>
+        <ellipse cx="640" cy="954" rx="24" ry="10" fill="#4d8a4a"/><ellipse cx="720" cy="952" rx="20" ry="9" fill="#4d8a4a"/></g>`;
+      /* la pasarela de madera donde se apoya Endor */
+      s += `<g><path d="M418 374 L672 366" stroke="#8a6238" stroke-width="16" stroke-linecap="round"/>
+        <path d="M418 362 L672 354" stroke="#a87c4a" stroke-width="7" stroke-linecap="round"/>`;
+      s += `<g fill="#7a5630">`;
+      for (let x = 428; x < 668; x += 22) s += `<rect x="${x}" y="${(368 - (x - 428) * .033).toFixed(1)}" width="14" height="14" rx="3"/>`;
+      s += `</g>`;
+      s += `<path d="M424 350 Q540 320 668 342" stroke="rgba(160,120,74,.8)" stroke-width="4" fill="none"/>
+        <path d="M436 350 L436 366 M492 344 L492 364 M556 340 L556 362 M620 344 L620 358" stroke="rgba(160,120,74,.75)" stroke-width="4"/></g>`;
+      /* la rama gruesa de Dagobah, con lianas colgando */
+      s += `<path d="M632 584 Q706 614 814 626" stroke="#6d4b32" stroke-width="26" fill="none" stroke-linecap="round"/>
+        <path d="M632 578 Q706 606 812 618" stroke="#8f6543" stroke-width="9" fill="none" stroke-linecap="round"/>
+        <g stroke="#3f7a3c" stroke-width="6" fill="none" stroke-linecap="round">
+          <path d="M778 626 q-8 44 6 82"><animate attributeName="d" values="M778 626 q-8 44 6 82;M778 626 q10 44 -4 82;M778 626 q-8 44 6 82" dur="7s" repeatCount="indefinite"/></path>
+          <path d="M818 628 q10 38 -4 70"/><path d="M600 592 q-12 40 2 72"/></g>
+        <ellipse cx="700" cy="638" rx="34" ry="12" fill="#3f7a3c" opacity=".5"/>`;
+      /* la charca de Dagobah, con su niebla y sus juncos */
+      s += `<ellipse cx="748" cy="908" rx="164" ry="52" fill="#3d6b4a"/>
+        <ellipse cx="748" cy="902" rx="140" ry="40" fill="#4f8c62" opacity=".85"/>
+        <path d="M640 900 q30 -12 60 0 M796 916 q30 -12 60 0" stroke="rgba(210,240,220,.5)" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <ellipse cx="700" cy="884" rx="24" ry="8" fill="#6fae7e" opacity=".7"/><ellipse cx="812" cy="898" rx="20" ry="7" fill="#6fae7e" opacity=".7"/>
+        <g opacity=".4"><ellipse cx="760" cy="868" rx="150" ry="20" fill="#dff2e6"><animate attributeName="rx" values="150;172;150" dur="9s" repeatCount="indefinite"/></ellipse></g>`;
+      [[612, 906], [668, 934], [864, 918], [900, 890]].forEach(j => {
+        s += `<path d="M${j[0]} ${j[1]} q-4 -36 -14 -50 M${j[0] + 8} ${j[1]} q2 -40 12 -54 M${j[0] + 16} ${j[1]} q8 -32 18 -42" stroke="#4d8a4a" stroke-width="5" fill="none" stroke-linecap="round"/>`;
+      });
+      /* ---------- NABOO: el acantilado con su cascada ---------- */
+      s += `<path d="M792 398 L982 396 L1012 800 L764 806 Z" fill="url(#swXroca)"/>
+        <path d="M792 398 L982 396 L982 418 L792 420 Z" fill="#f0c489"/>
+        <path d="M800 470 L978 466 M786 560 L996 556 M776 656 L1004 652" stroke="rgba(120,80,40,.28)" stroke-width="6"/>
+        <path d="M806 404 Q818 386 838 396 Q824 404 806 404 Z" fill="#4f9c4a"/><path d="M938 400 Q956 382 976 394 Q958 402 938 400 Z" fill="#4f9c4a"/>`;
+      s += `<g><rect x="798" y="418" width="34" height="374" rx="16" fill="url(#swXagua)" opacity=".92">
+          <animate attributeName="opacity" values=".92;.66;.92" dur="3.6s" repeatCount="indefinite"/></rect>
+        <rect x="938" y="416" width="42" height="378" rx="18" fill="url(#swXagua)" opacity=".85">
+          <animate attributeName="opacity" values=".7;.95;.7" dur="4.4s" repeatCount="indefinite"/></rect>
+        <ellipse cx="884" cy="808" rx="150" ry="34" fill="url(#swXagua)" opacity=".9"/>
+        <ellipse cx="884" cy="802" rx="112" ry="22" fill="#ffffff" opacity=".45"/>
+        <ellipse cx="816" cy="794" rx="30" ry="12" fill="#ffffff" opacity=".55"/><ellipse cx="958" cy="798" rx="26" ry="11" fill="#ffffff" opacity=".5"/></g>`;
+      /* ---------- CORUSCANT: torres y carriles de tráfico lejano ---------- */
+      s += `<g opacity=".3">`;
+      [[906, 452, 30], [944, 512, 26], [1110, 486, 28], [1162, 544, 24], [1196, 592, 22]].forEach(t => {
+        s += `<rect x="${t[0]}" y="${t[1]}" width="${t[2]}" height="${1100 - t[1]}" rx="6" fill="url(#swXtorre)"/>`;
+      });
+      s += `</g><g opacity=".55">`;
+      [[938, 700, 44], [1112, 664, 38], [1150, 736, 52]].forEach(t => {
+        s += `<rect x="${t[0]}" y="${t[1]}" width="${t[2]}" height="${1100 - t[1]}" rx="8" fill="url(#swXtorre)"/>`;
+      });
+      s += `</g>`;
+      s += `<rect x="1004" y="660" width="72" height="440" rx="9" fill="url(#swXtorre)"/>
+        <rect x="988" y="648" width="104" height="16" rx="7" fill="#8b9cc4"/>
+        <rect x="1030" y="608" width="8" height="42" rx="4" fill="#8b9cc4"/>
+        <circle cx="1034" cy="602" r="7" fill="#ff8a65"><animate attributeName="opacity" values="1;.2;1" dur="2.2s" repeatCount="indefinite"/></circle>
+        <rect x="956" y="712" width="60" height="388" rx="8" fill="url(#swXtorre)"/>
+        <rect x="1082" y="690" width="66" height="410" rx="8" fill="url(#swXtorre)"/>
+        <rect x="1144" y="770" width="52" height="330" rx="8" fill="url(#swXtorre)"/>`;
+      const ventanas = ["", "", ""];
+      for (let i = 0; i < 42; i++) {
+        const col = i % 6, fila = Math.floor(i / 6);
+        const x = [962, 986, 1012, 1046, 1092, 1152][col] + (fila % 2 ? 4 : 0), y = 700 + fila * 26;
+        if (y > 1074 || !libre(x, y, 16, 12)) continue;
+        ventanas[i % 3] += `<rect x="${x}" y="${y}" width="16" height="12" rx="3"/>`;
+      }
+      [".38", ".6", ".85"].forEach((o, i) => { s += `<g fill="#ffe0a3" opacity="${o}">${ventanas[i]}</g>`; });
+      [470, 512, 554].forEach((y, i) => {
+        s += `<path d="M930 ${y} H1210" stroke="rgba(255,224,163,.28)" stroke-width="3" stroke-dasharray="18 22"/>
+          <g><rect x="930" y="${y - 4}" width="16" height="7" rx="3.5" fill="#ffe0a3" opacity=".85"/>
+          <animateTransform attributeName="transform" type="translate" values="${i % 2 ? "264 0;0 0" : "0 0;264 0"}" dur="${(9 + i * 3)}s" repeatCount="indefinite"/></g>`;
+      });
+      /* ---------- EL HANGAR DE LAS NAVES: paneles, tuberías y luces ---------- */
+      s += `<path d="M1180 300 Q1580 260 1990 300 L1990 1100 L1180 1100 Z" fill="url(#swXmetal)"/>
+        <path d="M1180 300 Q1580 260 1990 300 L1990 336 Q1580 296 1180 336 Z" fill="#b9c6d6"/>
+        <rect x="1180" y="880" width="810" height="220" fill="url(#swXsuelo)"/>
+        <rect x="1180" y="872" width="810" height="14" fill="#8f9dae"/>
+        <rect x="1176" y="312" width="34" height="788" fill="#7f8d9e"/><rect x="1960" y="308" width="36" height="792" fill="#7f8d9e"/>
+        <rect x="1184" y="312" width="8" height="788" fill="rgba(255,255,255,.18)"/><rect x="1968" y="308" width="9" height="792" fill="rgba(255,255,255,.18)"/>`;
+      s += `<g fill="#5f6b79">`;
+      for (let y = 360; y < 1080; y += 82) s += `<circle cx="1193" cy="${y}" r="5"/><circle cx="1978" cy="${y}" r="5"/>`;
+      s += `</g>`;
+      s += `<g fill="none" stroke="rgba(216,230,244,.15)" stroke-width="3">`;
+      for (let x = 1200; x < 1976; x += 98) for (let y = 350; y < 866; y += 88) {
+        if (libre(x, y, 88, 78)) s += `<rect x="${x}" y="${y}" width="88" height="78" rx="8"/>`;
+      }
+      s += `</g><g fill="rgba(30,40,54,.2)">`;
+      for (let x = 1214; x < 1980; x += 152) {
+        if (libre(x, 352, 10, 512)) s += `<rect x="${x}" y="352" width="10" height="512" rx="5"/>`;
+      }
+      s += `</g>`;
+      /* tuberías con sus bridas */
+      s += `<path d="M1188 402 H1990" stroke="#7f8d9e" stroke-width="18" stroke-linecap="round"/>
+        <path d="M1188 396 H1990" stroke="#b3c0cf" stroke-width="5" stroke-linecap="round"/>
+        <path d="M1188 846 H1990" stroke="#7f8d9e" stroke-width="22" stroke-linecap="round"/>
+        <path d="M1188 838 H1990" stroke="#b3c0cf" stroke-width="6" stroke-linecap="round"/>`;
+      for (let x = 1246; x < 1980; x += 118) {
+        if (libre(x - 8, 386, 16, 32)) s += `<rect x="${x - 8}" y="388" width="16" height="28" rx="4" fill="#66727f"/>`;
+        s += `<rect x="${x - 9}" y="832" width="18" height="30" rx="4" fill="#66727f"/>`;
+      }
+      /* lámparas del techo */
+      [1268, 1420, 1580, 1736, 1892].forEach((x, i) => {
+        s += `<g><rect x="${x - 30}" y="316" width="60" height="14" rx="6" fill="#5f6b79"/>
+          <ellipse cx="${x}" cy="336" rx="26" ry="10" fill="#ffe9b8"/>
+          <path d="M${x - 34} 346 L${x + 34} 346 L${x + 62} 468 L${x - 62} 468 Z" fill="#ffe9b8" opacity="${i % 2 ? ".1" : ".14"}"/>${i < 3 ? `<animate attributeName="opacity" values="1;.55;1" dur="${(3 + i).toFixed(1)}s" repeatCount="indefinite"/>` : ""}</g>`;
+      });
+      /* plataforma del Halcón, con sus puntales */
+      s += `<path d="M1156 508 L1350 508 L1338 532 L1168 532 Z" fill="#8e9cad"/>
+        <rect x="1156" y="530" width="194" height="10" rx="5" fill="#5f6b79"/>
+        <path d="M1188 540 L1216 880 M1318 540 L1290 880" stroke="#6b7887" stroke-width="12" stroke-linecap="round"/>
+        <path d="M1200 640 L1306 640 M1206 740 L1300 740" stroke="#6b7887" stroke-width="7"/>
+        <rect x="1170" y="512" width="14" height="8" rx="3" fill="#7fd6a0"/><rect x="1322" y="512" width="14" height="8" rx="3" fill="#7fd6a0"/>`;
+      /* viga alta del Ala-X, colgada del techo */
+      s += `<path d="M1338 342 L1508 342 L1508 364 L1338 364 Z" fill="#8e9cad"/>
+        <rect x="1338" y="362" width="170" height="8" rx="4" fill="#5f6b79"/>
+        <path d="M1360 342 L1360 300 M1486 342 L1486 300" stroke="#6b7887" stroke-width="9"/>
+        <circle cx="1348" cy="352" r="5" fill="#ffd166"/><circle cx="1498" cy="352" r="5" fill="#ffd166"/>`;
+      /* cuna circular de la nave grande */
+      s += `<path d="M1512 592 Q1600 660 1688 592" stroke="#8e9cad" stroke-width="20" fill="none" stroke-linecap="round"/>
+        <path d="M1512 592 Q1600 652 1688 592" stroke="#b3c0cf" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <path d="M1526 606 L1546 880 M1674 606 L1654 880" stroke="#6b7887" stroke-width="13" stroke-linecap="round"/>
+        <path d="M1540 720 L1660 720" stroke="#6b7887" stroke-width="8"/>
+        <ellipse cx="1600" cy="884" rx="120" ry="18" fill="rgba(0,0,0,.18)"/>`;
+      /* raíl alto del caza */
+      s += `<path d="M1686 342 L1866 342 L1866 362 L1686 362 Z" fill="#8e9cad"/>
+        <rect x="1686" y="360" width="180" height="8" rx="4" fill="#5f6b79"/>
+        <path d="M1706 342 L1706 302 M1846 342 L1846 302" stroke="#6b7887" stroke-width="9"/>
+        <circle cx="1776" cy="352" r="6" fill="#8ad6ff"><animate attributeName="opacity" values="1;.3;1" dur="2.8s" repeatCount="indefinite"/></circle>`;
+      /* peana del sable, en su vitrina */
+      s += `<path d="M1846 702 L1914 702 L1906 726 L1854 726 Z" fill="#b3c0cf"/>
+        <rect x="1862" y="724" width="36" height="150" rx="8" fill="#7f8d9e"/>
+        <path d="M1840 874 L1920 874 L1928 890 L1832 890 Z" fill="#5f6b79"/>
+        <rect x="1866" y="736" width="8" height="126" rx="4" fill="rgba(255,255,255,.2)"/>`;
+      /* panel de control con sus botoncitos */
+      s += `<g><rect x="1400" y="762" width="150" height="100" rx="10" fill="#5f6b79"/>
+        <rect x="1412" y="774" width="126" height="44" rx="6" fill="#2f4a63"/>
+        <path d="M1420 806 L1444 786 L1470 800 L1496 776 L1528 794" stroke="#8ad6ff" stroke-width="4" fill="none" stroke-linecap="round"/>`;
+      for (let i = 0; i < 6; i++) s += `<circle cx="${1424 + i * 22}" cy="${838}" r="7" fill="${["#ff8a65", "#ffd166", "#7fd6a0", "#8ad6ff", "#c58af9", "#ffd166"][i]}"/>`;
+      s += `</g>`;
+      /* pintura del suelo y un droide rodando despacio */
+      s += `<ellipse cx="1600" cy="990" rx="230" ry="56" fill="none" stroke="rgba(255,224,163,.3)" stroke-width="8" stroke-dasharray="30 26"/>
+        <path d="M1240 1046 H1960" stroke="rgba(255,224,163,.22)" stroke-width="7" stroke-dasharray="46 34"/>`;
+      s += `<g><animateTransform attributeName="transform" type="translate" values="0 0;180 0;0 0" dur="26s" repeatCount="indefinite"/>
+        <ellipse cx="1330" cy="1006" rx="30" ry="9" fill="rgba(0,0,0,.2)"/>
+        <rect x="1306" y="944" width="48" height="56" rx="12" fill="#dde6ef"/>
+        <path d="M1306 962 h48 M1306 980 h48" stroke="#9fb0c2" stroke-width="4"/>
+        <path d="M1304 944 q26 -30 52 0 Z" fill="#8ad6ff"/><circle cx="1330" cy="936" r="7" fill="#4f6478"/>
+        <circle cx="1318" cy="972" r="5" fill="#ff8a65"/><circle cx="1344" cy="972" r="5" fill="#7fd6a0"/></g>`;
+      /* ---------- BOSQUE Y MESETA DE LAS CRIATURAS ---------- */
+      s += `<path d="M1990 812 Q2120 762 2260 796 Q2400 828 2600 790 L2600 1100 L1990 1100 Z" fill="#2f6b39"/>
+        <path d="M2040 836 Q2120 812 2210 838 Q2260 852 2300 846 L2300 900 L2040 900 Z" fill="#3d7f46"/>`;
+      s += arbolote(2040, 848, 268, 26, .8);
+      s += `<g fill="#3d7f46"><ellipse cx="2004" cy="906" rx="58" ry="22"/><ellipse cx="2200" cy="924" rx="50" ry="20"/></g>
+        <g stroke="#4d8a4a" stroke-width="6" fill="none" stroke-linecap="round">
+        <path d="M2066 950 q-14 -38 -32 -52 M2078 950 q0 -44 8 -60 M2090 950 q14 -36 30 -46"/>
+        <path d="M2196 990 q-12 -34 -28 -46 M2206 990 q0 -40 6 -54"/></g>`;
+      /* la plataforma de madera del poblado, con su casita */
+      s += `<g><path d="M1954 420 L2094 416 L2094 438 L1954 442 Z" fill="#8a6238"/>
+        <path d="M1954 412 L2094 408" stroke="#a87c4a" stroke-width="7" stroke-linecap="round"/>
+        <path d="M1976 442 L1990 820 M2072 438 L2058 826" stroke="#6d4b32" stroke-width="9"/>
+        <path d="M2094 424 Q2160 434 2216 420" stroke="#a87c4a" stroke-width="5" fill="none"/>`;
+      s += `<g fill="#7a5630">`;
+      for (let x = 1962; x < 2088; x += 20) s += `<rect x="${x}" y="418" width="12" height="18" rx="3"/>`;
+      s += `</g>`;
+      s += `<g transform="translate(2158 372)"><path d="M-46 48 L-46 4 L0 -30 L46 4 L46 48 Z" fill="#8a6238"/>
+        <path d="M-58 8 L0 -40 L58 8 Z" fill="#6d4b32"/><path d="M-52 12 L0 -28 L52 12" stroke="#a87c4a" stroke-width="5" fill="none"/>
+        <rect x="-16" y="12" width="32" height="36" rx="5" fill="#c8a26c"/><circle cx="8" cy="32" r="3" fill="#6d4b32"/>
+        <path d="M-46 48 L46 48 L40 62 L-40 62 Z" fill="#6d4b32"/></g>`;
+      s += `<path d="M2158 434 L2150 812 M2172 434 L2182 818" stroke="#6d4b32" stroke-width="8"/></g>`;
+      /* el saliente de roca donde descansa el pajarito */
+      s += `<path d="M2124 578 Q2178 566 2236 582 Q2252 600 2232 610 Q2178 622 2130 608 Q2110 596 2124 578 Z" fill="#8b98a8"/>
+        <path d="M2136 588 Q2180 580 2222 590" stroke="rgba(255,255,255,.35)" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <path d="M2160 610 L2168 700 M2206 608 L2200 690" stroke="#7a8794" stroke-width="10"/>`;
+      /* la meseta del desierto, al fondo derecha */
+      s += `<path d="M2216 398 L2452 396 L2496 690 L2560 728 L2600 760 L2600 940 L2240 940 L2244 690 Z" fill="url(#swXroca)" opacity=".95"/>
+        <path d="M2216 398 L2452 396 L2456 424 L2214 426 Z" fill="#eec085"/>
+        <path d="M2252 500 L2470 496 M2248 594 L2486 590 M2244 690 L2500 688" stroke="rgba(120,80,40,.26)" stroke-width="7"/>
+        <path d="M2286 440 L2282 686 M2352 436 L2356 688 M2424 434 L2432 688" stroke="rgba(120,80,40,.16)" stroke-width="6"/>
+        <path d="M2500 470 L2560 468 L2578 640 L2506 642 Z" fill="url(#swXroca)" opacity=".55"/>`;
+      /* la duna baja donde se apoya el jawa, delante de la meseta */
+      s += `<path d="M2330 806 Q2382 664 2424 638 L2482 640 Q2544 668 2576 764 Q2600 800 2600 826 L2320 826 Z" fill="url(#swXduna)"/>
+        <path d="M2360 764 q26 -12 52 0 M2492 786 q26 -12 52 0" stroke="rgba(150,102,44,.25)" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <g fill="url(#swXroca)"><ellipse cx="2278" cy="900" rx="52" ry="22"/><ellipse cx="2560" cy="880" rx="40" ry="18"/></g>`;
+      s += `<path d="M2232 928 Q2360 884 2480 916 Q2560 936 2600 922 L2600 1100 L2232 1100 Z" fill="url(#swXduna2)"/>`;
+      /* ---------- TRANSICIONES: bruma cálida entre zonas ---------- */
+      [700, 1180, 1990].forEach(x => {
+        s += `<rect x="${x - 90}" y="300" width="180" height="800" fill="url(#swXbruma)"/>`;
+      });
+      /* ---------- UNA NAVECITA CRUZANDO EL CIELO, SIN PRISA ---------- */
+      s += `<g opacity=".7"><path d="M-22 -7 Q0 -20 24 -7 L34 0 L24 7 Q0 20 -22 7 Z" fill="rgba(214,228,242,.7)"/>
+        <circle cx="30" cy="0" r="4" fill="#8ad6ff"/>
+        <animateMotion dur="46s" repeatCount="indefinite" rotate="auto" path="M -120 244 Q 700 168 1420 232 Q 2100 292 2740 200"/></g>`;
       return decoSvg(s, 2600);
     }
   },

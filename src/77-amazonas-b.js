@@ -298,7 +298,7 @@ Object.assign(THEMES.amazonas.content, {
   /* ---------- MAPA DE EXPLORACIÓN ---------- */
   explore: {
     width: 2600, height: 1100, stars: false,
-    bgCss: "radial-gradient(ellipse 45% 30% at 15% 8%, rgba(255,241,118,.4), transparent), linear-gradient(180deg,#b3e5fc 0%,#81c784 18%,#388e3c 45%,#1b5e20 75%,#173d12 100%)",
+    bgCss: "radial-gradient(ellipse 42% 26% at 34% 10%, rgba(255,251,214,.45), transparent), linear-gradient(180deg,#cfeadb 0%,#a7d9b8 10%,#5aa86a 28%,#2f7a3f 50%,#1b5e20 76%,#123f16 100%)",
     cats: [
       { id: "selva", emoji: "🌳", x: 120, name: { es: "La selva", ca: "La selva", en: "The jungle", cs: "Prales", fr: "La jungle" } },
       { id: "rio", emoji: "🌊", x: 1100, name: { es: "El gran río", ca: "El gran riu", en: "The great river", cs: "Velká řeka", fr: "Le grand fleuve" } },
@@ -354,61 +354,177 @@ Object.assign(THEMES.amazonas.content, {
         name: { es: "El águila harpía", ca: "L'àguila harpia", en: "The harpy eagle", cs: "Harpyje", fr: "La harpie féroce" },
         fact: { es: "Es una de las águilas más fuertes del mundo. Vive en lo más alto del dosel y peina una cresta como una corona.", ca: "És una de les àguiles més fortes del món. Viu a dalt de tot del dosser i pentina una cresta com una corona.", en: "It is one of the strongest eagles in the world. It lives at the very top of the canopy and wears a crest like a crown.", cs: "Je to jeden z nejsilnějších orlů světa. Žije úplně nahoře v korunách stromů a nosí chocholku jako korunu.", fr: "C'est l'un des aigles les plus forts du monde. Elle vit tout en haut de la canopée et porte une crête comme une couronne." } }
     ],
-    /* el paisaje: selva frondosa en capas, el gran río, nenúfares y niebla */
+    /* el escenario: la selva por capas, del dosel al río */
     deco: function () {
       let s = "";
-      // el dosel: dos filas de copas frondosas arriba del todo
+      /* las cajas de los iconos: sirven para dejarles aire alrededor */
+      const cajas = [[138, 738, 84, 84], [308, 518, 84, 84], [478, 698, 84, 84], [585, 385, 230, 230], [838, 638, 84, 84], [958, 838, 84, 84],
+        [1138, 658, 84, 84], [1308, 808, 84, 84], [1478, 658, 84, 84], [1638, 818, 84, 84], [1778, 578, 84, 84],
+        [1938, 258, 84, 84], [2098, 138, 84, 84], [2238, 298, 84, 84], [2378, 158, 84, 84], [2458, 438, 84, 84]];
+      const libre = (x, y, w, h) => !cajas.some(c => x < c[0] + c[2] + 12 && x + w > c[0] - 12 && y < c[1] + c[3] + 12 && y + h > c[1] - 12);
+      /* numeros repetibles: la selva sale igual en cada partida */
+      let sem = 3313;
+      const az = () => (sem = sem * 16807 % 2147483647) / 2147483647;
+      /* ---------- DEGRADADOS Y PATRONES (ids con prefijo amzX) ---------- */
+      s += `<defs>
+        <linearGradient id="amzXDosel" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#14401a"/><stop offset="100%" stop-color="#2e7d32"/></linearGradient>
+        <linearGradient id="amzXTronco" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#6b5140"/><stop offset="42%" stop-color="#4e3a2c"/><stop offset="100%" stop-color="#33251c"/></linearGradient>
+        <linearGradient id="amzXAgua" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#b3a468"/><stop offset="45%" stop-color="#8b7845"/><stop offset="100%" stop-color="#5f5030"/></linearGradient>
+        <linearGradient id="amzXBarro" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#a3855c"/><stop offset="100%" stop-color="#6d5537"/></linearGradient>
+        <linearGradient id="amzXLuz" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(255,251,214,.45)"/><stop offset="100%" stop-color="rgba(255,251,214,0)"/></linearGradient>
+        <linearGradient id="amzXSuelo" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3f5c25"/><stop offset="100%" stop-color="#22370f"/></linearGradient>
+        <pattern id="amzXLluvia" width="72" height="160" patternUnits="userSpaceOnUse">
+          <g stroke="rgba(255,255,255,.55)" stroke-width="2.4" stroke-linecap="round"><path d="M12 0 v26"/><path d="M44 58 v22"/><path d="M62 112 v18"/><path d="M26 96 v16"/></g>
+          <animateTransform attributeName="patternTransform" type="translate" from="0 0" to="0 160" dur="2.8s" repeatCount="indefinite"/>
+        </pattern>
+      </defs>`;
+      /* ---------- EL DOSEL: tres capas de copas y la luz que se cuela ---------- */
+      s += `<path d="M0 0 H2600 V196 Q2200 246 1800 200 Q1400 156 1000 208 Q600 254 0 194 Z" fill="url(#amzXDosel)"/>`;
       for (let i = 0; i <= 20; i++) {
-        const x = i * 130;
-        s += `<circle cx="${x}" cy="${40 + (i % 2) * 34}" r="${85 + (i % 3) * 18}" fill="${["#1b5e20", "#2e7d32", "#388e3c"][i % 3]}" opacity=".9"/>`;
+        s += `<circle cx="${i * 130}" cy="${44 + (i % 2) * 34}" r="${84 + (i % 3) * 18}" fill="${["#1b5e20", "#2e7d32", "#388e3c"][i % 3]}"/>`;
       }
-      for (let i = 0; i <= 15; i++) {
-        s += `<circle cx="${i * 170 + 60}" cy="150" r="60" fill="#43a047" opacity=".5"/>`;
+      for (let i = 0; i <= 14; i++) {
+        s += `<circle cx="${i * 182 + 70}" cy="162" r="${56 + (i % 2) * 12}" fill="#43a047" opacity=".55"/>`;
       }
-      // niebla alta entre el dosel y los troncos
-      s += `<ellipse cx="500" cy="270" rx="420" ry="60" fill="rgba(255,255,255,.12)"/>
-            <ellipse cx="1500" cy="240" rx="520" ry="55" fill="rgba(255,255,255,.10)"/>
-            <ellipse cx="2300" cy="290" rx="380" ry="65" fill="rgba(255,255,255,.12)"/>`;
-      // troncos gigantes con raíces de contrafuerte
-      [[120, 0.9], [430, 1.15], [760, 0.8], [1980, 1], [2280, 0.85], [2540, 1.05]].forEach(t => {
-        const x = t[0], k = t[1];
-        s += `<g opacity=".85">
-              <rect x="${(x - 26 * k).toFixed(0)}" y="170" width="${(52 * k).toFixed(0)}" height="800" fill="#4e342e"/>
-              <path d="M${(x - 26 * k).toFixed(0)} 970 Q${(x - 70 * k).toFixed(0)} 900 ${(x - 96 * k).toFixed(0)} 970 Z" fill="#4e342e"/>
-              <path d="M${(x + 26 * k).toFixed(0)} 970 Q${(x + 70 * k).toFixed(0)} 900 ${(x + 96 * k).toFixed(0)} 970 Z" fill="#4e342e"/>
-              <path d="M${x - 8} 220 Q${x - 20} 520 ${x - 6} 900" stroke="rgba(0,0,0,.18)" stroke-width="8" fill="none"/>
-            </g>`;
+      /* las hojas grandes que asoman del dosel, tipo filodendro */
+      for (let i = 0; i < 9; i++) {
+        const x = 130 + i * 290, y = 210 + (i % 3) * 26;
+        if (!libre(x - 46, y - 20, 92, 60)) continue;
+        s += `<g transform="translate(${x} ${y})"><path d="M0 0 q-46 -6 -60 26 q42 24 60 -4 q18 28 60 4 q-14 -32 -60 -26 Z" fill="#2e7d32"/>
+          <path d="M-58 24 H58 M-30 8 L-40 24 M0 4 V26 M30 8 L40 24" stroke="#1b5e20" stroke-width="3" fill="none"/></g>`;
+      }
+      /* cuatro haces de luz que bajan entre las copas */
+      [[420, 520, 900], [1240, 1330, 940], [1900, 1990, 860], [2320, 2400, 820]].forEach((r, i) => {
+        s += `<path d="M${r[0]} 150 L${r[1]} 150 L${r[1] + 130} ${r[2]} L${r[0] + 70} ${r[2]} Z" fill="url(#amzXLuz)" opacity=".5"><animate attributeName="opacity" values=".5;.2;.5" dur="${10 + i * 2}s" repeatCount="indefinite"/></path>`;
       });
-      // lianas colgando del dosel, con su rizo al final
-      [[300, 430], [640, 520], [900, 390], [2100, 470], [2430, 540]].forEach(l => {
-        s += `<path d="M${l[0]} 130 Q${l[0] - 42} ${(l[1] / 2 + 130).toFixed(0)} ${l[0] + 18} ${l[1]}" stroke="#33691e" stroke-width="9" fill="none" stroke-linecap="round"/>
-              <path d="M${l[0] + 18} ${l[1]} q30 26 60 8" stroke="#33691e" stroke-width="7" fill="none" stroke-linecap="round"/>`;
+      /* la niebla alta, entre el dosel y los troncos */
+      s += `<ellipse cx="520" cy="288" rx="440" ry="58" fill="rgba(255,255,255,.14)"><animate attributeName="rx" values="440;480;440" dur="17s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="1520" cy="256" rx="540" ry="52" fill="rgba(255,255,255,.11)"/>
+        <ellipse cx="2320" cy="300" rx="380" ry="62" fill="rgba(255,255,255,.13)"><animate attributeName="rx" values="380;418;380" dur="21s" repeatCount="indefinite"/></ellipse>`;
+      /* ---------- LOS TRONCOS ENORMES, CON SUS CONTRAFUERTES ---------- */
+      const tronco = (x, k, base) => {
+        const w = 54 * k;
+        let o = `<g><path d="M${(x - w / 2).toFixed(0)} ${base} q${(w * .12).toFixed(0)} -${((base - 170) / 2).toFixed(0)} 0 -${(base - 170).toFixed(0)} h${w.toFixed(0)} q${(-w * .12).toFixed(0)} ${((base - 170) / 2).toFixed(0)} 0 ${(base - 170).toFixed(0)} Z" fill="url(#amzXTronco)"/>
+          <path d="M${(x - w / 2).toFixed(0)} ${base} Q${(x - w * 1.5).toFixed(0)} ${(base - 78).toFixed(0)} ${(x - w * 2).toFixed(0)} ${base} Z" fill="#4e3a2c"/>
+          <path d="M${(x + w / 2).toFixed(0)} ${base} Q${(x + w * 1.5).toFixed(0)} ${(base - 78).toFixed(0)} ${(x + w * 2).toFixed(0)} ${base} Z" fill="#4e3a2c"/>
+          <path d="M${(x - w * .2).toFixed(0)} 230 Q${(x - w * .42).toFixed(0)} ${(base * .55).toFixed(0)} ${(x - w * .16).toFixed(0)} ${(base - 60).toFixed(0)}" stroke="rgba(0,0,0,.22)" stroke-width="${(w * .16).toFixed(0)}" fill="none"/>`;
+        /* bromelias y musgo agarrados a la corteza */
+        for (let j = 0; j < 3; j++) {
+          const by = 300 + j * 190;
+          if (!libre(x - 30, by - 20, 60, 40)) continue;
+          o += `<g transform="translate(${(x + (j % 2 ? w * .45 : -w * .45)).toFixed(0)} ${by})"><path d="M0 0 q-26 -6 -30 -26 q22 -4 30 12 q8 -20 30 -14 q-6 22 -30 28 Z" fill="#4c9a3f"/>
+            <path d="M0 -4 q-14 -18 -6 -34 q14 10 12 30 q10 -18 24 -20 q-4 20 -22 30 Z" fill="#66bb6a"/>
+            <circle cx="0" cy="-8" r="5" fill="#ef5350"/></g>`;
+        }
+        return o + `</g>`;
+      };
+      s += tronco(120, .9, 980) + tronco(430, 1.15, 990) + tronco(760, .8, 970) + tronco(2540, 1.1, 900);
+      /* ---------- EL ÁRBOL EMERGENTE DEL DOSEL: las ramas donde se posan las aves ---------- */
+      s += `<path d="M2120 900 q26 -330 -6 -640 h80 q30 310 4 640 Z" fill="url(#amzXTronco)"/>`;
+      const rama = (x0, y0, x1, y1, gr) => `<path d="M${x0} ${y0} Q${((x0 + x1) / 2).toFixed(0)} ${(y0 + (y1 - y0) * .2).toFixed(0)} ${x1} ${y1}" stroke="#5a4433" stroke-width="${gr}" fill="none" stroke-linecap="round"/>`;
+      s += rama(2130, 420, 1930, 348, 20) + rama(2160, 300, 2010, 356, 14)
+        + rama(2150, 262, 2260, 228, 17) + rama(2200, 232, 2380, 250, 13)
+        + rama(2166, 560, 2420, 530, 24) + rama(2380, 532, 2600, 542, 18)
+        + rama(2150, 372, 2270, 392, 12);
+      /* las hojas de esas ramas y una heliconia para el colibrí */
+      [[1946, 344], [2020, 352], [2262, 224], [2372, 248], [2452, 528], [2560, 540]].forEach(h => {
+        s += `<g transform="translate(${h[0]} ${h[1]})"><ellipse cx="-24" cy="10" rx="26" ry="11" fill="#388e3c" transform="rotate(-16 -24 10)"/>
+          <ellipse cx="18" cy="12" rx="24" ry="10" fill="#43a047" transform="rotate(14 18 12)"/></g>`;
       });
-      // suelo del bosque
-      s += `<rect x="0" y="960" width="2600" height="140" fill="#1f3d14"/>
-            <path d="M0 960 Q400 935 800 960 Q1300 985 1800 955 Q2200 935 2600 960 L2600 1000 L0 1000 Z" fill="#2e5d1f"/>`;
-      // helechos en las orillas
-      const fern = (x, y, k) => `<g transform="translate(${x} ${y}) scale(${k})" stroke="#2e7d32" stroke-width="10" fill="none" stroke-linecap="round">
-          <path d="M0 0 Q-45 -60 -95 -75"/><path d="M0 0 Q0 -80 -15 -125"/><path d="M0 0 Q45 -60 95 -75"/><path d="M0 0 Q28 -75 60 -110"/><path d="M0 0 Q-28 -75 -60 -110"/></g>`;
-      s += fern(260, 955, 0.9) + fern(640, 975, 0.7) + fern(940, 950, 1) + fern(2160, 965, 0.8) + fern(2480, 985, 0.6);
-      // el gran río marrón-verde serpenteando (estrecho en la selva, ancho en su zona)
-      s += `<path d="M0 920 Q300 880 700 905 Q950 915 1080 840 Q1200 740 1500 720 Q1750 705 1880 780 Q1980 840 2200 870 Q2400 895 2600 870
-               L2600 1010 Q2400 1030 2200 1015 Q1980 1000 1860 1030 Q1600 1080 1300 1050 Q1100 1030 1000 1000 Q700 1030 300 1000 Q120 985 0 1005 Z"
-               fill="#7d6a3f" opacity=".95"/>`;
-      // la corriente verdosa y las olitas
-      s += `<path d="M40 955 Q400 930 760 945 Q1000 950 1140 830 Q1280 760 1520 750 Q1740 745 1900 830 Q2080 910 2380 935 Q2500 942 2570 935" stroke="rgba(174,213,129,.35)" stroke-width="26" fill="none" stroke-linecap="round"/>
-            <path d="M300 950 q26 -12 52 0 M820 940 q26 -12 52 0 M1300 800 q26 -12 52 0 M1560 790 q26 -12 52 0 M2050 890 q26 -12 52 0 M2350 945 q26 -12 52 0" stroke="rgba(255,255,255,.35)" stroke-width="5" fill="none" stroke-linecap="round"/>`;
-      // nenúfares gigantes Victoria, con su muesca y una flor
-      [[1560, 905, 52], [1690, 955, 64], [1810, 900, 44], [1240, 940, 40]].forEach(n => {
-        s += `<circle cx="${n[0]}" cy="${n[1]}" r="${n[2]}" fill="#66bb6a"/>
-              <circle cx="${n[0]}" cy="${n[1]}" r="${n[2]}" fill="none" stroke="#a5d6a7" stroke-width="6"/>
-              <path d="M${n[0]} ${n[1]} L${n[0] + n[2]} ${n[1] - 5} L${n[0] + n[2]} ${n[1] + 7} Z" fill="#388e3c"/>`;
+      s += `<g transform="translate(2272 396)"><path d="M0 0 v70" stroke="#4c9a3f" stroke-width="7" stroke-linecap="round"/>
+        ${[0, 1, 2, 3].map(i => `<path d="M${i % 2 ? 2 : -2} ${8 + i * 17} q${i % 2 ? 30 : -30} 2 ${i % 2 ? 34 : -34} 16 q${i % 2 ? -30 : 30} 2 ${i % 2 ? -34 : 34} -16 Z" fill="${i % 2 ? "#ef5350" : "#fb8c00"}"/>`).join("")}</g>`;
+      /* ---------- LAS LIANAS QUE CUELGAN DEL DOSEL ---------- */
+      [[300, 430, 1], [640, 520, 0], [900, 390, 1], [1180, 470, 0], [1700, 500, 1], [2050, 430, 0]].forEach((l, i) => {
+        s += `<g>${i % 3 === 0 ? `<animateTransform attributeName="transform" type="rotate" values="-1.4 ${l[0]} 150;1.4 ${l[0]} 150;-1.4 ${l[0]} 150" dur="${11 + i}s" repeatCount="indefinite"/>` : ""}
+          <path d="M${l[0]} 150 Q${l[0] - 44} ${(l[1] / 2 + 150).toFixed(0)} ${l[0] + 18} ${l[1]}" stroke="#33691e" stroke-width="9" fill="none" stroke-linecap="round"/>
+          <path d="M${l[0] + 18} ${l[1]} q30 26 60 8" stroke="#33691e" stroke-width="7" fill="none" stroke-linecap="round"/>
+          <ellipse cx="${l[0] - 16}" cy="${(l[1] * .55 + 90).toFixed(0)}" rx="17" ry="8" fill="#4c9a3f" transform="rotate(${l[2] ? 24 : -24} ${l[0] - 16} ${(l[1] * .55 + 90).toFixed(0)})"/>
+          <ellipse cx="${l[0] + 40}" cy="${(l[1] + 12).toFixed(0)}" rx="16" ry="7" fill="#66bb6a"/></g>`;
       });
-      s += `<circle cx="1600" cy="878" r="11" fill="#f8bbd0"/><circle cx="1600" cy="878" r="5" fill="#fff"/>`;
-      // niebla baja flotando entre los troncos
-      s += `<ellipse cx="350" cy="620" rx="330" ry="48" fill="rgba(255,255,255,.08)"/>
-            <ellipse cx="1500" cy="560" rx="300" ry="40" fill="rgba(255,255,255,.06)"/>
-            <ellipse cx="2250" cy="640" rx="300" ry="44" fill="rgba(255,255,255,.08)"/>`;
+      /* ---------- EL SUELO DE LA SELVA ---------- */
+      s += `<path d="M-20 926 Q240 900 520 922 Q800 944 1080 908 L1080 1100 L-20 1100 Z" fill="url(#amzXSuelo)"/>
+        <path d="M-20 926 Q240 900 520 922 Q800 944 1080 908 L1080 938 Q800 974 520 952 Q240 930 -20 956 Z" fill="#4a6b2b"/>`;
+      /* el tronco caído donde descansa el jaguar */
+      s += `<g><path d="M40 842 Q190 822 350 836 L350 866 Q190 852 40 872 Z" fill="#6b5140"/>
+        <ellipse cx="350" cy="851" rx="11" ry="15" fill="#8d6e63"/><ellipse cx="350" cy="851" rx="5" ry="8" fill="#5d4037"/>
+        <g stroke="#4e3a2c" stroke-width="3" fill="none"><path d="M90 846 Q200 830 320 842 M90 862 Q200 846 320 858"/></g>
+        <g fill="#4c9a3f"><ellipse cx="130" cy="836" rx="20" ry="8"/><ellipse cx="250" cy="830" rx="17" ry="7"/></g></g>`;
+      /* helechos, hojarasca y la fila de hormigas cortadoras */
+      const helecho = (x, y, k) => `<g transform="translate(${x} ${y}) scale(${k})" stroke="#2e7d32" stroke-width="10" fill="none" stroke-linecap="round">
+        <path d="M0 0 Q-45 -60 -95 -75"/><path d="M0 0 Q0 -80 -15 -125"/><path d="M0 0 Q45 -60 95 -75"/><path d="M0 0 Q28 -75 60 -110"/><path d="M0 0 Q-28 -75 -60 -110"/></g>`;
+      s += helecho(250, 960, .85) + helecho(620, 980, .7) + helecho(900, 950, .95) + helecho(1010, 1046, .8);
+      for (let i = 0; i < 12; i++) {
+        const x = 40 + az() * 1000, y = 950 + az() * 120;
+        s += `<ellipse cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" rx="${(12 + az() * 9).toFixed(0)}" ry="6" fill="${["#6d4c41", "#7a5a3c", "#4c6b28"][i % 3]}" opacity=".75" transform="rotate(${(az() * 70 - 35).toFixed(0)} ${x.toFixed(0)} ${y.toFixed(0)})"/>`;
+      }
+      s += `<path d="M900 934 Q1000 928 1090 940" stroke="#c8a24a" stroke-width="7" fill="none" opacity=".55" stroke-dasharray="4 12"/>`;
+      /* ---------- EL RÍO AMAZONAS ---------- */
+      const orilla = "M1010 1000 Q1120 862 1226 764 Q1310 692 1470 688 Q1700 682 1900 702 Q2210 732 2620 700";
+      s += `<path d="${orilla} L2620 1100 L1010 1100 Z" fill="url(#amzXAgua)"/>
+        <path d="${orilla}" stroke="url(#amzXBarro)" stroke-width="34" fill="none"/>
+        <path d="${orilla}" stroke="rgba(255,255,255,.22)" stroke-width="9" fill="none"/>`;
+      /* la vegetación de la orilla de enfrente, antes del agua */
+      [[1246, 762], [1330, 726], [1420, 700], [1530, 690], [1650, 686], [1780, 692], [1900, 704], [2030, 716], [2170, 726], [2320, 722], [2470, 712], [2590, 704]].forEach((v, i) => {
+        s += `<g transform="translate(${v[0]} ${v[1]})"><ellipse cx="0" cy="-16" rx="${52 + (i % 3) * 12}" ry="${26 + (i % 2) * 8}" fill="${["#2e7d32", "#1b5e20", "#388e3c"][i % 3]}"/>
+          <ellipse cx="${-30 - (i % 2) * 8}" cy="-4" rx="30" ry="17" fill="#256b28"/><ellipse cx="34" cy="-6" rx="28" ry="16" fill="#33823a"/></g>`;
+      });
+      [[1360, 700], [1980, 706], [2420, 706]].forEach(pa => {
+        s += `<g transform="translate(${pa[0]} ${pa[1]})"><path d="M0 0 Q8 -60 2 -112" stroke="#5a4433" stroke-width="11" fill="none" stroke-linecap="round"/>
+          <g stroke="#2e7d32" stroke-width="9" fill="none" stroke-linecap="round"><path d="M2 -112 Q-38 -132 -66 -122"/><path d="M2 -112 Q42 -134 72 -124"/><path d="M2 -112 Q-20 -152 -40 -160"/><path d="M2 -112 Q26 -152 48 -162"/><path d="M2 -112 Q0 -158 -4 -170"/></g></g>`;
+      });
+      /* la corriente y los reflejos del cielo sobre el agua */
+      s += `<path d="M1060 1000 Q1180 880 1280 790 Q1370 726 1520 722 Q1720 716 1900 736 Q2200 764 2600 734" stroke="rgba(174,213,129,.3)" stroke-width="28" fill="none" stroke-linecap="round"/>
+        <path d="M1120 1010 Q1260 872 1400 800 Q1560 740 1800 780 Q2100 828 2600 796" stroke="rgba(255,255,255,.16)" stroke-width="16" fill="none" stroke-linecap="round" stroke-dasharray="70 120">
+        <animate attributeName="stroke-dashoffset" values="0;-380" dur="26s" repeatCount="indefinite"/></path>`;
+      for (let i = 0; i < 9; i++) {
+        const x = 1180 + i * 158, y = 806 + (i % 3) * 62;
+        if (!libre(x - 30, y - 10, 60, 20)) continue;
+        s += `<path d="M${x} ${y} q26 -12 52 0" stroke="rgba(255,255,255,.3)" stroke-width="5" fill="none" stroke-linecap="round"/>`;
+      }
+      /* los reflejos del cielo y de los árboles tumbados sobre el agua */
+      s += `<g fill="rgba(255,255,255,.1)"><ellipse cx="1420" cy="860" rx="150" ry="16"/><ellipse cx="1900" cy="820" rx="190" ry="14"/><ellipse cx="2340" cy="880" rx="210" ry="18"/><ellipse cx="1240" cy="1000" rx="130" ry="14"/></g>
+        <g fill="rgba(30,60,26,.16)"><ellipse cx="1620" cy="800" rx="120" ry="26"/><ellipse cx="2140" cy="784" rx="140" ry="22"/><ellipse cx="2520" cy="800" rx="110" ry="20"/></g>`;
+      /* las raíces zancudas de las palmas de la orilla */
+      [[1150, 800], [2360, 726], [2560, 716]].forEach(r => {
+        s += `<g stroke="#5a4433" stroke-width="8" fill="none" stroke-linecap="round">
+          <path d="M${r[0]} ${r[1] - 90} V${r[1] - 40} M${r[0]} ${r[1] - 40} q-30 14 -44 40 M${r[0]} ${r[1] - 40} q30 14 44 40 M${r[0]} ${r[1] - 40} q-8 22 -6 40 M${r[0]} ${r[1] - 40} q14 20 20 40"/>
+          <g stroke="#3f7f33" stroke-width="9"><path d="M${r[0]} ${r[1] - 92} q-44 -14 -66 -44 M${r[0]} ${r[1] - 92} q44 -16 68 -44 M${r[0]} ${r[1] - 92} q-16 -40 -30 -56"/></g></g>`;
+      });
+      /* el barro de la orilla y el islote donde toma el sol el caimán */
+      s += `<path d="M1740 700 Q1820 646 1944 678 Q1980 690 1962 714 Q1860 742 1760 726 Q1722 716 1740 700 Z" fill="url(#amzXBarro)"/>
+        <path d="M1762 700 Q1840 668 1930 686" stroke="rgba(255,255,255,.22)" stroke-width="7" fill="none"/>
+        <g stroke="#5a4433" stroke-width="5" fill="none" stroke-linecap="round"><path d="M1748 722 q-26 8 -40 24 M1946 706 q26 10 40 26"/></g>`;
+      /* el tronco flotante donde se enrosca la anaconda */
+      s += `<g><path d="M1420 752 Q1520 738 1626 752 L1626 772 Q1520 788 1420 772 Z" fill="#5a4433"/>
+        <ellipse cx="1626" cy="762" rx="9" ry="11" fill="#7a5a3c"/>
+        <path d="M1440 758 Q1520 748 1610 758" stroke="#4e3a2c" stroke-width="3" fill="none"/></g>`;
+      /* los nenúfares gigantes Victoria, con su borde levantado */
+      [[1680, 908, 62], [1550, 946, 46], [1836, 936, 52], [1272, 942, 40], [2050, 880, 44]].forEach(n => {
+        s += `<ellipse cx="${n[0]}" cy="${n[1] + 8}" rx="${n[2]}" ry="${(n[2] * .34).toFixed(0)}" fill="rgba(0,0,0,.14)"/>
+          <circle cx="${n[0]}" cy="${n[1]}" r="${n[2]}" fill="#66bb6a"/>
+          <circle cx="${n[0]}" cy="${n[1]}" r="${n[2]}" fill="none" stroke="#a5d6a7" stroke-width="6"/>
+          <path d="M${n[0]} ${n[1]} L${n[0] + n[2]} ${n[1] - 5} L${n[0] + n[2]} ${n[1] + 7} Z" fill="#388e3c"/>
+          <g stroke="#4c9a3f" stroke-width="2.4">${[0, 60, 120].map(a => `<path d="M${n[0]} ${n[1]} L${(n[0] + n[2] * Math.cos(a * Math.PI / 180)).toFixed(0)} ${(n[1] + n[2] * Math.sin(a * Math.PI / 180)).toFixed(0)}"/>`).join("")}</g>`;
+      });
+      s += `<circle cx="1596" cy="898" r="12" fill="#f8bbd0"/><circle cx="1596" cy="898" r="6" fill="#fff"/>
+        <circle cx="1898" cy="928" r="10" fill="#f8bbd0"/><circle cx="1898" cy="928" r="5" fill="#fff"/>`;
+      /* el chapoteo bajo el delfín rosado y las ondas de la piraña */
+      s += `<g fill="none" stroke="rgba(255,255,255,.5)" stroke-width="5" stroke-linecap="round">
+        <path d="M1120 792 q30 -16 62 -4 M1196 800 q28 -14 56 -2"><animate attributeName="opacity" values=".9;.35;.9" dur="4.5s" repeatCount="indefinite"/></path>
+        <path d="M1300 900 q34 -14 68 0 M1318 918 q26 -10 52 0"><animate attributeName="opacity" values=".4;.9;.4" dur="5.5s" repeatCount="indefinite"/></path></g>`;
+      /* ---------- LA LLUVIA MUY SUAVE SOBRE LA SELVA ---------- */
+      s += `<rect x="150" y="200" width="640" height="700" fill="url(#amzXLluvia)" opacity=".45"/>
+        <ellipse cx="470" cy="240" rx="330" ry="52" fill="rgba(255,255,255,.1)"/>`;
+      /* ---------- LA NIEBLA BAJA ENTRE LOS TRONCOS ---------- */
+      s += `<ellipse cx="360" cy="648" rx="330" ry="46" fill="rgba(255,255,255,.09)"/>
+        <ellipse cx="1500" cy="590" rx="300" ry="38" fill="rgba(255,255,255,.07)"/>
+        <ellipse cx="2280" cy="656" rx="300" ry="42" fill="rgba(255,255,255,.09)"><animate attributeName="ry" values="42;56;42" dur="19s" repeatCount="indefinite"/></ellipse>`;
+      /* ramas de apoyo para el perezoso, el mono y la orquídea */
+      s += `<path d="M436 512 Q340 498 244 518" stroke="#5a4433" stroke-width="19" fill="none" stroke-linecap="round"/>
+        <path d="M436 792 Q510 782 596 794" stroke="#5a4433" stroke-width="17" fill="none" stroke-linecap="round"/>
+        <path d="M766 744 Q830 726 918 736" stroke="#5a4433" stroke-width="15" fill="none" stroke-linecap="round"/>
+        <g fill="#4c9a3f"><ellipse cx="262" cy="512" rx="22" ry="9" transform="rotate(-14 262 512)"/><ellipse cx="580" cy="790" rx="21" ry="9" transform="rotate(12 580 790)"/>
+        <ellipse cx="906" cy="730" rx="20" ry="9" transform="rotate(10 906 730)"/><ellipse cx="836" cy="742" rx="17" ry="8" transform="rotate(-8 836 742)"/></g>`;
       return decoSvg(s, 2600);
     }
   },

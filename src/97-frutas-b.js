@@ -511,67 +511,167 @@ Object.assign(THEMES.frutas.content, {
         name: { es: "El zumo recién hecho", ca: "El suc acabat de fer", en: "The freshly made juice", cs: "Čerstvá šťáva", fr: "Le jus tout frais" },
         fact: { es: "Para llenar un vaso de zumo hacen falta dos o tres naranjas. Recién exprimido es cuando más rico está y más vitaminas tiene.", ca: "Per omplir un got de suc calen dues o tres taronges. Acabat d'esprémer és quan és més bo i té més vitamines.", en: "It takes two or three oranges to fill one glass of juice. Freshly squeezed is when it tastes best and has the most vitamins.", cs: "Na jednu sklenici šťávy jsou potřeba dva nebo tři pomeranče. Čerstvě vymačkaná chutná nejlíp a má nejvíc vitamínů.", fr: "Pour remplir un verre de jus, il faut deux ou trois oranges. Fraîchement pressé, c'est là qu'il est le meilleur et le plus riche en vitamines." } }
     ],
-    /* el paisaje: bancales con surcos, sol, regadera, frutales y toldos */
+    /* el escenario: la huerta entera, del semillero al mercado */
     deco: function () {
       let s = "";
-      s += `<defs><radialGradient id="fr2Sol" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#fff59d"/><stop offset="100%" stop-color="#ffca28"/></radialGradient></defs>`;
-      /* el sol con sus rayos girando despacito */
+      /* las cajas de los iconos: sirven para dejarles aire alrededor */
+      const cajas = [[178, 742, 64, 76], [355, 577, 70, 66], [527, 734, 66, 72], [690, 834, 120, 92], [437, 515, 66, 60], [866, 715, 68, 60],
+        [1055, 470, 130, 140], [1280, 625, 120, 130], [1179, 858, 62, 64], [1491, 453, 78, 74], [1590, 829, 120, 82], [1725, 530, 110, 120],
+        [1995, 535, 170, 130], [2192, 741, 76, 78], [2391, 869, 78, 62], [2430, 583, 60, 74]];
+      const libre = (x, y, w, h) => !cajas.some(c => x < c[0] + c[2] + 12 && x + w > c[0] - 12 && y < c[1] + c[3] + 12 && y + h > c[1] - 12);
+      /* numeros repetibles: la huerta sale igual en cada partida */
+      let sem = 7717;
+      const az = () => (sem = sem * 16807 % 2147483647) / 2147483647;
+      /* ---------- DEGRADADOS (ids con prefijo frtX) ---------- */
+      s += `<defs>
+        <radialGradient id="frtXSol" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#fff59d"/><stop offset="100%" stop-color="#ffca28"/></radialGradient>
+        <linearGradient id="frtXTierra" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8d6144"/><stop offset="100%" stop-color="#513526"/></linearGradient>
+        <linearGradient id="frtXCampo" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#b3d67a"/><stop offset="100%" stop-color="#6b9b3c"/></linearGradient>
+        <linearGradient id="frtXCristal" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="rgba(255,255,255,.75)"/><stop offset="45%" stop-color="rgba(178,235,242,.5)"/><stop offset="100%" stop-color="rgba(255,255,255,.66)"/></linearGradient>
+        <linearGradient id="frtXTeja" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e07b52"/><stop offset="100%" stop-color="#b6543a"/></linearGradient>
+      </defs>`;
+      /* ---------- EL CIELO DEL CAMPO ---------- */
       s += `<g transform="translate(230 150)">
-          <g><animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="60s" repeatCount="indefinite"/>
-          ${[0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330].map(a => `<line x1="0" y1="0" x2="${(105 * Math.cos(a * Math.PI / 180)).toFixed(0)}" y2="${(105 * Math.sin(a * Math.PI / 180)).toFixed(0)}" stroke="rgba(255,213,79,.55)" stroke-width="7" stroke-linecap="round"/>`).join("")}</g>
-          <circle r="72" fill="url(#fr2Sol)"/></g>`;
-      /* nubes blanditas */
-      s += `<ellipse cx="820" cy="140" rx="110" ry="34" fill="rgba(255,255,255,.75)"/>
-            <ellipse cx="900" cy="120" rx="70" ry="26" fill="rgba(255,255,255,.65)"/>
-            <ellipse cx="1650" cy="170" rx="120" ry="30" fill="rgba(255,255,255,.6)"/>
-            <ellipse cx="2380" cy="130" rx="90" ry="26" fill="rgba(255,255,255,.6)"/>`;
-      /* los bancales del huerto: montículos marrones con surcos */
-      for (let b = 0; b < 4; b++) {
-        const y = 620 + b * 120;
-        s += `<path d="M0 ${y} Q470 ${y - 46} 940 ${y} L940 ${y + 60} Q470 ${y + 20} 0 ${y + 60} Z" fill="${b % 2 ? "#5d4037" : "#6d4c41"}" opacity=".9"/>`;
-        for (let x = 60; x < 900; x += 90) {
-          s += `<path d="M${x} ${y + 14} q40 -14 80 0" stroke="rgba(0,0,0,.22)" stroke-width="5" fill="none"/>`;
-        }
+        <g><animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="70s" repeatCount="indefinite"/>
+        ${[0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330].map(a => `<line x1="0" y1="0" x2="${(105 * Math.cos(a * Math.PI / 180)).toFixed(0)}" y2="${(105 * Math.sin(a * Math.PI / 180)).toFixed(0)}" stroke="rgba(255,213,79,.5)" stroke-width="7" stroke-linecap="round"/>`).join("")}</g>
+        <circle r="72" fill="url(#frtXSol)"/></g>`;
+      const nube = (x, y, k) => `<g transform="translate(${x} ${y}) scale(${k})"><ellipse cx="0" cy="0" rx="92" ry="28" fill="rgba(255,255,255,.85)"/><ellipse cx="-56" cy="10" rx="46" ry="19" fill="rgba(255,255,255,.75)"/><ellipse cx="52" cy="11" rx="52" ry="21" fill="rgba(255,255,255,.75)"/><ellipse cx="-6" cy="-21" rx="48" ry="24" fill="#fff"/></g>`;
+      [[830, 136, .95, 60, 54], [1640, 172, .8, -48, 62], [2340, 128, .85, 52, 48]].forEach(n => {
+        s += `<g><animateTransform attributeName="transform" type="translate" values="0 0;${n[3]} 0;0 0" dur="${n[4]}s" repeatCount="indefinite"/>${nube(n[0], n[1], n[2])}</g>`;
+      });
+      [[1180, 210], [1320, 176], [2020, 214]].forEach(p => {
+        s += `<path d="M${p[0]} ${p[1]} q-11 -10 -23 -6 M${p[0]} ${p[1]} q11 -10 23 -6" stroke="rgba(90,110,80,.45)" stroke-width="3.2" fill="none" stroke-linecap="round"/>`;
+      });
+      /* ---------- EL FONDO: lomas, setos y el campo abierto ---------- */
+      s += `<path d="M-20 372 Q300 300 640 344 Q980 386 1320 330 Q1660 276 2000 336 Q2320 392 2620 340 L2620 460 L-20 460 Z" fill="#8fbc5c" opacity=".55"/>
+        <path d="M-20 460 Q640 428 1300 456 Q1960 484 2620 452 L2620 1100 L-20 1100 Z" fill="url(#frtXCampo)"/>`;
+      /* las franjas de siega del campo, para que no sea una alfombra lisa */
+      s += `<g fill="rgba(255,255,255,.09)">${[[470, 26], [530, 32], [610, 38], [710, 46], [840, 56], [1000, 68]].map(f => `<path d="M-20 ${f[0]} Q1300 ${f[0] - 16} 2620 ${f[0]} L2620 ${f[0] + f[1]} Q1300 ${f[0] + f[1] - 16} -20 ${f[0] + f[1]} Z"/>`).join("")}</g>`;
+      /* el camino de tierra del primer plano */
+      s += `<path d="M-20 1006 Q640 984 1300 1010 Q1960 1036 2620 1004 L2620 1100 L-20 1100 Z" fill="#c4a878"/>
+        <path d="M-20 1006 Q640 984 1300 1010 Q1960 1036 2620 1004 L2620 1024 Q1960 1056 1300 1030 Q640 1004 -20 1026 Z" fill="#d7bd90"/>
+        <g stroke="rgba(140,112,68,.4)" stroke-width="7" fill="none"><path d="M-20 1052 Q640 1030 1300 1056 Q1960 1082 2620 1050"/></g>`;
+      /* la hilera de cipreses que corta el viento */
+      for (let x = 1180; x < 1960; x += 74) {
+        s += `<path d="M${x} 404 q-15 -14 -15 -46 q0 -46 15 -62 q15 16 15 62 q0 32 -15 46 Z" fill="#3f6b32" opacity=".8"/>`;
       }
-      /* brotecitos verdes en los surcos */
-      [[120, 636], [300, 622], [640, 630], [830, 640], [200, 748], [520, 740], [760, 752]].forEach(p => {
-        s += `<path d="M${p[0]} ${p[1]} q-7 -16 -15 -20 M${p[0]} ${p[1]} q0 -20 3 -26 M${p[0]} ${p[1]} q8 -15 16 -19" stroke="#7cb342" stroke-width="4" fill="none" stroke-linecap="round"/>`;
-      });
-      /* la regadera del huerto, con sus gotas cayendo */
-      s += `<g transform="translate(80 420)">
-          <path d="M18 22 L74 22 L70 66 Q46 74 22 66 Z" fill="#78909c"/>
-          <path d="M26 22 Q46 2 66 22" stroke="#607d8b" stroke-width="7" fill="none"/>
-          <path d="M18 30 L-6 12 L-2 6 L22 24 Z" fill="#78909c"/>
-          <circle cx="-6" cy="9" r="7" fill="#90a4ae"/>
-          ${[[-16, 26], [-24, 40], [-10, 44]].map(g => `<path d="M${g[0]} ${g[1]} q-2 8 2 10 q5 -2 2 -10 Z" fill="#4fc3f7"><animate attributeName="opacity" values="1;.2;1" dur="1.6s" repeatCount="indefinite"/></path>`).join("")}</g>`;
-      /* la hilera de frutales al fondo de su zona */
-      [[1050, .8], [1230, 1], [1430, .85], [1600, 1.05], [1760, .8]].forEach(t => {
+      /* la casita del hortelano, con su chimenea y su huerto de macetas */
+      s += `<g><rect x="52" y="326" width="176" height="120" rx="6" fill="#f0e2c4"/>
+        <path d="M36 330 L140 258 L244 330 Z" fill="url(#frtXTeja)"/>
+        <rect x="186" y="266" width="24" height="50" rx="4" fill="#d9c8a4"/><ellipse cx="198" cy="258" rx="16" ry="8" fill="rgba(255,255,255,.55)"/>
+        <rect x="76" y="352" width="46" height="42" rx="4" fill="#8ecae6"/><path d="M76 373 h46 M99 352 v42" stroke="#f0e2c4" stroke-width="4"/>
+        <rect x="158" y="360" width="44" height="86" rx="4" fill="#a97f52"/><circle cx="194" cy="404" r="4" fill="#f5d76e"/>
+        <g fill="#c8703d"><rect x="60" y="418" width="26" height="28" rx="4"/><rect x="98" y="424" width="22" height="22" rx="4"/></g>
+        <circle cx="73" cy="410" r="11" fill="#66a72e"/><circle cx="109" cy="418" r="9" fill="#66a72e"/></g>`;
+      /* el invernadero de cristal, con sus cuartos de luz */
+      s += `<g><path d="M300 460 V352 L456 292 L612 352 V460 Z" fill="url(#frtXCristal)"/>
+        <path d="M300 352 L456 292 L612 352" stroke="#cfd8dc" stroke-width="8" fill="none" stroke-linejoin="round"/>
+        <g stroke="rgba(255,255,255,.85)" stroke-width="5">${[352, 388, 424].map(y => `<path d="M300 ${y} H612"/>`).join("")}${[352, 404, 456, 508, 560].map(x => `<path d="M${x} ${x < 456 ? (352 - (x - 300) * .385).toFixed(0) : (352 - (612 - x) * .385).toFixed(0)} V460"/>`).join("")}</g>
+        <path d="M456 292 V460" stroke="#cfd8dc" stroke-width="6"/>
+        <path d="M330 340 L380 316 L392 328 L342 352 Z" fill="rgba(255,255,255,.8)"><animate attributeName="opacity" values=".8;.35;.8" dur="7s" repeatCount="indefinite"/></path>
+        <g fill="#66a72e" opacity=".55"><ellipse cx="352" cy="440" rx="26" ry="16"/><ellipse cx="424" cy="446" rx="28" ry="16"/><ellipse cx="512" cy="442" rx="26" ry="15"/><ellipse cx="576" cy="448" rx="24" ry="14"/></g></g>`;
+      /* la hilera de frutales del fondo */
+      [[700, .8], [820, 1], [960, .85], [1080, .7]].forEach(t => {
         const x = t[0], k = t[1];
-        s += `<g opacity=".55">
-            <rect x="${(x - 8 * k).toFixed(0)}" y="${(360 - 40 * k).toFixed(0)}" width="${(16 * k).toFixed(0)}" height="${(90 * k).toFixed(0)}" fill="#6d4c41"/>
-            <circle cx="${x}" cy="${(330 - 40 * k).toFixed(0)}" r="${(58 * k).toFixed(0)}" fill="#4c8b3f"/>
-            <circle cx="${(x - 26 * k).toFixed(0)}" cy="${(320 - 40 * k).toFixed(0)}" r="6" fill="#ef5350"/>
-            <circle cx="${(x + 22 * k).toFixed(0)}" cy="${(340 - 40 * k).toFixed(0)}" r="6" fill="#ffb300"/>
-          </g>`;
+        s += `<g opacity=".7"><rect x="${(x - 7 * k).toFixed(0)}" y="${(400 - 34 * k).toFixed(0)}" width="${(14 * k).toFixed(0)}" height="${(78 * k).toFixed(0)}" fill="#6d4c41"/>
+          <circle cx="${x}" cy="${(374 - 34 * k).toFixed(0)}" r="${(52 * k).toFixed(0)}" fill="#4c8b3f"/>
+          <circle cx="${(x - 22 * k).toFixed(0)}" cy="${(364 - 34 * k).toFixed(0)}" r="6" fill="#ef5350"/><circle cx="${(x + 20 * k).toFixed(0)}" cy="${(384 - 34 * k).toFixed(0)}" r="6" fill="#ffb300"/></g>`;
       });
-      /* hierba de pradera entre el frutal y el mercado */
-      s += `<path d="M960 1000 Q1300 960 1700 995 Q2150 1030 2600 990 L2600 1100 L960 1100 Z" fill="#33691e" opacity=".5"/>`;
-      /* los toldos a rayas del mercado, al fondo a la derecha */
-      [[1960, "#ef5350"], [2200, "#43a047"], [2440, "#fb8c00"]].forEach(tp => {
-        const x = tp[0], c = tp[1];
-        s += `<g opacity=".75">
-            <rect x="${x + 8}" y="330" width="10" height="120" fill="#6d4c41"/><rect x="${x + 150}" y="330" width="10" height="120" fill="#6d4c41"/>
-            <path d="M${x - 10} 330 L${x + 12} 270 L${x + 156} 270 L${x + 178} 330 Z" fill="${c}"/>
-            ${[0, 1, 2].map(i => `<path d="M${x + 14 + i * 46} 330 L${x + 26 + i * 44} 270 L${x + 48 + i * 44} 270 L${x + 40 + i * 46} 330 Z" fill="#fff" opacity=".9"/>`).join("")}
-            <path d="M${x - 10} 330 Q${x + 84} 350 ${x + 178} 330 L${x + 178} 338 Q${x + 84} 358 ${x - 10} 338 Z" fill="${c}"/>
-          </g>`;
+      /* ---------- LOS BANCALES: caballones de tierra con sus surcos ---------- */
+      const bancal = (x0, x1, y, alto) => {
+        const mx = ((x0 + x1) / 2).toFixed(0), h = alto * 1.9, ab = (y + h).toFixed(0);
+        let o = `<path d="M${x0 - 16} ${(y + h * .5).toFixed(0)} Q${mx} ${(y + h * .1).toFixed(0)} ${x1 + 16} ${(y + h * .5).toFixed(0)} Q${mx} ${(y + h * 1.25).toFixed(0)} ${x0 - 16} ${(y + h * .5).toFixed(0)} Z" fill="#5f8c33" opacity=".55"/>
+          <path d="M${x0} ${y} Q${mx} ${(y - alto * .55).toFixed(0)} ${x1} ${y} L${x1} ${ab} Q${mx} ${(y + h * .72).toFixed(0)} ${x0} ${ab} Z" fill="url(#frtXTierra)"/>
+          <path d="M${x0} ${y} Q${mx} ${(y - alto * .55).toFixed(0)} ${x1} ${y} L${x1} ${(y + alto * .5).toFixed(0)} Q${mx} ${(y - alto * .05).toFixed(0)} ${x0} ${(y + alto * .5).toFixed(0)} Z" fill="#b08957"/>`;
+        for (let x = x0 + 40; x < x1 - 30; x += 88) o += `<path d="M${x} ${(y + alto * .95).toFixed(0)} q24 -10 48 0" stroke="rgba(60,36,22,.35)" stroke-width="5" fill="none" stroke-linecap="round"/>`;
+        for (let x = x0 + 24; x < x1 - 20; x += 116) o += `<ellipse cx="${x}" cy="${(y + alto * .3).toFixed(0)}" rx="17" ry="7" fill="#8d6144" opacity=".7"/>`;
+        return o;
+      };
+      /* cada bancal cae justo debajo de sus verduras, para que ninguna quede en el aire */
+      s += bancal(1400, 1900, 528, 34) + bancal(300, 620, 576, 30) + bancal(940, 1300, 612, 36)
+        + bancal(1640, 1920, 648, 34) + bancal(820, 1000, 758, 36) + bancal(1220, 1480, 758, 38)
+        + bancal(60, 700, 810, 42) + bancal(620, 900, 924, 46) + bancal(1100, 1320, 920, 44) + bancal(1520, 1800, 908, 46);
+      /* brotecitos verdes asomando por los caballones */
+      for (let i = 0; i < 26; i++) {
+        const x = 70 + az() * 1840, y = [536, 584, 620, 656, 766, 818, 930][Math.floor(az() * 7)];
+        if (!libre(x - 12, y - 26, 24, 28)) continue;
+        s += `<path d="M${x.toFixed(0)} ${y} q-7 -15 -14 -19 M${x.toFixed(0)} ${y} q0 -19 3 -25 M${x.toFixed(0)} ${y} q8 -14 15 -18" stroke="#7cb342" stroke-width="4" fill="none" stroke-linecap="round"/>`;
+      }
+      /* ---------- EL RIEGO POR GOTEO: mangueras y gotas ---------- */
+      [[60, 700, 806, 8], [940, 1300, 608, 10], [1640, 1920, 644, 9]].forEach((g, i) => {
+        s += `<path d="M${g[0]} ${g[2]} H${g[1]}" stroke="#37474f" stroke-width="6" stroke-linecap="round" opacity=".8"/>`;
+        for (let x = g[0] + 60; x < g[1] - 40; x += 150) {
+          if (!libre(x - 6, g[2], 12, 26)) continue;
+          s += `<path d="M${x} ${g[2] + 8} q-4 9 0 13 q5 -3 0 -13 Z" fill="#4fc3f7"><animate attributeName="opacity" values="1;.15;1" dur="${(1.6 + (x % 5) * .2).toFixed(1)}s" repeatCount="indefinite"/></path>`;
+        }
       });
-      /* una abeja dando su paseo por todo el mapa */
-      s += `<g><ellipse rx="10" ry="7" fill="#fdd835"/><path d="M-6 -3 L6 -3 M-7 1 L7 1 M-5 5 L5 5" stroke="#3e2723" stroke-width="2.4"/><ellipse cx="0" cy="-9" rx="7" ry="5" fill="rgba(255,255,255,.75)"/><circle cx="9" cy="-2" r="3" fill="#3e2723"/>
-          <animateMotion dur="46s" repeatCount="indefinite" rotate="auto" path="M 300 500 Q 700 380 1100 480 Q 1500 570 1900 460 Q 2250 380 2500 480 Q 2300 620 1800 560 Q 1200 500 700 600 Q 450 640 300 500"/></g>`;
-      /* mariposa lenta cerca del frutal */
-      s += `<g opacity=".9"><path d="M0 0 Q-12 -14 -20 -4 Q-24 4 -12 6 Z" fill="#ab47bc"/><path d="M0 0 Q12 -14 20 -4 Q24 4 12 6 Z" fill="#ce93d8"/><rect x="-1.6" y="-6" width="3.2" height="14" rx="1.6" fill="#4e342e"/>
-          <animateMotion dur="30s" repeatCount="indefinite" path="M 1250 760 Q 1400 680 1550 740 Q 1650 790 1500 820 Q 1330 840 1250 760"/></g>`;
+      /* ---------- LAS ALAMBRADAS DE LAS TOMATERAS ---------- */
+      [[318, 462], [1660, 1900]].forEach(a => {
+        s += `<g><rect x="${a[0]}" y="${a[0] < 500 ? 508 : 560}" width="9" height="${a[0] < 500 ? 150 : 100}" rx="4" fill="#a97f52"/>
+          <rect x="${a[1]}" y="${a[0] < 500 ? 508 : 560}" width="9" height="${a[0] < 500 ? 150 : 100}" rx="4" fill="#a97f52"/>
+          <g stroke="#8d9aa6" stroke-width="3">${[0, 1, 2].map(i => `<path d="M${a[0]} ${(a[0] < 500 ? 528 : 578) + i * 34} H${a[1] + 9}"/>`).join("")}</g>
+          <g stroke="#7cb342" stroke-width="4" fill="none">${[0, 1, 2, 3].map(i => `<path d="M${a[0] + 26 + i * ((a[1] - a[0]) / 4)} ${a[0] < 500 ? 654 : 656} q-9 -40 4 -80 q10 -30 2 -56"/>`).join("")}</g></g>`;
+      });
+      /* ---------- EL ESPANTAPÁJAROS, QUE SALUDA ---------- */
+      s += `<g><rect x="990" y="700" width="12" height="200" rx="5" fill="#a97f52"/>
+        <rect x="944" y="736" width="106" height="10" rx="5" fill="#a97f52"/>
+        <g><animateTransform attributeName="transform" type="rotate" values="-2 996 700;2 996 700;-2 996 700" dur="6s" repeatCount="indefinite"/>
+        <path d="M962 742 h70 l12 84 h-94 Z" fill="#e57373"/>
+        <path d="M962 742 h70 l3 20 h-76 Z" fill="#ef9a9a"/>
+        <circle cx="996" cy="700" r="30" fill="#f5d76e"/>
+        <path d="M964 692 q32 -26 64 0 q-4 -16 -32 -18 q-28 2 -32 18 Z" fill="#c8a24a"/>
+        <path d="M960 694 h72 v9 h-72 Z" fill="#c8a24a"/>
+        <g fill="#5d4037"><circle cx="986" cy="700" r="3.4"/><circle cx="1006" cy="700" r="3.4"/></g>
+        <path d="M986 712 q10 8 20 0" stroke="#5d4037" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <g stroke="#c8a24a" stroke-width="4" stroke-linecap="round"><path d="M948 746 l-12 12 M948 752 l-14 4 M1046 746 l12 12 M1046 752 l14 4"/></g></g></g>`;
+      /* ---------- EL MERCADO: paradas, mostradores y el carro de cajas ---------- */
+      s += `<path d="M1940 796 H2620 V1100 H1940 Z" fill="#cdbb96"/>
+        <g stroke="rgba(255,255,255,.35)" stroke-width="3">${[856, 926, 996, 1066].map(y => `<path d="M1940 ${y} H2620"/>`).join("")}${[2060, 2190, 2320, 2450, 2580].map(x => `<path d="M${x} 800 V1100"/>`).join("")}</g>`;
+      [[1952, "#ef5350", 430], [2200, "#43a047", 448], [2416, "#fb8c00", 424]].forEach(tp => {
+        const x = tp[0], c = tp[1], y = tp[2];
+        s += `<g><rect x="${x + 12}" y="${y}" width="10" height="${796 - y}" fill="#8d6e63"/><rect x="${x + 178}" y="${y}" width="10" height="${796 - y}" fill="#8d6e63"/>
+          <path d="M${x - 8} ${y} L${x + 14} ${y - 58} L${x + 176} ${y - 58} L${x + 198} ${y} Z" fill="${c}"/>
+          ${[0, 1, 2].map(i => `<path d="M${x + 18 + i * 52} ${y} L${x + 30 + i * 50} ${y - 58} L${x + 54 + i * 50} ${y - 58} L${x + 44 + i * 52} ${y} Z" fill="#fff" opacity=".92"/>`).join("")}
+          <path d="M${x - 8} ${y} Q${x + 92} ${y + 22} ${x + 198} ${y} L${x + 198} ${y + 10} Q${x + 92} ${y + 32} ${x - 8} ${y + 10} Z" fill="${c}"/></g>`;
+      });
+      /* los mostradores donde se apoyan la balanza, el zumo y la parada del arcoíris */
+      [[1948, 668, 252], [2150, 822, 176], [2372, 660, 216]].forEach(m => {
+        s += `<g><rect x="${m[0]}" y="${m[1]}" width="${m[2]}" height="18" rx="6" fill="#c8a24a"/>
+          <rect x="${m[0] + 8}" y="${m[1] + 18}" width="${m[2] - 16}" height="${m[1] < 700 ? 96 : 74}" rx="4" fill="#a97f52"/>
+          <g stroke="rgba(255,255,255,.28)" stroke-width="3">${[0, 1, 2].map(i => `<path d="M${m[0] + 8} ${m[1] + 40 + i * 22} h${m[2] - 16}"/>`).join("")}</g></g>`;
+      });
+      /* las cajas de fruta apiladas y el carro del hortelano */
+      const caja = (x, y, w, h, c) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="4" fill="#c8a24a"/><rect x="${x + 5}" y="${y + 5}" width="${w - 10}" height="${(h - 10).toFixed(0)}" rx="3" fill="${c}"/>`;
+      s += caja(1962, 786, 74, 44, "#ef5350") + caja(2044, 786, 74, 44, "#66bb6a") + caja(2004, 742, 74, 44, "#ffb300");
+      s += `<g><rect x="2300" y="800" width="182" height="20" rx="7" fill="#8d6e63"/>
+        <path d="M2312 820 h158 l-12 46 h-134 Z" fill="#a97f52"/>
+        <circle cx="2338" cy="878" r="26" fill="#6d4c41"/><circle cx="2338" cy="878" r="10" fill="#a97f52"/>
+        <circle cx="2450" cy="878" r="26" fill="#6d4c41"/><circle cx="2450" cy="878" r="10" fill="#a97f52"/>
+        <path d="M2300 810 q-34 -8 -52 -32" stroke="#8d6e63" stroke-width="9" fill="none" stroke-linecap="round"/>
+        ${caja(2318, 756, 66, 44, "#ab47bc")}${caja(2396, 756, 66, 44, "#ffee58")}</g>`;
+      /* ---------- LA REGADERA Y LOS BICHITOS AMIGOS ---------- */
+      s += `<g transform="translate(96 596)">
+        <path d="M18 22 L74 22 L70 66 Q46 74 22 66 Z" fill="#78909c"/>
+        <path d="M26 22 Q46 2 66 22" stroke="#607d8b" stroke-width="7" fill="none"/>
+        <path d="M18 30 L-6 12 L-2 6 L22 24 Z" fill="#78909c"/><circle cx="-6" cy="9" r="7" fill="#90a4ae"/>
+        ${[[-16, 26], [-24, 40], [-10, 44]].map(g => `<path d="M${g[0]} ${g[1]} q-2 8 2 10 q5 -2 2 -10 Z" fill="#4fc3f7"><animate attributeName="opacity" values="1;.2;1" dur="1.6s" repeatCount="indefinite"/></path>`).join("")}</g>`;
+      const abeja = `<ellipse rx="10" ry="7" fill="#fdd835"/><path d="M-6 -3 L6 -3 M-7 1 L7 1 M-5 5 L5 5" stroke="#3e2723" stroke-width="2.4"/><ellipse cx="0" cy="-9" rx="7" ry="5" fill="rgba(255,255,255,.75)"/><circle cx="9" cy="-2" r="3" fill="#3e2723"/>`;
+      s += `<g>${abeja}<animateMotion dur="48s" repeatCount="indefinite" rotate="auto" path="M 300 500 Q 700 400 1100 486 Q 1500 566 1880 470 Q 2200 396 2480 486 Q 2260 616 1800 566 Q 1200 508 700 604 Q 450 640 300 500"/></g>`;
+      [[660, 692], [1460, 604]].forEach(b => s += `<g transform="translate(${b[0]} ${b[1]})">${abeja}</g>`);
+      [[1240, 780, "M 1250 762 Q 1400 686 1548 744 Q 1646 794 1498 824 Q 1330 842 1250 762", 32],
+        [2100, 350, "M 2100 350 Q 2230 300 2340 356 Q 2400 392 2300 412 Q 2160 424 2100 350", 26]].forEach(m => {
+        s += `<g opacity=".92"><path d="M0 0 Q-13 -15 -21 -4 Q-25 5 -12 7 Z" fill="#ab47bc"/><path d="M0 0 Q13 -15 21 -4 Q25 5 12 7 Z" fill="#ce93d8"/>
+          <rect x="-1.6" y="-6" width="3.2" height="15" rx="1.6" fill="#4e342e"/>
+          <animateMotion dur="${m[3]}s" repeatCount="indefinite" path="${m[2]}"/></g>`;
+      });
+      /* unas piedras y la hierba del primer plano */
+      for (let i = 0; i < 9; i++) {
+        const x = 120 + az() * 1700, y = 1010 + az() * 60;
+        s += `<ellipse cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" rx="${(9 + az() * 9).toFixed(0)}" ry="${(6 + az() * 5).toFixed(0)}" fill="#8d8378" opacity=".6"/>`;
+      }
+      for (let x = 40; x < 1940; x += 96) {
+        s += `<path d="M${x} 1082 q-7 -20 -14 -25 M${x} 1082 q0 -24 3 -31 M${x} 1082 q9 -19 17 -23" stroke="#5f9b30" stroke-width="4.5" fill="none" stroke-linecap="round"/>`;
+      }
       return decoSvg(s, 2600);
     }
   }

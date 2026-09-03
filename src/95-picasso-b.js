@@ -321,7 +321,7 @@ Object.assign(THEMES.picasso.content, {
   /* ---------- MAPA DE EXPLORACIÓN ---------- */
   explore: {
     width: 2600, height: 1100, stars: false,
-    bgCss: "linear-gradient(180deg,#e9f0f8 0%,#f7e8ee 55%,#f6f2e9 100%)",
+    bgCss: "linear-gradient(180deg,#eaf0f7 0%,#f5e9ee 46%,#f3eee2 76%,#e2d7c6 100%)",
     cats: [
       { id: "periodos", emoji: "🎨", x: 120, name: { es: "Los colores de su vida", ca: "Els colors de la seva vida", en: "The colours of his life", cs: "Barvy jeho života", fr: "Les couleurs de sa vie" } },
       { id: "cubismo", emoji: "🔷", x: 1000, name: { es: "El cubismo", ca: "El cubisme", en: "Cubism", cs: "Kubismus", fr: "Le cubisme" } },
@@ -374,40 +374,225 @@ Object.assign(THEMES.picasso.content, {
         name: { es: "La cabra de trastos", ca: "La cabra de trastos", en: "The junk goat", cs: "Koza z krámů", fr: "La chèvre de bric-à-brac" },
         fact: { es: "Hizo una cabra de escultura con una cesta vieja de barriga. En su casa vivía una cabra de verdad: Esmeralda.", ca: "Va fer una cabra d'escultura amb una cistella vella de panxa. A casa seva hi vivia una cabra de debò: l'Esmeralda.", en: "He made a goat sculpture with an old basket for a belly. A real goat lived at his house: Esmeralda.", cs: "Vytvořil sochu kozy se starým košíkem místo břicha. U něj doma žila i skutečná koza: Esmeralda.", fr: "Il a fait une chèvre en sculpture avec un vieux panier comme ventre. Une vraie chèvre vivait chez lui : Esmeralda." } }
     ],
-    /* Tres franjas de fondo: azul, rosa y blanca con trocitos cubistas */
-    deco() {
+    /* el escenario: el taller, con la pared del fondo en tres franjas: el azul de
+       Barcelona, el rosa del circo y los planos cubistas de la buhardilla de París */
+    deco: function () {
       let s = "";
-      // franja azul (los años azules), con luna y una guitarra dormida
-      s += `<path d="M0 0 H900 L830 1100 H0 Z" fill="#3f6fae" opacity=".30"/>
-            <circle cx="620" cy="150" r="58" fill="#cfe0f2" opacity=".55"/>
-            <circle cx="600" cy="140" r="46" fill="#b7cfea" opacity=".4"/>
-            <path d="M120 640 Q150 590 210 600 Q260 610 250 660 Q240 700 180 700 Q120 695 120 640 Z" fill="#2c507e" opacity=".35"/>
-            <rect x="240" y="606" width="150" height="18" rx="9" fill="#2c507e" opacity=".35" transform="rotate(-8 240 606)"/>`;
-      // franja rosa (el circo), con carpa y banderines
-      s += `<path d="M900 0 H1790 L1850 1100 H830 Z" fill="#f2a7bb" opacity=".32"/>
-            <path d="M1150 260 L1330 260 L1240 130 Z" fill="#e88aa5" opacity=".5"/>
-            <path d="M1240 130 L1240 100 L1275 112 L1240 122 Z" fill="#d9748f" opacity=".6"/>
-            <rect x="1150" y="260" width="180" height="26" rx="8" fill="#e88aa5" opacity=".4"/>
-            <path d="M950 180 Q1100 240 1250 180 M1350 200 Q1480 260 1620 200" stroke="#e88aa5" stroke-width="5" fill="none" opacity=".45"/>
-            <path d="M1000 196 l12 22 l14 -20 M1120 212 l12 22 l14 -20 M1420 226 l12 22 l14 -20 M1530 222 l12 22 l14 -20" fill="none" stroke="#d9748f" stroke-width="5" opacity=".45"/>`;
-      // franja blanca con trocitos cubistas de colores
-      s += `<path d="M1790 0 H2600 V1100 H1850 Z" fill="#f8f4ea" opacity=".5"/>
-            <path d="M1900 150 L1960 110 L1980 180 Z" fill="#42a5f5" opacity=".5"/>
-            <path d="M2260 120 L2330 140 L2300 210 L2240 190 Z" fill="#ffca28" opacity=".5"/>
-            <path d="M2480 170 L2540 150 L2560 220 Z" fill="#ef5350" opacity=".45"/>
-            <path d="M1840 460 L1900 440 L1920 510 L1860 520 Z" fill="#ab47bc" opacity=".4"/>
-            <path d="M2500 480 L2560 450 L2580 530 Z" fill="#66bb6a" opacity=".45"/>
-            <path d="M2300 700 L2360 680 L2380 750 L2320 760 Z" fill="#42a5f5" opacity=".4"/>
-            <path d="M1880 760 L1940 740 L1960 810 Z" fill="#ffca28" opacity=".45"/>
-            <path d="M2180 240 Q2230 220 2280 240" stroke="#7cb342" stroke-width="6" fill="none" opacity=".55" stroke-linecap="round"/>
-            <ellipse cx="2200" cy="232" rx="14" ry="6" fill="#7cb342" opacity=".55" transform="rotate(-20 2200 232)"/>
-            <ellipse cx="2250" cy="224" rx="14" ry="6" fill="#7cb342" opacity=".55" transform="rotate(10 2250 224)"/>`;
-      // el suelo del taller, con dos caballetes
-      s += `<rect x="0" y="965" width="2600" height="135" fill="#8d6e63" opacity=".22"/>
-            <path d="M480 965 L520 830 L560 965 M520 830 L520 965 M488 900 L552 900" stroke="#6d4c41" stroke-width="8" fill="none" opacity=".35" stroke-linecap="round"/>
-            <rect x="472" y="828" width="96" height="66" rx="4" fill="#fff" opacity=".4"/>
-            <path d="M1600 965 L1640 830 L1680 965 M1640 830 L1640 965 M1608 900 L1672 900" stroke="#6d4c41" stroke-width="8" fill="none" opacity=".35" stroke-linecap="round"/>
-            <rect x="1592" y="828" width="96" height="66" rx="4" fill="#fff" opacity=".4"/>`;
+      /* las cajas de los puntos de interés: sirven para dejarles aire alrededor */
+      const cajas = [[140, 370, 100, 100], [380, 600, 100, 100], [580, 320, 100, 100], [290, 820, 100, 100],
+        [850, 350, 100, 100], [1080, 590, 100, 100], [1280, 310, 100, 100], [1130, 840, 100, 100],
+        [1470, 650, 100, 100], [1866, 246, 168, 168], [1730, 570, 100, 100], [2116, 436, 168, 168],
+        [2030, 810, 100, 100], [2370, 270, 100, 100], [2330, 770, 100, 100]];
+      const libre = (x, y, w, h) => !cajas.some(c => x < c[0] + c[2] + 16 && x + w > c[0] - 16 && y < c[1] + c[3] + 16 && y + h > c[1] - 16);
+      /* un montón de lienzos apoyados en la pared, de canto */
+      const pila = (x, y, w, cols) => {
+        let d = `<ellipse cx="${x + w / 2}" cy="944" rx="${w / 2 + 14}" ry="12" fill="rgba(70,48,24,.18)"/>`;
+        cols.forEach((c, i) => {
+          d += `<path d="M${x + i * 9} 944 L${x + i * 9 + 14} ${y + i * 14} L${x + w - i * 6} ${y + i * 14 + 8} L${x + w - i * 6 + 10} 944 Z" fill="${c}"/>
+            <path d="M${x + i * 9 + 14} ${y + i * 14} L${x + w - i * 6} ${y + i * 14 + 8}" stroke="rgba(80,60,36,.4)" stroke-width="3"/>`;
+        });
+        return d;
+      };
+      /* degradados propios: ids con prefijo picX para no chocar con otros mapas */
+      s += `<defs>
+        <linearGradient id="picXAzul" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5c86b8"/><stop offset="60%" stop-color="#3f6491"/><stop offset="100%" stop-color="#33507a"/></linearGradient>
+        <linearGradient id="picXRosa" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f6ccd6"/><stop offset="60%" stop-color="#eeaebe"/><stop offset="100%" stop-color="#e2919f"/></linearGradient>
+        <linearGradient id="picXOcre" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e2d6c0"/><stop offset="100%" stop-color="#c4b8a4"/></linearGradient>
+        <linearGradient id="picXSuelo" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c39a68"/><stop offset="100%" stop-color="#9a7245"/></linearGradient>
+        <linearGradient id="picXMadera" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#b9884f"/><stop offset="100%" stop-color="#8d6234"/></linearGradient>
+        <linearGradient id="picXLuz" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0%" stop-color="rgba(255,250,224,.85)"/><stop offset="100%" stop-color="rgba(255,250,224,0)"/></linearGradient>
+      </defs>`;
+      /* ---------- LA PARED DEL TALLER, EN TRES FRANJAS ---------- */
+      s += `<path d="M0 0 H900 L836 944 H0 Z" fill="url(#picXAzul)"/>
+        <path d="M900 0 H1780 L1856 944 H836 Z" fill="url(#picXRosa)"/>
+        <path d="M1780 0 H2600 V944 H1856 Z" fill="url(#picXOcre)"/>`;
+      /* ---------- LA FRANJA AZUL: los tejados y las ventanas de Barcelona ---------- */
+      const edif = [];
+      for (let i = 0; i < 8; i++) edif.push([-30 + i * 118, 566 - (142 + (i * 83) % 128), 106]);
+      let tor = "";
+      edif.forEach(b => {
+        tor += `<rect x="${b[0]}" y="${b[1]}" width="${b[2]}" height="${566 - b[1]}" rx="4"/>
+          <path d="M${b[0] - 11} ${b[1]} H${b[0] + b[2] + 11} L${b[0] + b[2] - 4} ${b[1] - 21} H${b[0] + 4} Z"/>
+          <rect x="${b[0] + b[2] - 28}" y="${b[1] - 48}" width="17" height="30" rx="3"/>`;
+      });
+      s += `<g fill="#2e5183" opacity=".55">${tor}</g>`;
+      let vent = "";
+      edif.forEach(b => {
+        for (let r = 0; r < 5; r++) for (let c = 0; c < 2; c++) {
+          const wx = b[0] + 17 + c * 52, wy = b[1] + 26 + r * 52;
+          if (wy + 34 > 556 || !libre(wx, wy, 30, 34)) continue;
+          vent += `<rect x="${wx}" y="${wy}" width="30" height="34" rx="3"/>`;
+        }
+      });
+      s += `<g fill="#a6c8e4" opacity=".45">${vent}</g>`;
+      /* los balcones de hierro, uno debajo de cada ventana que cabe */
+      let balc = "";
+      edif.forEach(b => {
+        for (let r = 0; r < 2; r++) {
+          const bx = b[0] + 12, by = b[1] + 62 + r * 104;
+          if (by + 32 > 556 || !libre(bx, by, 82, 32)) continue;
+          balc += `<rect x="${bx}" y="${by}" width="82" height="6" rx="3"/><rect x="${bx}" y="${by + 26}" width="82" height="5" rx="2"/>`;
+          for (let k = 0; k < 5; k++) balc += `<rect x="${bx + 7 + k * 17}" y="${by + 5}" width="4" height="22" rx="2"/>`;
+        }
+      });
+      s += `<g fill="#24406b" opacity=".5">${balc}</g>`;
+      /* la ropa tendida entre dos tejados y la luna colgada del cielo */
+      s += `<path d="M132 306 Q262 348 392 312" stroke="#24406b" stroke-width="4" fill="none" opacity=".5"/>`;
+      [[168, 320, 34, 46, "#cfe0f2"], [222, 330, 28, 38, "#b7cfea"], [274, 332, 32, 42, "#e6eef7"], [330, 324, 26, 34, "#c3d7ec"]].forEach(r => {
+        s += `<path d="M${r[0]} ${r[1]} h${r[2]} v${r[3]} q${-r[2] / 2} 8 ${-r[2]} 0 Z" fill="${r[4]}" opacity=".65"/>`;
+      });
+      s += `<path d="M770 130 a46 46 0 1 0 0 92 a70 70 0 0 1 0 -92 Z" fill="#e4eefa" opacity=".9"/>
+        <g fill="#cfe0f2" opacity=".5"><circle cx="182" cy="182" r="6"/><circle cx="318" cy="128" r="5"/><circle cx="470" cy="204" r="6"/><circle cx="630" cy="150" r="5"/><circle cx="856" cy="256" r="5"/></g>`;
+      /* ---------- LA FRANJA ROSA: la carpa del circo, las guirnaldas y la pista ---------- */
+      s += `<path d="M950 646 Q1002 452 1150 236 Q1298 452 1350 646 Z" fill="#e0879e"/>`;
+      [[-160, -96], [-56, -30], [46, 34], [148, 100]].forEach(t => {
+        s += `<path d="M1150 236 L${1216 + t[0]} 646 L${1268 + t[1]} 646 Z" fill="#fdf4ef" opacity=".92"/>`;
+      });
+      s += `<path d="M950 646 Q1002 452 1150 236 Q1298 452 1350 646 Z" fill="none" stroke="#c25f7a" stroke-width="6"/>
+        <path d="M946 646 q26 26 52 0 q26 26 52 0 q26 26 52 0 q26 26 52 0 q26 26 52 0 q26 26 52 0 q26 26 52 0 q26 26 46 0 L1354 664 L946 664 Z" fill="#c25f7a"/>
+        <path d="M1046 470 Q1150 434 1254 470" stroke="#c25f7a" stroke-width="5" fill="none"/>`;
+      s += `<path d="M1104 646 V548 Q1150 512 1196 548 V646 Z" fill="#8d5b6c"/>
+        <rect x="1146" y="192" width="9" height="50" rx="4" fill="#c98da0"/>
+        <path d="M1155 198 L1204 210 L1155 224 Z" fill="#e0879e"><animate attributeName="d" values="M1155 198 L1204 210 L1155 224 Z;M1155 198 L1198 218 L1155 224 Z;M1155 198 L1204 210 L1155 224 Z" dur="4.5s" repeatCount="indefinite"/></path>`;
+      [[1108, 1], [1192, -1]].forEach(c => {
+        s += `<g><animateTransform attributeName="transform" type="rotate" values="${-1.6 * c[1]} ${c[0]} 552;${1.6 * c[1]} ${c[0]} 552;${-1.6 * c[1]} ${c[0]} 552" dur="8s" repeatCount="indefinite"/>
+          <path d="M${c[0]} 552 q${14 * c[1]} 46 ${4 * c[1]} 94 L${c[0] + 24 * c[1]} 646 L${c[0] + 22 * c[1]} 552 Z" fill="#e0879e"/></g>`;
+      });
+      [[928, 172, 1782, 148, 108], [962, 250, 1758, 228, 96]].forEach((g, k) => {
+        let fl = "";
+        for (let i = 1; i < 12; i++) {
+          const t = i / 12, mt = 1 - t;
+          const px = mt * mt * g[0] + 2 * mt * t * ((g[0] + g[2]) / 2) + t * t * g[2];
+          const py = mt * mt * g[1] + 2 * mt * t * (g[1] + g[4]) + t * t * g[3];
+          if (!libre(px - 14, py, 28, 34)) continue;
+          fl += `<path d="M${(px - 13).toFixed(0)} ${py.toFixed(0)} H${(px + 13).toFixed(0)} L${px.toFixed(0)} ${(py + 32).toFixed(0)} Z" fill="${["#e0879e", "#f6d089", "#fdfaf4", "#c8a2c8"][i % 4]}"/>`;
+        }
+        s += `<g><animateTransform attributeName="transform" type="translate" values="0 0;0 ${7 + k * 4};0 0" dur="${8 + k * 2}s" repeatCount="indefinite"/>
+          <path d="M${g[0]} ${g[1]} Q${((g[0] + g[2]) / 2).toFixed(0)} ${g[1] + g[4]} ${g[2]} ${g[3]}" stroke="#d9748f" stroke-width="5" fill="none"/>${fl}</g>`;
+      });
+      /* ---------- LA FRANJA CUBISTA: los planos de París y la buhardilla ---------- */
+      s += `<g opacity=".4">
+        <path d="M1822 58 L2142 18 L2262 300 L1902 342 Z" fill="#bda683"/>
+        <path d="M2142 18 L2600 88 L2542 382 L2212 320 Z" fill="#8f9ba3"/>
+        <path d="M1858 342 L2212 300 L2322 640 L1932 700 Z" fill="#cbb694"/>
+        <path d="M2262 330 L2600 400 L2600 722 L2332 660 Z" fill="#a4aaa6"/>
+        <path d="M1902 660 L2282 620 L2342 944 L1900 944 Z" fill="#c0aa8c"/>
+        <path d="M2302 640 L2600 700 L2600 944 L2362 944 Z" fill="#9ba29c"/></g>
+        <g stroke="rgba(72,62,48,.32)" stroke-width="3" fill="none">
+        <path d="M1858 342 H2600 M1902 660 H2600 M2142 18 L2212 300 L2332 660 L2362 944 M2262 300 L2600 400 M1900 944 L2282 620"/></g>`;
+      s += `<rect x="2066" y="106" width="180" height="200" rx="6" fill="#dbe8f2"/>
+        <path d="M2072 300 V254 L2108 214 L2148 250 L2190 206 L2240 252 V300 Z" fill="#8ea3b4"/>
+        <g fill="#75899a"><rect x="2096" y="222" width="12" height="22" rx="2"/><rect x="2180" y="212" width="12" height="24" rx="2"/><rect x="2226" y="240" width="11" height="20" rx="2"/></g>
+        <rect x="2066" y="106" width="180" height="200" rx="6" fill="none" stroke="#8a7a62" stroke-width="12"/>
+        <path d="M2156 112 V300 M2072 206 H2240" stroke="#8a7a62" stroke-width="8"/>`;
+      /* la luz que entra por el ventanal y cruza el taller */
+      s += `<path d="M2076 312 L2236 312 L2060 944 L1668 944 Z" fill="url(#picXLuz)" opacity=".3"><animate attributeName="opacity" values=".3;.15;.3" dur="12s" repeatCount="indefinite"/></path>`;
+      [[2020, 520, 9], [1930, 700, 11], [1836, 860, 13]].forEach(d => {
+        s += `<circle cx="${d[0]}" cy="${d[1]}" r="6" fill="rgba(255,250,214,.75)"><animateTransform attributeName="transform" type="translate" values="0 0;-22 -34;0 0" dur="${d[2]}s" repeatCount="indefinite"/></circle>`;
+      });
+      /* ---------- EL SUELO DEL TALLER ---------- */
+      s += `<rect x="0" y="912" width="2600" height="32" fill="rgba(60,40,18,.18)"/>
+        <rect x="0" y="944" width="2600" height="156" fill="url(#picXSuelo)"/>
+        <rect x="0" y="936" width="2600" height="14" fill="#7d5a34"/>`;
+      for (let x = -40; x < 2660; x += 104) s += `<line x1="${x}" y1="950" x2="${x - 36}" y2="1100" stroke="rgba(84,54,26,.22)" stroke-width="3"/>`;
+      s += `<ellipse cx="1330" cy="1022" rx="358" ry="60" fill="#e2c694"/>
+        <ellipse cx="1330" cy="1022" rx="358" ry="60" fill="none" stroke="#d9748f" stroke-width="10"/>
+        <ellipse cx="1330" cy="1022" rx="300" ry="46" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="6"/>`;
+      /* el serrín de la pista, esparcido a manotazos */
+      let ser = "";
+      for (let i = 0; i < 22; i++) {
+        const a = i * 1.7, rr = 40 + (i * 53) % 250;
+        ser += `<ellipse cx="${(1330 + rr * Math.cos(a)).toFixed(0)}" cy="${(1022 + rr * 0.17 * Math.sin(a)).toFixed(0)}" rx="${8 + i % 5}" ry="${3 + i % 3}"/>`;
+      }
+      s += `<g fill="rgba(180,140,84,.3)">${ser}</g>`;
+      /* las salpicaduras de pintura de tantos años de taller */
+      [[196, 1016, "#3f6491"], [520, 1062, "#e0879e"], [880, 1004, "#c9b03f"], [1656, 1046, "#3f6491"],
+        [2072, 1004, "#e0879e"], [2440, 1058, "#7d5a34"]].forEach(p => {
+        s += `<ellipse cx="${p[0]}" cy="${p[1]}" rx="28" ry="12" fill="${p[2]}" opacity=".34"/><circle cx="${p[0] + 32}" cy="${p[1] + 13}" r="7" fill="${p[2]}" opacity=".3"/>`;
+      });
+      /* ---------- LOS APOYOS: caballetes, baldas, mesas y peanas ---------- */
+      /* el caballete del cuadro azul */
+      s += `<path d="M146 492 L134 944 M252 492 L262 944" stroke="url(#picXMadera)" stroke-width="15" stroke-linecap="round"/>
+        <path d="M142 720 H258" stroke="#a97b45" stroke-width="10"/>
+        <rect x="112" y="474" width="176" height="20" rx="7" fill="#8d6234"/>`;
+      /* la pila de lienzos y el tablón donde descansa el cuadro rosa */
+      s += pila(404, 730, 132, ["#e8dcc4", "#d8c8ac", "#c9b697"]);
+      s += `<rect x="372" y="704" width="170" height="18" rx="6" fill="#8d6234"/>`;
+      /* la balda del autorretrato de niño */
+      s += `<rect x="556" y="424" width="188" height="18" rx="6" fill="#8d6234"/>
+        <path d="M572 442 L590 470 H572 Z M728 442 L710 470 H728 Z" fill="#7d5a34"/>`;
+      /* el banco bajo de los pinceles */
+      s += `<rect x="258" y="924" width="146" height="18" rx="6" fill="#a97b45"/>
+        <rect x="268" y="938" width="12" height="14" rx="4" fill="#8d6234"/><rect x="382" y="938" width="12" height="14" rx="4" fill="#8d6234"/>`;
+      /* la balda del retrato de ojos bailones */
+      s += `<rect x="836" y="454" width="146" height="18" rx="6" fill="#8d6234"/>
+        <path d="M852 472 L868 498 H852 Z M966 472 L950 498 H966 Z" fill="#7d5a34"/>`;
+      /* la mesa larga de la guitarra */
+      s += `<rect x="1052" y="694" width="234" height="18" rx="6" fill="#a97b45"/>
+        <rect x="1060" y="712" width="16" height="232" rx="6" fill="#8d6234"/><rect x="1256" y="712" width="16" height="232" rx="6" fill="#8d6234"/>
+        <rect x="1060" y="812" width="212" height="10" rx="4" fill="#8d6234"/>`;
+      /* la balda del violín */
+      s += `<rect x="1266" y="414" width="142" height="18" rx="6" fill="#8d6234"/>
+        <path d="M1282 432 L1298 458 H1282 Z M1392 432 L1376 458 H1392 Z" fill="#7d5a34"/>`;
+      /* la peana del toro */
+      s += `<rect x="1462" y="754" width="124" height="190" rx="6" fill="url(#picXMadera)"/>
+        <rect x="1452" y="754" width="144" height="18" rx="6" fill="#8d6234"/>
+        <rect x="1476" y="800" width="96" height="112" rx="4" fill="rgba(255,255,255,.18)"/>`;
+      /* la mesita del ramo */
+      s += `<rect x="1706" y="674" width="152" height="18" rx="6" fill="#a97b45"/>
+        <rect x="1714" y="692" width="14" height="252" rx="6" fill="#8d6234"/><rect x="1836" y="692" width="14" height="252" rx="6" fill="#8d6234"/>`;
+      /* la viga donde se posa la paloma */
+      s += `<rect x="1780" y="418" width="310" height="20" rx="7" fill="#a97b45"/>
+        <path d="M1796 438 L1816 470 H1796 Z" fill="#7d5a34"/>`;
+      /* el caballete grande del mural */
+      s += `<path d="M2140 630 L2170 944 M2270 630 L2296 944" stroke="url(#picXMadera)" stroke-width="16" stroke-linecap="round"/>
+        <path d="M2178 800 H2288" stroke="#a97b45" stroke-width="10"/>
+        <rect x="2098" y="608" width="204" height="22" rx="8" fill="#8d6234"/>`;
+      /* la peana de la cerámica */
+      s += `<rect x="2010" y="914" width="140" height="16" rx="6" fill="#a97b45"/>
+        <rect x="2044" y="930" width="72" height="16" rx="4" fill="#8d6234"/>`;
+      /* la balda del niño con la paloma */
+      s += `<rect x="2356" y="374" width="140" height="18" rx="6" fill="#8d6234"/>
+        <path d="M2372 392 L2388 418 H2372 Z M2480 392 L2464 418 H2480 Z" fill="#7d5a34"/>`;
+      /* el pedestal de la cabra */
+      s += `<rect x="2318" y="874" width="132" height="70" rx="5" fill="url(#picXMadera)"/>
+        <rect x="2308" y="874" width="152" height="16" rx="6" fill="#8d6234"/>`;
+      /* ---------- LOS TRASTOS DEL TALLER ---------- */
+      s += pila(628, 742, 168, ["#efe6d2", "#ddd0b6", "#cbbb9c", "#bcaa8b"]);
+      s += pila(1602, 796, 104, ["#e6dcc6", "#d2c3a6"]);
+      /* el taburete de siempre */
+      s += `<ellipse cx="952" cy="944" rx="58" ry="11" fill="rgba(70,48,24,.18)"/>
+        <ellipse cx="952" cy="852" rx="52" ry="16" fill="#a97b45"/>
+        <path d="M910 860 L918 940 M994 860 L986 940 M952 862 V942" stroke="#8d6234" stroke-width="9" stroke-linecap="round"/>
+        <path d="M916 900 H988" stroke="#8d6234" stroke-width="7"/>`;
+      /* botes de pintura y una paleta apoyada en el suelo */
+      [[1738, "#3f6491"], [1774, "#e0879e"], [1806, "#c9b03f"]].forEach(b => {
+        s += `<rect x="${b[0]}" y="890" width="30" height="54" rx="5" fill="#cfc6b4"/><rect x="${b[0]}" y="902" width="30" height="42" rx="4" fill="${b[1]}"/>`;
+      });
+      s += `<g transform="translate(712 916) rotate(-10)"><ellipse rx="56" ry="36" fill="#c9a06a"/><ellipse cx="20" cy="-6" rx="13" ry="10" fill="#a97b45"/>
+        <circle cx="-32" cy="-13" r="9" fill="#3f6491"/><circle cx="-14" cy="-24" r="8" fill="#e0879e"/><circle cx="6" cy="-25" r="7" fill="#c9b03f"/>
+        <circle cx="-36" cy="9" r="8" fill="#7d5a34"/><circle cx="-16" cy="15" r="7" fill="#2b2b2b"/></g>
+        <g transform="translate(1988 918) rotate(6)"><rect x="-46" y="-8" width="92" height="16" rx="6" fill="#8d6234"/>
+        <path d="M-46 0 L-72 -4 L-72 4 Z" fill="#a97b45"/></g>
+        <ellipse cx="1450" cy="990" rx="70" ry="12" fill="rgba(70,48,24,.16)"/>
+        <path d="M1408 990 A44 44 0 1 1 1496 990" fill="none" stroke="#d9748f" stroke-width="9"/>`;
+      /* la pelota de rayas del circo, parada en la pista */
+      s += `<ellipse cx="1178" cy="1042" rx="38" ry="9" fill="rgba(70,48,24,.16)"/>
+        <circle cx="1178" cy="1006" r="34" fill="#fdfaf4"/>
+        <path d="M1150 990 q28 -10 56 0 M1145 1008 q33 -10 66 0 M1152 1026 q26 8 52 0" stroke="#e0879e" stroke-width="9" fill="none" stroke-linecap="round"/>
+        <circle cx="1178" cy="1006" r="34" fill="none" stroke="#d9748f" stroke-width="3"/>`;
+      /* tres marcos vacíos esperando cuadro, uno por franja */
+      [[300, 176, 124, 142, "#8d6234"], [1424, 300, 136, 162, "#a97b45"], [2404, 560, 136, 140, "#7d5a34"]].forEach(f => {
+        s += `<rect x="${f[0]}" y="${f[1]}" width="${f[2]}" height="${f[3]}" rx="4" fill="none" stroke="${f[4]}" stroke-width="13"/>
+          <rect x="${f[0] + 12}" y="${f[1] + 12}" width="${f[2] - 24}" height="${f[3] - 24}" rx="3" fill="rgba(255,255,255,.16)"/>
+          <path d="M${f[0] + f[2] / 2} ${f[1]} V${f[1] - 22}" stroke="${f[4]}" stroke-width="4"/>
+          <circle cx="${f[0] + f[2] / 2}" cy="${f[1] - 26}" r="5" fill="#7d5a34"/>`;
+      });
+      /* un rollo de lienzo y unos cartones apoyados en el rincón */
+      s += `<ellipse cx="2528" cy="944" rx="40" ry="10" fill="rgba(70,48,24,.18)"/>
+        <path d="M2500 944 L2516 762 L2548 760 L2556 944 Z" fill="#ddd0b6" stroke="rgba(80,60,36,.4)" stroke-width="3"/>
+        <ellipse cx="2532" cy="761" rx="17" ry="7" fill="#bdad8d"/>
+        <path d="M2472 944 L2492 812 L2510 814 L2504 944 Z" fill="#c9b697" stroke="rgba(80,60,36,.4)" stroke-width="3"/>`;
       return decoSvg(s, 2600);
     }
   },

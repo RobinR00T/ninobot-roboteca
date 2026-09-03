@@ -374,71 +374,245 @@ Object.assign(THEMES.piratas.content, {
     ],
     /* El paisaje: mar con olas, barco pirata de madera, isla con
        playa, palmeras y montaña, y cielo con gaviotas y sol. */
+    /* El paisaje: cielo con nubes y gaviotas, el barco de madera amarrado al
+       muelle, la isla del tesoro con su cala y sus cuevas, un mapa antiguo
+       desplegado en la arena y, al fondo, la silueta de un galeón. */
     deco: function () {
       let s = "";
-      // sol con resplandor
-      s += `<circle cx="200" cy="160" r="70" fill="rgba(255,238,88,.9)"/>
-            <circle cx="200" cy="160" r="115" fill="rgba(255,238,88,.22)"/>`;
-      // nubes
-      s += `<g fill="rgba(255,255,255,.85)">
-            <ellipse cx="900" cy="150" rx="95" ry="32"/><ellipse cx="975" cy="128" rx="65" ry="26"/>
-            <ellipse cx="2080" cy="170" rx="100" ry="34"/><ellipse cx="2160" cy="148" rx="66" ry="26"/>
-            <ellipse cx="1560" cy="120" rx="80" ry="26"/></g>`;
-      // gaviotas
-      const gull = (x, y, k) => `<path d="M${x - 24 * k} ${y} Q${x - 12 * k} ${y - 15 * k} ${x} ${y} Q${x + 12 * k} ${y - 15 * k} ${x + 24 * k} ${y}" stroke="rgba(255,255,255,.95)" stroke-width="${4.5 * k}" fill="none" stroke-linecap="round"/>`;
-      s += gull(820, 260, 1) + gull(920, 210, 0.75) + gull(1720, 240, 1) + gull(1810, 190, 0.7) + gull(2330, 250, 0.9);
-      // mar de fondo con cresta clara
-      s += `<rect x="0" y="700" width="2600" height="400" fill="#0288d1"/>
-            <rect x="0" y="920" width="2600" height="180" fill="#01579b"/>
-            <path d="M0 706 Q110 690 220 706 T440 706 T660 706 T880 706 T1100 706 T1320 706 T1540 706 T1760 706 T1980 706 T2200 706 T2420 706 T2600 706 L2600 748 L0 748 Z" fill="#4fc3f7" opacity=".8"/>`;
-      // la isla: montaña, falda verde, arena, cueva y palmeras
-      s += `<path d="M1310 780 L1490 300 L1690 780 Z" fill="#6d4c41"/>
-            <path d="M1350 780 Q1420 640 1490 620 Q1570 640 1650 780 Z" fill="#66bb6a" opacity=".85"/>
-            <path d="M1000 830 Q1080 690 1230 665 Q1420 640 1600 665 Q1760 695 1820 830 Q1832 875 1780 885 Q1410 925 1050 885 Q995 872 1000 830 Z" fill="#f2d68a"/>
-            <ellipse cx="1620" cy="655" rx="72" ry="56" fill="#3e2723"/>
-            <ellipse cx="1620" cy="663" rx="46" ry="38" fill="#1b0f0c"/>`;
-      const palm = (x, y, k) => `<g transform="translate(${x} ${y}) scale(${k})">
-            <path d="M0 0 Q10 -60 -6 -110" stroke="#8d6e63" stroke-width="14" fill="none" stroke-linecap="round"/>
-            <g stroke="#2e7d32" stroke-width="10" fill="none" stroke-linecap="round">
-            <path d="M-6 -110 Q-50 -130 -85 -115"/><path d="M-6 -110 Q-40 -150 -75 -150"/>
-            <path d="M-6 -110 Q10 -160 45 -160"/><path d="M-6 -110 Q40 -140 75 -120"/></g>
-            <circle cx="-10" cy="-104" r="8" fill="#6d4c41"/><circle cx="4" cy="-100" r="8" fill="#6d4c41"/></g>`;
-      s += palm(1105, 700, 1) + palm(1745, 715, 0.8);
-      // el barco pirata de madera (mástiles, cofa, velas, casco)
-      s += `<rect x="514" y="150" width="12" height="500" rx="5" fill="#4e342e"/>
-            <rect x="754" y="300" width="10" height="350" rx="5" fill="#4e342e"/>
-            <path d="M520 165 L925 628 M520 165 L195 605" stroke="rgba(236,239,241,.45)" stroke-width="3"/>
-            <path d="M482 316 h76 l-12 36 h-52 Z" fill="#4e342e"/>
-            <path d="M526 152 L648 168 L526 190 Z" fill="#263238"/>
-            <path d="M380 355 Q520 322 660 355 Q682 450 660 545 Q520 578 380 545 Q358 450 380 355 Z" fill="#eceff1"/>
-            <path d="M395 380 Q520 355 645 380 M395 520 Q520 545 645 520" stroke="rgba(120,144,156,.4)" stroke-width="4" fill="none"/>
-            <path d="M692 342 Q760 324 828 342 Q842 412 828 482 Q760 500 692 482 Q678 412 692 342 Z" fill="#eceff1"/>
-            <path d="M920 640 L1005 572" stroke="#4e342e" stroke-width="14" stroke-linecap="round"/>
-            <rect x="185" y="540" width="150" height="92" rx="14" fill="#6d4c41"/>
-            <rect x="170" y="616" width="780" height="26" rx="12" fill="#6d4c41"/>
-            <path d="M170 640 L950 640 L898 802 Q560 852 242 802 Q182 722 170 640 Z" fill="#5d4037"/>
-            <path d="M200 700 Q560 740 920 700" stroke="rgba(0,0,0,.2)" stroke-width="6" fill="none"/>`;
-      // ojos de buey del casco
-      [320, 470, 620, 770].forEach(x => {
-        s += `<circle cx="${x}" cy="712" r="16" fill="#ffe082" stroke="#4e342e" stroke-width="5"/>`;
+      /* las cajas de los iconos: el decorado se aparta de ellas */
+      const cajas = [[445, 110, 150, 80], [473, 248, 94, 104], [347, 310, 86, 100], [736, 299, 48, 62], [190, 520, 80, 80],
+        [564, 535, 112, 90], [1074, 708, 92, 64], [1253, 486, 94, 108], [1575, 561, 90, 78], [1452, 745, 96, 70],
+        [1313, 819, 74, 62], [1923, 629, 54, 62], [2097, 526, 106, 68], [2277, 644, 146, 72], [2114, 825, 172, 150], [2458, 719, 84, 122]];
+      const libre = (x, y, w, h) => !cajas.some(c => {
+        const mx = c[2] * .4 + 16, my = c[3] * .4 + 16;
+        return x < c[0] + c[2] + mx && x + w > c[0] - mx && y < c[1] + c[3] + my && y + h > c[1] - my;
       });
-      // olas de primer plano (tapan la base del casco y de la isla)
-      s += `<path d="M0 812 Q130 782 260 812 T520 814 T780 808 T1040 814 T1300 810 T1560 814 T1820 808 T2080 814 T2340 810 T2600 812 L2600 1100 L0 1100 Z" fill="#0277bd" opacity=".88"/>
-            <path d="M0 965 Q210 938 420 965 T840 967 T1260 961 T1680 967 T2100 961 T2520 967 L2600 963 L2600 1100 L0 1100 Z" fill="#014a7f"/>`;
-      // crestas blancas
-      [[150, 800], [630, 806], [980, 800], [1900, 802], [2260, 806], [2480, 798]].forEach(p => {
-        s += `<path d="M${p[0]} ${p[1]} q22 -12 44 0 t44 0" stroke="rgba(255,255,255,.6)" stroke-width="5" fill="none" stroke-linecap="round"/>`;
+      /* una cresta de espuma de tres lomos */
+      const cresta = (x, y, w, o) => `<path d="M${x} ${y} q${(w / 4).toFixed(0)} -${(w / 7).toFixed(0)} ${(w / 2).toFixed(0)} 0 t${(w / 2).toFixed(0)} 0" stroke="rgba(255,255,255,${o})" stroke-width="5" fill="none" stroke-linecap="round"/>`;
+      /* una gaviota de dos trazos */
+      const gaviota = (x, y, k) => `<path d="M${x - 26 * k} ${y} q${13 * k} -${16 * k} ${26 * k} 0 q${13 * k} -${16 * k} ${26 * k} 0" stroke="#fff" stroke-width="${4.6 * k}" fill="none" stroke-linecap="round"/>`;
+      /* degradados propios, con prefijo pirX para no chocar con los iconos */
+      s += `<defs>
+        <linearGradient id="pirXcielo" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#bfeafc"/><stop offset="46%" stop-color="#8ed3f6"/><stop offset="100%" stop-color="#d7f0f7"/></linearGradient>
+        <radialGradient id="pirXsol" cx="42%" cy="38%" r="60%"><stop offset="0%" stop-color="#fffdf2"/><stop offset="100%" stop-color="#ffe066"/></radialGradient>
+        <linearGradient id="pirXmarA" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7ecbee"/><stop offset="100%" stop-color="#38a5da"/></linearGradient>
+        <linearGradient id="pirXmarB" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3ea3d8"/><stop offset="100%" stop-color="#1a7fbb"/></linearGradient>
+        <linearGradient id="pirXmarC" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a76b2"/><stop offset="100%" stop-color="#0b4f80"/></linearGradient>
+        <linearGradient id="pirXcala" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#a8f0e4"/><stop offset="100%" stop-color="#4cc9c0"/></linearGradient>
+        <linearGradient id="pirXarena" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fbe6b4"/><stop offset="100%" stop-color="#e3c179"/></linearGradient>
+        <linearGradient id="pirXverde" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7cc06a"/><stop offset="100%" stop-color="#3f8a45"/></linearGradient>
+        <linearGradient id="pirXroca" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#a68c74"/><stop offset="100%" stop-color="#6b5341"/></linearGradient>
+        <linearGradient id="pirXcueva" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4a3729"/><stop offset="100%" stop-color="#241a13"/></linearGradient>
+        <linearGradient id="pirXcasco" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8b5e3c"/><stop offset="100%" stop-color="#4e3221"/></linearGradient>
+        <linearGradient id="pirXmadera" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#b98a53"/><stop offset="100%" stop-color="#7d5730"/></linearGradient>
+        <linearGradient id="pirXvela" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fffdf6"/><stop offset="100%" stop-color="#e3dcc7"/></linearGradient>
+        <linearGradient id="pirXpapel" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f6e3b6"/><stop offset="100%" stop-color="#dcc086"/></linearGradient>
+      </defs>`;
+      /* ---------- CIELO: sol, nubes en capas y gaviotas ---------- */
+      s += `<rect x="0" y="0" width="2600" height="1100" fill="url(#pirXcielo)"/>
+        <g transform="translate(196 152)"><circle r="118" fill="#ffe066" opacity=".18"><animate attributeName="r" values="118;132;118" dur="9s" repeatCount="indefinite"/></circle>
+        <circle r="86" fill="#ffe066" opacity=".22"/><circle r="62" fill="url(#pirXsol)"/><circle cx="-20" cy="-19" r="14" fill="rgba(255,255,255,.6)"/></g>`;
+      const nube = (x, y, k) => `<g transform="translate(${x} ${y}) scale(${k})" fill="#fff">
+        <ellipse cx="0" cy="0" rx="96" ry="32"/><ellipse cx="-58" cy="12" rx="52" ry="22"/><ellipse cx="56" cy="14" rx="58" ry="24"/><ellipse cx="-8" cy="-24" rx="52" ry="28"/></g>`;
+      [[880, 158, 1, .92, 66, 44], [1560, 122, .78, .82, 84, 56], [2160, 176, 1.1, .88, 54, 38], [2470, 100, .66, .7, 70, 50], [280, 320, .6, .55, 46, 34]].forEach(n => {
+        s += `<g opacity="${n[3]}"><animateTransform attributeName="transform" type="translate" values="0 0;${n[4]} 0;0 0" dur="${n[5]}s" repeatCount="indefinite"/>${nube(n[0], n[1], n[2])}</g>`;
       });
-      // las rocas de la sirena
-      s += `<ellipse cx="2505" cy="852" rx="92" ry="42" fill="#455a64"/>
-            <ellipse cx="2565" cy="872" rx="58" ry="30" fill="#37474f"/>`;
-      // burbujas del kraken
-      [[2160, 830], [2205, 790], [2245, 840], [2185, 760]].forEach(p => {
-        s += `<circle cx="${p[0]}" cy="${p[1]}" r="9" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="2.5"/>`;
+      [[880, 300, 1], [968, 252, .72], [1720, 288, .95], [1808, 236, .7], [2340, 300, .85], [1240, 236, .8]].forEach(g => {
+        if (libre(g[0] - 30 * g[2], g[1] - 20 * g[2], 60 * g[2], 30 * g[2])) s += gaviota(g[0], g[1], g[2]);
       });
-      // circulitos alrededor de la botella
-      s += `<circle cx="1950" cy="700" r="26" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="3"/>
-            <circle cx="1950" cy="700" r="44" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="3"/>`;
+      /* dos gaviotas que cruzan el cielo aleteando */
+      [[".9", "34s", "M 1040 210 Q 1600 150 2160 214 Q 2520 252 2760 200"], [".75", "44s", "M 2620 336 Q 2000 290 1420 344 Q 1000 382 700 340"]].forEach(v => {
+        s += `<g opacity="${v[0]}"><path d="M-24 0 q12 -15 24 0 q12 -15 24 0" stroke="#fff" stroke-width="4.4" fill="none" stroke-linecap="round">
+          <animate attributeName="d" values="M-24 0 q12 -15 24 0 q12 -15 24 0;M-24 0 q12 6 24 0 q12 6 24 0;M-24 0 q12 -15 24 0 q12 -15 24 0" dur="1.5s" repeatCount="indefinite"/></path>
+          <animateMotion dur="${v[1]}" repeatCount="indefinite" path="${v[2]}"/></g>`;
+      });
+      /* ---------- EL MAR EN CAPAS: fondo, medio y primer plano ---------- */
+      s += `<rect x="0" y="566" width="2600" height="534" fill="url(#pirXmarA)"/>
+        <path d="M0 566 H2600" stroke="rgba(255,255,255,.5)" stroke-width="4"/>
+        <path d="M0 742 Q160 712 320 742 T640 742 T960 742 T1280 742 T1600 742 T1920 742 T2240 742 T2600 742 L2600 1100 L0 1100 Z" fill="url(#pirXmarB)"/>
+        <path d="M0 932 Q220 896 440 932 T880 932 T1320 932 T1760 932 T2200 932 T2600 932 L2600 1100 L0 1100 Z" fill="url(#pirXmarC)"/>`;
+      /* dos islotes lejanos, para dar hondura al horizonte */
+      s += `<g opacity=".45"><path d="M756 566 Q806 512 866 566 Z" fill="#5f8a7a"/><path d="M812 566 Q858 526 906 566 Z" fill="#4d7566"/>
+        <path d="M2360 566 Q2412 520 2472 566 Z" fill="#5f8a7a"/><path d="M2440 566 Q2478 534 2520 566 Z" fill="#4d7566"/></g>`;
+      /* el camino de luz del sol sobre el agua */
+      s += `<g fill="#fff" opacity=".22"><ellipse cx="200" cy="620" rx="70" ry="7"/><ellipse cx="210" cy="664" rx="94" ry="8"/>
+        <ellipse cx="196" cy="712" rx="120" ry="9"/><ellipse cx="214" cy="770" rx="150" ry="10"/></g>`;
+      /* crestas de espuma repartidas por el mar */
+      const crestas = [[70, 626, 88, ".5"], [430, 656, 100, ".45"], [820, 620, 92, ".4"], [1180, 664, 96, ".42"],
+        [1720, 620, 104, ".45"], [2060, 656, 100, ".4"], [2380, 612, 88, ".38"], [120, 856, 130, ".4"],
+        [640, 890, 140, ".36"], [1000, 980, 150, ".34"], [1620, 962, 150, ".32"], [2020, 880, 140, ".38"], [2400, 1000, 150, ".3"]];
+      crestas.forEach(c => { if (libre(c[0], c[1] - 14, c[2], 28)) s += cresta(c[0], c[1], c[2], c[3]); });
+      /* ---------- EL GALEÓN DEL FONDO, en la neblina ---------- */
+      s += `<g opacity=".42"><animateTransform attributeName="transform" type="translate" values="0 0;38 0;0 0" dur="64s" repeatCount="indefinite"/>
+        <path d="M1908 556 L2072 556 L2054 592 Q1988 604 1926 592 Z" fill="#2f4a63"/>
+        <rect x="1938" y="452" width="7" height="104" fill="#2f4a63"/><rect x="1990" y="428" width="7" height="128" fill="#2f4a63"/><rect x="2040" y="466" width="6" height="90" fill="#2f4a63"/>
+        <path d="M1946 462 Q1978 452 1978 500 Q1978 540 1946 534 Z" fill="#2f4a63"/>
+        <path d="M1998 438 Q2036 430 2036 486 Q2036 532 1998 526 Z" fill="#2f4a63"/>
+        <path d="M1930 470 Q1908 484 1906 508" stroke="#2f4a63" stroke-width="4" fill="none"/></g>`;
+      /* ---------- LA ISLA DEL TESORO: arena, colina, palmeras, cala y cuevas ---------- */
+      s += `<path d="M932 916 Q1004 820 1128 790 L1210 786 Q1340 792 1470 830 Q1620 872 1748 872 Q1852 872 1934 908 L1934 1010 L932 1010 Z" fill="url(#pirXarena)"/>
+        <path d="M932 916 Q1004 820 1128 790 L1210 786 Q1340 792 1470 830 Q1620 872 1748 872 Q1852 872 1934 908 L1934 930 Q1820 896 1700 896 Q1560 896 1420 856 Q1300 820 1200 812 L1128 816 Q1020 844 954 930 Z" fill="#fff" opacity=".35"/>`;
+      /* la colina verde donde crece la palmera */
+      s += `<path d="M1126 818 Q1232 654 1300 606 L1350 608 Q1450 668 1544 826 Z" fill="url(#pirXverde)"/>
+        <path d="M1126 818 Q1232 654 1300 606 L1320 607 Q1250 672 1176 822 Z" fill="#8fcd78" opacity=".55"/>`;
+      s += `<g stroke="#3f8a45" stroke-width="5" fill="none" stroke-linecap="round">
+        <path d="M1188 774 q-6 -26 -18 -36 M1200 774 q0 -30 6 -42 M1212 774 q8 -24 20 -32"/>
+        <path d="M1420 786 q-6 -26 -18 -36 M1432 786 q0 -30 6 -42 M1444 786 q8 -24 20 -32"/></g>`;
+      /* el acantilado con la cueva del tesoro y una cuevita más pequeña */
+      s += `<path d="M1496 848 Q1508 620 1612 470 Q1724 552 1774 690 Q1810 792 1822 852 Z" fill="url(#pirXroca)"/>
+        <path d="M1612 470 Q1724 552 1774 690 Q1810 792 1822 852 L1742 852 Q1712 700 1652 566 Z" fill="#8a7059"/>
+        <path d="M1540 700 Q1620 676 1700 694 M1560 780 Q1650 758 1740 776" stroke="rgba(255,255,255,.18)" stroke-width="6" fill="none"/>
+        <path d="M1552 652 Q1556 542 1622 528 Q1690 544 1694 652 Z" fill="url(#pirXcueva)"/>
+        <path d="M1540 646 L1710 644 L1716 664 L1534 666 Z" fill="#8a7059"/>
+        <path d="M1758 812 Q1762 762 1792 756 Q1820 764 1822 812 Z" fill="url(#pirXcueva)"/>`;
+      /* la cala de agua clara, al costado de la isla */
+      s += `<path d="M1780 884 Q1892 856 1990 884 Q2060 906 2036 950 Q1930 986 1830 962 Q1758 940 1780 884 Z" fill="url(#pirXcala)"/>
+        <path d="M1830 908 q26 -12 52 0 M1900 936 q26 -12 52 0" stroke="rgba(255,255,255,.6)" stroke-width="4" fill="none" stroke-linecap="round"/>`;
+      /* palmeras de la isla */
+      const palmera = (x, y, k, giro) => `<g transform="translate(${x} ${y}) scale(${giro * k} ${k})">
+        <path d="M0 0 Q14 -62 -4 -116" stroke="#7d5730" stroke-width="15" fill="none" stroke-linecap="round"/>
+        <path d="M0 -14 Q12 -64 -2 -110" stroke="#a3703f" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <g stroke="#3f8a45" stroke-width="11" fill="none" stroke-linecap="round">
+        <path d="M-4 -116 Q-54 -136 -92 -118"/><path d="M-4 -116 Q-42 -158 -78 -158"/>
+        <path d="M-4 -116 Q8 -166 44 -168"/><path d="M-4 -116 Q42 -148 80 -126"/><path d="M-4 -116 Q34 -104 58 -74"/></g>
+        <circle cx="-12" cy="-108" r="9" fill="#8a5a2b"/><circle cx="6" cy="-104" r="9" fill="#8a5a2b"/><circle cx="-2" cy="-94" r="8" fill="#8a5a2b"/></g>`;
+      s += palmera(1180, 800, .82, 1) + palmera(1436, 812, 1, -1) + palmera(1046, 862, .68, 1) + palmera(1760, 862, .9, -1);
+      /* matorrales y conchas en la arena */
+      s += `<g fill="#3f8a45"><ellipse cx="1266" cy="812" rx="34" ry="14"/><ellipse cx="1600" cy="866" rx="30" ry="12"/><ellipse cx="1868" cy="896" rx="26" ry="11"/></g>`;
+      [[1030, 906, "#ffd9c0"], [1216, 892, "#ffe6d2"], [1712, 918, "#ffd9c0"], [1930, 952, "#ffe6d2"]].forEach(c => {
+        if (!libre(c[0] - 14, c[1] - 10, 28, 20)) return;
+        s += `<g transform="translate(${c[0]} ${c[1]})"><path d="M-14 8 Q-14 -12 0 -12 Q14 -12 14 8 Z" fill="${c[2]}"/>
+          <path d="M-8 8 L-2 -10 M0 8 L0 -12 M8 8 L2 -10" stroke="rgba(200,140,110,.6)" stroke-width="2"/></g>`;
+      });
+      /* un cangrejito paseando por la orilla */
+      s += `<g><animateTransform attributeName="transform" type="translate" values="0 0;74 0;0 0" dur="19s" repeatCount="indefinite"/>
+        <ellipse cx="1000" cy="944" rx="20" ry="13" fill="#ef6c4b"/>
+        <path d="M-16 0 m0 0" fill="none"/><circle cx="994" cy="932" r="4" fill="#fff"/><circle cx="1006" cy="932" r="4" fill="#fff"/>
+        <circle cx="994" cy="932" r="2" fill="#33231c"/><circle cx="1006" cy="932" r="2" fill="#33231c"/>
+        <path d="M980 946 l-12 6 M980 952 l-12 8 M1020 946 l12 6 M1020 952 l12 8" stroke="#ef6c4b" stroke-width="4" stroke-linecap="round"/>
+        <path d="M982 934 q-14 -8 -18 4" stroke="#ef6c4b" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <path d="M1018 934 q14 -8 18 4" stroke="#ef6c4b" stroke-width="5" fill="none" stroke-linecap="round"/></g>`;
+      /* ---------- EL MUELLE DE MADERA, con sus tablones y amarres ---------- */
+      s += `<path d="M948 806 L1148 800 L1148 822 L948 828 Z" fill="url(#pirXmadera)"/>`;
+      s += `<g fill="#8a5f34">`;
+      for (let x = 954; x < 1142; x += 24) s += `<rect x="${x}" y="${(802 - (x - 954) * .03).toFixed(1)}" width="17" height="24" rx="3"/>`;
+      s += `</g>`;
+      s += `<g fill="#6b4726"><rect x="962" y="822" width="15" height="118" rx="6"/><rect x="1042" y="818" width="15" height="122" rx="6"/><rect x="1120" y="814" width="15" height="126" rx="6"/></g>
+        <g fill="#7d5730"><rect x="944" y="766" width="20" height="46" rx="9"/><rect x="1132" y="762" width="20" height="46" rx="9"/></g>
+        <path d="M954 774 Q1046 812 1142 770" stroke="#c9a870" stroke-width="6" fill="none"/>
+        <path d="M960 940 q10 -14 22 0 M1040 942 q10 -14 22 0 M1118 942 q10 -14 22 0" stroke="rgba(255,255,255,.5)" stroke-width="4" fill="none" stroke-linecap="round"/>`;
+      /* ---------- EL BARCO PIRATA: casco, cubiertas, mástiles y velas ---------- */
+      /* el casco y las dos cubiertas donde se apoyan el timón y el cañón */
+      s += `<path d="M150 646 L944 646 L892 812 Q540 866 250 812 Q166 736 150 646 Z" fill="url(#pirXcasco)"/>
+        <path d="M170 700 Q548 744 908 700" stroke="rgba(255,255,255,.14)" stroke-width="7" fill="none"/>
+        <path d="M176 742 Q548 788 894 742" stroke="rgba(0,0,0,.16)" stroke-width="7" fill="none"/>
+        <path d="M158 660 L938 660 L934 678 L160 678 Z" fill="#c9a870"/>
+        <rect x="146" y="628" width="800" height="20" rx="8" fill="url(#pirXmadera)"/>
+        <path d="M150 646 L944 646 L940 656 L152 656 Z" fill="rgba(0,0,0,.18)"/>`;
+      /* la cubierta alta de popa, con su barandilla */
+      s += `<path d="M152 604 L348 604 L348 632 L152 632 Z" fill="url(#pirXmadera)"/>
+        <path d="M150 596 L350 596 L350 608 L150 608 Z" fill="#c9a870"/>
+        <g fill="#8a5f34">`;
+      for (let x = 162; x < 340; x += 26) s += `<rect x="${x}" y="606" width="9" height="26" rx="4"/>`;
+      s += `</g>`;
+      /* los ojos de buey, encendidos */
+      [[300, 712], [420, 720], [700, 720], [820, 712]].forEach(o => {
+        s += `<circle cx="${o[0]}" cy="${o[1]}" r="17" fill="#ffdf8a" stroke="#6b4726" stroke-width="6"/>
+          <path d="M${o[0] - 12} ${o[1]} h24" stroke="rgba(107,71,38,.5)" stroke-width="3"/>`;
+      });
+      /* el palo mayor, con su cofa, y los palos de proa y de mesana */
+      s += `<rect x="512" y="196" width="16" height="452" rx="7" fill="url(#pirXmadera)"/>
+        <circle cx="520" cy="190" r="9" fill="#c9a870"/>
+        <path d="M476 356 L564 356 L556 394 L484 394 Z" fill="url(#pirXmadera)"/>
+        <path d="M470 348 L570 348 L570 360 L470 360 Z" fill="#c9a870"/>
+        <g fill="#8a5f34"><rect x="480" y="330" width="8" height="24" rx="4"/><rect x="508" y="326" width="8" height="28" rx="4"/><rect x="546" y="330" width="8" height="24" rx="4"/></g>`;
+      s += `<rect x="382" y="250" width="14" height="58" rx="6" fill="url(#pirXmadera)"/>
+        <rect x="382" y="414" width="14" height="234" rx="6" fill="url(#pirXmadera)"/>
+        <path d="M316 416 L466 414 L466 428 L316 430 Z" fill="#c9a870"/>
+        <path d="M330 300 L448 298 L448 310 L330 312 Z" fill="#c9a870"/>
+        <path d="M389 250 Q404 244 404 234 Q404 226 389 224 Z" fill="#e8544f"/>`;
+      s += `<rect x="748" y="240" width="14" height="58" rx="6" fill="url(#pirXmadera)"/>
+        <rect x="748" y="366" width="14" height="282" rx="6" fill="url(#pirXmadera)"/>
+        <path d="M690 366 L830 364 L830 378 L690 380 Z" fill="#c9a870"/>
+        <path d="M755 240 Q772 234 772 224 Q772 216 755 214 Z" fill="#f5b731"/>
+        <path d="M694 380 Q760 402 826 380 Q838 442 826 496 Q760 516 694 496 Q682 442 694 380 Z" fill="url(#pirXvela)"/>
+        <path d="M700 404 Q760 420 820 404 M700 470 Q760 488 820 470" stroke="rgba(150,130,96,.45)" stroke-width="4" fill="none"/>`;
+      /* la jarcia: los cabos que sujetan los palos */
+      s += `<g stroke="rgba(238,232,214,.5)" stroke-width="3" fill="none">
+        <path d="M520 210 L268 610 M520 210 L900 620 M520 210 L392 262 M754 258 L906 616 M754 258 L620 620 M390 264 L212 604"/></g>`;
+      /* el bauprés y el ancla */
+      s += `<path d="M936 640 L1036 588" stroke="url(#pirXmadera)" stroke-width="16" stroke-linecap="round"/>
+        <path d="M950 636 Q996 640 1032 620" stroke="rgba(238,232,214,.45)" stroke-width="3" fill="none"/>
+        <path d="M916 686 Q930 760 918 826" stroke="#8a7059" stroke-width="4" fill="none"/>
+        <path d="M918 826 q-16 22 4 34 q20 -12 4 -34 Z" fill="#8a7059"/>`;
+      /* el nombre pintado en el casco, con una cenefa alegre */
+      s += `<g fill="#f5b731"><circle cx="470" cy="694" r="7"/><circle cx="500" cy="697" r="7"/><circle cx="530" cy="699" r="7"/><circle cx="560" cy="697" r="7"/><circle cx="590" cy="694" r="7"/></g>`;
+      /* ---------- OLAS DE PRIMER PLANO: tapan la base del casco y de la isla ---------- */
+      s += `<path d="M0 848 Q140 812 280 848 T560 852 T840 846 T1120 854 T1400 848 T1680 856 T1960 848 T2240 856 T2600 848 L2600 1100 L0 1100 Z" fill="url(#pirXmarB)" opacity=".92"/>
+        <path d="M0 1000 Q220 962 440 1000 T880 1004 T1320 996 T1760 1004 T2200 998 T2600 1002 L2600 1100 L0 1100 Z" fill="url(#pirXmarC)"/>`;
+      [[80, 840, 120, ".5"], [500, 846, 130, ".45"], [900, 842, 120, ".4"], [1780, 850, 130, ".45"], [2360, 844, 120, ".4"],
+        [260, 992, 150, ".38"], [1180, 990, 150, ".34"], [2000, 996, 150, ".36"]].forEach(c => {
+        if (libre(c[0], c[1] - 14, c[2], 28)) s += cresta(c[0], c[1], c[2], c[3]);
+      });
+      [[1980, 892, 130, ".34"], [2200, 806, 120, ".3"], [2460, 940, 130, ".32"], [140, 906, 130, ".34"],
+        [700, 960, 140, ".3"], [1000, 878, 120, ".28"], [420, 1046, 150, ".26"], [1560, 1046, 150, ".24"]].forEach(c => {
+        if (libre(c[0], c[1] - 14, c[2], 28)) s += cresta(c[0], c[1], c[2], c[3]);
+      });
+      /* ---------- ALTA MAR: donde se apoyan la botella, el delfín y los demás ---------- */
+      s += `<path d="M1896 704 Q1950 676 2004 704 Q1962 722 1896 704 Z" fill="#fff" opacity=".55"/>
+        ${cresta(1888, 712, 120, ".5")}`;
+      s += `<path d="M2074 606 Q2150 578 2226 606 Q2226 632 2150 640 Q2074 632 2074 606 Z" fill="#fff" opacity=".5"/>
+        <g fill="#fff" opacity=".6"><circle cx="2086" cy="580" r="7"/><circle cx="2210" cy="574" r="6"/><circle cx="2246" cy="606" r="5"/><circle cx="2058" cy="612" r="5"/>
+        <animate attributeName="opacity" values=".65;.25;.65" dur="3.4s" repeatCount="indefinite"/></g>
+        ${cresta(2064, 626, 180, ".45")}`;
+      s += `${cresta(2258, 728, 190, ".5")}
+        <path d="M2280 736 Q2350 712 2420 736 Q2350 756 2280 736 Z" fill="#fff" opacity=".4"/>`;
+      /* burbujas del pulpo amistoso */
+      s += `<g fill="none" stroke="rgba(255,255,255,.5)" stroke-width="3">
+        <circle cx="2072" cy="900" r="10"><animate attributeName="cy" values="900;836;900" dur="7s" repeatCount="indefinite"/></circle>
+        <circle cx="2320" cy="944" r="8"><animate attributeName="cy" values="944;880;944" dur="9s" repeatCount="indefinite"/></circle>
+        <circle cx="2044" cy="972" r="7"/><circle cx="2352" cy="1010" r="9"/><circle cx="2098" cy="1032" r="6"/></g>`;
+      /* las rocas donde canta la sirena */
+      s += `<path d="M2412 862 Q2440 838 2500 840 L2556 844 Q2596 858 2600 902 Q2520 930 2432 918 Q2394 900 2412 862 Z" fill="url(#pirXroca)"/>
+        <path d="M2440 866 Q2500 852 2556 868" stroke="rgba(255,255,255,.22)" stroke-width="6" fill="none"/>
+        <path d="M2384 916 q26 -12 52 0 M2560 926 q22 -10 44 0" stroke="rgba(255,255,255,.5)" stroke-width="4" fill="none" stroke-linecap="round"/>`;
+      /* algas suaves meciéndose en el fondo */
+      s += `<g stroke="#2f8b78" stroke-width="7" fill="none" stroke-linecap="round" opacity=".7">
+        <path d="M1980 1096 q-16 -50 4 -92"><animate attributeName="d" values="M1980 1096 q-16 -50 4 -92;M1980 1096 q16 -50 -4 -92;M1980 1096 q-16 -50 4 -92" dur="8s" repeatCount="indefinite"/></path>
+        <path d="M2444 1096 q18 -46 -2 -86"/><path d="M1876 1096 q-14 -40 2 -74"/></g>`;
+      /* ---------- LA PLAYA DE PRIMER PLANO Y LA CALA, delante de las olas ---------- */
+      s += `<path d="M1100 1100 Q1176 906 1350 862 Q1560 812 1770 856 Q1912 886 1986 1100 Z" fill="url(#pirXarena)"/>
+        <path d="M1100 1100 Q1176 906 1350 862 Q1560 812 1770 856 Q1912 886 1986 1100 L1954 1100 Q1876 916 1758 886 Q1560 844 1362 892 Q1204 932 1132 1100 Z" fill="#fff" opacity=".45"/>
+        <path d="M1136 1006 q22 -12 44 0 M1900 1010 q22 -12 44 0" stroke="rgba(255,255,255,.6)" stroke-width="5" fill="none" stroke-linecap="round"/>`;
+      s += `<path d="M1892 984 Q2000 952 2086 980 Q2140 1000 2114 1042 Q2012 1078 1924 1054 Q1864 1032 1892 984 Z" fill="url(#pirXcala)" opacity=".9"/>
+        <path d="M1932 1006 q26 -12 52 0 M2004 1034 q26 -12 52 0" stroke="rgba(255,255,255,.55)" stroke-width="4" fill="none" stroke-linecap="round"/>`;
+      /* la barquita de remos, amarrada entre el barco y el muelle */
+      s += `<g><path d="M846 852 L966 852 L942 892 Q906 902 870 892 Z" fill="url(#pirXmadera)"/>
+        <path d="M842 846 L970 846 L970 858 L842 858 Z" fill="#c9a870"/>
+        <path d="M876 862 h60 M876 874 h50" stroke="rgba(0,0,0,.16)" stroke-width="4"/>
+        <path d="M958 856 L1010 826 M854 856 L806 828" stroke="#8a5f34" stroke-width="6" stroke-linecap="round"/>
+        <path d="M1008 820 q12 6 4 16 Z" fill="#8a5f34"/><path d="M808 822 q-12 6 -4 16 Z" fill="#8a5f34"/>
+        <path d="M834 894 q28 -14 56 0 t56 0" stroke="rgba(255,255,255,.55)" stroke-width="4" fill="none" stroke-linecap="round"/></g>`;
+      /* conchitas y una estrella de mar en la orilla de delante */
+      s += `<g><path d="M1214 1044 l14 26 l28 4 l-20 20 l6 28 l-26 -14 l-26 14 l6 -28 l-20 -20 l28 -4 Z" fill="#ff9f6e"/></g>
+        <g fill="#ffe6d2"><ellipse cx="1856" cy="1046" rx="17" ry="13"/><ellipse cx="1300" cy="1078" rx="15" ry="11"/></g>
+        <g stroke="rgba(200,140,110,.55)" stroke-width="2.4" fill="none"><path d="M1846 1050 l8 -12 M1856 1052 l0 -14 M1866 1050 l-8 -12"/></g>`;
+      /* ---------- EL MAPA ANTIGUO DESPLEGADO EN LA ARENA ---------- */
+      s += `<g><path d="M1290 892 L1786 840 L1812 1032 L1314 1072 Z" fill="url(#pirXpapel)"/>
+        <path d="M1290 892 L1786 840 L1786 856 L1292 908 Z" fill="#fff" opacity=".45"/>
+        <path d="M1290 892 Q1268 906 1284 926 L1300 984 Q1284 1000 1306 1012 L1314 1072" stroke="#c9a870" stroke-width="7" fill="none"/>
+        <path d="M1786 840 Q1808 852 1794 872 L1806 928 Q1822 944 1804 958 L1812 1032" stroke="#c9a870" stroke-width="7" fill="none"/>
+        <path d="M1340 1006 Q1400 946 1470 976 Q1546 1006 1608 950 Q1664 900 1738 918" stroke="#8a5f34" stroke-width="5" fill="none" stroke-dasharray="14 14" stroke-linecap="round"/>
+        <path d="M1706 902 L1746 946 M1746 902 L1706 946" stroke="#c0392b" stroke-width="9" stroke-linecap="round"/>
+        <g fill="none" stroke="#8a5f34" stroke-width="4">
+        <circle cx="1390" cy="922" r="30"/><circle cx="1390" cy="922" r="12"/></g>
+        <path d="M1390 886 L1400 916 L1390 958 L1380 916 Z" fill="#c0392b"/>
+        <path d="M1354 922 L1384 912 L1426 922 L1384 932 Z" fill="#8a5f34"/>
+        <g fill="#a9c98f" opacity=".8"><ellipse cx="1520" cy="906" rx="34" ry="16"/><ellipse cx="1620" cy="1024" rx="40" ry="18"/><ellipse cx="1430" cy="1032" rx="28" ry="13"/></g>
+        <g stroke="#a3b8c9" stroke-width="3" fill="none" opacity=".7">
+        <path d="M1470 1042 q16 -10 32 0 t32 0 M1560 890 q16 -10 32 0 t32 0 M1330 962 q14 -9 28 0 t28 0"/></g>
+        <path d="M1660 1000 h84 M1660 994 v12 M1702 994 v12 M1744 994 v12" stroke="#8a5f34" stroke-width="4"/></g>`;
       return decoSvg(s, 2600);
     }
   },

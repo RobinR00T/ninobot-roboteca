@@ -301,7 +301,7 @@ Object.assign(THEMES.gaudi.content, {
   /* ---------- MAPA DE EXPLORACIÓN ---------- */
   explore: {
     width: 2600, height: 1100, stars: false,
-    bgCss: "radial-gradient(ellipse 35% 28% at 78% 8%, rgba(255,241,118,.6), transparent), linear-gradient(180deg,#7ecbf0 0%,#b8e4f7 34%,#ffe9c4 58%,#e6d3a4 76%,#c9b585 100%)",
+    bgCss: "radial-gradient(ellipse 34% 26% at 78% 9%, rgba(255,241,118,.65), transparent), linear-gradient(180deg,#57b4e6 0%,#8ed3f2 22%,#bfe6f7 38%,#e8f2f0 46%,#ffe9c4 58%,#e6d3a4 76%,#c9b585 100%)",
     cats: [
       { id: "parkguell", emoji: "🦎", x: 120, name: { es: "Park Güell", ca: "Park Güell", en: "Park Güell", cs: "Park Güell", fr: "Park Güell" } },
       { id: "sagrada", emoji: "🏰", x: 1100, name: { es: "Sagrada Família", ca: "Sagrada Família", en: "Sagrada Família", cs: "Sagrada Família", fr: "Sagrada Família" } },
@@ -470,62 +470,315 @@ Object.assign(THEMES.gaudi.content, {
         name: { es: "La maqueta de cadenitas colgantes", ca: "La maqueta de cadenetes penjades", en: "The hanging chain model", cs: "Model ze zavěšených řetízků", fr: "La maquette de chaînettes suspendues" },
         fact: { es: "Gaudí colgaba cadenitas con pesitos y miraba la forma al revés: así calculaba sus arcos, sin ordenador y con mucho ingenio.", ca: "Gaudí penjava cadenetes amb pesets i mirava la forma a l'inrevés: així calculava els seus arcs, sense ordinador i amb molt d'enginy.", en: "Gaudí hung little chains with tiny weights and looked at the shape upside down: that is how he worked out his arches, with no computer and lots of wit.", cs: "Gaudí zavěšoval řetízky se závažíčky a díval se na tvar vzhůru nohama: tak počítal své oblouky, bez počítače a s velkým důvtipem.", fr: "Gaudí suspendait des chaînettes avec des petits poids et regardait la forme à l'envers : c'est ainsi qu'il calculait ses arcs, sans ordinateur et avec beaucoup d'astuce." } }
     ],
+    /* el escenario: Barcelona vista desde el Park Güell, con el mar al fondo */
     deco: function () {
       let s = "";
-      // sol mediterráneo
-      s += `<circle cx="2030" cy="115" r="64" fill="rgba(255,238,88,.9)"/><circle cx="2030" cy="115" r="100" fill="rgba(255,238,88,.2)"/>`;
-      // golondrinas en el cielo
-      [[420, 150], [700, 100], [1560, 130], [2280, 180]].forEach(g => {
-        s += `<path d="M${g[0]} ${g[1]} Q${g[0] - 14} ${g[1] - 12} ${g[0] - 26} ${g[1] - 6} M${g[0]} ${g[1]} Q${g[0] + 14} ${g[1] - 12} ${g[0] + 26} ${g[1] - 6}" stroke="rgba(60,80,100,.5)" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+      /* las cajas de los iconos: sirven para dejarles aire alrededor */
+      const cajas = [[140, 584, 120, 72], [365, 477, 110, 46], [574, 665, 92, 70], [759, 514, 82, 92], [940, 425, 80, 70],
+        [1195, 350, 110, 140], [1402, 595, 96, 90], [1588, 240, 64, 120], [1530, 736, 100, 88], [1665, 384, 70, 92],
+        [1895, 518, 110, 84], [2064, 652, 92, 96], [2226, 457, 88, 86], [2373, 708, 54, 104], [2398, 343, 84, 74]];
+      const libre = (x, y, w, h) => !cajas.some(c => x < c[0] + c[2] + 12 && x + w > c[0] - 12 && y < c[1] + c[3] + 12 && y + h > c[1] - 12);
+      /* numeros repetibles: el mapa sale igual en cada partida */
+      let sem = 1907;
+      const az = () => (sem = sem * 16807 % 2147483647) / 2147483647;
+      /* la paleta del trencadís: los azulejos rotos del parque */
+      const tes = ["#f2efe4", "#3fa3d6", "#f5c33f", "#e0653c", "#8dbf5b", "#c96fa8", "#4f9aa6", "#efe6cd"];
+      const tesela = (x, y, w, h) => `<rect x="${x.toFixed(0)}" y="${y.toFixed(0)}" width="${w.toFixed(0)}" height="${h}" rx="2" fill="${tes[Math.floor(az() * 8)]}" transform="rotate(${(az() * 44 - 22).toFixed(0)} ${(x + w / 2).toFixed(0)} ${(y + h / 2).toFixed(0)})"/>`;
+      /* una hilera de teselas siguiendo una línea cualquiera */
+      const banda = (x0, x1, paso, fy, alto) => {
+        let o = "";
+        for (let x = x0; x < x1; x += paso) {
+          const w = 11 + az() * 9, y = fy(x);
+          if (libre(x, y, w, alto)) o += tesela(x, y, w, alto);
+        }
+        return o;
+      };
+      /* ---------- DEGRADADOS Y PATRONES (ids con prefijo gduX) ---------- */
+      s += `<defs>
+        <radialGradient id="gduXSol" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#fffde7"/><stop offset="100%" stop-color="#ffd54f"/></radialGradient>
+        <linearGradient id="gduXMar" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#79c8e9"/><stop offset="60%" stop-color="#2f92c2"/><stop offset="100%" stop-color="#1b6b96"/></linearGradient>
+        <linearGradient id="gduXMonte" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#97ab80"/><stop offset="100%" stop-color="#5e7854"/></linearGradient>
+        <linearGradient id="gduXColina" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#a8c76d"/><stop offset="100%" stop-color="#6b9440"/></linearGradient>
+        <linearGradient id="gduXAlbero" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e3ce9f"/><stop offset="100%" stop-color="#bfa372"/></linearGradient>
+        <linearGradient id="gduXPiedra" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#ebe0c7"/><stop offset="52%" stop-color="#cfc3a5"/><stop offset="100%" stop-color="#aa9d7f"/></linearGradient>
+        <linearGradient id="gduXTemplo" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#efe3c7"/><stop offset="100%" stop-color="#bcad8d"/></linearGradient>
+        <linearGradient id="gduXVidrio" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffe082"/><stop offset="48%" stop-color="#ef7c5c"/><stop offset="100%" stop-color="#4f9ad8"/></linearGradient>
+        <pattern id="gduXPanot" width="118" height="118" patternUnits="userSpaceOnUse">
+          <rect width="118" height="118" fill="#cbb489"/><rect x="2" y="2" width="114" height="114" rx="5" fill="#d9c79d"/>
+          <g fill="rgba(255,255,255,.42)"><ellipse cx="59" cy="59" rx="11" ry="26"/><ellipse cx="59" cy="59" rx="26" ry="11"/></g>
+          <circle cx="59" cy="59" r="8" fill="rgba(255,255,255,.55)"/>
+        </pattern>
+        <pattern id="gduXTrenca" width="92" height="64" patternUnits="userSpaceOnUse">
+          <rect width="92" height="64" fill="#efe9db"/>
+          ${[[4, 5], [32, 3], [58, 6], [10, 26], [40, 29], [66, 27], [2, 46], [34, 47], [62, 45]].map(t => tesela(t[0], t[1], 16 + az() * 8, 13)).join("")}
+        </pattern>
+        <pattern id="gduXVentanas" width="47" height="58" patternUnits="userSpaceOnUse">
+          <rect x="9" y="11" width="18" height="26" rx="3" fill="rgba(255,255,255,.45)"/>
+          <rect x="9" y="37" width="18" height="4" rx="2" fill="rgba(120,140,155,.35)"/>
+        </pattern>
+        <pattern id="gduXVicens" width="54" height="54" patternUnits="userSpaceOnUse">
+          <rect width="54" height="54" fill="#f4f1e6"/><rect width="27" height="27" fill="#8dbf5b"/><rect x="27" y="27" width="27" height="27" fill="#8dbf5b"/>
+          <circle cx="13" cy="13" r="7" fill="#f5c33f"/><circle cx="13" cy="13" r="3" fill="#e0653c"/>
+          <circle cx="40" cy="40" r="7" fill="#f5c33f"/><circle cx="40" cy="40" r="3" fill="#e0653c"/>
+        </pattern>
+      </defs>`;
+      /* ---------- EL CIELO: sol, nubes lentas y vencejos ---------- */
+      s += `<g transform="translate(2030 118)">
+        <circle r="112" fill="rgba(255,241,118,.22)"><animate attributeName="r" values="112;126;112" dur="9s" repeatCount="indefinite"/></circle>
+        <circle r="70" fill="url(#gduXSol)"/><circle cx="-25" cy="-23" r="16" fill="rgba(255,255,255,.5)"/></g>`;
+      const nube = (x, y, k) => `<g transform="translate(${x} ${y}) scale(${k})"><ellipse cx="0" cy="0" rx="86" ry="28" fill="rgba(255,255,255,.88)"/><ellipse cx="-54" cy="10" rx="44" ry="20" fill="rgba(255,255,255,.8)"/><ellipse cx="48" cy="12" rx="50" ry="22" fill="rgba(255,255,255,.8)"/><ellipse cx="-8" cy="-22" rx="46" ry="25" fill="#fff"/></g>`;
+      [[340, 138, .92, 56, 50], [1160, 92, .7, 74, 66], [1830, 178, .8, 44, 58]].forEach(n => {
+        s += `<g opacity=".85"><animateTransform attributeName="transform" type="translate" values="0 0;${n[3]} 0;0 0" dur="${n[4]}s" repeatCount="indefinite"/>${nube(n[0], n[1], n[2])}</g>`;
       });
-      // silueta lejana de la Sagrada Família tras su zona
-      s += `<g fill="rgba(110,140,160,.28)">
-        <path d="M1180 760 L1180 380 Q1205 300 1230 380 L1230 760 Z"/>
-        <path d="M1260 760 L1260 300 Q1290 200 1320 300 L1320 760 Z"/>
-        <path d="M1350 760 L1350 250 Q1385 140 1420 250 L1420 760 Z"/>
-        <path d="M1450 760 L1450 300 Q1480 200 1510 300 L1510 760 Z"/>
-        <path d="M1540 760 L1540 380 Q1565 300 1590 380 L1590 760 Z"/>
-        <circle cx="1290" cy="290" r="10"/><circle cx="1385" cy="135" r="12"/><circle cx="1480" cy="290" r="10"/>
-      </g>
-      <g fill="rgba(110,140,160,.2)"><rect x="1640" y="560" width="180" height="200" rx="8"/><rect x="1100" y="600" width="60" height="160" rx="8"/></g>`;
-      // colinas del Park Güell con trencadís insinuado
-      s += `<path d="M0 640 Q220 480 480 590 Q740 690 1050 600 L1100 760 L0 760 Z" fill="rgba(104,159,56,.5)"/>
-        <path d="M0 740 Q260 620 560 700 Q840 770 1100 720 L1100 900 L0 900 Z" fill="#7a9e4f"/>`;
-      [[140, 700, "#ef5350"], [260, 672, "#42a5f5"], [385, 690, "#ffca28"], [520, 706, "#ab47bc"], [660, 726, "#26c6da"], [800, 720, "#ff7043"], [930, 700, "#f06292"], [200, 730, "#66bb6a"], [580, 744, "#ffca28"], [860, 748, "#42a5f5"]].forEach(m => {
-        s += `<rect x="${m[0]}" y="${m[1]}" width="16" height="12" rx="3" fill="${m[2]}" opacity=".75" transform="rotate(${(m[0] % 30) - 15} ${m[0] + 8} ${m[1] + 6})"/>`;
+      [[520, 196], [1420, 214], [2250, 240]].forEach(v => {
+        s += `<path d="M${v[0]} ${v[1]} q-12 -12 -26 -7 M${v[0]} ${v[1]} q12 -12 26 -7" stroke="rgba(62,88,110,.45)" stroke-width="3.4" fill="none" stroke-linecap="round"/>`;
       });
-      // el banco ondulado insinuado en la cresta de la colina
-      s += `<path d="M120 668 Q200 640 290 662 Q380 684 470 656 Q560 630 650 660 Q740 690 830 664 Q920 640 1000 664" stroke="rgba(255,255,255,.65)" stroke-width="10" fill="none" stroke-linecap="round"/>`;
-      // palmeras
-      [[90, 850, 1], [1010, 870, 0.8]].forEach(p => {
-        s += `<g transform="translate(${p[0]} ${p[1]}) scale(${p[2]})">
-          <path d="M0 0 Q6 -50 2 -90" stroke="#8d6e63" stroke-width="10" fill="none" stroke-linecap="round"/>
-          <g stroke="#2e7d32" stroke-width="8" fill="none" stroke-linecap="round">
-            <path d="M2 -90 Q-40 -110 -70 -100"/><path d="M2 -90 Q44 -110 74 -100"/><path d="M2 -90 Q-20 -130 -44 -134"/><path d="M2 -90 Q24 -130 48 -134"/><path d="M2 -90 Q2 -136 0 -146"/>
-          </g></g>`;
-      });
-      // manzanas del Eixample al fondo de la zona de casas
-      s += `<g fill="rgba(190,160,120,.5)">
-        <rect x="1900" y="620" width="150" height="180" rx="14"/>
-        <rect x="2080" y="590" width="170" height="210" rx="14"/>
-        <rect x="2280" y="630" width="140" height="170" rx="14"/>
-        <rect x="2450" y="600" width="150" height="200" rx="14"/>
-      </g>
-      <g stroke="rgba(120,95,60,.5)" stroke-width="4" fill="none">
-        <path d="M1920 660 Q1975 646 2030 660 M1920 700 Q1975 686 2030 700 M1920 740 Q1975 726 2030 740"/>
-        <path d="M2100 630 Q2165 616 2230 630 M2100 675 Q2165 660 2230 675 M2100 720 Q2165 706 2230 720"/>
-        <path d="M2300 670 Q2350 656 2400 670 M2300 710 Q2350 696 2400 710"/>
-        <path d="M2470 640 Q2525 626 2580 640 M2470 685 Q2525 670 2580 685 M2470 730 Q2525 716 2580 730"/>
-      </g>`;
-      // suelo: la acera de Barcelona con sus flores de panot
-      s += `<rect x="0" y="900" width="2600" height="200" fill="#cbb385"/>
-        <path d="M0 900 Q650 885 1300 900 Q1950 915 2600 898 L2600 940 L0 940 Z" fill="#dbc79c"/>`;
-      for (let x = 80; x < 2600; x += 260) {
-        s += `<g fill="rgba(255,255,255,.35)">${[0, 72, 144, 216, 288].map(a => `<ellipse cx="${x}" cy="1000" rx="9" ry="18" transform="rotate(${a} ${x} 1000)"/>`).join("")}</g><circle cx="${x}" cy="1000" r="7" fill="rgba(255,255,255,.45)"/>`;
+      /* un vencejo cruzando el cielo entero, sin prisa */
+      s += `<g><path d="M0 0 q-13 -12 -28 -6 M0 0 q13 -12 28 -6" stroke="rgba(55,80,100,.6)" stroke-width="4" fill="none" stroke-linecap="round">
+        <animate attributeName="d" values="M0 0 q-13 -12 -28 -6 M0 0 q13 -12 28 -6;M0 0 q-13 6 -28 12 M0 0 q13 6 28 12;M0 0 q-13 -12 -28 -6 M0 0 q13 -12 28 -6" dur="1.7s" repeatCount="indefinite"/></path>
+        <animateMotion dur="52s" repeatCount="indefinite" path="M 100 262 Q 760 152 1420 234 Q 2000 298 2560 198"/></g>`;
+      /* ---------- EL MEDITERRÁNEO: la raya del horizonte tras la ciudad ---------- */
+      s += `<rect x="1000" y="470" width="1600" height="170" fill="url(#gduXMar)"/>
+        <rect x="1000" y="464" width="1600" height="9" rx="4" fill="rgba(255,255,255,.55)"/>`;
+      for (let i = 0; i < 10; i++) {
+        s += `<path d="M${1030 + i * 160} ${492 + (i % 3) * 28} q17 -7 34 0" stroke="rgba(255,255,255,.4)" stroke-width="4" fill="none" stroke-linecap="round"/>`;
       }
-      // el mar al fondo a la derecha
-      s += `<path d="M2440 900 Q2520 894 2600 898 L2600 860 Q2520 852 2452 866 Z" fill="rgba(41,141,192,.55)"/>
-        <path d="M2470 878 q16 -8 32 0 M2530 870 q16 -8 32 0" stroke="rgba(255,255,255,.5)" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+      /* el reflejo del sol temblando sobre el agua */
+      s += `<g opacity=".7"><rect x="1996" y="486" width="72" height="8" rx="4" fill="#fff8e1"/><rect x="2012" y="512" width="46" height="7" rx="3" fill="#fff8e1"/><rect x="2004" y="540" width="62" height="7" rx="3" fill="#fff8e1"/>
+        <animate attributeName="opacity" values=".7;.34;.7" dur="5.4s" repeatCount="indefinite"/></g>`;
+      [[1180, 524, 1], [2340, 508, .9]].forEach(v => {
+        s += `<g transform="translate(${v[0]} ${v[1]}) scale(${v[2]})"><path d="M-18 0 h38 l-7 12 h-32 Z" fill="#f5f7f8"/><path d="M6 -2 L6 -40 L26 -2 Z" fill="#fff"/><path d="M2 -2 L2 -32 L-14 -2 Z" fill="#e8eef1"/></g>`;
+      });
+      /* ---------- MONTJUÏC: la montaña que cae al mar, con su castillo ---------- */
+      s += `<path d="M1700 646 Q1840 526 1980 454 Q2072 410 2132 456 Q2192 502 2214 646 Z" fill="url(#gduXMonte)"/>
+        <path d="M1700 646 Q1840 526 1980 454 Q2072 410 2132 456 L2132 486 Q2062 444 1990 486 Q1866 556 1760 646 Z" fill="rgba(255,255,255,.14)"/>
+        <g fill="rgba(88,104,82,.95)"><rect x="2050" y="430" width="104" height="26" rx="3"/><rect x="2044" y="422" width="18" height="14"/><rect x="2088" y="416" width="16" height="18"/><rect x="2140" y="422" width="18" height="14"/></g>`;
+      /* ---------- COLLSEROLA: la sierra que cierra Barcelona por detrás ---------- */
+      s += `<path d="M-20 560 Q160 470 340 496 Q520 522 660 452 Q820 372 980 428 Q1120 476 1240 560 Z" fill="rgba(122,146,150,.42)"/>
+        <path d="M-20 560 Q160 470 340 496 Q520 522 660 452 L660 486 Q520 556 340 530 Q160 504 -20 592 Z" fill="rgba(255,255,255,.16)"/>
+        <g fill="rgba(108,132,138,.75)"><rect x="646" y="404" width="34" height="50" rx="4"/><rect x="636" y="392" width="54" height="14" rx="4"/><rect x="658" y="366" width="10" height="28"/></g>`;
+      /* ---------- LA CIUDAD EN NEBLINA: la piel de manzanas del Eixample ---------- */
+      for (let x = 1150; x < 2600; x += 178) {
+        const h = 46 + ((x * 7) % 44);
+        s += `<path d="M${x} ${606 - h} h84 l18 18 v${h - 18} h-102 Z" fill="rgba(148,170,188,.42)"/>`;
+      }
+      /* ---------- EL PARK GÜELL: la colina verde, la terraza y la escalinata ---------- */
+      s += `<path d="M-20 706 Q120 566 300 594 Q480 622 660 560 Q840 500 1000 542 Q1082 562 1130 646 L1130 1100 L-20 1100 Z" fill="url(#gduXColina)"/>
+        <path d="M-20 706 Q120 566 300 594 Q480 622 660 560 Q840 500 1000 542 L1000 572 Q840 530 660 590 Q480 652 300 624 Q120 596 -20 736 Z" fill="rgba(255,255,255,.16)"/>`;
+      /* los pinos carrascos de la colina */
+      const pino = (x, y, k) => `<g transform="translate(${x} ${y}) scale(${k})">
+        <path d="M0 0 q-7 -58 5 -102" stroke="#7a5a3c" stroke-width="13" fill="none" stroke-linecap="round"/>
+        <path d="M5 -102 q-28 -8 -50 -2 M5 -102 q28 -10 52 -4" stroke="#7a5a3c" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <ellipse cx="0" cy="-124" rx="70" ry="28" fill="#4a7a3a"/><ellipse cx="-44" cy="-108" rx="34" ry="17" fill="#3f6c33"/>
+        <ellipse cx="46" cy="-112" rx="36" ry="18" fill="#3f6c33"/><ellipse cx="6" cy="-142" rx="44" ry="21" fill="#568c42"/></g>`;
+      s += pino(70, 660, .95) + pino(330, 622, .8) + pino(880, 566, .75) + pino(1088, 640, .9);
+      /* el turó de las Tres Cruces, el mirador más alto del parque */
+      s += `<path d="M876 566 Q930 500 984 496 Q1044 492 1090 570 Z" fill="#b9ae8e"/>
+        <path d="M876 566 Q930 500 984 496 L984 520 Q938 528 900 566 Z" fill="rgba(255,255,255,.2)"/>
+        <g stroke="#8d8367" stroke-width="7" stroke-linecap="round"><path d="M916 508 v-30 M904 490 h24"/><path d="M1046 520 v-26 M1035 504 h22"/></g>`;
+      /* la terraza de la Naturaleza: la plataforma sobre la sala de columnas */
+      s += `<path d="M50 552 Q300 540 640 546 Q900 550 1068 560 L1068 604 Q900 594 640 590 Q300 584 50 596 Z" fill="url(#gduXPiedra)"/>
+        <path d="M50 596 Q300 584 640 590 Q900 594 1068 604 L1068 616 Q900 606 640 602 Q300 596 50 608 Z" fill="rgba(120,105,80,.55)"/>`;
+      /* las gárgolas de desagüe de la terraza */
+      [180, 760, 1010].forEach(x => {
+        s += `<path d="M${x} 604 q10 8 0 16 q-10 -8 0 -16 Z" fill="#9c9070"/><circle cx="${x}" cy="614" r="5" fill="#7d7358"/>`;
+      });
+      /* el banco ondulado de Jujol: una ola larguísima de trencadís */
+      let bArriba = "", bAbajo = "";
+      for (let x = 56; x <= 1064; x += 42) bArriba += (x === 56 ? "M" : "L") + x + " " + (494 + 21 * Math.sin((x - 56) / 108)).toFixed(1) + " ";
+      for (let x = 1064; x >= 56; x -= 42) bAbajo += "L" + x + " " + (554 + 13 * Math.sin((x - 56) / 108 + .8)).toFixed(1) + " ";
+      s += `<path d="${bArriba}${bAbajo}Z" fill="url(#gduXTrenca)"/>
+        <path d="${bArriba}" stroke="#f6f2e6" stroke-width="6" fill="none" stroke-linecap="round"/>`;
+      s += banda(70, 1056, 148, x => 512 + 21 * Math.sin((x - 56) / 108), 17);
+      /* la penumbra del interior de la sala, detrás de las columnas */
+      s += `<path d="M446 614 H878 V836 H446 Z" fill="rgba(86,74,52,.42)"/>
+        <path d="M446 614 H878 V646 H446 Z" fill="rgba(60,50,34,.3)"/>
+        <path d="M470 836 H860 V844 H470 Z" fill="#b7a98a"/>`;
+      /* la sala hipóstila: las columnas inclinadas que aguantan la terraza */
+      [[470, 6], [516, 3], [706, -3], [752, -6], [800, -7], [846, -8]].forEach(c => {
+        const x = c[0];
+        if (!libre(x - 20, 604, 40, 232)) return;
+        s += `<g transform="rotate(${c[1]} ${x} 720)">
+          <rect x="${x - 22}" y="604" width="44" height="228" fill="url(#gduXPiedra)"/>
+          <path d="M${x - 27} 604 h54 v14 h-54 Z" fill="#ded2b4"/>
+          <path d="M${x - 26} 826 h52 v12 h-52 Z" fill="#c2b493"/>
+          <path d="M${x - 11} 622 V824 M${x + 11} 622 V824" stroke="rgba(140,126,98,.5)" stroke-width="3"/></g>`;
+      });
+      /* los medallones de mosaico del techo de la sala */
+      [[900, 636]].forEach(m => {
+        if (!libre(m[0] - 26, m[1] - 26, 52, 52)) return;
+        s += `<circle cx="${m[0]}" cy="${m[1]}" r="25" fill="#f4f0e2"/><circle cx="${m[0]}" cy="${m[1]}" r="25" fill="none" stroke="#3fa3d6" stroke-width="5"/>
+          <circle cx="${m[0]}" cy="${m[1]}" r="11" fill="#f5c33f"/>${[0, 60, 120, 180, 240, 300].map(a => `<ellipse cx="${(m[0] + 18 * Math.cos(a * Math.PI / 180)).toFixed(0)}" cy="${(m[1] + 18 * Math.sin(a * Math.PI / 180)).toFixed(0)}" rx="5" ry="4" fill="#e0653c"/>`).join("")}`;
+      });
+      /* la escalinata del dragón, bajando de la terraza al suelo */
+      s += `<path d="M96 838 L128 652 L308 652 L342 838 Z" fill="#e6dcc2"/>`;
+      for (let i = 0; i < 6; i++) {
+        const y = 668 + i * 30, dx = i * 5.1;
+        s += `<path d="M${(126 - dx).toFixed(0)} ${y} H${(310 + dx).toFixed(0)}" stroke="rgba(150,136,106,.65)" stroke-width="5" stroke-linecap="round"/>`;
+      }
+      s += `<path d="M96 838 L128 652 L152 652 L118 838 Z" fill="#dcd0b2"/><path d="M342 838 L308 652 L284 652 L318 838 Z" fill="#dcd0b2"/>`;
+      s += banda(98, 150, 26, x => 700 + (x - 98) * 2.4, 14) + banda(292, 344, 26, x => 824 - (x - 292) * 2.4, 14);
+      /* el suelo de albero del parque, con su rastrillo de piedrecitas */
+      s += `<path d="M-20 838 Q300 826 640 834 Q940 842 1130 830 L1130 1100 L-20 1100 Z" fill="url(#gduXAlbero)"/>
+        <path d="M-20 872 Q300 860 640 868 Q940 876 1130 864" stroke="rgba(255,255,255,.28)" stroke-width="7" fill="none"/>
+        <path d="M-20 1044 Q300 1032 640 1040 Q940 1048 1130 1036" stroke="rgba(140,112,68,.24)" stroke-width="9" fill="none"/>`;
+      /* el murete de trencadís del paseo, delante del parque */
+      s += `<path d="M-20 946 Q260 928 560 942 Q840 954 1128 940 L1128 1004 Q840 1018 560 1006 Q260 992 -20 1010 Z" fill="url(#gduXTrenca)"/>
+        <path d="M-20 946 Q260 928 560 942 Q840 954 1128 940 L1128 958 Q840 972 560 960 Q260 946 -20 964 Z" fill="#fbf7ec"/>`;
+      /* las dos palmeras del parque */
+      [[62, 940, 1], [1046, 928, .82]].forEach(p => {
+        s += `<g transform="translate(${p[0]} ${p[1]}) scale(${p[2]})">
+          <path d="M0 0 Q10 -60 4 -116" stroke="#9c7b52" stroke-width="15" fill="none" stroke-linecap="round"/>
+          <g stroke="#3b7a35" stroke-width="9" fill="none" stroke-linecap="round">
+            <path d="M4 -116 Q-42 -138 -76 -126"/><path d="M4 -116 Q48 -140 82 -128"/><path d="M4 -116 Q-22 -160 -48 -168"/><path d="M4 -116 Q30 -160 56 -170"/><path d="M4 -116 Q2 -166 -2 -180"/></g>
+          <circle cx="4" cy="-116" r="9" fill="#8d6e63"/></g>`;
+      });
+      /* ---------- LA SAGRADA FAMÍLIA: el templo en obras ---------- */
+      s += `<path d="M1132 830 H1808 V1100 H1132 Z" fill="#d5cdb6"/>
+        <path d="M1132 826 H1808 V842 H1132 Z" fill="#c3b99e"/>
+        <g stroke="rgba(255,255,255,.35)" stroke-width="3">${[906, 978, 1050].map(y => `<path d="M1132 ${y} H1808"/>`).join("")}${[1244, 1400, 1556, 1712].map(x => `<path d="M${x} 848 V1100"/>`).join("")}</g>`;
+      /* el cuerpo del templo y sus torres parabólicas */
+      s += `<g fill="url(#gduXTemplo)">
+        <path d="M1160 826 H1780 V520 H1160 Z"/>
+        <path d="M1150 520 L1150 320 Q1180 262 1210 320 L1210 520 Z"/>
+        <path d="M1300 520 L1300 336 Q1330 276 1360 336 L1360 520 Z"/>
+        <path d="M1416 520 L1416 214 Q1458 122 1500 214 L1500 520 Z"/>
+        <path d="M1590 520 L1590 380 Q1622 314 1654 380 L1654 520 Z"/>
+        <path d="M1700 520 L1700 350 Q1730 288 1760 350 L1760 520 Z"/></g>`;
+      /* la cornisa, el tejado de la nave y el rosetón: el templo deja de ser un bloque liso */
+      s += `<path d="M1152 524 H1788 V544 H1152 Z" fill="#cdbd9a"/>
+        <path d="M1160 520 L1250 452 H1700 L1780 520 Z" fill="#d8c9a6"/>
+        <path d="M1250 452 H1700 V468 H1250 Z" fill="#c0b08d"/>
+        <path d="M1152 682 H1788 V700 H1152 Z" fill="#cdbd9a"/>
+        <circle cx="1474" cy="600" r="46" fill="#e6dcc0"/><circle cx="1474" cy="600" r="34" fill="#8ab4d8"/>
+        <g stroke="#e6dcc0" stroke-width="6">${[0, 45, 90, 135].map(a => `<path d="M${(1474 - 34 * Math.cos(a * Math.PI / 180)).toFixed(0)} ${(600 - 34 * Math.sin(a * Math.PI / 180)).toFixed(0)} L${(1474 + 34 * Math.cos(a * Math.PI / 180)).toFixed(0)} ${(600 + 34 * Math.sin(a * Math.PI / 180)).toFixed(0)}"/>`).join("")}</g>
+        <g fill="rgba(120,104,74,.35)">${[1230, 1560, 1640].map(x => `<path d="M${x} 700 V620 q22 -30 44 0 v80 Z"/>`).join("")}</g>`;
+      /* los pináculos de fruta y la cruz de la torre alta */
+      s += `<g fill="#f5c33f"><circle cx="1180" cy="308" r="13"/><circle cx="1330" cy="324" r="13"/><circle cx="1622" cy="368" r="12"/><circle cx="1730" cy="338" r="12"/></g>
+        <g fill="#8dbf5b"><circle cx="1180" cy="292" r="8"/><circle cx="1330" cy="308" r="8"/><circle cx="1730" cy="322" r="7"/></g>
+        <path d="M1458 202 V150 M1436 172 H1480" stroke="#e9e0c6" stroke-width="11" stroke-linecap="round"/>
+        <circle cx="1458" cy="196" r="10" fill="#f5c33f"/>`;
+      /* las ventanas altas y las estrías de las torres */
+      for (let t = 0; t < 5; t++) {
+        const bx = [1150, 1300, 1416, 1590, 1700][t], bw = [60, 60, 84, 64, 60][t], top = [330, 346, 226, 390, 360][t];
+        for (let y = top + 44; y < 508; y += 60) {
+          if (!libre(bx + bw / 2 - 8, y, 16, 24)) continue;
+          s += `<rect x="${bx + bw / 2 - 8}" y="${y}" width="16" height="24" rx="7" fill="rgba(90,78,56,.45)"/>`;
+        }
+      }
+      /* las vidrieras de colores del muro y la luz que dejan caer */
+      s += `<g><rect x="1662" y="482" width="76" height="212" rx="34" fill="url(#gduXVidrio)"/>
+        <rect x="1662" y="482" width="76" height="212" rx="34" fill="none" stroke="#c9bb99" stroke-width="7"/>
+        <path d="M1662 552 H1738 M1662 622 H1738 M1700 490 V690" stroke="rgba(255,255,255,.55)" stroke-width="4"/></g>
+        <path d="M1666 700 L1594 830 L1806 830 L1738 700 Z" fill="rgba(255,214,120,.22)"><animate attributeName="opacity" values=".22;.5;.22" dur="6.5s" repeatCount="indefinite"/></path>`;
+      /* la fachada del Nacimiento: portada de piedra con sus arquivoltas */
+      s += `<path d="M1382 830 V736 Q1450 668 1518 736 V830 Z" fill="#d9cead"/>
+        <path d="M1396 830 V742 Q1450 686 1504 742 V830 Z" fill="#b9ab88"/>
+        <path d="M1412 830 V748 Q1450 704 1488 748 V830 Z" fill="#8f8467"/>
+        <g fill="#e6dcc0"><circle cx="1424" cy="766" r="7"/><circle cx="1450" cy="752" r="8"/><circle cx="1476" cy="766" r="7"/></g>`;
+      /* los andamios de la obra viva */
+      const andamio = (x, y, w, h) => {
+        let o = `<g stroke="rgba(120,104,74,.55)" stroke-width="4" fill="none">`;
+        for (let i = 0; i <= 2; i++) o += `<path d="M${x + i * (w / 2)} ${y} V${y + h}"/>`;
+        for (let j = 0; j * 76 <= h; j++) o += `<path d="M${x} ${y + j * 76} H${x + w}"/>`;
+        o += `</g><g fill="rgba(190,170,130,.5)">`;
+        for (let j = 0; j * 76 <= h; j++) o += `<rect x="${x - 6}" y="${y + j * 76 - 5}" width="${w + 12}" height="7" rx="3"/>`;
+        return o + `</g>`;
+      };
+      s += andamio(1140, 372, 80, 216) + andamio(1580, 424, 84, 164);
+      /* dos grúas torre que trabajan en el templo */
+      const grua = (x, base, alto, jib) => `<g>
+        <rect x="${x - 9}" y="${base - alto}" width="18" height="${alto}" fill="#e0a63c"/>
+        <g stroke="#c68f2c" stroke-width="3">${[0, 1, 2, 3, 4, 5].map(i => `<path d="M${x - 9} ${base - alto + i * (alto / 6)} L${x + 9} ${base - alto + (i + .5) * (alto / 6)}"/>`).join("")}</g>
+        <rect x="${x - jib * .34}" y="${base - alto - 16}" width="${jib}" height="13" rx="4" fill="#e0a63c"/>
+        <path d="M${x} ${base - alto - 16} L${x + jib * .5} ${base - alto - 54} L${x - jib * .28} ${base - alto - 54} Z" fill="none" stroke="#c68f2c" stroke-width="4"/>
+        <rect x="${x - jib * .34 - 12}" y="${base - alto - 26}" width="26" height="24" rx="5" fill="#546e7a"/>
+        <g><animateTransform attributeName="transform" type="translate" values="0 0;26 0;0 0" dur="21s" repeatCount="indefinite"/>
+        <path d="M${x + jib * .44} ${base - alto - 3} V${base - alto + 74}" stroke="#78909c" stroke-width="3"/>
+        <rect x="${x + jib * .44 - 13}" y="${base - alto + 74}" width="26" height="16" rx="4" fill="#8d6e63"/></g></g>`;
+      s += grua(1128, 830, 690, 250) + grua(1792, 830, 560, 210);
+      /* la valla de obra, los sillares apilados y la caseta */
+      s += `<g fill="rgba(120,150,170,.5)">`;
+      for (let x = 1150; x < 1800; x += 104) s += `<rect x="${x}" y="846" width="44" height="66" rx="5"/>`;
+      s += `</g><path d="M1146 846 H1800" stroke="#8fa6b5" stroke-width="7"/>`;
+      s += `<g fill="#cfc3a5" stroke="#b0a284" stroke-width="3">
+        <rect x="1176" y="900" width="76" height="26" rx="3"/><rect x="1186" y="874" width="76" height="26" rx="3"/><rect x="1170" y="926" width="90" height="26" rx="3"/></g>
+        <g><rect x="1660" y="880" width="120" height="72" rx="6" fill="#c9a77a"/><path d="M1652 880 H1788 L1780 862 H1660 Z" fill="#a97f52"/>
+        <rect x="1682" y="900" width="34" height="34" rx="4" fill="#e8f2f6"/><rect x="1730" y="900" width="34" height="52" rx="4" fill="#8d6e63"/></g>`;
+      /* los plátanos de sombra de la plaza */
+      const platano = (x, y, k) => `<g transform="translate(${x} ${y}) scale(${k})">
+        <rect x="-11" y="-96" width="22" height="98" rx="8" fill="#b6ad94"/>
+        <path d="M-9 -60 q-20 -12 -30 -30 M9 -70 q20 -14 32 -30" stroke="#b6ad94" stroke-width="9" fill="none" stroke-linecap="round"/>
+        <circle cx="0" cy="-118" r="54" fill="#5c9440"/><circle cx="-42" cy="-92" r="34" fill="#4f8637"/><circle cx="44" cy="-96" r="36" fill="#4f8637"/><circle cx="-14" cy="-146" r="30" fill="#6ba64c"/></g>`;
+      s += platano(1560, 938, 1.05) + platano(1330, 962, .85);
+      /* ---------- LAS CASAS DE GAUDÍ: la calle del Eixample ---------- */
+      s += `<rect x="1808" y="884" width="792" height="216" fill="url(#gduXPanot)"/>
+        <rect x="1808" y="876" width="792" height="12" fill="#b6a37c"/>
+        <rect x="0" y="1058" width="2600" height="42" fill="rgba(90,72,44,.18)"/>`;
+      /* el mosaico de fondo: un paño de teselas entre las casas */
+      s += `<rect x="1836" y="612" width="760" height="272" fill="url(#gduXTrenca)" opacity=".92"/>
+        <rect x="1836" y="612" width="760" height="10" fill="#d8cfb8" opacity=".8"/>`;
+      /* La Pedrera: la fachada de piedra ondulada y sus chimeneas guerreras */
+      s += `<path d="M1856 884 V636 Q1900 606 1948 626 Q1996 646 2044 620 V884 Z" fill="#cfc3a5"/>
+        <path d="M1856 884 V636 Q1900 606 1948 626 Q1996 646 2044 620 L2044 646 Q1996 672 1948 652 Q1900 632 1856 662 Z" fill="#b6a888"/>`;
+      for (let r = 0; r < 3; r++) for (let c = 0; c < 4; c++) {
+        const wx = 1868 + c * 46, wy = 690 + r * 62;
+        if (!libre(wx, wy, 32, 40)) continue;
+        s += `<path d="M${wx} ${wy + 40} V${wy + 10} q16 -14 32 0 v30 Z" fill="#7d715a"/><path d="M${wx - 5} ${wy + 40} h42 v6 h-42 Z" fill="#9c8f74"/>`;
+      }
+      [1846, 2032].forEach(x => {
+        s += `<g><path d="M${x} 640 q-14 -46 4 -74 q20 -26 34 2 q14 26 2 72 Z" fill="#e4dcc6"/>
+          <path d="M${x + 12} 578 q-9 10 -2 22 q9 12 18 0 q6 -12 -3 -22 Z" fill="#b9ac8c"/>
+          <g fill="#8f8467"><circle cx="${x + 11}" cy="594" r="4"/><circle cx="${x + 25}" cy="594" r="4"/></g></g>`;
+      });
+      /* la Casa Batlló: el tejado de lomo de dragón y los balcones antifaz */
+      s += `<path d="M2050 884 V752 Q2094 706 2140 726 Q2178 742 2186 776 V884 Z" fill="#dfe6ea"/>
+        <path d="M2050 752 Q2094 706 2140 726 Q2178 742 2186 776 L2186 800 Q2160 762 2126 748 Q2088 732 2050 776 Z" fill="#7cc0d8"/>`;
+      for (let i = 0; i < 6; i++) {
+        s += `<circle cx="${2064 + (i % 3) * 38}" cy="${772 + Math.floor(i / 4) * 20}" r="9" fill="${i % 3 ? "#f5c33f" : "#e0653c"}" opacity=".85"/>`;
+      }
+      [[2062, 812], [2114, 812], [2062, 852], [2114, 852]].forEach(b => {
+        if (!libre(b[0], b[1], 40, 26)) return;
+        s += `<path d="M${b[0]} ${b[1] + 26} q6 -26 20 -26 q14 0 20 26 Z" fill="#9fb0b8"/>
+          <g fill="#eceff1"><circle cx="${b[0] + 11}" cy="${b[1] + 14}" r="4"/><circle cx="${b[0] + 29}" cy="${b[1] + 14}" r="4"/></g>`;
+      });
+      s += `<g stroke="#b7a88a" stroke-width="7" stroke-linecap="round" fill="none"><path d="M2056 884 V846 q0 -12 10 -12 M2178 884 V846 q0 -12 -10 -12"/></g>`;
+      /* la Casa Vicens: los azulejos de tablero y sus flores */
+      s += `<rect x="2206" y="548" width="140" height="336" fill="#e8dfc9"/>
+        <path d="M2200 548 H2352 L2344 528 H2208 Z" fill="#c0714a"/>`;
+      s += `<rect x="2208" y="556" width="136" height="322" fill="url(#gduXVicens)"/>
+        <g fill="#c0714a"><rect x="2208" y="628" width="136" height="9"/><rect x="2208" y="772" width="136" height="9"/></g>`;
+      s += `<g fill="#c0714a"><rect x="2200" y="700" width="152" height="12" rx="4"/><rect x="2206" y="836" width="140" height="48" rx="4" opacity=".55"/></g>`;
+      /* la torre modernista del final, con la maqueta de cadenitas colgando */
+      s += `<path d="M2372 884 V470 Q2374 434 2404 428 H2570 Q2596 432 2598 468 V884 Z" fill="#dbd2b8"/>
+        <g fill="#c3b89a">${[0, 1, 2, 3].map(i => `<rect x="${2390 + i * 58}" y="428" width="26" height="22"/>`).join("")}</g>`;
+      for (let r = 0; r < 3; r++) for (let c = 0; c < 3; c++) {
+        const wx = 2396 + c * 72, wy = 566 + r * 96;
+        if (!libre(wx, wy, 30, 46)) continue;
+        s += `<path d="M${wx} ${wy + 46} V${wy + 14} q15 -16 30 0 v32 Z" fill="#8d8267"/><path d="M${wx - 4} ${wy + 46} h38 v5 h-38 Z" fill="#a89b7d"/>`;
+      }
+      s += `<rect x="2386" y="432" width="200" height="13" rx="5" fill="#8d6e63"/>`;
+      [[2396, 2474], [2496, 2578]].forEach(c => {
+        const mid = (c[0] + c[1]) / 2;
+        s += `<path d="M${c[0]} 445 Q${mid} 524 ${c[1]} 445" stroke="#7a6a56" stroke-width="4" fill="none"/>`;
+        for (let i = 1; i < 5; i++) {
+          const t = i / 5, x = c[0] + (c[1] - c[0]) * t, y = 445 + 4 * 79 * t * (1 - t);
+          s += `<circle cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" r="4" fill="#5d4f3f"/>`;
+        }
+      });
+      /* la farola de la plaza Reial, con su base y su luz cálida */
+      s += `<path d="M2378 884 h44 l-6 -66 h-32 Z" fill="#b9ac8c"/><rect x="2390" y="806" width="20" height="18" rx="4" fill="#9c9070"/>
+        <ellipse cx="2400" cy="890" rx="46" ry="12" fill="rgba(0,0,0,.14)"/>
+        <g opacity=".55"><ellipse cx="2400" cy="812" rx="60" ry="22" fill="rgba(255,224,130,.5)"><animate attributeName="opacity" values=".55;.85;.55" dur="7s" repeatCount="indefinite"/></ellipse></g>`;
+      /* los bancos, la barandilla de forja y el arbolito de la acera */
+      s += `<g><rect x="1900" y="948" width="150" height="15" rx="7" fill="#a1743f"/><rect x="1900" y="920" width="150" height="13" rx="6" fill="#b3853f"/>
+        <rect x="1912" y="962" width="12" height="34" rx="5" fill="#6d7b86"/><rect x="2026" y="962" width="12" height="34" rx="5" fill="#6d7b86"/></g>`;
+      s += `<g stroke="#5d6b74" stroke-width="6" fill="none" stroke-linecap="round"><path d="M2150 1010 H2560"/>
+        ${[2180, 2260, 2340, 2420, 2500].map(x => `<path d="M${x} 1010 v42 M${x} 1010 q14 -22 28 0"/>`).join("")}</g>`;
+      s += platano(2110, 1006, .9) + platano(2560, 972, .8);
+      /* el suelo del parque y de la plaza se juntan con dos escalones */
+      s += `<path d="M1120 838 h20 v262 h-20 Z" fill="rgba(90,72,44,.25)"/>
+        <path d="M1800 876 h16 v224 h-16 Z" fill="rgba(90,72,44,.2)"/>`;
       return decoSvg(s, 2600);
     }
   },

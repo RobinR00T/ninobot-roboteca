@@ -314,7 +314,7 @@
     /* ---------- MAPA DE EXPLORACIÓN ---------- */
     explore: {
       width: 2600, height: 1100, stars: false,
-      bgCss: "radial-gradient(ellipse 40% 32% at 22% 16%, rgba(255,241,180,.6), transparent), linear-gradient(180deg,#ffe9b8 0%,#ffd98a 34%,#f2b544 62%,#e8a668 100%)",
+      bgCss: "radial-gradient(ellipse 32% 26% at 60% 10%, rgba(255,246,206,.7), transparent 68%), linear-gradient(180deg,#8ec6e8 0%,#b6dbef 30%,#dfe2cf 52%,#e6cfa2 70%,#d3ae76 100%)",
       cats: [
         { id: "museo", emoji: "🥚", x: 120, name: { es: "El museo de Figueres", ca: "El museu de Figueres", en: "The Figueres museum", cs: "Muzeum ve Figueres", fr: "Le musée de Figueres" } },
         { id: "suenos", emoji: "💭", x: 1000, name: { es: "El mundo de los sueños", ca: "El món dels somnis", en: "The world of dreams", cs: "Svět snů", fr: "Le monde des rêves" } },
@@ -453,48 +453,193 @@
           name: { es: "La ventana de Anna Maria", ca: "La finestra de l'Anna Maria", en: "Anna Maria's window", cs: "Okno Anny Marie", fr: "La fenêtre d'Anna Maria" },
           fact: { es: "Dalí pintó a su hermana Anna Maria de espaldas, mirando el mar por la ventana. Es uno de sus cuadros más tranquilos y bonitos.", ca: "Dalí va pintar la seva germana Anna Maria d'esquena, mirant el mar per la finestra. És un dels seus quadres més tranquils i bonics.", en: "Dalí painted his sister Anna Maria from behind, looking at the sea through the window. It is one of his calmest, loveliest paintings.", cs: "Dalí namaloval svou sestru Annu Marii zezadu, jak se oknem dívá na moře. Je to jeden z jeho nejklidnějších a nejkrásnějších obrazů.", fr: "Dalí a peint sa sœur Anna Maria de dos, regardant la mer par la fenêtre. C'est un de ses tableaux les plus calmes et les plus jolis." } }
       ],
-      /* el paisaje: cielo dorado del Empordà, nubes alargadas, el mar al fondo y las rocas de Cadaqués */
+      /* el escenario: el Empordà de punta a punta, con el teatro-museo de Figueres
+         a la izquierda, la llanura de los sueños en medio y la bahía de Cadaqués a la derecha */
       deco: function () {
         let s = "";
-        // el sol bajo del Empordà, con su resplandor
-        s += `<circle cx="700" cy="170" r="70" fill="rgba(255,244,190,.95)"/>
-              <circle cx="700" cy="170" r="120" fill="rgba(255,244,190,.25)"/>
-              <circle cx="700" cy="170" r="190" fill="rgba(255,244,190,.12)"/>`;
-        // nubes alargadas, estiradas como chicle por la tramontana
-        [[300, 120, 240, 16], [900, 260, 320, 18], [1500, 110, 280, 14], [1950, 300, 360, 20], [2300, 150, 260, 15], [1200, 350, 300, 16], [500, 320, 220, 13]].forEach(n => {
-          s += `<ellipse cx="${n[0]}" cy="${n[1]}" rx="${n[2]}" ry="${n[3]}" fill="rgba(255,255,255,.55)"/>
-                <ellipse cx="${n[0] + n[2] * 0.5}" cy="${n[1] - 8}" rx="${(n[2] * 0.45).toFixed(0)}" ry="${(n[3] * 0.7).toFixed(0)}" fill="rgba(255,255,255,.4)"/>`;
+        /* las cajas de los puntos de interés: sirven para dejarles aire alrededor */
+        const cajas = [[132, 325, 96, 70], [386, 230, 88, 80], [258, 550, 84, 60], [505, 918, 110, 64],
+          [990, 420, 120, 100], [1262, 272, 96, 116], [902, 934, 96, 32], [1457, 534, 86, 52],
+          [1168, 146, 64, 68], [1400, 930, 100, 50], [1898, 437, 104, 86], [2156, 737, 88, 46],
+          [2376, 671, 88, 78], [1998, 170, 104, 60], [2312, 287, 76, 86]];
+        const libre = (x, y, w, h) => !cajas.some(c => x < c[0] + c[2] + 16 && x + w > c[0] - 16 && y < c[1] + c[3] + 16 && y + h > c[1] - 16);
+        /* un olivo del Empordà: tronco retorcido y copa de plata */
+        const olivo = (x, y, k) => `<g transform="translate(${x} ${y}) scale(${k})">
+          <ellipse cx="14" cy="4" rx="62" ry="12" fill="rgba(96,66,32,.2)"/>
+          <path d="M-4 2 q6 -40 -12 -62 M-4 2 q10 -44 22 -66 M-2 -30 q-20 -10 -30 -26 M4 -42 q20 -8 32 -26" stroke="#7d6a52" stroke-width="12" fill="none" stroke-linecap="round"/>
+          <ellipse cx="-34" cy="-88" rx="34" ry="24" fill="#8fa678"/><ellipse cx="20" cy="-100" rx="40" ry="28" fill="#a3b98a"/>
+          <ellipse cx="-2" cy="-74" rx="36" ry="24" fill="#9bb182"/><ellipse cx="44" cy="-72" rx="24" ry="18" fill="#8fa678"/>
+          <ellipse cx="-18" cy="-104" rx="22" ry="15" fill="#b7c9a2"/><ellipse cx="30" cy="-84" rx="18" ry="13" fill="#b7c9a2"/></g>`;
+        /* una casita blanca de Cadaqués, con su tejado de teja */
+        const casita = (x, y, w, h) => `<g><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="3" fill="#fbf7ee"/>
+          <path d="M${x - 6} ${y} L${x + w / 2} ${y - h * 0.4} L${x + w + 6} ${y} Z" fill="#c4714c"/>
+          <rect x="${x + w * 0.32}" y="${y + h * 0.34}" width="${w * 0.24}" height="${h * 0.3}" rx="2" fill="#5b7f9c"/>
+          <path d="M${x} ${y + h} H${x + w}" stroke="rgba(120,96,64,.35)" stroke-width="3"/></g>`;
+        /* degradados propios: ids con prefijo dliX para no chocar con otros mapas */
+        s += `<defs>
+          <linearGradient id="dliXMar" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5f9fc4"/><stop offset="45%" stop-color="#3d81ae"/><stop offset="100%" stop-color="#2b6892"/></linearGradient>
+          <linearGradient id="dliXLlano" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e4c48c"/><stop offset="46%" stop-color="#d3ab6d"/><stop offset="100%" stop-color="#bd8f52"/></linearGradient>
+          <linearGradient id="dliXCerro" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c9b48c"/><stop offset="100%" stop-color="#9d8a68"/></linearGradient>
+          <linearGradient id="dliXRoca" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#b9a385"/><stop offset="100%" stop-color="#7d6a52"/></linearGradient>
+          <linearGradient id="dliXMuseo" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e2a479"/><stop offset="100%" stop-color="#bf7850"/></linearGradient>
+          <linearGradient id="dliXCupula" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#dfe7ea"/><stop offset="100%" stop-color="#9fb3bd"/></linearGradient>
+          <radialGradient id="dliXSol" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#fffdf0"/><stop offset="100%" stop-color="#ffe9a8"/></radialGradient>
+        </defs>`;
+        /* ---------- EL CIELO ENORME: el sol alto y las nubes lentas ---------- */
+        s += `<g transform="translate(1560 178)">
+          <circle r="112" fill="rgba(255,244,196,.24)"><animate attributeName="r" values="112;126;112" dur="12s" repeatCount="indefinite"/></circle>
+          <circle r="62" fill="url(#dliXSol)"/></g>`;
+        [[330, 128, 1.05, 44, .82], [880, 226, .8, 62, .72], [1820, 96, .95, 52, .78], [2420, 214, .72, 70, .66]].forEach((n, i) => {
+          s += `<g opacity="${n[4]}"><animateTransform attributeName="transform" type="translate" values="0 0;${n[3]} 0;0 0" dur="${52 + i * 9}s" repeatCount="indefinite"/>
+            <g transform="translate(${n[0]} ${n[1]}) scale(${n[2]})"><ellipse rx="152" ry="24" fill="#fff"/><ellipse cx="-72" cy="10" rx="76" ry="16" fill="#fff"/>
+            <ellipse cx="76" cy="12" rx="86" ry="17" fill="#fff"/><ellipse cx="-8" cy="-16" rx="90" ry="20" fill="#fff"/></g></g>`;
         });
-        // el mar azul al fondo, una cinta de horizonte de punta a punta
-        s += `<rect x="0" y="640" width="2600" height="180" fill="#3b6ea5"/>
-              <rect x="0" y="640" width="2600" height="26" fill="#7fb3d5" opacity=".8"/>
-              <path d="M120 700 q22 -9 44 0 M480 730 q22 -9 44 0 M900 690 q22 -9 44 0 M1350 740 q22 -9 44 0 M1750 700 q22 -9 44 0 M2150 730 q22 -9 44 0 M2450 690 q22 -9 44 0" stroke="rgba(255,255,255,.5)" stroke-width="4" fill="none" stroke-linecap="round"/>
-              <ellipse cx="700" cy="690" rx="180" ry="14" fill="rgba(255,240,180,.35)"/>`;
-        // las rocas de Cadaqués, oscuras y redondeadas, saliendo del agua
-        s += `<path d="M2380 820 Q2400 680 2480 660 Q2560 680 2590 820 Z" fill="#5f4a3e"/>
-              <path d="M2270 820 Q2290 730 2350 716 Q2410 734 2420 820 Z" fill="#6d564a"/>
-              <path d="M2480 700 q20 -8 40 4" stroke="rgba(255,235,190,.4)" stroke-width="5" fill="none" stroke-linecap="round"/>
-              <path d="M1690 820 Q1710 748 1760 738 Q1812 750 1824 820 Z" fill="#6d564a" opacity=".9"/>`;
-        // la llanura dorada delante del mar
-        s += `<rect x="0" y="820" width="2600" height="280" fill="#e3b877"/>
-              <path d="M0 820 Q400 800 800 820 Q1300 842 1800 816 Q2200 798 2600 820 L2600 860 L0 860 Z" fill="#d9a95f"/>
-              <path d="M0 990 Q500 965 1000 990 Q1600 1015 2600 985 L2600 1100 L0 1100 Z" fill="#c99a52"/>`;
-        // sombras largas del atardecer, tan de Dalí
-        [[520, 900, 190], [1180, 940, 240], [1980, 910, 210]].forEach(sh => {
-          s += `<ellipse cx="${sh[0]}" cy="${sh[1]}" rx="${sh[2]}" ry="12" fill="rgba(90,50,20,.14)"/>`;
+        /* la nube alargada sobre la que se posa la tramontana */
+        s += `<ellipse cx="2070" cy="264" rx="152" ry="28" fill="#fff" opacity=".88"/>
+          <ellipse cx="1962" cy="276" rx="80" ry="18" fill="#fff" opacity=".78"/>
+          <ellipse cx="2180" cy="278" rx="72" ry="16" fill="#fff" opacity=".72"/>`;
+        /* ---------- LA BAHÍA: el mar, el cerro con las casitas y el cabo de roca ---------- */
+        s += `<rect x="1500" y="612" width="1100" height="360" fill="url(#dliXMar)"/>
+          <rect x="1500" y="612" width="1100" height="12" fill="#b9dced" opacity=".8"/>`;
+        s += `<g stroke="rgba(255,255,255,.5)" stroke-width="4" fill="none" stroke-linecap="round">
+          <path d="M1660 684 q22 -9 44 0 M1900 712 q22 -9 44 0 M2260 668 q22 -9 44 0 M2500 700 q22 -9 44 0"><animate attributeName="opacity" values=".8;.3;.8" dur="6s" repeatCount="indefinite"/></path>
+          <path d="M1760 760 q22 -9 44 0 M2060 800 q22 -9 44 0 M2420 776 q22 -9 44 0"><animate attributeName="opacity" values=".3;.8;.3" dur="6s" repeatCount="indefinite"/></path></g>`;
+        /* la punta de tierra que cierra la cala por el poniente */
+        s += `<path d="M1360 800 Q1462 706 1566 656 Q1660 616 1742 610 L1742 806 L1360 806 Z" fill="url(#dliXCerro)"/>
+          <path d="M1420 800 Q1512 716 1602 674 Q1672 644 1742 636 L1742 806 L1420 806 Z" fill="rgba(255,255,255,.12)"/>`;
+        /* el cerro de enfrente, con Portlligat trepando por la ladera */
+        s += `<path d="M1560 616 Q1720 470 1940 440 Q2130 414 2270 470 Q2380 516 2440 616 Z" fill="url(#dliXCerro)"/>
+          <path d="M1620 616 Q1780 508 1960 484 Q2120 464 2250 512 Q2340 548 2390 616 Z" fill="rgba(255,255,255,.14)"/>`;
+        [[1648, 552, 58, 40], [1742, 516, 52, 36], [2140, 496, 56, 38], [2226, 540, 50, 34], [2306, 584, 54, 36], [1596, 596, 46, 32]].forEach(c => {
+          if (libre(c[0] - 8, c[1] - c[3] * 0.4, c[2] + 16, c[3] * 1.4)) s += casita(c[0], c[1], c[2], c[3]);
         });
-        // matas de olivo desperdigadas por la llanura
-        [[240, 880], [820, 930], [1580, 890], [2240, 950], [1080, 980]].forEach(o => {
-          s += `<path d="M${o[0]} ${o[1]} q-2 -16 -6 -24" stroke="#8d6e63" stroke-width="5" fill="none" stroke-linecap="round"/>
-                <circle cx="${o[0] - 8}" cy="${o[1] - 34}" r="16" fill="#9ccc9c" opacity=".9"/>
-                <circle cx="${o[0] + 6}" cy="${o[1] - 28}" r="11" fill="#b5d6a7" opacity=".9"/>`;
+        /* la terraza encalada donde se asienta la casa de Portlligat */
+        s += `<rect x="1856" y="527" width="188" height="18" rx="5" fill="#fbf7ee"/>
+          <rect x="1866" y="545" width="168" height="34" rx="4" fill="#e6dcc8"/>
+          <path d="M1866 579 H2034" stroke="rgba(120,96,64,.35)" stroke-width="3"/>`;
+        /* el cabo, con la casa alta de la ventana que mira al mar */
+        s += `<path d="M2280 508 H2420 V268 H2280 Z" fill="#fbf7ee"/>
+          <path d="M2264 270 L2350 212 L2436 270 Z" fill="#c4714c"/>
+          <rect x="2296" y="377" width="108" height="14" rx="4" fill="#e6dcc8"/>
+          <rect x="2310" y="428" width="52" height="46" rx="3" fill="#5b7f9c"/>
+          <path d="M2310 451 H2362 M2336 428 V474" stroke="#fbf7ee" stroke-width="4"/>
+          <path d="M2280 508 H2420" stroke="rgba(120,96,64,.3)" stroke-width="4"/>`;
+        /* las rocas caprichosas del Cap de Creus, saliendo del agua */
+        s += `<path d="M2298 1020 Q2320 838 2378 766 Q2430 742 2492 754 Q2560 764 2588 812 L2600 862 L2600 1020 Z" fill="url(#dliXRoca)"/>
+          <path d="M2352 800 q30 -18 62 -6 q-24 26 -62 6 Z" fill="rgba(60,44,26,.28)"/>
+          <path d="M2494 812 q26 6 34 32 q-34 4 -34 -32 Z" fill="rgba(60,44,26,.22)"/>
+          <path d="M2330 902 Q2372 872 2420 900" stroke="rgba(255,246,220,.35)" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <path d="M1960 828 Q1972 720 2032 690 Q2086 668 2108 716 Q2126 758 2100 828 Z" fill="url(#dliXRoca)"/>
+          <ellipse cx="2044" cy="756" rx="19" ry="13" fill="rgba(50,80,110,.55)"/>
+          <path d="M2000 706 q20 -14 42 -6" stroke="rgba(255,246,220,.4)" stroke-width="5" fill="none" stroke-linecap="round"/>`;
+        /* la barca, con su estela y su sombra en el agua */
+        s += `<ellipse cx="2200" cy="789" rx="50" ry="9" fill="rgba(20,52,84,.22)"/>
+          <path d="M2152 800 q24 -9 48 0 M2168 816 q20 -8 40 0" stroke="rgba(255,255,255,.55)" stroke-width="4" fill="none" stroke-linecap="round"><animate attributeName="opacity" values=".8;.35;.8" dur="4.5s" repeatCount="indefinite"/></path>`;
+        /* ---------- LA LLANURA: la tierra seca del Empordà y la orilla ---------- */
+        s += `<path d="M0 790 L1500 790 Q1640 838 1760 880 Q1940 934 2200 950 Q2420 960 2600 944 L2600 1100 L0 1100 Z" fill="url(#dliXLlano)"/>
+          <path d="M0 790 L1500 790 Q1640 838 1760 880 Q1940 934 2200 950 Q2420 960 2600 944 L2600 962 Q2420 978 2200 968 Q1940 952 1760 898 Q1640 856 1500 808 L0 808 Z" fill="rgba(150,108,54,.22)"/>
+          <path d="M0 928 Q560 906 1120 930 Q1560 948 1780 972" stroke="rgba(150,108,54,.2)" stroke-width="5" fill="none"/>`;
+        /* guijarros y matojos secos donde queda sitio */
+        for (let i = 0; i < 30; i++) {
+          const x = 60 + (i * 271) % 2460, y = 830 + (i * 137) % 250;
+          if (!libre(x - 16, y - 20, 32, 24)) continue;
+          s += i % 2
+            ? `<ellipse cx="${x}" cy="${y}" rx="${11 + i % 4}" ry="${6 + i % 3}" fill="rgba(120,88,48,.22)"/>`
+            : `<path d="M${x} ${y} q-4 -16 -10 -22 M${x + 5} ${y} q0 -18 4 -24 M${x + 10} ${y} q5 -14 11 -20" stroke="#a89a62" stroke-width="4" fill="none" stroke-linecap="round"/>`;
+        }
+        /* ---------- EL TEATRO-MUSEO DE FIGUERES ---------- */
+        s += `<rect x="116" y="336" width="720" height="476" rx="6" fill="url(#dliXMuseo)"/>
+          <rect x="104" y="314" width="744" height="24" rx="8" fill="#b9694a"/>
+          <rect x="116" y="778" width="720" height="34" fill="rgba(120,64,36,.28)"/>`;
+        /* la cúpula geodésica, de vidrio y triángulos */
+        s += `<path d="M524 320 A136 136 0 0 1 796 320 Z" fill="url(#dliXCupula)"/>`;
+        let cup = "";
+        for (let i = 1; i < 8; i++) {
+          const a = Math.PI * i / 8;
+          cup += `<line x1="660" y1="320" x2="${(660 - 136 * Math.cos(a)).toFixed(1)}" y2="${(320 - 136 * Math.sin(a)).toFixed(1)}"/>`;
+        }
+        cup += `<path d="M568 320 A92 92 0 0 1 752 320" fill="none"/><path d="M612 320 A48 48 0 0 1 708 320" fill="none"/>`;
+        s += `<g stroke="rgba(255,255,255,.6)" stroke-width="3">${cup}</g>
+          <path d="M516 320 H804" stroke="#8fa4ae" stroke-width="10" stroke-linecap="round"/>`;
+        /* los huevos que coronan la cornisa */
+        [200, 292].forEach(x => {
+          s += `<rect x="${x - 26}" y="302" width="52" height="14" rx="4" fill="#c9b48c"/>
+            <ellipse cx="${x}" cy="270" rx="26" ry="34" fill="#f7f1e2"/><ellipse cx="${x - 8}" cy="258" rx="8" ry="12" fill="#fffdf6"/>`;
         });
-        // el perfil blanco de Cadaqués a lo lejos, junto al agua
-        s += `<g opacity=".85">
-              <rect x="1860" y="606" width="26" height="34" fill="#fdfaf2"/><rect x="1890" y="596" width="20" height="44" fill="#f7f2e6"/>
-              <rect x="1914" y="612" width="24" height="28" fill="#fdfaf2"/><path d="M1888 598 L1900 584 L1912 598 Z" fill="#e0d6c2"/>
-              <rect x="1896" y="576" width="8" height="12" fill="#f7f2e6"/>
-              </g>`;
+        /* la repisa donde descansa la bola de cristal y la moldura de los panecillos */
+        s += `<rect x="108" y="399" width="164" height="16" rx="5" fill="#e8c9a4"/>
+          <rect x="108" y="614" width="740" height="18" rx="5" fill="#e8c9a4"/>`;
+        let panes = "";
+        for (let r = 0; r < 4; r++) for (let c = 0; c < 11; c++) {
+          const px = 158 + c * 62, py = 372 + r * 68;
+          if (!libre(px - 13, py - 13, 26, 26)) continue;
+          panes += `<circle cx="${px}" cy="${py}" r="13"/>`;
+        }
+        s += `<g fill="#e0b070">${panes}</g>`;
+        /* las ventanas altas y la puerta del teatro */
+        [206, 654].forEach(x => {
+          s += `<path d="M${x} 700 A44 44 0 0 1 ${x + 88} 700 L${x + 88} 774 H${x} Z" fill="#8a5a3c"/>
+            <path d="M${x + 10} 704 A34 34 0 0 1 ${x + 78} 704 L${x + 78} 764 H${x + 10} Z" fill="#5b7f9c"/>
+            <path d="M${x + 44} 668 V764 M${x + 12} 726 H${x + 76}" stroke="#e8c9a4" stroke-width="4"/>`;
+        });
+        s += `<path d="M416 812 V706 A56 56 0 0 1 528 706 V812 Z" fill="#7a4a30"/>
+          <path d="M428 812 V708 A44 44 0 0 1 516 708 V812 Z" fill="#a06a44"/>
+          <path d="M472 664 V812" stroke="#7a4a30" stroke-width="5"/>`;
+        /* el patio empedrado delante del museo */
+        s += `<path d="M96 812 H900 L968 1010 H36 Z" fill="#cbb083"/>
+          <path d="M96 812 H900 L906 828 H92 Z" fill="rgba(255,255,255,.28)"/>`;
+        for (let i = 1; i < 6; i++) {
+          const y = 812 + i * 33;
+          s += `<path d="M${94 - i * 11} ${y} H${902 + i * 12}" stroke="rgba(140,108,64,.22)" stroke-width="3"/>`;
+        }
+        s += `<ellipse cx="560" cy="988" rx="88" ry="16" fill="rgba(110,74,34,.22)"/>`;
+        /* ---------- LOS SUEÑOS: la roca del cajón, la escalera y el elefante ---------- */
+        s += `<path d="M926 816 Q918 610 984 534 Q1040 500 1108 516 Q1164 530 1178 606 Q1190 706 1182 816 Z" fill="url(#dliXRoca)"/>
+          <path d="M950 700 Q1000 664 1060 690" stroke="rgba(255,246,220,.28)" stroke-width="7" fill="none" stroke-linecap="round"/>
+          <path d="M1130 590 q22 20 20 54" stroke="rgba(60,44,26,.26)" stroke-width="7" fill="none" stroke-linecap="round"/>`;
+        /* el cajón entreabierto, como los que Dalí ponía en la piedra */
+        s += `<rect x="978" y="626" width="140" height="16" rx="4" fill="rgba(40,28,16,.5)"/>
+          <rect x="972" y="640" width="148" height="72" rx="6" fill="#a67c50"/>
+          <rect x="982" y="650" width="128" height="52" rx="4" fill="#c39a68"/>
+          <circle cx="1046" cy="676" r="10" fill="#6d4c30"/>
+          <path d="M972 712 H1120 L1112 726 H980 Z" fill="rgba(40,28,16,.35)"/>`;
+        /* la escalera que sube al cielo */
+        s += `<rect x="1176" y="214" width="12" height="668" rx="5" fill="#b98a55"/>
+          <rect x="1226" y="214" width="12" height="668" rx="5" fill="#a87c4c"/>`;
+        for (let i = 0; i < 14; i++) s += `<rect x="1176" y="${214 + i * 48}" width="62" height="10" rx="4" fill="#c9a06a"/>`;
+        s += `<ellipse cx="1300" cy="886" rx="120" ry="14" fill="rgba(110,74,34,.2)"/>`;
+        /* las patas larguísimas del elefante de los sueños */
+        [[1272, 1266], [1302, 1300], [1334, 1338], [1360, 1370]].forEach(p => {
+          s += `<path d="M${p[0]} 396 L${p[1]} 858" stroke="#7d6a52" stroke-width="8" stroke-linecap="round"/>
+            <ellipse cx="${p[1]}" cy="862" rx="13" ry="7" fill="#6b5a44"/>`;
+        });
+        s += `<ellipse cx="1318" cy="872" rx="86" ry="13" fill="rgba(110,74,34,.2)"/>`;
+        /* la peña donde se posa el ojo */
+        s += `<path d="M1438 816 Q1436 690 1452 618 Q1466 586 1500 584 Q1538 584 1550 622 Q1562 700 1558 816 Z" fill="url(#dliXRoca)"/>
+          <path d="M1470 700 q26 -14 54 -2" stroke="rgba(255,246,220,.3)" stroke-width="6" fill="none" stroke-linecap="round"/>`;
+        /* el montículo de arena donde descansa la cara dormida */
+        s += `<ellipse cx="1450" cy="1010" rx="98" ry="31" fill="#dcbd89"/>
+          <path d="M1382 998 q66 -30 136 -2" stroke="rgba(255,246,214,.5)" stroke-width="6" fill="none" stroke-linecap="round"/>`;
+        /* sombras larguísimas, de esas que estira la tarde */
+        [[1006, 826, 210], [1310, 880, 250], [560, 1000, 180], [1500, 824, 160]].forEach(sh => {
+          s += `<ellipse cx="${sh[0] + sh[2] / 2}" cy="${sh[1]}" rx="${sh[2]}" ry="13" fill="rgba(96,62,26,.14)"/>`;
+        });
+        /* dos hileras de hormiguitas cruzando la tierra */
+        [[1000, 6, 34], [1046, 4, 46]].forEach((h, k) => {
+          let hor = "";
+          for (let i = 0; i < 9; i++) {
+            const x = 830 + i * 44;
+            hor += `<g transform="translate(${x} ${h[0]})"><ellipse cx="-6" rx="4" ry="3"/><ellipse rx="3" ry="2.4"/><ellipse cx="6" rx="5" ry="3.4"/>
+              <path d="M-2 -3 l-4 -5 M2 -3 l4 -5 M0 3 l-3 5 M2 3 l4 5" stroke="#4a3826" stroke-width="1.4" fill="none"/></g>`;
+          }
+          s += `<g fill="#4a3826"><animateTransform attributeName="transform" type="translate" values="0 0;${h[1] * 10} 0;0 0" dur="${h[2]}s" repeatCount="indefinite"/>${hor}</g>`;
+        });
+        /* los olivos, plantados donde no estorban */
+        s += olivo(1100, 930, 1) + olivo(1660, 906, .92) + olivo(1800, 1018, 1.08) + olivo(1010, 1046, .86);
+        /* un pájaro cruzando ese cielo tan limpio */
+        s += `<g><animateMotion dur="58s" repeatCount="indefinite" path="M 300 250 Q 900 168 1500 244 Q 2000 300 2540 214"/>
+          <path d="M0 0 q-14 -12 -30 -6 M0 0 q14 -12 30 -6" stroke="rgba(70,88,104,.55)" stroke-width="4" fill="none" stroke-linecap="round">
+          <animate attributeName="d" values="M0 0 q-14 -12 -30 -6 M0 0 q14 -12 30 -6;M0 0 q-14 6 -30 12 M0 0 q14 6 30 12;M0 0 q-14 -12 -30 -6 M0 0 q14 -12 30 -6" dur="2.6s" repeatCount="indefinite"/></path></g>`;
         return decoSvg(s, 2600);
       }
     },

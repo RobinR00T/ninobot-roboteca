@@ -85,6 +85,38 @@ const ROBOTS = {
     }
   },
 
+  papabot: {
+    name: "PapaBot", fav: "story", color: "#8d6e63", pitch: 0.82, rate: 0.95,
+    role: { es: "El papá robot que cuenta cuentos", ca: "El papa robot que explica contes", en: "The dad robot who tells stories", cs: "Robotí táta, který vypráví pohádky", fr: "Le papa robot qui raconte des histoires" },
+    hello: { es: "¡Hola {name}! Soy PapaBot. Tengo el depósito lleno de cuentos y unos chistes malísimos que te van a encantar. ¿Empezamos?", ca: "Hola {name}! Soc el PapaBot. Tinc el dipòsit ple de contes i uns acudits dolentíssims que t'encantaran. Comencem?", en: "Hi {name}! I am PapaBot. My tank is full of stories and terrible jokes you are going to love. Shall we start?", cs: "Ahoj {name}! Já jsem PapaBot. Mám nádrž plnou pohádek a příšerných vtipů, které se ti budou líbit. Začneme?", fr: "Salut {name} ! Je suis PapaBot. J'ai le réservoir plein d'histoires et de blagues nulles que tu vas adorer. On commence ?" },
+    cheer: [
+      { es: "¡Muy bien, {name}! Me pongo las gafas para verlo mejor: sí, perfecto.", ca: "Molt bé, {name}! Em poso les ulleres per veure-ho millor: sí, perfecte.", en: "Well done, {name}! Let me put on my glasses to see it better: yes, perfect.", cs: "Výborně, {name}! Nasadím si brýle, ať to vidím líp: ano, perfektní.", fr: "Très bien, {name} ! Je mets mes lunettes pour mieux voir : oui, parfait." },
+      { es: "¡Eso es! Se me hincha el pecho de tornillos de orgullo.", ca: "Això és! Se m'infla el pit de cargols d'orgull.", en: "That is it! My chest of screws is bursting with pride.", cs: "Přesně tak! Moje šroubované srdce puká pýchou.", fr: "C'est ça ! Ma poitrine à vis déborde de fierté." }
+    ],
+    oops: { es: "Uy, casi. Ven, que te lo explico como te lo explicaría en el sofá: sin prisa y sin regañinas.", ca: "Ui, gairebé. Vine, t'ho explico com t'ho explicaria al sofà: sense pressa i sense renyar.", en: "Oops, almost. Come here, I will explain it like I would on the sofa: no rush and no telling off.", cs: "Jejda, skoro. Pojď, vysvětlím ti to jako na gauči: bez spěchu a bez kázání.", fr: "Oups, presque. Viens, je t'explique comme sur le canapé : sans se presser et sans gronder." },
+    bye: { es: "Hasta mañana, {name}. Te guardo un cuento calentito para la próxima.", ca: "Fins demà, {name}. Et guardo un conte calentó per a la propera.", en: "See you tomorrow, {name}. I will keep a warm story for next time.", cs: "Zítra na viděnou, {name}. Schovám ti teploučkou pohádku na příště.", fr: "À demain, {name}. Je te garde une histoire toute chaude pour la prochaine fois." },
+    svg(size, cls) {
+      return `<svg viewBox="0 0 100 100" width="${size}" height="${size}" class="${cls || ""}">
+        <defs><linearGradient id="papaG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#a1887f"/><stop offset="100%" stop-color="#5d4037"/></linearGradient></defs>
+        <rect x="26" y="16" width="48" height="34" rx="10" fill="url(#papaG)"/>
+        <rect x="30" y="13" width="40" height="6" rx="3" fill="#4e342e"/>
+        <circle cx="41" cy="30" r="7.5" fill="#fff"/><circle cx="41" cy="30" r="3.4" fill="#3e2723"><animate attributeName="r" values="3.4;2;3.4" dur="4.5s" repeatCount="indefinite"/></circle>
+        <circle cx="59" cy="30" r="7.5" fill="#fff"/><circle cx="59" cy="30" r="3.4" fill="#3e2723"><animate attributeName="r" values="3.4;2;3.4" dur="4.5s" repeatCount="indefinite"/></circle>
+        <path d="M32 30 a9 9 0 0 0 18 0 a9 9 0 0 0 -18 0 M50 30 a9 9 0 0 0 18 0 a9 9 0 0 0 -18 0 M28 28 L33 29 M72 28 L67 29" stroke="#37474f" stroke-width="2" fill="none"/>
+        <path d="M50 40 Q42 41 38 44 M50 40 Q58 41 62 44" stroke="#4e342e" stroke-width="3.4" fill="none" stroke-linecap="round"/>
+        <path class="mouth" d="M42 45 Q50 50 58 45" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <line x1="50" y1="16" x2="50" y2="8" stroke="#6d4c41" stroke-width="3"/><circle cx="50" cy="6" r="3.4" fill="#ffb74d"><animate attributeName="opacity" values="1;.55;1" dur="2.6s" repeatCount="indefinite"/></circle>
+        <rect x="30" y="52" width="40" height="32" rx="10" fill="url(#papaG)"/>
+        <path d="M42 52 L50 60 L58 52 Z" fill="#eceff1"/>
+        <path d="M50 60 L46 66 L50 78 L54 66 Z" fill="#c62828"/>
+        <circle cx="38" cy="70" r="4" fill="#ffd740"/><path d="M38 66.5 C36 68 36 70 38 71.5 C40 70 40 68 38 66.5 Z" fill="#d81b60"/>
+        <rect x="20" y="54" width="9" height="24" rx="4.5" fill="#4e342e"/>
+        <rect x="71" y="54" width="9" height="24" rx="4.5" fill="#4e342e"/>
+        <rect x="34" y="84" width="12" height="9" rx="3" fill="#3e2723"/><rect x="54" y="84" width="12" height="9" rx="3" fill="#3e2723"/>
+      </svg>`;
+    }
+  },
+
   bip: {
     name: "Bip", fav: "explore", color: "#42a5f5", pitch: 1.25, rate: 1.0,
     role: { es: "El pequeñín valiente", ca: "El menut valent", en: "The brave little one", cs: "Statečný drobek", fr: "Le petit courageux" },

@@ -784,3 +784,42 @@ cultural estricto + el modo Leer hecho en el motor.
   Los tres con ids de gradiente prefijados (pol/bmb/coc), sin colisiones,
   ~40 KB de SVG cada uno y animaciones suaves. Verificados con capturas.
 - Regresión: 231 tema×modo + 21 POIs + 6 lecciones: 0 fallos, consola limpia.
+
+## v4.2 (3-9-2026, 14:50): PapaBot y los 21 mapas al mismo nivel
+
+- **👨 PapaBot, el papá robot** (12 robots ya): cabeza marrón cálida con gafas
+  redondas y bigote, camisa blanca con corbata roja, la voz más grave de la
+  familia y las Historias como modo favorito. Chistes malísimos, "ven que te
+  lo explico como en el sofá, sin prisa y sin regañinas" cuando algo falla, y
+  "te guardo un cuento calentito para la próxima" al despedirse.
+- **🎨 Los 18 mapas veteranos redibujados** para igualar a los tres nuevos
+  (7 subagentes en paralelo, ~40 min; los que comparten 60-deco.js escriben en
+  ficheros nuevos 69a/69c/69d/89b que ENVUELVEN la deco original en lugar de
+  tocarla, conservándola por delante). El decorado pasa de 2-11 KB a 25-80 KB
+  por mapa:
+  - Espacio: Vía Láctea por capas, seis nebulosas, ~300 estrellas parpadeando,
+    polvo estelar, cometas y horizonte lunar (las órbitas, intactas).
+  - Tierra Media: Comarca con camino, cercas, casitas con humo y molino que
+    gira, río con puente de piedra, bosque, llanuras y tierras secas.
+  - Dinosaurios: volcanes humeantes, helechos gigantes, huellas en rastro,
+    libélulas cruzando y transición suave a la edad de hielo con nieve.
+  - Océano: cáusticas temblando bajo la superficie, arrecife con anémonas,
+    bancos de peces lejanos y bioluminiscencia en el abismo.
+  - Cuerpo: consulta con tarima bajo cada silueta, báscula, metro de pared,
+    estantería con frascos y PANEL DE RAYOS X detrás del esqueleto.
+  - Música: teatro con telón, borlas, siete focos con haces de color, piano de
+    cola, sillas, atriles y notas flotando por el pentagrama.
+  - Animales: cuatro climas encadenados con transiciones fundidas.
+  - Increíbles: marco de atlas antiguo, rosa de los vientos, barquitos y
+    criaturas marinas simpáticas, todo bajo los continentes.
+  - Star Wars, Piratas, Egipto: dunas y hangar; barco, muelle e isla con cala;
+    Nilo con faluchos, templo de capiteles de papiro y pirámides.
+  - Miró, Picasso, Dalí: taller y Mallorca; las tres franjas azul, rosa y
+    cubista; Figueres, la llanura de los sueños y Cadaqués.
+  - Gaudí, Árboles, Frutas, Amazonas: banco de trencadís de mil píxeles y
+    grúas en la Sagrada Família; subsuelo con red de hongos; bancales bajo
+    cada verdura; selva en capas con lluvia y nenúfares Victoria.
+- Verificado: 0 ids de gradiente duplicados entre ficheros (el riesgo real de
+  trabajar en paralelo), un solo SVG por mapa y sin NaN en los 21, 12 robots
+  con sus textos completos, 231 tema×modo + POIs + llamada: 0 fallos, consola
+  limpia. Bundle: 5,23 MB.

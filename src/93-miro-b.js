@@ -311,7 +311,7 @@ Object.assign(THEMES.miro.content, {
   /* ---------- MAPA DE EXPLORACIÓN ---------- */
   explore: {
     width: 2600, height: 1100, stars: false,
-    bgCss: "radial-gradient(ellipse 40% 30% at 20% 12%, rgba(255,255,255,.5), transparent), linear-gradient(180deg,#fdf8ec 0%,#f9f0da 55%,#f3e6c8 100%)",
+    bgCss: "radial-gradient(ellipse 44% 32% at 24% 12%, rgba(255,255,255,.55), transparent 70%), linear-gradient(180deg,#fcf5e4 0%,#f7ecd4 44%,#f0e1c2 74%,#e8d5b0 100%)",
     cats: [
       { id: "taller", emoji: "🎨", x: 120, name: { es: "El taller", ca: "El taller", en: "The workshop", cs: "Ateliér", fr: "L'atelier" } },
       { id: "cuadros", emoji: "⭐", x: 1000, name: { es: "El mundo de sus cuadros", ca: "El món dels seus quadres", en: "The world of his paintings", cs: "Svět jeho obrazů", fr: "Le monde de ses tableaux" } },
@@ -510,32 +510,229 @@ Object.assign(THEMES.miro.content, {
         name: { es: "El móvil del amigo Calder", ca: "El mòbil de l'amic Calder", en: "Friend Calder's mobile", cs: "Mobil od přítele Caldera", fr: "Le mobile de l'ami Calder" },
         fact: { es: "Su amigo Calder inventó los móviles: esculturas colgantes que bailan con el aire. Los dos amigos se regalaban obras, ¡el mejor regalo entre artistas!", ca: "El seu amic Calder va inventar els mòbils: escultures penjants que ballen amb l'aire. Els dos amics es regalaven obres, el millor regal entre artistes!", en: "His friend Calder invented mobiles: hanging sculptures that dance with the air. The two friends gave each other artworks, the best gift between artists!", cs: "Jeho přítel Calder vynalezl mobily: zavěšené sochy, které tančí ve vzduchu. Oba přátelé si svá díla darovali, nejlepší dárek mezi umělci!", fr: "Son ami Calder a inventé les mobiles : des sculptures suspendues qui dansent avec l'air. Les deux amis s'offraient des œuvres, le meilleur cadeau entre artistes !" } }
     ],
-    /* el paisaje: un lienzo crema con manchas mironianas gigantes */
+    /* el escenario: un lienzo crudo de punta a punta, con el taller a la izquierda,
+       el mundo pintado en el centro y las terrazas de Mallorca a la derecha */
     deco: function () {
       let s = "";
-      // la trama del lienzo: hilos finitos horizontales
-      for (let i = 0; i < 12; i++) {
-        s += `<line x1="0" y1="${90 + i * 88}" x2="2600" y2="${90 + i * 88}" stroke="rgba(160,130,80,.07)" stroke-width="2"/>`;
+      /* las cajas de los puntos de interés: sirven para dejarles aire alrededor */
+      const cajas = [[143, 598, 74, 84], [342, 402, 96, 116], [595, 598, 110, 84], [792, 507, 76, 66], [270, 813, 60, 74],
+        [1031, 291, 78, 78], [1265, 183, 70, 74], [1444, 398, 92, 64], [1128, 580, 64, 120], [1614, 234, 92, 92],
+        [1576, 652, 88, 96], [1948, 345, 84, 150], [2155, 660, 130, 80], [2384, 850, 92, 60], [2320, 218, 100, 84]];
+      const libre = (x, y, w, h) => !cajas.some(c => x < c[0] + c[2] + 16 && x + w > c[0] - 16 && y < c[1] + c[3] + 16 && y + h > c[1] - 16);
+      /* la estrellita de cinco puntas, la firma del pintor */
+      const estrella = (cx, cy, r, c, g) => {
+        let d = "";
+        for (let i = 0; i < 10; i++) {
+          const a = (i * 36 - 90 + (g || 0)) * Math.PI / 180, rr = i % 2 ? r * 0.4 : r;
+          d += (i ? "L" : "M") + (cx + rr * Math.cos(a)).toFixed(1) + " " + (cy + rr * Math.sin(a)).toFixed(1) + " ";
+        }
+        return `<path d="${d}Z" fill="${c}"/>`;
+      };
+      /* un almendro en flor: tronco retorcido y copa blanca y rosa */
+      const almendro = (x, y, k) => `<g transform="translate(${x} ${y}) scale(${k})">
+        <ellipse cx="0" cy="4" rx="46" ry="11" fill="rgba(92,62,30,.16)"/>
+        <path d="M-6 2 q6 -44 -10 -72 M-6 2 q12 -48 28 -78 M-2 -38 q-22 -12 -34 -32 M4 -52 q22 -10 36 -32" stroke="#6d5641" stroke-width="11" fill="none" stroke-linecap="round"/>
+        <ellipse cx="-40" cy="-106" rx="34" ry="26" fill="#f3dbe4"/><ellipse cx="22" cy="-122" rx="40" ry="30" fill="#fbeff3"/>
+        <ellipse cx="-6" cy="-92" rx="36" ry="26" fill="#f7e6ec"/><ellipse cx="46" cy="-88" rx="25" ry="19" fill="#f3dbe4"/>
+        <circle cx="-32" cy="-114" r="5" fill="#fff"/><circle cx="14" cy="-132" r="5" fill="#fff"/><circle cx="44" cy="-94" r="4.4" fill="#fff"/>
+        <circle cx="-14" cy="-84" r="4.4" fill="#fff"/><circle cx="4" cy="-104" r="4" fill="#f6c3d4"/></g>`;
+      /* un muro de piedra seca: dos hiladas de cantos redondeados */
+      const muro = (y0, h) => {
+        let d = `<rect x="1780" y="${y0}" width="820" height="${h}" fill="url(#mroXMuro)"/><g fill="#f2e9d6" opacity=".5" stroke="rgba(116,100,74,.42)" stroke-width="2">`;
+        for (let f = 0; f < 2; f++) {
+          const yy = (y0 + 7 + f * (h - 10) / 2).toFixed(0), hh = ((h - 10) / 2 - 6).toFixed(0);
+          for (let x = 1784 + (f ? 34 : 0); x < 2596; x += 72) d += `<rect x="${x}" y="${yy}" width="62" height="${hh}" rx="9"/>`;
+        }
+        return d + "</g>";
+      };
+      /* degradados y trama propios: ids con prefijo mroX para no chocar con otros mapas */
+      s += `<defs>
+        <pattern id="mroXTrama" width="10" height="10" patternUnits="userSpaceOnUse">
+          <path d="M0 0 H10 M0 5 H10" stroke="rgba(146,114,64,.10)" stroke-width="1.4"/>
+          <path d="M0 0 V10 M5 0 V10" stroke="rgba(146,114,64,.07)" stroke-width="1.4"/>
+        </pattern>
+        <linearGradient id="mroXMar" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#9adaea"/><stop offset="45%" stop-color="#45a0cb"/><stop offset="100%" stop-color="#2a6f9d"/></linearGradient>
+        <linearGradient id="mroXTierra" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8cf9c"/><stop offset="100%" stop-color="#cfa869"/></linearGradient>
+        <linearGradient id="mroXMuro" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ded4bf"/><stop offset="100%" stop-color="#a89a7e"/></linearGradient>
+        <linearGradient id="mroXTabla" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#cba77b"/><stop offset="100%" stop-color="#a07949"/></linearGradient>
+        <radialGradient id="mroXLuz" cx="50%" cy="0%" r="92%"><stop offset="0%" stop-color="rgba(255,250,222,.8)"/><stop offset="100%" stop-color="rgba(255,250,222,0)"/></radialGradient>
+        <clipPath id="mroXMalla"><path d="M1802 210 Q1846 640 1904 1100 L2600 1100 L2600 210 Z"/></clipPath>
+      </defs>`;
+      /* ---------- EL LIENZO: la tela cruda, su trama y sus grumos ---------- */
+      s += `<rect x="0" y="0" width="2600" height="1100" fill="url(#mroXTrama)"/>`;
+      let grumos = "";
+      for (let i = 0; i < 58; i++) {
+        const x = (i * 271) % 2540 + 30, y = (i * 613) % 1040 + 30;
+        if (!libre(x - 4, y - 4, 8, 8)) continue;
+        grumos += `<circle cx="${x}" cy="${y}" r="${(1.3 + (i % 3) * 0.8).toFixed(1)}"/>`;
       }
-      // mancha roja gigante
-      s += `<path d="M320 260 Q420 150 560 210 Q660 260 620 380 Q570 470 440 450 Q300 420 320 260 Z" fill="#e53935" opacity=".16"/>`;
-      // mancha azul
-      s += `<path d="M1350 640 Q1480 560 1600 640 Q1690 720 1600 820 Q1480 900 1370 820 Q1280 730 1350 640 Z" fill="#1e88e5" opacity=".15"/>`;
-      // círculo amarillo
-      s += `<circle cx="2140" cy="300" r="150" fill="#fdd835" opacity=".2"/>`;
-      // punto verde
-      s += `<circle cx="900" cy="880" r="70" fill="#43a047" opacity=".14"/>`;
-      // la línea negra gruesa que viaja por todo el lienzo
-      s += `<path d="M-20 520 Q300 380 620 520 Q950 660 1300 500 Q1650 340 1980 520 Q2300 690 2620 540" stroke="#212121" stroke-width="16" fill="none" stroke-linecap="round" opacity=".1"/>`;
-      // una estrella mironiana grande de fondo
-      s += `<g stroke="#212121" stroke-width="9" stroke-linecap="round" opacity=".1">
-              <line x1="820" y1="170" x2="820" y2="330"/><line x1="740" y1="250" x2="900" y2="250"/>
-              <line x1="765" y1="195" x2="875" y2="305"/><line x1="875" y1="195" x2="765" y2="305"/>
-            </g>`;
-      // gotitas de color desperdigadas
-      [[180, 380, "#1e88e5"], [1080, 800, "#e53935"], [1750, 180, "#43a047"], [2380, 620, "#e53935"], [2520, 180, "#1e88e5"], [640, 760, "#fdd835"]].forEach(d => {
-        s += `<circle cx="${d[0]}" cy="${d[1]}" r="18" fill="${d[2]}" opacity=".18"/>`;
+      s += `<g fill="rgba(148,116,68,.17)">${grumos}</g>`;
+      /* ---------- LAS MANCHAS: aguadas de color plano, muy diluidas, al fondo ---------- */
+      s += `<path d="M118 168 Q330 74 520 178 Q664 268 588 414 Q486 532 318 482 Q140 424 118 168 Z" fill="#e53935" opacity=".12"/>
+        <path d="M944 306 Q1178 186 1358 336 Q1498 476 1330 604 Q1122 702 982 562 Q884 436 944 306 Z" fill="#1e88e5" opacity=".11"/>
+        <circle cx="1748" cy="486" r="196" fill="#fdd835" opacity=".15"/>
+        <path d="M706 768 Q902 698 1042 806 Q1122 902 992 972 Q824 1022 722 924 Q652 848 706 768 Z" fill="#43a047" opacity=".12"/>
+        <circle cx="452" cy="972" r="126" fill="#fdd835" opacity=".13"/>
+        <circle cx="1502" cy="892" r="112" fill="#e53935" opacity=".1"/>
+        <path d="M1968 108 Q2196 34 2398 122 Q2544 210 2438 292 Q2238 344 2058 274 Q1922 200 1968 108 Z" fill="#1e88e5" opacity=".09"/>`;
+      /* ---------- LAS FORMAS: color plano con su contorno negro, como recortadas ---------- */
+      [["M1368 246 Q1390 190 1448 196 Q1500 202 1506 252 Q1510 302 1454 312 Q1390 316 1368 246 Z", "#e53935"],
+        ["M1030 944 Q1050 886 1112 892 Q1168 900 1172 950 Q1174 1002 1114 1012 Q1046 1010 1030 944 Z", "#43a047"],
+        ["M1690 934 Q1708 876 1766 882 Q1818 890 1822 940 Q1824 990 1768 1000 Q1704 998 1690 934 Z", "#1e88e5"]].forEach(f => {
+        s += `<path d="${f[0]}" fill="${f[1]}" opacity=".72"/><path d="${f[0]}" fill="none" stroke="#1f1c18" stroke-width="5" opacity=".8"/>`;
       });
+      /* un sol negro con sus rayos, plantado en medio del lienzo */
+      s += `<g transform="translate(1246 918)"><circle r="30" fill="#1f1c18"/>
+        ${[0, 45, 90, 135, 180, 225, 270, 315].map(a => `<line x1="${(36 * Math.cos(a * Math.PI / 180)).toFixed(0)}" y1="${(36 * Math.sin(a * Math.PI / 180)).toFixed(0)}" x2="${(54 * Math.cos(a * Math.PI / 180)).toFixed(0)}" y2="${(54 * Math.sin(a * Math.PI / 180)).toFixed(0)}" stroke="#1f1c18" stroke-width="5" stroke-linecap="round"/>`).join("")}
+        <circle r="11" fill="#fdd835"/></g>`;
+      /* ---------- MALLORCA: el mar, las terrazas de piedra seca y los almendros ---------- */
+      let m = "";
+      /* el Mediterráneo, con el horizonte alto y dos islas lejanas */
+      m += `<rect x="1780" y="210" width="820" height="162" fill="url(#mroXMar)"/>
+        <rect x="1780" y="210" width="820" height="14" fill="#daf0f7" opacity=".85"/>
+        <path d="M2244 372 Q2320 326 2412 372 Z" fill="#6f8fa6" opacity=".5"/>
+        <path d="M1812 372 Q1888 338 1966 372 Z" fill="#7c9aae" opacity=".38"/>`;
+      /* las olitas, que van y vienen despacio */
+      m += `<g stroke="rgba(255,255,255,.6)" stroke-width="4" fill="none" stroke-linecap="round">
+        <path d="M1840 288 q20 -9 40 0 M2000 320 q20 -9 40 0 M2180 274 q20 -9 40 0 M2470 306 q20 -9 40 0"><animate attributeName="opacity" values=".85;.35;.85" dur="5s" repeatCount="indefinite"/></path>
+        <path d="M1922 330 q20 -9 40 0 M2110 346 q20 -9 40 0 M2320 322 q20 -9 40 0 M2520 350 q20 -9 40 0"><animate attributeName="opacity" values=".35;.85;.35" dur="5s" repeatCount="indefinite"/></path></g>`;
+      /* la barca de vela, meciéndose en la bahía */
+      m += `<g transform="translate(2116 340)"><g><animateTransform attributeName="transform" type="rotate" values="-2 0 0;2 0 0;-2 0 0" dur="6s" repeatCount="indefinite"/>
+        <path d="M-34 0 h68 l-13 16 h-42 Z" fill="#37474f"/><path d="M2 -4 V-54 L32 -6 Z" fill="#fdfdfa"/><path d="M-4 -4 V-46 L-30 -6 Z" fill="#e8eef0"/></g></g>`;
+      /* los bancales: tierra clara y muros de piedra seca, escalonados */
+      m += `<path d="M1780 372 H2600 V498 Q2300 508 2020 498 Q1880 492 1780 500 Z" fill="url(#mroXTierra)"/>`;
+      m += muro(498, 58);
+      m += `<rect x="1780" y="556" width="820" height="188" fill="url(#mroXTierra)"/>`;
+      m += muro(744, 64);
+      m += `<rect x="1780" y="808" width="820" height="104" fill="url(#mroXTierra)"/>`;
+      m += muro(912, 66);
+      m += `<rect x="1780" y="978" width="820" height="122" fill="url(#mroXTierra)"/>`;
+      /* la escalerita de piedra que salva el bancal */
+      m += `<g fill="rgba(255,255,255,.4)">${[0, 1, 2, 3].map(i => `<rect x="${1832 + i * 7}" y="${750 + i * 15}" width="88" height="12" rx="4"/>`).join("")}</g>`;
+      /* matas secas asomando en los bancales */
+      for (let i = 0; i < 24; i++) {
+        const x = 1804 + (i * 197) % 772, y = [468, 600, 662, 702, 848, 882, 1018, 1058][i % 8];
+        if (!libre(x - 14, y - 26, 28, 30)) continue;
+        m += `<path d="M${x} ${y} q-4 -18 -11 -24 M${x + 5} ${y} q0 -20 4 -26 M${x + 10} ${y} q5 -16 11 -22" stroke="#9aa864" stroke-width="4" fill="none" stroke-linecap="round"/>`;
+      }
+      /* los almendros en flor, repartidos por los bancales */
+      m += almendro(2140, 498, .9) + almendro(2020, 744, 1) + almendro(2440, 744, .86) + almendro(2140, 912, 1.06) + almendro(2330, 1080, 1.1);
+      /* la pérgola de la terraza, con su parra y sus racimos colgando */
+      m += `<rect x="2246" y="200" width="16" height="300" rx="6" fill="#8d6e4f"/>
+        <rect x="2544" y="200" width="16" height="300" rx="6" fill="#8d6e4f"/>
+        <rect x="2226" y="188" width="358" height="18" rx="8" fill="#a07f5c"/>
+        <path d="M2240 208 q28 22 58 14 q34 -10 62 12 q30 18 62 4 q34 -14 62 8 q26 18 54 6" stroke="#6f8f4a" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <g fill="#7cae4e">${[[2266, 220], [2330, 224], [2418, 218], [2492, 226], [2546, 216]].map(h => `<ellipse cx="${h[0]}" cy="${h[1]}" rx="15" ry="9"/>`).join("")}</g>`;
+      [[2290, 1, 6], [2492, -1, 7]].forEach(v => {
+        m += `<g><animateTransform attributeName="transform" type="rotate" values="${-2.4 * v[1]} ${v[0]} 206;${2.4 * v[1]} ${v[0]} 206;${-2.4 * v[1]} ${v[0]} 206" dur="${v[2]}s" repeatCount="indefinite"/>
+          <path d="M${v[0]} 206 V238" stroke="#6f8f4a" stroke-width="4"/>
+          <g fill="#8e6bc4">${[[0, 244], [-9, 254], [9, 254], [0, 264], [-7, 273], [7, 273], [0, 282]].map(p => `<circle cx="${v[0] + p[0]}" cy="${p[1]}" r="6.5"/>`).join("")}</g></g>`;
+      });
+      /* el cordel del que cuelga el móvil, atado a la viga */
+      m += `<path d="M2372 206 V218" stroke="#6d5a45" stroke-width="4"/>`;
+      /* dos pétalos de almendro cayendo sin prisa */
+      [[2082, 522, 7.5], [2262, 782, 9]].forEach(p => {
+        m += `<g><animateTransform attributeName="transform" type="translate" values="0 0;20 ${(p[2] * 13).toFixed(0)};0 0" dur="${p[2]}s" repeatCount="indefinite"/>
+          <ellipse cx="${p[0]}" cy="${p[1]}" rx="7" ry="5" fill="#f6d7e2"/></g>`;
+      });
+      s += `<g clip-path="url(#mroXMalla)">${m}</g>
+        <path d="M1802 210 Q1846 640 1904 1100" stroke="#1f1c18" stroke-width="5" fill="none" opacity=".5"/>`;
+      /* ---------- EL TALLER: suelo de madera, ventanal, caballetes y botes ---------- */
+      s += `<path d="M0 866 Q220 878 460 872 Q700 866 880 886 Q964 900 990 968 Q1004 1030 986 1100 L0 1100 Z" fill="url(#mroXTabla)"/>
+        <path d="M0 866 Q220 878 460 872 Q700 866 880 886 L876 902 Q700 882 460 888 Q220 894 0 882 Z" fill="rgba(90,58,28,.26)"/>
+        <path d="M0 866 Q220 878 460 872 Q700 866 880 886 Q964 900 990 968 Q1004 1030 986 1100" stroke="#1f1c18" stroke-width="5" fill="none" opacity=".55"/>`;
+      for (let x = 44; x < 900; x += 96) s += `<line x1="${x}" y1="886" x2="${x - 20}" y2="1100" stroke="rgba(90,58,28,.2)" stroke-width="3"/>`;
+      /* el ventanal por donde entra la luz de la mañana */
+      s += `<rect x="52" y="120" width="208" height="320" rx="8" fill="#d3e9f0"/>
+        <path d="M64 132 L148 132 L64 216 Z" fill="rgba(255,255,255,.55)"/>
+        <rect x="52" y="120" width="208" height="320" rx="8" fill="none" stroke="#8d6e4f" stroke-width="12"/>
+        <path d="M156 126 V434 M58 280 H254" stroke="#8d6e4f" stroke-width="9"/>
+        <path d="M64 446 L252 446 L432 900 L128 900 Z" fill="url(#mroXLuz)" opacity=".34"><animate attributeName="opacity" values=".34;.16;.34" dur="11s" repeatCount="indefinite"/></path>`;
+      /* la percha de los pinceles, colgada en la pared */
+      s += `<rect x="606" y="462" width="150" height="10" rx="5" fill="#8b6640"/>`;
+      [618, 652, 686, 722].forEach((x, i) => {
+        s += `<path d="M${x} 472 V${506 + (i % 2) * 12}" stroke="#c9a06a" stroke-width="7" stroke-linecap="round"/>
+          <path d="M${x} ${504 + (i % 2) * 12} V${520 + (i % 2) * 12}" stroke="${["#e53935", "#1e88e5", "#fdd835", "#43a047"][i]}" stroke-width="9" stroke-linecap="round"/>`;
+      });
+      /* la balda de la pared, con dos botes de pintura */
+      s += `<rect x="716" y="577" width="184" height="14" rx="5" fill="#a07949"/>
+        <path d="M732 591 L750 618 H732 Z" fill="#8b6640"/>
+        <rect x="726" y="541" width="24" height="36" rx="4" fill="#cfc6b4"/><rect x="726" y="549" width="24" height="28" rx="3" fill="#1e88e5"/>
+        <rect x="754" y="547" width="20" height="30" rx="4" fill="#cfc6b4"/><rect x="754" y="554" width="20" height="23" rx="3" fill="#43a047"/>`;
+      /* el caballete del cuadro grande */
+      s += `<path d="M350 534 L354 872 M450 534 L488 872" stroke="#a07949" stroke-width="14" stroke-linecap="round"/>
+        <path d="M356 726 H470" stroke="#a07949" stroke-width="10"/>
+        <rect x="322" y="518" width="150" height="20" rx="7" fill="#8b6640"/>`;
+      /* un segundo caballete con una tela recién empezada */
+      s += `<path d="M462 604 L436 872 M550 604 L560 872" stroke="#a07949" stroke-width="11" stroke-linecap="round"/>
+        <rect x="452" y="592" width="112" height="16" rx="6" fill="#8b6640"/>
+        <rect x="458" y="470" width="100" height="124" rx="4" fill="#f7efdc" stroke="#c9b48c" stroke-width="4"/>
+        <path d="M472 562 Q502 500 534 548" stroke="#1f1c18" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <circle cx="490" cy="514" r="9" fill="#e53935"/>${estrella(530, 506, 11, "#1f1c18")}`;
+      /* el montón de bastidores apilados donde descansa la casa */
+      s += `<rect x="562" y="686" width="192" height="46" rx="6" fill="#b98a55"/>
+        <rect x="570" y="732" width="176" height="44" rx="6" fill="#a87c4c"/>
+        <rect x="562" y="776" width="192" height="46" rx="6" fill="#96693e"/>
+        <rect x="576" y="700" width="164" height="18" rx="4" fill="rgba(255,255,255,.24)"/>
+        <rect x="584" y="746" width="148" height="16" rx="4" fill="rgba(255,255,255,.2)"/>
+        <path d="M562 822 H754 L744 866 H572 Z" fill="#8a5f37"/>`;
+      /* la mesa de trabajo, con sus botes y su travesaño */
+      s += `<rect x="70" y="686" width="184" height="16" rx="5" fill="#a07949"/>
+        <rect x="80" y="702" width="14" height="168" rx="5" fill="#8b6640"/><rect x="220" y="702" width="14" height="168" rx="5" fill="#8b6640"/>
+        <rect x="80" y="762" width="154" height="9" rx="4" fill="#8b6640"/>
+        <rect x="80" y="650" width="22" height="36" rx="4" fill="#cfc6b4"/><rect x="80" y="657" width="22" height="29" rx="3" fill="#e53935"/>
+        <rect x="106" y="656" width="20" height="30" rx="4" fill="#cfc6b4"/><rect x="106" y="662" width="20" height="24" rx="3" fill="#fdd835"/>`;
+      /* la paleta apoyada y unos botes en el suelo */
+      s += `<g transform="translate(792 838) rotate(-8)"><ellipse rx="52" ry="34" fill="#c9a06a"/><ellipse cx="18" cy="-6" rx="12" ry="9" fill="#a07949"/>
+        <circle cx="-30" cy="-12" r="8" fill="#e53935"/><circle cx="-14" cy="-22" r="7" fill="#fdd835"/><circle cx="4" cy="-24" r="7" fill="#1e88e5"/><circle cx="-34" cy="8" r="7" fill="#43a047"/><circle cx="-16" cy="14" r="6" fill="#1f1c18"/></g>
+        <ellipse cx="512" cy="880" rx="46" ry="10" fill="rgba(60,40,16,.18)"/>
+        <rect x="474" y="826" width="36" height="52" rx="6" fill="#cfc6b4"/><rect x="474" y="838" width="36" height="40" rx="5" fill="#fdd835"/>
+        <rect x="520" y="840" width="30" height="38" rx="6" fill="#cfc6b4"/><rect x="520" y="850" width="30" height="28" rx="5" fill="#43a047"/>
+        <ellipse cx="300" cy="890" rx="52" ry="11" fill="rgba(60,40,16,.2)"/>`;
+      /* salpicaduras de pintura en las tablas */
+      [[180, 942, "#e53935"], [374, 986, "#1e88e5"], [648, 944, "#fdd835"], [822, 1002, "#43a047"], [524, 1042, "#e53935"]].forEach(p => {
+        s += `<ellipse cx="${p[0]}" cy="${p[1]}" rx="26" ry="12" fill="${p[2]}" opacity=".38"/><circle cx="${p[0] + 30}" cy="${p[1] + 12}" r="7" fill="${p[2]}" opacity=".34"/>`;
+      });
+      /* ---------- EL CENTRO: el mundo pintado, con su horizonte y sus filamentos ---------- */
+      s += `<path d="M896 706 Q1040 694 1180 706 Q1320 718 1420 744 Q1520 766 1700 758 Q1820 754 1904 762" stroke="#1f1c18" stroke-width="6" fill="none" stroke-linecap="round" opacity=".78"/>`;
+      [["M1050 702 Q1024 528 1070 378", 1070, 376], ["M1320 714 Q1362 470 1300 266", 1300, 264],
+        ["M1462 748 Q1436 596 1490 472", 1490, 470], ["M1692 758 Q1734 512 1660 336", 1660, 334]].forEach(f => {
+        s += `<path d="${f[0]}" stroke="#1f1c18" stroke-width="4" fill="none" stroke-linecap="round" opacity=".8"/>
+          <circle cx="${f[1]}" cy="${f[2]}" r="7" fill="#1f1c18"/>`;
+      });
+      /* las líneas negras que serpentean por el lienzo */
+      s += `<path d="M898 452 Q1000 384 1140 430 Q1280 480 1400 520 Q1540 556 1660 500 Q1780 452 1900 494" stroke="#1f1c18" stroke-width="5" fill="none" stroke-linecap="round" opacity=".72"/>
+        <path d="M900 900 Q1120 848 1300 890 Q1480 932 1660 880 Q1820 836 1902 878" stroke="#1f1c18" stroke-width="4.5" fill="none" stroke-linecap="round" opacity=".6"/>
+        <path d="M902 168 Q1032 116 1150 152 Q1214 172 1240 202" stroke="#1f1c18" stroke-width="4" fill="none" stroke-linecap="round" opacity=".55"/>
+        <path d="M1364 208 Q1470 258 1552 218 Q1640 174 1758 206" stroke="#1f1c18" stroke-width="4" fill="none" stroke-linecap="round" opacity=".55"/>`;
+      /* dos ojos que miran desde el cuadro */
+      [[1180, 350, 1], [1560, 904, .85]].forEach(o => {
+        s += `<g transform="translate(${o[0]} ${o[1]}) scale(${o[2]})"><ellipse rx="46" ry="26" fill="#f7efdc" stroke="#1f1c18" stroke-width="5"/>
+          <circle r="14" fill="#1f1c18"/><circle cx="-5" cy="-5" r="4.5" fill="#f7efdc"/></g>`;
+      });
+      /* estrellitas de cinco puntas repartidas por la tela */
+      [[980, 236, 20, "#1f1c18", 0], [1210, 482, 15, "#e53935", 18], [1392, 640, 17, "#1f1c18", -12],
+        [1560, 340, 14, "#fdd835", 8], [1782, 640, 18, "#1e88e5", -20], [1006, 828, 16, "#fdd835", 6],
+        [1252, 976, 15, "#1f1c18", -8], [1706, 1000, 17, "#e53935", 12], [700, 240, 16, "#1f1c18", 10],
+        [246, 546, 14, "#1e88e5", -14], [1470, 128, 14, "#43a047", 20]].forEach(c => {
+        if (libre(c[0] - c[2], c[1] - c[2], c[2] * 2, c[2] * 2)) s += estrella(c[0], c[1], c[2], c[3], c[4]);
+      });
+      /* y los puntos gordos, plantados donde queda sitio */
+      [[1120, 260, 13, "#e53935"], [1358, 560, 11, "#1f1c18"], [1620, 480, 14, "#43a047"],
+        [1000, 620, 10, "#1e88e5"], [1288, 852, 13, "#fdd835"], [1740, 900, 11, "#1f1c18"],
+        [552, 244, 12, "#e53935"], [356, 700, 10, "#1f1c18"], [860, 302, 11, "#fdd835"]].forEach(p => {
+        if (libre(p[0] - p[2], p[1] - p[2], p[2] * 2, p[2] * 2)) s += `<circle cx="${p[0]}" cy="${p[1]}" r="${p[2]}" fill="${p[3]}"/>`;
+      });
+      /* tres estrellas que parpadean despacio */
+      [[1140, 180, 13, 4.5], [1810, 424, 12, 5.5], [960, 700, 11, 6.5]].forEach(t => {
+        if (!libre(t[0] - t[2], t[1] - t[2], t[2] * 2, t[2] * 2)) return;
+        s += `<g><animate attributeName="opacity" values=".95;.35;.95" dur="${t[3]}s" repeatCount="indefinite"/>${estrella(t[0], t[1], t[2], "#fdd835")}</g>`;
+      });
+      /* un pájaro cruzando el lienzo sin prisa */
+      s += `<g><animateMotion dur="52s" repeatCount="indefinite" path="M 960 250 Q 1300 170 1620 240 Q 1760 268 1880 214"/>
+        <circle r="8" fill="#e53935"/>
+        <path d="M0 0 q-16 -14 -34 -8 M0 0 q16 -14 34 -8" stroke="#1f1c18" stroke-width="5" fill="none" stroke-linecap="round">
+        <animate attributeName="d" values="M0 0 q-16 -14 -34 -8 M0 0 q16 -14 34 -8;M0 0 q-16 6 -34 14 M0 0 q16 6 34 14;M0 0 q-16 -14 -34 -8 M0 0 q16 -14 34 -8" dur="2.4s" repeatCount="indefinite"/></path></g>`;
       return decoSvg(s, 2600);
     }
   },
