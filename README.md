@@ -711,3 +711,15 @@ cultural estricto + el modo Leer hecho en el motor.
 - Documentación de usuario nueva: COMO-JUGAR.md (PC, Mac, iPad, iPhone,
   Android) y carpeta agentes/ con las plantillas de encargo para ampliar el
   juego con IA. Proyecto subido a GitHub.
+- (12:20) Tres avisos de Daniel en caliente: (1) el checo sonaba con fonética
+  española: causa raíz encontrada y arreglada: voiceKind no estaba en DEFAULTS
+  y las partidas creadas antes de la v2.7 migraban SIN voz robótica, caían a
+  voz humana y en Chrome de macOS el checo local sufre el bug del puente de
+  voces (lee con la default española); ahora DEFAULTS trae voiceKind:"robot"
+  y la migración repara cualquier partida vieja al recargar. (2) El micro que
+  el Mac coge del iPhone (Continuity) y deja muerta la entrada: detectado el
+  error audio-capture con mensaje propio micNoDevice en 5 idiomas ("a veces
+  el ordenador usa el micrófono del teléfono..."). (3) Tono positivo: los
+  robots ya no dicen que bailan "fatal" sino que bailan bailes robóticos
+  divertidos a su manera, y el T-Rex bebé no se esconde "fatal": es su cola
+  larguísima la que asoma.

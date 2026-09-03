@@ -18,7 +18,7 @@ const STORE_KEY = "ninobot-roboteca-v1";
 const DEFAULTS = {
   setupDone: false,
   child: { name: "", gender: "girl", age: 6, lang: "es", skin: 1, hair: 0 },
-  settings: { minutes: 30, mic: false, sound: true, voiceByLang: {} },
+  settings: { minutes: 30, mic: false, sound: true, voiceKind: "robot", voiceByLang: {} },
   robot: "ninobot",
   fx: null,
   theme: null,
@@ -330,7 +330,13 @@ const Ears = {
       this.active = true;
       setStatus("listening");
       this.rec.onresult = e => { this.active = false; setStatus("idle"); onResult(e.results[0][0].transcript, null); };
-      this.rec.onerror = () => { this.active = false; setStatus("idle"); onResult(null, "error"); };
+      this.rec.onerror = ev => {
+        this.active = false; setStatus("idle");
+        /* micro en otro aparato (típico: el Mac coge el iPhone por Continuity y
+           al desconectarlo la entrada se queda muerta) o sin permiso */
+        const e = ev && ev.error;
+        onResult(null, e === "audio-capture" ? "nomic" : e === "not-allowed" ? "micoff" : "error");
+      };
       this.rec.onend = () => { if (this.active) { this.active = false; setStatus("idle"); } };
       this.rec.start();
     } catch (e) { this.active = false; setStatus("idle"); onResult(null, "error"); }

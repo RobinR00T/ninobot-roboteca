@@ -340,6 +340,7 @@ function callSend() {
 function callMic() {
   Ears.listen((text, err) => {
     if (err === "micoff") return botBubble(t("micOffMsg"));
+    if (err === "nomic") return botBubble(t("micNoDevice"));
     if (err || !text) return botBubble(t("micErrMsg"));
     addBubble("me", text);
     misionEv("call");
@@ -359,7 +360,7 @@ function hangUp() { clearTimeout(callTimer); M.log = []; M.expect = null; M.qIdx
 function voiceCall() {
   Speech.say(t("sayRobotName"), { onEnd: () => {
     Ears.listen((text, err) => {
-      if (err || !text) { if (err === "micoff") Speech.say(t("micOffMsg")); else Speech.say(t("notHeard")); return; }
+      if (err || !text) { Speech.say(err === "micoff" ? t("micOffMsg") : err === "nomic" ? t("micNoDevice") : t("notHeard")); return; }
       const n = norm(text);
       for (const id in ROBOTS) if (n.includes(norm(ROBOTS[id].name))) { pickRobot(id); return; }
       for (const id in THEMES) {
@@ -539,6 +540,7 @@ function chatStars() {
 function chatMic() {
   Ears.listen((text, err) => {
     if (err === "micoff") return botBubble(t("micOffMsg"));
+    if (err === "nomic") return botBubble(t("micNoDevice"));
     if (err || !text) return botBubble(t("micErrMsg"));
     addBubble("me", text);
     chatStars();
