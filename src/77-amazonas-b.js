@@ -297,60 +297,60 @@ Object.assign(THEMES.amazonas.content, {
 
   /* ---------- MAPA DE EXPLORACIÓN ---------- */
   explore: {
-    width: 2600, height: 1100, stars: false,
+    width: 4200, height: 1100, stars: false,
     bgCss: "radial-gradient(ellipse 42% 26% at 34% 10%, rgba(255,251,214,.45), transparent), linear-gradient(180deg,#cfeadb 0%,#a7d9b8 10%,#5aa86a 28%,#2f7a3f 50%,#1b5e20 76%,#123f16 100%)",
     cats: [
-      { id: "selva", emoji: "🌳", x: 120, name: { es: "La selva", ca: "La selva", en: "The jungle", cs: "Prales", fr: "La jungle" } },
-      { id: "rio", emoji: "🌊", x: 1100, name: { es: "El gran río", ca: "El gran riu", en: "The great river", cs: "Velká řeka", fr: "Le grand fleuve" } },
-      { id: "dosel", emoji: "🦜", x: 1900, name: { es: "El dosel", ca: "El dosser", en: "The canopy", cs: "Koruny stromů", fr: "La canopée" } }
+      { id: "selva", emoji: "🌳", x: 140, name: { es: "La selva", ca: "La selva", en: "The jungle", cs: "Prales", fr: "La jungle" } },
+      { id: "rio", emoji: "🌊", x: 1800, name: { es: "El gran río", ca: "El gran riu", en: "The great river", cs: "Velká řeka", fr: "Le grand fleuve" } },
+      { id: "dosel", emoji: "🦜", x: 3080, name: { es: "El dosel", ca: "El dosser", en: "The canopy", cs: "Koruny stromů", fr: "La canopée" } }
     ],
     pois: [
-      { cat: "selva", emoji: "🐆", x: 180, y: 780,
+      { cat: "selva", emoji: "🐆", x: 250, y: 810,
         name: { es: "El jaguar", ca: "El jaguar", en: "The jaguar", cs: "Jaguár", fr: "Le jaguar" },
         fact: { es: "El jaguar es el felino más grande de América. Camina en silencio... ¡y nada de maravilla!", ca: "El jaguar és el felí més gran d'Amèrica. Camina en silenci... i neda de meravella!", en: "The jaguar is the biggest cat in the Americas. It walks in silence... and swims wonderfully!", cs: "Jaguár je největší kočkovitá šelma Ameriky. Chodí úplně potichu... a výborně plave!", fr: "Le jaguar est le plus grand félin d'Amérique. Il marche en silence... et il nage à merveille !" } },
-      { cat: "selva", emoji: "🦥", x: 350, y: 560,
+      { cat: "selva", emoji: "🦥", x: 500, y: 520,
         name: { es: "El perezoso", ca: "El peresós", en: "The sloth", cs: "Lenochod", fr: "Le paresseux" },
         fact: { es: "El perezoso baja de su árbol una vez por semana. En su pelo crecen algas verdes que lo camuflan.", ca: "El peresós baixa del seu arbre un cop per setmana. Al seu pèl hi creixen algues verdes que el camuflen.", en: "The sloth comes down from its tree once a week. Green algae grow on its fur and camouflage it.", cs: "Lenochod slézá ze svého stromu jednou za týden. V srsti mu rostou zelené řasy, které ho maskují.", fr: "Le paresseux descend de son arbre une fois par semaine. Des algues vertes poussent sur son pelage et le camouflent." } },
-      { cat: "selva", emoji: "🐒", x: 520, y: 740,
+      { cat: "selva", emoji: "🐒", x: 760, y: 780,
         name: { es: "El mono aullador", ca: "El mico udolador", en: "The howler monkey", cs: "Vřešťan", fr: "Le singe hurleur" },
         fact: { es: "Su aullido se oye a cinco kilómetros: es uno de los animales más ruidosos del mundo.", ca: "El seu udol se sent a cinc quilòmetres: és un dels animals més sorollosos del món.", en: "Its howl can be heard five kilometres away: it is one of the loudest animals in the world.", cs: "Jeho volání je slyšet na pět kilometrů: je to jedno z nejhlučnějších zvířat na světě.", fr: "Son cri s'entend à cinq kilomètres : c'est l'un des animaux les plus bruyants du monde." } },
-      { cat: "selva", emoji: "🌳", x: 700, y: 500, size: 3,
+      { cat: "selva", emoji: "🌳", x: 1060, y: 480, size: 3,
         name: { es: "La ceiba gigante", ca: "La ceiba gegant", en: "The giant kapok", cs: "Obří kapok", fr: "Le kapokier géant" },
         fact: { es: "La ceiba puede ser tan alta como veinte casas. En un solo árbol viven cientos de animales.", ca: "La ceiba pot ser tan alta com vint cases. En un sol arbre hi viuen centenars d'animals.", en: "The kapok can grow as tall as twenty houses. Hundreds of animals live in a single tree.", cs: "Kapok může být vysoký jako dvacet domů. Na jediném stromě žijí stovky zvířat.", fr: "Le kapokier peut être aussi haut que vingt maisons. Des centaines d'animaux vivent dans un seul arbre." } },
-      { cat: "selva", emoji: "🌸", x: 880, y: 680,
+      { cat: "selva", emoji: "🌸", x: 1330, y: 700,
         name: { es: "La orquídea", ca: "L'orquídia", en: "The orchid", cs: "Orchidej", fr: "L'orchidée" },
         fact: { es: "En la selva hay miles de orquídeas distintas. Muchas viven sobre los árboles, sin tocar el suelo.", ca: "A la selva hi ha milers d'orquídies diferents. Moltes viuen sobre els arbres, sense tocar el terra.", en: "There are thousands of different orchids in the jungle. Many live up on the trees, never touching the ground.", cs: "V pralese rostou tisíce různých orchidejí. Mnohé žijí na stromech a nikdy se nedotknou země.", fr: "Il y a des milliers d'orchidées différentes dans la jungle. Beaucoup vivent sur les arbres, sans toucher le sol." } },
-      { cat: "selva", emoji: "🐜", x: 1000, y: 880,
+      { cat: "selva", emoji: "🐜", x: 1570, y: 900,
         name: { es: "La hormiga cortadora", ca: "La formiga talladora", en: "The leafcutter ant", cs: "Mravenec střihač", fr: "La fourmi coupeuse" },
         fact: { es: "Corta trocitos de hoja y los lleva a casa... ¡para cultivar su propio jardín de hongos!", ca: "Talla trossets de fulla i els porta a casa... per cultivar el seu propi jardí de bolets!", en: "It cuts little pieces of leaf and carries them home... to grow its very own mushroom garden!", cs: "Stříhá kousíčky listů a nosí je domů... aby si vypěstoval vlastní zahrádku hub!", fr: "Elle coupe des petits bouts de feuille et les porte chez elle... pour cultiver son propre jardin de champignons !" } },
-      { cat: "rio", emoji: "🐬", x: 1180, y: 700,
+      { cat: "rio", emoji: "🐬", x: 1880, y: 730,
         name: { es: "El delfín rosado", ca: "El dofí rosat", en: "The pink dolphin", cs: "Růžový delfín", fr: "Le dauphin rose" },
         fact: { es: "El boto es un delfín de río de color rosa. Cuanto más mayor se hace, más rosa se pone.", ca: "El boto és un dofí de riu de color rosa. Com més gran es fa, més rosa es torna.", en: "The boto is a pink river dolphin. The older it gets, the pinker it turns.", cs: "Boto je růžový říční delfín. Čím je starší, tím víc růžoví.", fr: "Le boto est un dauphin de rivière tout rose. Plus il grandit, plus il devient rose." } },
-      { cat: "rio", emoji: "🐟", x: 1350, y: 850,
+      { cat: "rio", emoji: "🐟", x: 2140, y: 920,
         name: { es: "La piraña sonriente", ca: "La piranya somrient", en: "The smiling piranha", cs: "Usměvavá piraňa", fr: "Le piranha souriant" },
         fact: { es: "Las pirañas tienen fama de fieras, pero muchas también comen frutas y semillas. Y siempre nadan con sus amigas.", ca: "Les piranyes tenen fama de feres, però moltes també mengen fruites i llavors. I sempre neden amb les seves amigues.", en: "Piranhas sound scary, but many of them also eat fruits and seeds. And they always swim with their friends.", cs: "Piraně mají pověst dravců, ale mnohé jedí i ovoce a semínka. A vždycky plavou se svými kamarádkami.", fr: "Les piranhas ont l'air féroces, mais beaucoup mangent aussi des fruits et des graines. Et ils nagent toujours avec leurs amis." } },
-      { cat: "rio", emoji: "🐍", x: 1520, y: 700,
+      { cat: "rio", emoji: "🐍", x: 2380, y: 700,
         name: { es: "La anaconda tímida", ca: "L'anaconda tímida", en: "The shy anaconda", cs: "Plachá anakonda", fr: "L'anaconda timide" },
         fact: { es: "Es una de las serpientes más grandes del mundo, pero es tímida: prefiere esconderse entre las plantas del agua.", ca: "És una de les serps més grans del món, però és tímida: prefereix amagar-se entre les plantes de l'aigua.", en: "It is one of the biggest snakes in the world, but it is shy: it prefers hiding among the water plants.", cs: "Je to jeden z největších hadů na světě, ale je plachá: nejraději se schovává mezi vodními rostlinami.", fr: "C'est l'un des plus grands serpents du monde, mais il est timide : il préfère se cacher parmi les plantes de l'eau." } },
-      { cat: "rio", emoji: "🪷", x: 1680, y: 860,
+      { cat: "rio", emoji: "🪷", x: 2620, y: 940,
         name: { es: "El nenúfar gigante Victoria", ca: "El nenúfar gegant Victòria", en: "The giant Victoria water lily", cs: "Obří leknín viktorie", fr: "Le nénuphar géant Victoria" },
         fact: { es: "Sus hojas miden hasta tres metros y aguantan el peso de un niño pequeño, como barquitas verdes.", ca: "Les seves fulles fan fins a tres metres i aguanten el pes d'un nen petit, com barquetes verdes.", en: "Its leaves grow up to three metres and can hold a small child, like little green boats.", cs: "Jeho listy měří až tři metry a unesou malé dítě, jako zelené loďky.", fr: "Ses feuilles mesurent jusqu'à trois mètres et portent un petit enfant, comme des petits bateaux verts." } },
-      { cat: "rio", emoji: "🐊", x: 1820, y: 620,
+      { cat: "rio", emoji: "🐊", x: 2860, y: 640,
         name: { es: "El caimán", ca: "El caiman", en: "The caiman", cs: "Kajman", fr: "Le caïman" },
         fact: { es: "El caimán toma el sol en la orilla para calentarse. De noche, sus ojos brillan como linternas.", ca: "El caiman pren el sol a la riba per escalfar-se. De nit, els seus ulls brillen com llanternes.", en: "The caiman sunbathes on the riverbank to warm up. At night, its eyes shine like little lanterns.", cs: "Kajman se vyhřívá na břehu, aby se zahřál. V noci mu oči svítí jako lucerničky.", fr: "Le caïman prend le soleil sur la rive pour se réchauffer. La nuit, ses yeux brillent comme des lanternes." } },
-      { cat: "dosel", emoji: "🦜", x: 1980, y: 300,
+      { cat: "dosel", emoji: "🦜", x: 3150, y: 320,
         name: { es: "El guacamayo", ca: "El guacamai", en: "The macaw", cs: "Papoušek ara", fr: "L'ara" },
         fact: { es: "Los guacamayos eligen una pareja para toda la vida y vuelan siempre juntos por el dosel.", ca: "Els guacamais trien una parella per a tota la vida i volen sempre junts pel dosser.", en: "Macaws choose one partner for life and always fly together through the canopy.", cs: "Papoušci ara si vybírají partnera na celý život a korunami stromů létají vždycky spolu.", fr: "Les aras choisissent un partenaire pour la vie et volent toujours ensemble dans la canopée." } },
-      { cat: "dosel", emoji: "🐦", x: 2140, y: 180,
+      { cat: "dosel", emoji: "🐦", x: 3400, y: 200,
         name: { es: "El tucán", ca: "El tucà", en: "The toucan", cs: "Tukan", fr: "Le toucan" },
         fact: { es: "Su pico gigante es ligerísimo, casi hueco por dentro. Lanza las frutas al aire y ¡ñam!, las caza al vuelo.", ca: "El seu bec gegant és lleugeríssim, gairebé buit per dins. Llança les fruites a l'aire i nyam!, les caça al vol.", en: "Its giant beak is super light, almost hollow inside. It tosses fruit in the air and, yum!, catches it mid-flight.", cs: "Jeho obří zobák je lehoučký, uvnitř skoro dutý. Vyhazuje ovoce do vzduchu a mňam!, chytá ho v letu.", fr: "Son bec géant est très léger, presque creux à l'intérieur. Il lance les fruits en l'air et, miam !, les attrape au vol." } },
-      { cat: "dosel", emoji: "🪶", x: 2280, y: 340,
+      { cat: "dosel", emoji: "🪶", x: 3640, y: 380,
         name: { es: "El colibrí", ca: "El colibrí", en: "The hummingbird", cs: "Kolibřík", fr: "Le colibri" },
         fact: { es: "Bate las alas tan rápido que puede quedarse quieto en el aire... ¡y hasta volar hacia atrás!", ca: "Bat les ales tan ràpid que pot quedar-se quiet en l'aire... i fins i tot volar cap enrere!", en: "It beats its wings so fast that it can hover in the air... and even fly backwards!", cs: "Mává křídly tak rychle, že umí stát ve vzduchu... a dokonce létat pozpátku!", fr: "Il bat des ailes si vite qu'il peut rester immobile dans l'air... et même voler en arrière !" } },
-      { cat: "dosel", emoji: "🦋", x: 2420, y: 200,
+      { cat: "dosel", emoji: "🦋", x: 3880, y: 220,
         name: { es: "La mariposa azul morfo", ca: "La papallona blava morfo", en: "The blue morpho butterfly", cs: "Motýl morfo", fr: "Le morpho bleu" },
         fact: { es: "Sus alas no tienen pintura azul: son escamas diminutas que reflejan la luz, como espejitos.", ca: "Les seves ales no tenen pintura blava: són escates diminutes que reflecteixen la llum, com mirallets.", en: "Its wings have no blue paint: they are tiny scales that reflect the light, like little mirrors.", cs: "Jeho křídla nemají modrou barvu: jsou to droboučké šupinky, které odrážejí světlo jako zrcátka.", fr: "Ses ailes n'ont pas de peinture bleue : ce sont de minuscules écailles qui reflètent la lumière, comme des petits miroirs." } },
-      { cat: "dosel", emoji: "🦅", x: 2500, y: 480,
+      { cat: "dosel", emoji: "🦅", x: 4100, y: 500,
         name: { es: "El águila harpía", ca: "L'àguila harpia", en: "The harpy eagle", cs: "Harpyje", fr: "La harpie féroce" },
         fact: { es: "Es una de las águilas más fuertes del mundo. Vive en lo más alto del dosel y peina una cresta como una corona.", ca: "És una de les àguiles més fortes del món. Viu a dalt de tot del dosser i pentina una cresta com una corona.", en: "It is one of the strongest eagles in the world. It lives at the very top of the canopy and wears a crest like a crown.", cs: "Je to jeden z nejsilnějších orlů světa. Žije úplně nahoře v korunách stromů a nosí chocholku jako korunu.", fr: "C'est l'un des aigles les plus forts du monde. Elle vit tout en haut de la canopée et porte une crête comme une couronne." } }
     ],
@@ -358,9 +358,9 @@ Object.assign(THEMES.amazonas.content, {
     deco: function () {
       let s = "";
       /* las cajas de los iconos: sirven para dejarles aire alrededor */
-      const cajas = [[138, 738, 84, 84], [308, 518, 84, 84], [478, 698, 84, 84], [585, 385, 230, 230], [838, 638, 84, 84], [958, 838, 84, 84],
-        [1138, 658, 84, 84], [1308, 808, 84, 84], [1478, 658, 84, 84], [1638, 818, 84, 84], [1778, 578, 84, 84],
-        [1938, 258, 84, 84], [2098, 138, 84, 84], [2238, 298, 84, 84], [2378, 158, 84, 84], [2458, 438, 84, 84]];
+      const cajas = [[208, 768, 84, 84], [458, 478, 84, 84], [718, 738, 84, 84], [925, 380, 270, 200], [1288, 658, 84, 84], [1528, 858, 84, 84],
+        [1838, 688, 84, 84], [2098, 878, 84, 84], [2338, 658, 84, 84], [2578, 898, 84, 84], [2818, 598, 84, 84],
+        [3108, 278, 84, 84], [3358, 158, 84, 84], [3598, 338, 84, 84], [3838, 178, 84, 84], [4058, 458, 84, 84]];
       const libre = (x, y, w, h) => !cajas.some(c => x < c[0] + c[2] + 12 && x + w > c[0] - 12 && y < c[1] + c[3] + 12 && y + h > c[1] - 12);
       /* numeros repetibles: la selva sale igual en cada partida */
       let sem = 3313;
@@ -369,38 +369,46 @@ Object.assign(THEMES.amazonas.content, {
       s += `<defs>
         <linearGradient id="amzXDosel" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#14401a"/><stop offset="100%" stop-color="#2e7d32"/></linearGradient>
         <linearGradient id="amzXTronco" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#6b5140"/><stop offset="42%" stop-color="#4e3a2c"/><stop offset="100%" stop-color="#33251c"/></linearGradient>
-        <linearGradient id="amzXAgua" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#b3a468"/><stop offset="45%" stop-color="#8b7845"/><stop offset="100%" stop-color="#5f5030"/></linearGradient>
+        <linearGradient id="amzXAgua" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7cbcb4"/><stop offset="45%" stop-color="#3f8b93"/><stop offset="100%" stop-color="#1f5b6b"/></linearGradient>
         <linearGradient id="amzXBarro" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#a3855c"/><stop offset="100%" stop-color="#6d5537"/></linearGradient>
         <linearGradient id="amzXLuz" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(255,251,214,.45)"/><stop offset="100%" stop-color="rgba(255,251,214,0)"/></linearGradient>
         <linearGradient id="amzXSuelo" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3f5c25"/><stop offset="100%" stop-color="#22370f"/></linearGradient>
+        <linearGradient id="amzXOrilla" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8d7a4e"/><stop offset="52%" stop-color="#a3855c"/><stop offset="100%" stop-color="#6d5537"/></linearGradient>
+        <linearGradient id="amzXCeiba" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#7e8767"/><stop offset="38%" stop-color="#606848"/><stop offset="100%" stop-color="#39402a"/></linearGradient>
+        <radialGradient id="amzXCielo" cx="50%" cy="50%"><stop offset="0%" stop-color="rgba(240,250,222,.5)"/><stop offset="60%" stop-color="rgba(226,244,214,.22)"/><stop offset="100%" stop-color="rgba(226,244,214,0)"/></radialGradient>
+        <linearGradient id="amzXLejano" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7ba982"/><stop offset="100%" stop-color="#4d8a58"/></linearGradient>
         <pattern id="amzXLluvia" width="72" height="160" patternUnits="userSpaceOnUse">
           <g stroke="rgba(255,255,255,.55)" stroke-width="2.4" stroke-linecap="round"><path d="M12 0 v26"/><path d="M44 58 v22"/><path d="M62 112 v18"/><path d="M26 96 v16"/></g>
           <animateTransform attributeName="patternTransform" type="translate" from="0 0" to="0 160" dur="2.8s" repeatCount="indefinite"/>
         </pattern>
       </defs>`;
-      /* ---------- EL DOSEL: tres capas de copas y la luz que se cuela ---------- */
-      s += `<path d="M0 0 H2600 V196 Q2200 246 1800 200 Q1400 156 1000 208 Q600 254 0 194 Z" fill="url(#amzXDosel)"/>`;
-      for (let i = 0; i <= 20; i++) {
-        s += `<circle cx="${i * 130}" cy="${44 + (i % 2) * 34}" r="${84 + (i % 3) * 18}" fill="${["#1b5e20", "#2e7d32", "#388e3c"][i % 3]}"/>`;
+      /* seis haces de luz que bajan entre las copas, uno por tramo.
+         van ANTES del dosel: asi la copa les tapa el arranque y no se ve
+         el borde recto del rectangulo por encima de las hojas */
+      [[420, 520, 900], [1140, 1230, 940], [1760, 1850, 880], [2420, 2510, 760], [3120, 3210, 860], [3820, 3910, 820]].forEach((r, i) => {
+        s += `<path d="M${r[0]} 150 L${r[1]} 150 L${r[1] + 130} ${r[2]} L${r[0] + 70} ${r[2]} Z" fill="url(#amzXLuz)" opacity=".5"><animate attributeName="opacity" values=".5;.2;.5" dur="${10 + i * 2}s" repeatCount="indefinite"/></path>`;
+      });
+      /* ---------- EL DOSEL ALTO: tres capas de copas de punta a punta ---------- */
+      s += `<path d="M0 0 H4200 V196 Q3550 250 2900 200 Q2250 152 1600 208 Q950 258 0 194 Z" fill="url(#amzXDosel)"/>`;
+      for (let i = 0; i <= 32; i++) {
+        s += `<circle cx="${i * 132}" cy="${44 + (i % 2) * 34}" r="${84 + (i % 3) * 18}" fill="${["#1b5e20", "#2e7d32", "#388e3c"][i % 3]}"/>`;
       }
-      for (let i = 0; i <= 14; i++) {
+      for (let i = 0; i <= 23; i++) {
         s += `<circle cx="${i * 182 + 70}" cy="162" r="${56 + (i % 2) * 12}" fill="#43a047" opacity=".55"/>`;
       }
       /* las hojas grandes que asoman del dosel, tipo filodendro */
-      for (let i = 0; i < 9; i++) {
-        const x = 130 + i * 290, y = 210 + (i % 3) * 26;
+      for (let i = 0; i < 15; i++) {
+        const x = 130 + i * 282, y = 210 + (i % 3) * 26;
         if (!libre(x - 46, y - 20, 92, 60)) continue;
         s += `<g transform="translate(${x} ${y})"><path d="M0 0 q-46 -6 -60 26 q42 24 60 -4 q18 28 60 4 q-14 -32 -60 -26 Z" fill="#2e7d32"/>
           <path d="M-58 24 H58 M-30 8 L-40 24 M0 4 V26 M30 8 L40 24" stroke="#1b5e20" stroke-width="3" fill="none"/></g>`;
       }
-      /* cuatro haces de luz que bajan entre las copas */
-      [[420, 520, 900], [1240, 1330, 940], [1900, 1990, 860], [2320, 2400, 820]].forEach((r, i) => {
-        s += `<path d="M${r[0]} 150 L${r[1]} 150 L${r[1] + 130} ${r[2]} L${r[0] + 70} ${r[2]} Z" fill="url(#amzXLuz)" opacity=".5"><animate attributeName="opacity" values=".5;.2;.5" dur="${10 + i * 2}s" repeatCount="indefinite"/></path>`;
-      });
-      /* la niebla alta, entre el dosel y los troncos */
-      s += `<ellipse cx="520" cy="288" rx="440" ry="58" fill="rgba(255,255,255,.14)"><animate attributeName="rx" values="440;480;440" dur="17s" repeatCount="indefinite"/></ellipse>
-        <ellipse cx="1520" cy="256" rx="540" ry="52" fill="rgba(255,255,255,.11)"/>
-        <ellipse cx="2320" cy="300" rx="380" ry="62" fill="rgba(255,255,255,.13)"><animate attributeName="rx" values="380;418;380" dur="21s" repeatCount="indefinite"/></ellipse>`;
+      /* la niebla alta, la costura entre el dosel y la capa de los troncos */
+      s += `<ellipse cx="520" cy="288" rx="460" ry="58" fill="rgba(255,255,255,.14)"><animate attributeName="rx" values="460;500;460" dur="17s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="1420" cy="266" rx="520" ry="52" fill="rgba(255,255,255,.11)"/>
+        <ellipse cx="2300" cy="286" rx="560" ry="60" fill="rgba(255,255,255,.13)"><animate attributeName="rx" values="560;606;560" dur="21s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="3260" cy="270" rx="480" ry="54" fill="rgba(255,255,255,.11)"/>
+        <ellipse cx="3960" cy="296" rx="380" ry="62" fill="rgba(255,255,255,.13)"><animate attributeName="ry" values="62;76;62" dur="23s" repeatCount="indefinite"/></ellipse>`;
       /* ---------- LOS TRONCOS ENORMES, CON SUS CONTRAFUERTES ---------- */
       const tronco = (x, k, base) => {
         const w = 54 * k;
@@ -418,114 +426,434 @@ Object.assign(THEMES.amazonas.content, {
         }
         return o + `</g>`;
       };
-      s += tronco(120, .9, 980) + tronco(430, 1.15, 990) + tronco(760, .8, 970) + tronco(2540, 1.1, 900);
-      /* ---------- EL ÁRBOL EMERGENTE DEL DOSEL: las ramas donde se posan las aves ---------- */
-      s += `<path d="M2120 900 q26 -330 -6 -640 h80 q30 310 4 640 Z" fill="url(#amzXTronco)"/>`;
-      const rama = (x0, y0, x1, y1, gr) => `<path d="M${x0} ${y0} Q${((x0 + x1) / 2).toFixed(0)} ${(y0 + (y1 - y0) * .2).toFixed(0)} ${x1} ${y1}" stroke="#5a4433" stroke-width="${gr}" fill="none" stroke-linecap="round"/>`;
-      s += rama(2130, 420, 1930, 348, 20) + rama(2160, 300, 2010, 356, 14)
-        + rama(2150, 262, 2260, 228, 17) + rama(2200, 232, 2380, 250, 13)
-        + rama(2166, 560, 2420, 530, 24) + rama(2380, 532, 2600, 542, 18)
-        + rama(2150, 372, 2270, 392, 12);
-      /* las hojas de esas ramas y una heliconia para el colibrí */
-      [[1946, 344], [2020, 352], [2262, 224], [2372, 248], [2452, 528], [2560, 540]].forEach(h => {
-        s += `<g transform="translate(${h[0]} ${h[1]})"><ellipse cx="-24" cy="10" rx="26" ry="11" fill="#388e3c" transform="rotate(-16 -24 10)"/>
-          <ellipse cx="18" cy="12" rx="24" ry="10" fill="#43a047" transform="rotate(14 18 12)"/></g>`;
-      });
-      s += `<g transform="translate(2272 396)"><path d="M0 0 v70" stroke="#4c9a3f" stroke-width="7" stroke-linecap="round"/>
-        ${[0, 1, 2, 3].map(i => `<path d="M${i % 2 ? 2 : -2} ${8 + i * 17} q${i % 2 ? 30 : -30} 2 ${i % 2 ? 34 : -34} 16 q${i % 2 ? -30 : 30} 2 ${i % 2 ? -34 : 34} -16 Z" fill="${i % 2 ? "#ef5350" : "#fb8c00"}"/>`).join("")}</g>`;
+      /* el fuste de la ceiba gigante se dibuja aparte, ya sobre el suelo */
+      s += tronco(130, .9, 990) + tronco(400, 1.1, 1000) + tronco(680, .8, 975)
+        + tronco(1400, .95, 965) + tronco(1650, .68, 945)
+        + tronco(3300, .8, 900) + tronco(4160, 1.1, 890);
+      /* dos troncos lejanos, mas finos y desvaidos: dan fondo al hueco */
+      s += `<g opacity=".55">${tronco(1210, .5, 926)}</g><g opacity=".45">${tronco(880, .42, 918)}</g>`;
       /* ---------- LAS LIANAS QUE CUELGAN DEL DOSEL ---------- */
-      [[300, 430, 1], [640, 520, 0], [900, 390, 1], [1180, 470, 0], [1700, 500, 1], [2050, 430, 0]].forEach((l, i) => {
+      [[300, 430, 1], [620, 520, 0], [900, 400, 1], [1230, 470, 0], [1520, 430, 1], [1820, 380, 0],
+        [2260, 486, 1], [2500, 512, 0], [2740, 524, 0], [3060, 470, 1], [3480, 430, 0], [3960, 400, 1]].forEach((l, i) => {
         s += `<g>${i % 3 === 0 ? `<animateTransform attributeName="transform" type="rotate" values="-1.4 ${l[0]} 150;1.4 ${l[0]} 150;-1.4 ${l[0]} 150" dur="${11 + i}s" repeatCount="indefinite"/>` : ""}
           <path d="M${l[0]} 150 Q${l[0] - 44} ${(l[1] / 2 + 150).toFixed(0)} ${l[0] + 18} ${l[1]}" stroke="#33691e" stroke-width="9" fill="none" stroke-linecap="round"/>
           <path d="M${l[0] + 18} ${l[1]} q30 26 60 8" stroke="#33691e" stroke-width="7" fill="none" stroke-linecap="round"/>
           <ellipse cx="${l[0] - 16}" cy="${(l[1] * .55 + 90).toFixed(0)}" rx="17" ry="8" fill="#4c9a3f" transform="rotate(${l[2] ? 24 : -24} ${l[0] - 16} ${(l[1] * .55 + 90).toFixed(0)})"/>
           <ellipse cx="${l[0] + 40}" cy="${(l[1] + 12).toFixed(0)}" rx="16" ry="7" fill="#66bb6a"/></g>`;
       });
-      /* ---------- EL SUELO DE LA SELVA ---------- */
-      s += `<path d="M-20 926 Q240 900 520 922 Q800 944 1080 908 L1080 1100 L-20 1100 Z" fill="url(#amzXSuelo)"/>
-        <path d="M-20 926 Q240 900 520 922 Q800 944 1080 908 L1080 938 Q800 974 520 952 Q240 930 -20 956 Z" fill="#4a6b2b"/>`;
-      /* el tronco caído donde descansa el jaguar */
-      s += `<g><path d="M40 842 Q190 822 350 836 L350 866 Q190 852 40 872 Z" fill="#6b5140"/>
-        <ellipse cx="350" cy="851" rx="11" ry="15" fill="#8d6e63"/><ellipse cx="350" cy="851" rx="5" ry="8" fill="#5d4037"/>
-        <g stroke="#4e3a2c" stroke-width="3" fill="none"><path d="M90 846 Q200 830 320 842 M90 862 Q200 846 320 858"/></g>
-        <g fill="#4c9a3f"><ellipse cx="130" cy="836" rx="20" ry="8"/><ellipse cx="250" cy="830" rx="17" ry="7"/></g></g>`;
+      /* ---------- EL SUELO DE LA SELVA, HASTA DONDE EMPIEZA EL BARRO ---------- */
+      s += `<path d="M-20 936 Q320 906 700 928 Q1080 950 1420 912 Q1620 892 1760 906 L1760 1100 L-20 1100 Z" fill="url(#amzXSuelo)"/>
+        <path d="M-20 936 Q320 906 700 928 Q1080 950 1420 912 Q1620 892 1760 906 L1760 938 Q1620 924 1420 944 Q1080 982 700 960 Q320 938 -20 966 Z" fill="#4a6b2b"/>`;
+      /* LA CEIBA GIGANTE: su fuste palido arranca bajo la copa del punto y
+         se planta en el suelo con contrafuertes enormes, como el arbol de verdad */
+      s += `<g>
+        <ellipse cx="1064" cy="946" rx="142" ry="24" fill="rgba(0,0,0,.2)"/>
+        <path d="M1020 950 Q1032 780 1042 496 L1078 496 Q1088 780 1100 950 Z" fill="url(#amzXCeiba)"/>
+        <path d="M1022 872 Q998 906 940 954 L1022 954 Z" fill="#5a6144"/>
+        <path d="M1098 872 Q1122 906 1180 954 L1098 954 Z" fill="#5a6144"/>
+        <path d="M1026 906 Q1014 924 976 956 L1026 956 Z" fill="#454c31"/>
+        <path d="M1094 906 Q1106 924 1144 956 L1094 956 Z" fill="#454c31"/>
+        <path d="M1046 916 Q1044 936 1028 956 L1050 956 Z" fill="#4e5638"/>
+        <path d="M1074 916 Q1076 936 1092 956 L1070 956 Z" fill="#4e5638"/>
+        <path d="M1040 580 Q1032 770 1026 930" stroke="rgba(0,0,0,.16)" stroke-width="9" fill="none"/>
+        <path d="M1058 600 Q1052 780 1046 930" stroke="rgba(0,0,0,.1)" stroke-width="6" fill="none"/>
+        <path d="M1084 580 Q1090 770 1094 930" stroke="rgba(255,255,255,.13)" stroke-width="7" fill="none"/>
+        <g transform="translate(1014 690)"><path d="M0 0 q-26 -6 -30 -26 q22 -4 30 12 q8 -20 30 -14 q-6 22 -30 28 Z" fill="#4c9a3f"/>
+          <path d="M0 -4 q-14 -18 -6 -34 q14 10 12 30 q10 -18 24 -20 q-4 20 -22 30 Z" fill="#66bb6a"/>
+          <circle cx="0" cy="-8" r="5" fill="#ef5350"/></g>
+        <g transform="translate(1112 848)"><path d="M0 0 q-26 -6 -30 -26 q22 -4 30 12 q8 -20 30 -14 q-6 22 -30 28 Z" fill="#4c9a3f"/>
+          <path d="M0 -4 q-14 -18 -6 -34 q14 10 12 30 q10 -18 24 -20 q-4 20 -22 30 Z" fill="#66bb6a"/>
+          <circle cx="0" cy="-8" r="5" fill="#ef5350"/></g></g>`;
+      /* el monticulo de tierra y hojarasca donde se asienta el tronco caido:
+         sin el, el tronco (y el jaguar encima) flotaban sobre el suelo */
+      s += `<g><ellipse cx="266" cy="906" rx="248" ry="34" fill="rgba(0,0,0,.2)"/>
+        <path d="M-20 948 Q60 906 168 886 Q286 866 392 878 Q470 888 512 918 Q536 936 534 952 L-20 954 Z" fill="#375420"/>
+        <path d="M20 940 Q110 902 210 890 Q320 876 400 892 Q456 904 490 930" stroke="#48682a" stroke-width="11" fill="none" stroke-linecap="round" opacity=".85"/>
+        <g fill="#4a6b2b"><ellipse cx="96" cy="912" rx="34" ry="12"/><ellipse cx="300" cy="898" rx="28" ry="10"/><ellipse cx="450" cy="920" rx="24" ry="9"/></g>
+        <g fill="#6d4c41" opacity=".7"><ellipse cx="150" cy="928" rx="16" ry="6" transform="rotate(-12 150 928)"/><ellipse cx="368" cy="912" rx="14" ry="5" transform="rotate(9 368 912)"/></g></g>`;
+      /* el tronco caido donde descansa el jaguar */
+      s += `<g><path d="M70 858 Q260 834 452 850 L452 882 Q260 866 70 890 Z" fill="#6b5140"/>
+        <ellipse cx="452" cy="866" rx="12" ry="16" fill="#8d6e63"/><ellipse cx="452" cy="866" rx="5" ry="9" fill="#5d4037"/>
+        <g stroke="#4e3a2c" stroke-width="3" fill="none"><path d="M120 862 Q260 842 410 856 M120 880 Q260 860 410 874"/></g>
+        <g fill="#4c9a3f"><ellipse cx="160" cy="850" rx="21" ry="8"/><ellipse cx="320" cy="844" rx="18" ry="7"/></g></g>`;
       /* helechos, hojarasca y la fila de hormigas cortadoras */
       const helecho = (x, y, k) => `<g transform="translate(${x} ${y}) scale(${k})" stroke="#2e7d32" stroke-width="10" fill="none" stroke-linecap="round">
         <path d="M0 0 Q-45 -60 -95 -75"/><path d="M0 0 Q0 -80 -15 -125"/><path d="M0 0 Q45 -60 95 -75"/><path d="M0 0 Q28 -75 60 -110"/><path d="M0 0 Q-28 -75 -60 -110"/></g>`;
-      s += helecho(250, 960, .85) + helecho(620, 980, .7) + helecho(900, 950, .95) + helecho(1010, 1046, .8);
-      for (let i = 0; i < 12; i++) {
-        const x = 40 + az() * 1000, y = 950 + az() * 120;
+      s += helecho(240, 986, .85) + helecho(600, 1000, .7) + helecho(880, 966, .95) + helecho(1180, 1010, .8)
+        + helecho(1420, 976, .72) + helecho(1660, 1030, .62);
+      for (let i = 0; i < 20; i++) {
+        const x = 40 + az() * 1660, y = 950 + az() * 130;
         s += `<ellipse cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" rx="${(12 + az() * 9).toFixed(0)}" ry="6" fill="${["#6d4c41", "#7a5a3c", "#4c6b28"][i % 3]}" opacity=".75" transform="rotate(${(az() * 70 - 35).toFixed(0)} ${x.toFixed(0)} ${y.toFixed(0)})"/>`;
       }
-      s += `<path d="M900 934 Q1000 928 1090 940" stroke="#c8a24a" stroke-width="7" fill="none" opacity=".55" stroke-dasharray="4 12"/>`;
-      /* ---------- EL RÍO AMAZONAS ---------- */
-      const orilla = "M1010 1000 Q1120 862 1226 764 Q1310 692 1470 688 Q1700 682 1900 702 Q2210 732 2620 700";
-      s += `<path d="${orilla} L2620 1100 L1010 1100 Z" fill="url(#amzXAgua)"/>
+      /* el reguero de hojas que llevan las hormigas hasta su hormiguero */
+      s += `<path d="M1180 962 Q1300 944 1400 950 Q1470 954 1512 944" stroke="#c8a24a" stroke-width="7" fill="none" opacity=".55" stroke-dasharray="4 12"/>
+        <ellipse cx="1524" cy="944" rx="44" ry="16" fill="#7a5a3c" opacity=".75"/>
+        <ellipse cx="1524" cy="936" rx="28" ry="9" fill="#8a6a44" opacity=".7"/>
+        <ellipse cx="1572" cy="916" rx="30" ry="10" fill="#4a6b2b"/>
+        <g fill="#4c9a3f"><ellipse cx="1552" cy="910" rx="13" ry="6" transform="rotate(-16 1552 910)"/><ellipse cx="1592" cy="912" rx="11" ry="5" transform="rotate(14 1592 912)"/></g>`;
+      /* ramas de apoyo: el perezoso, el mono y la orquidea se sostienen en ellas */
+      s += `<path d="M1034 552 Q760 500 412 492" stroke="#5a4433" stroke-width="20" fill="none" stroke-linecap="round"/>
+        <path d="M1004 822 Q890 806 704 824" stroke="#5a4433" stroke-width="18" fill="none" stroke-linecap="round"/>
+        <path d="M1092 744 Q1220 722 1372 738" stroke="#5a4433" stroke-width="16" fill="none" stroke-linecap="round"/>
+        <g fill="#4c9a3f"><ellipse cx="574" cy="496" rx="23" ry="9" transform="rotate(-14 574 496)"/><ellipse cx="680" cy="502" rx="19" ry="8" transform="rotate(-9 680 502)"/>
+        <ellipse cx="722" cy="822" rx="21" ry="9" transform="rotate(12 722 822)"/><ellipse cx="880" cy="812" rx="18" ry="8" transform="rotate(8 880 812)"/>
+        <ellipse cx="1360" cy="736" rx="20" ry="9" transform="rotate(10 1360 736)"/><ellipse cx="1240" cy="726" rx="17" ry="8" transform="rotate(-8 1240 726)"/></g>`;
+      /* ---------- TRANSICION: LA SELVA SE ABRE Y APARECE LA ORILLA DE BARRO ---------- */
+      /* el sotobosque se aclara y baja de altura camino del agua */
+      /* el sotobosque se encoge siguiendo la bajada de la orilla, sin meterse en el agua */
+      [[1150, 858, 1], [1280, 876, .9], [1400, 890, .8], [1500, 902, .7], [1590, 914, .58], [1668, 926, .46]].forEach((m, i) => {
+        s += `<g transform="translate(${m[0]} ${m[1]}) scale(${m[2]})" opacity="${(0.95 - i * 0.11).toFixed(2)}">
+          <ellipse cx="0" cy="-14" rx="62" ry="30" fill="${["#2e7d32", "#37833a", "#3f8c40"][i % 3]}"/>
+          <ellipse cx="-38" cy="2" rx="34" ry="19" fill="#256b28"/><ellipse cx="40" cy="0" rx="30" ry="17" fill="#33823a"/></g>`;
+      });
+      /* la niebla que cose la selva con el rio */
+      s += `<ellipse cx="1700" cy="820" rx="300" ry="52" fill="rgba(255,255,255,.13)"><animate attributeName="rx" values="300;350;300" dur="18s" repeatCount="indefinite"/></ellipse>`;
+      /* ---------- LA OTRA ORILLA VISTA DE LEJOS: el aire abierto sobre el rio ---------- */
+      /* el claro luminoso: sobre el agua la selva se abre y entra la luz */
+      s += `<ellipse cx="2480" cy="466" rx="900" ry="216" fill="url(#amzXCielo)" opacity=".62"/>
+        <ellipse cx="3620" cy="486" rx="660" ry="180" fill="url(#amzXCielo)" opacity=".55"/>
+        <ellipse cx="1980" cy="510" rx="400" ry="150" fill="url(#amzXCielo)" opacity=".45"/>`;
+      /* tres hileras de copas cada vez menos desvaidas: la selva de enfrente.
+         cada hilera es una sola silueta ondulada, asi se lee como bosque y no como bolas */
+      const hilera = (base, rMin, rVar, x0, x1, fill, op) => {
+        let d = `M${x0} ${base}`, x = x0, i = 0;
+        while (x < x1) {
+          const r = rMin + ((i * 37) % 5) * rVar;
+          d += ` a${r} ${r} 0 0 1 ${r * 2} 0`;
+          x += r * 2; i++;
+        }
+        return `<path d="${d} L${x} ${base + 90} L${x0} ${base + 90} Z" fill="${fill}" opacity="${op}"/>`;
+      };
+      /* el cordal lejanisimo del fondo: la selva sigue y sigue hasta el horizonte.
+         va debajo de todo lo demas, para que el claro tenga profundidad */
+      s += `<path d="M1760 620 Q1900 528 2060 546 Q2180 560 2280 512 Q2420 452 2560 494 Q2680 530 2800 500
+        Q2960 460 3100 502 Q3240 542 3380 508 Q3540 470 3700 506 Q3900 552 4060 512 Q4160 486 4240 500 L4240 640 L1760 640 Z"
+        fill="#93bd9b" opacity=".4"/>`;
+      /* arboles emergentes del fondo: los gigantes que sobresalen del dosel */
+      [[1962, 452, 62, .5], [2352, 424, 74, .46], [2882, 438, 68, .48], [3062, 466, 58, .52]].forEach(t => {
+        s += `<g opacity="${t[3]}" fill="#7fb08a"><path d="M${t[0] - 5} ${t[1] + 170} L${t[0] - 3} ${t[1] + 6} L${t[0] + 3} ${t[1] + 6} L${t[0] + 5} ${t[1] + 170} Z"/>
+          <ellipse cx="${t[0]}" cy="${t[1]}" rx="${t[2]}" ry="${(t[2] * .5).toFixed(0)}"/>
+          <ellipse cx="${t[0] - t[2] * .6}" cy="${t[1] + 20}" rx="${(t[2] * .5).toFixed(0)}" ry="${(t[2] * .3).toFixed(0)}"/>
+          <ellipse cx="${t[0] + t[2] * .6}" cy="${t[1] + 22}" rx="${(t[2] * .46).toFixed(0)}" ry="${(t[2] * .28).toFixed(0)}"/></g>`;
+      });
+      /* cuatro ceibas lejanas que asoman por encima de la linea de arboles.
+         antes iban tan desvaidas que no se veian: ahora tienen su tono propio */
+      [[2120, 476, 96, .8], [2690, 452, 108, .74], [3268, 490, 86, .82], [3906, 466, 92, .78]].forEach(c => {
+        s += `<g opacity="${c[3]}"><path d="M${c[0] - 9} ${c[1] + 150} L${c[0] - 5} ${c[1]} L${c[0] + 5} ${c[1]} L${c[0] + 9} ${c[1] + 150} Z" fill="#4f8a62"/>
+          <ellipse cx="${c[0]}" cy="${c[1] + 8}" rx="${c[2]}" ry="${(c[2] * .38).toFixed(0)}" fill="#3f7b55"/>
+          <ellipse cx="${c[0]}" cy="${c[1] - 4}" rx="${(c[2] * .94).toFixed(0)}" ry="${(c[2] * .36).toFixed(0)}" fill="#5d9d70"/>
+          <ellipse cx="${c[0] - c[2] * .5}" cy="${c[1] + 14}" rx="${(c[2] * .48).toFixed(0)}" ry="${(c[2] * .24).toFixed(0)}" fill="#54936a"/>
+          <ellipse cx="${c[0] + c[2] * .52}" cy="${c[1] + 16}" rx="${(c[2] * .44).toFixed(0)}" ry="${(c[2] * .22).toFixed(0)}" fill="#54936a"/>
+          <ellipse cx="${c[0] - c[2] * .18}" cy="${c[1] - 16}" rx="${(c[2] * .4).toFixed(0)}" ry="${(c[2] * .2).toFixed(0)}" fill="#6cae7e"/></g>`;
+      });
+      s += hilera(566, 32, 9, 1830, 4240, "#6ba377", .62)
+        + `<ellipse cx="2500" cy="566" rx="700" ry="30" fill="rgba(255,255,255,.12)"/><ellipse cx="3700" cy="574" rx="520" ry="26" fill="rgba(255,255,255,.1)"/>`
+        + hilera(608, 28, 8, 1850, 4240, "url(#amzXLejano)", .7)
+        + `<ellipse cx="2700" cy="608" rx="760" ry="24" fill="rgba(255,255,255,.1)"/>`
+        + hilera(648, 22, 7, 1870, 4240, "#3f8c46", .82);
+      /* guacamayos cruzando el claro. antes eran dos rayitas y se leian como
+         garabatos: ahora tienen cuerpo, alas y la cola larga de un guacamayo */
+      const ave = (x, y, k, cuerpo, ala, op) => `<g transform="translate(${x} ${y}) scale(${k})" opacity="${op}">
+        <path d="M-3 0 q-26 -20 -52 -12 q18 18 44 16 Z" fill="${ala}"/>
+        <path d="M3 0 q26 -20 52 -12 q-18 18 -44 16 Z" fill="${ala}"/>
+        <path d="M-8 3 q-26 10 -44 22 q22 -2 42 -12 Z" fill="${cuerpo}"/>
+        <ellipse cx="0" cy="2" rx="14" ry="8" fill="${cuerpo}"/>
+        <circle cx="12" cy="-2" r="6" fill="${cuerpo}"/>
+        <path d="M17 -3 l9 3 l-9 3 Z" fill="#4a3a2c"/></g>`;
+      s += `<g><animateTransform attributeName="transform" type="translate" values="0 0;46 -14;0 0" dur="34s" repeatCount="indefinite"/>
+        ${ave(2140, 428, .72, "#c94b3f", "#3f6fae", .9)}${ave(2268, 392, .62, "#c94b3f", "#3f6fae", .88)}${ave(2402, 446, .54, "#3f6fae", "#dda42e", .85)}</g>`;
+      /* y mas lejos, la bandada pequenita: solo siluetas, dan la escala del claro */
+      s += `<g><animateTransform attributeName="transform" type="translate" values="0 0;-30 10;0 0" dur="41s" repeatCount="indefinite"/>
+        ${ave(1898, 356, .36, "#4a7a63", "#4a7a63", .55)}${ave(1982, 336, .3, "#4a7a63", "#4a7a63", .5)}${ave(2612, 348, .34, "#4a7a63", "#4a7a63", .52)}
+        ${ave(2748, 372, .28, "#4a7a63", "#4a7a63", .48)}${ave(3004, 408, .38, "#4a7a63", "#4a7a63", .55)}
+        ${ave(2486, 462, .34, "#4a7a63", "#4a7a63", .5)}${ave(2566, 442, .28, "#4a7a63", "#4a7a63", .46)}${ave(2932, 470, .32, "#4a7a63", "#4a7a63", .5)}</g>`;
+      /* tres morfos azules revoloteando sobre el agua, la nota de color del claro */
+      [[2214, 520, .5, 9], [2566, 496, .42, 12], [2864, 542, .46, 15]].forEach(m => {
+        s += `<g transform="translate(${m[0]} ${m[1]}) scale(${m[2]})" opacity=".85">
+          <animateTransform attributeName="transform" type="translate" values="0 0;14 -18;0 0" dur="${m[3]}s" repeatCount="indefinite" additive="sum"/>
+          <path d="M0 0 q-30 -26 -46 -8 q-6 20 18 26 q18 4 28 -8 Z" fill="#5f96dd"/>
+          <path d="M0 0 q30 -26 46 -8 q6 20 -18 26 q-18 4 -28 -8 Z" fill="#5f96dd"/>
+          <path d="M-2 6 q-18 14 -12 26 q14 6 20 -10 Z" fill="#4a80cc"/><path d="M2 6 q18 14 12 26 q-14 6 -20 -10 Z" fill="#4a80cc"/>
+          <ellipse cx="0" cy="8" rx="5" ry="16" fill="#2a3a52"/></g>`;
+      });
+      /* nubes blandas: sin ellas el claro se quedaba en verde liso */
+      s += `<ellipse cx="2330" cy="360" rx="520" ry="66" fill="rgba(255,255,255,.11)"/>
+        <ellipse cx="2900" cy="332" rx="380" ry="52" fill="rgba(255,255,255,.1)"/>
+        <ellipse cx="2010" cy="418" rx="300" ry="42" fill="rgba(255,255,255,.09)"/>`;
+      /* un velo de bruma sobre el islote para que el caiman no se pierda en el verde */
+      s += `<ellipse cx="2860" cy="636" rx="150" ry="58" fill="rgba(255,255,255,.16)"/>`;
+      /* la playa de la orilla de enfrente, una lengua de arena antes del agua */
+      s += `<path d="M1880 700 Q1946 656 2032 672 Q2210 694 2460 690 Q2740 696 2960 680 Q3120 664 3306 626 L3308 614 Q3110 634 2960 646 Q2740 662 2460 656 Q2210 660 2034 636 Q1948 620 1892 664 Z" fill="url(#amzXOrilla)" opacity=".9"/>
+        <path d="M1960 664 Q2300 686 2700 678 Q2980 670 3200 630" stroke="rgba(255,255,255,.2)" stroke-width="7" fill="none" stroke-linecap="round"/>`;
+      /* matas bajas al borde del agua, del lado de enfrente */
+      for (let x = 1930; x <= 3260; x += 78) {
+        const cy = 664 - (x - 1930) * 0.022, r = 22 + (x % 4) * 5;
+        if (!libre(x - r, cy - r, r * 2, r * 2)) continue;
+        s += `<g opacity=".9"><ellipse cx="${x}" cy="${cy.toFixed(0)}" rx="${r}" ry="${(r * .6).toFixed(0)}" fill="${["#2e7d32", "#37833a", "#43a047"][x % 3]}"/>
+          <ellipse cx="${x - r * .7}" cy="${(cy + 6).toFixed(0)}" rx="${(r * .55).toFixed(0)}" ry="${(r * .38).toFixed(0)}" fill="#256b28"/></g>`;
+      }
+      /* ---------- EL RIO AMAZONAS, ANCHO ---------- */
+      const orilla = "M1560 1100 Q1652 928 1748 826 Q1802 764 1878 704 Q1934 664 2030 678 Q2210 700 2460 696 Q2740 702 2960 686 Q3060 678 3140 650";
+      s += `<path d="${orilla} L3260 1100 L1560 1100 Z" fill="url(#amzXAgua)"/>
         <path d="${orilla}" stroke="url(#amzXBarro)" stroke-width="34" fill="none"/>
         <path d="${orilla}" stroke="rgba(255,255,255,.22)" stroke-width="9" fill="none"/>`;
-      /* la vegetación de la orilla de enfrente, antes del agua */
-      [[1246, 762], [1330, 726], [1420, 700], [1530, 690], [1650, 686], [1780, 692], [1900, 704], [2030, 716], [2170, 726], [2320, 722], [2470, 712], [2590, 704]].forEach((v, i) => {
-        s += `<g transform="translate(${v[0]} ${v[1]})"><ellipse cx="0" cy="-16" rx="${52 + (i % 3) * 12}" ry="${26 + (i % 2) * 8}" fill="${["#2e7d32", "#1b5e20", "#388e3c"][i % 3]}"/>
-          <ellipse cx="${-30 - (i % 2) * 8}" cy="-4" rx="30" ry="17" fill="#256b28"/><ellipse cx="34" cy="-6" rx="28" ry="16" fill="#33823a"/></g>`;
+      /* la orilla de enfrente tampoco es una regla: bancos de arena que se
+         meten en el agua y calas que se comen la arena, cruzandose */
+      [[2072, 686, 60, 19, -6], [2286, 708, 52, 16, 4], [2520, 702, 66, 18, -3], [2712, 708, 46, 15, 5]].forEach(b => {
+        s += `<ellipse cx="${b[0]}" cy="${b[1]}" rx="${b[2]}" ry="${b[3]}" fill="#9c8158" transform="rotate(${b[4]} ${b[0]} ${b[1]})"/>
+          <ellipse cx="${b[0] + 8}" cy="${b[1] + 9}" rx="${(b[2] * .68).toFixed(0)}" ry="${(b[3] * .6).toFixed(0)}" fill="rgba(150,124,84,.45)" transform="rotate(${b[4]} ${b[0] + 8} ${b[1] + 9})"/>`;
       });
-      [[1360, 700], [1980, 706], [2420, 706]].forEach(pa => {
-        s += `<g transform="translate(${pa[0]} ${pa[1]})"><path d="M0 0 Q8 -60 2 -112" stroke="#5a4433" stroke-width="11" fill="none" stroke-linecap="round"/>
-          <g stroke="#2e7d32" stroke-width="9" fill="none" stroke-linecap="round"><path d="M2 -112 Q-38 -132 -66 -122"/><path d="M2 -112 Q42 -134 72 -124"/><path d="M2 -112 Q-20 -152 -40 -160"/><path d="M2 -112 Q26 -152 48 -162"/><path d="M2 -112 Q0 -158 -4 -170"/></g></g>`;
+      [[2178, 689, 42, 22, 5], [2400, 695, 46, 21, -4], [2626, 695, 40, 21, 3], [2856, 689, 44, 21, -5]].forEach(c => {
+        s += `<ellipse cx="${c[0]}" cy="${c[1]}" rx="${c[2]}" ry="${c[3]}" fill="#6fb0ac" transform="rotate(${c[4]} ${c[0]} ${c[1]})"/>
+          <path d="M${c[0] - c[2] * .6} ${c[1] + 4} q${(c[2] * .5).toFixed(0)} 8 ${c[2]} 0" stroke="rgba(255,255,255,.3)" stroke-width="4" fill="none" stroke-linecap="round"/>`;
       });
-      /* la corriente y los reflejos del cielo sobre el agua */
-      s += `<path d="M1060 1000 Q1180 880 1280 790 Q1370 726 1520 722 Q1720 716 1900 736 Q2200 764 2600 734" stroke="rgba(174,213,129,.3)" stroke-width="28" fill="none" stroke-linecap="round"/>
-        <path d="M1120 1010 Q1260 872 1400 800 Q1560 740 1800 780 Q2100 828 2600 796" stroke="rgba(255,255,255,.16)" stroke-width="16" fill="none" stroke-linecap="round" stroke-dasharray="70 120">
+      /* un par de troncos varados y unos cantos en esa playa */
+      s += `<g><path d="M2320 668 Q2394 658 2466 668 L2466 680 Q2394 690 2320 680 Z" fill="#6b5140"/>
+        <path d="M2336 672 Q2394 665 2452 672" stroke="#4e3a2c" stroke-width="2.6" fill="none"/></g>
+        <g fill="#8a7a62" opacity=".9"><ellipse cx="2148" cy="694" rx="13" ry="7"/><ellipse cx="2600" cy="690" rx="11" ry="6" fill="#a3917a"/>
+        <ellipse cx="2960" cy="678" rx="10" ry="5"/></g>`;
+      /* la corriente y los reflejos del cielo sobre el agua.
+         las dos vetas ocres son el limo que arrastra el Amazonas de verdad:
+         el agua sigue leyendose como agua, pero no como una piscina */
+      s += `<path d="M1700 1046 Q1810 906 1930 826 Q2100 758 2380 762 Q2660 766 2900 796 Q3040 812 3150 782" stroke="rgba(196,168,110,.26)" stroke-width="46" fill="none" stroke-linecap="round"/>
+        <path d="M1786 1092 Q1900 964 2020 892 Q2200 812 2470 838 Q2740 862 3000 886" stroke="rgba(178,150,96,.2)" stroke-width="30" fill="none" stroke-linecap="round"/>
+        <path d="M1640 1060 Q1740 900 1850 810 Q1950 748 2200 724 Q2480 702 2760 730 Q2980 750 3120 712" stroke="rgba(174,213,129,.3)" stroke-width="28" fill="none" stroke-linecap="round"/>
+        <path d="M1700 1080 Q1820 930 1960 852 Q2160 772 2480 800 Q2800 828 3110 780" stroke="rgba(255,255,255,.16)" stroke-width="16" fill="none" stroke-linecap="round" stroke-dasharray="70 120">
         <animate attributeName="stroke-dashoffset" values="0;-380" dur="26s" repeatCount="indefinite"/></path>`;
-      for (let i = 0; i < 9; i++) {
-        const x = 1180 + i * 158, y = 806 + (i % 3) * 62;
+      for (let i = 0; i < 16; i++) {
+        const x = 1830 + i * 84, y = 838 + (i % 4) * 58;
         if (!libre(x - 30, y - 10, 60, 20)) continue;
         s += `<path d="M${x} ${y} q26 -12 52 0" stroke="rgba(255,255,255,.3)" stroke-width="5" fill="none" stroke-linecap="round"/>`;
       }
-      /* los reflejos del cielo y de los árboles tumbados sobre el agua */
-      s += `<g fill="rgba(255,255,255,.1)"><ellipse cx="1420" cy="860" rx="150" ry="16"/><ellipse cx="1900" cy="820" rx="190" ry="14"/><ellipse cx="2340" cy="880" rx="210" ry="18"/><ellipse cx="1240" cy="1000" rx="130" ry="14"/></g>
-        <g fill="rgba(30,60,26,.16)"><ellipse cx="1620" cy="800" rx="120" ry="26"/><ellipse cx="2140" cy="784" rx="140" ry="22"/><ellipse cx="2520" cy="800" rx="110" ry="20"/></g>`;
-      /* las raíces zancudas de las palmas de la orilla */
-      [[1150, 800], [2360, 726], [2560, 716]].forEach(r => {
-        s += `<g stroke="#5a4433" stroke-width="8" fill="none" stroke-linecap="round">
-          <path d="M${r[0]} ${r[1] - 90} V${r[1] - 40} M${r[0]} ${r[1] - 40} q-30 14 -44 40 M${r[0]} ${r[1] - 40} q30 14 44 40 M${r[0]} ${r[1] - 40} q-8 22 -6 40 M${r[0]} ${r[1] - 40} q14 20 20 40"/>
-          <g stroke="#3f7f33" stroke-width="9"><path d="M${r[0]} ${r[1] - 92} q-44 -14 -66 -44 M${r[0]} ${r[1] - 92} q44 -16 68 -44 M${r[0]} ${r[1] - 92} q-16 -40 -30 -56"/></g></g>`;
-      });
-      /* el barro de la orilla y el islote donde toma el sol el caimán */
-      s += `<path d="M1740 700 Q1820 646 1944 678 Q1980 690 1962 714 Q1860 742 1760 726 Q1722 716 1740 700 Z" fill="url(#amzXBarro)"/>
-        <path d="M1762 700 Q1840 668 1930 686" stroke="rgba(255,255,255,.22)" stroke-width="7" fill="none"/>
-        <g stroke="#5a4433" stroke-width="5" fill="none" stroke-linecap="round"><path d="M1748 722 q-26 8 -40 24 M1946 706 q26 10 40 26"/></g>`;
+      s += `<g fill="rgba(255,255,255,.1)"><ellipse cx="2000" cy="870" rx="160" ry="16"/><ellipse cx="2460" cy="800" rx="210" ry="14"/><ellipse cx="2900" cy="860" rx="200" ry="18"/><ellipse cx="1780" cy="1010" rx="140" ry="14"/></g>
+        <g fill="rgba(30,60,26,.16)"><ellipse cx="2260" cy="790" rx="150" ry="26"/><ellipse cx="2700" cy="768" rx="160" ry="22"/><ellipse cx="3050" cy="790" rx="120" ry="20"/></g>`;
       /* el tronco flotante donde se enrosca la anaconda */
-      s += `<g><path d="M1420 752 Q1520 738 1626 752 L1626 772 Q1520 788 1420 772 Z" fill="#5a4433"/>
-        <ellipse cx="1626" cy="762" rx="9" ry="11" fill="#7a5a3c"/>
-        <path d="M1440 758 Q1520 748 1610 758" stroke="#4e3a2c" stroke-width="3" fill="none"/></g>`;
-      /* los nenúfares gigantes Victoria, con su borde levantado */
-      [[1680, 908, 62], [1550, 946, 46], [1836, 936, 52], [1272, 942, 40], [2050, 880, 44]].forEach(n => {
+      s += `<g><ellipse cx="2382" cy="754" rx="150" ry="16" fill="rgba(255,255,255,.14)"/>
+        <path d="M2250 728 Q2380 714 2512 728 L2512 750 Q2380 766 2250 750 Z" fill="#5a4433"/>
+        <ellipse cx="2512" cy="739" rx="9" ry="11" fill="#7a5a3c"/>
+        <path d="M2272 734 Q2380 724 2492 734" stroke="#4e3a2c" stroke-width="3" fill="none"/></g>`;
+      /* el banco de barro donde toma el sol el caiman: sale de la playa de
+         enfrente y se mete en el agua. va mas oscuro y mojado que la arena para
+         que se lea como otra cosa y no como un trozo mas de playa */
+      s += `<ellipse cx="2864" cy="784" rx="132" ry="18" fill="rgba(26,84,100,.4)"/>
+        <path d="M2726 664 Q2820 636 2946 664 Q3002 680 2992 714 Q2962 750 2872 764 Q2776 774 2732 746 Q2698 724 2706 700 Q2710 678 2726 664 Z" fill="#7b6539"/>
+        <path d="M2742 676 Q2830 652 2938 676 Q2978 688 2970 708" stroke="rgba(255,255,255,.24)" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <path d="M2740 744 Q2802 766 2884 760 Q2950 752 2984 724" stroke="#5c4a2a" stroke-width="13" fill="none" stroke-linecap="round" opacity=".75"/>
+        <g fill="#96814f"><ellipse cx="2766" cy="704" rx="17" ry="8"/><ellipse cx="2922" cy="696" rx="12" ry="6"/><ellipse cx="2848" cy="728" rx="19" ry="7"/></g>
+        <g stroke="#5a4433" stroke-width="5" fill="none" stroke-linecap="round"><path d="M2724 732 q-30 10 -46 28 M2970 710 q28 10 42 28"/></g>`;
+      /* los nenufares gigantes Victoria, con su borde levantado */
+      [[2620, 990, 66], [2420, 1006, 48], [2820, 976, 54], [2200, 1002, 42], [2760, 896, 40], [1980, 1030, 38]].forEach(n => {
         s += `<ellipse cx="${n[0]}" cy="${n[1] + 8}" rx="${n[2]}" ry="${(n[2] * .34).toFixed(0)}" fill="rgba(0,0,0,.14)"/>
           <circle cx="${n[0]}" cy="${n[1]}" r="${n[2]}" fill="#66bb6a"/>
           <circle cx="${n[0]}" cy="${n[1]}" r="${n[2]}" fill="none" stroke="#a5d6a7" stroke-width="6"/>
           <path d="M${n[0]} ${n[1]} L${n[0] + n[2]} ${n[1] - 5} L${n[0] + n[2]} ${n[1] + 7} Z" fill="#388e3c"/>
           <g stroke="#4c9a3f" stroke-width="2.4">${[0, 60, 120].map(a => `<path d="M${n[0]} ${n[1]} L${(n[0] + n[2] * Math.cos(a * Math.PI / 180)).toFixed(0)} ${(n[1] + n[2] * Math.sin(a * Math.PI / 180)).toFixed(0)}"/>`).join("")}</g>`;
       });
-      s += `<circle cx="1596" cy="898" r="12" fill="#f8bbd0"/><circle cx="1596" cy="898" r="6" fill="#fff"/>
-        <circle cx="1898" cy="928" r="10" fill="#f8bbd0"/><circle cx="1898" cy="928" r="5" fill="#fff"/>`;
-      /* el chapoteo bajo el delfín rosado y las ondas de la piraña */
+      s += `<circle cx="2528" cy="978" r="13" fill="#f8bbd0"/><circle cx="2528" cy="978" r="6" fill="#fff"/>
+        <circle cx="2724" cy="868" r="10" fill="#f8bbd0"/><circle cx="2724" cy="868" r="5" fill="#fff"/>`;
+      /* el chapoteo bajo el delfin rosado y las ondas de la pirana */
       s += `<g fill="none" stroke="rgba(255,255,255,.5)" stroke-width="5" stroke-linecap="round">
-        <path d="M1120 792 q30 -16 62 -4 M1196 800 q28 -14 56 -2"><animate attributeName="opacity" values=".9;.35;.9" dur="4.5s" repeatCount="indefinite"/></path>
-        <path d="M1300 900 q34 -14 68 0 M1318 918 q26 -10 52 0"><animate attributeName="opacity" values=".4;.9;.4" dur="5.5s" repeatCount="indefinite"/></path></g>`;
+        <path d="M1822 762 q30 -16 62 -4 M1898 772 q28 -14 56 -2"><animate attributeName="opacity" values=".9;.35;.9" dur="4.5s" repeatCount="indefinite"/></path>
+        <path d="M2088 972 q34 -14 68 0 M2106 990 q26 -10 52 0"><animate attributeName="opacity" values=".4;.9;.4" dur="5.5s" repeatCount="indefinite"/></path></g>`;
+      /* ---------- LA ORILLA DE AQUI: el suelo de selva se vuelve limo y luego agua ---------- */
+      const orillaCerca = "M1548 1100 Q1616 1000 1660 936 Q1704 874 1752 822 Q1806 762 1880 702 Q1938 662 2032 676";
+      s += `<path d="${orillaCerca}" stroke="url(#amzXOrilla)" stroke-width="52" fill="none" stroke-linecap="round" opacity=".92"/>
+        <path d="M1566 1064 Q1640 962 1700 890 Q1770 806 1876 726" stroke="rgba(255,255,255,.16)" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <path d="M1600 1090 Q1668 990 1730 918 Q1800 836 1900 764" stroke="rgba(109,85,55,.4)" stroke-width="8" fill="none" stroke-linecap="round"/>`;
+      /* juncos y raicillas asomando del limo, ya con los pies en la arena */
+      [[1596, 1016, 1], [1652, 940, .95], [1716, 866, .88], [1788, 786, .8], [1858, 716, .72], [1936, 678, .62]].forEach((j, i) => {
+        s += `<g transform="translate(${j[0]} ${j[1]}) scale(${j[2]})" stroke="#3f7f33" stroke-width="6" fill="none" stroke-linecap="round" opacity="${(0.92 - i * 0.06).toFixed(2)}">
+          <path d="M0 0 q-10 -40 -22 -58 M0 0 q0 -46 4 -66 M0 0 q12 -38 24 -52"/></g>`;
+      });
+      /* la orilla de aqui tampoco es una cinta de ancho fijo: tres lenguas de
+         limo entran en el agua y tres de tierra se comen el limo */
+      [[1632, 1026, 38, 14], [1720, 890, 32, 12], [1786, 800, 26, 10]].forEach(l => {
+        s += `<ellipse cx="${l[0]}" cy="${l[1]}" rx="${l[2]}" ry="${l[3]}" fill="#9c8158" transform="rotate(-54 ${l[0]} ${l[1]})"/>`;
+      });
+      [[1578, 992, 34, 13], [1668, 866, 28, 11], [1742, 776, 23, 9]].forEach(v => {
+        s += `<ellipse cx="${v[0]}" cy="${v[1]}" rx="${v[2]}" ry="${v[3]}" fill="#2b4216" transform="rotate(-54 ${v[0]} ${v[1]})"/>
+          <ellipse cx="${v[0] - 10}" cy="${v[1] - 12}" rx="${(v[2] * .5).toFixed(0)}" ry="${(v[3] * .6).toFixed(0)}" fill="#35521c" transform="rotate(-54 ${v[0] - 10} ${v[1] - 12})"/>`;
+      });
+      /* una caleta justo debajo del delfin: el agua entra en la orilla y el
+         bicho queda nadando y no encallado en el limo */
+      s += `<path d="M1820 774 Q1852 736 1900 712 Q1950 690 2014 686 L2020 706 Q1956 712 1906 740 Q1856 768 1824 800 Z" fill="#6fb0ac"/>
+        <path d="M1846 764 q28 -22 58 -36 M1884 782 q26 -18 54 -30" stroke="rgba(255,255,255,.32)" stroke-width="5" fill="none" stroke-linecap="round"/>`;
+      /* manchas de hierba y hojarasca a caballo entre la tierra y el limo */
+      [[1560, 990, 26], [1620, 918, 22], [1690, 848, 20], [1764, 776, 17], [1846, 706, 15]].forEach((m, i) => {
+        s += `<ellipse cx="${m[0]}" cy="${m[1]}" rx="${m[2]}" ry="${(m[2] * .42).toFixed(0)}" fill="#4a6b2b" opacity="${(0.85 - i * 0.1).toFixed(2)}"/>`;
+      });
+      /* ---------- TRANSICION: LA OTRA ORILLA, EL AGUA VUELVE A SER TIERRA ---------- */
+      /* la costa entra en diagonal: el agua se va estrechando hacia la esquina */
+      const costa = "M2870 1100 Q2980 966 3068 834 Q3122 752 3212 704 Q3330 664 3470 660 Q3770 688 4030 666 Q4130 656 4220 662";
+      s += `<path d="${costa} L4220 1100 Z" fill="url(#amzXSuelo)"/>`;
+      /* el bajio: el agua se hace poca y deja ver el fondo de arena antes de
+         la playa, asi no hay salto seco de azul a ocre */
+      [[2856, 1064, 96, 30], [2924, 986, 84, 26], [2986, 906, 72, 23], [3050, 836, 60, 20], [3118, 772, 52, 17], [3196, 724, 44, 15]].forEach(b => {
+        s += `<ellipse cx="${b[0]}" cy="${b[1]}" rx="${b[2]}" ry="${b[3]}" fill="rgba(168,140,96,.34)" transform="rotate(-54 ${b[0]} ${b[1]})"/>`;
+      });
+      /* LA PLAYA: solo vive donde hay agua (el rio muere hacia x=3280) y sus dos
+         bordes son distintos, asi que el ancho cambia todo el rato */
+      s += `<path d="M2826 1100 Q2914 1002 2948 940 Q2988 870 3040 826 Q3084 774 3140 742 Q3200 708 3272 688 Q3300 680 3326 674
+        L3336 716 Q3266 726 3196 756 Q3130 788 3084 844 Q3032 906 2998 976 Q2962 1040 2936 1100 Z" fill="url(#amzXOrilla)"/>
+        <path d="M2902 1040 q34 -46 58 -74 M3006 902 q28 -38 52 -60 M3116 796 q30 -22 56 -34" stroke="rgba(255,255,255,.17)" stroke-width="13" fill="none" stroke-linecap="round"/>`;
+      /* la orilla deja de ser una linea: lenguas de arena que se meten en el
+         agua y lenguas de tierra que se comen la arena, cruzandose en los dos
+         sentidos y con hierba plantada justo encima del filo */
+      [[2872, 1048, 44, 15], [2986, 878, 34, 12], [3086, 780, 27, 10], [3200, 712, 22, 9]].forEach(l => {
+        s += `<ellipse cx="${l[0]}" cy="${l[1]}" rx="${l[2]}" ry="${l[3]}" fill="#9c8158" transform="rotate(-50 ${l[0]} ${l[1]})"/>
+          <ellipse cx="${l[0] - 14}" cy="${l[1] + 12}" rx="${(l[2] * .6).toFixed(0)}" ry="${(l[3] * .7).toFixed(0)}" fill="rgba(156,129,88,.5)" transform="rotate(-50 ${l[0] - 14} ${l[1] + 12})"/>`;
+      });
+      [[2966, 1040, 40, 15], [3036, 910, 34, 13], [3136, 796, 28, 11], [3252, 736, 23, 9]].forEach(v => {
+        s += `<ellipse cx="${v[0]}" cy="${v[1]}" rx="${v[2]}" ry="${v[3]}" fill="#2b4216" transform="rotate(-50 ${v[0]} ${v[1]})"/>
+          <ellipse cx="${v[0] - 12}" cy="${v[1] - 14}" rx="${(v[2] * .5).toFixed(0)}" ry="${(v[3] * .6).toFixed(0)}" fill="#35521c" transform="rotate(-50 ${v[0] - 12} ${v[1] - 14})"/>`;
+      });
+      /* cantos rodados y un palo varado, para que la playa tenga cosas */
+      s += `<g fill="#8a7a62" opacity=".9"><ellipse cx="2914" cy="1032" rx="15" ry="9"/><ellipse cx="2938" cy="1044" rx="9" ry="6" fill="#a3917a"/>
+        <ellipse cx="3002" cy="932" rx="12" ry="7"/><ellipse cx="3088" cy="836" rx="10" ry="6" fill="#a3917a"/><ellipse cx="3160" cy="768" rx="8" ry="5"/></g>
+        <g><path d="M2962 1006 Q3006 986 3054 984 L3056 996 Q3008 1000 2966 1018 Z" fill="#7a5a3c"/>
+        <path d="M2976 1004 Q3010 992 3046 991" stroke="#5a4433" stroke-width="2.6" fill="none"/></g>`;
+      /* donde se acaba el agua se acaba la playa: de x 3280 en adelante la
+         orilla se cose con maleza y hojarasca, no con arena */
+      s += `<path d="M3268 700 Q3420 674 3580 680 Q3760 698 3960 680 Q4100 668 4220 676" stroke="#416127" stroke-width="52" fill="none" stroke-linecap="round" opacity=".9"/>
+        <path d="M3300 682 Q3450 662 3600 668 Q3780 686 3980 668 Q4110 658 4220 664" stroke="#4d7130" stroke-width="22" fill="none" stroke-linecap="round" opacity=".7"/>`;
+      /* espuma menuda donde el agua lame la arena (solo donde hay agua) */
+      [[2892, 1052], [2952, 1010], [3006, 928], [3062, 850], [3128, 772], [3208, 720]].forEach((f, i) => {
+        s += `<path d="M${f[0]} ${f[1]} q22 -12 44 -2" stroke="rgba(255,255,255,.35)" stroke-width="5" fill="none" stroke-linecap="round"><animate attributeName="opacity" values=".8;.35;.8" dur="${6 + i}s" repeatCount="indefinite"/></path>`;
+      });
+      /* hierbecitas a caballo entre la arena y la tierra, para que no se note el filo */
+      [[2948, 1050, .95], [2988, 984, .9], [3030, 916, .85], [3078, 852, .8], [3134, 796, .75], [3196, 752, .72], [3258, 724, .68],
+        [3340, 704, .65], [3440, 688, .6], [3560, 692, .62], [3620, 700, .6], [3740, 698, .58], [3840, 706, .55], [3940, 690, .6], [4060, 690, .55], [4160, 680, .5]].forEach(g => {
+        s += `<g transform="translate(${g[0]} ${g[1]}) scale(${g[2]})" stroke="#4c9a3f" stroke-width="6" fill="none" stroke-linecap="round" opacity=".8">
+          <path d="M0 0 q-14 -22 -30 -32 M0 0 q-4 -26 -2 -40 M0 0 q16 -20 32 -30"/></g>`;
+      });
+      /* la vegetacion de la otra orilla, que va cerrandose otra vez */
+      [[3110, 810], [3170, 742], [3246, 700], [3340, 678], [3450, 666], [3580, 668],
+        [3700, 680], [3830, 682], [3960, 672], [4090, 664], [4200, 662]].forEach((v, i) => {
+        s += `<g transform="translate(${v[0]} ${v[1]})"><ellipse cx="0" cy="-16" rx="${52 + (i % 3) * 12}" ry="${26 + (i % 2) * 8}" fill="${["#2e7d32", "#1b5e20", "#388e3c"][i % 3]}"/>
+          <ellipse cx="${-30 - (i % 2) * 8}" cy="-4" rx="30" ry="17" fill="#256b28"/><ellipse cx="34" cy="-6" rx="28" ry="16" fill="#33823a"/></g>`;
+      });
+      /* las palmeras de zancos de la orilla, con sus raices al aire */
+      [[3186, 816, 1.35], [3846, 728, 1.25], [4112, 714, 1.15]].forEach(r => {
+        s += `<g transform="translate(${r[0]} ${r[1]}) scale(${r[2]})" stroke="#5a4433" stroke-width="8" fill="none" stroke-linecap="round">
+          <path d="M0 -150 V-52 M0 -52 q-34 18 -50 52 M0 -52 q34 18 50 52 M0 -52 q-10 28 -8 52 M0 -52 q16 26 22 52"/>
+          <g stroke="#3f7f33" stroke-width="10"><path d="M0 -152 q-52 -18 -78 -52 M0 -152 q52 -20 80 -52 M0 -152 q-20 -48 -36 -66 M0 -152 q24 -46 44 -64"/></g></g>`;
+      });
+      [[3300, 744, 1.3], [3648, 704, 1.15], [3968, 692, 1.2]].forEach(pa => {
+        s += `<g transform="translate(${pa[0]} ${pa[1]}) scale(${pa[2]})"><path d="M0 0 Q8 -60 2 -112" stroke="#5a4433" stroke-width="11" fill="none" stroke-linecap="round"/>
+          <g stroke="#2e7d32" stroke-width="9" fill="none" stroke-linecap="round"><path d="M2 -112 Q-38 -132 -66 -122"/><path d="M2 -112 Q42 -134 72 -124"/><path d="M2 -112 Q-20 -152 -40 -160"/><path d="M2 -112 Q26 -152 48 -162"/><path d="M2 -112 Q0 -158 -4 -170"/></g></g>`;
+      });
+      /* ---------- EL SUELO DE LA OTRA ORILLA, QUE ANTES ESTABA PELADO ---------- */
+      /* las manchas de sol que se cuelan entre las hojas: rompen el verde liso */
+      [[3220, 940, 130, 40], [3520, 1040, 150, 46], [3860, 880, 120, 36], [4090, 1010, 110, 34], [3660, 800, 96, 28]].forEach(l => {
+        s += `<ellipse cx="${l[0]}" cy="${l[1]}" rx="${l[2]}" ry="${l[3]}" fill="rgba(214,240,160,.12)" transform="rotate(-14 ${l[0]} ${l[1]})"/>`;
+      });
+      /* una charca de agua de lluvia, con su barrillo alrededor */
+      s += `<ellipse cx="3452" cy="1046" rx="118" ry="34" fill="#6b5b38" opacity=".85"/>
+        <ellipse cx="3452" cy="1044" rx="100" ry="26" fill="#3f7d84"/>
+        <ellipse cx="3452" cy="1040" rx="86" ry="19" fill="#54959a"/>
+        <path d="M3400 1036 q28 -8 56 -2 M3428 1052 q22 -6 44 0" stroke="rgba(255,255,255,.35)" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <g fill="#4a6b2b"><ellipse cx="3346" cy="1052" rx="26" ry="10"/><ellipse cx="3562" cy="1054" rx="22" ry="9"/></g>`;
+      /* hojas anchas de sotobosque: las que de verdad tapan el suelo de la selva */
+      const hojaAncha = (x, y, k, gi) => `<g transform="translate(${x} ${y}) scale(${k})">
+        <path d="M0 0 Q-16 -44 -6 -92 Q4 -122 22 -128 Q46 -118 50 -84 Q54 -40 30 -4 Z" fill="${gi ? "#2f7a34" : "#3c8b3f"}"/>
+        <path d="M12 -8 Q10 -60 22 -122" stroke="#1e5f22" stroke-width="3.4" fill="none"/>
+        <path d="M14 -30 L-2 -46 M16 -54 L0 -70 M18 -74 L6 -92 M12 -22 L28 -36 M14 -48 L34 -62 M18 -70 L34 -84" stroke="#1e5f22" stroke-width="2.4" fill="none" opacity=".7"/></g>`;
+      s += hojaAncha(3126, 968, 1.1, 0) + hojaAncha(3172, 986, .95, 1) + hojaAncha(3308, 902, .85, 1)
+        + hojaAncha(3596, 1006, 1.2, 0) + hojaAncha(3648, 1030, 1, 1) + hojaAncha(3906, 946, 1.05, 1)
+        + hojaAncha(3952, 964, .9, 0) + hojaAncha(4118, 1064, 1.25, 0) + hojaAncha(3406, 1004, .8, 1)
+        + hojaAncha(4022, 1082, 1.1, 1);
+      /* dos bromelias de suelo con su flor, y un par de palmitos jovenes */
+      [[3268, 858, 1], [3822, 1002, 1.2], [4152, 892, .9]].forEach(b => {
+        s += `<g transform="translate(${b[0]} ${b[1]}) scale(${b[2]})">
+          <path d="M0 0 q-38 -10 -46 -40 q34 -6 46 18 q12 -30 46 -22 q-10 34 -46 44 Z" fill="#4c9a3f"/>
+          <path d="M0 -6 q-20 -28 -8 -52 q20 16 18 46 q14 -28 36 -30 q-6 30 -32 44 Z" fill="#66bb6a"/>
+          <circle cx="0" cy="-14" r="7" fill="#ef5350"/><circle cx="-9" cy="-8" r="4" fill="#fb8c00"/></g>`;
+      });
+      [[3760, 862, .62], [4062, 1046, .8]].forEach(pj => {
+        s += `<g transform="translate(${pj[0]} ${pj[1]}) scale(${pj[2]})" stroke="#3f7f33" stroke-width="9" fill="none" stroke-linecap="round">
+          <path d="M0 0 V-46 M0 -40 q-40 -14 -58 -44 M0 -40 q40 -16 60 -44 M0 -44 q-18 -34 -30 -50 M0 -44 q20 -32 34 -48"/></g>`;
+      });
+      /* helechos, setas en el tronco con musgo y el reguero de hormigas */
+      s += helecho(3160, 872, .8) + helecho(3400, 900, .9) + helecho(3700, 950, .75) + helecho(4020, 912, .85)
+        + helecho(3252, 1064, .95) + helecho(3872, 1078, .85) + helecho(4162, 962, .7);
+      s += `<g><path d="M3110 1042 Q3260 1012 3410 1026 Q3560 1040 3700 1016" stroke="#c8a24a" stroke-width="6" fill="none" opacity=".45" stroke-dasharray="4 12"/>
+        <ellipse cx="3086" cy="1050" rx="34" ry="13" fill="#7a5a3c" opacity=".8"/><ellipse cx="3086" cy="1044" rx="21" ry="8" fill="#8a6a44" opacity=".75"/></g>`;
+      /* cantos, ramitas caidas y hojarasca de colores */
+      s += `<g fill="#7f7462" opacity=".85"><ellipse cx="3340" cy="962" rx="17" ry="9"/><ellipse cx="3362" cy="972" rx="10" ry="6" fill="#948976"/>
+        <ellipse cx="3990" cy="1024" rx="14" ry="8"/><ellipse cx="4184" cy="944" rx="12" ry="7" fill="#948976"/></g>
+        <g stroke="#5d4433" stroke-width="6" fill="none" stroke-linecap="round" opacity=".9">
+        <path d="M3216 1004 q46 14 92 6"/><path d="M3806 1052 q40 -12 78 -6"/><path d="M4076 892 q34 12 62 4"/></g>
+        <g><ellipse cx="3742" cy="926" rx="16" ry="8" fill="#e8dcc0"/><ellipse cx="3742" cy="922" rx="16" ry="6" fill="#f4ecd8"/>
+        <rect x="3739" y="926" width="6" height="11" rx="3" fill="#e8dcc0"/>
+        <ellipse cx="3778" cy="936" rx="11" ry="6" fill="#e8dcc0"/><ellipse cx="3778" cy="933" rx="11" ry="4.4" fill="#f4ecd8"/>
+        <rect x="3775.5" y="936" width="5" height="9" rx="2.5" fill="#e8dcc0"/></g>`;
+      for (let i = 0; i < 26; i++) {
+        const x = 3080 + az() * 1110, y = 780 + az() * 300;
+        s += `<ellipse cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" rx="${(11 + az() * 9).toFixed(0)}" ry="6" fill="${["#6d4c41", "#7a5a3c", "#4c6b28", "#b5651d", "#c98a2e"][i % 5]}" opacity=".7" transform="rotate(${(az() * 70 - 35).toFixed(0)} ${x.toFixed(0)} ${y.toFixed(0)})"/>`;
+      }
+      /* ---------- EL ARBOL EMERGENTE: las ramas donde se posan las aves ---------- */
+      s += `<ellipse cx="3542" cy="904" rx="140" ry="26" fill="rgba(0,0,0,.22)"/>
+        <path d="M3500 900 q30 -350 -8 -680 h86 q34 330 6 680 Z" fill="url(#amzXTronco)"/>
+        <g fill="#4e3a2c"><path d="M3500 824 Q3466 872 3392 908 L3506 908 Z"/><path d="M3584 824 Q3618 872 3692 908 L3578 908 Z"/>
+          <path d="M3516 860 Q3500 888 3470 908 L3530 908 Z"/><path d="M3568 860 Q3584 888 3614 908 L3554 908 Z"/></g>
+        <path d="M3512 320 Q3498 600 3514 878" stroke="rgba(0,0,0,.18)" stroke-width="12" fill="none"/>`;
+      /* una rama de verdad: sale gruesa del tronco, se comba con su propio peso
+         y se afina hacia la punta. antes eran palos rectos del mismo grosor de
+         punta a punta y las tres largas se leian como peldanos de una escalera */
+      const rama = (x0, y0, x1, y1, gr, comba) => {
+        const dx = x1 - x0, dy = y1 - y0, L = Math.hypot(dx, dy) || 1;
+        const nx = -dy / L, ny = dx / L;
+        const mx = (x0 + x1) / 2, my = (y0 + y1) / 2 + (comba === undefined ? L * .07 : comba);
+        const g0 = gr / 2, g1 = gr * .2, gm = (g0 + g1) / 2;
+        const p = (x, y, sg, g) => `${(x + sg * nx * g).toFixed(0)} ${(y + sg * ny * g).toFixed(0)}`;
+        return `<path d="M${p(x0, y0, 1, g0)} Q${p(mx, my, 1, gm)} ${p(x1, y1, 1, g1)} L${p(x1, y1, -1, g1)} Q${p(mx, my, -1, gm)} ${p(x0, y0, -1, g0)} Z" fill="#5a4433"/>`;
+      };
+      s += rama(3512, 446, 3138, 366, 22, 34) + rama(3506, 300, 3260, 356, 14, 16)
+        + rama(3520, 262, 3372, 246, 16, 14) + rama(3540, 232, 3768, 214, 15, 26)
+        + rama(3762, 216, 3902, 266, 11, 10) + rama(3546, 372, 3688, 402, 13, 12)
+        + rama(3556, 552, 4150, 542, 24, 54) + rama(3956, 552, 4062, 498, 9, -12)
+        + rama(3336, 396, 3244, 434, 7, 8);
+      /* de la rama larga cuelgan una liana y dos bromelias: asi deja de leerse
+         como un peldano y se lee como la rama de un arbol vivo */
+      s += `<path d="M3700 578 Q3676 640 3706 706 Q3730 758 3702 800" stroke="#33691e" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <ellipse cx="3690" cy="646" rx="15" ry="7" fill="#4c9a3f" transform="rotate(-22 3690 646)"/>
+        <ellipse cx="3716" cy="742" rx="13" ry="6" fill="#66bb6a" transform="rotate(18 3716 742)"/>
+        <g transform="translate(3818 572)"><path d="M0 0 q-26 -6 -30 -26 q22 -4 30 12 q8 -20 30 -14 q-6 22 -30 28 Z" fill="#4c9a3f"/>
+          <path d="M0 -4 q-14 -18 -6 -34 q14 10 12 30 q10 -18 24 -20 q-4 20 -22 30 Z" fill="#66bb6a"/><circle cx="0" cy="-8" r="5" fill="#ef5350"/></g>
+        <g transform="translate(3606 566)"><path d="M0 0 q-24 -6 -28 -24 q20 -4 28 11 q7 -18 28 -13 q-6 20 -28 26 Z" fill="#4c9a3f"/>
+          <path d="M0 -4 q-13 -16 -6 -31 q13 9 11 27 q9 -16 22 -18 q-4 18 -20 27 Z" fill="#66bb6a"/><circle cx="0" cy="-7" r="4.4" fill="#fb8c00"/></g>`;
+      /* las hojas de esas ramas y una heliconia para el colibri */
+      [[3172, 366], [3272, 352], [3406, 246], [3768, 212], [3892, 264], [3684, 396], [3980, 546], [4106, 548],
+        [3690, 566], [3852, 566], [4032, 546], [3600, 556], [3268, 428]].forEach(h => {
+        s += `<g transform="translate(${h[0]} ${h[1]})"><ellipse cx="-24" cy="10" rx="26" ry="11" fill="#388e3c" transform="rotate(-16 -24 10)"/>
+          <ellipse cx="18" cy="12" rx="24" ry="10" fill="#43a047" transform="rotate(14 18 12)"/></g>`;
+      });
+      /* el tallo sube hasta la rama de 3546-3676 (y=391 en x=3648): sin esto la
+         heliconia quedaba colgada del aire, sin nacer de ninguna parte */
+      s += `<g transform="translate(3648 426)"><path d="M0 -34 v104" stroke="#4c9a3f" stroke-width="7" stroke-linecap="round"/>
+        ${[0, 1, 2, 3].map(i => `<path d="M${i % 2 ? 2 : -2} ${8 + i * 17} q${i % 2 ? 30 : -30} 2 ${i % 2 ? 34 : -34} 16 q${i % 2 ? -30 : 30} 2 ${i % 2 ? -34 : 34} -16 Z" fill="${i % 2 ? "#ef5350" : "#fb8c00"}"/>`).join("")}</g>`;
+      /* ---------- EL PRIMER PLANO: hojas grandes y un tronco con musgo ---------- */
+      s += `<g><path d="M3648 984 Q3860 958 4076 982 L4076 1022 Q3860 1048 3648 1024 Z" fill="#6b5140"/>
+        <ellipse cx="4076" cy="1002" rx="14" ry="20" fill="#8d6e63"/><ellipse cx="4076" cy="1002" rx="6" ry="11" fill="#5d4037"/>
+        <g stroke="#4e3a2c" stroke-width="3" fill="none"><path d="M3700 990 Q3870 968 4040 990 M3700 1014 Q3870 994 4040 1014"/></g>
+        <g fill="#4c9a3f"><ellipse cx="3740" cy="978" rx="24" ry="9"/><ellipse cx="3900" cy="970" rx="20" ry="8"/><ellipse cx="4020" cy="976" rx="17" ry="7"/></g></g>`;
+      [[3268, 1060, 1.5], [3960, 1082, 1.7], [4176, 1006, 1.3], [286, 1076, 1.6], [1176, 1064, 1.4], [2020, 1086, 1.2]].forEach(h => {
+        s += `<g transform="translate(${h[0]} ${h[1]}) scale(${h[2]})"><path d="M0 0 q-46 -6 -60 26 q42 24 60 -4 q18 28 60 4 q-14 -32 -60 -26 Z" fill="#2b7530"/>
+          <path d="M-58 24 H58 M-30 8 L-40 24 M0 4 V26 M30 8 L40 24" stroke="#1b5e20" stroke-width="3" fill="none"/></g>`;
+      });
       /* ---------- LA LLUVIA MUY SUAVE SOBRE LA SELVA ---------- */
-      s += `<rect x="150" y="200" width="640" height="700" fill="url(#amzXLluvia)" opacity=".45"/>
-        <ellipse cx="470" cy="240" rx="330" ry="52" fill="rgba(255,255,255,.1)"/>`;
-      /* ---------- LA NIEBLA BAJA ENTRE LOS TRONCOS ---------- */
-      s += `<ellipse cx="360" cy="648" rx="330" ry="46" fill="rgba(255,255,255,.09)"/>
-        <ellipse cx="1500" cy="590" rx="300" ry="38" fill="rgba(255,255,255,.07)"/>
-        <ellipse cx="2280" cy="656" rx="300" ry="42" fill="rgba(255,255,255,.09)"><animate attributeName="ry" values="42;56;42" dur="19s" repeatCount="indefinite"/></ellipse>`;
-      /* ramas de apoyo para el perezoso, el mono y la orquídea */
-      s += `<path d="M436 512 Q340 498 244 518" stroke="#5a4433" stroke-width="19" fill="none" stroke-linecap="round"/>
-        <path d="M436 792 Q510 782 596 794" stroke="#5a4433" stroke-width="17" fill="none" stroke-linecap="round"/>
-        <path d="M766 744 Q830 726 918 736" stroke="#5a4433" stroke-width="15" fill="none" stroke-linecap="round"/>
-        <g fill="#4c9a3f"><ellipse cx="262" cy="512" rx="22" ry="9" transform="rotate(-14 262 512)"/><ellipse cx="580" cy="790" rx="21" ry="9" transform="rotate(12 580 790)"/>
-        <ellipse cx="906" cy="730" rx="20" ry="9" transform="rotate(10 906 730)"/><ellipse cx="836" cy="742" rx="17" ry="8" transform="rotate(-8 836 742)"/></g>`;
-      return decoSvg(s, 2600);
+      /* tres ovalos encajados: la cortina de agua se apaga en los bordes, sin corte */
+      s += `<ellipse cx="600" cy="560" rx="640" ry="410" fill="url(#amzXLluvia)" opacity=".15"/>
+        <ellipse cx="600" cy="550" rx="470" ry="310" fill="url(#amzXLluvia)" opacity=".15"/>
+        <ellipse cx="590" cy="540" rx="320" ry="215" fill="url(#amzXLluvia)" opacity=".16"/>
+        <ellipse cx="560" cy="240" rx="400" ry="52" fill="rgba(255,255,255,.1)"/>`;
+      /* ---------- LA NIEBLA BAJA, CAPA A CAPA ---------- */
+      s += `<ellipse cx="380" cy="660" rx="340" ry="46" fill="rgba(255,255,255,.09)"/>
+        <ellipse cx="1240" cy="620" rx="320" ry="40" fill="rgba(255,255,255,.08)"/>
+        <ellipse cx="2400" cy="600" rx="420" ry="36" fill="rgba(255,255,255,.07)"><animate attributeName="ry" values="36;50;36" dur="19s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="3400" cy="640" rx="360" ry="42" fill="rgba(255,255,255,.09)"/>
+        <ellipse cx="4060" cy="672" rx="260" ry="40" fill="rgba(255,255,255,.08)"><animate attributeName="rx" values="260;296;260" dur="22s" repeatCount="indefinite"/></ellipse>`;
+      return decoSvg(s, 4200);
     }
   },
 

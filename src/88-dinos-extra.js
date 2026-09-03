@@ -133,8 +133,10 @@
       name: { es: "Dimetrodón", ca: "Dimetrodon", en: "Dimetrodon", cs: "Dimetrodon", fr: "Dimétrodon" },
       fact: { es: "Parece un dinosaurio, ¡pero no lo era! Vivió ANTES que los dinosaurios y su gran vela le ayudaba a calentarse al sol.", ca: "Sembla un dinosaure, però no ho era! Va viure ABANS que els dinosaures i la seva gran vela l'ajudava a escalfar-se al sol.", en: "It looks like a dinosaur, but it was not one! It lived BEFORE the dinosaurs and its big sail helped it warm up in the sun.", cs: "Vypadá jako dinosaurus, ale žádný dinosaurus to nebyl! Žil PŘED dinosaury a velkou plachtou na hřbetě se ohříval na slunci.", fr: "On dirait un dinosaure, mais non ! Il a vécu AVANT les dinosaures et sa grande voile l'aidait à se chauffer au soleil." } },
 
-    /* Dunkleosteus: mucho antes de los dinosaurios, en los mares antiguos */
-    { emoji: "🐡", cat: "mar", x: 3090, y: 950, w: 118, h: 56, art: `
+    /* Dunkleosteus: mucho antes de los dinosaurios, en los mares antiguos.
+       Nada pasado el banco de arena de la cala: donde estaba antes (x 3090)
+       quedaba medio varado en la playa, con la etiqueta sobre la arena */
+    { emoji: "🐡", cat: "mar", x: 3252, y: 956, w: 118, h: 56, art: `
         <defs><linearGradient id="eDun" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#607d8b"/><stop offset="100%" stop-color="#263238"/></linearGradient></defs>
         <path d="M10 38 Q16 24 34 22 Q66 12 98 20 Q130 26 146 38 Q130 50 98 56 Q66 62 34 54 Q16 52 10 38 Z" fill="url(#eDun)"/>
         <path d="M10 36 Q2 26 0 16 L16 28 Z M10 40 Q2 50 0 60 L16 48 Z" fill="#37474f"/>

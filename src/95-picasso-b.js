@@ -320,80 +320,106 @@ Object.assign(THEMES.picasso.content, {
 
   /* ---------- MAPA DE EXPLORACIÓN ---------- */
   explore: {
-    width: 2600, height: 1100, stars: false,
+    width: 4200, height: 1100, stars: false,
     bgCss: "linear-gradient(180deg,#eaf0f7 0%,#f5e9ee 46%,#f3eee2 76%,#e2d7c6 100%)",
     cats: [
-      { id: "periodos", emoji: "🎨", x: 120, name: { es: "Los colores de su vida", ca: "Els colors de la seva vida", en: "The colours of his life", cs: "Barvy jeho života", fr: "Les couleurs de sa vie" } },
-      { id: "cubismo", emoji: "🔷", x: 1000, name: { es: "El cubismo", ca: "El cubisme", en: "Cubism", cs: "Kubismus", fr: "Le cubisme" } },
-      { id: "paz", emoji: "🕊️", x: 1900, name: { es: "La paz", ca: "La pau", en: "Peace", cs: "Mír", fr: "La paix" } }
+      { id: "periodos", emoji: "🎨", x: 100, name: { es: "Los colores de su vida", ca: "Els colors de la seva vida", en: "The colours of his life", cs: "Barvy jeho života", fr: "Les couleurs de sa vie" } },
+      { id: "cubismo", emoji: "🔷", x: 1300, name: { es: "El cubismo", ca: "El cubisme", en: "Cubism", cs: "Kubismus", fr: "Le cubisme" } },
+      { id: "paz", emoji: "🕊️", x: 2800, name: { es: "La paz", ca: "La pau", en: "Peace", cs: "Mír", fr: "La paix" } }
     ],
     pois: [
-      { cat: "periodos", emoji: "🎸", x: 190, y: 420,
+      { cat: "periodos", emoji: "🎸", x: 240, y: 380,
         name: { es: "El cuadro azul", ca: "El quadre blau", en: "The blue painting", cs: "Modrý obraz", fr: "Le tableau bleu" },
         fact: { es: "Cuando estaba triste lo pintaba todo azul. Este guitarrista azul es uno de sus cuadros más famosos.", ca: "Quan estava trist ho pintava tot de blau. Aquest guitarrista blau és un dels seus quadres més famosos.", en: "When he was sad he painted everything blue. This blue guitarist is one of his most famous paintings.", cs: "Když byl smutný, maloval všechno modře. Tenhle modrý kytarista je jeden z jeho nejslavnějších obrazů.", fr: "Quand il était triste, il peignait tout en bleu. Ce guitariste bleu est l'un de ses tableaux les plus célèbres." } },
-      { cat: "periodos", emoji: "🤹", x: 430, y: 650,
+      { cat: "periodos", emoji: "🤹", x: 1120, y: 600,
         name: { es: "El cuadro rosa", ca: "El quadre rosa", en: "The rose painting", cs: "Růžový obraz", fr: "Le tableau rose" },
         fact: { es: "En el período rosa pintó a los saltimbanquis: la familia de acróbatas del circo.", ca: "Al període rosa va pintar els saltimbanquis: la família d'acròbates del circ.", en: "In his rose period he painted the saltimbanques: the circus family of acrobats.", cs: "V růžovém období maloval kejklíře: cirkusovou rodinu akrobatů.", fr: "Pendant sa période rose, il a peint les saltimbanques : la famille d'acrobates du cirque." } },
-      { cat: "periodos", emoji: "🧒", x: 630, y: 370,
+      { cat: "periodos", emoji: "🧒", x: 800, y: 330,
         name: { es: "El autorretrato de niño", ca: "L'autoretrat de nen", en: "The self-portrait as a boy", cs: "Autoportrét z dětství", fr: "L'autoportrait enfant" },
         fact: { es: "Picasso fue un niño prodigio: de pequeño ya dibujaba mejor que muchos mayores.", ca: "Picasso va ser un nen prodigi: de petit ja dibuixava millor que molts adults.", en: "Picasso was a child prodigy: as a little boy he already drew better than many grown-ups.", cs: "Picasso byl zázračné dítě: už jako malý kreslil líp než mnozí dospělí.", fr: "Picasso était un enfant prodige : tout petit, il dessinait déjà mieux que bien des adultes." } },
-      { cat: "periodos", emoji: "🖌️", x: 340, y: 870,
+      { cat: "periodos", emoji: "🖌️", x: 520, y: 820,
         name: { es: "La primera paleta", ca: "La primera paleta", en: "The first palette", cs: "První paleta", fr: "La première palette" },
         fact: { es: "Su padre era pintor y profesor de dibujo. Un día le dejó sus pinceles... ¡y ya no los soltó!", ca: "El seu pare era pintor i professor de dibuix. Un dia li va deixar els seus pinzells... i ja no els va deixar anar!", en: "His father was a painter and drawing teacher. One day he lent him his brushes... and he never let go of them!", cs: "Jeho tatínek byl malíř a učitel kreslení. Jednou mu půjčil své štětce... a on už je nepustil z ruky!", fr: "Son père était peintre et professeur de dessin. Un jour, il lui a laissé ses pinceaux... et il ne les a plus lâchés !" } },
-      { cat: "cubismo", emoji: "👀", x: 900, y: 400,
+      { cat: "cubismo", emoji: "👀", x: 1400, y: 390,
         name: { es: "El retrato de ojos bailones", ca: "El retrat d'ulls balladors", en: "The dancing-eyes portrait", cs: "Portrét s tančícíma očima", fr: "Le portrait aux yeux danseurs" },
         fact: { es: "En sus retratos cubistas los dos ojos pueden ir en el mismo lado: así ves la cara de frente y de perfil a la vez.", ca: "Als seus retrats cubistes els dos ulls poden anar al mateix costat: així veus la cara de front i de perfil alhora.", en: "In his cubist portraits both eyes can sit on the same side: you see the face from the front and in profile at once.", cs: "Na jeho kubistických portrétech mohou být obě oči na stejné straně: vidíš tvář zepředu i z profilu najednou.", fr: "Dans ses portraits cubistes, les deux yeux peuvent être du même côté : on voit le visage de face et de profil à la fois." } },
-      { cat: "cubismo", emoji: "🪕", x: 1130, y: 640,
+      { cat: "cubismo", emoji: "🪕", x: 1700, y: 650,
         name: { es: "La guitarra de trocitos", ca: "La guitarra de trossets", en: "The guitar of little pieces", cs: "Kytara z kousíčků", fr: "La guitare en petits morceaux" },
         fact: { es: "Hizo guitarras de cartón, papel y chapa: cuadros que salen de la pared, como esculturas.", ca: "Va fer guitarres de cartró, paper i llauna: quadres que surten de la paret, com escultures.", en: "He made guitars out of cardboard, paper and sheet metal: paintings that pop out of the wall, like sculptures.", cs: "Vyráběl kytary z kartonu, papíru a plechu: obrazy, které vystupují ze zdi jako sochy.", fr: "Il a fait des guitares en carton, en papier et en tôle : des tableaux qui sortent du mur, comme des sculptures." } },
-      { cat: "cubismo", emoji: "🎻", x: 1330, y: 360,
+      { cat: "cubismo", emoji: "🎻", x: 2200, y: 360,
         name: { es: "El violín desmontado", ca: "El violí desmuntat", en: "The taken-apart violin", cs: "Rozložené housle", fr: "Le violon démonté" },
         fact: { es: "Pintó el violín desmontado en piezas, para verlo todo a la vez: por delante, de lado y por dentro.", ca: "Va pintar el violí desmuntat en peces, per veure'l tot alhora: per davant, de costat i per dins.", en: "He painted the violin taken apart in pieces, to see it all at once: from the front, from the side and from inside.", cs: "Namaloval housle rozložené na kousky, aby je viděl celé najednou: zepředu, z boku i zevnitř.", fr: "Il a peint le violon démonté en morceaux, pour tout voir à la fois : de face, de côté et de l'intérieur." } },
-      { cat: "cubismo", emoji: "📰", x: 1180, y: 890,
+      { cat: "cubismo", emoji: "📰", x: 1950, y: 870,
         name: { es: "El periódico pegado", ca: "El diari enganxat", en: "The glued newspaper", cs: "Nalepené noviny", fr: "Le journal collé" },
         fact: { es: "Con Braque pegó trozos de periódico y de hule en los cuadros: inventaron el collage.", ca: "Amb en Braque va enganxar trossos de diari i d'hule als quadres: van inventar el collage.", en: "With Braque he glued pieces of newspaper and oilcloth onto paintings: they invented collage.", cs: "S Braquem lepili na obrazy kousky novin a voskovaného plátna: vymysleli koláž.", fr: "Avec Braque, il a collé des morceaux de journal et de toile cirée sur les tableaux : ils ont inventé le collage." } },
-      { cat: "cubismo", emoji: "🐂", x: 1520, y: 700,
+      { cat: "cubismo", emoji: "🐂", x: 2460, y: 690,
         name: { es: "El toro de trocitos", ca: "El toro de trossets", en: "The bull of little pieces", cs: "Býk z kousíčků", fr: "Le taureau en petits morceaux" },
         fact: { es: "Dibujó el mismo toro muchas veces, quitando líneas cada vez, hasta dejarlo casi en una sola.", ca: "Va dibuixar el mateix toro moltes vegades, traient línies cada cop, fins a deixar-lo gairebé en una de sola.", en: "He drew the same bull many times, removing lines each time, until almost only one was left.", cs: "Kreslil stejného býka mnohokrát a pokaždé ubral pár čar, až zbyla skoro jen jediná.", fr: "Il a dessiné le même taureau plein de fois, en enlevant des traits à chaque fois, jusqu'à n'en garder presque qu'un seul." } },
-      { cat: "paz", emoji: "🕊️", x: 1950, y: 330, size: 2,
+      { cat: "paz", emoji: "🕊️", x: 3130, y: 320, size: 2,
         name: { es: "La paloma de la paz", ca: "La coloma de la pau", en: "The dove of peace", cs: "Holubice míru", fr: "La colombe de la paix" },
         fact: { es: "Su paloma blanca se convirtió en el símbolo de la paz en todo el mundo. Su padre ya pintaba palomas.", ca: "La seva coloma blanca es va convertir en el símbol de la pau a tot el món. El seu pare ja pintava colomes.", en: "His white dove became the symbol of peace all over the world. His father already used to paint doves.", cs: "Jeho bílá holubice se stala symbolem míru na celém světě. Holuby maloval už jeho tatínek.", fr: "Sa colombe blanche est devenue le symbole de la paix dans le monde entier. Son père peignait déjà des colombes." } },
-      { cat: "paz", emoji: "💐", x: 1780, y: 620,
+      { cat: "paz", emoji: "💐", x: 2900, y: 640,
         name: { es: "El ramo de flores", ca: "El ram de flors", en: "The bouquet of flowers", cs: "Kytice květin", fr: "Le bouquet de fleurs" },
         fact: { es: "Dos manos que se regalan un ramo de flores de colores: así pintó Picasso la amistad y la paz.", ca: "Dues mans que es regalen un ram de flors de colors: així va pintar Picasso l'amistat i la pau.", en: "Two hands giving each other a bunch of colourful flowers: that is how Picasso painted friendship and peace.", cs: "Dvě ruce, které si darují kytici barevných květin: tak Picasso namaloval přátelství a mír.", fr: "Deux mains qui s'offrent un bouquet de fleurs colorées : c'est ainsi que Picasso a peint l'amitié et la paix." } },
-      { cat: "paz", emoji: "🖼️", x: 2200, y: 520, size: 2,
+      { cat: "paz", emoji: "🖼️", x: 3600, y: 520, size: 2,
         name: { es: "El mural gigante", ca: "El mural gegant", en: "The giant mural", cs: "Obří obraz", fr: "La toile géante" },
         fact: { es: "El Guernica: un cuadro gigante en blanco y negro que pide que nunca haya guerras. Tiene una bombilla que parece un ojo y un caballo asombrado.", ca: "El Guernica: un quadre gegant en blanc i negre que demana que mai hi hagi guerres. Té una bombeta que sembla un ull i un cavall sorprès.", en: "Guernica: a giant black and white painting that asks for there to be no wars, ever. It has a light bulb that looks like an eye and an astonished horse.", cs: "Guernica: obří černobílý obraz, který prosí, aby nikdy nebyly války. Je na něm žárovka, která vypadá jako oko, a užaslý kůň.", fr: "Guernica : un tableau géant en noir et blanc qui demande qu'il n'y ait jamais de guerres. Il y a une ampoule qui ressemble à un œil et un cheval étonné." } },
-      { cat: "paz", emoji: "🏺", x: 2080, y: 860,
+      { cat: "paz", emoji: "🏺", x: 3360, y: 880,
         name: { es: "La cerámica con caras", ca: "La ceràmica amb cares", en: "The pottery with faces", cs: "Keramika s obličeji", fr: "La céramique à visages" },
         fact: { es: "En Vallauris pintaba platos y jarrones con caras, soles y búhos. ¡La vajilla más alegre del mundo!", ca: "A Vallauris pintava plats i gerros amb cares, sols i mussols. La vaixella més alegre del món!", en: "In Vallauris he painted plates and vases with faces, suns and owls. The happiest crockery in the world!", cs: "Ve Vallauris maloval talíře a vázy s obličeji, sluníčky a sovami. Nejveselejší nádobí na světě!", fr: "À Vallauris, il peignait des assiettes et des vases avec des visages, des soleils et des hiboux. La vaisselle la plus joyeuse du monde !" } },
-      { cat: "paz", emoji: "🤍", x: 2420, y: 320,
+      { cat: "paz", emoji: "🤍", x: 4080, y: 350,
         name: { es: "El niño con la paloma", ca: "El nen amb la coloma", en: "The child with the dove", cs: "Dítě s holubicí", fr: "L'enfant à la colombe" },
         fact: { es: "De joven pintó a un niño abrazando una paloma blanca con muchísimo cuidado.", ca: "De jove va pintar un nen abraçant una coloma blanca amb moltíssima cura.", en: "As a young man he painted a child hugging a white dove ever so gently.", cs: "Jako mladý namaloval dítě, které opatrně objímá bílou holubici.", fr: "Jeune, il a peint un enfant serrant tout doucement une colombe blanche." } },
-      { cat: "paz", emoji: "🐐", x: 2380, y: 820,
+      { cat: "paz", emoji: "🐐", x: 3840, y: 840,
         name: { es: "La cabra de trastos", ca: "La cabra de trastos", en: "The junk goat", cs: "Koza z krámů", fr: "La chèvre de bric-à-brac" },
         fact: { es: "Hizo una cabra de escultura con una cesta vieja de barriga. En su casa vivía una cabra de verdad: Esmeralda.", ca: "Va fer una cabra d'escultura amb una cistella vella de panxa. A casa seva hi vivia una cabra de debò: l'Esmeralda.", en: "He made a goat sculpture with an old basket for a belly. A real goat lived at his house: Esmeralda.", cs: "Vytvořil sochu kozy se starým košíkem místo břicha. U něj doma žila i skutečná koza: Esmeralda.", fr: "Il a fait une chèvre en sculpture avec un vieux panier comme ventre. Une vraie chèvre vivait chez lui : Esmeralda." } }
     ],
-    /* el escenario: el taller, con la pared del fondo en tres franjas: el azul de
-       Barcelona, el rosa del circo y los planos cubistas de la buhardilla de París */
-    deco: function () {
+    /* el escenario: un taller largo de 4200 px. La pared del fondo cambia de
+       época SIN cortes: el azul de Barcelona llega a una pared con puerta que
+       hace de paso, detrás se abre el rosa del circo, y del rosa se pasa por
+       una cortina a los planos cubistas de París, donde está el taller grande.
+       Franjas: azul 0-1000 · paso 1000-1240 · rosa 1240-2620 · paso 2620-2960 ·
+       cubista 2960-4200 */
+    deco: function (e) {
       let s = "";
-      /* las cajas de los puntos de interés: sirven para dejarles aire alrededor */
-      const cajas = [[140, 370, 100, 100], [380, 600, 100, 100], [580, 320, 100, 100], [290, 820, 100, 100],
-        [850, 350, 100, 100], [1080, 590, 100, 100], [1280, 310, 100, 100], [1130, 840, 100, 100],
-        [1470, 650, 100, 100], [1866, 246, 168, 168], [1730, 570, 100, 100], [2116, 436, 168, 168],
-        [2030, 810, 100, 100], [2370, 270, 100, 100], [2330, 770, 100, 100]];
-      const libre = (x, y, w, h) => !cajas.some(c => x < c[0] + c[2] + 16 && x + w > c[0] - 16 && y < c[1] + c[3] + 16 && y + h > c[1] - 16);
+      const PIE = 944;
+      /* las cajas de los puntos de interés se sacan del propio mapa: así la
+         escenografía les deja aire alrededor aunque cambien de sitio */
+      const cajas = (e && e.pois ? e.pois : []).map(p => {
+        const w = p.iw || (p.size || 1) * 44, h = p.ih || (p.size || 1) * 44;
+        return [p.x - w / 2 - 12, p.y - h / 2 - 12, w + 24, h + 48];
+      });
+      const libre = (x, y, w, h) => !cajas.some(c => x < c[0] + c[2] && x + w > c[0] && y < c[1] + c[3] && y + h > c[1]);
+      /* números repetibles: el taller sale igual en cada partida */
+      let sem = 90121;
+      const az = () => (sem = sem * 16807 % 2147483647) / 2147483647;
+      /* ---------- PIEZAS QUE SE REPITEN ---------- */
       /* un montón de lienzos apoyados en la pared, de canto */
       const pila = (x, y, w, cols) => {
-        let d = `<ellipse cx="${x + w / 2}" cy="944" rx="${w / 2 + 14}" ry="12" fill="rgba(70,48,24,.18)"/>`;
+        let d = `<ellipse cx="${x + w / 2}" cy="${PIE}" rx="${w / 2 + 14}" ry="12" fill="rgba(70,48,24,.18)"/>`;
         cols.forEach((c, i) => {
-          d += `<path d="M${x + i * 9} 944 L${x + i * 9 + 14} ${y + i * 14} L${x + w - i * 6} ${y + i * 14 + 8} L${x + w - i * 6 + 10} 944 Z" fill="${c}"/>
+          d += `<path d="M${x + i * 9} ${PIE} L${x + i * 9 + 14} ${y + i * 14} L${x + w - i * 6} ${y + i * 14 + 8} L${x + w - i * 6 + 10} ${PIE} Z" fill="${c}"/>
             <path d="M${x + i * 9 + 14} ${y + i * 14} L${x + w - i * 6} ${y + i * 14 + 8}" stroke="rgba(80,60,36,.4)" stroke-width="3"/>`;
         });
         return d;
       };
-      /* degradados propios: ids con prefijo picX para no chocar con otros mapas */
+      /* una balda de pared con sus dos escuadras */
+      const balda = (x, y, w) => `<rect x="${x - w / 2}" y="${y}" width="${w}" height="18" rx="6" fill="#8d6234"/>
+        <path d="M${x - w / 2 + 16} ${y + 18} L${x - w / 2 + 34} ${y + 48} H${x - w / 2 + 16} Z M${x + w / 2 - 16} ${y + 18} L${x + w / 2 - 34} ${y + 48} H${x + w / 2 - 16} Z" fill="#7d5a34"/>`;
+      /* una mesa de patas largas, con su travesaño */
+      const mesa = (x, y, w) => `<rect x="${x - w / 2}" y="${y}" width="${w}" height="18" rx="6" fill="#a97b45"/>
+        <rect x="${x - w / 2 + 10}" y="${y + 18}" width="16" height="${PIE - y - 18}" rx="6" fill="#8d6234"/>
+        <rect x="${x + w / 2 - 26}" y="${y + 18}" width="16" height="${PIE - y - 18}" rx="6" fill="#8d6234"/>
+        <rect x="${x - w / 2 + 10}" y="${(y + (PIE - y) * 0.6).toFixed(0)}" width="${w - 36}" height="10" rx="4" fill="#8d6234"/>`;
+      /* una peana maciza de madera para las esculturas */
+      const peana = (x, y, w) => `<rect x="${x - w / 2 + 10}" y="${y}" width="${w - 20}" height="${PIE - y}" rx="6" fill="url(#picXMadera)"/>
+        <rect x="${x - w / 2}" y="${y}" width="${w}" height="18" rx="6" fill="#8d6234"/>
+        ${PIE - y > 70 ? `<rect x="${x - w / 2 + 24}" y="${y + 44}" width="${w - 48}" height="${PIE - y - 70}" rx="4" fill="rgba(255,255,255,.16)"/>` : ""}`;
+      /* un caballete de tres patas con su bandeja */
+      const caballete = (x, y, w) => `<path d="M${x - w / 2 + 14} ${y + 20} L${x - w / 2 - 6} ${PIE} M${x + w / 2 - 14} ${y + 20} L${x + w / 2 + 8} ${PIE}" stroke="url(#picXMadera)" stroke-width="15" stroke-linecap="round"/>
+        <path d="M${x - w / 2 + 22} ${(y + (PIE - y) * 0.56).toFixed(0)} H${x + w / 2 - 22}" stroke="#a97b45" stroke-width="10"/>
+        <rect x="${x - w / 2}" y="${y}" width="${w}" height="20" rx="7" fill="#8d6234"/>`;
+      /* ---------- DEGRADADOS (ids con prefijo picX, propios de este mapa) ---------- */
       s += `<defs>
         <linearGradient id="picXAzul" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5c86b8"/><stop offset="60%" stop-color="#3f6491"/><stop offset="100%" stop-color="#33507a"/></linearGradient>
         <linearGradient id="picXRosa" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f6ccd6"/><stop offset="60%" stop-color="#eeaebe"/><stop offset="100%" stop-color="#e2919f"/></linearGradient>
@@ -401,67 +427,181 @@ Object.assign(THEMES.picasso.content, {
         <linearGradient id="picXSuelo" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c39a68"/><stop offset="100%" stop-color="#9a7245"/></linearGradient>
         <linearGradient id="picXMadera" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#b9884f"/><stop offset="100%" stop-color="#8d6234"/></linearGradient>
         <linearGradient id="picXLuz" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0%" stop-color="rgba(255,250,224,.85)"/><stop offset="100%" stop-color="rgba(255,250,224,0)"/></linearGradient>
+        <linearGradient id="picXPaso" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#4b6d97"/><stop offset="34%" stop-color="#9a93a4"/><stop offset="70%" stop-color="#d8b3bd"/><stop offset="100%" stop-color="#f0bccb"/></linearGradient>
+        <linearGradient id="picXPuerta" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fbe0e6"/><stop offset="55%" stop-color="#f0aebe"/><stop offset="100%" stop-color="#d98da0"/></linearGradient>
+        <linearGradient id="picXPaso2" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#e2919f"/><stop offset="42%" stop-color="#cfa9a8"/><stop offset="100%" stop-color="#cdc2ad"/></linearGradient>
+        <linearGradient id="picXTela" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#b5566f"/><stop offset="45%" stop-color="#d4788f"/><stop offset="100%" stop-color="#a44a63"/></linearGradient>
+        <linearGradient id="picXTela2" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#8f9ba3"/><stop offset="50%" stop-color="#b3bcc0"/><stop offset="100%" stop-color="#7d878f"/></linearGradient>
+        <linearGradient id="picXParis" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e6ecf1"/><stop offset="100%" stop-color="#b6bfc4"/></linearGradient>
+        <linearGradient id="picXViga" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8a6136"/><stop offset="72%" stop-color="#6f4c28"/><stop offset="100%" stop-color="#5b3d1f"/></linearGradient>
+        <linearGradient id="picXBombilla" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(255,244,196,.85)"/><stop offset="100%" stop-color="rgba(255,244,196,0)"/></linearGradient>
+        <linearGradient id="picXRincon" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#14223c" stop-opacity="0"/><stop offset="100%" stop-color="#14223c" stop-opacity=".34"/></linearGradient>
+        <linearGradient id="picXLona" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#d3798f"/><stop offset="16%" stop-color="#e0879e"/><stop offset="78%" stop-color="#e0879e"/><stop offset="100%" stop-color="#cd7188"/></linearGradient>
+        <linearGradient id="picXBoca" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#6f4658"/><stop offset="56%" stop-color="#8d5b6c"/><stop offset="86%" stop-color="#ae7c80"/><stop offset="100%" stop-color="#cda078"/></linearGradient>
       </defs>`;
-      /* ---------- LA PARED DEL TALLER, EN TRES FRANJAS ---------- */
-      s += `<path d="M0 0 H900 L836 944 H0 Z" fill="url(#picXAzul)"/>
-        <path d="M900 0 H1780 L1856 944 H836 Z" fill="url(#picXRosa)"/>
-        <path d="M1780 0 H2600 V944 H1856 Z" fill="url(#picXOcre)"/>`;
-      /* ---------- LA FRANJA AZUL: los tejados y las ventanas de Barcelona ---------- */
+      /* ---------- LA PARED DEL TALLER: CINCO TRAMOS QUE SE ENCADENAN ---------- */
+      s += `<path d="M0 0 H1000 L960 ${PIE} H0 Z" fill="url(#picXAzul)"/>
+        <path d="M1000 0 H1240 L1210 ${PIE} H960 Z" fill="url(#picXPaso)"/>
+        <path d="M1240 0 H2620 L2600 ${PIE} H1210 Z" fill="url(#picXRosa)"/>
+        <path d="M2620 0 H2960 L2950 ${PIE} H2600 Z" fill="url(#picXPaso2)"/>
+        <path d="M2960 0 H4200 V${PIE} H2950 Z" fill="url(#picXOcre)"/>`;
+      /* ---------- EL TECHO: UNA VIGA QUE CRUZA DE PUNTA A PUNTA ---------- */
+      /* cose por arriba los cinco tramos de pared: ninguna franja empieza
+         con una costura a la vista */
+      s += `<rect x="0" y="0" width="4200" height="56" fill="url(#picXViga)"/>
+        <rect x="0" y="56" width="4200" height="9" fill="rgba(40,26,12,.45)"/>
+        <rect x="0" y="65" width="4200" height="30" fill="rgba(40,26,12,.14)"/>
+        <path d="M0 104 H4200" stroke="rgba(60,42,24,.16)" stroke-width="7" fill="none"/>
+        <path d="M0 99 H4200" stroke="rgba(255,255,255,.16)" stroke-width="4" fill="none"/>`;
+      /* las ménsulas de la viga, repartidas como los tirantes de un desván */
+      for (let x = 300; x < 4200; x += 470) {
+        s += `<path d="M${x - 26} 56 H${x + 26} L${x + 17} 122 H${x - 17} Z" fill="url(#picXViga)"/>
+          <path d="M${x - 26} 56 H${x - 14} L${x - 8} 122 H${x - 17} Z" fill="rgba(255,255,255,.13)"/>`;
+      }
+      /* ---------- FRANJA AZUL: los tejados, las ventanas y los balcones de Barcelona ---------- */
       const edif = [];
-      for (let i = 0; i < 8; i++) edif.push([-30 + i * 118, 566 - (142 + (i * 83) % 128), 106]);
+      for (let i = 0; i < 10; i++) edif.push([-30 + i * 106, 566 - (142 + (i * 83) % 128), 96]);
       let tor = "";
       edif.forEach(b => {
         tor += `<rect x="${b[0]}" y="${b[1]}" width="${b[2]}" height="${566 - b[1]}" rx="4"/>
           <path d="M${b[0] - 11} ${b[1]} H${b[0] + b[2] + 11} L${b[0] + b[2] - 4} ${b[1] - 21} H${b[0] + 4} Z"/>
-          <rect x="${b[0] + b[2] - 28}" y="${b[1] - 48}" width="17" height="30" rx="3"/>`;
+          <rect x="${b[0] + b[2] - 26}" y="${b[1] - 48}" width="17" height="30" rx="3"/>`;
       });
       s += `<g fill="#2e5183" opacity=".55">${tor}</g>`;
       let vent = "";
       edif.forEach(b => {
         for (let r = 0; r < 5; r++) for (let c = 0; c < 2; c++) {
-          const wx = b[0] + 17 + c * 52, wy = b[1] + 26 + r * 52;
+          const wx = b[0] + 14 + c * 48, wy = b[1] + 26 + r * 52;
           if (wy + 34 > 556 || !libre(wx, wy, 30, 34)) continue;
           vent += `<rect x="${wx}" y="${wy}" width="30" height="34" rx="3"/>`;
         }
       });
       s += `<g fill="#a6c8e4" opacity=".45">${vent}</g>`;
-      /* los balcones de hierro, uno debajo de cada ventana que cabe */
       let balc = "";
       edif.forEach(b => {
         for (let r = 0; r < 2; r++) {
-          const bx = b[0] + 12, by = b[1] + 62 + r * 104;
-          if (by + 32 > 556 || !libre(bx, by, 82, 32)) continue;
-          balc += `<rect x="${bx}" y="${by}" width="82" height="6" rx="3"/><rect x="${bx}" y="${by + 26}" width="82" height="5" rx="2"/>`;
-          for (let k = 0; k < 5; k++) balc += `<rect x="${bx + 7 + k * 17}" y="${by + 5}" width="4" height="22" rx="2"/>`;
+          const bx = b[0] + 10, by = b[1] + 62 + r * 104;
+          if (by + 32 > 556 || !libre(bx, by, 76, 32)) continue;
+          balc += `<rect x="${bx}" y="${by}" width="76" height="6" rx="3"/><rect x="${bx}" y="${by + 26}" width="76" height="5" rx="2"/>`;
+          for (let k = 0; k < 5; k++) balc += `<rect x="${bx + 6 + k * 16}" y="${by + 5}" width="4" height="22" rx="2"/>`;
         }
       });
       s += `<g fill="#24406b" opacity=".5">${balc}</g>`;
-      /* la ropa tendida entre dos tejados y la luna colgada del cielo */
-      s += `<path d="M132 306 Q262 348 392 312" stroke="#24406b" stroke-width="4" fill="none" opacity=".5"/>`;
-      [[168, 320, 34, 46, "#cfe0f2"], [222, 330, 28, 38, "#b7cfea"], [274, 332, 32, 42, "#e6eef7"], [330, 324, 26, 34, "#c3d7ec"]].forEach(r => {
+      /* la ropa tendida entre dos tejados, la luna y unas estrellas de madrugada */
+      s += `<path d="M132 306 Q292 350 452 312" stroke="#24406b" stroke-width="4" fill="none" opacity=".5"/>`;
+      [[172, 322, 34, 46, "#cfe0f2"], [232, 334, 28, 38, "#b7cfea"], [292, 336, 32, 42, "#e6eef7"], [356, 326, 26, 34, "#c3d7ec"]].forEach(r => {
         s += `<path d="M${r[0]} ${r[1]} h${r[2]} v${r[3]} q${-r[2] / 2} 8 ${-r[2]} 0 Z" fill="${r[4]}" opacity=".65"/>`;
       });
-      s += `<path d="M770 130 a46 46 0 1 0 0 92 a70 70 0 0 1 0 -92 Z" fill="#e4eefa" opacity=".9"/>
-        <g fill="#cfe0f2" opacity=".5"><circle cx="182" cy="182" r="6"/><circle cx="318" cy="128" r="5"/><circle cx="470" cy="204" r="6"/><circle cx="630" cy="150" r="5"/><circle cx="856" cy="256" r="5"/></g>`;
-      /* ---------- LA FRANJA ROSA: la carpa del circo, las guirnaldas y la pista ---------- */
-      s += `<path d="M950 646 Q1002 452 1150 236 Q1298 452 1350 646 Z" fill="#e0879e"/>`;
-      [[-160, -96], [-56, -30], [46, 34], [148, 100]].forEach(t => {
-        s += `<path d="M1150 236 L${1216 + t[0]} 646 L${1268 + t[1]} 646 Z" fill="#fdf4ef" opacity=".92"/>`;
+      s += `<path d="M652 216 Q800 262 948 222" stroke="#24406b" stroke-width="4" fill="none" opacity=".45"/>`;
+      [[694, 230, 30, 40, "#dbe8f5"], [750, 240, 26, 34, "#bed4ec"], [808, 242, 30, 38, "#eef4fa"]].forEach(r => {
+        s += `<path d="M${r[0]} ${r[1]} h${r[2]} v${r[3]} q${-r[2] / 2} 8 ${-r[2]} 0 Z" fill="${r[4]}" opacity=".6"/>`;
       });
-      s += `<path d="M950 646 Q1002 452 1150 236 Q1298 452 1350 646 Z" fill="none" stroke="#c25f7a" stroke-width="6"/>
-        <path d="M946 646 q26 26 52 0 q26 26 52 0 q26 26 52 0 q26 26 52 0 q26 26 52 0 q26 26 52 0 q26 26 52 0 q26 26 46 0 L1354 664 L946 664 Z" fill="#c25f7a"/>
-        <path d="M1046 470 Q1150 434 1254 470" stroke="#c25f7a" stroke-width="5" fill="none"/>`;
-      s += `<path d="M1104 646 V548 Q1150 512 1196 548 V646 Z" fill="#8d5b6c"/>
-        <rect x="1146" y="192" width="9" height="50" rx="4" fill="#c98da0"/>
-        <path d="M1155 198 L1204 210 L1155 224 Z" fill="#e0879e"><animate attributeName="d" values="M1155 198 L1204 210 L1155 224 Z;M1155 198 L1198 218 L1155 224 Z;M1155 198 L1204 210 L1155 224 Z" dur="4.5s" repeatCount="indefinite"/></path>`;
-      [[1108, 1], [1192, -1]].forEach(c => {
-        s += `<g><animateTransform attributeName="transform" type="rotate" values="${-1.6 * c[1]} ${c[0]} 552;${1.6 * c[1]} ${c[0]} 552;${-1.6 * c[1]} ${c[0]} 552" dur="8s" repeatCount="indefinite"/>
-          <path d="M${c[0]} 552 q${14 * c[1]} 46 ${4 * c[1]} 94 L${c[0] + 24 * c[1]} 646 L${c[0] + 22 * c[1]} 552 Z" fill="#e0879e"/></g>`;
+      s += `<path d="M876 130 a46 46 0 1 0 0 92 a70 70 0 0 1 0 -92 Z" fill="#e4eefa" opacity=".9"/>
+        <g fill="#cfe0f2" opacity=".5"><circle cx="182" cy="182" r="6"/><circle cx="318" cy="128" r="5"/><circle cx="470" cy="204" r="6"/><circle cx="612" cy="140" r="5"/><circle cx="742" cy="196" r="6"/><circle cx="948" cy="264" r="5"/></g>`;
+      /* ---------- PASO 1: LA PARED CON LA PUERTA POR DONDE ENTRA EL ROSA ---------- */
+      /* el muro de yeso, visto un poco de lado, con su rodapié y su desconchón */
+      s += `<path d="M1000 110 H1240 L1210 ${PIE} H962 Z" fill="rgba(255,255,255,.14)"/>
+        <path d="M1004 ${PIE - 60} H1212" stroke="rgba(90,72,84,.24)" stroke-width="5"/>
+        <path d="M1016 210 q26 -18 52 -4 q-20 22 -52 4 Z" fill="rgba(120,100,110,.22)"/>
+        <path d="M1178 460 q22 -14 44 -2 q-18 20 -44 2 Z" fill="rgba(120,100,110,.18)"/>`;
+      /* el poste de la esquina: aquí acaba la pared azul y empieza el paso.
+         Con su sombra a la izquierda, el cambio de pared se lee como un rincón
+         del taller y no como un corte */
+      /* el poste sube hasta la viga: así el cambio de pared no deja ni un dedo
+         de costura a la vista por arriba */
+      s += `<path d="M902 66 H962 L948 ${PIE} H888 Z" fill="rgba(20,34,60,.26)"/>
+        <path d="M962 66 H1002 L988 ${PIE} H948 Z" fill="url(#picXViga)"/>
+        <path d="M962 66 H974 L960 ${PIE} H948 Z" fill="rgba(255,255,255,.15)"/>
+        <path d="M990 66 H1002 L988 ${PIE} H976 Z" fill="rgba(40,26,12,.22)"/>
+        <path d="M956 104 H1006 L1004 126 H954 Z" fill="#8d6234"/>`;
+      /* el hueco de la puerta: detrás ya es de color rosa */
+      s += `<path d="M1022 300 H1204 V${PIE} H1010 Z" fill="url(#picXPuerta)"/>
+        <path d="M1022 300 H1204 V${PIE} H1010 Z" fill="none" stroke="#8a7a62" stroke-width="14"/>
+        <path d="M1010 300 H1216 L1210 276 H1016 Z" fill="#a97b45"/>
+        <path d="M1042 320 H1184 V${PIE - 20} H1034 Z" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="6"/>`;
+      /* la jamba derecha, gemela del poste: cierra el paso y tapa el punto
+         donde la pared del pasillo se convierte en la pared rosa */
+      s += `<path d="M1216 66 H1256 L1240 ${PIE} H1200 Z" fill="url(#picXViga)"/>
+        <path d="M1216 66 H1228 L1212 ${PIE} H1200 Z" fill="rgba(255,255,255,.13)"/>
+        <path d="M1244 66 H1256 L1240 ${PIE} H1228 Z" fill="rgba(40,26,12,.2)"/>
+        <path d="M1210 104 H1260 L1258 126 H1208 Z" fill="#8d6234"/>`;
+      /* al fondo del pasillo ya se adivina el circo: una carpa pequeñita y
+         lejana que anuncia el rosa antes de llegar */
+      s += `<g opacity=".24" fill="#b74f6b">
+        <path d="M1113 402 Q1150 470 1190 540 H1036 Q1076 470 1113 402 Z"/>
+        <path d="M1109 380 h6 v26 h-6 Z"/><path d="M1117 382 L1146 391 L1117 400 Z"/>
+        <path d="M1036 540 h154 v12 h-154 Z"/></g>
+        <g opacity=".2" fill="#fdfaf4"><path d="M1113 402 L1092 540 L1120 540 Z"/><path d="M1113 402 L1152 540 L1176 540 Z"/></g>
+        <path d="M1038 452 Q1113 486 1188 448" stroke="rgba(183,79,107,.22)" stroke-width="4" fill="none"/>`;
+      /* la cortina de lino recogida en la jamba izquierda */
+      s += `<path d="M1022 300 H1082 q-34 130 -30 250 q4 130 26 ${PIE - 550} H1022 Z" fill="#f4e7dd" opacity=".92"/>
+        <path d="M1036 320 q-20 122 -18 232 q2 126 14 ${PIE - 566} M1062 316 q-26 124 -22 234 q4 124 18 ${PIE - 568}" stroke="rgba(160,130,120,.35)" stroke-width="5" fill="none"/>
+        <path d="M1020 552 q20 15 30 -4 q-2 21 -12 27 q-14 6 -18 -23 Z" fill="#e0879e"/>`;
+      /* la luz rosa de la puerta, derramada en el suelo */
+      s += `<path d="M1016 ${PIE} H1206 L1300 1100 H944 Z" fill="url(#picXPuerta)" opacity=".38"><animate attributeName="opacity" values=".38;.22;.38" dur="11s" repeatCount="indefinite"/></path>`;
+      /* el tablón donde descansa el cuadro rosa, cruzado en el hueco */
+      s += `<rect x="1024" y="654" width="192" height="18" rx="6" fill="#8d6234"/>
+        <path d="M1040 672 L1056 702 H1040 Z M1200 672 L1184 702 H1200 Z" fill="#7d5a34"/>`;
+      /* ---------- FRANJA ROSA: la carpa del circo, las guirnaldas y la pista ---------- */
+      const CX = 1930;
+      s += `<path d="M${CX - 330} 646 Q${CX - 260} 430 ${CX} 210 Q${CX + 260} 430 ${CX + 330} 646 Z" fill="#e0879e"/>`;
+      [[-244, -150], [-124, -74], [-4, 2], [116, 78], [236, 154]].forEach(t => {
+        s += `<path d="M${CX} 210 L${CX + 96 + t[0]} 646 L${CX + 168 + t[1]} 646 Z" fill="#fdf4ef" opacity=".92"/>`;
       });
-      [[928, 172, 1782, 148, 108], [962, 250, 1758, 228, 96]].forEach((g, k) => {
+      s += `<path d="M${CX - 330} 646 Q${CX - 260} 430 ${CX} 210 Q${CX + 260} 430 ${CX + 330} 646 Z" fill="none" stroke="#c25f7a" stroke-width="6"/>`;
+      /* la pared de lona, que baja del techo de la carpa hasta el suelo: antes
+         el faldón se cortaba en seco a media pared y la carpa se leía como un
+         telón colgado. Las franjas blancas son las mismas que traen los gajos
+         del techo, así que techo y pared casan sin costura, y el dobladillo
+         llega ondulado al suelo en vez de acabar en una raya recta */
+      const HEM = 930;
+      const abre = x => +(CX + (x - CX) * 1.035).toFixed(0);   /* la falda se ensancha al bajar */
+      const XI = abre(1612), XD = abre(2248), pas = (XD - XI) / 9;
+      let dobla = "";
+      for (let i = 0; i < 9; i++) {
+        dobla += ` Q${(XI + pas * (i + 0.5)).toFixed(0)} ${HEM + (i % 2 ? 15 : 3)} ${(XI + pas * (i + 1)).toFixed(0)} ${HEM + 7}`;
+      }
+      s += `<path d="M1612 640 L${XI} ${HEM + 7}${dobla} L2248 640 Z" fill="url(#picXLona)"/>`;
+      [[1782, 2100], [2142, 2176]].forEach(b => {
+        s += `<path d="M${b[0]} 640 L${abre(b[0])} ${HEM + 7} L${abre(b[1])} ${HEM + 7} L${b[1]} 640 Z" fill="#fdf4ef" opacity=".92"/>`;
+      });
+      /* los pliegues de la tela y el dobladillo del final, para que la lona no
+         quede como un panel plano */
+      [[1662, 14, .13], [1734, 12, .13], [1836, 13, .07], [2044, 12, .07], [2118, 13, .13], [2208, 14, .13]].forEach(p => {
+        s += `<path d="M${p[0]} 648 L${abre(p[0])} ${HEM + 4} L${abre(p[0] + p[1])} ${HEM + 4} L${p[0] + p[1]} 648 Z" fill="rgba(150,64,88,${p[2]})"/>`;
+      });
+      s += `<path d="M${XI} ${HEM - 6} L${XI} ${HEM + 7}${dobla} L${XD} ${HEM - 6} Z" fill="rgba(150,64,88,.2)"/>`;
+      /* los dos costados en sombra y el filo de cada esquina: así la lona se
+         despega de la pared rosa, que es casi del mismo color, y la carpa tiene
+         volumen en vez de parecer un panel pintado */
+      [[1612, 52, 1], [2248, 52, -1]].forEach(l => {
+        const x2 = l[0] + l[1] * l[2];
+        s += `<path d="M${l[0]} 640 L${abre(l[0])} ${HEM + 7} L${abre(x2)} ${HEM + 7} L${x2} 640 Z" fill="rgba(118,48,70,.17)"/>
+          <path d="M${l[0]} 646 L${abre(l[0])} ${HEM + 6}" stroke="rgba(134,54,78,.34)" stroke-width="4" fill="none"/>`;
+      });
+      /* la sombra que la carpa deja en la pared, del lado que no da la luz */
+      s += `<path d="M1608 660 L1546 ${HEM + 18} L1600 ${HEM + 18} L1610 660 Z" fill="rgba(118,48,70,.13)"/>`;
+      let vola = `M${CX - 334} 646`;
+      for (let k = 0; k < 13; k++) vola += ` q26 26 52 0`;
+      s += `<path d="${vola} L${CX + 334} 664 L${CX - 334} 664 Z" fill="#c25f7a"/>
+        <path d="M${CX - 130} 452 Q${CX} 412 ${CX + 130} 452" stroke="#c25f7a" stroke-width="5" fill="none"/>`;
+      /* la boca de la carpa, que ahora llega al suelo: por el hueco se adivina
+         el serrín de la pista, así que el fondo no es una mancha oscura */
+      s += `<path d="M${CX - 68} ${HEM + 6} L${CX - 62} 536 Q${CX} 496 ${CX + 62} 536 L${CX + 68} ${HEM + 6} Z" fill="url(#picXBoca)"/>
+        <rect x="${CX - 5}" y="164" width="10" height="48" rx="4" fill="#c98da0"/>
+        <path d="M${CX + 5} 170 L${CX + 60} 184 L${CX + 5} 198 Z" fill="#e0879e"><animate attributeName="d" values="M${CX + 5} 170 L${CX + 60} 184 L${CX + 5} 198 Z;M${CX + 5} 170 L${CX + 52} 194 L${CX + 5} 198 Z;M${CX + 5} 170 L${CX + 60} 184 L${CX + 5} 198 Z" dur="4.5s" repeatCount="indefinite"/></path>`;
+      /* las dos cortinillas, ya de largo entero: se abren hacia abajo y dejan
+         ver el hueco por el medio */
+      [[CX - 58, 1], [CX + 58, -1]].forEach(c => {
+        s += `<g><animateTransform attributeName="transform" type="rotate" values="${-1.2 * c[1]} ${c[0]} 540;${1.2 * c[1]} ${c[0]} 540;${-1.2 * c[1]} ${c[0]} 540" dur="8s" repeatCount="indefinite"/>
+          <path d="M${c[0]} 540 L${c[0] - 8 * c[1]} ${HEM + 4} Q${c[0] + 14 * c[1]} ${HEM + 16} ${c[0] + 36 * c[1]} ${HEM - 2} Q${c[0] + 32 * c[1]} 720 ${c[0] + 22 * c[1]} 540 Z" fill="#e0879e"/>
+          <path d="M${c[0] + 7 * c[1]} 566 Q${c[0] + 24 * c[1]} 740 ${c[0] + 24 * c[1]} ${HEM - 16}" stroke="rgba(150,64,88,.26)" stroke-width="5" fill="none"/></g>`;
+      });
+      /* dos guirnaldas de banderines que cruzan toda la franja rosa */
+      [[1236, 168, 2612, 142, 122], [1268, 254, 2588, 232, 108]].forEach((g, k) => {
         let fl = "";
-        for (let i = 1; i < 12; i++) {
-          const t = i / 12, mt = 1 - t;
+        for (let i = 1; i < 22; i++) {
+          const t = i / 22, mt = 1 - t;
           const px = mt * mt * g[0] + 2 * mt * t * ((g[0] + g[2]) / 2) + t * t * g[2];
           const py = mt * mt * g[1] + 2 * mt * t * (g[1] + g[4]) + t * t * g[3];
           if (!libre(px - 14, py, 28, 34)) continue;
@@ -470,130 +610,413 @@ Object.assign(THEMES.picasso.content, {
         s += `<g><animateTransform attributeName="transform" type="translate" values="0 0;0 ${7 + k * 4};0 0" dur="${8 + k * 2}s" repeatCount="indefinite"/>
           <path d="M${g[0]} ${g[1]} Q${((g[0] + g[2]) / 2).toFixed(0)} ${g[1] + g[4]} ${g[2]} ${g[3]}" stroke="#d9748f" stroke-width="5" fill="none"/>${fl}</g>`;
       });
-      /* ---------- LA FRANJA CUBISTA: los planos de París y la buhardilla ---------- */
-      s += `<g opacity=".4">
-        <path d="M1822 58 L2142 18 L2262 300 L1902 342 Z" fill="#bda683"/>
-        <path d="M2142 18 L2600 88 L2542 382 L2212 320 Z" fill="#8f9ba3"/>
-        <path d="M1858 342 L2212 300 L2322 640 L1932 700 Z" fill="#cbb694"/>
-        <path d="M2262 330 L2600 400 L2600 722 L2332 660 Z" fill="#a4aaa6"/>
-        <path d="M1902 660 L2282 620 L2342 944 L1900 944 Z" fill="#c0aa8c"/>
-        <path d="M2302 640 L2600 700 L2600 944 L2362 944 Z" fill="#9ba29c"/></g>
+      /* ---------- PASO 2: LA CORTINA DE TERCIOPELO Y LA LUZ FRÍA DE PARÍS ---------- */
+      /* la rendija de luz gris entre los dos cortinones */
+      s += `<path d="M2760 160 H2830 L2822 ${PIE} H2752 Z" fill="url(#picXParis)" opacity=".9"/>
+        <path d="M2760 160 H2830 L2822 ${PIE} H2752 Z" fill="url(#picXLuz)" opacity=".35"><animate attributeName="opacity" values=".35;.18;.35" dur="10s" repeatCount="indefinite"/></path>`;
+      /* la barra y sus anillas */
+      s += `<rect x="2604" y="140" width="374" height="16" rx="8" fill="#8d6234"/>
+        <circle cx="2610" cy="148" r="13" fill="#a97b45"/><circle cx="2972" cy="148" r="13" fill="#a97b45"/>
+        <g fill="none" stroke="#7d5a34" stroke-width="5">${[2640, 2676, 2712, 2748, 2842, 2878, 2914, 2950].map(x => `<circle cx="${x}" cy="150" r="11"/>`).join("")}</g>`;
+      /* el cortinón rosa (viene del circo) y el gris (ya es París), los dos recogidos */
+      s += `<path d="M2612 156 q54 210 18 400 q-30 158 22 ${PIE - 556} L2762 ${PIE} L2758 156 Z" fill="url(#picXTela)"/>
+        <g stroke="rgba(90,40,58,.32)" stroke-width="6" fill="none"><path d="M2648 180 q40 200 6 380 q-24 130 18 ${PIE - 560} M2700 176 q34 200 4 380 q-20 130 16 ${PIE - 556}"/></g>
+        <path d="M2606 470 q86 40 150 -14 q-8 46 -50 62 q-58 18 -100 -48 Z" fill="#8f3d54"/>
+        <path d="M2976 156 q-54 210 -18 400 q30 158 -22 ${PIE - 556} L2826 ${PIE} L2830 156 Z" fill="url(#picXTela2)"/>
+        <g stroke="rgba(60,70,76,.3)" stroke-width="6" fill="none"><path d="M2940 180 q-40 200 -6 380 q24 130 -18 ${PIE - 560} M2888 176 q-34 200 -4 380 q20 130 -16 ${PIE - 556}"/></g>
+        <path d="M2982 470 q-86 40 -150 -14 q8 46 50 62 q58 18 100 -48 Z" fill="#5f6a70"/>`;
+      /* los dos recogidos van altos a propósito: más abajo caían justo detrás
+         del ramo de flores y le hacían sombra encima */
+      /* la luz del paso, derramada en el suelo */
+      s += `<path d="M2754 ${PIE} H2824 L2880 1100 H2690 Z" fill="url(#picXParis)" opacity=".4"/>`;
+      /* ---------- FRANJA CUBISTA: los planos de París y el ventanal del taller ---------- */
+      s += `<g opacity=".5">
+        <path d="M2984 62 L3320 16 L3452 306 L3072 350 Z" fill="#bda683"/>
+        <path d="M3320 16 L3712 60 L3660 356 L3438 314 Z" fill="#8f9ba3"/>
+        <path d="M3712 60 L4200 92 L4200 392 L3672 352 Z" fill="#b6a992"/>
+        <path d="M3020 350 L3438 306 L3552 660 L3128 716 Z" fill="#cbb694"/>
+        <path d="M3452 336 L3860 372 L3900 704 L3562 664 Z" fill="#a4aaa6"/>
+        <path d="M3880 380 L4200 404 L4200 726 L3916 700 Z" fill="#c0aa8c"/>
+        <path d="M3072 676 L3524 640 L3596 ${PIE} L3060 ${PIE} Z" fill="#c0aa8c"/>
+        <path d="M3548 660 L3922 700 L3960 ${PIE} L3612 ${PIE} Z" fill="#9ba29c"/>
+        <path d="M3944 712 L4200 738 L4200 ${PIE} L3980 ${PIE} Z" fill="#b0a894"/></g>
         <g stroke="rgba(72,62,48,.32)" stroke-width="3" fill="none">
-        <path d="M1858 342 H2600 M1902 660 H2600 M2142 18 L2212 300 L2332 660 L2362 944 M2262 300 L2600 400 M1900 944 L2282 620"/></g>`;
-      s += `<rect x="2066" y="106" width="180" height="200" rx="6" fill="#dbe8f2"/>
-        <path d="M2072 300 V254 L2108 214 L2148 250 L2190 206 L2240 252 V300 Z" fill="#8ea3b4"/>
-        <g fill="#75899a"><rect x="2096" y="222" width="12" height="22" rx="2"/><rect x="2180" y="212" width="12" height="24" rx="2"/><rect x="2226" y="240" width="11" height="20" rx="2"/></g>
-        <rect x="2066" y="106" width="180" height="200" rx="6" fill="none" stroke="#8a7a62" stroke-width="12"/>
-        <path d="M2156 112 V300 M2072 206 H2240" stroke="#8a7a62" stroke-width="8"/>`;
-      /* la luz que entra por el ventanal y cruza el taller */
-      s += `<path d="M2076 312 L2236 312 L2060 944 L1668 944 Z" fill="url(#picXLuz)" opacity=".3"><animate attributeName="opacity" values=".3;.15;.3" dur="12s" repeatCount="indefinite"/></path>`;
-      [[2020, 520, 9], [1930, 700, 11], [1836, 860, 13]].forEach(d => {
+        <path d="M3020 350 H4200 M3072 676 H4200 M3320 16 L3438 306 L3552 660 L3596 ${PIE} M3712 60 L3860 372 L3960 ${PIE} M3452 306 L3712 60 M3128 716 L3524 640"/></g>`;
+      /* el rincón del fondo: la pared se apaga al llegar a la esquina y el
+         taller deja de parecer un pasillo infinito */
+      s += `<rect x="4030" y="66" width="170" height="${PIE - 66}" fill="url(#picXRincon)"/>`;
+      /* el ventanal por donde entra la luz del norte */
+      s += `<rect x="3452" y="96" width="230" height="212" rx="6" fill="#dbe8f2"/>
+        <path d="M3458 302 V250 L3502 206 L3548 248 L3598 202 L3654 250 V302 Z" fill="#8ea3b4"/>
+        <g fill="#75899a"><rect x="3486" y="216" width="12" height="24" rx="2"/><rect x="3586" y="212" width="12" height="24" rx="2"/><rect x="3636" y="242" width="11" height="22" rx="2"/></g>
+        <rect x="3452" y="96" width="230" height="212" rx="6" fill="none" stroke="#8a7a62" stroke-width="12"/>
+        <path d="M3567 102 V302 M3458 202 H3676" stroke="#8a7a62" stroke-width="8"/>`;
+      /* la luz del ventanal, cruzando el taller en diagonal */
+      s += `<path d="M3462 314 L3672 314 L3424 1100 L2996 1100 Z" fill="url(#picXLuz)" opacity=".3"><animate attributeName="opacity" values=".3;.15;.3" dur="12s" repeatCount="indefinite"/></path>`;
+      [[3402, 520, 9], [3268, 706, 11], [3140, 866, 13], [3540, 618, 10]].forEach(d => {
         s += `<circle cx="${d[0]}" cy="${d[1]}" r="6" fill="rgba(255,250,214,.75)"><animateTransform attributeName="transform" type="translate" values="0 0;-22 -34;0 0" dur="${d[2]}s" repeatCount="indefinite"/></circle>`;
       });
-      /* ---------- EL SUELO DEL TALLER ---------- */
-      s += `<rect x="0" y="912" width="2600" height="32" fill="rgba(60,40,18,.18)"/>
-        <rect x="0" y="944" width="2600" height="156" fill="url(#picXSuelo)"/>
-        <rect x="0" y="936" width="2600" height="14" fill="#7d5a34"/>`;
-      for (let x = -40; x < 2660; x += 104) s += `<line x1="${x}" y1="950" x2="${x - 36}" y2="1100" stroke="rgba(84,54,26,.22)" stroke-width="3"/>`;
-      s += `<ellipse cx="1330" cy="1022" rx="358" ry="60" fill="#e2c694"/>
-        <ellipse cx="1330" cy="1022" rx="358" ry="60" fill="none" stroke="#d9748f" stroke-width="10"/>
-        <ellipse cx="1330" cy="1022" rx="300" ry="46" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="6"/>`;
-      /* el serrín de la pista, esparcido a manotazos */
+      /* ---------- EL SUELO DEL TALLER, DE PUNTA A PUNTA ---------- */
+      s += `<rect x="0" y="912" width="4200" height="32" fill="rgba(60,40,18,.18)"/>
+        <rect x="0" y="${PIE}" width="4200" height="156" fill="url(#picXSuelo)"/>
+        <rect x="0" y="936" width="4200" height="14" fill="#7d5a34"/>`;
+      for (let x = -40; x < 4260; x += 104) s += `<line x1="${x}" y1="950" x2="${x - 36}" y2="1100" stroke="rgba(84,54,26,.22)" stroke-width="3"/>`;
+      /* la pista del circo, dibujada en el suelo de la franja rosa */
+      s += `<ellipse cx="${CX}" cy="1026" rx="470" ry="62" fill="#e2c694"/>
+        <ellipse cx="${CX}" cy="1026" rx="470" ry="62" fill="none" stroke="#d9748f" stroke-width="10"/>
+        <ellipse cx="${CX}" cy="1026" rx="404" ry="48" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="6"/>`;
       let ser = "";
-      for (let i = 0; i < 22; i++) {
-        const a = i * 1.7, rr = 40 + (i * 53) % 250;
-        ser += `<ellipse cx="${(1330 + rr * Math.cos(a)).toFixed(0)}" cy="${(1022 + rr * 0.17 * Math.sin(a)).toFixed(0)}" rx="${8 + i % 5}" ry="${3 + i % 3}"/>`;
+      for (let i = 0; i < 30; i++) {
+        const a = i * 1.7, rr = 40 + (i * 61) % 340;
+        ser += `<ellipse cx="${(CX + rr * Math.cos(a)).toFixed(0)}" cy="${(1026 + rr * 0.15 * Math.sin(a)).toFixed(0)}" rx="${8 + i % 5}" ry="${3 + i % 3}"/>`;
       }
       s += `<g fill="rgba(180,140,84,.3)">${ser}</g>`;
       /* las salpicaduras de pintura de tantos años de taller */
-      [[196, 1016, "#3f6491"], [520, 1062, "#e0879e"], [880, 1004, "#c9b03f"], [1656, 1046, "#3f6491"],
-        [2072, 1004, "#e0879e"], [2440, 1058, "#7d5a34"]].forEach(p => {
+      [[206, 1018, "#3f6491"], [606, 1064, "#e0879e"], [886, 1004, "#c9b03f"], [1364, 1052, "#3f6491"],
+        [2286, 1074, "#c9b03f"], [2700, 1010, "#e0879e"], [3186, 1050, "#3f6491"], [3608, 1012, "#e0879e"], [4046, 1058, "#7d5a34"]].forEach(p => {
         s += `<ellipse cx="${p[0]}" cy="${p[1]}" rx="28" ry="12" fill="${p[2]}" opacity=".34"/><circle cx="${p[0] + 32}" cy="${p[1] + 13}" r="7" fill="${p[2]}" opacity=".3"/>`;
       });
-      /* ---------- LOS APOYOS: caballetes, baldas, mesas y peanas ---------- */
-      /* el caballete del cuadro azul */
-      s += `<path d="M146 492 L134 944 M252 492 L262 944" stroke="url(#picXMadera)" stroke-width="15" stroke-linecap="round"/>
-        <path d="M142 720 H258" stroke="#a97b45" stroke-width="10"/>
-        <rect x="112" y="474" width="176" height="20" rx="7" fill="#8d6234"/>`;
-      /* la pila de lienzos y el tablón donde descansa el cuadro rosa */
-      s += pila(404, 730, 132, ["#e8dcc4", "#d8c8ac", "#c9b697"]);
-      s += `<rect x="372" y="704" width="170" height="18" rx="6" fill="#8d6234"/>`;
-      /* la balda del autorretrato de niño */
-      s += `<rect x="556" y="424" width="188" height="18" rx="6" fill="#8d6234"/>
-        <path d="M572 442 L590 470 H572 Z M728 442 L710 470 H728 Z" fill="#7d5a34"/>`;
-      /* el banco bajo de los pinceles */
-      s += `<rect x="258" y="924" width="146" height="18" rx="6" fill="#a97b45"/>
-        <rect x="268" y="938" width="12" height="14" rx="4" fill="#8d6234"/><rect x="382" y="938" width="12" height="14" rx="4" fill="#8d6234"/>`;
-      /* la balda del retrato de ojos bailones */
-      s += `<rect x="836" y="454" width="146" height="18" rx="6" fill="#8d6234"/>
-        <path d="M852 472 L868 498 H852 Z M966 472 L950 498 H966 Z" fill="#7d5a34"/>`;
-      /* la mesa larga de la guitarra */
-      s += `<rect x="1052" y="694" width="234" height="18" rx="6" fill="#a97b45"/>
-        <rect x="1060" y="712" width="16" height="232" rx="6" fill="#8d6234"/><rect x="1256" y="712" width="16" height="232" rx="6" fill="#8d6234"/>
-        <rect x="1060" y="812" width="212" height="10" rx="4" fill="#8d6234"/>`;
-      /* la balda del violín */
-      s += `<rect x="1266" y="414" width="142" height="18" rx="6" fill="#8d6234"/>
-        <path d="M1282 432 L1298 458 H1282 Z M1392 432 L1376 458 H1392 Z" fill="#7d5a34"/>`;
-      /* la peana del toro */
-      s += `<rect x="1462" y="754" width="124" height="190" rx="6" fill="url(#picXMadera)"/>
-        <rect x="1452" y="754" width="144" height="18" rx="6" fill="#8d6234"/>
-        <rect x="1476" y="800" width="96" height="112" rx="4" fill="rgba(255,255,255,.18)"/>`;
-      /* la mesita del ramo */
-      s += `<rect x="1706" y="674" width="152" height="18" rx="6" fill="#a97b45"/>
-        <rect x="1714" y="692" width="14" height="252" rx="6" fill="#8d6234"/><rect x="1836" y="692" width="14" height="252" rx="6" fill="#8d6234"/>`;
-      /* la viga donde se posa la paloma */
-      s += `<rect x="1780" y="418" width="310" height="20" rx="7" fill="#a97b45"/>
-        <path d="M1796 438 L1816 470 H1796 Z" fill="#7d5a34"/>`;
-      /* el caballete grande del mural */
-      s += `<path d="M2140 630 L2170 944 M2270 630 L2296 944" stroke="url(#picXMadera)" stroke-width="16" stroke-linecap="round"/>
-        <path d="M2178 800 H2288" stroke="#a97b45" stroke-width="10"/>
-        <rect x="2098" y="608" width="204" height="22" rx="8" fill="#8d6234"/>`;
-      /* la peana de la cerámica */
-      s += `<rect x="2010" y="914" width="140" height="16" rx="6" fill="#a97b45"/>
-        <rect x="2044" y="930" width="72" height="16" rx="4" fill="#8d6234"/>`;
-      /* la balda del niño con la paloma */
-      s += `<rect x="2356" y="374" width="140" height="18" rx="6" fill="#8d6234"/>
-        <path d="M2372 392 L2388 418 H2372 Z M2480 392 L2464 418 H2480 Z" fill="#7d5a34"/>`;
-      /* el pedestal de la cabra */
-      s += `<rect x="2318" y="874" width="132" height="70" rx="5" fill="url(#picXMadera)"/>
-        <rect x="2308" y="874" width="152" height="16" rx="6" fill="#8d6234"/>`;
+      /* ---------- LO QUE LLENA EL TALLER ENTRE PUNTO Y PUNTO ---------- */
+      /* el aparador de la esquina azul, con su bote de pinceles y sus tarros */
+      s += `<ellipse cx="104" cy="${PIE}" rx="106" ry="13" fill="rgba(70,48,24,.18)"/>
+        <rect x="26" y="762" width="158" height="${PIE - 762}" rx="6" fill="url(#picXMadera)"/>
+        <rect x="16" y="746" width="178" height="18" rx="7" fill="#a97b45"/>
+        <rect x="42" y="786" width="126" height="52" rx="5" fill="rgba(255,255,255,.14)"/>
+        <rect x="42" y="852" width="126" height="52" rx="5" fill="rgba(255,255,255,.14)"/>
+        <circle cx="105" cy="812" r="7" fill="#7d5a34"/><circle cx="105" cy="878" r="7" fill="#7d5a34"/>`;
+      s += `<path d="M70 682 L64 702 M84 674 L82 700 M98 676 L100 700 M112 682 L116 702" stroke="#8d6234" stroke-width="7" stroke-linecap="round"/>
+        <circle cx="70" cy="678" r="8" fill="#3f6491"/><circle cx="84" cy="670" r="8" fill="#e0879e"/>
+        <circle cx="98" cy="672" r="8" fill="#c9b03f"/><circle cx="116" cy="678" r="8" fill="#7d5a34"/>
+        <path d="M62 700 h56 l-7 46 h-42 Z" fill="#cfc6b4"/>
+        <rect x="136" y="704" width="34" height="42" rx="5" fill="#cfc6b4"/><rect x="136" y="718" width="34" height="28" rx="4" fill="#3f6491"/>`;
+      /* la caja de los trapos, metida entre las patas del caballete */
+      s += `<ellipse cx="256" cy="${PIE}" rx="58" ry="11" fill="rgba(70,48,24,.18)"/>
+        <rect x="208" y="872" width="96" height="${PIE - 872}" rx="5" fill="#a97b45"/>
+        <rect x="202" y="864" width="108" height="14" rx="5" fill="#8d6234"/>
+        <path d="M222 864 q14 -22 34 -12 q20 10 34 12 Z" fill="#e8dcc4"/>
+        <path d="M240 858 q10 -10 22 -4" fill="none" stroke="#c9b03f" stroke-width="5"/>
+        <g fill="rgba(255,255,255,.12)"><rect x="224" y="892" width="64" height="30" rx="4"/></g>`;
+      /* la balda alta de la pared azul: el quinqué encendido, dos tarros de
+         pigmento y la jarra. Llena el trozo de pared que quedaba pelado */
+      s += balda(520, 640, 196);
+      s += `<rect x="436" y="606" width="30" height="34" rx="4" fill="#cfc6b4"/>
+        <rect x="436" y="616" width="30" height="24" rx="3" fill="#3f6491"/>
+        <rect x="476" y="598" width="26" height="42" rx="4" fill="#e6dcc6"/>
+        <rect x="476" y="612" width="26" height="28" rx="3" fill="#c9b03f"/>
+        <ellipse cx="525" cy="602" rx="30" ry="28" fill="url(#picXBombilla)" opacity=".5"><animate attributeName="opacity" values=".5;.32;.5" dur="10s" repeatCount="indefinite"/></ellipse>
+        <path d="M512 640 q-10 -24 0 -32 h26 q10 8 0 32 Z" fill="#a97b45"/>
+        <path d="M516 608 h18 v-24 q-9 -9 -18 0 Z" fill="#f6ead2" opacity=".92"/>
+        <circle cx="525" cy="598" r="7" fill="#fff4c4"/>
+        <path d="M556 640 q-8 -42 12 -50 q20 8 12 50 Z" fill="#7ba3cc"/>
+        <path d="M576 604 q16 4 14 16 q-2 8 -12 8" stroke="#7ba3cc" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <path d="M560 604 q8 -4 16 0" stroke="#a6c8e4" stroke-width="4" fill="none" stroke-linecap="round"/>`;
+      /* dos estudios en papel, clavados debajo de la balda */
+      [[424, 706, -3, 0], [528, 714, 4, 1]].forEach(h => {
+        const traza = h[3] === 0
+          ? `<path d="M${h[0] + 14} ${h[1] + 48} q10 -24 26 -20 q14 4 10 22" fill="none" stroke="#3f6491" stroke-width="3" stroke-linecap="round"/>`
+          : `<path d="M${h[0] + 14} ${h[1] + 30} q14 -12 26 0 M${h[0] + 16} ${h[1] + 44} q12 -10 22 0 M${h[0] + 20} ${h[1] + 56} q8 -8 14 0" fill="none" stroke="#3f6491" stroke-width="3" stroke-linecap="round"/>`;
+        s += `<g transform="rotate(${h[2]} ${h[0] + 28} ${h[1] + 34})">
+          <rect x="${h[0]}" y="${h[1]}" width="56" height="68" rx="3" fill="#dde6f2" opacity=".92"/>
+          ${traza}
+          ${h[3] === 0 ? `<path d="M${h[0] + 12} ${h[1] + 58} H${h[0] + 44}" stroke="rgba(63,100,145,.45)" stroke-width="3" stroke-linecap="round" fill="none"/>` : ""}
+          <circle cx="${h[0] + 28}" cy="${h[1] + 6}" r="4" fill="#8d6234"/></g>`;
+      });
+      /* la bata del pintor, colgada de un clavo y manchada de tanto trabajar */
+      s += `<circle cx="706" cy="588" r="6" fill="#8d6234"/>
+        <path d="M706 592 q-46 12 -56 44 l-16 46 q14 10 26 2 l6 -20 q-6 90 -2 128 q42 14 84 0 q4 -38 -2 -128 l6 20 q12 8 26 -2 l-16 -46 q-10 -32 -56 -44 Z" fill="#8fb0d4" stroke="rgba(28,52,92,.45)" stroke-width="4"/>
+        <path d="M706 592 q-46 12 -56 44 l-16 46 q14 10 26 2 l6 -20 q-4 60 -3 96 q10 6 22 8 q-6 -100 21 -176 Z" fill="rgba(255,255,255,.16)"/>
+        <path d="M692 596 q14 24 28 0" fill="none" stroke="rgba(28,52,92,.4)" stroke-width="4"/>
+        <rect x="676" y="700" width="34" height="30" rx="5" fill="none" stroke="rgba(28,52,92,.4)" stroke-width="4"/>
+        <ellipse cx="736" cy="688" rx="13" ry="8" fill="#e0879e" opacity=".7" transform="rotate(-16 736 688)"/>
+        <ellipse cx="666" cy="742" rx="10" ry="7" fill="#c9b03f" opacity=".6" transform="rotate(12 666 742)"/>`;
+      /* más lienzos de canto, arrimados al rincón azul */
+      s += pila(838, 700, 96, ["#e6dcc6", "#d2c3a6", "#c0ad8c"]);
+      /* el bombo del circo y su maza, apoyados en la pared rosa */
+      s += `<ellipse cx="1390" cy="${PIE}" rx="84" ry="13" fill="rgba(70,48,24,.18)"/>
+        <circle cx="1390" cy="866" r="76" fill="#f6e7db"/>
+        <circle cx="1390" cy="866" r="76" fill="none" stroke="#c25f7a" stroke-width="13"/>
+        <circle cx="1390" cy="866" r="52" fill="none" stroke="#e0879e" stroke-width="7"/>
+        <circle cx="1390" cy="866" r="19" fill="#e0879e" opacity=".5"/>
+        <g stroke="#8d6234" stroke-width="6" stroke-linecap="round">${[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(k => {
+          const a = k * Math.PI / 6;
+          return `<path d="M${(1390 + 62 * Math.cos(a)).toFixed(0)} ${(866 + 62 * Math.sin(a)).toFixed(0)} L${(1390 + 86 * Math.cos(a)).toFixed(0)} ${(866 + 86 * Math.sin(a)).toFixed(0)}"/>`;
+        }).join("")}</g>
+        <path d="M1472 ${PIE} L1446 810" stroke="#8d6234" stroke-width="11" stroke-linecap="round"/>
+        <circle cx="1444" cy="800" r="17" fill="#fdfaf4" stroke="#d9748f" stroke-width="4"/>`;
+      /* los aros del circo, colgados de un clavo en la pared rosa */
+      s += `<circle cx="1268" cy="360" r="6" fill="#8d6234"/>
+        <path d="M1268 364 L1290 456 M1268 364 L1318 544" stroke="#8d6234" stroke-width="4"/>
+        <circle cx="1290" cy="500" r="46" fill="none" stroke="#d9748f" stroke-width="11"/>
+        <circle cx="1320" cy="578" r="36" fill="none" stroke="#f6d089" stroke-width="10"/>`;
+      /* el perchero del circo: la chaqueta del saltimbanqui y el sombrero de
+         paja esperando la próxima función */
+      s += `<ellipse cx="1530" cy="${PIE}" rx="46" ry="11" fill="rgba(70,48,24,.18)"/>
+        <rect x="1523" y="566" width="14" height="${PIE - 572}" rx="7" fill="url(#picXMadera)"/>
+        <path d="M1490 592 H1570" stroke="#8d6234" stroke-width="10" stroke-linecap="round"/>
+        <path d="M1500 ${PIE - 8} L1530 892 L1560 ${PIE - 8}" fill="none" stroke="#8d6234" stroke-width="9" stroke-linecap="round"/>
+        <circle cx="1530" cy="562" r="9" fill="#a97b45"/>`;
+      s += `<path d="M1490 602 q-30 8 -36 28 l-11 32 q9 7 17 1 l5 -14 q-5 60 -2 84 q26 10 54 0 q3 -24 -2 -84 l5 14 q8 6 17 -1 l-11 -32 q-6 -20 -36 -28 Z" fill="#fdf4ef" stroke="rgba(160,90,110,.35)" stroke-width="3"/>
+        <g fill="#e0879e" opacity=".85"><rect x="1465" y="668" width="50" height="12" rx="4"/><rect x="1465" y="698" width="50" height="12" rx="4"/><rect x="1467" y="728" width="46" height="12" rx="4"/></g>
+        <path d="M1478 606 q12 18 24 0" fill="none" stroke="rgba(160,90,110,.35)" stroke-width="3"/>
+        <ellipse cx="1568" cy="606" rx="30" ry="9" fill="#f6d089"/>
+        <path d="M1550 605 q18 -32 36 0 Z" fill="#e8c070"/>
+        <path d="M1552 596 q16 6 32 0" stroke="#c25f7a" stroke-width="5" fill="none"/>`;
+      /* el cartel del circo, pintado a mano y clavado en la pared */
+      s += `<rect x="2440" y="330" width="146" height="196" rx="5" fill="#fdf4ef"/>
+        <rect x="2440" y="330" width="146" height="196" rx="5" fill="none" stroke="#c25f7a" stroke-width="9"/>
+        <g fill="#e0879e">${[0, 1, 2, 3, 4, 5].map(i => `<rect x="${2452 + i * 24}" y="342" width="12" height="18" rx="3"/>`).join("")}</g>
+        <circle cx="2513" cy="424" r="40" fill="none" stroke="#d9748f" stroke-width="9"/>
+        <circle cx="2513" cy="424" r="17" fill="#f6d089"/>
+        <path d="M2470 500 h86" stroke="#c25f7a" stroke-width="7" stroke-linecap="round"/>
+        <path d="M2478 386 l5 11 12 1 -9 9 3 12 -11 -6 -11 6 3 -12 -9 -9 12 -1 Z" fill="#c9b03f"/>
+        <path d="M2548 386 l5 11 12 1 -9 9 3 12 -11 -6 -11 6 3 -12 -9 -9 12 -1 Z" fill="#c9b03f"/>
+        <circle cx="2513" cy="322" r="6" fill="#8d6234"/>`;
+      /* la escalera de tijera del taller, abierta bajo la carpa: el suelo de la
+         franja rosa ya no se queda vacío entre punto y punto */
+      s += `<ellipse cx="2112" cy="${PIE}" rx="84" ry="12" fill="rgba(70,48,24,.18)"/>
+        <path d="M2062 ${PIE} L2098 674 M2166 ${PIE} L2126 674" stroke="url(#picXMadera)" stroke-width="14" stroke-linecap="round"/>
+        <g stroke="#8d6234" stroke-width="9" stroke-linecap="round"><path d="M2071 880 H2158 M2080 812 H2148 M2089 744 H2138"/></g>
+        <path d="M2094 670 H2130" stroke="#a97b45" stroke-width="12" stroke-linecap="round"/>
+        <rect x="2096" y="656" width="26" height="16" rx="4" fill="#cfc6b4"/>
+        <rect x="2096" y="662" width="26" height="10" rx="3" fill="#e0879e"/>`;
+      /* dos mazas de malabares colgadas de un clavo, junto al cartel: pomo
+         arriba, mango estrecho y cuerpo abombado abajo. Antes eran dos
+         triángulos que se leían como banderines */
+      s += `<circle cx="2334" cy="572" r="6" fill="#8d6234"/>`;
+      [[-22, 96, "#fdf4ef", "#c25f7a"], [16, 112, "#f6d089", "#c98da0"]].forEach(m => {
+        const cue = Math.round(578 + m[1] * 0.42), pan = Math.round(578 + m[1] * 0.7), fin = 578 + m[1];
+        s += `<g transform="rotate(${m[0]} 2334 578)">
+          <path d="M2329 584 H2339 L2342 ${cue} Q2358 ${cue + 18} 2356 ${pan} Q2354 ${fin} 2334 ${fin} Q2314 ${fin} 2312 ${pan} Q2310 ${cue + 18} 2326 ${cue} Z" fill="${m[2]}"/>
+          <ellipse cx="2334" cy="580" rx="11" ry="6" fill="${m[3]}"/>
+          <rect x="2325" y="${cue - 8}" width="18" height="9" rx="4" fill="${m[3]}"/>
+          <path d="M2317 ${pan + 6} q17 -9 34 0" stroke="${m[3]}" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <path d="M2330 590 V${cue - 4}" stroke="rgba(120,70,86,.26)" stroke-width="4" stroke-linecap="round"/></g>`;
+      });
+      /* la pandereta del circo, colgada al lado del cartel */
+      s += `<circle cx="2530" cy="576" r="6" fill="#8d6234"/>
+        <circle cx="2530" cy="622" r="36" fill="#f6e7db" stroke="#a97b45" stroke-width="9"/>
+        <circle cx="2530" cy="622" r="21" fill="none" stroke="rgba(183,79,107,.35)" stroke-width="4"/>
+        <g fill="#f6d089">${[0, 1, 2, 3, 4, 5].map(k => {
+          const a = k * Math.PI / 3;
+          return `<ellipse cx="${(2530 + 38 * Math.cos(a)).toFixed(0)}" cy="${(622 + 38 * Math.sin(a)).toFixed(0)}" rx="7" ry="5"/>`;
+        }).join("")}</g>`;
+      /* dos carteles enrollados, de pie contra la pared rosa */
+      s += `<ellipse cx="1852" cy="${PIE}" rx="30" ry="9" fill="rgba(70,48,24,.16)"/>
+        <path d="M1836 ${PIE} L1840 716 h20 l6 ${PIE - 716} Z" fill="#f3ead8" stroke="rgba(90,70,44,.3)" stroke-width="3"/>
+        <ellipse cx="1850" cy="716" rx="10" ry="5" fill="#ddd0b6"/>
+        <path d="M1862 ${PIE} L1868 762 h16 l4 ${PIE - 762} Z" fill="#e8dcc4" stroke="rgba(90,70,44,.3)" stroke-width="3"/>
+        <path d="M1838 830 q22 -8 44 0" fill="none" stroke="#e0879e" stroke-width="6"/>`;
+      /* el baúl del circo, con sus refuerzos y una estrella pintada */
+      s += `<ellipse cx="2318" cy="${PIE}" rx="88" ry="13" fill="rgba(70,48,24,.18)"/>
+        <rect x="2248" y="812" width="142" height="${PIE - 812}" rx="6" fill="#a97b45"/>
+        <path d="M2248 818 q71 -48 142 0 Z" fill="#b9884f"/>
+        <rect x="2242" y="812" width="154" height="16" rx="6" fill="#8d6234"/>
+        <g fill="#7d5a34"><rect x="2268" y="828" width="12" height="${PIE - 828}"/><rect x="2358" y="828" width="12" height="${PIE - 828}"/></g>
+        <rect x="2306" y="856" width="26" height="20" rx="4" fill="#c9b03f"/>
+        <path d="M2319 886 l7 15 16 2 -12 12 3 16 -14 -8 -14 8 3 -16 -12 -12 16 -2 Z" fill="#fdfaf4" opacity=".65"/>`;
+      /* la estantería de la cerámica: platos y jarras esperando el horno */
+      s += `<rect x="3000" y="486" width="20" height="${PIE - 486}" fill="#8d6234"/>
+        <rect x="3210" y="486" width="20" height="${PIE - 486}" fill="#8d6234"/>
+        <rect x="2996" y="470" width="238" height="16" rx="5" fill="#a97b45"/>
+        <rect x="2996" y="620" width="238" height="14" rx="5" fill="#a97b45"/>
+        <rect x="2996" y="770" width="238" height="14" rx="5" fill="#a97b45"/>`;
+      s += `<circle cx="3054" cy="438" r="32" fill="#f6ead2" stroke="#c9a86c" stroke-width="5"/>
+        <circle cx="3054" cy="438" r="13" fill="#f2b632" opacity=".8"/>
+        <circle cx="3128" cy="442" r="28" fill="#efe0c6" stroke="#c25f7a" stroke-width="5"/>
+        <path d="M3168 470 q-8 -34 6 -46 h34 q14 12 6 46 Z" fill="#c98a5a"/>
+        <path d="M3040 620 q-10 -46 8 -62 h40 q18 16 8 62 Z" fill="#e0879e" opacity=".85"/>
+        <circle cx="3120" cy="590" r="28" fill="#f6ead2" stroke="#7d5a34" stroke-width="4"/>
+        <path d="M3170 620 q-6 -30 10 -40 q16 10 10 40 Z" fill="#c9b03f" opacity=".8"/>
+        <path d="M3038 770 q-6 -40 22 -40 q28 0 22 40 Z" fill="#c98a5a"/>
+        <circle cx="3122" cy="742" r="26" fill="#efe0c6" stroke="#3f6491" stroke-width="4"/>
+        <path d="M3164 770 q-4 -32 12 -32 q16 0 12 32 Z" fill="#f6ead2" stroke="#c9a86c" stroke-width="3"/>
+        <path d="M3096 ${PIE} q-10 -68 26 -68 q36 0 26 68 Z" fill="#c98a5a"/>
+        <g fill="#f6ead2" stroke="#c9a86c" stroke-width="3"><ellipse cx="3178" cy="930" rx="28" ry="8"/><ellipse cx="3178" cy="914" rx="28" ry="8"/><ellipse cx="3178" cy="898" rx="28" ry="8"/></g>`;
+      /* el plato grande que espera en el suelo, apoyado en la estantería */
+      s += `<ellipse cx="3264" cy="${PIE}" rx="58" ry="12" fill="rgba(70,48,24,.18)"/>
+        <circle cx="3262" cy="890" r="50" fill="#f6ead2" stroke="#c9a86c" stroke-width="5"/>
+        <circle cx="3262" cy="890" r="19" fill="#e0879e" opacity=".5"/>`;
+      /* los bocetos clavados en la pared, como en cualquier taller */
+      [[3722, 392, -4, 0], [3812, 376, 3, 1], [3902, 398, -3, 2], [3744, 484, 5, 2], [3838, 490, -5, 0], [3926, 496, 4, 1]].forEach(b => {
+        const x = b[0], y = b[1];
+        const trazo = [
+          `<path d="M${x + 14} ${y + 54} q10 -28 30 -24 q20 4 15 27" fill="none" stroke="#6b5a44" stroke-width="3" stroke-linecap="round"/>`,
+          `<path d="M${x + 14} ${y + 46} q18 -15 34 -5 q-15 11 -34 5 Z" fill="none" stroke="#6b5a44" stroke-width="3" stroke-linejoin="round"/>`,
+          `<path d="M${x + 34} ${y + 44} q-15 -12 -2 -19 q14 -6 16 11 q2 21 -20 21 q-23 0 -21 -25" fill="none" stroke="#6b5a44" stroke-width="3" stroke-linecap="round"/>`
+        ][b[3]];
+        s += `<g transform="rotate(${b[2]} ${x + 34} ${y + 40})">
+          <rect x="${x}" y="${y}" width="68" height="80" rx="3" fill="#f3ead8" stroke="rgba(90,70,44,.3)" stroke-width="2"/>
+          ${trazo}
+          <path d="M${x + 14} ${y + 66} H${x + 54} M${x + 14} ${y + 72} H${x + 42}" stroke="rgba(107,90,68,.4)" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="${x + 34}" cy="${y + 7}" r="4.5" fill="#c25f7a"/></g>`;
+      });
+      /* tres platos de Vallauris colgados encima de la peana de la cerámica:
+         una cara, un sol y un búho, como los que pintaba de verdad */
+      s += `<circle cx="3288" cy="642" r="6" fill="#8d6234"/><path d="M3288 646 V656" fill="none" stroke="#8d6234" stroke-width="4"/>
+        <circle cx="3288" cy="700" r="42" fill="#f6ead2" stroke="#c9a86c" stroke-width="6"/>
+        <circle cx="3274" cy="690" r="4.5" fill="#3f6491"/><circle cx="3302" cy="690" r="4.5" fill="#3f6491"/>
+        <path d="M3270 714 q18 12 36 0" stroke="#c25f7a" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <circle cx="3444" cy="556" r="6" fill="#8d6234"/><path d="M3444 560 V568" fill="none" stroke="#8d6234" stroke-width="4"/>
+        <circle cx="3444" cy="598" r="30" fill="#efe0c6" stroke="#c98a5a" stroke-width="5"/>
+        <circle cx="3444" cy="598" r="12" fill="#f2b632" opacity=".85"/>
+        <g stroke="#c9b03f" stroke-width="4" stroke-linecap="round" fill="none">${[0, 1, 2, 3, 4, 5, 6, 7].map(k => {
+          const a = k * Math.PI / 4;
+          return `<path d="M${(3444 + 17 * Math.cos(a)).toFixed(0)} ${(598 + 17 * Math.sin(a)).toFixed(0)} L${(3444 + 23 * Math.cos(a)).toFixed(0)} ${(598 + 23 * Math.sin(a)).toFixed(0)}"/>`;
+        }).join("")}</g>
+        <circle cx="3376" cy="716" r="6" fill="#8d6234"/><path d="M3376 720 V728" fill="none" stroke="#8d6234" stroke-width="4"/>
+        <circle cx="3376" cy="760" r="26" fill="#f6ead2" stroke="#7d5a34" stroke-width="4"/>
+        <path d="M3362 752 q6 -10 12 0 Z M3378 752 q6 -10 12 0 Z" fill="#7d5a34"/>
+        <circle cx="3368" cy="760" r="5" fill="#c98a5a"/><circle cx="3386" cy="760" r="5" fill="#c98a5a"/>
+        <path d="M3370 772 q7 6 14 0" stroke="#7d5a34" stroke-width="4" fill="none" stroke-linecap="round"/>`;
+      /* la cesta vieja de mimbre y el rollo de alambre, colgados de dos clavos:
+         los trastos con los que salieron las esculturas, justo encima de la cabra */
+      s += `<circle cx="3796" cy="600" r="6" fill="#8d6234"/>
+        <path d="M3766 626 q30 -42 60 0" fill="none" stroke="#c9a86c" stroke-width="6"/>
+        <path d="M3760 630 h72 l-10 62 q-26 10 -52 0 Z" fill="#d9b57e"/>
+        <g stroke="rgba(120,86,44,.45)" stroke-width="4" fill="none"><path d="M3763 648 h66 M3766 666 h60 M3778 632 l-4 58 M3796 632 v60 M3814 632 l4 58"/></g>
+        <path d="M3760 630 h72 v10 h-72 Z" fill="#c9a86c"/>
+        <circle cx="3892" cy="600" r="6" fill="#8d6234"/>
+        <path d="M3860 650 A32 32 0 0 1 3924 650 A26 26 0 0 1 3872 650 A20 20 0 0 1 3912 650 A14 14 0 0 1 3884 650" fill="none" stroke="#8f9ba3" stroke-width="7" stroke-linecap="round"/>
+        <path d="M3892 606 q-4 8 -32 12" fill="none" stroke="#8f9ba3" stroke-width="5"/>`;
+      /* el espejo redondo del rincón, colgado de la viga */
+      s += `<path d="M4046 128 V152" stroke="#5b3d1f" stroke-width="4"/>
+        <circle cx="4046" cy="206" r="56" fill="#8a7a62"/>
+        <circle cx="4046" cy="206" r="46" fill="#dbe8f2"/>
+        <path d="M4020 240 q-14 -40 14 -66 q-30 40 -14 66 Z" fill="#fdfaf4" opacity=".7"/>
+        <path d="M4046 160 a46 46 0 0 1 40 24 q-24 6 -40 -24 Z" fill="#fdfaf4" opacity=".45"/>`;
+      /* dos palomas cruzando el taller por lo alto, muy despacio */
+      [[3044, 178, 0], [3232, 142, 1], [3312, 238, 2]].forEach(d => {
+        s += `<g><animateTransform attributeName="transform" type="translate" values="0 0;0 ${-7 - d[2] * 3};0 0" dur="${9 + d[2] * 3}s" repeatCount="indefinite"/>
+          <path d="M${d[0]} ${d[1]} q-30 -18 -54 -10 q22 10 38 24 q18 12 32 6 Z" fill="#fdfaf4"/>
+          <path d="M${d[0] + 16} ${d[1] + 4} q16 -30 42 -32 q-16 18 -22 34 Z" fill="#f2f6fa"/>
+          <circle cx="${d[0] + 26}" cy="${d[1] + 4}" r="11" fill="#fdfaf4"/>
+          <circle cx="${d[0] + 31}" cy="${d[1] + 1}" r="2" fill="#5a5f66"/>
+          <path d="M${d[0] + 36} ${d[1] + 4} l11 3 l-11 3 Z" fill="#f2b632"/></g>`;
+      });
+      /* la bombilla del taller, colgada de la viga */
+      s += `<path d="M3970 122 V298" stroke="#5b3d1f" stroke-width="4" fill="none"/>
+        <ellipse cx="3970" cy="350" rx="54" ry="46" fill="url(#picXBombilla)" opacity=".55"><animate attributeName="opacity" values=".55;.34;.55" dur="9s" repeatCount="indefinite"/></ellipse>
+        <rect x="3956" y="296" width="28" height="16" rx="4" fill="#8d6234"/>
+        <path d="M3970 312 q26 12 26 33 q0 23 -26 23 q-26 0 -26 -23 q0 -21 26 -33 Z" fill="#fff4c4" stroke="#e0d3a0" stroke-width="3"/>
+        <circle cx="3970" cy="344" r="9" fill="#fdf0b0"/>`;
+      /* ---------- LOS APOYOS: UNO DEBAJO DE CADA CUADRO O ESCULTURA ---------- */
+      s += caballete(240, 434, 180);                                        /* el cuadro azul */
+      s += `<rect x="447" y="863" width="146" height="18" rx="6" fill="#a97b45"/>
+        <rect x="457" y="877" width="12" height="${PIE - 877}" rx="4" fill="#8d6234"/><rect x="571" y="877" width="12" height="${PIE - 877}" rx="4" fill="#8d6234"/>`;   /* el banco de la paleta */
+      s += balda(800, 379, 192);                                            /* el autorretrato de niño */
+      s += balda(1400, 442, 158);                                           /* el retrato de ojos bailones */
+      s += mesa(1700, 702, 240);                                            /* la guitarra de trocitos */
+      s += balda(2200, 408, 150);                                           /* el violín desmontado */
+      s += `<ellipse cx="1950" cy="${PIE}" rx="86" ry="11" fill="rgba(70,48,24,.18)"/>
+        <rect x="1878" y="900" width="144" height="${PIE - 900}" rx="5" fill="url(#picXMadera)"/>
+        <rect x="1870" y="892" width="160" height="16" rx="6" fill="#a97b45"/>
+        <g stroke="rgba(80,60,36,.4)" stroke-width="4"><path d="M1886 918 H2014 M1886 ${PIE - 12} H2014"/></g>`;   /* el cajón del periódico */
+      s += peana(2460, 731, 144);                                           /* el toro de trocitos */
+      /* la mesa del ramo lleva las patas en las mismas puntas del tablero y no
+         travesaño sino dos escuadras: así el cortinón gris del paso cae entero
+         entre las dos patas y la tela no queda partida por la mitad */
+      s += `<rect x="2806" y="691" width="188" height="18" rx="6" fill="#a97b45"/>
+        <rect x="2806" y="709" width="16" height="${PIE - 709}" rx="6" fill="#8d6234"/>
+        <rect x="2978" y="709" width="16" height="${PIE - 709}" rx="6" fill="#8d6234"/>
+        <path d="M2822 709 L2854 741 H2822 Z M2978 709 L2946 741 H2978 Z" fill="#7d5a34"/>
+        <rect x="2806" y="691" width="188" height="6" rx="3" fill="rgba(255,255,255,.18)"/>`;   /* el ramo de flores */
+      s += `<rect x="2970" y="376" width="330" height="20" rx="7" fill="#a97b45"/>
+        <path d="M2988 396 L3010 430 H2988 Z M3282 396 L3260 430 H3282 Z" fill="#7d5a34"/>`;  /* la viga de la paloma */
+      s += peana(3360, 926, 144);                                           /* la cerámica con caras */
+      s += caballete(3600, 571, 216);                                       /* el mural gigante */
+      s += peana(3840, 885, 148);                                           /* la cabra de trastos */
+      s += balda(4080, 402, 152);                                           /* el niño con la paloma */
+      /* lo que acompaña a la guitarra encima de la mesa: los cartones de los
+         que salió y el bote de la cola. Así se ve que está apoyada y no colgada */
+      s += `<g stroke="rgba(80,60,36,.35)" stroke-width="3">
+        <rect x="1592" y="688" width="88" height="14" rx="3" fill="#d8c8ac"/>
+        <rect x="1598" y="674" width="80" height="14" rx="3" fill="#e8dcc4"/>
+        <rect x="1594" y="660" width="84" height="14" rx="3" fill="#cfc6b4"/>
+        <rect x="1602" y="646" width="74" height="14" rx="3" fill="#e8dcc4"/>
+        <rect x="1600" y="632" width="70" height="14" rx="3" fill="#d8c8ac"/></g>
+        <path d="M1614 632 q22 -10 44 0" stroke="rgba(120,92,52,.45)" stroke-width="4" fill="none"/>
+        <rect x="1748" y="656" width="38" height="46" rx="6" fill="#cfc6b4"/>
+        <rect x="1748" y="670" width="38" height="32" rx="5" fill="#a97b45"/>
+        <path d="M1758 656 h18 v-12 h-18 Z" fill="#8d6234"/>
+        <path d="M1794 702 l-6 -46 l10 -2 l8 48 Z" fill="#8d6234"/>
+        <circle cx="1799" cy="650" r="8" fill="#e0879e"/>`;
+      /* lo que acompaña al ramo en su mesa, uno a cada punta para que se vea la
+         tabla por fuera de la etiqueta: la jarra de agua y un fajo de papeles */
+      s += `<path d="M2950 691 q-8 -40 16 -46 q24 6 16 46 Z" fill="#efe0c6" stroke="#c9a86c" stroke-width="4"/>
+        <path d="M2982 654 q14 6 10 18 q-2 8 -12 8" fill="none" stroke="#c9a86c" stroke-width="5"/>
+        <g stroke="rgba(80,60,36,.3)" stroke-width="3">
+        <rect x="2814" y="676" width="56" height="15" rx="3" fill="#e8dcc4"/>
+        <rect x="2818" y="661" width="50" height="15" rx="3" fill="#f3ead8"/></g>`;
       /* ---------- LOS TRASTOS DEL TALLER ---------- */
-      s += pila(628, 742, 168, ["#efe6d2", "#ddd0b6", "#cbbb9c", "#bcaa8b"]);
-      s += pila(1602, 796, 104, ["#e6dcc6", "#d2c3a6"]);
-      /* el taburete de siempre */
-      s += `<ellipse cx="952" cy="944" rx="58" ry="11" fill="rgba(70,48,24,.18)"/>
-        <ellipse cx="952" cy="852" rx="52" ry="16" fill="#a97b45"/>
-        <path d="M910 860 L918 940 M994 860 L986 940 M952 862 V942" stroke="#8d6234" stroke-width="9" stroke-linecap="round"/>
-        <path d="M916 900 H988" stroke="#8d6234" stroke-width="7"/>`;
-      /* botes de pintura y una paleta apoyada en el suelo */
-      [[1738, "#3f6491"], [1774, "#e0879e"], [1806, "#c9b03f"]].forEach(b => {
+      s += pila(620, 742, 168, ["#efe6d2", "#ddd0b6", "#cbbb9c", "#bcaa8b"]);
+      s += pila(1548, 796, 112, ["#e6dcc6", "#d2c3a6"]);
+      s += pila(2596, 730, 132, ["#e8dcc4", "#d8c8ac", "#c9b697"]);
+      s += pila(3452, 768, 148, ["#efe6d2", "#ddd0b6", "#c9b697"]);
+      /* el taburete de siempre y otro más allá */
+      [[1078, 1], [3020, .88]].forEach(t => {
+        const x = t[0], k = t[1];
+        s += `<g transform="translate(${x} ${PIE}) scale(${k})"><ellipse cy="0" rx="58" ry="11" fill="rgba(70,48,24,.18)"/>
+          <ellipse cy="-92" rx="52" ry="16" fill="#a97b45"/>
+          <path d="M-42 -84 L-34 -4 M42 -84 L34 -4 M0 -82 V-2" stroke="#8d6234" stroke-width="9" stroke-linecap="round"/>
+          <path d="M-36 -44 H36" stroke="#8d6234" stroke-width="7"/></g>`;
+      });
+      /* botes de pintura y dos paletas apoyadas */
+      [[2814, "#3f6491"], [2850, "#e0879e"], [2882, "#c9b03f"], [1256, "#2b2b2b"], [1292, "#c9b03f"]].forEach(b => {
         s += `<rect x="${b[0]}" y="890" width="30" height="54" rx="5" fill="#cfc6b4"/><rect x="${b[0]}" y="902" width="30" height="42" rx="4" fill="${b[1]}"/>`;
       });
-      s += `<g transform="translate(712 916) rotate(-10)"><ellipse rx="56" ry="36" fill="#c9a06a"/><ellipse cx="20" cy="-6" rx="13" ry="10" fill="#a97b45"/>
+      s += `<g transform="translate(392 916) rotate(-10)"><ellipse rx="56" ry="36" fill="#c9a06a"/><ellipse cx="20" cy="-6" rx="13" ry="10" fill="#a97b45"/>
         <circle cx="-32" cy="-13" r="9" fill="#3f6491"/><circle cx="-14" cy="-24" r="8" fill="#e0879e"/><circle cx="6" cy="-25" r="7" fill="#c9b03f"/>
         <circle cx="-36" cy="9" r="8" fill="#7d5a34"/><circle cx="-16" cy="15" r="7" fill="#2b2b2b"/></g>
-        <g transform="translate(1988 918) rotate(6)"><rect x="-46" y="-8" width="92" height="16" rx="6" fill="#8d6234"/>
-        <path d="M-46 0 L-72 -4 L-72 4 Z" fill="#a97b45"/></g>
-        <ellipse cx="1450" cy="990" rx="70" ry="12" fill="rgba(70,48,24,.16)"/>
-        <path d="M1408 990 A44 44 0 1 1 1496 990" fill="none" stroke="#d9748f" stroke-width="9"/>`;
-      /* la pelota de rayas del circo, parada en la pista */
-      s += `<ellipse cx="1178" cy="1042" rx="38" ry="9" fill="rgba(70,48,24,.16)"/>
-        <circle cx="1178" cy="1006" r="34" fill="#fdfaf4"/>
-        <path d="M1150 990 q28 -10 56 0 M1145 1008 q33 -10 66 0 M1152 1026 q26 8 52 0" stroke="#e0879e" stroke-width="9" fill="none" stroke-linecap="round"/>
-        <circle cx="1178" cy="1006" r="34" fill="none" stroke="#d9748f" stroke-width="3"/>`;
-      /* tres marcos vacíos esperando cuadro, uno por franja */
-      [[300, 176, 124, 142, "#8d6234"], [1424, 300, 136, 162, "#a97b45"], [2404, 560, 136, 140, "#7d5a34"]].forEach(f => {
+        <g transform="translate(3702 918) rotate(6)"><rect x="-46" y="-8" width="92" height="16" rx="6" fill="#8d6234"/>
+        <path d="M-46 0 L-72 -4 L-72 4 Z" fill="#a97b45"/></g>`;
+      /* un aro y una pelota de rayas, olvidados en la pista */
+      s += `<ellipse cx="2180" cy="994" rx="70" ry="12" fill="rgba(70,48,24,.16)"/>
+        <path d="M2138 994 A44 44 0 1 1 2226 994" fill="none" stroke="#d9748f" stroke-width="9"/>
+        <ellipse cx="1748" cy="1046" rx="38" ry="9" fill="rgba(70,48,24,.16)"/>
+        <circle cx="1748" cy="1010" r="34" fill="#fdfaf4"/>
+        <path d="M1720 994 q28 -10 56 0 M1715 1012 q33 -10 66 0 M1722 1030 q26 8 52 0" stroke="#e0879e" stroke-width="9" fill="none" stroke-linecap="round"/>
+        <circle cx="1748" cy="1010" r="34" fill="none" stroke="#d9748f" stroke-width="3"/>`;
+      /* marcos vacíos esperando cuadro, uno por franja */
+      [[356, 176, 124, 142, "#8d6234"], [1494, 246, 136, 162, "#a97b45"], [2300, 296, 128, 148, "#8d6234"],
+        [3252, 470, 132, 150, "#7d5a34"], [3968, 592, 136, 140, "#7d5a34"]].forEach(f => {
         s += `<rect x="${f[0]}" y="${f[1]}" width="${f[2]}" height="${f[3]}" rx="4" fill="none" stroke="${f[4]}" stroke-width="13"/>
           <rect x="${f[0] + 12}" y="${f[1] + 12}" width="${f[2] - 24}" height="${f[3] - 24}" rx="3" fill="rgba(255,255,255,.16)"/>
           <path d="M${f[0] + f[2] / 2} ${f[1]} V${f[1] - 22}" stroke="${f[4]}" stroke-width="4"/>
           <circle cx="${f[0] + f[2] / 2}" cy="${f[1] - 26}" r="5" fill="#7d5a34"/>`;
       });
+      /* dos bastidores de madera arrimados al rincón, esperando su tela */
+      s += `<ellipse cx="4028" cy="${PIE}" rx="62" ry="12" fill="rgba(70,48,24,.18)"/>
+        <g transform="rotate(-4 4028 860)"><rect x="3982" y="768" width="92" height="176" rx="4" fill="#e8dcc4" stroke="#a97b45" stroke-width="12"/>
+        <path d="M3988 856 H4068" fill="none" stroke="#a97b45" stroke-width="8"/>
+        <path d="M4028 774 V938" fill="none" stroke="rgba(169,123,69,.35)" stroke-width="6"/></g>
+        <g transform="rotate(3 4062 880)"><rect x="4030" y="800" width="72" height="144" rx="4" fill="none" stroke="#8d6234" stroke-width="11"/></g>`;
       /* un rollo de lienzo y unos cartones apoyados en el rincón */
-      s += `<ellipse cx="2528" cy="944" rx="40" ry="10" fill="rgba(70,48,24,.18)"/>
-        <path d="M2500 944 L2516 762 L2548 760 L2556 944 Z" fill="#ddd0b6" stroke="rgba(80,60,36,.4)" stroke-width="3"/>
-        <ellipse cx="2532" cy="761" rx="17" ry="7" fill="#bdad8d"/>
-        <path d="M2472 944 L2492 812 L2510 814 L2504 944 Z" fill="#c9b697" stroke="rgba(80,60,36,.4)" stroke-width="3"/>`;
-      return decoSvg(s, 2600);
+      s += `<ellipse cx="4148" cy="${PIE}" rx="40" ry="10" fill="rgba(70,48,24,.18)"/>
+        <path d="M4120 ${PIE} L4136 762 L4168 760 L4176 ${PIE} Z" fill="#ddd0b6" stroke="rgba(80,60,36,.4)" stroke-width="3"/>
+        <ellipse cx="4152" cy="761" rx="17" ry="7" fill="#bdad8d"/>
+        <path d="M4130 830 q22 -7 42 -3 M4126 884 q24 -7 46 -3" stroke="rgba(120,92,52,.5)" stroke-width="7" fill="none"/>
+        <path d="M4088 ${PIE} L4108 812 L4126 814 L4120 ${PIE} Z" fill="#c9b697" stroke="rgba(80,60,36,.4)" stroke-width="3"/>`;
+      /* unas huellas de pintura que van de una franja a otra, como quien pasea */
+      for (let i = 0; i < 14; i++) {
+        const hx = 1120 + i * 118, hy = 1042 + (i % 2) * 26;
+        s += `<ellipse cx="${hx}" cy="${hy}" rx="13" ry="8" fill="rgba(63,100,145,.2)" transform="rotate(${(az() * 40 - 20).toFixed(0)} ${hx} ${hy})"/>`;
+      }
+      /* primer plano: un pincel y un tubo de color caídos cerca de quien mira */
+      s += `<g transform="translate(770 1044) rotate(-7)">
+        <ellipse cy="26" rx="106" ry="13" fill="rgba(70,48,24,.16)"/>
+        <rect x="-98" y="-10" width="152" height="20" rx="9" fill="#8d6234"/>
+        <rect x="-98" y="-10" width="152" height="7" rx="3" fill="rgba(255,255,255,.18)"/>
+        <rect x="46" y="-15" width="32" height="30" rx="7" fill="#c0c6c9"/>
+        <path d="M78 -15 q36 7 36 15 q0 8 -36 15 Z" fill="#3f6491"/></g>`;
+      s += `<g transform="translate(3040 1062) rotate(6)">
+        <ellipse cy="22" rx="80" ry="12" fill="rgba(70,48,24,.16)"/>
+        <rect x="-72" y="-17" width="114" height="34" rx="11" fill="#e0879e"/>
+        <path d="M-72 -17 q-18 17 0 34 Z" fill="#c25f7a"/>
+        <rect x="-64" y="-13" width="90" height="9" rx="4" fill="rgba(255,255,255,.3)"/>
+        <rect x="42" y="-12" width="20" height="24" rx="4" fill="#cfc6b4"/>
+        <rect x="62" y="-9" width="15" height="18" rx="4" fill="#8d6234"/>
+        <path d="M77 0 q24 7 42 -4 q-15 17 -42 11 Z" fill="#e0879e" opacity=".85"/></g>`;
+      return decoSvg(s, 4200);
     }
   },
 

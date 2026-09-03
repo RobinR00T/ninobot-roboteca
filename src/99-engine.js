@@ -868,13 +868,21 @@ function uiExplore(c) {
   if (e.width * k < sc.clientWidth) size.style.margin = "0 auto";
   const cv = document.getElementById("mapcanvas");
   cv.style.transform = "scale(" + k + ")";
-  cv.style.setProperty("--poik", Math.min(e.poikMax || 2.1, Math.max(1, 0.95 / k)).toFixed(2));
+  /* tope de agrandado de los puntos: por encima de 1.5 empiezan a taparse entre
+     ellos en pantallas bajas (con los mapas ya anchos no hace falta inflarlos) */
+  cv.style.setProperty("--poik", Math.min(e.poikMax || 1.5, Math.max(1, 0.95 / k)).toFixed(2));
   let drag = null;
   sc.addEventListener("pointerdown", ev => { drag = { x: ev.clientX, l: sc.scrollLeft }; sc.classList.add("dragging"); });
   sc.addEventListener("pointermove", ev => { if (!drag) return; sc.scrollLeft = drag.l - (ev.clientX - drag.x); });
   ["pointerup", "pointerleave"].forEach(evn => sc.addEventListener(evn, () => { drag = null; sc.classList.remove("dragging"); }));
   if (S.theme === "espacio") startOrbits(e);
+  /* los puntos crecen con una transición de .15 s: si midiéramos ya, los
+     mediríamos a tamaño pequeño y los nombres quedarían mal puestos. Se
+     congela la animación un instante para medir con el tamaño definitivo. */
+  cv.classList.add("nofx");
+  void cv.offsetWidth;
   acomodaEtiquetas();
+  requestAnimationFrame(() => cv.classList.remove("nofx"));
 }
 
 /* Las etiquetas se apartan solas cuando dos caen encima: la de arriba se sube
@@ -883,24 +891,41 @@ function uiExplore(c) {
 function acomodaEtiquetas() {
   const cv = document.getElementById("mapcanvas");
   if (!cv) return;
-  const labs = [...cv.querySelectorAll(".poi .plabel")];
+  const pois = [...cv.querySelectorAll(".poi")];
+  const labs = pois.map(p => p.querySelector(".plabel")).filter(Boolean);
   if (labs.length < 2) return;
   labs.forEach(l => { l.classList.remove("lblup"); l.style.marginLeft = ""; });
-  const leer = () => labs.map(l => { const r = l.getBoundingClientRect(); return { x: r.left, y: r.top, w: r.width, h: r.height }; });
+  const caja = el => { const r = el.getBoundingClientRect(); return { x: r.left, y: r.top, w: r.width, h: r.height }; };
+  const leer = () => labs.map(caja);
+  /* los dibujos no se mueven: sirven de obstáculo para colocar los nombres */
+  const iconos = pois.map(p => caja(p.querySelector(".picon") || p.querySelector(".pemoji") || p));
   const choca = (a, b) => Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x) > 2 &&
                           Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y) > 2;
-
-  let r = leer();
-  const arriba = new Set();
-  for (let a = 0; a < labs.length; a++) {
-    for (let b = a + 1; b < labs.length; b++) {
-      if (arriba.has(a) || arriba.has(b) || !choca(r[a], r[b])) continue;
-      /* sube la del punto que esté más alto: se aleja de la otra */
-      arriba.add(r[a].y <= r[b].y ? a : b);
+  /* una etiqueta estorba si pisa otra etiqueta o el dibujo de otro punto */
+  const estorba = (i, r) => {
+    for (let j = 0; j < labs.length; j++) {
+      if (j !== i && choca(r[i], r[j])) return true;
+      if (j !== i && choca(r[i], iconos[j])) return true;
     }
+    return false;
+  };
+
+  /* para cada nombre que estorbe se prueban colocaciones alternativas y se
+     deja la primera que quede libre: encima del dibujo, a la derecha o a la
+     izquierda. Si ninguna vale, se queda debajo como siempre. */
+  const SITIOS = ["lblup", "lblright", "lblleft", "lblupright", "lblupleft", "lbldown2"];
+  let r = leer();
+  for (let a = 0; a < labs.length; a++) {
+    if (!estorba(a, r)) continue;
+    let puesto = false;
+    for (const sitio of SITIOS) {
+      labs[a].classList.add(sitio);
+      const nuevo = leer();
+      if (!estorba(a, nuevo)) { r = nuevo; puesto = true; break; }
+      labs[a].classList.remove(sitio);
+    }
+    if (!puesto) r = leer();
   }
-  arriba.forEach(i => labs[i].classList.add("lblup"));
-  if (!arriba.size) return;
 
   r = leer();
   const movidas = new Set();

@@ -14,21 +14,31 @@ if (typeof THEME_CARDS !== "undefined") {
         <stop offset="100%" stop-color="#E65100"/>
       </linearGradient>
     </defs>
-    <!-- vapor que sube de la olla -->
-    <path d="M38 26 Q36 18 42 14 M50 24 Q50 12 57 10 M64 26 Q66 16 72 14" stroke="#ECEFF1" stroke-width="3.4" fill="none" stroke-linecap="round" opacity="0.85">
-      <animate attributeName="opacity" values="0.85;0.25;0.85" dur="2.2s" repeatCount="indefinite"/>
-    </path>
-    <!-- la olla con sus asas -->
-    <ellipse cx="52" cy="32" rx="24" ry="4.6" fill="#BF360C"/>
-    <path d="M28 33 L76 33 Q77 52 68 58 Q52 64 36 58 Q27 52 28 33 Z" fill="url(#tcOllaCoc)"/>
-    <path d="M28 38 L21 35 Q17 39 21 43 L28 43 Z" fill="#E65100"/>
-    <path d="M76 38 L83 35 Q87 39 83 43 L76 43 Z" fill="#E65100"/>
-    <path d="M33 38 Q52 42 71 38" stroke="#FFCC80" stroke-width="2.4" fill="none" opacity="0.8"/>
-    <circle cx="52" cy="27" r="3.4" fill="#FFB74D"/>
-    <!-- el fueguecito de debajo -->
-    <path d="M44 62 Q47 66 50 62 M52 63 Q55 67 58 63" stroke="#FFB300" stroke-width="3" fill="none" stroke-linecap="round">
-      <animate attributeName="opacity" values="1;0.4;1" dur="0.7s" repeatCount="indefinite"/>
-    </path>
+    <!-- el fueguecito: el quemador y las llamitas van pintados DETRÁS de la olla, así
+         asoman por debajo y la olla se lee sobre el fuego en vez de ardiendo ella -->
+    <rect x="34" y="63" width="36" height="4" rx="2" fill="#78909C"/>
+    <ellipse cx="52" cy="60" rx="27" ry="8" fill="#FFB300" opacity="0.3"/>
+    <g>
+      <path d="M43 66 Q35 58 44 48 Q53 58 45 66 Z" fill="#FFA000"/>
+      <path d="M61 66 Q52 58 61 48 Q69 58 62 66 Z" fill="#FFA000"/>
+      <path d="M52 67 Q43 58 52 44 Q62 58 53 67 Z" fill="#FFB300"/>
+      <path d="M44 65 Q40 60 44 54 Q49 60 45 65 Z" fill="#FFE082"/>
+      <path d="M61 65 Q57 60 61 54 Q66 60 62 65 Z" fill="#FFE082"/>
+      <path d="M52 64 Q47 58 52 51 Q58 58 53 64 Z" fill="#FFF3C4"/>
+      <animate attributeName="opacity" values="1;0.55;1" dur="0.9s" repeatCount="indefinite"/>
+    </g>
+    <!-- el vapor y la olla, por delante del fuego -->
+    <g transform="translate(0 -6)">
+      <path d="M38 26 Q36 18 42 14 M50 24 Q50 12 57 10 M64 26 Q66 16 72 14" stroke="#ECEFF1" stroke-width="3.4" fill="none" stroke-linecap="round" opacity="0.85">
+        <animate attributeName="opacity" values="0.85;0.25;0.85" dur="2.2s" repeatCount="indefinite"/>
+      </path>
+      <ellipse cx="52" cy="32" rx="24" ry="4.6" fill="#BF360C"/>
+      <path d="M28 33 L76 33 Q77 52 68 58 Q52 64 36 58 Q27 52 28 33 Z" fill="url(#tcOllaCoc)"/>
+      <path d="M28 38 L21 35 Q17 39 21 43 L28 43 Z" fill="#E65100"/>
+      <path d="M76 38 L83 35 Q87 39 83 43 L76 43 Z" fill="#E65100"/>
+      <path d="M33 38 Q52 42 71 38" stroke="#FFCC80" stroke-width="2.4" fill="none" opacity="0.8"/>
+      <circle cx="52" cy="27" r="3.4" fill="#FFB74D"/>
+    </g>
     <!-- el gorro de chef, apoyado al lado -->
     <path d="M92 44 Q88 34 96 31 Q97 24 104 26 Q111 24 112 31 Q120 34 116 44 L114 50 L94 50 Z" fill="#FAFAFA"/>
     <rect x="93" y="49" width="22" height="6" rx="3" fill="#ECEFF1"/>

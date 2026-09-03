@@ -264,15 +264,15 @@ Object.assign(THEMES.cocina.content, {
 
   /* ---------- MAPA DE EXPLORACIÓN ---------- */
   explore: {
-    width: 2600, height: 1100, stars: false,
+    width: 4200, height: 1100, stars: false,
     bgCss: "radial-gradient(ellipse 26% 24% at 16% 8%, rgba(255,236,179,.55), transparent), radial-gradient(ellipse 24% 26% at 92% 12%, rgba(179,229,252,.45), transparent), linear-gradient(180deg,#fff3e0 0%,#ffe4be 34%,#f4c99a 62%,#d8ab80 82%,#b08561 100%)",
     cats: [
-      { id: "cocina", emoji: "🍳", x: 120, name: { es: "La gran cocina", ca: "La gran cuina", en: "The big kitchen", cs: "Velká kuchyně", fr: "La grande cuisine" } },
-      { id: "rincon", emoji: "👵", x: 1120, name: { es: "El rincón de la abuela", ca: "El racó de l'àvia", en: "Grandma's corner", cs: "Babiččin koutek", fr: "Le coin de mamie" } },
-      { id: "mercado", emoji: "🧺", x: 1800, name: { es: "El mercado", ca: "El mercat", en: "The market", cs: "Trh", fr: "Le marché" } }
+      { id: "cocina", emoji: "🍳", x: 140, name: { es: "La gran cocina", ca: "La gran cuina", en: "The big kitchen", cs: "Velká kuchyně", fr: "La grande cuisine" } },
+      { id: "rincon", emoji: "👵", x: 2080, name: { es: "El rincón de la abuela", ca: "El racó de l'àvia", en: "Grandma's corner", cs: "Babiččin koutek", fr: "Le coin de mamie" } },
+      { id: "mercado", emoji: "🧺", x: 3100, name: { es: "El mercado", ca: "El mercat", en: "The market", cs: "Trh", fr: "Le marché" } }
     ],
     pois: [
-      { cat: "cocina", emoji: "🧊", x: 200, y: 500, iw: 86, ih: 116,
+      { cat: "cocina", emoji: "🧊", x: 240, y: 500, iw: 86, ih: 116,
         svg: `<svg viewBox="0 0 90 120" width="100%" height="100%">
           <rect x="10" y="4" width="70" height="112" rx="10" fill="#b3e5fc"/>
           <rect x="14" y="8" width="62" height="46" rx="7" fill="#e1f5fe"/>
@@ -288,7 +288,7 @@ Object.assign(THEMES.cocina.content, {
           <path d="M4 10 L10 4 M2 20 L8 14" stroke="#b3e5fc" stroke-width="2.4" stroke-linecap="round" opacity=".7"/></svg>`,
         name: { es: "La nevera", ca: "La nevera", en: "The fridge", cs: "Lednice", fr: "Le frigo" },
         fact: { es: "Dentro de la nevera el frío hace que los microbios vayan lentísimos y la comida dure más. Cierra bien la puerta: ¡que no se escape el fresquito!", ca: "Dins de la nevera el fred fa que els microbis vagin lentíssims i el menjar duri més. Tanca bé la porta: que no s'escapi la frescor!", en: "Inside the fridge, the cold makes germs move super slowly, so food lasts longer. Close the door well: do not let the cold escape!", cs: "V lednici se mikrobi kvůli chladu pohybují hrozně pomalu, a jídlo tak vydrží déle. Zavírej dveře pořádně: ať chlad neuteče!", fr: "Dans le frigo, le froid rend les microbes tout lents et la nourriture dure plus longtemps. Ferme bien la porte : que le frais ne s'échappe pas !" } },
-      { cat: "cocina", emoji: "🔥", x: 430, y: 700, size: 2, iw: 104, ih: 96,
+      { cat: "cocina", emoji: "🔥", x: 700, y: 700, size: 2, iw: 104, ih: 96,
         svg: `<svg viewBox="0 0 110 100" width="100%" height="100%">
           <rect x="6" y="6" width="98" height="88" rx="10" fill="#78909c"/>
           <rect x="12" y="12" width="86" height="12" rx="6" fill="#546e7a"/>
@@ -304,7 +304,7 @@ Object.assign(THEMES.cocina.content, {
             <animate attributeName="opacity" values=".85;.3;.85" dur="2.4s" repeatCount="indefinite"/></path></svg>`,
         name: { es: "El horno con ventanita", ca: "El forn amb finestreta", en: "The oven with its little window", cs: "Trouba s okénkem", fr: "Le four à petite fenêtre" },
         fact: { es: "El horno cocina con aire muy caliente. Su puerta la abren solo los adultos con manoplas; tú tienes el mejor cine de la casa: la ventanita donde el pan crece.", ca: "El forn cuina amb aire molt calent. La seva porta l'obren només els adults amb manyoples; tu tens el millor cinema de casa: la finestreta on el pa creix.", en: "The oven cooks with very hot air. Only grown-ups open its door, wearing oven mitts; you get the best cinema in the house: the little window where bread grows.", cs: "Trouba peče horkým vzduchem. Dvířka otvírají jen dospělí s chňapkami; ty máš nejlepší kino v domě: okénko, za kterým roste chleba.", fr: "Le four cuit avec de l'air très chaud. Seuls les adultes ouvrent sa porte, avec des gants ; toi, tu as le meilleur cinéma de la maison : la petite fenêtre où le pain grandit." } },
-      { cat: "cocina", emoji: "🍲", x: 640, y: 470, iw: 92, ih: 86,
+      { cat: "cocina", emoji: "🍲", x: 1160, y: 480, iw: 92, ih: 86,
         svg: `<svg viewBox="0 0 100 94" width="100%" height="100%">
           <path d="M28 18 Q28 8 36 10 M50 16 Q50 4 58 6 M70 20 Q72 10 80 12" stroke="#eceff1" stroke-width="4" fill="none" stroke-linecap="round" opacity=".9">
             <animate attributeName="opacity" values=".9;.25;.9" dur="2s" repeatCount="indefinite"/></path>
@@ -319,7 +319,7 @@ Object.assign(THEMES.cocina.content, {
           <path d="M46 66 Q52 71 58 66" stroke="#4e2600" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg>`,
         name: { es: "La olla humeante", ca: "L'olla fumejant", en: "The steaming pot", cs: "Kouřící hrnec", fr: "La marmite fumante" },
         fact: { es: "El humito blanco de la olla es vapor: agua voladora. Con la tapa puesta, el calor no se escapa y la sopa está lista antes.", ca: "El fumet blanc de l'olla és vapor: aigua voladora. Amb la tapa posada, la calor no s'escapa i la sopa és a punt abans.", en: "The white puff over the pot is steam: flying water. With the lid on, the heat cannot escape and the soup is ready sooner.", cs: "Bílý obláček nad hrncem je pára: létající voda. S pokličkou teplo neuteče a polévka je hotová dřív.", fr: "Le petit nuage blanc de la marmite, c'est de la vapeur : de l'eau volante. Avec le couvercle, la chaleur reste dedans et la soupe est prête plus vite." } },
-      { cat: "cocina", emoji: "🧂", x: 850, y: 310, iw: 104, ih: 74,
+      { cat: "cocina", emoji: "🧂", x: 1850, y: 300, iw: 104, ih: 74,
         svg: `<svg viewBox="0 0 120 84" width="100%" height="100%">
           <rect x="4" y="62" width="112" height="8" rx="4" fill="#8d6e63"/>
           <rect x="10" y="26" width="16" height="36" rx="4" fill="#ef9a9a"/><rect x="10" y="22" width="16" height="8" rx="3" fill="#c62828"/>
@@ -331,7 +331,7 @@ Object.assign(THEMES.cocina.content, {
           <path d="M14 12 Q18 4 24 8 M60 10 Q64 2 70 6" stroke="#bcaaa4" stroke-width="2.4" fill="none" stroke-linecap="round" opacity=".8"/></svg>`,
         name: { es: "El estante de las especias", ca: "El prestatge de les espècies", en: "The spice shelf", cs: "Polička s kořením", fr: "L'étagère à épices" },
         fact: { es: "Pimentón rojo, cúrcuma dorada, orégano verde... Las especias vienen de plantas de todo el mundo. Hace siglos viajaban en barcos, ¡y valían como tesoros!", ca: "Pebre vermell, cúrcuma daurada, orenga verda... Les espècies venen de plantes de tot el món. Fa segles viatjaven amb vaixells, i valien com tresors!", en: "Red paprika, golden turmeric, green oregano... Spices come from plants all over the world. Centuries ago they travelled on ships and were worth a treasure!", cs: "Červená paprika, zlatá kurkuma, zelené oregano... Koření pochází z rostlin z celého světa. Před staletími cestovalo na lodích a mělo cenu pokladu!", fr: "Paprika rouge, curcuma doré, origan vert... Les épices viennent de plantes du monde entier. Il y a des siècles, elles voyageaient en bateau et valaient un trésor !" } },
-      { cat: "cocina", emoji: "🥣", x: 880, y: 620, iw: 80, ih: 92,
+      { cat: "cocina", emoji: "🥣", x: 1620, y: 620, iw: 80, ih: 92,
         svg: `<svg viewBox="0 0 90 104" width="100%" height="100%">
           <rect x="14" y="90" width="62" height="10" rx="5" fill="#607d8b"/>
           <path d="M22 90 L22 30 Q22 14 40 14 L58 14 Q66 14 66 22 L66 34 L56 34 L56 26 L40 26 Q32 26 32 34 L32 90 Z" fill="#ec407a"/>
@@ -345,7 +345,7 @@ Object.assign(THEMES.cocina.content, {
           <circle cx="20" cy="52" r="2" fill="#ffd54f"><animate attributeName="opacity" values="1;.2;1" dur="1.8s" repeatCount="indefinite"/></circle></svg>`,
         name: { es: "La batidora", ca: "La batedora", en: "The mixer", cs: "Šlehač", fr: "Le batteur" },
         fact: { es: "La batidora da muchísimas vueltas por minuto. Si bate claras de huevo mucho rato, las llena de aire y las convierte en nubes blancas: ¡el merengue!", ca: "La batedora fa moltíssimes voltes per minut. Si bat clares d'ou molta estona, les omple d'aire i les converteix en núvols blancs: el merenga!", en: "The mixer spins many many times a minute. If it beats egg whites long enough, it fills them with air and turns them into white clouds: meringue!", cs: "Šlehač se točí mnohokrát za minutu. Když dlouho šlehá bílky, naplní je vzduchem a promění je v bílé obláčky: sníh na pusinky!", fr: "Le batteur tourne très très vite. S'il fouette des blancs d'œufs longtemps, il les remplit d'air et les transforme en nuages blancs : la meringue !" } },
-      { cat: "cocina", emoji: "🌿", x: 590, y: 240, size: 2, iw: 118, ih: 92,
+      { cat: "cocina", emoji: "🌿", x: 930, y: 250, size: 2, iw: 118, ih: 92,
         svg: `<svg viewBox="0 0 130 100" width="100%" height="100%">
           <rect x="8" y="6" width="114" height="76" rx="8" fill="#8d6e63"/>
           <rect x="14" y="12" width="102" height="64" rx="5" fill="#b3e5fc"/>
@@ -364,7 +364,7 @@ Object.assign(THEMES.cocina.content, {
           <circle cx="97" cy="47" r="2" fill="#ce93d8"/><circle cx="104" cy="45" r="2" fill="#ce93d8"/></svg>`,
         name: { es: "El huerto de la ventana", ca: "L'hortet de la finestra", en: "The window garden", cs: "Zahrádka na okně", fr: "Le jardin de la fenêtre" },
         fact: { es: "En la ventana crecen perejil, albahaca y menta en macetas. Se cortan unas hojitas con los dedos, la planta sigue creciendo... ¡y el guiso huele a jardín!", ca: "A la finestra creixen julivert, alfàbrega i menta en testos. Es tallen unes fulletes amb els dits, la planta segueix creixent... i el guisat fa olor de jardí!", en: "Parsley, basil and mint grow in pots on the window. You pick a few leaves with your fingers, the plant keeps growing... and the stew smells like a garden!", cs: "Na okně rostou v květináčích petrželka, bazalka a máta. Prsty utrhneš pár lístků, rostlinka roste dál... a polévka voní jako zahrada!", fr: "Sur la fenêtre poussent persil, basilic et menthe en pots. On cueille quelques feuilles avec les doigts, la plante continue de pousser... et le plat sent le jardin !" } },
-      { cat: "cocina", emoji: "🧑‍🍳", x: 180, y: 860, iw: 72, ih: 92,
+      { cat: "cocina", emoji: "🧑‍🍳", x: 470, y: 860, iw: 72, ih: 92,
         svg: `<svg viewBox="0 0 80 104" width="100%" height="100%">
           <circle cx="40" cy="8" r="4" fill="#8d6e63"/>
           <path d="M40 10 L40 18" stroke="#8d6e63" stroke-width="3"/>
@@ -377,7 +377,7 @@ Object.assign(THEMES.cocina.content, {
           <circle cx="62" cy="20" r="2" fill="#ffd54f"><animate attributeName="opacity" values="1;.3;1" dur="2s" repeatCount="indefinite"/></circle></svg>`,
         name: { es: "El delantal", ca: "El davantal", en: "The apron", cs: "Zástěra", fr: "Le tablier" },
         fact: { es: "El delantal es el escudo del cocinero: protege la ropa de salpicaduras y lleva bolsillo para el trapito y la cuchara de madera.", ca: "El davantal és l'escut del cuiner: protegeix la roba d'esquitxos i porta butxaca per al drapet i la cullera de fusta.", en: "The apron is the cook's shield: it protects your clothes from splashes and has a pocket for the little cloth and the wooden spoon.", cs: "Zástěra je kuchařův štít: chrání oblečení před cákanci a má kapsu na utěrku a vařečku.", fr: "Le tablier est le bouclier du cuisinier : il protège les habits des éclaboussures et garde une poche pour le petit torchon et la cuillère en bois." } },
-      { cat: "cocina", emoji: "🫧", x: 700, y: 880, iw: 100, ih: 78,
+      { cat: "cocina", emoji: "🫧", x: 1390, y: 870, iw: 100, ih: 78,
         svg: `<svg viewBox="0 0 110 88" width="100%" height="100%">
           <rect x="6" y="30" width="98" height="50" rx="10" fill="#90a4ae"/>
           <rect x="14" y="38" width="82" height="34" rx="8" fill="#cfd8dc"/>
@@ -393,7 +393,7 @@ Object.assign(THEMES.cocina.content, {
           <path d="M44 57 Q47 60 50 57" stroke="#0277bd" stroke-width="2" fill="none" stroke-linecap="round"/></svg>`,
         name: { es: "El fregadero con espuma", ca: "L'aigüera amb escuma", en: "The bubbly sink", cs: "Dřez s pěnou", fr: "L'évier plein de mousse" },
         fact: { es: "Al acabar, los cacharros se dan un baño de espuma. Recoger también es cocinar: la cocina queda lista y contenta para mañana.", ca: "En acabar, els estris es fan un bany d'escuma. Recollir també és cuinar: la cuina queda a punt i contenta per a demà.", en: "When cooking ends, the pots and pans take a bubble bath. Tidying up is cooking too: the kitchen ends up ready and happy for tomorrow.", cs: "Po vaření se hrnce a misky vykoupou v pěně. Úklid patří k vaření: kuchyně je pak připravená a spokojená na zítřek.", fr: "Quand on a fini, les ustensiles prennent un bain de mousse. Ranger, c'est aussi cuisiner : la cuisine reste prête et contente pour demain." } },
-      { cat: "rincon", emoji: "📖", x: 1160, y: 420, size: 2, iw: 110, ih: 84,
+      { cat: "rincon", emoji: "📖", x: 2140, y: 420, size: 2, iw: 110, ih: 84,
         svg: `<svg viewBox="0 0 120 92" width="100%" height="100%">
           <path d="M60 16 Q34 4 10 12 L10 76 Q34 68 60 80 Q86 68 110 76 L110 12 Q86 4 60 16 Z" fill="#fff8e1"/>
           <path d="M60 16 L60 80" stroke="#d7ccc8" stroke-width="3"/>
@@ -405,7 +405,7 @@ Object.assign(THEMES.cocina.content, {
           <path d="M6 80 Q60 92 114 80" stroke="#8d6e63" stroke-width="4" fill="none"/></svg>`,
         name: { es: "El libro de recetas de la abuela", ca: "El llibre de receptes de l'àvia", en: "Grandma's recipe book", cs: "Babiččin receptář", fr: "Le livre de recettes de mamie" },
         fact: { es: "Sus manchas son medallas: cada una es un día que se cocinó con él. Muchas recetas vienen de las abuelas de las abuelas, viajando de mano en mano.", ca: "Les seves taques són medalles: cadascuna és un dia que s'hi va cuinar. Moltes receptes venen de les àvies de les àvies, viatjant de mà en mà.", en: "Its stains are medals: each one marks a day of cooking with it. Many recipes come from the grandmas of grandmas, travelling hand to hand.", cs: "Jeho skvrny jsou medaile: každá znamená den, kdy se podle něj vařilo. Spousta receptů pochází od babiček našich babiček a putuje z ruky do ruky.", fr: "Ses taches sont des médailles : chacune raconte un jour de cuisine. Beaucoup de recettes viennent des mamies des mamies, voyageant de main en main." } },
-      { cat: "rincon", emoji: "⚖️", x: 1420, y: 590, iw: 84, ih: 86,
+      { cat: "rincon", emoji: "⚖️", x: 2620, y: 590, iw: 84, ih: 86,
         svg: `<svg viewBox="0 0 95 96" width="100%" height="100%">
           <rect x="42" y="12" width="6" height="62" rx="3" fill="#a1887f"/>
           <path d="M22 84 L68 84 L62 74 L28 74 Z" fill="#795548"/>
@@ -421,7 +421,7 @@ Object.assign(THEMES.cocina.content, {
           <circle cx="26" cy="60" r="2" fill="#ffd54f"><animate attributeName="opacity" values="1;.2;1" dur="2.2s" repeatCount="indefinite"/></circle></svg>`,
         name: { es: "La balanza de la abuela", ca: "La balança de l'àvia", en: "Grandma's scale", cs: "Babiččina váha", fr: "La balance de mamie" },
         fact: { es: "La balanza pesa la harina y el azúcar para que la receta salga igual de rica cada vez. La repostería son matemáticas deliciosas.", ca: "La balança pesa la farina i el sucre perquè la recepta surti igual de bona cada vegada. La rebosteria són matemàtiques delicioses.", en: "The scale weighs the flour and sugar so the recipe turns out just as yummy every time. Baking is delicious mathematics.", cs: "Váha odměří mouku a cukr, aby se recept povedl pokaždé stejně. Pečení je lahodná matematika.", fr: "La balance pèse la farine et le sucre pour que la recette soit aussi bonne à chaque fois. La pâtisserie, ce sont des mathématiques délicieuses." } },
-      { cat: "rincon", emoji: "🍪", x: 1180, y: 790, iw: 74, ih: 86,
+      { cat: "rincon", emoji: "🍪", x: 2380, y: 790, iw: 74, ih: 86,
         svg: `<svg viewBox="0 0 80 94" width="100%" height="100%">
           <ellipse cx="40" cy="86" rx="30" ry="6" fill="rgba(0,0,0,.12)"/>
           <path d="M14 34 Q10 88 40 88 Q70 88 66 34 Z" fill="#90caf9"/>
@@ -435,7 +435,7 @@ Object.assign(THEMES.cocina.content, {
           <path d="M35 79 Q39 82 43 79" stroke="#455a64" stroke-width="2" fill="none" stroke-linecap="round"/></svg>`,
         name: { es: "El tarro de las galletas", ca: "El pot de les galetes", en: "The cookie jar", cs: "Dóza na sušenky", fr: "Le bocal à biscuits" },
         fact: { es: "El tarro guarda las galletas crujientes. Bien cerrado funciona mejor: si entra aire húmedo, ¡las galletas se ponen blanditas!", ca: "El pot guarda les galetes cruixents. Ben tancat funciona millor: si hi entra aire humit, les galetes es tornen tovetes!", en: "The jar keeps the cookies crunchy. It works best well closed: if damp air sneaks in, the cookies go soft!", cs: "Dóza chrání křupavé sušenky. Nejlíp funguje dobře zavřená: když se dovnitř vloudí vlhký vzduch, sušenky změknou!", fr: "Le bocal garde les biscuits croustillants. Bien fermé, il marche mieux : si l'air humide entre, les biscuits ramollissent !" } },
-      { cat: "rincon", emoji: "🍽️", x: 1500, y: 880, size: 2, iw: 132, ih: 92,
+      { cat: "rincon", emoji: "🍽️", x: 2860, y: 880, size: 2, iw: 132, ih: 92,
         svg: `<svg viewBox="0 0 145 100" width="100%" height="100%">
           <rect x="12" y="46" width="120" height="10" rx="4" fill="#8d6e63"/>
           <rect x="20" y="56" width="10" height="38" fill="#6d4c41"/><rect x="114" y="56" width="10" height="38" fill="#6d4c41"/>
@@ -452,7 +452,7 @@ Object.assign(THEMES.cocina.content, {
           <path d="M52 12 Q72 2 92 12" stroke="#ce93d8" stroke-width="3" fill="none" stroke-linecap="round"/></svg>`,
         name: { es: "La mesa puesta", ca: "La taula parada", en: "The set table", cs: "Prostřený stůl", fr: "La table mise" },
         fact: { es: "Comer juntos es la mejor parte de cocinar. Cada uno ayuda: uno pone las servilletas, otro lleva el pan y alguien cuenta cómo le ha ido el día.", ca: "Menjar junts és la millor part de cuinar. Cadascú ajuda: un posa els tovallons, un altre porta el pa i algú explica com li ha anat el dia.", en: "Eating together is the best part of cooking. Everyone helps: one sets the napkins, another brings the bread, and someone tells how their day went.", cs: "Jíst spolu je na vaření to nejlepší. Každý pomáhá: jeden rozdá ubrousky, druhý přinese chleba a někdo vypráví, jaký měl den.", fr: "Manger ensemble est la meilleure partie de la cuisine. Chacun aide : l'un met les serviettes, l'autre apporte le pain, et quelqu'un raconte sa journée." } },
-      { cat: "mercado", emoji: "🍎", x: 1900, y: 440, size: 2, iw: 150, ih: 118,
+      { cat: "mercado", emoji: "🍎", x: 3160, y: 440, size: 2, iw: 150, ih: 118,
         svg: `<svg viewBox="0 0 165 130" width="100%" height="100%">
           <rect x="18" y="62" width="10" height="62" fill="#6d4c41"/><rect x="137" y="62" width="10" height="62" fill="#6d4c41"/>
           <path d="M6 62 L18 22 L147 22 L159 62 Z" fill="#43a047"/>
@@ -467,7 +467,7 @@ Object.assign(THEMES.cocina.content, {
           <path d="M78 44 Q82 40 86 44" stroke="#f9a825" stroke-width="2" fill="none"/></svg>`,
         name: { es: "El puesto de frutas", ca: "La parada de fruites", en: "The fruit stall", cs: "Stánek s ovocem", fr: "L'étal de fruits" },
         fact: { es: "Cada estación trae su fruta: fresas en primavera, sandía en verano, uvas en otoño y naranjas en invierno. Comer de temporada sabe mejor y ayuda al planeta.", ca: "Cada estació porta la seva fruita: maduixes a la primavera, síndria a l'estiu, raïm a la tardor i taronges a l'hivern. Menjar de temporada és més bo i ajuda el planeta.", en: "Every season brings its fruit: strawberries in spring, watermelon in summer, grapes in autumn and oranges in winter. Eating in season tastes better and helps the planet.", cs: "Každé roční období nese své ovoce: jahody na jaře, meloun v létě, hrozny na podzim a pomeranče v zimě. Sezonní jídlo chutná líp a pomáhá planetě.", fr: "Chaque saison apporte ses fruits : fraises au printemps, pastèque en été, raisin en automne et oranges en hiver. Manger de saison, c'est meilleur et ça aide la planète." } },
-      { cat: "mercado", emoji: "🥐", x: 2200, y: 640, size: 2, iw: 140, ih: 116,
+      { cat: "mercado", emoji: "🥐", x: 3720, y: 640, size: 2, iw: 140, ih: 116,
         svg: `<svg viewBox="0 0 155 128" width="100%" height="100%">
           <rect x="12" y="30" width="130" height="92" rx="8" fill="#bf8d5a"/>
           <path d="M6 30 L20 8 L134 8 L148 30 Z" fill="#8d5a33"/>
@@ -486,7 +486,7 @@ Object.assign(THEMES.cocina.content, {
             <animate attributeName="opacity" values=".8;.25;.8" dur="2.6s" repeatCount="indefinite"/></path></svg>`,
         name: { es: "La panadería", ca: "La fleca", en: "The bakery", cs: "Pekařství", fr: "La boulangerie" },
         fact: { es: "Los panaderos madrugan muchísimo: amasan de noche para que el pan esté calentito por la mañana. Por eso la panadería huele a recién hecho tan temprano.", ca: "Els forners matinen moltíssim: pasten de nit perquè el pa sigui calentó al matí. Per això la fleca fa olor d'acabat de fer tan d'hora.", en: "Bakers wake up very very early: they knead at night so the bread is warm in the morning. That is why the bakery smells freshly baked so early.", cs: "Pekaři vstávají hrozně brzy: hnětou těsto v noci, aby byl chleba ráno teplý. Proto pekařství voní čerstvým pečivem už za svítání.", fr: "Les boulangers se lèvent très très tôt : ils pétrissent la nuit pour que le pain soit chaud le matin. Voilà pourquoi la boulangerie sent le frais si tôt." } },
-      { cat: "mercado", emoji: "🧀", x: 2020, y: 880, iw: 108, ih: 78,
+      { cat: "mercado", emoji: "🧀", x: 3440, y: 880, iw: 108, ih: 78,
         svg: `<svg viewBox="0 0 120 88" width="100%" height="100%">
           <ellipse cx="60" cy="80" rx="52" ry="6" fill="rgba(0,0,0,.12)"/>
           <ellipse cx="42" cy="64" rx="34" ry="12" fill="#f9a825"/><rect x="8" y="52" width="68" height="12" fill="#f9a825"/><ellipse cx="42" cy="52" rx="34" ry="12" fill="#fdd835"/>
@@ -499,7 +499,7 @@ Object.assign(THEMES.cocina.content, {
           <path d="M38 41 Q42 44 46 41" stroke="#5d4037" stroke-width="2" fill="none" stroke-linecap="round"/></svg>`,
         name: { es: "El puesto de quesos", ca: "La parada de formatges", en: "The cheese stall", cs: "Stánek se sýry", fr: "L'étal de fromages" },
         fact: { es: "Hay quesos de leche de vaca, de cabra y de oveja. ¡Y los agujeros los hacen burbujas de aire que nacen mientras el queso madura!", ca: "Hi ha formatges de llet de vaca, de cabra i d'ovella. I els forats els fan bombolles d'aire que neixen mentre el formatge madura!", en: "There are cheeses made from cow, goat and sheep milk. And the holes are made by air bubbles born while the cheese ripens!", cs: "Sýry se dělají z mléka krav, koz i ovcí. A dírky v nich dělají bublinky vzduchu, které vznikají, když sýr zraje!", fr: "Il y a des fromages au lait de vache, de chèvre et de brebis. Et les trous, ce sont des bulles d'air qui naissent pendant que le fromage mûrit !" } },
-      { cat: "mercado", emoji: "🧺", x: 2440, y: 420, iw: 92, ih: 80,
+      { cat: "mercado", emoji: "🧺", x: 4020, y: 420, iw: 92, ih: 80,
         svg: `<svg viewBox="0 0 100 88" width="100%" height="100%">
           <path d="M60 34 Q60 12 78 10 Q84 10 82 18 Q70 20 70 34 Z" fill="#d8a15c"/>
           <circle cx="30" cy="26" r="9" fill="#e53935"/><path d="M30 18 Q29 13 33 12" stroke="#33691e" stroke-width="2.2" fill="none"/>
@@ -522,18 +522,22 @@ Object.assign(THEMES.cocina.content, {
         <rect x="${x + 5}" y="${y + 5}" width="${w - 10}" height="${h - 10}" rx="4" fill="rgba(255,255,255,.22)"/>
         <path d="M${x + 5} ${y + h / 2} h${w - 10}" stroke="rgba(90,60,30,.22)" stroke-width="3"/>`;
 
-      /* ---------- gradientes y patrones, con nombre propio para no chocar con otros mapas ---------- */
+      /* ---------- gradientes y patrones, con prefijo cocX para no chocar con otros mapas ---------- */
       s += `<defs>
-        <linearGradient id="cocPared" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fff5e6"/><stop offset="100%" stop-color="#efd8ba"/></linearGradient>
-        <linearGradient id="cocMadera" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#cd9059"/><stop offset="100%" stop-color="#9d6635"/></linearGradient>
-        <linearGradient id="cocPuerta" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8bb8b"/><stop offset="100%" stop-color="#cd9059"/></linearGradient>
-        <linearGradient id="cocPiedra" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fbf4ea"/><stop offset="60%" stop-color="#e7dac8"/><stop offset="100%" stop-color="#c3b09a"/></linearGradient>
-        <linearGradient id="cocJardin" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#cbe9fb"/><stop offset="58%" stop-color="#eaf6e0"/><stop offset="100%" stop-color="#8ec26a"/></linearGradient>
-        <linearGradient id="cocCielo" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#b6e1f5"/><stop offset="60%" stop-color="#e9f4f6"/><stop offset="100%" stop-color="#fdeacb"/></linearGradient>
-        <linearGradient id="cocPapel" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fdeddb"/><stop offset="100%" stop-color="#f1d5b6"/></linearGradient>
-        <linearGradient id="cocAdoquin" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#dcc4a3"/><stop offset="100%" stop-color="#b18f6c"/></linearGradient>
-        <radialGradient id="cocLuz" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="rgba(255,214,130,.5)"/><stop offset="100%" stop-color="rgba(255,214,130,0)"/></radialGradient>
-        <pattern id="cocAzulejo" width="144" height="144" patternUnits="userSpaceOnUse">
+        <linearGradient id="cocXPared" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fff5e6"/><stop offset="100%" stop-color="#efd8ba"/></linearGradient>
+        <linearGradient id="cocXMadera" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#cd9059"/><stop offset="100%" stop-color="#9d6635"/></linearGradient>
+        <linearGradient id="cocXPuerta" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8bb8b"/><stop offset="100%" stop-color="#cd9059"/></linearGradient>
+        <linearGradient id="cocXPiedra" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fbf4ea"/><stop offset="60%" stop-color="#e7dac8"/><stop offset="100%" stop-color="#c3b09a"/></linearGradient>
+        <linearGradient id="cocXJardin" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#cbe9fb"/><stop offset="58%" stop-color="#eaf6e0"/><stop offset="100%" stop-color="#8ec26a"/></linearGradient>
+        <linearGradient id="cocXCielo" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#b6e1f5"/><stop offset="60%" stop-color="#e9f4f6"/><stop offset="100%" stop-color="#fdeacb"/></linearGradient>
+        <linearGradient id="cocXPapel" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fdeddb"/><stop offset="100%" stop-color="#f1d5b6"/></linearGradient>
+        <linearGradient id="cocXAdoquin" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#dcc4a3"/><stop offset="100%" stop-color="#b18f6c"/></linearGradient>
+        <linearGradient id="cocXTarima" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c48f57"/><stop offset="100%" stop-color="#a3743f"/></linearGradient>
+        <radialGradient id="cocXLuz" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="rgba(255,214,130,.5)"/><stop offset="100%" stop-color="rgba(255,214,130,0)"/></radialGradient>
+        <linearGradient id="cocXCalle" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="rgba(255,236,179,0)"/><stop offset="60%" stop-color="rgba(255,236,179,.55)"/><stop offset="100%" stop-color="rgba(255,236,179,.1)"/></linearGradient>
+        <linearGradient id="cocXHierba" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(169,207,140,.9)"/><stop offset="45%" stop-color="rgba(186,196,150,.45)"/><stop offset="100%" stop-color="rgba(205,179,145,0)"/></linearGradient>
+        <linearGradient id="cocXPlaza" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(138,104,68,.26)"/><stop offset="34%" stop-color="rgba(138,104,68,0)"/><stop offset="100%" stop-color="rgba(255,236,179,.22)"/></linearGradient>
+        <pattern id="cocXAzulejo" width="144" height="144" patternUnits="userSpaceOnUse">
           <rect x="3" y="3" width="66" height="66" rx="9" fill="rgba(255,255,255,.34)"/>
           <rect x="75" y="3" width="66" height="66" rx="9" fill="rgba(255,255,255,.18)"/>
           <rect x="3" y="75" width="66" height="66" rx="9" fill="rgba(255,255,255,.18)"/>
@@ -543,7 +547,7 @@ Object.assign(THEMES.cocina.content, {
           <circle cx="36" cy="36" r="5" fill="rgba(238,150,140,.26)"/>
           <circle cx="108" cy="108" r="5" fill="rgba(238,150,140,.26)"/>
         </pattern>
-        <pattern id="cocFlorcita" width="112" height="112" patternUnits="userSpaceOnUse">
+        <pattern id="cocXFlorcita" width="112" height="112" patternUnits="userSpaceOnUse">
           <g fill="rgba(212,124,110,.26)">${[0, 72, 144, 216, 288].map(a => `<ellipse cx="30" cy="30" rx="5" ry="11" transform="rotate(${a} 30 30)"/>`).join("")}</g>
           <circle cx="30" cy="30" r="4" fill="rgba(240,186,90,.45)"/>
           <g fill="rgba(146,176,120,.28)">${[0, 72, 144, 216, 288].map(a => `<ellipse cx="86" cy="84" rx="4" ry="9" transform="rotate(${a} 86 84)"/>`).join("")}</g>
@@ -551,175 +555,358 @@ Object.assign(THEMES.cocina.content, {
         </pattern>
       </defs>`;
 
-      /* ================== 1. LA GRAN COCINA (x 0 a 1046) ================== */
+      /* ================== 1. LA GRAN COCINA (x 0 a 2020) ================== */
       /* la pared alicatada y la moldura de arriba */
-      s += `<rect x="0" y="0" width="1046" height="968" fill="url(#cocPared)"/>
-        <rect x="0" y="88" width="1046" height="704" fill="url(#cocAzulejo)"/>
-        <rect x="0" y="0" width="1046" height="90" fill="#e9c9a2"/>
-        <rect x="0" y="78" width="1046" height="14" rx="5" fill="#c9985f"/>`;
+      s += `<rect x="0" y="0" width="2020" height="968" fill="url(#cocXPared)"/>
+        <rect x="0" y="88" width="2020" height="712" fill="url(#cocXAzulejo)"/>
+        <rect x="0" y="0" width="2020" height="90" fill="#e9c9a2"/>
+        <rect x="0" y="78" width="2020" height="14" rx="5" fill="#c9985f"/>`;
 
-      /* la columna alta de la izquierda: puertas arriba, el hueco de la nevera y el armario del delantal */
-      s += `<rect x="96" y="100" width="200" height="866" rx="10" fill="url(#cocMadera)"/>
-        <rect x="86" y="86" width="220" height="26" rx="9" fill="#8a5527"/>
-        <rect x="112" y="132" width="80" height="238" rx="7" fill="url(#cocPuerta)"/>
-        <rect x="200" y="132" width="80" height="238" rx="7" fill="url(#cocPuerta)"/>
-        <rect x="112" y="392" width="168" height="176" rx="8" fill="#b58755"/>
-        <rect x="108" y="560" width="176" height="16" rx="6" fill="#8a5527"/>
-        <rect x="112" y="592" width="80" height="174" rx="7" fill="url(#cocPuerta)"/>
-        <rect x="200" y="592" width="80" height="174" rx="7" fill="url(#cocPuerta)"/>
-        <rect x="112" y="790" width="168" height="164" rx="8" fill="url(#cocPuerta)"/>
-        <rect x="126" y="796" width="140" height="8" rx="4" fill="#8d6e63"/>
-        <circle cx="138" cy="806" r="5" fill="#6d4c41"/><circle cx="254" cy="806" r="5" fill="#6d4c41"/>
-        ${[334, 728].map(hy => `<rect x="172" y="${hy}" width="26" height="8" rx="4" fill="#7a4a24"/><rect x="212" y="${hy}" width="26" height="8" rx="4" fill="#7a4a24"/>`).join("")}`;
+      /* la estantería estrecha del borde izquierdo: llena la franja que quedaba desnuda */
+      s += `<rect x="8" y="112" width="112" height="854" rx="8" fill="url(#cocXMadera)"/>
+        <rect x="18" y="124" width="92" height="830" rx="5" fill="#8c5b30"/>
+        <rect x="2" y="96" width="118" height="22" rx="8" fill="#8a5527"/>`;
+      [280, 448, 616, 784].forEach(by => {
+        s += `<rect x="10" y="${by}" width="108" height="15" rx="6" fill="#c08a55"/>`;
+      });
+      /* los cacharritos de cada balda, cada uno apoyado en su tabla */
+      s += `<rect x="24" y="234" width="30" height="46" rx="6" fill="#ffcc80" opacity=".95"/><rect x="21" y="226" width="36" height="11" rx="5" fill="#a1887f"/>
+        <rect x="66" y="248" width="28" height="32" rx="6" fill="#c5e1a5" opacity=".95"/><rect x="63" y="240" width="34" height="10" rx="5" fill="#a1887f"/>
+        <path d="M24 448 q4 -34 26 -34 q22 0 26 34 Z" fill="#f8bbd0"/><rect x="42" y="406" width="16" height="9" rx="4" fill="#a1887f"/>
+        <ellipse cx="88" cy="440" rx="20" ry="9" fill="#fdf3e6"/><ellipse cx="88" cy="432" rx="20" ry="9" fill="#ffe0b2"/>
+        <rect x="22" y="572" width="32" height="44" rx="6" fill="#b3e5fc" opacity=".95"/><rect x="19" y="564" width="38" height="11" rx="5" fill="#a1887f"/>
+        <path d="M68 616 q0 -30 12 -30 q12 0 12 30 Z" fill="#ffab91"/>
+        <rect x="20" y="742" width="80" height="42" rx="7" fill="#e8bb8b"/>
+        <path d="M28 742 h64" stroke="#a1887f" stroke-width="5"/>
+        <ellipse cx="62" cy="770" rx="16" ry="7" fill="rgba(120,80,40,.18)"/>`;
 
-      /* armarios altos junto a la campana, uno de ellos con puertecita de cristal */
-      s += `<rect x="306" y="100" width="176" height="252" rx="10" fill="url(#cocMadera)"/>
-        <rect x="298" y="86" width="192" height="24" rx="9" fill="#8a5527"/>
-        <rect x="318" y="124" width="72" height="212" rx="7" fill="url(#cocPuerta)"/>
-        <rect x="398" y="124" width="72" height="212" rx="7" fill="#f6e8d4"/>
-        <rect x="406" y="132" width="56" height="196" rx="5" fill="rgba(178,222,232,.45)"/>
-        ${[[412, 176, 18, 30, "#ffcc80"], [436, 168, 20, 38, "#c5e1a5"], [412, 250, 22, 34, "#f8bbd0"], [440, 244, 16, 28, "#b3e5fc"]].map(j => `<rect x="${j[0]}" y="${j[1]}" width="${j[2]}" height="${j[3]}" rx="4" fill="${j[4]}" opacity=".9"/>`).join("")}
-        <rect x="372" y="298" width="22" height="8" rx="4" fill="#7a4a24"/><rect x="394" y="298" width="22" height="8" rx="4" fill="#7a4a24"/>`;
+      /* la columna alta de la izquierda: puertas arriba, el hueco de la nevera y los cajones */
+      s += `<rect x="130" y="100" width="250" height="866" rx="10" fill="url(#cocXMadera)"/>
+        <rect x="120" y="86" width="270" height="26" rx="9" fill="#8a5527"/>
+        <rect x="146" y="132" width="104" height="266" rx="7" fill="url(#cocXPuerta)"/>
+        <rect x="258" y="132" width="104" height="266" rx="7" fill="url(#cocXPuerta)"/>
+        <rect x="146" y="420" width="216" height="176" rx="8" fill="#b58755"/>
+        <rect x="152" y="556" width="204" height="16" rx="6" fill="#c08a55"/>
+        <ellipse cx="254" cy="556" rx="62" ry="9" fill="rgba(90,55,20,.22)"/>
+        <rect x="142" y="588" width="224" height="16" rx="6" fill="#8a5527"/>
+        <rect x="146" y="620" width="104" height="164" rx="7" fill="url(#cocXPuerta)"/>
+        <rect x="258" y="620" width="104" height="164" rx="7" fill="url(#cocXPuerta)"/>
+        <rect x="146" y="806" width="216" height="150" rx="8" fill="url(#cocXPuerta)"/>
+        <rect x="160" y="812" width="188" height="8" rx="4" fill="#8d6e63"/>
+        <circle cx="172" cy="822" r="5" fill="#6d4c41"/><circle cx="336" cy="822" r="5" fill="#6d4c41"/>
+        ${[360, 748].map(hy => `<rect x="184" y="${hy}" width="30" height="8" rx="4" fill="#7a4a24"/><rect x="286" y="${hy}" width="30" height="8" rx="4" fill="#7a4a24"/>`).join("")}`;
+
+      /* el armario del delantal: su puerta y el colgador donde cuelga */
+      s += `<rect x="392" y="792" width="156" height="174" rx="9" fill="url(#cocXMadera)"/>
+        <rect x="400" y="800" width="140" height="158" rx="7" fill="url(#cocXPuerta)"/>
+        <rect x="418" y="806" width="104" height="9" rx="4" fill="#8a5527"/>
+        <circle cx="438" cy="812" r="6" fill="#7a4a24"/><circle cx="502" cy="812" r="6" fill="#7a4a24"/>
+        <rect x="426" y="924" width="88" height="9" rx="4" fill="#8a5527" opacity=".7"/>`;
+
+      /* el reloj de la cocina y la baldita de las plantas: la pared entre los dos armarios ya no está pelada */
+      s += `<circle cx="496" cy="248" r="58" fill="#e8bb8b"/>
+        <circle cx="496" cy="248" r="48" fill="#fdf3e6"/>
+        ${[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(i => `<rect x="494" y="206" width="4" height="${i % 3 === 0 ? 10 : 6}" rx="2" fill="#a1887f" transform="rotate(${i * 30} 496 248)"/>`).join("")}
+        <path d="M496 248 L496 216" stroke="#5d4037" stroke-width="5" stroke-linecap="round"/>
+        <path d="M496 248 L522 262" stroke="#5d4037" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="496" cy="248" r="5" fill="#c62828"/>`;
+      s += `<rect x="404" y="560" width="184" height="16" rx="6" fill="#c08a55"/>
+        <path d="M420 576 l12 22 M572 576 l-12 22" stroke="#8a5527" stroke-width="7" stroke-linecap="round"/>
+        <path d="M424 560 q2 -26 22 -26 q20 0 22 26 Z" fill="#d0704f"/>
+        <path d="M436 534 q-10 -26 4 -40 M446 534 q6 -30 22 -34 M441 534 q0 -22 -14 -32" stroke="#4f9a4a" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <rect x="486" y="516" width="30" height="44" rx="6" fill="#ffe082" opacity=".95"/><rect x="483" y="508" width="36" height="11" rx="5" fill="#a1887f"/>
+        <rect x="528" y="528" width="26" height="32" rx="6" fill="#ce93d8" opacity=".95"/><rect x="525" y="520" width="32" height="10" rx="5" fill="#a1887f"/>`;
+
+      /* el armario del horno, de suelo a techo, con su hueco caliente */
+      s += `<rect x="600" y="100" width="212" height="866" rx="10" fill="url(#cocXMadera)"/>
+        <rect x="590" y="86" width="232" height="26" rx="9" fill="#8a5527"/>
+        <rect x="616" y="132" width="180" height="230" rx="7" fill="url(#cocXPuerta)"/>
+        <rect x="616" y="380" width="180" height="216" rx="7" fill="#b58755"/>
+        <rect x="616" y="620" width="180" height="176" rx="8" fill="#3f2a1c"/>
+        <rect x="628" y="632" width="156" height="152" rx="6" fill="rgba(255,183,77,.28)"/>
+        <ellipse cx="706" cy="712" rx="128" ry="76" fill="url(#cocXLuz)"/>
+        <rect x="624" y="744" width="164" height="16" rx="6" fill="#5d4033"/>
+        <ellipse cx="706" cy="746" rx="58" ry="8" fill="rgba(40,20,10,.35)"/>
+        <rect x="612" y="600" width="188" height="16" rx="6" fill="#8a5527"/>
+        <rect x="616" y="812" width="180" height="144" rx="8" fill="url(#cocXPuerta)"/>
+        <rect x="648" y="818" width="116" height="8" rx="4" fill="#7a4a24"/>`;
 
       /* la ventana de verdad, con el jardín al fondo, justo detrás del huerto */
-      s += `<rect x="484" y="94" width="230" height="214" rx="9" fill="#8a5527"/>
-        <rect x="498" y="108" width="202" height="186" rx="5" fill="url(#cocJardin)"/>
-        <circle cx="666" cy="140" r="19" fill="rgba(255,244,170,.95)"/>
-        <ellipse cx="540" cy="272" rx="80" ry="26" fill="#7cb342" opacity=".7"/>
-        <ellipse cx="664" cy="280" rx="64" ry="22" fill="#8bc34a" opacity=".55"/>
-        <path d="M552 258 q6 -36 2 -54" stroke="#8d6e63" stroke-width="8" fill="none" stroke-linecap="round"/>
-        <circle cx="552" cy="188" r="32" fill="#6aa84a"/><circle cx="582" cy="206" r="20" fill="#82ba5c"/><circle cx="524" cy="208" r="17" fill="#82ba5c"/>
-        <circle cx="540" cy="176" r="5" fill="#ef5350"/><circle cx="572" cy="198" r="5" fill="#ef5350"/>
-        <rect x="594" y="108" width="9" height="186" fill="#8a5527" opacity=".75"/>
-        <rect x="498" y="196" width="202" height="8" fill="#8a5527" opacity=".4"/>
-        <path d="M498 108 L700 108 L700 138 q-25 16 -50 0 q-25 16 -51 0 q-25 16 -51 0 q-25 16 -50 0 Z" fill="#ef9a9a" opacity=".85"/>
-        <rect x="466" y="288" width="266" height="24" rx="8" fill="#efdcc0"/>
-        <rect x="466" y="306" width="266" height="12" rx="5" fill="#c9a678"/>`;
+      s += `<rect x="838" y="164" width="196" height="152" rx="9" fill="#8a5527"/>
+        <rect x="852" y="178" width="168" height="124" rx="5" fill="url(#cocXJardin)"/>
+        <circle cx="990" cy="204" r="18" fill="rgba(255,244,170,.95)"/>
+        <ellipse cx="890" cy="288" rx="70" ry="22" fill="#7cb342" opacity=".7"/>
+        <ellipse cx="994" cy="292" rx="54" ry="18" fill="#8bc34a" opacity=".55"/>
+        <path d="M900 274 q6 -32 2 -48" stroke="#8d6e63" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <circle cx="900" cy="222" r="28" fill="#6aa84a"/><circle cx="926" cy="238" r="17" fill="#82ba5c"/><circle cx="876" cy="240" r="15" fill="#82ba5c"/>
+        <circle cx="890" cy="212" r="5" fill="#ef5350"/><circle cx="918" cy="232" r="5" fill="#ef5350"/>
+        <rect x="932" y="178" width="9" height="124" fill="#8a5527" opacity=".75"/>
+        <rect x="852" y="238" width="168" height="8" fill="#8a5527" opacity=".4"/>
+        <path d="M852 178 L1020 178 L1020 206 q-21 15 -42 0 q-21 15 -42 0 q-21 15 -42 0 q-21 15 -42 0 Z" fill="#ef9a9a" opacity=".85"/>
+        <rect x="820" y="300" width="232" height="24" rx="8" fill="#efdcc0"/>
+        <rect x="820" y="318" width="232" height="12" rx="5" fill="#c9a678"/>`;
 
-      /* dos baldas con tarros a la derecha, la de abajo sostiene el estante de especias */
-      s += `<rect x="742" y="350" width="286" height="18" rx="7" fill="#b5794a"/>
-        <path d="M760 368 l16 26 M1010 368 l-16 26" stroke="#8a5527" stroke-width="8" stroke-linecap="round"/>
-        <rect x="742" y="196" width="286" height="16" rx="6" fill="#b5794a"/>
-        <path d="M760 212 l14 22 M1010 212 l-14 22" stroke="#8a5527" stroke-width="7" stroke-linecap="round"/>`;
-      [[752, 350, 34, 50, "#ffcc80"], [914, 350, 38, 56, "#c5e1a5"], [958, 350, 30, 44, "#f8bbd0"], [994, 350, 26, 36, "#b3e5fc"],
-      [758, 196, 32, 46, "#ffe082"], [800, 196, 26, 38, "#ce93d8"], [898, 196, 36, 52, "#ffab91"], [942, 196, 28, 40, "#a5d6a7"]].forEach(j => {
+      /* la campana extractora, bien alta: recoge el vapor de la olla que hay debajo */
+      s += `<rect x="1148" y="92" width="44" height="156" rx="8" fill="#cfd8dc"/>
+        <path d="M1074 348 L1122 244 L1218 244 L1268 348 Z" fill="#e6ebed"/>
+        <path d="M1116 246 L1224 246" stroke="#b0bec5" stroke-width="6" stroke-linecap="round"/>
+        <rect x="1066" y="338" width="212" height="18" rx="9" fill="#b0bec5"/>
+        <rect x="1098" y="342" width="148" height="9" rx="4.5" fill="rgba(255,240,180,.9)"/>`;
+      /* EL HOGAR DE OBRA, debajo de la campana: dos jambas que suben hasta el borde de la
+         campana, el fondo alicatado, la poyata de piedra donde se apoya la olla del punto
+         y el cuerpo que baja hasta la encimera. Antes la olla se sostenía en una balda
+         suelta a media pared y los fogones quedaban huérfanos abajo, en la encimera: así
+         la campana, la olla y el fuego se leen como una sola escena de cocinar */
+      s += `<rect x="1088" y="356" width="170" height="442" fill="#dcc4a3"/>
+        <rect x="1058" y="356" width="30" height="442" fill="#efdcc0"/>
+        <rect x="1258" y="356" width="30" height="442" fill="#dfc7ab"/>
+        <rect x="1058" y="356" width="230" height="12" fill="#c9a678"/>`;
+      /* el alicatado del fondo, para que el hueco no quede como una mancha lisa */
+      for (let f = 0; f < 10; f++) {
+        for (let c = 0; c < 4; c++) {
+          const tx0 = 1092 + c * 42, ty0 = 372 + f * 42;
+          s += `<rect x="${tx0}" y="${ty0}" width="38" height="38" rx="5" fill="${(f + c) % 2 ? "#edd9ba" : "#e0c8a4"}"/>`;
+          if ((f + c) % 4 === 1) s += `<path d="M${tx0 + 19} ${ty0 + 9} q9 10 0 20 q-9 -10 0 -20 Z" fill="rgba(120,190,205,.4)"/>`;
+          if ((f + c) % 4 === 3) s += `<circle cx="${tx0 + 19}" cy="${ty0 + 19}" r="5" fill="rgba(238,150,140,.35)"/>`;
+        }
+      }
+      /* la penumbra de dentro del hueco: las jambas dejan de leerse como dos rayas */
+      s += `<rect x="1088" y="356" width="16" height="442" fill="rgba(120,86,48,.22)"/>
+        <rect x="1242" y="356" width="16" height="442" fill="rgba(120,86,48,.16)"/>
+        <rect x="1088" y="356" width="170" height="20" fill="rgba(120,86,48,.24)"/>`;
+      /* la poyata de piedra con sus dos fuegos: la olla del punto se asienta encima */
+      s += `<rect x="1042" y="504" width="262" height="28" rx="8" fill="url(#cocXPiedra)"/>
+        <rect x="1042" y="528" width="262" height="28" rx="7" fill="#c9b7a0"/>
+        <rect x="1042" y="528" width="262" height="7" rx="3" fill="#a89684"/>
+        <ellipse cx="1072" cy="516" rx="21" ry="7" fill="rgba(60,50,40,.32)"/>
+        <ellipse cx="1072" cy="515" rx="12" ry="4" fill="rgba(60,50,40,.4)"/>
+        <ellipse cx="1274" cy="516" rx="21" ry="7" fill="rgba(60,50,40,.32)"/>
+        <ellipse cx="1274" cy="515" rx="12" ry="4" fill="rgba(60,50,40,.4)"/>`;
+      /* la barra de los paños, colgada del canto de la poyata */
+      s += `<rect x="1070" y="558" width="206" height="10" rx="5" fill="#b0bec5"/>
+        <circle cx="1074" cy="563" r="7" fill="#90a4ae"/><circle cx="1272" cy="563" r="7" fill="#90a4ae"/>`;
+      /* dentro del hogar, una baldita con dos cazuelas de barro */
+      s += `<rect x="1112" y="702" width="124" height="12" rx="5" fill="#b5794a"/>
+        <ellipse cx="1146" cy="694" rx="24" ry="13" fill="#c1694a"/>
+        <ellipse cx="1146" cy="686" rx="24" ry="10" fill="#d0704f"/>
+        <ellipse cx="1146" cy="682" rx="9" ry="4" fill="#e6a08c"/>
+        <ellipse cx="1204" cy="696" rx="18" ry="10" fill="#c1694a"/>
+        <ellipse cx="1204" cy="690" rx="18" ry="8" fill="#d0704f"/>`;
+      /* la balda de tarros de al lado */
+      s += `<rect x="1296" y="470" width="212" height="16" rx="6" fill="#b5794a"/>
+        <path d="M1314 486 l14 22 M1490 486 l-14 22" stroke="#8a5527" stroke-width="7" stroke-linecap="round"/>`;
+      [[1306, 470, 32, 46, "#ffe082"], [1348, 470, 26, 38, "#ce93d8"], [1420, 470, 36, 52, "#ffab91"], [1464, 470, 28, 40, "#a5d6a7"]].forEach(j => {
         s += `<rect x="${j[0]}" y="${j[1] - j[3]}" width="${j[2]}" height="${j[3]}" rx="6" fill="${j[4]}" opacity=".92"/>
           <rect x="${j[0] - 3}" y="${j[1] - j[3] - 10}" width="${j[2] + 6}" height="12" rx="5" fill="#a1887f"/>`;
       });
+      /* la balda de la batidora y el estante de las especias, cada uno bajo su punto */
+      s += `<rect x="1556" y="668" width="148" height="18" rx="7" fill="#b5794a"/>
+        <path d="M1574 686 l14 24 M1686 686 l-14 24" stroke="#8a5527" stroke-width="8" stroke-linecap="round"/>
+        <rect x="1766" y="338" width="176" height="18" rx="7" fill="#b5794a"/>
+        <path d="M1784 356 l14 24 M1924 356 l-14 24" stroke="#8a5527" stroke-width="8" stroke-linecap="round"/>
+        <rect x="1766" y="196" width="176" height="16" rx="6" fill="#b5794a"/>
+        <path d="M1784 212 l14 22 M1924 212 l-14 22" stroke="#8a5527" stroke-width="7" stroke-linecap="round"/>`;
+      [[1776, 196, 34, 50, "#ffcc80"], [1820, 196, 30, 44, "#c5e1a5"], [1862, 196, 34, 48, "#f8bbd0"], [1904, 196, 26, 36, "#b3e5fc"]].forEach(j => {
+        s += `<rect x="${j[0]}" y="${j[1] - j[3]}" width="${j[2]}" height="${j[3]}" rx="6" fill="${j[4]}" opacity=".92"/>
+          <rect x="${j[0] - 3}" y="${j[1] - j[3] - 10}" width="${j[2] + 6}" height="12" rx="5" fill="#a1887f"/>`;
+      });
+      /* el armarito de las tazas, colgado junto a la campana */
+      s += `<rect x="1290" y="138" width="220" height="18" rx="7" fill="#8a5527"/>
+        <rect x="1298" y="152" width="204" height="244" rx="9" fill="url(#cocXMadera)"/>
+        <rect x="1308" y="162" width="184" height="224" rx="6" fill="#f3e3ca"/>
+        <rect x="1314" y="168" width="84" height="212" rx="5" fill="rgba(179,229,252,.3)"/>
+        <rect x="1402" y="168" width="84" height="212" rx="5" fill="rgba(179,229,252,.22)"/>
+        <rect x="1312" y="268" width="180" height="9" rx="4" fill="#c08a55"/>
+        ${[[1340, 258, "#fdf3e6"], [1372, 258, "#f8c8b0"], [1428, 258, "#bcd9ee"], [1462, 258, "#fdf3e6"]].map(c => `<circle cx="${c[0]}" cy="${c[1]}" r="16" fill="${c[2]}"/><circle cx="${c[0]}" cy="${c[1]}" r="9" fill="rgba(255,255,255,.7)"/>`).join("")}
+        <rect x="1312" y="352" width="180" height="9" rx="4" fill="#c08a55"/>
+        ${[[1342, 356], [1378, 356], [1430, 356], [1466, 356]].map(c => `<path d="M${c[0] - 13} ${c[1] - 24} h26 q-2 24 -13 24 q-11 0 -13 -24 Z" fill="#fff8e1"/><path d="M${c[0] + 12} ${c[1] - 19} q11 4 -1 14" stroke="#dcc9ab" stroke-width="4" fill="none"/>`).join("")}
+        <rect x="1394" y="168" width="12" height="212" fill="url(#cocXMadera)"/>
+        <circle cx="1388" cy="290" r="5" fill="#7a4a24"/><circle cx="1412" cy="290" r="5" fill="#7a4a24"/>
+        <path d="M1318 174 L1352 174" stroke="rgba(255,255,255,.6)" stroke-width="5" stroke-linecap="round"/>`;
 
-      /* la campana extractora sobre los fogones, con su tubo y su luz cálida */
-      s += `<rect x="400" y="350" width="44" height="144" rx="8" fill="#cfd8dc"/>
-        <path d="M306 616 L364 490 L482 490 L546 616 Z" fill="#e6ebed"/>
-        <path d="M358 492 L488 492" stroke="#b0bec5" stroke-width="6" stroke-linecap="round"/>
-        <rect x="298" y="606" width="256" height="18" rx="9" fill="#b0bec5"/>
-        <rect x="336" y="610" width="180" height="9" rx="4.5" fill="rgba(255,240,180,.9)"/>
-        <ellipse cx="426" cy="742" rx="152" ry="58" fill="url(#cocLuz)"/>`;
+      /* el escurreplatos sobre el fregadero: los platos de canto en su balda */
+      s += `<rect x="1310" y="602" width="200" height="16" rx="6" fill="#c08a55"/>
+        <path d="M1326 618 l12 22 M1494 618 l-12 22" stroke="#8a5527" stroke-width="7" stroke-linecap="round"/>
+        <rect x="1318" y="560" width="184" height="8" rx="4" fill="#b0bec5"/>
+        ${[1352, 1400, 1448].map((px, i) => `<ellipse cx="${px}" cy="${580 - i % 2 * 4}" rx="9" ry="30" fill="#fdf3e6"/><ellipse cx="${px}" cy="${580 - i % 2 * 4}" rx="4" ry="24" fill="#e0d6c6"/>`).join("")}
+        <path d="M1472 602 q-2 -26 12 -26 q14 0 12 26 Z" fill="#a5d6a7"/>`;
 
-      /* la balda de la olla y la balda de la batidora */
-      s += `<rect x="556" y="518" width="252" height="18" rx="7" fill="#b5794a"/>
-        <path d="M574 536 l14 24 M790 536 l-14 24" stroke="#8a5527" stroke-width="8" stroke-linecap="round"/>
-        <rect x="806" y="670" width="238" height="18" rx="7" fill="#b5794a"/>
-        <path d="M824 688 l14 24 M1026 688 l-14 24" stroke="#8a5527" stroke-width="8" stroke-linecap="round"/>
-        <ellipse cx="744" cy="496" rx="30" ry="22" fill="#80cbc4"/>
-        <path d="M772 490 q18 -4 16 12 q-2 12 -14 10" stroke="#4db6ac" stroke-width="6" fill="none"/>
-        <path d="M728 476 q16 -12 32 0" stroke="#4db6ac" stroke-width="6" fill="none" stroke-linecap="round"/>
-        <rect x="738" y="464" width="12" height="10" rx="4" fill="#4db6ac"/>
-        ${[[952, 40, 56, "#ffe082"], [1000, 32, 42, "#ffab91"]].map(j => `<rect x="${j[0]}" y="${670 - j[2]}" width="${j[1]}" height="${j[2]}" rx="6" fill="${j[3]}" opacity=".9"/><rect x="${j[0] - 3}" y="${670 - j[2] - 10}" width="${j[1] + 6}" height="12" rx="5" fill="#a1887f"/>`).join("")}`;
+      /* la barra de las sartenes y la ristra de ajos: la pared alta ya tiene vida */
+      s += `<rect x="1560" y="278" width="204" height="12" rx="6" fill="#a1887f"/>
+        <circle cx="1566" cy="284" r="7" fill="#8a5527"/><circle cx="1758" cy="284" r="7" fill="#8a5527"/>
+        <path d="M1604 292 v22" stroke="#546e7a" stroke-width="6" stroke-linecap="round"/>
+        <circle cx="1604" cy="348" r="34" fill="#607d8b"/><circle cx="1604" cy="348" r="26" fill="#78909c"/>
+        <path d="M1682 292 v20" stroke="#546e7a" stroke-width="6" stroke-linecap="round"/>
+        <circle cx="1682" cy="340" r="28" fill="#78909c"/><circle cx="1682" cy="340" r="21" fill="#90a4ae"/>
+        <path d="M1736 292 v20" stroke="#8a5527" stroke-width="6" stroke-linecap="round"/>
+        ${[0, 1, 2, 3, 4, 5].map(i => `<path d="M${1722 + (i % 2) * 26} ${312 + i * 22} q-9 30 4 44 q13 -14 5 -44 Z" fill="#d33f34"/><path d="M${1722 + (i % 2) * 26} ${312 + i * 22} q-4 -8 4 -10" stroke="#4f9a4a" stroke-width="4" fill="none" stroke-linecap="round"/>`).join("")}`;
 
-      /* dos paños colgados, uno de la balda y otro de la campana */
-      s += `<path d="M614 536 q-8 46 2 92 q24 8 48 0 q10 -46 2 -92 Z" fill="#ef9a9a" opacity=".9"/>
-        <path d="M618 572 h44 M616 602 h48" stroke="rgba(255,255,255,.55)" stroke-width="5"/>
-        <path d="M500 624 q-6 46 2 92 q22 8 44 0 q8 -46 2 -92 Z" fill="#90caf9" opacity=".85"/>
-        <path d="M504 660 h40 M502 690 h44" stroke="rgba(255,255,255,.55)" stroke-width="5"/>`;
+      /* el manojo de hierbas secas del rincón derecho, colgado de su gancho */
+      s += `<path d="M1978 168 q-10 8 0 16" stroke="#8a5527" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <rect x="1968" y="182" width="22" height="14" rx="6" fill="#a1887f"/>
+        ${[-22, -8, 6, 20].map((dx, i) => `<path d="M1979 196 q${dx} ${60 + i * 12} ${dx * 1.4} ${118 + i * 10}" stroke="#7aa860" stroke-width="7" fill="none" stroke-linecap="round"/>`).join("")}
+        ${[[1948, 320], [1966, 336], [1990, 330], [2000, 312]].map(p => `<ellipse cx="${p[0]}" cy="${p[1]}" rx="9" ry="14" fill="#9ccb8e" opacity=".9"/>`).join("")}`;
 
-      /* la gran encimera de piedra y los muebles bajos */
-      s += `<rect x="298" y="752" width="748" height="30" rx="7" fill="url(#cocPiedra)"/>
-        <rect x="298" y="774" width="748" height="10" rx="4" fill="#b9a78e"/>
-        <rect x="304" y="784" width="742" height="182" fill="#a86f3c"/>
-        ${[[312, 136], [456, 134]].map(d => `<rect x="${d[0]}" y="${794}" width="${d[1]}" height="162" rx="8" fill="url(#cocPuerta)"/><rect x="${d[0] + d[1] / 2 - 14}" y="838" width="28" height="9" rx="4.5" fill="#7a4a24"/>`).join("")}
-        ${[794, 852, 910].map(dy => `<rect x="840" y="${dy}" width="196" height="50" rx="7" fill="url(#cocPuerta)"/><rect x="908" y="${dy + 21}" width="60" height="9" rx="4.5" fill="#7a4a24"/>`).join("")}
-        ${[500, 546, 592].map((bx, i) => `<ellipse cx="${bx}" cy="${764 + (i % 2) * 3}" rx="20" ry="8" fill="rgba(66,82,92,.28)"/><ellipse cx="${bx}" cy="${763 + (i % 2) * 3}" rx="11" ry="4.5" fill="rgba(66,82,92,.45)"/>`).join("")}`;
+      /* el claro de pared entre la balda de la batidora y la jamba de la puerta:
+         la tabla de cortar colgada de su clavo y la ristra de ajos */
+      s += `<circle cx="1762" cy="448" r="7" fill="#8a5527"/>
+        <path d="M1762 454 q-9 12 0 22" stroke="#a1887f" stroke-width="5" fill="none"/>
+        <rect x="1716" y="474" width="92" height="128" rx="18" fill="#c9925c"/>
+        <rect x="1724" y="482" width="76" height="112" rx="13" fill="#e0b177"/>
+        <circle cx="1762" cy="494" r="8" fill="#b07f42"/>
+        <path d="M1732 524 h60 M1732 552 h60 M1732 580 h42" stroke="#c9a069" stroke-width="4" stroke-linecap="round" opacity=".75"/>`;
+      s += `<path d="M1926 434 q-10 8 0 16" stroke="#8a5527" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <rect x="1914" y="448" width="24" height="14" rx="6" fill="#a1887f"/>
+        <path d="M1926 462 q-20 36 0 64 q20 34 8 62" stroke="#c2ab8a" stroke-width="8" fill="none"/>
+        ${[0, 1, 2, 3].map(i => {
+        const ax = 1926 + (i % 2 ? 16 : -16), ay = 490 + i * 32;
+        return `<ellipse cx="${ax}" cy="${ay}" rx="19" ry="23" fill="#f0dfc6" stroke="#c9ac86" stroke-width="3"/>
+          <path d="M${ax - 10} ${ay + 8} q10 -24 0 -30 M${ax + 10} ${ay + 8} q-10 -24 0 -30" stroke="#d6bd99" stroke-width="3" fill="none"/>
+          <path d="M${ax - 12} ${ay - 12} q6 -6 12 -6 q6 0 12 6" stroke="#cbb08b" stroke-width="3" fill="none"/>
+          <path d="M${ax} ${ay - 22} q-5 -12 5 -17" stroke="#a8916f" stroke-width="4" fill="none" stroke-linecap="round"/>`;
+      }).join("")}`;
+      /* y en la encimera de debajo, la panera y el bote de las cucharas de palo */
+      s += `<path d="M1712 792 v-52 q0 -34 34 -34 h32 q34 0 34 34 v52 Z" fill="#e8bb8b"/>
+        <path d="M1714 748 h96" stroke="#c9985f" stroke-width="5"/>
+        <rect x="1748" y="722" width="28" height="10" rx="5" fill="#a1887f"/>
+        <path d="M1728 792 v-38 M1796 792 v-38" stroke="rgba(160,110,60,.3)" stroke-width="4"/>`;
+      s += `<path d="M1830 700 h68 l-7 92 h-54 Z" fill="#cfe3ea"/>
+        <rect x="1824" y="690" width="80" height="16" rx="7" fill="#aecdd9"/>
+        <path d="M1846 692 q-8 -44 0 -62" stroke="#c9925c" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <ellipse cx="1845" cy="620" rx="11" ry="15" fill="#d8a15c" transform="rotate(-10 1845 620)"/>
+        <path d="M1884 692 q8 -38 16 -54" stroke="#c9925c" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <ellipse cx="1902" cy="630" rx="10" ry="14" fill="#e0b177" transform="rotate(16 1902 630)"/>
+        <path d="M1866 692 q-2 -34 4 -50" stroke="#b0bec5" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <path d="M1870 644 q6 -14 16 -16" stroke="#b0bec5" stroke-width="6" fill="none" stroke-linecap="round"/>`;
 
-      /* el mueble bajo el fregadero, con la pila de porcelana y el grifo */
-      s += `<rect x="596" y="784" width="234" height="182" fill="#8f5c30"/>
-        <rect x="602" y="790" width="222" height="170" rx="8" fill="#a06a3a"/>
-        <path d="M614 792 h194 v130 q0 32 -32 32 h-130 q-32 0 -32 -32 Z" fill="#f5f2ec"/>
-        <path d="M614 792 h194 v18 h-194 Z" fill="#ded7ca"/>
-        <path d="M636 836 v70 M690 836 v76 M744 836 v70 M786 836 v62" stroke="rgba(160,150,135,.35)" stroke-width="4" stroke-linecap="round"/>
-        <rect x="618" y="754" width="188" height="24" rx="8" fill="#cec5b4"/>
-        <path d="M694 752 L694 714 q0 -18 20 -18 q22 0 22 22 v16" stroke="#b0bec5" stroke-width="9" fill="none" stroke-linecap="round"/>
-        <circle cx="694" cy="750" r="9" fill="#90a4ae"/>`;
+      /* dos paños colgados de la barra del hogar */
+      s += `<path d="M1084 562 q-8 46 2 92 q24 8 48 0 q10 -46 2 -92 Z" fill="#ef9a9a" opacity=".9"/>
+        <path d="M1088 598 h44 M1086 628 h48" stroke="rgba(255,255,255,.55)" stroke-width="5"/>
+        <path d="M1216 562 q-6 46 2 92 q22 8 44 0 q8 -46 2 -92 Z" fill="#90caf9" opacity=".85"/>
+        <path d="M1220 598 h40 M1218 628 h44" stroke="rgba(255,255,255,.55)" stroke-width="5"/>`;
+
+      /* la gran encimera de piedra y los muebles bajos, de la ventana al final de la cocina */
+      s += `<rect x="828" y="792" width="1192" height="30" rx="7" fill="url(#cocXPiedra)"/>
+        <rect x="828" y="814" width="1192" height="10" rx="4" fill="#b9a78e"/>
+        <rect x="834" y="824" width="1186" height="142" fill="#a86f3c"/>
+        ${[[842, 150], [1000, 150], [1150, 128], [1560, 150], [1720, 150], [1876, 140]].map(d => `<rect x="${d[0]}" y="834" width="${d[1]}" height="124" rx="8" fill="url(#cocXPuerta)"/><rect x="${d[0] + d[1] / 2 - 14}" y="874" width="28" height="9" rx="4.5" fill="#7a4a24"/>`).join("")}`;
+
+      /* la tabla de cortar con verduras, en la encimera libre bajo la ventana */
+      s += `<path d="M872 790 L1000 790 L994 768 L878 768 Z" fill="#d8a15c"/>
+        <path d="M878 772 L992 772" stroke="#c08a55" stroke-width="4"/>
+        <circle cx="900" cy="760" r="14" fill="#ef5350"/><path d="M900 748 q-2 -8 6 -10" stroke="#4f9a4a" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <path d="M928 766 q14 -22 30 -6 q-12 12 -30 6 Z" fill="#7cb342"/>
+        <ellipse cx="972" cy="762" rx="15" ry="9" fill="#ffb74d"/><path d="M972 753 q0 -8 6 -9" stroke="#4f9a4a" stroke-width="4" fill="none" stroke-linecap="round"/>`;
+
+      /* el mueble del fregadero, con la pila de porcelana y el grifo, bajo su punto */
+      s += `<rect x="1290" y="824" width="234" height="142" fill="#8f5c30"/>
+        <rect x="1296" y="830" width="222" height="130" rx="8" fill="#a06a3a"/>
+        <path d="M1306 820 h202 v90 q0 32 -32 32 h-138 q-32 0 -32 -32 Z" fill="#f5f2ec"/>
+        <path d="M1306 820 h202 v18 h-202 Z" fill="#ded7ca"/>
+        <path d="M1330 862 v56 M1382 862 v62 M1436 862 v58 M1484 862 v50" stroke="rgba(160,150,135,.35)" stroke-width="4" stroke-linecap="round"/>
+        <rect x="1300" y="792" width="214" height="30" rx="8" fill="#cec5b4"/>
+        <path d="M1392 790 L1392 748 q0 -18 20 -18 q22 0 22 22 v18" stroke="#b0bec5" stroke-width="9" fill="none" stroke-linecap="round"/>
+        <circle cx="1392" cy="788" r="9" fill="#90a4ae"/>`;
 
       /* el suelo de baldosas a cuadros, con un poquito de perspectiva */
-      s += `<rect x="0" y="966" width="1046" height="134" fill="#eadecb"/>
-        <rect x="0" y="958" width="1046" height="16" rx="5" fill="#c69a6a"/>`;
+      s += `<rect x="0" y="966" width="2020" height="134" fill="#eadecb"/>
+        <rect x="0" y="958" width="2020" height="16" rx="5" fill="#c69a6a"/>`;
       [[974, 32, 62, 0], [1006, 42, 82, 1], [1048, 56, 106, 0]].forEach((f, r) => {
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 40; i++) {
           const x = -f[3] * f[2] / 2 + i * f[2];
-          if (x > 1046) break;
-          if ((i + r) % 2 === 0) s += `<rect x="${Math.max(0, x).toFixed(0)}" y="${f[0]}" width="${Math.min(f[2], 1046 - Math.max(0, x)).toFixed(0)}" height="${f[1]}" fill="rgba(122,76,42,.2)"/>`;
+          if (x > 2020) break;
+          if ((i + r) % 2 === 0) s += `<rect x="${Math.max(0, x).toFixed(0)}" y="${f[0]}" width="${Math.min(f[2], 2020 - Math.max(0, x)).toFixed(0)}" height="${f[1]}" fill="rgba(122,76,42,.2)"/>`;
         }
       });
 
-      /* ================== 2. EL RINCÓN DE LA ABUELA (x 1046 a 1750) ================== */
+      /* ================== TRANSICIÓN: EL PASO DE LA PUERTA ================== */
       /* la jamba de madera que separa las dos habitaciones */
-      s += `<rect x="1046" y="60" width="38" height="908" fill="#a06a3a"/>
-        <rect x="1040" y="60" width="10" height="908" fill="#8a5527"/>
-        <rect x="1040" y="52" width="52" height="18" rx="7" fill="#8a5527"/>`;
-      /* el papel de pared con florecitas y el zócalo */
-      s += `<rect x="1084" y="0" width="666" height="968" fill="url(#cocPapel)"/>
-        <rect x="1084" y="60" width="666" height="908" fill="url(#cocFlorcita)"/>
-        <rect x="1084" y="0" width="666" height="62" fill="#e6c8a6"/>
-        <rect x="1084" y="52" width="666" height="12" rx="5" fill="#c99a68"/>
-        <rect x="1084" y="852" width="666" height="116" fill="#eccfab" opacity=".75"/>
-        <rect x="1084" y="846" width="666" height="14" rx="5" fill="#c99a68"/>`;
+      s += `<rect x="2004" y="0" width="78" height="62" fill="#a06a3a"/>
+        <rect x="2004" y="0" width="78" height="12" rx="5" fill="#8a5527"/>
+        <rect x="2020" y="60" width="42" height="908" fill="#a06a3a"/>
+        <rect x="2012" y="60" width="10" height="908" fill="#8a5527"/>
+        <rect x="2012" y="52" width="58" height="18" rx="7" fill="#8a5527"/>
+        <rect x="2054" y="60" width="10" height="908" fill="#c08a55" opacity=".7"/>`;
+      /* el umbral: aquí la baldosa se acaba y empieza la tarima */
+      s += `<rect x="2008" y="958" width="72" height="20" rx="6" fill="#b5794a"/>
+        <rect x="2008" y="966" width="72" height="134" fill="#9d6635"/>
+        <path d="M2016 976 H2072 M2016 1020 H2072 M2016 1064 H2072" stroke="rgba(80,45,15,.28)" stroke-width="4"/>`;
 
-      /* la alacena de madera: baldas arriba, la repisa del tarro y las puertas de abajo */
-      s += `<rect x="1074" y="286" width="240" height="28" rx="9" fill="#8a5527"/>
-        <rect x="1086" y="310" width="216" height="656" rx="8" fill="url(#cocMadera)"/>
-        <rect x="1102" y="322" width="184" height="524" rx="6" fill="#8c5b30"/>
-        <rect x="1098" y="466" width="192" height="16" rx="6" fill="#c08a55"/>
-        <rect x="1098" y="606" width="192" height="16" rx="6" fill="#c08a55"/>
-        <rect x="1090" y="838" width="208" height="20" rx="7" fill="#dcb182"/>
-        <rect x="1102" y="866" width="88" height="92" rx="7" fill="url(#cocPuerta)"/>
-        <rect x="1198" y="866" width="88" height="92" rx="7" fill="url(#cocPuerta)"/>
-        <circle cx="1178" cy="912" r="6" fill="#7a4a24"/><circle cx="1210" cy="912" r="6" fill="#7a4a24"/>
-        ${[[1246, 28, "#f6c9b4"], [1284, 16, "#c5e1a5"]].map(p => `<circle cx="${p[0]}" cy="${466 - p[1]}" r="${p[1]}" fill="#fff6ea"/><circle cx="${p[0]}" cy="${466 - p[1]}" r="${p[1] - 7}" fill="${p[2]}"/><circle cx="${p[0]}" cy="${466 - p[1]}" r="${p[1] - 12}" fill="#fff6ea" opacity=".7"/>`).join("")}
-        ${[[1128, 25, "#f8c8b0"], [1180, 24, "#bcd9ee"], [1228, 24, "#f8c8b0"], [1266, 19, "#d6c8ea"]].map(p => `<circle cx="${p[0]}" cy="${606 - p[1]}" r="${p[1]}" fill="#fdf3e6"/><circle cx="${p[0]}" cy="${606 - p[1]}" r="${p[1] - 6}" fill="${p[2]}"/><circle cx="${p[0]}" cy="${606 - p[1]}" r="${p[1] - 11}" fill="#fdf3e6" opacity=".75"/>`).join("")}
-        ${[[1124, "#fff8e1"], [1164, "#ffe0b2"]].map(c => `<path d="M${c[0] - 16} 484 h32 q-2 30 -16 30 q-14 0 -16 -30 Z" fill="${c[1]}"/><path d="M${c[0] + 15} 490 q13 5 -1 17" stroke="#dcc9ab" stroke-width="5" fill="none"/><rect x="${c[0] - 2}" y="474" width="4" height="10" fill="#8a5527"/>`).join("")}`;
+      /* ================== 2. EL RINCÓN DE LA ABUELA (x 2062 a 2960) ================== */
+      /* el papel de pared con florecitas y el zócalo */
+      s += `<rect x="2062" y="0" width="898" height="968" fill="url(#cocXPapel)"/>
+        <rect x="2062" y="60" width="898" height="908" fill="url(#cocXFlorcita)"/>
+        <rect x="2062" y="0" width="898" height="62" fill="#e6c8a6"/>
+        <rect x="2062" y="52" width="898" height="12" rx="5" fill="#c99a68"/>
+        <rect x="2062" y="852" width="898" height="116" fill="#eccfab" opacity=".75"/>
+        <rect x="2062" y="846" width="898" height="14" rx="5" fill="#c99a68"/>`;
+
+      /* la alacena de madera: la balda del libro de recetas y la repisa del tarro */
+      s += `<rect x="2064" y="286" width="248" height="28" rx="9" fill="#8a5527"/>
+        <rect x="2076" y="310" width="224" height="656" rx="8" fill="url(#cocXMadera)"/>
+        <rect x="2092" y="322" width="192" height="524" rx="6" fill="#8c5b30"/>
+        <rect x="2080" y="464" width="200" height="18" rx="7" fill="#c08a55"/>
+        <rect x="2088" y="606" width="192" height="16" rx="6" fill="#c08a55"/>
+        <rect x="2080" y="838" width="216" height="20" rx="7" fill="#dcb182"/>
+        <rect x="2092" y="866" width="92" height="92" rx="7" fill="url(#cocXPuerta)"/>
+        <rect x="2192" y="866" width="92" height="92" rx="7" fill="url(#cocXPuerta)"/>
+        <circle cx="2172" cy="912" r="6" fill="#7a4a24"/><circle cx="2206" cy="912" r="6" fill="#7a4a24"/>
+        ${[[2118, 25, "#f8c8b0"], [2170, 24, "#bcd9ee"], [2220, 24, "#f8c8b0"], [2262, 19, "#d6c8ea"]].map(p => `<circle cx="${p[0]}" cy="${606 - p[1]}" r="${p[1]}" fill="#fdf3e6"/><circle cx="${p[0]}" cy="${606 - p[1]}" r="${p[1] - 6}" fill="${p[2]}"/><circle cx="${p[0]}" cy="${606 - p[1]}" r="${p[1] - 11}" fill="#fdf3e6" opacity=".75"/>`).join("")}
+        ${[[2126, "#fff8e1"], [2170, "#ffe0b2"], [2214, "#f6c9b4"]].map(c => `<path d="M${c[0] - 16} 660 h32 q-2 30 -16 30 q-14 0 -16 -30 Z" fill="${c[1]}"/><path d="M${c[0] + 15} 666 q13 5 -1 17" stroke="#dcc9ab" stroke-width="5" fill="none"/><rect x="${c[0] - 2}" y="622" width="4" height="38" fill="#8a5527"/>`).join("")}`;
+
+      /* el aparador donde descansa el tarro de las galletas */
+      s += `<rect x="2312" y="836" width="140" height="20" rx="7" fill="#b5794a"/>
+        <rect x="2320" y="856" width="124" height="102" rx="8" fill="url(#cocXMadera)"/>
+        <rect x="2330" y="866" width="104" height="84" rx="6" fill="url(#cocXPuerta)"/>
+        <circle cx="2382" cy="908" r="6" fill="#7a4a24"/>
+        <rect x="2334" y="822" width="96" height="14" rx="6" fill="#dcb182"/>`;
+
+      /* los retratitos y la baldita de la planta, sobre el aparador */
+      s += `<rect x="2326" y="352" width="72" height="86" rx="6" fill="#a06a3a"/>
+        <rect x="2334" y="360" width="56" height="70" rx="4" fill="#fdf3e2"/>
+        <circle cx="2362" cy="386" r="14" fill="#f6d5b8"/><path d="M2346 430 q16 -26 32 0 Z" fill="#bcd9ee"/>
+        <rect x="2404" y="404" width="58" height="70" rx="6" fill="#8a5527"/>
+        <rect x="2411" y="411" width="44" height="56" rx="4" fill="#fdf3e2"/>
+        <circle cx="2433" cy="430" r="11" fill="#f6d5b8"/><path d="M2419 467 q14 -22 28 0 Z" fill="#e6a08c"/>
+        <rect x="2318" y="628" width="150" height="15" rx="6" fill="#c08a55"/>
+        <path d="M2332 643 l10 20 M2454 643 l-10 20" stroke="#8a5527" stroke-width="6" stroke-linecap="round"/>
+        <path d="M2340 628 q2 -24 20 -24 q18 0 20 24 Z" fill="#7fb3c8"/>
+        <path d="M2350 604 q-8 -24 4 -36 M2360 604 q6 -28 20 -32 M2355 604 q0 -20 -12 -30" stroke="#4f9a4a" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <ellipse cx="2420" cy="614" rx="22" ry="14" fill="#fdf3e6"/><ellipse cx="2420" cy="608" rx="22" ry="12" fill="#f8c8b0"/>`;
 
       /* el cuadro pequeño de la pared */
-      s += `<rect x="1326" y="316" width="102" height="112" rx="7" fill="#a06a3a"/>
-        <rect x="1336" y="326" width="82" height="92" rx="4" fill="#fdf3e2"/>
-        <path d="M1336 388 q22 -22 42 -6 q18 14 40 -8 L1418 418 L1336 418 Z" fill="#a5d6a7"/>
-        <circle cx="1362" cy="352" r="12" fill="#ffe082"/>
-        <circle cx="1394" cy="368" r="9" fill="#ef9a9a"/>`;
+      s += `<rect x="2456" y="316" width="102" height="112" rx="7" fill="#a06a3a"/>
+        <rect x="2466" y="326" width="82" height="92" rx="4" fill="#fdf3e2"/>
+        <path d="M2466 388 q22 -22 42 -6 q18 14 40 -8 L2548 418 L2466 418 Z" fill="#a5d6a7"/>
+        <circle cx="2492" cy="352" r="12" fill="#ffe082"/>
+        <circle cx="2524" cy="368" r="9" fill="#ef9a9a"/>`;
 
       /* la lámpara colgante, con su parpadeo muy suave */
       s += `<g>
-        <ellipse cx="1500" cy="340" rx="168" ry="150" fill="url(#cocLuz)"><animate attributeName="opacity" values=".8;1;.85;1;.8" dur="7s" repeatCount="indefinite"/></ellipse>
-        <rect x="1496" y="60" width="8" height="180" fill="#8d6e63"/>
-        <path d="M1440 308 L1466 238 L1534 238 L1560 308 Z" fill="#e08a72"/>
-        <path d="M1440 308 L1560 308 L1560 318 L1440 318 Z" fill="#c1705c"/>
-        <circle cx="1500" cy="330" r="15" fill="#fff3c4"><animate attributeName="opacity" values=".85;1;.9;1;.85" dur="7s" repeatCount="indefinite"/></circle>
+        <ellipse cx="2620" cy="340" rx="176" ry="156" fill="url(#cocXLuz)"><animate attributeName="opacity" values=".8;1;.85;1;.8" dur="7s" repeatCount="indefinite"/></ellipse>
+        <rect x="2616" y="60" width="8" height="180" fill="#8d6e63"/>
+        <path d="M2560 308 L2586 238 L2654 238 L2680 308 Z" fill="#e08a72"/>
+        <path d="M2560 308 L2680 308 L2680 318 L2560 318 Z" fill="#c1705c"/>
+        <circle cx="2620" cy="330" r="15" fill="#fff3c4"><animate attributeName="opacity" values=".85;1;.9;1;.85" dur="7s" repeatCount="indefinite"/></circle>
       </g>`;
 
       /* la mesita donde se apoya la balanza, con su balda de tarros */
-      s += `<rect x="1334" y="636" width="170" height="18" rx="7" fill="#b5794a"/>
-        <rect x="1348" y="654" width="14" height="266" fill="#a06a3a"/>
-        <rect x="1476" y="654" width="14" height="266" fill="#a06a3a"/>
-        <rect x="1340" y="796" width="158" height="12" rx="5" fill="#b5794a"/>
-        ${[[1372, 30, 44, "#ffcc80"], [1414, 26, 36, "#c5e1a5"], [1450, 22, 30, "#f8bbd0"]].map(j => `<rect x="${j[0]}" y="${796 - j[2]}" width="${j[1]}" height="${j[2]}" rx="5" fill="${j[3]}" opacity=".9"/>`).join("")}`;
+      s += `<rect x="2544" y="636" width="164" height="18" rx="7" fill="#b5794a"/>
+        <rect x="2558" y="654" width="14" height="312" fill="#a06a3a"/>
+        <rect x="2680" y="654" width="14" height="312" fill="#a06a3a"/>
+        <ellipse cx="2626" cy="966" rx="92" ry="10" fill="rgba(80,45,15,.16)"/>
+        <rect x="2550" y="796" width="152" height="12" rx="5" fill="#b5794a"/>
+        ${[[2578, 30, 44, "#ffcc80"], [2618, 26, 36, "#c5e1a5"], [2652, 22, 30, "#f8bbd0"]].map(j => `<rect x="${j[0]}" y="${796 - j[2]}" width="${j[1]}" height="${j[2]}" rx="5" fill="${j[3]}" opacity=".9"/>`).join("")}`;
 
       /* la ventanita con cortinas y la mecedora del rincón */
-      s += `<rect x="1572" y="172" width="162" height="286" rx="8" fill="#a06a3a"/>
-        <rect x="1584" y="184" width="138" height="262" rx="5" fill="url(#cocJardin)"/>
-        <circle cx="1616" cy="230" r="26" fill="#82ba5c"/><circle cx="1690" cy="252" r="20" fill="#6aa84a"/>
-        <rect x="1648" y="184" width="8" height="262" fill="#a06a3a" opacity=".7"/>
-        <rect x="1560" y="158" width="188" height="12" rx="6" fill="#8a5527"/>
-        <path d="M1568 164 q34 90 22 190 q-24 22 -46 6 q10 -100 -8 -196 Z" fill="#e6a08c" opacity=".92"/>
-        <path d="M1740 164 q-34 90 -22 190 q24 22 46 6 q-10 -100 8 -196 Z" fill="#e6a08c" opacity=".92"/>`;
-      s += `<g transform="translate(1682 946)">
+      s += `<rect x="2760" y="172" width="162" height="286" rx="8" fill="#a06a3a"/>
+        <rect x="2772" y="184" width="138" height="262" rx="5" fill="url(#cocXJardin)"/>
+        <circle cx="2804" cy="230" r="26" fill="#82ba5c"/><circle cx="2878" cy="252" r="20" fill="#6aa84a"/>
+        <rect x="2836" y="184" width="8" height="262" fill="#a06a3a" opacity=".7"/>
+        <rect x="2748" y="158" width="188" height="12" rx="6" fill="#8a5527"/>
+        <path d="M2756 164 q34 90 22 190 q-24 22 -46 6 q10 -100 -8 -196 Z" fill="#e6a08c" opacity=".92"/>
+        <path d="M2928 164 q-34 90 -22 190 q24 22 46 6 q-10 -100 8 -196 Z" fill="#e6a08c" opacity=".92"/>`;
+      s += `<g transform="translate(2500 946) scale(.8)">
         <path d="M-70 0 q70 26 138 -8" stroke="#a06a3a" stroke-width="11" fill="none" stroke-linecap="round"/>
         <path d="M-52 -12 L-42 -104 M56 -22 L46 -104" stroke="#a06a3a" stroke-width="10" stroke-linecap="round"/>
         <rect x="-58" y="-120" width="116" height="18" rx="8" fill="#b5794a"/>
@@ -731,158 +918,299 @@ Object.assign(THEMES.cocina.content, {
       </g>`;
 
       /* el suelo de tarima y la alfombrita del rincón */
-      s += `<rect x="1084" y="966" width="666" height="134" fill="#b3814f"/>
-        ${[0, 1, 2, 3, 4, 5].map(i => `<line x1="${1120 + i * 118}" y1="968" x2="${1096 + i * 118}" y2="1100" stroke="rgba(80,45,15,.22)" stroke-width="5"/>`).join("")}
-        <line x1="1084" y1="1024" x2="1750" y2="1024" stroke="rgba(80,45,15,.16)" stroke-width="5"/>
-        <ellipse cx="1250" cy="1030" rx="150" ry="46" fill="#dfa08a" opacity=".8"/>
-        <ellipse cx="1250" cy="1030" rx="112" ry="32" fill="#f2c8a8" opacity=".85"/>
-        <ellipse cx="1250" cy="1030" rx="70" ry="18" fill="#dfa08a" opacity=".7"/>`;
+      s += `<rect x="2062" y="966" width="898" height="134" fill="url(#cocXTarima)"/>
+        ${[0, 1, 2, 3, 4, 5, 6, 7].map(i => `<line x1="${2100 + i * 112}" y1="968" x2="${2076 + i * 112}" y2="1100" stroke="rgba(80,45,15,.22)" stroke-width="5"/>`).join("")}
+        <line x1="2062" y1="1024" x2="2960" y2="1024" stroke="rgba(80,45,15,.16)" stroke-width="5"/>
+        <ellipse cx="2320" cy="1034" rx="164" ry="48" fill="#dfa08a" opacity=".8"/>
+        <ellipse cx="2320" cy="1034" rx="122" ry="34" fill="#f2c8a8" opacity=".85"/>
+        <ellipse cx="2320" cy="1034" rx="76" ry="19" fill="#dfa08a" opacity=".7"/>`;
 
-      /* la mesa camilla con su mantel, justo debajo de la mesa puesta */
-      s += `<path d="M1392 930 Q1382 1012 1364 1078 L1636 1078 Q1618 1012 1608 930 Z" fill="#f8dcc2"/>
-        <path d="M1400 984 h200 M1394 1030 h212" stroke="rgba(214,124,110,.35)" stroke-width="6"/>
-        <path d="M1464 936 v140 M1536 936 v140" stroke="rgba(214,124,110,.28)" stroke-width="6"/>
-        <ellipse cx="1500" cy="930" rx="110" ry="22" fill="#fdeedd"/>
-        <path d="M1392 930 Q1500 956 1608 930" stroke="rgba(214,124,110,.35)" stroke-width="5" fill="none"/>
-        ${[0, 1, 2, 3, 4, 5, 6, 7, 8].map(i => `<circle cx="${1370 + i * 33}" cy="1078" r="7" fill="#f8dcc2"/>`).join("")}`;
+      /* EL RINCÓN DE COMER: la tarima dobla la esquina y sube hasta el fondo, así la
+         mesa del punto y sus dos sillas pisan madera de verdad. Antes el suelo se
+         acababa en la misma raya que el resto del rincón y todo el grupo (alfombra
+         incluida) quedaba pintado sobre el papel de la pared */
+      s += `<path d="M2700 968 Q2748 950 2812 924 Q2880 916 2954 916 L2954 968 Z" fill="#b9834e"/>
+        <path d="M2700 968 Q2748 950 2812 924 Q2880 916 2954 916" stroke="#8a5527" stroke-width="11" fill="none"/>
+        <path d="M2700 962 Q2748 944 2812 918 Q2880 910 2954 910" stroke="#c99a68" stroke-width="7" fill="none"/>
+        <path d="M2762 960 L2748 1006 M2848 926 L2830 1004 M2926 920 L2912 1002" stroke="rgba(80,45,15,.2)" stroke-width="5" stroke-linecap="round"/>`;
 
-      /* ================== 3. EL MERCADO AL AIRE LIBRE (x 1750 a 2600) ================== */
-      /* el pilar de la puerta y el cielo de fuera */
-      s += `<rect x="1750" y="0" width="850" height="968" fill="url(#cocCielo)"/>
-        <rect x="1744" y="0" width="56" height="990" fill="#d9c3a4"/>
-        <rect x="1744" y="0" width="14" height="990" fill="#bfa585"/>
-        <rect x="1738" y="0" width="68" height="60" rx="8" fill="#c9b090"/>`;
+      /* la maceta alta del rincón, entre la mesita y la cortina */
+      s += `<path d="M2700 890 L2762 890 L2754 964 L2708 964 Z" fill="#d0704f"/>
+        <rect x="2694" y="878" width="74" height="18" rx="7" fill="#e08a72"/>
+        <path d="M2731 884 q-34 -46 -22 -96 M2731 884 q30 -50 24 -104 M2731 884 q-6 -60 4 -104 M2731 884 q-24 -30 -40 -40 M2731 884 q26 -34 44 -40" stroke="#4f9a4a" stroke-width="9" fill="none" stroke-linecap="round"/>
+        ${[[2705, 782], [2757, 776], [2735, 738], [2694, 838], [2772, 840]].map(h => `<ellipse cx="${h[0]}" cy="${h[1]}" rx="14" ry="20" fill="#7cb342" transform="rotate(${h[0] > 2731 ? 22 : -22} ${h[0]} ${h[1]})"/>`).join("")}`;
+
+      /* la alfombra ovalada del rincón de comer, ya entera sobre la tarima de la esquina.
+         La mesa la pone el propio punto, que apoya sus patas en la alfombra: ya no hay
+         un mantel de otra mesa debajo (queda bien tanto a --poik 1 como a 1.5) */
+      s += `<ellipse cx="2856" cy="962" rx="104" ry="38" fill="#dfa08a" opacity=".85"/>
+        <ellipse cx="2856" cy="962" rx="85" ry="29" fill="#f2c8a8" opacity=".9"/>
+        <ellipse cx="2856" cy="962" rx="54" ry="17" fill="#dfa08a" opacity=".5"/>
+        <path d="M2770 952 q86 -19 172 0" stroke="rgba(255,255,255,.4)" stroke-width="5" fill="none"/>`;
+      s += `<rect x="2762" y="812" width="46" height="92" rx="12" fill="#b5794a"/>
+        <rect x="2771" y="824" width="28" height="68" rx="9" fill="#e6a08c" opacity=".85"/>
+        <rect x="2752" y="898" width="66" height="15" rx="6" fill="#a06a3a"/>
+        <rect x="2760" y="911" width="11" height="46" rx="4" fill="#a06a3a"/>
+        <rect x="2799" y="911" width="11" height="46" rx="4" fill="#a06a3a"/>`;
+      s += `<rect x="2884" y="818" width="44" height="88" rx="12" fill="#a06a3a"/>
+        <rect x="2892" y="830" width="28" height="64" rx="9" fill="#e6a08c" opacity=".8"/>
+        <rect x="2874" y="900" width="64" height="15" rx="6" fill="#8f5c30"/>
+        <rect x="2882" y="913" width="11" height="44" rx="4" fill="#8f5c30"/>
+        <rect x="2919" y="913" width="11" height="44" rx="4" fill="#8f5c30"/>`;
+
+      /* ================== TRANSICIÓN: LA SALIDA AL EXTERIOR ================== */
+      /* el pilar de la puerta, el cielo de fuera y la luz de la calle que entra */
+      s += `<rect x="2960" y="0" width="1240" height="968" fill="url(#cocXCielo)"/>
+        <rect x="2954" y="0" width="60" height="990" fill="#d9c3a4"/>
+        <rect x="2954" y="0" width="14" height="990" fill="#bfa585"/>
+        <rect x="2946" y="0" width="76" height="60" rx="8" fill="#c9b090"/>
+        <rect x="3014" y="0" width="12" height="990" fill="#efdcc0" opacity=".7"/>`;
+      /* la luz de la calle se derrama sobre la tarima del rincón */
+      s += `<path d="M2952 620 L2952 966 L2660 1100 L2952 1100 Z" fill="url(#cocXCalle)" opacity=".55"/>
+        <path d="M2952 966 L2720 1100 L2952 1100 Z" fill="rgba(255,236,179,.42)"/>
+        <ellipse cx="2890" cy="1020" rx="140" ry="44" fill="rgba(255,236,179,.24)"/>`;
+      /* el escalón de la puerta: la tarima se acaba y empiezan los adoquines */
+      s += `<rect x="2944" y="952" width="86" height="22" rx="7" fill="#cbb18d"/>
+        <rect x="2944" y="966" width="86" height="134" fill="#bfa585"/>
+        <path d="M2952 1000 H3024 M2952 1044 H3024" stroke="rgba(120,90,55,.3)" stroke-width="5"/>`;
+
+      /* ================== 3. EL MERCADO AL AIRE LIBRE (x 3030 a 4200) ================== */
       /* sol suave, nubes y colinas del fondo */
-      s += `<circle cx="2500" cy="130" r="56" fill="rgba(255,241,160,.75)"/>
-        <circle cx="2500" cy="130" r="92" fill="rgba(255,241,160,.22)"/>
-        <ellipse cx="1980" cy="150" rx="96" ry="30" fill="rgba(255,255,255,.72)"/>
-        <ellipse cx="2050" cy="132" rx="62" ry="24" fill="rgba(255,255,255,.62)"/>
-        <ellipse cx="2320" cy="196" rx="82" ry="26" fill="rgba(255,255,255,.6)"/>
-        <path d="M1806 700 Q2000 600 2200 660 Q2400 716 2600 640 L2600 706 L1806 706 Z" fill="#a9cf8c" opacity=".7"/>`;
+      s += `<circle cx="4020" cy="130" r="56" fill="rgba(255,241,160,.75)"/>
+        <circle cx="4020" cy="130" r="92" fill="rgba(255,241,160,.22)"/>
+        <ellipse cx="3260" cy="150" rx="96" ry="30" fill="rgba(255,255,255,.72)"/>
+        <ellipse cx="3336" cy="132" rx="62" ry="24" fill="rgba(255,255,255,.62)"/>
+        <ellipse cx="3700" cy="196" rx="82" ry="26" fill="rgba(255,255,255,.6)"/>
+        <ellipse cx="3980" cy="238" rx="70" ry="22" fill="rgba(255,255,255,.55)"/>
+        <path d="M3014 646 Q3260 548 3540 596 Q3820 644 4200 552 L4200 752 L3014 752 Z" fill="#c7e2b0" opacity=".55"/>
+        <path d="M3014 700 Q3320 596 3620 664 Q3920 726 4200 636 L4200 752 L3014 752 Z" fill="#a9cf8c" opacity=".7"/>`;
       /* casitas del pueblo detrás del mercado */
-      [[2040, 560, 130, "#e5cdb0"], [2190, 596, 100, "#dcc0a4"], [2320, 546, 150, "#eddac0"], [2490, 592, 110, "#e0c8ac"]].forEach(h => {
+      [[3300, 560, 130, "#e5cdb0"], [3468, 596, 100, "#dcc0a4"], [3616, 546, 150, "#eddac0"],
+        [3812, 592, 110, "#e0c8ac"], [3956, 566, 124, "#e5cdb0"]].forEach(h => {
         s += `<rect x="${h[0]}" y="${h[1]}" width="${h[2]}" height="${700 - h[1]}" rx="6" fill="${h[3]}" opacity=".85"/>
           <path d="M${h[0] - 12} ${h[1]} L${h[0] + h[2] / 2} ${h[1] - 40} L${h[0] + h[2] + 12} ${h[1]} Z" fill="#c98d6a" opacity=".85"/>
           <rect x="${h[0] + 22}" y="${h[1] + 34}" width="26" height="34" rx="4" fill="rgba(255,255,255,.6)"/>
           <rect x="${h[0] + h[2] - 48}" y="${h[1] + 34}" width="26" height="34" rx="4" fill="rgba(255,255,255,.6)"/>`;
       });
-      /* dos arbolitos */
-      [[1836, 700, 1], [2570, 706, 1.15]].forEach(t => {
+      /* tres arbolitos */
+      [[3070, 700, 1], [3782, 700, .9], [4170, 706, 1.15]].forEach(t => {
         s += `<g transform="translate(${t[0]} ${t[1]}) scale(${t[2]})" opacity=".8">
           <rect x="-8" y="-70" width="16" height="70" rx="5" fill="#8d6e63"/>
           <circle cx="0" cy="-96" r="46" fill="#6aa84a"/><circle cx="-32" cy="-76" r="30" fill="#82ba5c"/><circle cx="32" cy="-78" r="28" fill="#82ba5c"/>
         </g>`;
       });
-      /* el suelo de adoquines, más grandes cuanto más cerca */
-      s += `<rect x="1750" y="694" width="850" height="406" fill="url(#cocAdoquin)"/>`;
-      let ady = 700, adh = 22;
-      for (let r = 0; r < 8; r++) {
-        const aw = adh * 2.6;
-        for (let ax = 1752 - (r % 2 ? aw / 2 : 0); ax < 2600; ax += aw + 6) {
-          s += `<rect x="${ax.toFixed(0)}" y="${ady.toFixed(0)}" width="${aw.toFixed(0)}" height="${adh.toFixed(0)}" rx="${(adh / 2.6).toFixed(0)}" fill="rgba(255,255,255,${(0.09 + r * 0.014).toFixed(3)})"/>`;
-        }
-        ady += adh + 4; adh *= 1.24;
+      /* EL SUELO DE ADOQUINES. El borde de arriba entra y sale de la hierba en vez de
+         cortar recto, y cada adoquín es un trapecio que mira al punto de fuga: así el
+         empedrado se tumba y deja de leerse como un muro de ladrillo visto de frente */
+      const vaiven = [12, -10, 6, -14, 10, -6, 14, -8, 4, -12, 10, -6, 12, -10];
+      let borde = "M3014 704";
+      for (let i = 1; i <= 14; i++) {
+        const bx = 3014 + i * 84.7;
+        borde += ` Q${(bx - 42).toFixed(0)} ${(706 - vaiven[i - 1] * 1.4).toFixed(0)} ${bx.toFixed(0)} ${(706 + vaiven[i - 1]).toFixed(0)}`;
       }
+      borde += " L4200 1100 L3014 1100 Z";
+      s += `<defs><clipPath id="cocXSueloPlaza"><path d="${borde}"/></clipPath></defs>
+        <path d="${borde}" fill="url(#cocXAdoquin)"/>
+        <g clip-path="url(#cocXSueloPlaza)">`;
+      const fugaX = 3620, fugaY = 420;
+      let filaY = 688, filaH = 18;
+      for (let r = 0; r < 10 && filaY < 1100; r++) {
+        const filaY2 = Math.min(1100, filaY + filaH);
+        const k1 = (filaY - fugaY) / (706 - fugaY), k2 = (filaY2 - fugaY) / (706 - fugaY);
+        const paso = 34, desf = (r % 2) * 0.5, j1 = 2.2 * k1, j2 = 2.2 * k2;
+        /* la junta también se abre a lo alto: sin ella las hiladas se pegan y el suelo
+           se leería como un entarimado de tablas largas */
+        const y1 = filaY + 1.6 * k1, y2 = filaY2 - 1.6 * k2;
+        for (let i = -30; i <= 30; i++) {
+          const a1 = fugaX + (i + desf) * paso * k1 + j1, a2 = fugaX + (i + 1 + desf) * paso * k1 - j1;
+          const b1 = fugaX + (i + desf) * paso * k2 + j2, b2 = fugaX + (i + 1 + desf) * paso * k2 - j2;
+          if ((a2 < 3010 && b2 < 3010) || (a1 > 4204 && b1 > 4204)) continue;
+          /* cada piedra con su tono: las de lejos más claras, y un salteado que rompe
+             las hiladas para que no se lean como tablas */
+          const prof = Math.min(1, (filaY - 690) / 400), jit = (Math.abs(i * 5 + r * 3) % 4) * 7 - 9;
+          const cr = Math.round(226 - 40 * prof) + jit, cg = Math.round(205 - 53 * prof) + jit, cb = Math.round(176 - 58 * prof) + jit;
+          s += `<path d="M${a1.toFixed(0)} ${y1.toFixed(0)} L${a2.toFixed(0)} ${y1.toFixed(0)} L${b2.toFixed(0)} ${y2.toFixed(0)} L${b1.toFixed(0)} ${y2.toFixed(0)} Z" fill="rgb(${cr},${cg},${cb})" stroke="rgba(120,94,66,.3)" stroke-width="${(1.1 * k1).toFixed(1)}"/>`;
+        }
+        filaY = filaY2; filaH *= 1.24;
+      }
+      s += `</g>`;
+      /* la plaza gana fondo y primer plano: sombra lejana y luz cerca de los pies */
+      s += `<path d="${borde}" fill="url(#cocXPlaza)"/>`;
+      /* la hierba se va comiendo los primeros adoquines: así no hay raya dura entre prado y plaza */
+      s += `<rect x="3014" y="684" width="1186" height="78" fill="url(#cocXHierba)"/>`;
+      /* lengüetas de hierba derramadas sobre los primeros adoquines... */
+      [[3086, 716], [3252, 706], [3430, 722], [3604, 710], [3782, 718], [3960, 704], [4118, 720]].forEach((l, i) => {
+        const rx = 34 + (i % 3) * 13;
+        s += `<ellipse cx="${l[0]}" cy="${l[1]}" rx="${rx}" ry="13" fill="#a9cf8c" opacity=".8"/>
+          <ellipse cx="${l[0] + rx * 0.45}" cy="${l[1] - 7}" rx="${(rx * 0.5).toFixed(0)}" ry="10" fill="#b7d79a" opacity=".7"/>
+          <path d="M${l[0] - 12} ${l[1] + 6} q-4 -16 -10 -22 M${l[0] + 6} ${l[1] + 8} q1 -18 6 -25" stroke="#8fbe6e" stroke-width="5" fill="none" stroke-linecap="round"/>`;
+      });
+      /* ...y algún adoquín suelto que asoma ya dentro del prado, cruzando al revés */
+      [[3160, 672], [3346, 680], [3520, 666], [3700, 678], [3868, 670], [4056, 664]].forEach(a => {
+        s += `<path d="M${a[0] - 26} ${a[1] + 6} q4 -12 26 -12 q22 0 26 12 q-6 9 -26 9 q-20 0 -26 -9 Z" fill="#cdb195"/>
+          <path d="M${a[0] - 20} ${a[1] + 12} q20 7 40 0" stroke="rgba(120,94,66,.28)" stroke-width="4" fill="none" stroke-linecap="round"/>`;
+      });
+      [3040, 3128, 3226, 3318, 3402, 3496, 3588, 3676, 3768, 3854, 3944, 4032, 4118, 4184].forEach((gx, i) => {
+        const gy = 700 + (i % 3) * 7;
+        s += `<path d="M${gx} ${gy + 16} q-4 -18 -12 -24 M${gx} ${gy + 16} q0 -20 2 -28 M${gx} ${gy + 16} q6 -16 14 -22" stroke="#8fbe6e" stroke-width="5" fill="none" stroke-linecap="round" opacity=".85"/>`;
+      });
+      [[3182, 726], [3462, 736], [3742, 724], [4066, 738]].forEach(p => {
+        s += `<ellipse cx="${p[0]}" cy="${p[1]}" rx="16" ry="7" fill="#c9ad8a" opacity=".7"/>`;
+      });
 
-      /* el puesto de frutas, al fondo: toldo de rayas, mostrador y cajas */
-      s += `<rect x="1806" y="352" width="12" height="352" rx="5" fill="#8d6e63"/>
-        <rect x="1988" y="352" width="12" height="352" rx="5" fill="#8d6e63"/>
-        <path d="M1786 358 L1812 296 L1996 296 L2022 358 Z" fill="#e2574c"/>
-        ${[0, 1, 2, 3].map(i => `<path d="M${1812 + i * 46} 358 L${1826 + i * 46} 296 L${1848 + i * 46} 296 L${1836 + i * 46} 358 Z" fill="#fff3e0" opacity=".92"/>`).join("")}
-        <path d="M1786 358 Q1904 384 2022 358 L2022 372 Q1904 398 1786 372 Z" fill="#c94a40"/>
-        <rect x="1794" y="504" width="220" height="20" rx="7" fill="#c08a55"/>
-        <path d="M1798 524 L1810 700 L1998 700 L2010 524 Z" fill="#f0d3b0"/>
-        ${[0, 1, 2, 3].map(i => `<path d="M${1820 + i * 48} 524 L${1826 + i * 48} 700 L${1846 + i * 48} 700 L${1844 + i * 48} 524 Z" fill="#9ccb8e" opacity=".55"/>`).join("")}`;
-      s += caja(1786, 742, 118, 60, "#c98d5c") + caja(1798, 802, 118, 60, "#d29b6a") + caja(1782, 862, 122, 62, "#c98d5c");
-      s += `${[[1816, 758], [1848, 754], [1878, 760], [1830, 818], [1866, 814], [1898, 820]].map((f, i) => `<circle cx="${f[0]}" cy="${f[1]}" r="13" fill="${["#ef5350", "#ffb74d", "#fdd835", "#ab47bc", "#ef5350", "#7cb342"][i]}"/>`).join("")}`;
+      /* el puesto de frutas, al fondo: armazón de postes con su travesaño, tabla de fondo,
+         mostrador y cajas. El tejado lo pone el toldo verde del propio punto: aquí no se
+         dibuja ningún otro toldo, para que no se lean dos tejados apilados */
+      s += `<rect x="3080" y="336" width="164" height="186" rx="6" fill="#e8d3b4"/>
+        <rect x="3074" y="330" width="176" height="14" rx="6" fill="#d3b48c"/>
+        <path d="M3086 384 h152 M3086 432 h152 M3086 480 h152" stroke="#d3b48c" stroke-width="5"/>`;
+      s += `<rect x="3072" y="300" width="12" height="404" rx="5" fill="#8d6e63"/>
+        <rect x="3240" y="300" width="12" height="404" rx="5" fill="#8d6e63"/>
+        <rect x="3046" y="282" width="232" height="22" rx="9" fill="#a1714a"/>
+        <rect x="3046" y="298" width="232" height="10" rx="5" fill="#8d6e63"/>
+        <rect x="3058" y="504" width="208" height="20" rx="7" fill="#c08a55"/>
+        <path d="M3062 524 L3074 700 L3250 700 L3262 524 Z" fill="#f0d3b0"/>
+        ${[0, 1, 2, 3].map(i => `<path d="M${3082 + i * 46} 524 L${3088 + i * 46} 700 L${3108 + i * 46} 700 L${3106 + i * 46} 524 Z" fill="#9ccb8e" opacity=".55"/>`).join("")}`;
+      s += caja(3050, 742, 118, 60, "#c98d5c") + caja(3062, 802, 118, 60, "#d29b6a") + caja(3046, 862, 122, 62, "#c98d5c");
+      s += `${[[3080, 758], [3112, 754], [3142, 760], [3094, 818], [3130, 814], [3162, 820]].map((f, i) => `<circle cx="${f[0]}" cy="${f[1]}" r="13" fill="${["#ef5350", "#ffb74d", "#fdd835", "#ab47bc", "#ef5350", "#7cb342"][i]}"/>`).join("")}`;
 
-      /* la panadería: toldo verde, mostrador y panes en las cajas */
-      s += `<rect x="2090" y="498" width="12" height="384" rx="5" fill="#8d6e63"/>
-        <rect x="2312" y="498" width="12" height="384" rx="5" fill="#8d6e63"/>
-        <path d="M2072 502 L2096 436 L2324 436 L2348 502 Z" fill="#4e9d63"/>
-        ${[0, 1, 2, 3].map(i => `<path d="M${2098 + i * 52} 502 L${2114 + i * 52} 436 L${2138 + i * 52} 436 L${2124 + i * 52} 502 Z" fill="#fff3e0" opacity=".92"/>`).join("")}
-        <path d="M2072 502 Q2210 530 2348 502 L2348 516 Q2210 544 2072 516 Z" fill="#3f8452"/>
-        <rect x="2074" y="702" width="280" height="22" rx="8" fill="#c08a55"/>
-        <path d="M2080 724 L2090 880 L2338 880 L2348 724 Z" fill="#e9d0ae"/>
-        ${[0, 1, 2].map(i => `<path d="M${2116 + i * 80} 724 L${2122 + i * 80} 880 L${2156 + i * 80} 880 L${2152 + i * 80} 724 Z" fill="#c19a70" opacity=".45"/>`).join("")}`;
-      s += caja(2248, 778, 96, 48, "#d29b6a");
-      s += `${[[2272, 792], [2302, 788], [2328, 794]].map(p => `<ellipse cx="${p[0]}" cy="${p[1]}" rx="16" ry="10" fill="#d9a05b"/><path d="M${p[0] - 9} ${p[1] - 3} l6 -5 M${p[0] + 1} ${p[1] - 4} l6 -5" stroke="#b57b3c" stroke-width="3" stroke-linecap="round"/>`).join("")}`;
+      /* la panadería: toldo verde, mostrador y panes, bajo su punto */
+      /* el fondo de la caseta, para que el punto no quede recortado contra el cielo */
+      s += `<rect x="3612" y="496" width="226" height="212" rx="8" fill="#e8d3b4"/>
+        <rect x="3612" y="496" width="226" height="16" rx="7" fill="#d3b48c"/>
+        <rect x="3620" y="560" width="210" height="12" rx="5" fill="#c08a55"/>
+        <ellipse cx="3640" cy="550" rx="18" ry="10" fill="#d9a05b"/><path d="M3630 546 l6 -6 M3640 548 l6 -6" stroke="#b57b3c" stroke-width="3" stroke-linecap="round"/>
+        <ellipse cx="3812" cy="548" rx="17" ry="11" fill="#e6b877"/><path d="M3800 546 q12 -6 24 0" stroke="#c08c4a" stroke-width="3" fill="none"/>
+        <path d="M3620 578 h34 M3796 578 h34" stroke="#d3b48c" stroke-width="6" stroke-linecap="round"/>`;
+      /* la sombra de contacto y las patas: el puesto ya no acaba en un corte recto
+         colgado sobre los adoquines, sino que se apoya en el suelo como los otros dos */
+      s += `<ellipse cx="3732" cy="898" rx="156" ry="16" fill="rgba(90,60,30,.22)"/>
+        <rect x="3608" y="498" width="12" height="404" rx="5" fill="#8d6e63"/>
+        <rect x="3830" y="498" width="12" height="404" rx="5" fill="#8d6e63"/>
+        <rect x="3598" y="892" width="32" height="12" rx="5" fill="#7a5a4e"/>
+        <rect x="3820" y="892" width="32" height="12" rx="5" fill="#7a5a4e"/>
+        <path d="M3590 502 L3614 436 L3842 436 L3866 502 Z" fill="#4e9d63"/>
+        ${[0, 1, 2, 3].map(i => `<path d="M${3616 + i * 52} 502 L${3632 + i * 52} 436 L${3656 + i * 52} 436 L${3642 + i * 52} 502 Z" fill="#fff3e0" opacity=".92"/>`).join("")}
+        <path d="M3590 502 Q3728 530 3866 502 L3866 516 Q3728 544 3590 516 Z" fill="#3f8452"/>
+        <rect x="3592" y="702" width="280" height="22" rx="8" fill="#c08a55"/>
+        <path d="M3598 724 L3607 862 q24 14 50 6 q26 -10 52 2 q24 12 48 -2 q26 -8 52 6 q22 8 47 -6 L3866 724 Z" fill="#e9d0ae"/>
+        ${[0, 1, 2].map(i => `<path d="M${3634 + i * 80} 724 L${3640 + i * 80} 868 q17 6 34 -2 L${3670 + i * 80} 724 Z" fill="#c19a70" opacity=".45"/>`).join("")}
+        <path d="M3607 862 q24 14 50 6 q26 -10 52 2 q24 12 48 -2 q26 -8 52 6 q22 8 47 -6" stroke="rgba(120,86,48,.3)" stroke-width="6" fill="none"/>`;
+      /* una cesta de panes en el pie izquierdo y una caja en el derecho: las dos cruzan
+         el bajo del mantel y lo dejan cosido al empedrado */
+      s += `<ellipse cx="3660" cy="898" rx="52" ry="10" fill="rgba(90,60,30,.2)"/>
+        <path d="M3622 860 h78 l-10 38 h-58 Z" fill="#c9925c"/>
+        <path d="M3630 872 h62 M3634 886 h54" stroke="rgba(255,255,255,.3)" stroke-width="5"/>
+        <rect x="3614" y="852" width="94" height="13" rx="6" fill="#b57b3c"/>
+        <ellipse cx="3642" cy="852" rx="17" ry="11" fill="#e6b877"/>
+        <ellipse cx="3676" cy="849" rx="16" ry="11" fill="#d9a05b"/>
+        <path d="M3634 848 l6 -6 M3670 845 l6 -6" stroke="#b57b3c" stroke-width="3" stroke-linecap="round"/>`;
+      s += `<ellipse cx="3794" cy="900" rx="56" ry="10" fill="rgba(90,60,30,.2)"/>` + caja(3746, 850, 96, 48, "#d29b6a");
+      s += `${[[3770, 864], [3800, 860], [3826, 866]].map(p => `<ellipse cx="${p[0]}" cy="${p[1]}" rx="16" ry="10" fill="#d9a05b"/><path d="M${p[0] - 9} ${p[1] - 3} l6 -5 M${p[0] + 1} ${p[1] - 4} l6 -5" stroke="#b57b3c" stroke-width="3" stroke-linecap="round"/>`).join("")}`;
 
-      /* el puesto de quesos, en primer plano: toldo azul y mostrador con mantel */
-      s += `<rect x="1906" y="788" width="14" height="184" rx="6" fill="#8d6e63"/>
-        <rect x="2106" y="788" width="14" height="184" rx="6" fill="#8d6e63"/>
-        <path d="M1884 794 L1910 726 L2116 726 L2142 794 Z" fill="#4aa3c8"/>
-        ${[0, 1, 2, 3].map(i => `<path d="M${1912 + i * 52} 794 L${1928 + i * 52} 726 L${1952 + i * 52} 726 L${1938 + i * 52} 794 Z" fill="#fff3e0" opacity=".92"/>`).join("")}
-        <path d="M1884 794 Q2013 822 2142 794 L2142 808 Q2013 836 1884 808 Z" fill="#3d8caf"/>
-        <rect x="1888" y="922" width="250" height="24" rx="8" fill="#c08a55"/>
-        <path d="M1894 946 L1902 1052 L2126 1052 L2134 946 Z" fill="#fdf1e2"/>
-        ${[0, 1, 2, 3, 4].map(i => `<path d="M${1912 + i * 46} 946 L${1918 + i * 46} 1052 L${1940 + i * 46} 1052 L${1936 + i * 46} 946 Z" fill="#e2574c" opacity=".35"/>`).join("")}`;
+      /* el puesto de quesos, en primer plano: toldo azul y mostrador con mantel, bajo su punto */
+      s += `<rect x="3336" y="788" width="14" height="184" rx="6" fill="#8d6e63"/>
+        <rect x="3536" y="788" width="14" height="184" rx="6" fill="#8d6e63"/>
+        <path d="M3314 794 L3340 726 L3546 726 L3572 794 Z" fill="#4aa3c8"/>
+        ${[0, 1, 2, 3].map(i => `<path d="M${3342 + i * 52} 794 L${3358 + i * 52} 726 L${3382 + i * 52} 726 L${3368 + i * 52} 794 Z" fill="#fff3e0" opacity=".92"/>`).join("")}
+        <path d="M3314 794 Q3443 822 3572 794 L3572 808 Q3443 836 3314 808 Z" fill="#3d8caf"/>
+        <rect x="3318" y="922" width="250" height="24" rx="8" fill="#c08a55"/>
+        <path d="M3324 946 L3332 1052 L3556 1052 L3564 946 Z" fill="#fdf1e2"/>
+        ${[0, 1, 2, 3, 4].map(i => `<path d="M${3342 + i * 46} 946 L${3348 + i * 46} 1052 L${3370 + i * 46} 1052 L${3366 + i * 46} 946 Z" fill="#e2574c" opacity=".35"/>`).join("")}`;
 
-      /* la cesta descansa sobre unas cajas apiladas */
-      s += caja(2366, 462, 150, 62, "#d29b6a") + caja(2380, 524, 132, 60, "#c98d5c") + caja(2358, 584, 154, 62, "#d29b6a")
-        + caja(2376, 646, 132, 58, "#c98d5c");
-      s += `${[[2402, 676, "#ef5350"], [2436, 672, "#7cb342"], [2470, 678, "#ffb74d"]].map(f => `<circle cx="${f[0]}" cy="${f[1]}" r="13" fill="${f[2]}"/>`).join("")}`;
+      /* la cesta descansa sobre unas cajas apiladas, bajo su punto */
+      s += caja(3946, 462, 150, 62, "#d29b6a") + caja(3960, 524, 132, 60, "#c98d5c") + caja(3938, 584, 154, 62, "#d29b6a")
+        + caja(3956, 646, 132, 58, "#c98d5c");
+      s += `${[[3982, 676, "#ef5350"], [4016, 672, "#7cb342"], [4050, 678, "#ffb74d"]].map(f => `<circle cx="${f[0]}" cy="${f[1]}" r="13" fill="${f[2]}"/>`).join("")}`;
 
-      /* la farola, con un pajarito posado que da saltitos */
+      /* la farola, plantada en el pasillo libre de la calle entre el puesto de quesos y la
+         panadería: ya no sale de dentro del puesto de frutas, el foco queda contra el cielo
+         y su resplandor se ve. Lleva un pajarito posado que da saltitos */
       s += `<g>
-        <ellipse cx="2556" cy="706" rx="30" ry="10" fill="rgba(90,60,30,.3)"/>
-        <rect x="2548" y="330" width="16" height="374" rx="7" fill="#546e7a"/>
-        <rect x="2536" y="676" width="40" height="30" rx="8" fill="#546e7a"/>
-        <path d="M2528 330 L2556 286 L2584 330 Z" fill="#455a64"/>
-        <rect x="2532" y="330" width="48" height="44" rx="6" fill="rgba(255,236,160,.85)"/>
-        <circle cx="2556" cy="352" r="60" fill="url(#cocLuz)"/>
-        <g transform="translate(2596 322)">
+        <ellipse cx="3584" cy="1000" rx="24" ry="9" fill="rgba(90,60,30,.3)"/>
+        <rect x="3576" y="584" width="16" height="412" rx="7" fill="#546e7a"/>
+        <rect x="3564" y="966" width="40" height="30" rx="8" fill="#546e7a"/>
+        <path d="M3560 584 L3584 540 L3608 584 Z" fill="#455a64"/>
+        <rect x="3560" y="584" width="48" height="44" rx="6" fill="rgba(255,236,160,.85)"/>
+        <circle cx="3584" cy="606" r="66" fill="url(#cocXLuz)"/>
+        <circle cx="3584" cy="606" r="34" fill="rgba(255,232,150,.4)"/>
+        <g transform="translate(3540 574)">
           <ellipse rx="15" ry="11" fill="#7986cb"/><circle cx="12" cy="-7" r="8" fill="#7986cb"/>
           <path d="M19 -7 l10 3 l-10 4 Z" fill="#ffb74d"/><circle cx="14" cy="-9" r="2" fill="#263238"/>
           <path d="M-14 2 q-14 4 -18 -2 q10 -2 18 -6 Z" fill="#5c6bc0"/>
-          <animateTransform attributeName="transform" type="translate" values="2596 322;2596 314;2596 322" dur="3.6s" repeatCount="indefinite"/>
+          <animateTransform attributeName="transform" type="translate" values="3540 574;3540 566;3540 574" dur="3.6s" repeatCount="indefinite"/>
         </g>
       </g>`;
 
       /* el carrito de la compra, aparcado entre puestos */
       s += `<g>
-        <path d="M2404 792 L2528 792 L2510 880 L2422 880 Z" fill="#cfd8dc"/>
-        <path d="M2412 820 h108 M2418 848 h96" stroke="#90a4ae" stroke-width="5"/>
-        <path d="M2452 792 v88 M2482 792 v88" stroke="#90a4ae" stroke-width="5"/>
-        <path d="M2528 792 L2544 762 q10 -18 -8 -20" stroke="#78909c" stroke-width="8" fill="none" stroke-linecap="round"/>
-        <circle cx="2432" cy="892" r="13" fill="#546e7a"/><circle cx="2504" cy="892" r="13" fill="#546e7a"/>
-        <circle cx="2440" cy="778" r="14" fill="#ef5350"/><circle cx="2470" cy="774" r="12" fill="#7cb342"/><circle cx="2498" cy="780" r="13" fill="#ffb74d"/>
+        <path d="M3654 962 L3778 962 L3760 1050 L3672 1050 Z" fill="#cfd8dc"/>
+        <path d="M3662 990 h108 M3668 1018 h96" stroke="#90a4ae" stroke-width="5"/>
+        <path d="M3702 962 v88 M3732 962 v88" stroke="#90a4ae" stroke-width="5"/>
+        <path d="M3778 962 L3794 932 q10 -18 -8 -20" stroke="#78909c" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <circle cx="3682" cy="1062" r="13" fill="#546e7a"/><circle cx="3754" cy="1062" r="13" fill="#546e7a"/>
+        <circle cx="3690" cy="948" r="14" fill="#ef5350"/><circle cx="3720" cy="944" r="12" fill="#7cb342"/><circle cx="3748" cy="950" r="13" fill="#ffb74d"/>
       </g>`;
 
-      /* la guirnalda de banderines entre los toldos, meciéndose muy despacio */
-      const ga = [1806, 268], gc = [2070, 398], gb = [2330, 424];
-      let gs = `<path d="M${ga[0]} ${ga[1]} Q${gc[0]} ${gc[1]} ${gb[0]} ${gb[1]}" stroke="#8d6e63" stroke-width="5" fill="none"/>`;
+      /* el cubo de las flores, entre las cajas y el puesto de quesos */
+      s += `<path d="M3250 942 L3310 942 L3302 1012 L3258 1012 Z" fill="#7fb3c8"/>
+        <rect x="3244" y="932" width="72" height="16" rx="7" fill="#9ac6d8"/>
+        <path d="M3280 936 q-26 -32 -30 -62 M3280 936 q22 -36 30 -66 M3280 936 q-4 -44 2 -70 M3280 936 q-18 -22 -34 -28 M3280 936 q20 -26 36 -30" stroke="#6aa84a" stroke-width="6" fill="none" stroke-linecap="round"/>
+        ${[[3248, 870, "#ef9a9a"], [3312, 866, "#fdd835"], [3282, 862, "#ce93d8"], [3244, 906, "#ffb74d"], [3318, 904, "#ef9a9a"]].map(f => `<circle cx="${f[0]}" cy="${f[1]}" r="12" fill="${f[2]}"/><circle cx="${f[0]}" cy="${f[1]}" r="5" fill="#fff59d"/>`).join("")}`;
+
+      /* los sacos de harina de la panadería y las cajas del final de la plaza */
+      s += `<ellipse cx="3910" cy="1066" rx="60" ry="12" fill="rgba(90,60,30,.2)"/>
+        <path d="M3866 1064 q-14 -62 16 -84 l30 0 q30 22 16 84 Z" fill="#d8bb92"/>
+        <rect x="3872" y="1008" width="56" height="12" rx="6" fill="#b99a71"/>
+        <path d="M3882 980 q4 -16 -8 -22 q18 -4 22 8 q6 -14 22 -8 q-12 8 -8 22 Z" fill="#c9ab82"/>
+        <path d="M3916 1066 q-12 -52 14 -70 l24 0 q26 18 14 70 Z" fill="#c9ab82"/>
+        <rect x="3922" y="1020" width="46" height="10" rx="5" fill="#ab8c65"/>
+        <path d="M3930 996 q3 -13 -6 -18 q15 -3 18 7 q5 -12 18 -7 q-10 7 -6 18 Z" fill="#d8bb92"/>`;
+      s += caja(4106, 986, 92, 48, "#c98d5c");
+      s += `<ellipse cx="4152" cy="972" rx="30" ry="22" fill="#7cb342"/>
+        <path d="M4128 968 q24 -12 48 0" stroke="#5f9b36" stroke-width="4" fill="none"/>
+        <path d="M4152 950 q-2 -12 8 -14" stroke="#4f7f2a" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <ellipse cx="4148" cy="1070" rx="52" ry="10" fill="rgba(90,60,30,.18)"/>
+        <circle cx="4114" cy="1054" r="14" fill="#ef5350"/><circle cx="4146" cy="1058" r="13" fill="#ffb74d"/><circle cx="4176" cy="1054" r="13" fill="#fdd835"/>`;
+
+      /* la guirnalda de banderines, atada por un extremo al travesaño del puesto de frutas
+         y por el otro a la esquina del toldo de la panadería: cuelga al aire, sin pisar
+         ningún tejado y sin morir detrás de ningún punto */
+      const ga = [3274, 296], gc = [3450, 442], gb = [3590, 502];
+      let gs = `<path d="M${ga[0]} ${ga[1]} Q${gc[0]} ${gc[1]} ${gb[0]} ${gb[1]}" stroke="#8d6e63" stroke-width="5" fill="none"/>
+        <circle cx="${ga[0]}" cy="${ga[1]}" r="8" fill="#8d6e63"/>
+        <circle cx="${gb[0]}" cy="${gb[1]}" r="8" fill="#8d6e63"/>`;
       const gcol = ["#ef5350", "#ffd54f", "#66bb6a", "#4fc3f7", "#ce93d8", "#ffb74d", "#ef5350", "#66bb6a"];
       for (let i = 0; i < 8; i++) {
-        const tt = 0.06 + i * 0.118, u = 1 - tt;
+        const tt = 0.09 + i * 0.111, u = 1 - tt;
         const gx = u * u * ga[0] + 2 * u * tt * gc[0] + tt * tt * gb[0];
         const gy = u * u * ga[1] + 2 * u * tt * gc[1] + tt * tt * gb[1];
-        gs += `<path d="M${(gx - 17).toFixed(0)} ${gy.toFixed(0)} L${(gx + 17).toFixed(0)} ${(gy + 3).toFixed(0)} L${gx.toFixed(0)} ${(gy + 40).toFixed(0)} Z" fill="${gcol[i]}" opacity=".92"/>`;
+        gs += `<path d="M${(gx - 14).toFixed(0)} ${(gy - 1).toFixed(0)} L${(gx + 14).toFixed(0)} ${(gy + 4).toFixed(0)} L${gx.toFixed(0)} ${(gy + 38).toFixed(0)} Z" fill="${gcol[i]}" opacity=".92"/>`;
       }
-      s += `<g>${gs}<animateTransform attributeName="transform" type="rotate" values="-0.7 1806 268;0.8 1806 268;-0.7 1806 268" dur="7s" repeatCount="indefinite"/></g>`;
+      s += `<g>${gs}<animateTransform attributeName="transform" type="rotate" values="-0.5 ${ga[0]} ${ga[1]};0.6 ${ga[0]} ${ga[1]};-0.5 ${ga[0]} ${ga[1]}" dur="7s" repeatCount="indefinite"/></g>`;
 
       /* ================== DETALLES CON VIDA ================== */
       /* el vaporcito de la olla */
-      [[612, 416, 0], [648, 408, 1.2], [676, 420, 2.4]].forEach(v => {
+      [[1132, 426, 0], [1168, 418, 1.2], [1196, 430, 2.4]].forEach(v => {
         s += `<path d="M${v[0]} ${v[1]} q-13 -26 5 -44 q16 -18 6 -40" stroke="rgba(255,255,255,.55)" stroke-width="8" fill="none" stroke-linecap="round">
           <animate attributeName="opacity" values=".55;.14;.55" dur="3.6s" begin="${v[2]}s" repeatCount="indefinite"/></path>`;
       });
       /* el vaporcito del pan recién hecho */
-      [[2168, 572, 0], [2206, 566, 1.4], [2242, 574, 2.6]].forEach(v => {
+      [[3688, 572, 0], [3726, 566, 1.4], [3762, 574, 2.6]].forEach(v => {
         s += `<path d="M${v[0]} ${v[1]} q-12 -18 4 -32 q14 -14 5 -28" stroke="rgba(255,255,255,.6)" stroke-width="7" fill="none" stroke-linecap="round">
           <animate attributeName="opacity" values=".6;.15;.6" dur="4s" begin="${v[2]}s" repeatCount="indefinite"/></path>`;
       });
       /* un pájaro que cruza el cielo del mercado sin prisa */
       s += `<g opacity=".7"><path d="M0 0 q-13 -11 -25 -5 M0 0 q13 -11 25 -5" stroke="rgba(70,90,110,.75)" stroke-width="4" fill="none" stroke-linecap="round"/>
-        <animateMotion dur="34s" repeatCount="indefinite" path="M 1860 220 Q 2100 150 2340 210 Q 2520 258 2580 190 Q 2320 268 2060 240 Q 1920 226 1860 220"/></g>`;
-      /* el olorcito rico que viaja de la cocina al mercado */
+        <animateMotion dur="40s" repeatCount="indefinite" path="M 3120 220 Q 3520 140 3920 208 Q 4140 250 4180 186 Q 3800 264 3420 240 Q 3200 226 3120 220"/></g>`;
+      /* el olorcito rico que viaja de la cocina al mercado, cosiendo las tres zonas */
       s += `<g opacity=".8"><path d="M0 0 q13 -10 26 0 q13 10 26 0" stroke="rgba(255,236,179,.85)" stroke-width="5" fill="none" stroke-linecap="round"/>
-        <animateMotion dur="28s" repeatCount="indefinite" path="M 620 400 Q 980 330 1330 420 Q 1660 500 2020 400 Q 2300 330 2500 400 Q 2100 500 1620 450 Q 1060 400 620 400"/></g>`;
+        <animateMotion dur="34s" repeatCount="indefinite" path="M 700 400 Q 1400 330 2100 420 Q 2700 490 3300 400 Q 3800 330 4080 400 Q 3400 500 2500 450 Q 1500 400 700 400"/></g>`;
       /* migas y chispitas por el suelo */
-      [[352, 1012], [806, 1034], [1252, 1046], [1666, 1026], [2148, 1040], [2402, 1010]].forEach(m => {
+      [[352, 1012], [806, 1034], [1252, 1046], [1666, 1026], [2148, 1040], [2402, 1010], [2820, 1046], [3320, 1032], [3860, 1044]].forEach(m => {
         s += `<circle cx="${m[0]}" cy="${m[1]}" r="4" fill="rgba(255,224,130,.45)"/><circle cx="${m[0] + 15}" cy="${m[1] + 9}" r="3" fill="rgba(255,224,130,.35)"/>`;
       });
-      return decoSvg(s, 2600);
+      return decoSvg(s, 4200);
     }
   },
 

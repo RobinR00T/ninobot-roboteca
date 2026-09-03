@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><title>chk</title>
+<link rel="stylesheet" href="src/10-styles.css">
+<style>html,body{margin:0;padding:0;background:#111}
+#holder{position:relative;overflow:hidden}
+</style></head><body>
+<div id="stars"></div><div id="app"></div>
+<div id="holder"></div>
+<script src="src/20-core.js"></script>
+<script src="src/21-robovoice.js"></script>
+<script src="src/22-tts-names.js"></script>
+<script src="src/23-robovoice-glue.js"></script>
+<script src="src/24-shared-words.js"></script>
+<script src="src/25-ui-strings.js"></script>
+<script src="src/30-robots.js"></script>
+<script src="src/32-disfraces.js"></script>
+<script src="src/35-call.js"></script>
+<script src="src/36-leer.js"></script>
+<script src="src/37-mision.js"></script>
+<script src="src/38-padres.js"></script>
+<script src="src/39-care-0.js"></script>
+<script src="src/39-care-1.js"></script>
+<script src="src/39-care-2.js"></script>
+<script src="src/39-care-3.js"></script>
+<script src="src/39-care-4.js"></script>
+<script src="src/39-care-5.js"></script>
+<script src="src/39-care-6.js"></script>
+<script src="src/40-espacio-a.js"></script>
+<script src="src/41-espacio-b.js"></script>
+<script src="src/42-dinos-a.js"></script>
+<script src="src/43-dinos-b.js"></script>
+<script src="src/44-cuerpo-a.js"></script>
+<script src="src/45-cuerpo-b.js"></script>
+<script src="src/46-tierramedia-a.js"></script>
+<script src="src/47-tierramedia-b.js"></script>
+<script src="src/48-oceano-a.js"></script>
+<script src="src/49-oceano-b.js"></script>
+<script src="src/50-animales-a.js"></script>
+<script src="src/51-animales-b.js"></script>
+<script src="src/52-musica-a.js"></script>
+<script src="src/53-musica-b.js"></script>
+<script src="src/54-increibles-a.js"></script>
+<script src="src/55-increibles-b.js"></script>
+<script src="src/56-cocina-a.js"></script>
+<script src="src/56-cocina-b.js"></script>
+<script src="src/60-deco.js"></script>
+<script src="src/61-espacio-icons.js"></script>
+<script src="src/62-oceano-icons.js"></script>
+<script src="src/63-dinos-icons.js"></script>
+<script src="src/64-cuerpo-icons.js"></script>
+<script src="src/65-increibles-icons.js"></script>
+<script src="src/66-musica-icons.js"></script>
+<script src="src/67-famous-faces.js"></script>
+<script src="src/68-abc-emojis.js"></script>
+<script src="src/69a-deco-espacio-tierramedia.js"></script>
+<script src="src/69c-deco-cuerpo-musica.js"></script>
+<script src="src/69d-deco-animales-increibles.js"></script>
+<script src="src/70-starwars-a.js"></script>
+<script src="src/71-starwars-b.js"></script>
+<script src="src/72-piratas-a.js"></script>
+<script src="src/73-piratas-b.js"></script>
+<script src="src/74-egipto-a.js"></script>
+<script src="src/75-egipto-b.js"></script>
+<script src="src/76-amazonas-a.js"></script>
+<script src="src/77-amazonas-b.js"></script>
+<script src="src/78-policia-a.js"></script>
+<script src="src/78-policia-b.js"></script>
+<script src="src/79-bomberos-a.js"></script>
+<script src="src/79-bomberos-b.js"></script>
+<script src="src/80-starwars-icons.js"></script>
+<script src="src/81-piratas-icons.js"></script>
+<script src="src/82-egipto-icons.js"></script>
+<script src="src/83-amazonas-icons.js"></script>
+<script src="src/84-animales-icons.js"></script>
+<script src="src/85-tierramedia-icons.js"></script>
+<script src="src/86-famous-faces-2.js"></script>
+<script src="src/87-tierramedia-extra.js"></script>
+<script src="src/88-dinos-extra.js"></script>
+<script src="src/89-dinos-objects.js"></script>
+<script src="src/89b-deco-dinos-oceano.js"></script>
+<script src="src/90-celebrations.js"></script>
+<script src="src/91-theme-cards.js"></script>
+<script src="src/92-gaudi-a.js"></script>
+<script src="src/92-gaudi-b.js"></script>
+<script src="src/93-miro-a.js"></script>
+<script src="src/93-miro-b.js"></script>
+<script src="src/94-dali-a.js"></script>
+<script src="src/94-dali-b.js"></script>
+<script src="src/95-picasso-a.js"></script>
+<script src="src/95-picasso-b.js"></script>
+<script src="src/96-arboles-a.js"></script>
+<script src="src/96-arboles-b.js"></script>
+<script src="src/97-frutas-a.js"></script>
+<script src="src/97-frutas-b.js"></script>
+<script src="src/98-famous-faces-3.js"></script>
+<script src="src/98a-policia-extra.js"></script>
+<script src="src/98b-bomberos-extra.js"></script>
+<script src="src/98c-cocina-extra.js"></script>
+<script src="src/99-engine.js"></script>
+<script>
+window.CHK={};
+CHK.render=function(theme,poik,showPois){
+  var e=THEMES[theme].content.explore;
+  var deco=(typeof e.deco==="function")?e.deco(e):(e.deco||"");
+  window.__deco=deco;
+  var h=document.getElementById("holder");
+  h.style.width=e.width+"px";h.style.height=e.height+"px";
+  var bg=e.bgCss||"#123";
+  h.innerHTML='<div class="mapcanvas" id="mapcanvas" style="position:absolute;left:0;top:0;width:'+e.width+'px;height:'+e.height+'px;background:'+bg+'">'
+   +'<div class="mapdeco">'+deco+'</div>'
+   +(showPois===false?"":e.pois.map(function(p,i){
+      return '<button class="poi" data-i="'+i+'" style="left:'+p.x+'px;top:'+p.y+'px">'
+        +(p.svg?'<span class="picon" style="width:'+p.iw+'px;height:'+p.ih+'px">'+p.svg+'</span>'
+               :'<span class="pemoji" style="font-size:'+((p.size||1)*2.2)+'rem">'+p.emoji+'</span>')
+        +'<span class="plabel">'+(p.name.es)+'</span></button>';
+    }).join(""))
+   +'</div>';
+  document.getElementById("mapcanvas").style.setProperty("--poik",poik||1);
+  document.body.style.width=e.width+"px";
+  document.body.style.height=e.height+"px";
+  return {w:e.width,h:e.height};
+};
+CHK.ready=true;
+var qs=new URLSearchParams(location.search);
+if(qs.get("t")){ CHK.render(qs.get("t"), parseFloat(qs.get("k")||"1"), qs.get("pois")!=="0"); }
+</script>
+</body></html>

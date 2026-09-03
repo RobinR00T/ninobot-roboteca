@@ -56,18 +56,35 @@
       <path d="M32 67 L34 99 M48 67 L48 100 M62 67 L62 99" stroke="#4e342e" stroke-width="2" opacity=".5"/>
       <path d="M22 82 Q48 88 74 82" stroke="#4e342e" stroke-width="3" fill="none" opacity=".4"/>`, "0 0 96 106") },
 
-    /* La vela mayor: hinchada por el viento y con su remiendo cosido */
-    "⛵": { w: 86, h: 100, svg: pir(`
-      <defs><linearGradient id="prVela" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#d3dce4"/></linearGradient></defs>
-      <rect x="43" y="2" width="7" height="102" rx="3" fill="#6d4c41"/>
-      <rect x="10" y="8" width="72" height="6" rx="3" fill="#5d4037"/>
-      <path d="M14 18 Q46 10 78 18 Q88 56 78 92 Q46 102 14 92 Q4 56 14 18 Z" fill="url(#prVela)" stroke="#b8c4cd" stroke-width="1.5"/>
-      <path d="M20 30 Q46 24 72 30 M20 80 Q46 88 72 80" stroke="rgba(96,125,139,.35)" stroke-width="3" fill="none"/>
-      <g transform="rotate(8 58 62)">
-        <rect x="46" y="52" width="24" height="20" rx="3" fill="#ef9a5a" stroke="#c96b2f" stroke-width="2" stroke-dasharray="4 3"/>
-        <path d="M50 57 L66 57 M50 67 L66 67" stroke="#c96b2f" stroke-width="1.6" stroke-dasharray="3 3"/>
+    /* La vela mayor: vela cuadra hinchada, colgada de su verga por los
+       envergues, con los paños de lona cosidos en vertical, el remiendo y
+       las rachas de viento que la empujan (su ficha dice justo eso).
+       El punto se posa sobre la vela blanca del barco, así que el dibujo
+       lleva a propósito la verga y el palo de madera oscura, la lona de un
+       crema más cálido y el viento en azul: sin eso quedaba una velita
+       blanca sobre lona blanca y se leía como un parche cosido encima.
+       Va apaisada (110x86) porque de pie se leía como un tonel.
+       Si se cambian iw/ih hay que tocar también su caja en 73-piratas-b.js */
+    "⛵": { w: 110, h: 86, svg: pir(`
+      <defs><linearGradient id="prVela" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fdf3dd"/><stop offset="100%" stop-color="#e6d0a5"/></linearGradient></defs>
+      <rect x="54" y="-3" width="10" height="93" rx="4" fill="#6d4c41"/>
+      <path d="M59 0 V90" stroke="#54382c" stroke-width="2" opacity=".5"/>
+      <path d="M14 20 Q59 32 104 20 Q112 50 102 78 Q80 92 59 90 Q38 88 16 78 Q6 50 14 20 Z" fill="url(#prVela)" stroke="#d3b681" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M14 20 Q6 50 16 78 Q23 81 29 83 Q21 50 27 22 Z" fill="#9b8055" opacity=".25"/>
+      <path d="M78 27 Q88 50 77 87 Q86 85 93 81 Q105 50 94 23 Z" fill="#fffdf0" opacity=".5"/>
+      <path d="M27 23 Q22 50 23 81 M42 28 Q39 50 40 88 M59 31 Q58 50 59 89 M76 28 Q79 50 77 88 M92 23 Q97 50 94 81" stroke="#b99a68" stroke-width="1.6" fill="none" opacity=".3"/>
+      <g transform="rotate(-7 34 40)">
+        <rect x="24" y="32" width="20" height="16" rx="3" fill="#ef9a5a" stroke="#c96b2f" stroke-width="2" stroke-dasharray="4 3"/>
+        <path d="M28 37 L40 37 M28 44 L40 44" stroke="#c96b2f" stroke-width="1.5" stroke-dasharray="3 3"/>
       </g>
-      <path d="M14 92 Q10 100 4 104 M78 92 Q84 100 90 104" stroke="#8d6e63" stroke-width="2.5" fill="none" stroke-linecap="round"/>`, "0 0 92 108") },
+      <g stroke="#7d5730" stroke-width="2.4" stroke-linecap="round">
+        <path d="M24 10 v14 M42 10 v18 M59 10 v20 M76 10 v18 M94 10 v14"/></g>
+      <rect x="2" y="10" width="114" height="9" rx="4.5" fill="#7d5730"/>
+      <rect x="5" y="11.5" width="108" height="3" rx="1.5" fill="#b98a53"/>
+      <circle cx="4" cy="14.5" r="3.6" fill="#5d4037"/><circle cx="114" cy="14.5" r="3.6" fill="#5d4037"/>
+      <g stroke="#2f9ad4" stroke-width="3" fill="none" stroke-linecap="round" opacity=".9">
+        <path d="M0 40 Q9 34 19 39"/><path d="M0 56 Q8 50 17 55"/><path d="M2 71 Q11 66 21 70"/></g>
+      <path d="M16 78 Q11 84 9 90 M102 78 Q107 84 109 90" stroke="#7d5730" stroke-width="1.8" fill="none" stroke-linecap="round"/>`, "0 0 118 92") },
 
     /* El loro: plumas rojas, ala azul y cola de tres colores */
     "🦜": { w: 48, h: 62, svg: pir(`

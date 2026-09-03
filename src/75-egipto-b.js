@@ -299,76 +299,78 @@ Object.assign(THEMES.egipto.content, {
 
   /* ---------- MAPA DE EXPLORACIÓN ---------- */
   explore: {
-    width: 2600, height: 1100, stars: false,
+    width: 4200, height: 1100, stars: false,
     bgCss: "radial-gradient(ellipse 40% 30% at 85% 12%, rgba(255,241,118,.6), transparent), linear-gradient(180deg,#9fd8f2 0%,#ffe3a0 34%,#f6c35c 58%,#e6a817 80%,#c98a3b 100%)",
     cats: [
       { id: "piramides", emoji: "🔺", x: 120, name: { es: "Las pirámides", ca: "Les piràmides", en: "The pyramids", cs: "Pyramidy", fr: "Les pyramides" } },
-      { id: "nilo", emoji: "🌊", x: 1100, name: { es: "El Nilo", ca: "El Nil", en: "The Nile", cs: "Nil", fr: "Le Nil" } },
-      { id: "templo", emoji: "🏛️", x: 1900, name: { es: "El templo", ca: "El temple", en: "The temple", cs: "Chrám", fr: "Le temple" } }
+      { id: "nilo", emoji: "🌊", x: 1580, name: { es: "El Nilo", ca: "El Nil", en: "The Nile", cs: "Nil", fr: "Le Nil" } },
+      { id: "templo", emoji: "🏛️", x: 2850, name: { es: "El templo", ca: "El temple", en: "The temple", cs: "Chrám", fr: "Le temple" } }
     ],
     pois: [
-      { cat: "piramides", emoji: "🔺", x: 180, y: 480, size: 3,
+      { cat: "piramides", emoji: "🔺", x: 240, y: 480, size: 3,
         name: { es: "La Gran Pirámide", ca: "La Gran Piràmide", en: "The Great Pyramid", cs: "Velká pyramida", fr: "La Grande Pyramide" },
         fact: { es: "La Gran Pirámide de Keops tiene 4500 años y fue el edificio más alto del mundo durante muchísimo tiempo.", ca: "La Gran Piràmide de Kheops té 4500 anys i va ser l'edifici més alt del món durant moltíssim temps.", en: "The Great Pyramid of Khufu is 4,500 years old and was the tallest building in the world for a very long time.", cs: "Velká pyramida faraona Cheopse je stará 4500 let a dlouho byla nejvyšší stavbou na světě.", fr: "La Grande Pyramide de Khéops a 4 500 ans et a longtemps été le plus haut bâtiment du monde." } },
-      { cat: "piramides", emoji: "🦁", x: 400, y: 700, size: 2,
+      { cat: "piramides", emoji: "🦁", x: 620, y: 740, size: 2,
         name: { es: "La esfinge", ca: "L'esfinx", en: "The sphinx", cs: "Sfinga", fr: "Le sphinx" },
         fact: { es: "La esfinge tiene cuerpo de león y cabeza de persona. Lleva milenios vigilando las pirámides sin pestañear.", ca: "L'esfinx té cos de lleó i cap de persona. Porta mil·lennis vigilant les piràmides sense parpellejar.", en: "The sphinx has a lion's body and a person's head. It has guarded the pyramids for millennia without blinking.", cs: "Sfinga má tělo lva a hlavu člověka. Už tisíce let hlídá pyramidy a ani nemrkne.", fr: "Le sphinx a un corps de lion et une tête de personne. Il garde les pyramides depuis des millénaires sans cligner des yeux." } },
-      { cat: "piramides", emoji: "💎", x: 330, y: 300,
+      { cat: "piramides", emoji: "💎", x: 900, y: 320,
         name: { es: "La cámara del tesoro", ca: "La cambra del tresor", en: "The treasure chamber", cs: "Pokladnice", fr: "La chambre au trésor" },
         fact: { es: "Dentro de las pirámides hay pasillos secretos y cámaras escondidas con tesoros para el faraón.", ca: "Dins de les piràmides hi ha passadissos secrets i cambres amagades amb tresors per al faraó.", en: "Inside the pyramids there are secret corridors and hidden chambers with treasures for the pharaoh.", cs: "Uvnitř pyramid jsou tajné chodby a skryté komory s poklady pro faraona.", fr: "À l'intérieur des pyramides, il y a des couloirs secrets et des chambres cachées avec des trésors pour le pharaon." } },
-      { cat: "piramides", emoji: "🗼", x: 600, y: 420,
+      { cat: "piramides", emoji: "🗼", x: 1150, y: 470,
         name: { es: "El obelisco", ca: "L'obelisc", en: "The obelisk", cs: "Obelisk", fr: "L'obélisque" },
         fact: { es: "El obelisco es una aguja gigante de piedra llena de jeroglíficos. Su punta saluda al sol.", ca: "L'obelisc és una agulla gegant de pedra plena de jeroglífics. La seva punta saluda el sol.", en: "The obelisk is a giant stone needle covered in hieroglyphs. Its tip says hello to the sun.", cs: "Obelisk je obří kamenná jehla plná hieroglyfů. Její špička zdraví slunce.", fr: "L'obélisque est une aiguille géante de pierre couverte de hiéroglyphes. Sa pointe salue le soleil." } },
-      { cat: "piramides", emoji: "🐫", x: 780, y: 640,
+      { cat: "piramides", emoji: "🐫", x: 1400, y: 700,
         name: { es: "El camello", ca: "El camell", en: "The camel", cs: "Velbloud", fr: "Le chameau" },
         fact: { es: "Al camello lo llaman el barco del desierto: aguanta días sin beber y sus jorobas guardan reservas de energía.", ca: "Al camell li diuen el vaixell del desert: aguanta dies sense beure i els seus geps guarden reserves d'energia.", en: "The camel is called the ship of the desert: it can go days without drinking and its humps store energy.", cs: "Velbloudovi se říká loď pouště: vydrží celé dny bez pití a v hrbech má zásoby energie.", fr: "On appelle le chameau le bateau du désert : il tient des jours sans boire et ses bosses gardent des réserves d'énergie." } },
-      { cat: "nilo", emoji: "🛶", x: 1150, y: 540,
+      { cat: "nilo", emoji: "🛶", x: 1680, y: 560,
         name: { es: "La barca de papiro", ca: "La barca de papir", en: "The papyrus boat", cs: "Papyrová loďka", fr: "La barque de papyrus" },
         fact: { es: "Los egipcios ataban manojos de papiro y hacían barcas ligeras para pescar y viajar por el Nilo.", ca: "Els egipcis lligaven manats de papir i feien barques lleugeres per pescar i viatjar pel Nil.", en: "The Egyptians tied bundles of papyrus together to make light boats for fishing and travelling on the Nile.", cs: "Egypťané svazovali otépky papyru a stavěli z nich lehké loďky na rybaření a cesty po Nilu.", fr: "Les Égyptiens attachaient des bottes de papyrus pour faire des barques légères, pour pêcher et voyager sur le Nil." } },
-      { cat: "nilo", emoji: "🐊", x: 1300, y: 760,
+      { cat: "nilo", emoji: "🐊", x: 1940, y: 800,
         name: { es: "El cocodrilo", ca: "El cocodril", en: "The crocodile", cs: "Krokodýl", fr: "Le crocodile" },
         fact: { es: "La mamá cocodrilo lleva a sus crías dentro de la boca, con muchísimo cuidado, como en un taxi blandito.", ca: "La mare cocodril porta les seves cries dins de la boca, amb moltíssim de compte, com en un taxi tou.", en: "The crocodile mum carries her babies inside her mouth, ever so gently, like a soft little taxi.", cs: "Krokodýlí maminka nosí svá mláďata v tlamě, hrozně opatrně, jako v měkkém taxíku.", fr: "La maman crocodile porte ses bébés dans sa gueule, tout doucement, comme dans un petit taxi moelleux." } },
-      { cat: "nilo", emoji: "🦛", x: 1460, y: 620,
+      { cat: "nilo", emoji: "🦛", x: 2200, y: 640,
         name: { es: "El hipopótamo", ca: "L'hipopòtam", en: "The hippopotamus", cs: "Hroch", fr: "L'hippopotame" },
         fact: { es: "El hipopótamo pasa el día en el agua, pero casi no sabe nadar: ¡va trotando por el fondo del río!", ca: "L'hipopòtam passa el dia a l'aigua, però gairebé no sap nedar: va trotant pel fons del riu!", en: "The hippo spends all day in the water, but it can hardly swim: it trots along the bottom of the river!", cs: "Hroch tráví celý den ve vodě, ale skoro neumí plavat: po dně řeky si to cupitá!", fr: "L'hippopotame passe la journée dans l'eau, mais il sait à peine nager : il trotte au fond du fleuve !" } },
-      { cat: "nilo", emoji: "🌿", x: 1050, y: 800,
+      { cat: "nilo", emoji: "🌿", x: 1770, y: 900,
         name: { es: "Los papiros", ca: "Els papirs", en: "The papyrus reeds", cs: "Papyrus", fr: "Les papyrus" },
         fact: { es: "Con el papiro los egipcios hacían papel, barcas, cestas y hasta sandalias. ¡Una planta para todo!", ca: "Amb el papir els egipcis feien paper, barques, cistelles i fins i tot sandàlies. Una planta per a tot!", en: "With papyrus the Egyptians made paper, boats, baskets and even sandals. One plant for everything!", cs: "Z papyru dělali Egypťané papír, loďky, košíky a dokonce sandály. Jedna rostlina na všechno!", fr: "Avec le papyrus, les Égyptiens faisaient du papier, des barques, des paniers et même des sandales. Une plante pour tout !" } },
-      { cat: "nilo", emoji: "🐦", x: 1620, y: 420,
+      { cat: "nilo", emoji: "🐦", x: 2460, y: 440,
         name: { es: "El ibis", ca: "L'ibis", en: "The ibis", cs: "Ibis", fr: "L'ibis" },
         fact: { es: "El ibis pasea elegante por la orilla con su pico curvado. Los egipcios lo tenían por un pájaro muy sabio.", ca: "L'ibis passeja elegant per la riba amb el seu bec corbat. Els egipcis el consideraven un ocell molt savi.", en: "The ibis struts elegantly along the bank with its curved beak. The Egyptians thought it was a very wise bird.", cs: "Ibis se elegantně prochází po břehu se zahnutým zobákem. Egypťané ho měli za velmi moudrého ptáka.", fr: "L'ibis se promène élégamment sur la rive avec son bec courbé. Les Égyptiens le voyaient comme un oiseau très sage." } },
-      { cat: "templo", emoji: "📜", x: 1950, y: 350,
+      { cat: "templo", emoji: "📜", x: 2950, y: 380,
         name: { es: "Los jeroglíficos", ca: "Els jeroglífics", en: "The hieroglyphs", cs: "Hieroglyfy", fr: "Les hiéroglyphes" },
         fact: { es: "Los jeroglíficos son dibujos que hablan: pájaros, ojos, olas... Hay más de 700 signos distintos.", ca: "Els jeroglífics són dibuixos que parlen: ocells, ulls, ones... Hi ha més de 700 signes diferents.", en: "Hieroglyphs are drawings that talk: birds, eyes, waves... There are more than 700 different signs.", cs: "Hieroglyfy jsou obrázky, které mluví: ptáčci, oči, vlnky... Existuje jich přes 700 různých.", fr: "Les hiéroglyphes sont des dessins qui parlent : oiseaux, yeux, vagues... Il y a plus de 700 signes différents." } },
-      { cat: "templo", emoji: "👑", x: 2120, y: 560, size: 2,
+      { cat: "templo", emoji: "👑", x: 3220, y: 600, size: 2,
         name: { es: "El faraón", ca: "El faraó", en: "The pharaoh", cs: "Faraon", fr: "Le pharaon" },
         fact: { es: "El faraón mandaba en todo Egipto y llevaba una corona doble. También hubo mujeres faraón, como Hatshepsut.", ca: "El faraó manava a tot Egipte i portava una corona doble. També hi va haver dones faraó, com Hatshepsut.", en: "The pharaoh ruled all of Egypt and wore a double crown. There were women pharaohs too, like Hatshepsut.", cs: "Faraon vládl celému Egyptu a nosil dvojitou korunu. Vládly i ženy, třeba Hatšepsut.", fr: "Le pharaon commandait toute l'Égypte et portait une double couronne. Il y a eu aussi des femmes pharaons, comme Hatchepsout." } },
-      { cat: "templo", emoji: "✍️", x: 2280, y: 390,
+      { cat: "templo", emoji: "✍️", x: 3480, y: 400,
         name: { es: "El escriba", ca: "L'escriba", en: "The scribe", cs: "Písař", fr: "Le scribe" },
         fact: { es: "Muy poca gente sabía escribir. Los escribas iban a la escuela muchos años para aprender todos los signos.", ca: "Molt poca gent sabia escriure. Els escribes anaven a l'escola molts anys per aprendre tots els signes.", en: "Very few people could write. Scribes went to school for many years to learn all the signs.", cs: "Psát umělo jen málo lidí. Písaři chodili do školy mnoho let, aby se naučili všechny znaky.", fr: "Très peu de gens savaient écrire. Les scribes allaient à l'école pendant des années pour apprendre tous les signes." } },
-      { cat: "templo", emoji: "🐈", x: 2010, y: 760,
+      { cat: "templo", emoji: "🐈", x: 2980, y: 800,
         name: { es: "El gato sagrado", ca: "El gat sagrat", en: "The sacred cat", cs: "Posvátná kočka", fr: "Le chat sacré" },
         fact: { es: "Los gatos eran sagrados: protegían el grano de los ratones y las familias los mimaban como a reyes.", ca: "Els gats eren sagrats: protegien el gra dels ratolins i les famílies els mimaven com a reis.", en: "Cats were sacred: they kept the mice away from the grain and families pampered them like kings.", cs: "Kočky byly posvátné: chránily obilí před myšmi a rodiny je rozmazlovaly jako krále.", fr: "Les chats étaient sacrés : ils protégeaient le grain des souris et les familles les chouchoutaient comme des rois." } },
-      { cat: "templo", emoji: "🪲", x: 2380, y: 700,
+      { cat: "templo", emoji: "🪲", x: 3720, y: 720,
         name: { es: "El escarabajo", ca: "L'escarabat", en: "The scarab", cs: "Skarab", fr: "Le scarabée" },
         fact: { es: "El escarabajo era el símbolo del sol que sale cada mañana. La gente llevaba escarabajos de la suerte.", ca: "L'escarabat era el símbol del sol que surt cada matí. La gent portava escarabats de la sort.", en: "The scarab was the symbol of the sun rising every morning. People carried lucky scarabs.", cs: "Skarab byl symbolem slunce, které každé ráno vychází. Lidé nosili brouky pro štěstí.", fr: "Le scarabée était le symbole du soleil qui se lève chaque matin. Les gens portaient des scarabées porte-bonheur." } },
-      { cat: "templo", emoji: "😴", x: 2490, y: 480,
+      { cat: "templo", emoji: "😴", x: 4030, y: 480,
         name: { es: "La momia dormilona", ca: "La mòmia dormilega", en: "The sleepy mummy", cs: "Ospalá mumie", fr: "La momie dormeuse" },
         fact: { es: "Las momias llevan miles de años durmiendo la siesta envueltas en vendas suaves. Habla bajito, ¡shhh!", ca: "Les mòmies porten milers d'anys fent la migdiada embolicades amb benes suaus. Parla fluixet, xxt!", en: "Mummies have been napping for thousands of years wrapped in soft bandages. Speak softly, shhh!", cs: "Mumie už tisíce let podřimují zabalené v měkkých obvazech. Mluv potichu, pšš!", fr: "Les momies font la sieste depuis des milliers d'années, enveloppées de bandelettes douces. Parle tout bas, chut !" } }
     ],
-    /* El paisaje: desierto dorado, tres pirámides, la esfinge,
-       el Nilo cruzando con papiros, palmeras y un sol enorme. */
-    /* El paisaje: el sol grande sobre las dunas, las pirámides de Giza a
-       distintas distancias, el Nilo cruzando el mapa con sus faluchos y sus
-       juncos, los campos de cultivo verdes y, a la derecha, el templo con
-       columnas de capitel de papiro y muros con cenefas geométricas. */
+    /* El paisaje, de izquierda a derecha y encadenado: la meseta de Giza con
+       sus pirámides y el patio de la esfinge, el desierto de dunas donde baja
+       la meseta, el embarcadero de piedra con sus escalones al agua, la ribera
+       del Nilo con los campos de cultivo de la otra orilla, el verde que se va
+       volviendo arena y, por el camino procesional, el recinto del templo con
+       su pilono, sus columnatas de capitel de papiro y su lago sagrado.
+       Todo el repertorio es egipcio: pilonos, gola, obeliscos, mastabas,
+       estelas y grecas geométricas. Nada prestado de otras culturas. */
     deco: function () {
       let s = "";
       /* las cajas de los iconos: el decorado se aparta de ellas */
-      const cajas = [[105, 424, 150, 112], [330, 656, 140, 88], [294, 260, 72, 80], [576, 365, 48, 110], [732, 597, 96, 86],
-        [1100, 498, 100, 84], [1244, 737, 112, 46], [1415, 588, 90, 64], [1016, 763, 68, 74], [1590, 388, 60, 64],
-        [1911, 318, 78, 64], [2083, 506, 74, 108], [2241, 355, 78, 70], [1989, 731, 42, 58], [2353, 680, 54, 40],
-        [2457, 434, 66, 92], [1214, 330, 52, 80], [2122, 149, 56, 82]];
+      const cajas = [[114, 390, 252, 180], [550, 696, 140, 88], [864, 280, 72, 80], [1126, 415, 48, 110], [1352, 657, 96, 86],
+        [1630, 518, 100, 84], [1884, 777, 112, 46], [2155, 608, 90, 64], [1736, 863, 68, 74], [2430, 408, 60, 64],
+        [2911, 348, 78, 64], [3183, 546, 74, 108], [3441, 365, 78, 70], [2959, 771, 42, 58], [3693, 700, 54, 40],
+        [3997, 434, 66, 92], [1984, 340, 52, 80], [3222, 159, 56, 82]];
       const libre = (x, y, w, h) => !cajas.some(c => {
         const mx = c[2] * .4 + 16, my = c[3] * .4 + 16;
         return x < c[0] + c[2] + mx && x + w > c[0] - mx && y < c[1] + c[3] + my && y + h > c[1] - my;
@@ -378,7 +380,7 @@ Object.assign(THEMES.egipto.content, {
         <path d="M${cx - medio} ${base} L${cx} ${cima} L${cx + medio} ${base} Z" fill="#b98a41"/>
         <path d="M${cx} ${cima} L${cx + medio} ${base} L${cx} ${base} Z" fill="#e6bd6e"/>
         <path d="M${cx} ${cima} L${cx + medio * .16} ${base} L${cx - medio * .16} ${base} Z" fill="rgba(255,238,190,.28)"/></g>`;
-      /* una columna con capitel de papiro */
+      /* una columna con capitel de papiro, la propia del templo egipcio */
       const columna = (cx, arriba, abajo, r) => {
         let c = `<rect x="${cx - r * 1.62}" y="${arriba - 16}" width="${r * 3.24}" height="18" rx="3" fill="#d3b077"/>
           <path d="M${cx - r} ${arriba + 62} Q${cx - r * 1.96} ${arriba + 26} ${cx - r * 1.5} ${arriba + 2} L${cx + r * 1.5} ${arriba + 2} Q${cx + r * 1.96} ${arriba + 26} ${cx + r} ${arriba + 62} Z" fill="url(#egpXpiedra)"/>
@@ -389,63 +391,337 @@ Object.assign(THEMES.egipto.content, {
         for (let i = -1; i <= 1; i++) c += `<path d="M${cx + i * r * .58} ${arriba + 70} L${cx + i * r * .58} ${abajo - 32}" stroke="rgba(150,110,58,.28)" stroke-width="4"/>`;
         return `<g>${c}</g>`;
       };
+      /* la greca de triángulos del zócalo, un motivo egipcio de siempre */
+      const greca = (x1, x2, y, paso, alto, o) => {
+        let g = `<g fill="rgba(150,112,58,${o})">`;
+        for (let x = x1; x < x2; x += paso) g += `<path d="M${x} ${y} l${paso * .5} -${alto} l${paso * .5} ${alto} Z"/>`;
+        return g + `</g>`;
+      };
+      /* LA ORILLA DE ENFRENTE, en un solo sitio: el agua, la vega, la franja
+         de barro y el reflejo la comparten, así nunca se descuadran entre
+         ellos. Y ondula de verdad, con entrantes y salientes de veinte y pico
+         píxeles, para que la frontera verde-agua no se lea como un renglón
+         tirado a regla de punta a punta. orilla(dy) la devuelve bajada dy
+         píxeles; con inv, recorrida de derecha a izquierda */
+      const ORI = [[1560, 486], [1650, 504, 1740, 518], [1820, 530, 1900, 514], [1990, 496, 2088, 506],
+        [2180, 516, 2262, 534], [2350, 552, 2452, 524], [2560, 494, 2680, 502], [2780, 510, 2864, 500]];
+      const orilla = (dy, inv) => {
+        const d = dy || 0;
+        if (!inv) return ORI.slice(1).map(p => `Q${p[0]} ${p[1] + d} ${p[2]} ${p[3] + d}`).join(" ");
+        let r = "";
+        for (let i = ORI.length - 1; i > 0; i--) {
+          const a = ORI[i], b = ORI[i - 1];
+          r += `Q${a[0]} ${a[1] + d} ${b.length > 2 ? b[2] : b[0]} ${(b.length > 2 ? b[3] : b[1]) + d} `;
+        }
+        return r.trim();
+      };
       /* degradados propios, con prefijo egpX para no chocar con los iconos */
       s += `<defs>
         <linearGradient id="egpXcielo" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stop-color="#8fd3f0"/><stop offset="34%" stop-color="#c8e6ef"/><stop offset="62%" stop-color="#ffe3ac"/><stop offset="100%" stop-color="#ffcf85"/></linearGradient>
         <radialGradient id="egpXsol" cx="42%" cy="38%" r="60%"><stop offset="0%" stop-color="#fffdf0"/><stop offset="100%" stop-color="#ffca4a"/></radialGradient>
+        <radialGradient id="egpXaura" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ffca4a" stop-opacity=".38"/><stop offset="52%" stop-color="#ffca4a" stop-opacity=".16"/><stop offset="100%" stop-color="#ffca4a" stop-opacity="0"/></radialGradient>
         <linearGradient id="egpXduna" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f2cf8b"/><stop offset="100%" stop-color="#d5a355"/></linearGradient>
         <linearGradient id="egpXduna2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e0b269"/><stop offset="100%" stop-color="#bd8940"/></linearGradient>
         <linearGradient id="egpXcampo" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8cc45f"/><stop offset="100%" stop-color="#498b3d"/></linearGradient>
+        <linearGradient id="egpXsiega" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#8cc45f" stop-opacity="0"/><stop offset="45%" stop-color="#cbc471" stop-opacity=".7"/><stop offset="100%" stop-color="#e0b269" stop-opacity="1"/></linearGradient>
         <linearGradient id="egpXnilo" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#6fc9ea"/><stop offset="55%" stop-color="#2f9fd2"/><stop offset="100%" stop-color="#166f9f"/></linearGradient>
+        <linearGradient id="egpXvado" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#a9e6f4"/><stop offset="100%" stop-color="#5cbfdf"/></linearGradient>
         <linearGradient id="egpXpiedra" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#e9d3a2"/><stop offset="48%" stop-color="#f3e2ba"/><stop offset="100%" stop-color="#d0ac70"/></linearGradient>
         <linearGradient id="egpXcaliza" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f0dcae"/><stop offset="100%" stop-color="#cfae73"/></linearGradient>
         <linearGradient id="egpXpatio" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e5cd9a"/><stop offset="100%" stop-color="#c6a267"/></linearGradient>
+        <linearGradient id="egpXgranito" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#9c6f5c"/><stop offset="100%" stop-color="#5e4036"/></linearGradient>
+        <linearGradient id="egpXcalina" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#ffe3ac" stop-opacity="0"/><stop offset="50%" stop-color="#ffe3ac" stop-opacity=".34"/><stop offset="100%" stop-color="#ffe3ac" stop-opacity="0"/></linearGradient>
+        <linearGradient id="egpXlejano" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#e8c88f"/><stop offset="100%" stop-color="#f4dcae"/></linearGradient>
+        <linearGradient id="egpXsiegaizq" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#e0b269" stop-opacity="1"/><stop offset="55%" stop-color="#cbc471" stop-opacity=".7"/><stop offset="100%" stop-color="#8cc45f" stop-opacity="0"/></linearGradient>
+        <linearGradient id="egpXmojada" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#d9ab5e" stop-opacity="0"/><stop offset="62%" stop-color="#c79a55" stop-opacity=".85"/><stop offset="100%" stop-color="#a8813f" stop-opacity=".95"/></linearGradient>
+        <linearGradient id="egpXmojada2" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#a8813f" stop-opacity=".9"/><stop offset="100%" stop-color="#d9ab5e" stop-opacity="0"/></linearGradient>
+        <linearGradient id="egpXcerca" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#e6b76b"/><stop offset="100%" stop-color="#c08e46"/></linearGradient>
+        <linearGradient id="egpXcalinaV" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#fff" stop-opacity="0"/><stop offset="20%" stop-color="#fff" stop-opacity="1"/></linearGradient>
+        <mask id="egpXcalinaM"><rect x="0" y="240" width="4200" height="860" fill="url(#egpXcalinaV)"/></mask>
       </defs>`;
-      /* ---------- CIELO: el sol grande, nubes finas y aves ---------- */
-      s += `<rect x="0" y="0" width="2600" height="1100" fill="url(#egpXcielo)"/>
-        <g transform="translate(2380 168)"><circle r="186" fill="#ffca4a" opacity=".14"><animate attributeName="r" values="186;204;186" dur="11s" repeatCount="indefinite"/></circle>
-        <circle r="140" fill="#ffca4a" opacity=".2"/><circle r="104" fill="url(#egpXsol)"/><circle cx="-32" cy="-30" r="24" fill="rgba(255,255,255,.5)"/></g>`;
-      [[560, 176, 1.1, .7], [1180, 132, .9, .6], [1720, 196, 1.2, .55], [220, 250, .7, .5]].forEach(n => {
+      /* ---------- CIELO: el sol grande sobre el templo, nubes finas y aves ---------- */
+      s += `<rect x="0" y="0" width="4200" height="1100" fill="url(#egpXcielo)"/>
+        <g transform="translate(3800 170)"><circle r="210" fill="url(#egpXaura)"><animate attributeName="r" values="210;228;210" dur="11s" repeatCount="indefinite"/></circle>
+        <circle r="104" fill="url(#egpXsol)"/><circle cx="-32" cy="-30" r="24" fill="rgba(255,255,255,.5)"/></g>`;
+      [[700, 176, 1.1, .7], [1500, 132, .9, .6], [2300, 196, 1.2, .55], [280, 250, .7, .5], [3060, 150, 1, .5]].forEach(n => {
         s += `<g opacity="${n[3]}" transform="translate(${n[0]} ${n[1]}) scale(${n[2]})" fill="#fff">
           <ellipse cx="0" cy="0" rx="112" ry="16"/><ellipse cx="-64" cy="14" rx="70" ry="11"/><ellipse cx="72" cy="12" rx="58" ry="10"/></g>`;
       });
+      /* velos de nube altos y finos: el cielo se quedaba muy vacío entre las
+         nubes gordas, y en Egipto lo que hay casi siempre son cirros */
+      [[1080, 88, .8, .38], [1900, 250, .7, .3], [2540, 110, 1.05, .34], [3400, 238, .8, .28],
+        [520, 150, .95, .32], [4090, 330, .75, .26], [2860, 176, .6, .3]].forEach(n => {
+        s += `<g opacity="${n[3]}" transform="translate(${n[0]} ${n[1]}) scale(${n[2]})" fill="#fff">
+          <ellipse cx="0" cy="0" rx="126" ry="9"/><ellipse cx="-78" cy="10" rx="64" ry="6"/><ellipse cx="86" cy="8" rx="52" ry="6"/></g>`;
+      });
       s += `<g stroke="rgba(120,86,44,.42)" stroke-width="4" fill="none" stroke-linecap="round">
-        <path d="M820 268 q14 -12 28 0 q14 -12 28 0 M940 316 q12 -10 24 0 q12 -10 24 0 M1500 258 q13 -11 26 0 q13 -11 26 0 M1620 306 q11 -9 22 0 q11 -9 22 0"/></g>
+        <path d="M1120 268 q14 -12 28 0 q14 -12 28 0 M1280 316 q12 -10 24 0 q12 -10 24 0 M2560 258 q13 -11 26 0 q13 -11 26 0 M2700 306 q11 -9 22 0 q11 -9 22 0 M3560 300 q12 -10 24 0 q12 -10 24 0"/></g>
+        <g stroke="rgba(120,86,44,.34)" stroke-width="3.4" fill="none" stroke-linecap="round">
+        <path d="M420 210 q10 -9 20 0 q10 -9 20 0 M470 232 q9 -8 18 0 q9 -8 18 0
+          M1660 200 q11 -10 22 0 q11 -10 22 0 M1720 226 q9 -8 18 0 q9 -8 18 0
+          M2140 138 q10 -9 20 0 q10 -9 20 0 M3266 340 q11 -10 22 0 q11 -10 22 0
+          M3326 366 q9 -8 18 0 q9 -8 18 0 M4020 240 q10 -9 20 0 q10 -9 20 0"/></g>
         <g><path d="M-26 0 q13 -14 26 0 q13 -14 26 0" stroke="rgba(120,86,44,.5)" stroke-width="4.4" fill="none" stroke-linecap="round">
         <animate attributeName="d" values="M-26 0 q13 -14 26 0 q13 -14 26 0;M-26 0 q13 7 26 0 q13 7 26 0;M-26 0 q13 -14 26 0 q13 -14 26 0" dur="1.7s" repeatCount="indefinite"/></path>
-        <animateMotion dur="42s" repeatCount="indefinite" path="M -120 234 Q 700 176 1400 236 Q 2000 286 2740 214"/></g>`;
+        <animateMotion dur="54s" repeatCount="indefinite" path="M -120 234 Q 1100 172 2200 238 Q 3300 300 4340 214"/></g>`;
+      /* ---------- EL FONDO LEJANO: EL GEBEL, LOS ACANTILADOS DEL VALLE ----------
+         el Nilo corre encajonado entre dos mesetas de piedra. Aquí queda el
+         de la orilla de enfrente, muy claro por la calina, y se va hundiendo
+         hacia la derecha para que el templo se lea contra el cielo. */
+      s += `<path d="M1240 548 Q1400 404 1620 332 Q1840 294 2080 310 Q2320 328 2540 304 Q2760 282 2930 320 Q3140 368 3340 488 Q3540 598 3780 650 Q3990 688 4200 678 L4200 836 L2900 830 L2870 566 L2300 540 L1700 546 Z" fill="url(#egpXlejano)"/>
+        <path d="M1240 548 Q1400 404 1620 332 Q1840 294 2080 310 Q2320 328 2540 304 Q2760 282 2930 320 Q3140 368 3340 488 Q3540 598 3780 650 Q3990 688 4200 678 L4200 700 Q3980 710 3770 672 Q3530 620 3330 510 Q3130 390 2926 342 Q2758 304 2542 326 Q2320 350 2078 332 Q1840 316 1624 354 Q1408 426 1250 566 Z" fill="rgba(255,255,255,.3)"/>`;
+      /* las quebradas del acantilado, apenas insinuadas: solo donde la pared
+         de piedra se ve de verdad. Pasado x 3400 el gebel ya queda tapado por
+         las dunas y por el recinto, y allí una grieta se lee como un arañazo
+         flotando en la arena, así que no se dibuja ninguna */
+      s += `<g stroke="rgba(176,134,74,.22)" stroke-width="5" fill="none" stroke-linecap="round">
+        <path d="M1720 356 q26 44 30 96 M1980 322 q18 40 20 88 M2260 336 q24 42 26 92 M2660 300 q20 44 22 94
+          M3060 358 q30 50 34 104 M3420 522 q26 46 28 96"/></g>`;
+      /* el pueblo de adobe y su palmeral, chiquitines por la distancia */
+      [[1712, 330], [1766, 332], [1830, 328], [2244, 334], [2296, 332], [2620, 314], [2668, 316]].forEach(c => {
+        s += `<g fill="#d8b482"><rect x="${c[0]}" y="${c[1] - 22}" width="34" height="22"/>
+          <rect x="${c[0] + 4}" y="${c[1] - 28}" width="26" height="7" rx="2" fill="#c39c62"/></g>`;
+      });
+      s += `<g stroke="#7fa771" stroke-width="4" fill="none" stroke-linecap="round" opacity=".8">
+        <path d="M1880 330 v-20 M1874 312 q6 -8 12 0 M1868 316 q12 -12 24 0"/>
+        <path d="M2130 334 v-18 M2124 318 q6 -8 12 0 M2118 322 q12 -12 24 0"/>
+        <path d="M2420 326 v-20 M2414 308 q6 -8 12 0 M2408 312 q12 -12 24 0"/>
+        <path d="M2760 318 v-18 M2754 302 q6 -8 12 0 M2748 306 q12 -12 24 0"/></g>`;
+      /* las dunas hundidas detrás del recinto del templo */
+      s += `<g fill="#e9c791" opacity=".75"><ellipse cx="3120" cy="700" rx="220" ry="52"/><ellipse cx="3520" cy="742" rx="260" ry="56"/>
+        <ellipse cx="3950" cy="766" rx="240" ry="50"/><ellipse cx="3300" cy="782" rx="200" ry="44"/></g>
+        <g stroke="rgba(176,134,74,.2)" stroke-width="5" fill="none" stroke-linecap="round">
+        <path d="M3060 716 q24 -10 48 0 M3460 758 q24 -10 48 0 M3880 780 q24 -10 48 0"/></g>`;
+      /* dos datileras del recinto, altas como las de verdad: asoman por los
+         huecos que dejan las capillas y su copa queda por encima de los
+         tejados, así se leen como palmeras y no como matojos. El tronco lleva
+         sus anillos y la copa cinco hojas arqueadas con los dátiles */
+      const datilera = (x, base, alto, k, giro) => {
+        const h = (alto / k).toFixed(1);
+        let d = `<path d="M0 0 q-16 ${(-h * .55).toFixed(1)} 7 ${-h}" stroke="#a2814f" stroke-width="13" fill="none" stroke-linecap="round"/>`;
+        for (let i = 1; i <= 6; i++) {              /* los anillos del tronco */
+          const t = i / 7, cx = (-32 * t * (1 - t) + 7 * t * t).toFixed(1);
+          d += `<path d="M${(cx - 6).toFixed(1)} ${(-h * t).toFixed(1)} h12" stroke="#87663a" stroke-width="3.2" opacity=".55"/>`;
+        }
+        d += `<g stroke="#6f9c6b" stroke-width="11" fill="none" stroke-linecap="round">
+          <path d="M7 ${-h} q-44 -14 -80 8"/><path d="M7 ${-h} q-40 -40 -56 -72"/>
+          <path d="M7 ${-h} q4 -54 36 -74"/><path d="M7 ${-h} q46 -34 80 -18"/>
+          <path d="M7 ${-h} q42 -2 66 26"/></g>
+          <g stroke="#8bb884" stroke-width="4" fill="none" stroke-linecap="round" opacity=".8">
+          <path d="M7 ${-h} q-38 -24 -62 -34"/><path d="M7 ${-h} q26 -46 52 -58"/><path d="M7 ${-h} q48 -12 74 6"/></g>
+          <circle cx="-6" cy="${(-h + 10)}" r="7" fill="#c8862f"/><circle cx="14" cy="${(-h + 13)}" r="7" fill="#c8862f"/>
+          <circle cx="3" cy="${(-h + 20)}" r="6" fill="#b3742a"/>`;
+        return `<g transform="translate(${x} ${base}) scale(${giro * k} ${k})" opacity=".92">${d}</g>`;
+      };
+      s += datilera(3646, 812, 236, .84, 1) + datilera(3864, 812, 404, .78, -1);
       /* ---------- EL DESIERTO DEL FONDO Y LAS PIRÁMIDES DE GIZA ---------- */
-      s += `<path d="M0 470 Q300 424 620 462 Q940 500 1260 456 Q1600 410 1940 452 Q2280 494 2600 448 L2600 700 L0 700 Z" fill="url(#egpXduna)" opacity=".62"/>`;
-      s += piramide(900, 466, 604, 112, ".4") + piramide(1010, 418, 646, 156, ".62") + piramide(760, 356, 646, 202, ".85") + piramide(430, 388, 626, 152, ".72");
-      s += `<path d="M0 560 Q260 512 560 552 Q860 592 1180 548 Q1520 500 1860 546 Q2200 592 2600 542 L2600 780 L0 780 Z" fill="url(#egpXduna)"/>
-        <path d="M0 560 Q260 512 560 552 Q860 592 1180 548 Q1520 500 1860 546 Q2200 592 2600 542 L2600 578 Q2200 628 1860 582 Q1520 536 1180 584 Q860 628 560 588 Q260 548 0 596 Z" fill="rgba(255,255,255,.22)"/>`;
+      s += `<path d="M0 470 Q300 424 620 462 Q940 500 1260 456 Q1520 424 1720 452 L1720 700 L0 700 Z" fill="url(#egpXduna)" opacity=".62"/>`;
+      /* Giza escalonada: la que lleva el punto es la Gran Pirámide y es la
+         mayor de la escena, así que las decorativas van menguando hacia el
+         fondo y ninguna la eclipsa. La pequeña de la izquierda le hace de
+         respaldo sin taparla */
+      s += piramide(1186, 486, 600, 88, ".4") + piramide(1016, 452, 620, 118, ".54") +
+        piramide(846, 424, 632, 146, ".68") + piramide(596, 414, 630, 172, ".78") +
+        piramide(56, 452, 566, 122, ".62");
+      s += `<path d="M0 566 Q280 518 600 558 Q900 596 1180 556 Q1420 520 1620 552 Q1700 566 1740 580 L1740 800 L0 800 Z" fill="url(#egpXduna)"/>
+        <path d="M0 566 Q280 518 600 558 Q900 596 1180 556 Q1420 520 1620 552 Q1700 566 1740 580 L1740 612 Q1660 594 1600 584 Q1420 552 1180 588 Q900 628 600 590 Q280 550 0 600 Z" fill="rgba(255,255,255,.22)"/>`;
       s += `<g stroke="rgba(150,102,44,.24)" stroke-width="5" fill="none" stroke-linecap="round">`;
-      for (let i = 0; i < 18; i++) {
-        const x = 30 + i * 146, y = 622 + ((i * 53) % 96);
+      for (let i = 0; i < 22; i++) {
+        const x = 30 + i * 78, y = 628 + ((i * 53) % 96);
         if (libre(x - 6, y - 8, 76, 16)) s += `<path d="M${x} ${y} q22 -10 44 0"/>`;
       }
       s += `</g>`;
-      /* ---------- LOS CAMPOS DE CULTIVO, en la orilla de allá ---------- */
-      s += `<path d="M-40 812 Q220 796 420 762 Q620 728 780 600 Q930 478 1050 410 Q1150 354 1240 326 Q1360 294 1460 302 Q1560 310 1620 356 Q1740 410 1830 466 Q1886 502 1900 550
-        L1900 640 Q1886 592 1830 556 Q1740 500 1620 446 Q1560 400 1460 392 Q1360 384 1240 416 Q1150 444 1050 500 Q930 570 780 692 Q620 820 420 856 Q220 890 -40 906 Z" fill="url(#egpXcampo)"/>`;
-      s += `<g stroke="rgba(40,90,36,.35)" stroke-width="4" fill="none">
-        <path d="M1300 336 Q1420 314 1520 328 M1180 382 Q1300 350 1420 344 M1000 462 Q1120 420 1240 384 M840 566 Q950 500 1060 448 M660 720 Q760 654 860 588 M420 802 Q560 778 660 736 M120 856 Q280 838 400 812"/></g>
-        <g fill="#3f7f36" opacity=".7"><ellipse cx="1380" cy="326" rx="30" ry="9"/><ellipse cx="1120" cy="418" rx="34" ry="10"/><ellipse cx="880" cy="546" rx="36" ry="11"/><ellipse cx="560" cy="754" rx="40" ry="12"/><ellipse cx="220" cy="826" rx="42" ry="12"/></g>`;
+      /* ---------- LA MESETA DE GIZA: terraza, mastaba, patio y obelisco ---------- */
+      s += `<path d="M-40 542 L960 538 L1000 620 L1048 780 L-40 780 Z" fill="url(#egpXcaliza)"/>
+        <path d="M-40 542 L960 538 L964 562 L-40 566 Z" fill="#f6e6bf"/>`;
+      s += `<g stroke="rgba(150,112,58,.3)" stroke-width="4" fill="none">`;
+      for (let y = 590; y < 772; y += 44) s += `<path d="M-40 ${y} L${998 + (y - 590) * .08} ${y}"/>`;
+      for (let x = 20; x < 990; x += 78) s += `<path d="M${x} 566 L${x + 2} 772"/>`;
+      s += `</g>`;
+      /* la fila de mastabas: las tumbas bajas que rodean a las pirámides,
+         cada una con su puerta y su estela, así la terraza no queda vacía */
+      [[22, 758, .9], [340, 762, .84], [508, 624, .92], [630, 628, .88], [724, 604, .96], [872, 610, .88]].forEach(m => {
+        const w = 104 * m[2], h = 52 * m[2];
+        if (!libre(m[0] - 8, m[1] - h - 10, w + 16, h + 20)) return;
+        s += `<g><path d="M${m[0]} ${m[1]} L${m[0] + 8} ${m[1] - h} L${m[0] + w - 8} ${m[1] - h} L${m[0] + w} ${m[1]} Z" fill="url(#egpXcaliza)"/>
+          <path d="M${m[0] + 8} ${m[1] - h} L${m[0] + w - 8} ${m[1] - h} L${m[0] + w - 8} ${m[1] - h + 9} L${m[0] + 8} ${m[1] - h + 9} Z" fill="#f6e6bf"/>
+          <path d="M${m[0] + w * .46} ${m[1]} L${m[0] + w * .48} ${m[1] - h * .58} L${m[0] + w * .64} ${m[1] - h * .58} L${m[0] + w * .66} ${m[1]} Z" fill="#8a6a3c"/>
+          <path d="M${m[0] + w * .16} ${m[1] - h * .3} L${m[0] + w * .3} ${m[1] - h * .3}" stroke="rgba(150,112,58,.4)" stroke-width="4"/></g>`;
+      });
+      /* la calzada procesional, que baja de la meseta al patio de la esfinge */
+      s += `<path d="M1002 566 L1042 566 L836 758 L788 758 Z" fill="url(#egpXpatio)"/>
+        <path d="M994 566 L1010 566 L806 758 L788 758 Z" fill="#e0c08a"/>
+        <path d="M1034 566 L1050 568 L852 758 L834 758 Z" fill="#e0c08a"/>`;
+      s += `<g stroke="rgba(150,112,58,.3)" stroke-width="4" fill="none">
+        <path d="M986 610 L1030 610 M950 654 L996 654 M912 698 L960 698 M876 742 L924 742"/></g>`;
+      /* sillares de caliza esperando en el trineo de madera, como se movían */
+      s += `<g><path d="M150 742 L266 738 L268 700 L152 704 Z" fill="url(#egpXcaliza)"/>
+        <path d="M150 742 L266 738 L266 748 L150 752 Z" fill="#c39c62"/>
+        <path d="M152 704 L268 700 L268 710 L152 714 Z" fill="#f6e6bf"/>
+        <path d="M140 752 L280 748 L282 762 L140 766 Z" fill="#8a6136"/>
+        <path d="M144 766 q-14 8 -4 16 M276 762 q14 8 4 16" stroke="#8a6136" stroke-width="7" fill="none" stroke-linecap="round"/></g>
+        <g><path d="M330 700 L406 698 L408 664 L332 666 Z" fill="url(#egpXcaliza)"/>
+        <path d="M332 666 L408 664 L408 674 L332 676 Z" fill="#f6e6bf"/>
+        <path d="M330 700 L406 698 L406 708 L330 710 Z" fill="#c39c62"/></g>`;
+      /* dos estelas con su remate redondeado, plantadas en la terraza */
+      [[478, 690, 1], [962, 692, .8]].forEach(t => {
+        const w = 30 * t[2], h = 86 * t[2];
+        s += `<g><path d="M${t[0] - w / 2} ${t[1]} L${t[0] - w / 2} ${t[1] - h + w / 2} Q${t[0]} ${t[1] - h - w * .3} ${t[0] + w / 2} ${t[1] - h + w / 2} L${t[0] + w / 2} ${t[1]} Z" fill="url(#egpXcaliza)"/>
+          <path d="M${t[0] - w * .3} ${t[1] - h * .66} h${w * .6} M${t[0] - w * .3} ${t[1] - h * .48} h${w * .6} M${t[0] - w * .3} ${t[1] - h * .3} h${w * .6}" stroke="rgba(150,112,58,.4)" stroke-width="3.4"/>
+          <path d="M${t[0] - w * .8} ${t[1]} L${t[0] + w * .8} ${t[1]} L${t[0] + w * .7} ${t[1] + 12} L${t[0] - w * .7} ${t[1] + 12} Z" fill="#d3ae6f"/></g>`;
+      });
+      /* la mastaba escalonada donde se abre la cámara del tesoro */
+      s += `<path d="M828 538 L846 296 L960 296 L1000 538 Z" fill="url(#egpXcaliza)"/>
+        <path d="M846 296 L960 296 L1000 538 L928 538 L920 336 Z" fill="#d8b87e"/>
+        <path d="M840 348 L968 348 M834 404 L980 404 M830 462 L990 462" stroke="rgba(150,112,58,.35)" stroke-width="5"/>
+        <path d="M838 296 L968 296 L968 314 L838 314 Z" fill="#f6e6bf"/>
+        <path d="M862 538 L866 400 L936 400 L944 538 Z" fill="url(#egpXgranito)" opacity=".55"/>`;
+      /* el patio empedrado de la esfinge, con su murete */
+      s += `<path d="M470 748 L900 745 L928 862 L448 866 Z" fill="url(#egpXpatio)"/>
+        <path d="M470 748 L900 745 L902 762 L470 765 Z" fill="#f2ddaa"/>`;
+      s += `<g stroke="rgba(150,112,58,.28)" stroke-width="4" fill="none">
+        <path d="M462 790 L916 787 M456 828 L924 825 M560 765 L566 862 M672 765 L678 862 M784 765 L792 862"/></g>
+        <path d="M860 745 L900 743 L906 696 L864 698 Z" fill="url(#egpXcaliza)"/>
+        <path d="M414 866 L960 861 L970 894 L404 898 Z" fill="#d3ae6f"/>`;
+      /* ---------- PRIMER PLANO DE LA MESETA: la duna de delante ----------
+         una cresta de arena cercana cierra el escenario por abajo y da fondo,
+         plano medio y primer plano bien separados */
+      s += `<path d="M-40 986 Q180 918 420 950 Q660 982 900 940 Q1120 906 1300 952 Q1420 984 1520 1034 L1520 1100 L-40 1100 Z" fill="url(#egpXcerca)"/>
+        <path d="M-40 986 Q180 918 420 950 Q660 982 900 940 Q1120 906 1300 952 Q1420 984 1520 1034 L1512 1058 Q1408 1006 1292 976 Q1116 932 900 964 Q660 1006 420 974 Q180 942 -40 1010 Z" fill="rgba(255,255,255,.22)"/>`;
+      s += `<g stroke="rgba(150,102,44,.26)" stroke-width="5" fill="none" stroke-linecap="round">
+        <path d="M60 1040 q24 -10 48 0 M300 1012 q24 -10 48 0 M540 1046 q24 -10 48 0 M760 1010 q24 -10 48 0 M980 1042 q24 -10 48 0"/></g>
+        <g fill="url(#egpXduna2)" opacity=".7"><ellipse cx="196" cy="1074" rx="54" ry="18"/><ellipse cx="640" cy="1082" rx="46" ry="15"/>
+        <ellipse cx="1030" cy="1078" rx="40" ry="14"/></g>
+        <g stroke="#a8a05a" stroke-width="4" fill="none" stroke-linecap="round" opacity=".6">
+        <path d="M410 1064 q-8 -26 -18 -36 M420 1064 q0 -30 6 -42 M430 1064 q10 -24 20 -32"/>
+        <path d="M868 1036 q-8 -24 -18 -34 M878 1036 q0 -28 6 -40"/></g>`;
+      /* la franja de abajo se quedaba lisa: se le echan más rizos de viento,
+         guijarros, matas secas y el rastro de un camello que pasó por delante */
+      s += `<g fill="url(#egpXduna2)" opacity=".6"><ellipse cx="430" cy="1096" rx="60" ry="20"/><ellipse cx="836" cy="1054" rx="44" ry="15"/>
+        <ellipse cx="1250" cy="1092" rx="52" ry="17"/><ellipse cx="70" cy="1026" rx="38" ry="13"/></g>`;
+      s += `<g stroke="rgba(150,102,44,.32)" stroke-width="5" fill="none" stroke-linecap="round">`;
+      for (let i = 0; i < 22; i++) {
+        const x = 26 + i * 58, y = 996 + ((i * 61) % 96);
+        if (libre(x - 6, y - 8, 62, 16)) s += `<path d="M${x} ${y} q19 -9 38 0"/>`;
+      }
+      s += `</g>`;
+      s += `<g fill="#a8763a" opacity=".45"><ellipse cx="150" cy="1058" rx="11" ry="5"/><ellipse cx="352" cy="1088" rx="9" ry="4"/>
+        <ellipse cx="516" cy="1030" rx="13" ry="5"/><ellipse cx="742" cy="1070" rx="10" ry="4"/><ellipse cx="906" cy="1042" rx="12" ry="5"/>
+        <ellipse cx="1108" cy="1084" rx="9" ry="4"/><ellipse cx="1246" cy="1050" rx="11" ry="5"/>
+        <ellipse cx="268" cy="1014" rx="10" ry="4"/><ellipse cx="620" cy="1096" rx="12" ry="5"/>
+        <ellipse cx="1010" cy="1008" rx="9" ry="4"/><ellipse cx="1330" cy="1024" rx="11" ry="5"/></g>`;
+      s += `<g fill="rgba(150,102,44,.26)">`;
+      for (let i = 0; i < 9; i++) {
+        const x = 96 + i * 128, y = 1094 - i * 9;
+        s += `<ellipse cx="${x}" cy="${y}" rx="15" ry="8"/><ellipse cx="${x + 34}" cy="${y - 18}" rx="13" ry="7"/>`;
+      }
+      s += `</g>`;
+      s += `<g stroke="#a8a05a" stroke-width="4" fill="none" stroke-linecap="round" opacity=".55">
+        <path d="M232 1078 q-8 -24 -18 -34 M242 1078 q0 -28 6 -40 M252 1078 q10 -22 20 -30"/>
+        <path d="M646 1046 q-8 -24 -18 -34 M656 1046 q0 -28 6 -40"/>
+        <path d="M1160 1064 q-8 -24 -18 -34 M1170 1064 q0 -28 6 -40 M1180 1064 q10 -22 20 -30"/></g>`;
+      /* la arena que se amontona contra el zócalo de la terraza: así el borde
+         no queda como una raya tirada a regla */
+      s += `<g fill="url(#egpXduna)" opacity=".9"><ellipse cx="90" cy="786" rx="130" ry="26"/><ellipse cx="330" cy="790" rx="112" ry="22"/>
+        <ellipse cx="1006" cy="800" rx="110" ry="22"/><ellipse cx="1190" cy="810" rx="104" ry="22"/></g>
+        <g stroke="rgba(150,102,44,.22)" stroke-width="5" fill="none" stroke-linecap="round">
+        <path d="M120 842 q24 -10 48 0 M380 866 q24 -10 48 0 M700 852 q24 -10 48 0 M240 916 q24 -10 48 0 M560 930 q24 -10 48 0 M60 890 q24 -10 48 0"/></g>
+        <g fill="url(#egpXduna2)" opacity=".5"><ellipse cx="300" cy="872" rx="34" ry="12"/><ellipse cx="760" cy="908" rx="28" ry="10"/></g>`;
+      /* el obelisco de la meseta: su podio, con la greca en el zócalo */
+      s += `<path d="M1060 542 L1246 540 L1258 700 L1050 702 Z" fill="url(#egpXcaliza)"/>
+        <path d="M1060 542 L1246 540 L1248 560 L1060 562 Z" fill="#f6e6bf"/>
+        <path d="M1074 604 L1236 602 M1070 646 L1242 644" stroke="rgba(150,112,58,.35)" stroke-width="5"/>
+        <path d="M1040 700 L1266 698 L1274 736 L1032 740 Z" fill="#d3ae6f"/>`;
+      s += greca(1064, 1250, 686, 22, 15, ".35");
+      s += `<path d="M1044 740 L1272 737 L1286 800 L1030 804 Z" fill="url(#egpXpatio)"/>`;
+      /* el pedestal de granito del obelisco, para que no se apoye en el aire */
+      s += `<path d="M1114 544 L1186 543 L1182 519 L1118 520 Z" fill="url(#egpXgranito)"/>
+        <path d="M1108 546 L1192 545 L1194 556 L1106 557 Z" fill="#d3b077"/>
+        <path d="M1114 520 L1186 519 L1186 527 L1114 528 Z" fill="#b08a6e" opacity=".7"/>`;
+      /* la duna donde camina el camello, al pie de la meseta */
+      s += `<path d="M1240 838 Q1312 720 1374 690 L1478 692 Q1560 728 1614 834 L1614 876 L1240 876 Z" fill="url(#egpXduna)"/>
+        <path d="M1282 796 q24 -10 48 0 M1520 806 q24 -10 48 0" stroke="rgba(150,102,44,.28)" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <g fill="url(#egpXduna2)"><ellipse cx="1212" cy="890" rx="46" ry="18"/><ellipse cx="1626" cy="900" rx="38" ry="15"/></g>`;
+      /* ---------- TRANSICIÓN 1: LA MESETA BAJA AL DESIERTO DE DUNAS ---------- */
+      /* la caliza labrada se acaba y empieza la arena suelta, cada vez más */
+      s += `<path d="M980 780 Q1120 726 1290 750 Q1450 772 1600 738 Q1680 720 1740 744 L1740 940 L980 940 Z" fill="url(#egpXduna)"/>
+        <path d="M980 780 Q1120 726 1290 750 Q1450 772 1600 738 Q1680 720 1740 744 L1740 768 Q1676 748 1600 764 Q1450 798 1290 776 Q1120 752 990 806 Z" fill="rgba(255,255,255,.2)"/>`;
+      s += `<g stroke="rgba(150,102,44,.26)" stroke-width="5" fill="none" stroke-linecap="round">`;
+      for (let i = 0; i < 24; i++) {
+        const x = 1000 + i * 32, y = 864 + ((i * 67) % 200);
+        if (libre(x - 6, y - 8, 76, 16)) s += `<path d="M${x} ${y} q22 -10 44 0"/>`;
+      }
+      s += `</g>`;
+      s += `<g fill="url(#egpXduna2)"><ellipse cx="1074" cy="960" rx="52" ry="20"/><ellipse cx="1350" cy="1010" rx="44" ry="17"/>
+        <ellipse cx="1560" cy="962" rx="38" ry="15"/><ellipse cx="1180" cy="1060" rx="56" ry="21"/></g>
+        <g stroke="#a8a05a" stroke-width="4" fill="none" stroke-linecap="round" opacity=".6">
+        <path d="M1266 950 q-8 -24 -18 -34 M1276 950 q0 -28 6 -40 M1286 950 q10 -22 20 -30"/>
+        <path d="M1508 1040 q-8 -24 -18 -34 M1518 1040 q0 -28 6 -40"/></g>`;
+      /* ---------- TRANSICIÓN 2: LA RIBERA OESTE, DE LA ARENA AL AGUA ----------
+         la orilla baja en diagonal, no en línea recta: primero arena seca,
+         luego arena mojada más oscura, cañas, guijarros y el embarcadero
+         con sus escalones metiéndose en el río */
+      /* la lengua de arena de la ribera, que empalma con las dunas de la meseta */
+      s += `<path d="M1380 646 Q1500 590 1600 636 Q1640 700 1672 762 Q1760 890 1888 986 L1920 1100 L1300 1100 Q1310 880 1380 646 Z" fill="url(#egpXcerca)" opacity=".72"/>
+        <path d="M1380 646 Q1500 590 1600 636 Q1640 700 1672 762 L1650 776 Q1612 706 1586 660 Q1496 620 1394 672 Z" fill="rgba(255,255,255,.2)"/>`;
+      /* la franja de arena mojada, pegada al agua */
+      s += `<path d="M1560 486 Q1596 640 1672 762 Q1760 890 1888 986 L1848 1002 Q1716 902 1626 768 Q1550 644 1516 494 Z" fill="url(#egpXmojada)"/>`;
+      s += `<g stroke="rgba(150,102,44,.26)" stroke-width="5" fill="none" stroke-linecap="round">
+        <path d="M1470 700 q22 -10 44 0 M1420 800 q22 -10 44 0 M1540 880 q22 -10 44 0 M1640 960 q22 -10 44 0 M1370 918 q22 -10 44 0"/></g>
+        <g fill="#c08e46" opacity=".55"><ellipse cx="1512" cy="742" rx="16" ry="7"/><ellipse cx="1596" cy="854" rx="20" ry="8"/>
+        <ellipse cx="1700" cy="946" rx="17" ry="7"/><ellipse cx="1466" cy="990" rx="22" ry="9"/></g>`;
+      /* y el mismo remate de arena para el tramo de ribera del primer plano */
+      s += `<g fill="url(#egpXduna2)" opacity=".5"><ellipse cx="1470" cy="1094" rx="54" ry="18"/><ellipse cx="1780" cy="1062" rx="42" ry="14"/></g>
+        <g stroke="rgba(150,102,44,.3)" stroke-width="5" fill="none" stroke-linecap="round">
+        <path d="M1320 1042 q19 -9 38 0 M1412 1078 q19 -9 38 0 M1500 1016 q19 -9 38 0 M1588 1064 q19 -9 38 0
+          M1666 1024 q19 -9 38 0 M1748 1084 q19 -9 38 0 M1830 1040 q19 -9 38 0
+          M1360 1004 q19 -9 38 0 M1620 1096 q19 -9 38 0 M1786 1010 q19 -9 38 0"/></g>
+        <g fill="#a8763a" opacity=".42"><ellipse cx="1368" cy="1058" rx="11" ry="5"/><ellipse cx="1552" cy="1090" rx="9" ry="4"/>
+        <ellipse cx="1700" cy="1058" rx="12" ry="5"/><ellipse cx="1866" cy="1076" rx="10" ry="4"/>
+        <ellipse cx="1440" cy="1030" rx="10" ry="4"/><ellipse cx="1650" cy="1006" rx="9" ry="4"/></g>
+        <g stroke="#a8a05a" stroke-width="4" fill="none" stroke-linecap="round" opacity=".5">
+        <path d="M1462 1052 q-8 -24 -18 -34 M1472 1052 q0 -28 6 -40"/></g>`;
+      /* el embarcadero de piedra, con sus escalones bajando al río: los
+         últimos peldaños se meten en el agua y quedan tapados por ella */
+      s += `<path d="M1478 692 L1642 684 L1654 748 L1488 756 Z" fill="url(#egpXcaliza)"/>
+        <path d="M1478 692 L1642 684 L1644 704 L1479 712 Z" fill="#f6e6bf"/>`;
+      s += `<g stroke="rgba(150,112,58,.3)" stroke-width="4" fill="none">
+        <path d="M1534 688 L1540 752 M1596 685 L1602 749"/></g>`;
+      s += greca(1486, 1636, 742, 22, 13, ".3");
+      s += `<g fill="url(#egpXcaliza)"><path d="M1500 756 L1740 744 L1748 786 L1510 796 Z"/>
+        <path d="M1520 796 L1770 784 L1780 826 L1532 836 Z"/><path d="M1540 836 L1800 824 L1812 866 L1554 876 Z"/></g>
+        <g fill="#f6e6bf" opacity=".7"><path d="M1500 756 L1740 744 L1741 754 L1501 766 Z"/><path d="M1520 796 L1770 784 L1771 794 L1521 806 Z"/>
+        <path d="M1540 836 L1800 824 L1801 834 L1541 846 Z"/></g>`;
+      /* los norays de piedra y el cabo amarrado */
+      s += `<g fill="url(#egpXgranito)"><rect x="1494" y="642" width="24" height="46" rx="10"/><rect x="1602" y="636" width="24" height="46" rx="10"/></g>
+        <path d="M1506 640 Q1560 612 1614 634" stroke="#c9a870" stroke-width="6" fill="none"/>`;
       /* ---------- EL NILO: el agua, los reflejos y las ondas ---------- */
-      s += `<path d="M-40 906 Q220 890 420 856 Q620 820 780 692 Q930 570 1050 500 Q1150 444 1240 416 Q1360 384 1460 392 Q1560 400 1620 446 Q1740 500 1830 556 Q1886 592 1900 640
-        Q1830 668 1750 700 Q1650 740 1560 770 Q1430 806 1300 800 Q1160 794 1050 843 Q880 920 700 1010 Q340 1080 -40 1100 Z" fill="url(#egpXnilo)"/>
-        <path d="M-40 906 Q220 890 420 856 Q620 820 780 692 Q930 570 1050 500 Q1150 444 1240 416 Q1360 384 1460 392 Q1560 400 1620 446 Q1740 500 1830 556 Q1886 592 1900 640
-        Q1880 648 1850 660 Q1770 594 1650 522 Q1540 458 1440 452 Q1340 448 1240 476 Q1140 508 1030 574 Q900 654 760 754 Q600 866 400 900 Q200 934 -40 946 Z" fill="#8ad8f2" opacity=".5"/>`;
+      s += `<path d="M1560 486 Q1596 640 1672 762 Q1760 890 1888 986 Q2060 940 2300 950 Q2600 962 2900 944 L2864 500 ${orilla(0, 1)} Z" fill="url(#egpXnilo)"/>
+        <path d="M1560 486 ${orilla(0)} L2872 556 ${orilla(56, 1)} Z" fill="#8ad8f2" opacity=".5"/>
+        <path d="M1560 486 Q1596 640 1672 762 Q1760 890 1888 986 L1918 978 Q1786 878 1700 748 Q1626 626 1592 482 Z" fill="#8ad8f2" opacity=".45"/>`;
       s += `<g stroke="rgba(255,255,255,.55)" stroke-width="5" fill="none" stroke-linecap="round">
-        <path d="M980 620 q26 -12 52 0 M1140 560 q26 -12 52 0 M1330 512 q26 -12 52 0 M1520 528 q26 -12 52 0 M1700 592 q26 -12 52 0
-          M860 742 q30 -13 60 0 M1090 694 q30 -13 60 0 M1400 690 q30 -13 60 0 M1640 700 q30 -13 60 0
-          M300 976 q34 -14 68 0 M620 936 q34 -14 68 0 M960 918 q34 -14 68 0 M120 1046 q34 -14 68 0"><animate attributeName="opacity" values=".8;.34;.8" dur="5.4s" repeatCount="indefinite"/></path></g>`;
-      /* el sol reflejado en el agua, en trazos anchos */
-      s += `<g fill="#fff" opacity=".2"><ellipse cx="1720" cy="628" rx="90" ry="8"/><ellipse cx="1620" cy="676" rx="120" ry="9"/>
-        <ellipse cx="1500" cy="736" rx="150" ry="10"/><ellipse cx="1330" cy="792" rx="170" ry="11"/></g>`;
-      /* flores de loto flotando */
-      [[1180, 636], [1560, 618], [980, 792], [1700, 664]].forEach((f, i) => {
+        <path d="M1780 620 q26 -12 52 0 M2020 596 q26 -12 52 0 M2320 606 q26 -12 52 0 M2620 592 q26 -12 52 0 M2780 640 q26 -12 52 0
+          M1860 720 q30 -13 60 0 M2140 730 q30 -13 60 0 M2420 706 q30 -13 60 0 M2700 736 q30 -13 60 0
+          M1760 836 q34 -14 68 0 M2080 862 q34 -14 68 0 M2400 840 q34 -14 68 0 M2680 866 q34 -14 68 0 M2520 916 q34 -14 68 0"><animate attributeName="opacity" values=".8;.34;.8" dur="5.4s" repeatCount="indefinite"/></path></g>`;
+      /* el sol reflejado en el agua, en trazos anchos, del lado del templo */
+      s += `<g fill="#fff" opacity=".2"><ellipse cx="2830" cy="580" rx="70" ry="7"/><ellipse cx="2800" cy="648" rx="100" ry="8"/>
+        <ellipse cx="2760" cy="726" rx="130" ry="9"/><ellipse cx="2716" cy="810" rx="160" ry="11"/></g>`;
+      /* la estela de agua del hipopótamo, para que no flote en el vacío */
+      s += `<g fill="#fff" opacity=".22"><ellipse cx="2200" cy="684" rx="86" ry="16"/></g>
+        <g stroke="rgba(255,255,255,.55)" stroke-width="5" fill="none" stroke-linecap="round">
+        <path d="M2136 700 q30 -12 60 0 M2216 706 q30 -12 60 0"><animate attributeName="opacity" values=".75;.3;.75" dur="4.6s" repeatCount="indefinite"/></path></g>`;
+      /* flores de loto flotando, la flor del Alto Egipto */
+      [[1900, 660], [2270, 700], [2560, 660], [2060, 880], [2700, 900]].forEach((f, i) => {
         if (!libre(f[0] - 24, f[1] - 20, 48, 34)) return;
         s += `<g transform="translate(${f[0]} ${f[1]})">${i % 2 ? `<animate attributeName="opacity" values="1;.75;1" dur="6s" repeatCount="indefinite"/>` : ""}
           <ellipse cx="0" cy="10" rx="26" ry="8" fill="#3f8b4a"/>
@@ -453,7 +729,7 @@ Object.assign(THEMES.egipto.content, {
           <path d="M-14 8 Q-22 -2 -26 6 M14 8 Q22 -2 26 6" stroke="#f7a8c4" stroke-width="7" fill="none" stroke-linecap="round"/>
           <circle cx="0" cy="2" r="5" fill="#ffe28a"/></g>`;
       });
-      /* ---------- LOS FALUCHOS: barcas de vela triangular ---------- */
+      /* ---------- LOS FALUCHOS: las barcas de vela del Nilo ---------- */
       const falucho = (x, y, k, o) => `<g transform="translate(${x} ${y}) scale(${k})" opacity="${o}">
         <path d="M-56 0 L56 0 L40 22 Q0 32 -40 22 Z" fill="#8a6136"/>
         <path d="M-58 -4 L58 -4 L58 4 L-58 4 Z" fill="#c4a06a"/>
@@ -462,28 +738,92 @@ Object.assign(THEMES.egipto.content, {
         <path d="M-2 -96 L-2 -20 L-54 -22 Z" fill="#f2e7cd"/>
         <path d="M6 -92 L60 -22 M6 -70 L52 -20" stroke="rgba(160,132,86,.4)" stroke-width="3"/>
         <path d="M-64 12 q30 -12 60 0 t60 0" stroke="rgba(255,255,255,.5)" stroke-width="4" fill="none" stroke-linecap="round"/></g>`;
-      s += `<g><animateTransform attributeName="transform" type="translate" values="0 0;-42 22;0 0" dur="46s" repeatCount="indefinite"/>${falucho(1596, 566, .82, ".95")}</g>`;
-      s += `<g><animateTransform attributeName="transform" type="translate" values="0 0;36 -16;0 0" dur="58s" repeatCount="indefinite"/>${falucho(880, 812, 1, ".95")}</g>`;
-      s += falucho(1418, 488, .5, ".55");
-      /* ---------- ORILLAS: bancos de arena, juncos, papiros y palmeras ---------- */
-      /* el banco donde se posa el flamenco y el islote del ibis */
-      s += `<path d="M1150 414 Q1234 392 1330 414 Q1372 430 1326 444 Q1236 464 1160 444 Q1122 430 1150 414 Z" fill="url(#egpXduna)"/>
-        <path d="M1560 458 Q1614 442 1672 458 Q1700 470 1668 480 Q1612 492 1566 480 Q1542 470 1560 458 Z" fill="url(#egpXduna)"/>
-        <g stroke="rgba(255,255,255,.5)" stroke-width="4" fill="none" stroke-linecap="round"><path d="M1160 448 q22 -10 44 0 M1544 490 q22 -10 44 0"/></g>`;
+      s += `<g><animateTransform attributeName="transform" type="translate" values="0 0;-52 18;0 0" dur="46s" repeatCount="indefinite"/>${falucho(2480, 760, .9, ".95")}</g>`;
+      s += `<g><animateTransform attributeName="transform" type="translate" values="0 0;44 -14;0 0" dur="58s" repeatCount="indefinite"/>${falucho(2010, 880, 1, ".95")}</g>`;
+      s += falucho(2740, 600, .52, ".55") + falucho(2160, 560, .46, ".5");
+      /* ---------- LOS CAMPOS DE CULTIVO DE LA OTRA ORILLA ----------
+         río arriba el valle se cierra: la vega se estrecha y muere en punta
+         justo donde el agua se pierde, así no queda una losa de campo con el
+         canto recortado contra el cielo. Su borde de arriba baja siempre por
+         debajo de la cresta del gebel, que le hace de fondo. */
+      s += `<path d="M1556 480 Q1600 420 1660 384 Q1720 344 1790 322 Q2020 310 2340 328 Q2600 336 2820 322 L2864 500 ${orilla(0, 1)} Z" fill="url(#egpXcampo)"/>
+        <path d="M1556 480 Q1600 420 1660 384 Q1720 344 1790 322 Q2020 310 2340 328 Q2600 336 2820 322 L2826 352 Q2600 366 2340 358 Q2040 340 1806 352 Q1726 374 1668 416 Q1616 452 1584 486 Z" fill="#a5d47a" opacity=".7"/>`;
+      s += `<g stroke="rgba(40,90,36,.35)" stroke-width="4" fill="none">
+        <path d="M1670 372 Q2000 356 2360 368 M1676 412 Q2020 396 2400 408 M1682 452 Q2040 436 2440 448 M1688 492 Q2060 476 2480 488"/></g>
+        <g fill="#3f7f36" opacity=".7"><ellipse cx="1820" cy="392" rx="34" ry="10"/><ellipse cx="2180" cy="430" rx="36" ry="11"/>
+        <ellipse cx="2360" cy="474" rx="32" ry="10"/><ellipse cx="1740" cy="470" rx="30" ry="9"/></g>`;
+      /* el mismo verde, secándose hacia la punta hasta volverse arena */
+      s += `<path d="M1556 480 Q1600 420 1660 384 Q1720 344 1790 322 Q1880 316 1980 322 L2010 508 Q1950 500 1900 514 Q1820 530 1740 518 Q1650 504 1560 486 Z" fill="url(#egpXsiegaizq)"/>`;
+      s += `<g fill="url(#egpXduna)" opacity=".85"><ellipse cx="1620" cy="466" rx="42" ry="13"/><ellipse cx="1700" cy="452" rx="52" ry="15"/>
+        <ellipse cx="1790" cy="432" rx="58" ry="17"/><ellipse cx="1888" cy="408" rx="54" ry="16"/><ellipse cx="1980" cy="392" rx="46" ry="14"/></g>
+        <g stroke="rgba(150,102,44,.24)" stroke-width="4" fill="none" stroke-linecap="round">
+        <path d="M1636 480 q18 -8 36 0 M1734 466 q18 -8 36 0 M1846 442 q18 -8 36 0"/></g>
+        <g stroke="#a8a05a" stroke-width="4" fill="none" stroke-linecap="round" opacity=".65">
+        <path d="M1682 476 q-7 -20 -16 -28 M1692 476 q0 -24 5 -34"/>
+        <path d="M1852 466 q-7 -20 -16 -28 M1862 466 q0 -24 5 -34"/></g>`;
+      /* lengüetas de arena a caballo del filo de la vega: el desierto y el
+         campo se mezclan en vez de tocarse con un solo trazo limpio */
+      s += `<g fill="url(#egpXduna)" opacity=".7"><ellipse cx="1666" cy="392" rx="46" ry="15" transform="rotate(-32 1666 392)"/>
+        <ellipse cx="1748" cy="344" rx="52" ry="14" transform="rotate(-20 1748 344)"/>
+        <ellipse cx="1958" cy="322" rx="44" ry="12"/></g>
+        <g stroke="#a8a05a" stroke-width="4" fill="none" stroke-linecap="round" opacity=".55">
+        <path d="M1638 428 q-7 -20 -16 -28 M1648 428 q0 -24 5 -34"/>
+        <path d="M1712 372 q-6 -18 -14 -25 M1721 372 q0 -22 5 -31"/></g>`;
+      /* la orilla de enfrente no corta en seco: barro, juncos y la lámina
+         del agua se van mezclando a lo largo de todo el borde */
+      s += `<path d="M1560 486 ${orilla(0)} L2866 524 ${orilla(24, 1)} Z" fill="#a9863f" opacity=".55"/>
+        <path d="M1560 498 ${orilla(12)}" stroke="rgba(255,240,200,.3)" stroke-width="5" fill="none"/>`;
+      /* donde el barro se mete más adentro, dos bajíos de fango y una punta de
+         arena: la orilla no solo ondula, además tiene fondo */
+      s += `<path d="M1876 516 Q1902 556 1938 562 Q1972 554 1984 498 Z" fill="#a9863f" opacity=".6"/>
+        <path d="M2276 544 Q2306 578 2352 580 Q2398 572 2424 540 Z" fill="#a9863f" opacity=".45"/>`;
+      s += `<path d="M2586 504 Q2610 548 2664 554 Q2702 548 2702 504 Z" fill="url(#egpXduna)"/>
+        <path d="M2590 518 Q2614 552 2664 558 Q2698 552 2700 520" stroke="#a9863f" stroke-width="6" fill="none" opacity=".7"/>
+        <path d="M2612 532 q18 -8 36 0" stroke="rgba(150,102,44,.3)" stroke-width="4" fill="none" stroke-linecap="round"/>`;
+      /* los juncos siguen la orilla nueva, cada mata a su altura */
+      s += `<g stroke="#4c9a4a" stroke-width="4.6" fill="none" stroke-linecap="round">
+        <path d="M1930 560 q-7 -28 -17 -40 M1941 560 q0 -32 6 -46 M1952 560 q9 -26 19 -36"/>
+        <path d="M2156 522 q-6 -24 -15 -34 M2166 522 q0 -28 5 -40"/>
+        <path d="M2646 554 q-7 -28 -17 -40 M2657 554 q0 -32 6 -46 M2668 554 q9 -26 19 -36"/>
+        <path d="M2344 578 q-6 -24 -15 -34 M2354 578 q0 -28 5 -40"/></g>`;
+      s += `<g stroke="#4c9a4a" stroke-width="4.6" fill="none" stroke-linecap="round">
+        <path d="M1806 542 q-7 -30 -17 -42 M1817 542 q0 -34 6 -48 M1828 542 q9 -28 19 -38"/>
+        <path d="M2058 524 q-7 -30 -17 -42 M2069 524 q0 -34 6 -48 M2080 524 q9 -28 19 -38"/>
+        <path d="M2306 560 q-7 -30 -17 -42 M2317 560 q0 -34 6 -48 M2328 560 q9 -28 19 -38"/>
+        <path d="M2556 524 q-7 -30 -17 -42 M2567 524 q0 -34 6 -48 M2578 524 q9 -28 19 -38"/>
+        <path d="M2760 528 q-7 -30 -17 -42 M2771 528 q0 -34 6 -48 M2782 528 q9 -28 19 -38"/></g>`;
+      /* la laguna somera de la otra orilla, donde vadea el flamenco */
+      s += `<path d="M1900 400 Q2010 380 2126 400 Q2170 416 2124 432 Q2010 452 1912 432 Q1868 416 1900 400 Z" fill="url(#egpXvado)"/>
+        <g stroke="rgba(255,255,255,.55)" stroke-width="4" fill="none" stroke-linecap="round"><path d="M1918 424 q22 -10 44 0 M2050 428 q22 -10 44 0"/></g>`;
+      /* el banco de arena donde se posa el ibis */
+      s += `<path d="M2374 452 Q2440 434 2510 452 Q2546 466 2506 478 Q2438 494 2384 478 Q2350 466 2374 452 Z" fill="url(#egpXduna)"/>
+        <g stroke="rgba(255,255,255,.5)" stroke-width="4" fill="none" stroke-linecap="round"><path d="M2364 486 q22 -10 44 0"/></g>`;
       /* el barrizal donde descansa el cocodrilo */
-      s += `<path d="M1206 790 Q1290 758 1400 786 Q1440 800 1398 816 Q1292 842 1216 820 Q1178 804 1206 790 Z" fill="#a9863f"/>
-        <path d="M1224 796 Q1300 776 1382 794" stroke="rgba(255,240,200,.34)" stroke-width="6" fill="none"/>`;
+      s += `<path d="M1852 806 Q1940 776 2036 802 Q2076 816 2034 832 Q1936 856 1862 836 Q1824 820 1852 806 Z" fill="#a9863f"/>
+        <path d="M1870 812 Q1942 794 2018 810" stroke="rgba(255,240,200,.34)" stroke-width="6" fill="none"/>`;
+      /* la orilla de acá: arena mojada, guijarros y el barro donde crece el papiro */
+      s += `<path d="M1888 986 Q2060 940 2300 950 Q2600 962 2900 944 L2906 992 Q2600 1010 2300 998 Q2060 988 1902 1030 Z" fill="url(#egpXmojada2)"/>`;
+      s += `<g fill="#c08e46" opacity=".5"><ellipse cx="2010" cy="1002" rx="24" ry="9"/><ellipse cx="2246" cy="990" rx="19" ry="7"/>
+        <ellipse cx="2470" cy="998" rx="26" ry="10"/><ellipse cx="2712" cy="1000" rx="21" ry="8"/></g>`;
+      s += `<path d="M1704 946 Q1790 918 1878 948 Q1918 962 1876 978 Q1782 1000 1714 976 Q1676 960 1704 946 Z" fill="#a9863f"/>
+        <path d="M1722 952 Q1792 936 1862 952" stroke="rgba(255,240,200,.34)" stroke-width="6" fill="none"/>`;
+      /* cañas justo en la lámina del agua, que cosen la arena con el río */
+      s += `<g stroke="#4c9a4a" stroke-width="5" fill="none" stroke-linecap="round">
+        <path d="M1660 700 q-8 -34 -18 -48 M1672 700 q0 -40 7 -54 M1684 700 q9 -32 20 -44"/>
+        <path d="M1746 820 q-8 -38 -20 -54 M1758 820 q0 -44 8 -60 M1770 820 q10 -36 22 -48"/>
+        <path d="M1856 924 q-8 -38 -20 -54 M1868 924 q0 -44 8 -60 M1880 924 q10 -36 22 -48"/></g>`;
       /* juncos y papiros de las dos orillas */
       const papiro = (x, y, k) => `<g transform="translate(${x} ${y}) scale(${k})" stroke="#3f8b4a" stroke-width="7" fill="none" stroke-linecap="round">
         <path d="M0 0 L-8 -76"/><path d="M0 0 L12 -86"/><path d="M0 0 L26 -68"/>
         <path d="M-8 -76 l-16 -12 M-8 -76 l-2 -20 M-8 -76 l14 -16"/>
         <path d="M12 -86 l-14 -16 M12 -86 l4 -20 M12 -86 l18 -12"/>
         <path d="M26 -68 l-6 -20 M26 -68 l16 -14 M26 -68 l18 2"/></g>`;
-      s += papiro(1096, 862, 1.05) + papiro(966, 918, .85) + papiro(1520, 792, .9) + papiro(1712, 720, .75) + papiro(700, 1006, 1.15) + papiro(360, 1058, .95);
+      s += papiro(1846, 968, 1.05) + papiro(1774, 992, .95) + papiro(2360, 986, .95) + papiro(2660, 980, .8) +
+        papiro(1832, 486, .62) + papiro(2620, 462, .58) + papiro(2140, 1032, 1.1);
       s += `<g stroke="#4c9a4a" stroke-width="5" fill="none" stroke-linecap="round">
-        <path d="M1160 870 q-8 -42 -22 -60 M1174 870 q0 -48 8 -66 M1188 870 q10 -40 24 -52"/>
-        <path d="M1590 764 q-8 -38 -20 -54 M1602 764 q0 -44 8 -60 M1614 764 q10 -36 22 -48"/>
-        <path d="M520 1046 q-8 -40 -22 -58 M534 1046 q0 -46 8 -64 M548 1046 q10 -38 24 -50"/></g>`;
+        <path d="M1930 978 q-8 -42 -22 -60 M1944 978 q0 -48 8 -66 M1958 978 q10 -40 24 -52"/>
+        <path d="M2500 980 q-8 -38 -20 -54 M2512 980 q0 -44 8 -60 M2524 980 q10 -36 22 -48"/>
+        <path d="M2790 950 q-8 -38 -20 -54 M2802 950 q0 -44 8 -60 M2814 950 q10 -36 22 -48"/></g>`;
       /* palmeras datileras, meciéndose muy despacio */
       const palmera = (x, y, k, giro) => `<g transform="translate(${x} ${y}) scale(${giro * k} ${k})">
         <path d="M0 0 Q-10 -66 4 -122" stroke="#8a6136" stroke-width="15" fill="none" stroke-linecap="round"/>
@@ -492,133 +832,155 @@ Object.assign(THEMES.egipto.content, {
         <path d="M4 -122 Q-46 -142 -84 -122"/><path d="M4 -122 Q-30 -166 -62 -170"/>
         <path d="M4 -122 Q10 -176 42 -180"/><path d="M4 -122 Q48 -160 82 -140"/><path d="M4 -122 Q42 -110 66 -84"/></g>
         <circle cx="-8" cy="-112" r="8" fill="#c8862f"/><circle cx="12" cy="-108" r="8" fill="#c8862f"/><circle cx="2" cy="-100" r="7" fill="#c8862f"/></g>`;
-      s += `<g><animateTransform attributeName="transform" type="rotate" values="0 1020 900;1.6 1020 900;0 1020 900;-1.6 1020 900;0 1020 900" dur="9s" repeatCount="indefinite"/>${palmera(1020, 900, 1, 1)}</g>`;
-      s += `<g><animateTransform attributeName="transform" type="rotate" values="0 1660 760;-1.6 1660 760;0 1660 760;1.6 1660 760;0 1660 760" dur="11s" repeatCount="indefinite"/>${palmera(1660, 760, .9, -1)}</g>`;
-      s += palmera(880, 962, .8, 1) + palmera(1780, 690, .62, -1) + palmera(540, 1060, .9, 1) + palmera(1866, 792, .7, 1);
-      /* la arena de la orilla de delante: ondulaciones, piedras y matas de hierba */
-      s += `<g stroke="rgba(150,102,44,.24)" stroke-width="5" fill="none" stroke-linecap="round">`;
-      for (let i = 0; i < 22; i++) {
-        const x = 180 + i * 76, y = 922 + ((i * 71) % 156);
-        if (libre(x - 6, y - 8, 76, 16)) s += `<path d="M${x} ${y} q22 -10 44 0"/>`;
-      }
-      s += `</g>`;
-      s += `<g fill="url(#egpXduna2)"><ellipse cx="820" cy="1042" rx="42" ry="17"/><ellipse cx="1290" cy="948" rx="34" ry="14"/>
-        <ellipse cx="1590" cy="1032" rx="46" ry="18"/><ellipse cx="1064" cy="1064" rx="30" ry="12"/></g>
-        <g stroke="#7fae4c" stroke-width="5" fill="none" stroke-linecap="round">
-        <path d="M760 1000 q-8 -30 -20 -42 M772 1000 q0 -34 8 -48 M784 1000 q10 -28 22 -38"/>
-        <path d="M1420 970 q-8 -30 -20 -42 M1432 970 q0 -34 8 -48 M1444 970 q10 -28 22 -38"/>
-        <path d="M1740 1046 q-8 -30 -20 -42 M1752 1046 q0 -34 8 -48 M1764 1046 q10 -28 22 -38"/></g>`;
-      /* ---------- LA MESETA DE GIZA: terraza, mastaba, obelisco y patio de la esfinge ---------- */
-      s += `<path d="M-40 542 L432 540 L468 620 L480 758 L-40 762 Z" fill="url(#egpXcaliza)"/>
-        <path d="M-40 542 L432 540 L436 562 L-40 564 Z" fill="#f6e6bf"/>`;
+      s += `<g><animateTransform attributeName="transform" type="rotate" values="0 1876 1044;1.6 1876 1044;0 1876 1044;-1.6 1876 1044;0 1876 1044" dur="9s" repeatCount="indefinite"/>${palmera(1876, 1044, 1, 1)}</g>`;
+      s += `<g><animateTransform attributeName="transform" type="rotate" values="0 2300 1026;-1.6 2300 1026;0 2300 1026;1.6 2300 1026;0 2300 1026" dur="11s" repeatCount="indefinite"/>${palmera(2300, 1026, .95, -1)}</g>`;
+      s += palmera(1750, 466, .5, 1) + palmera(2570, 476, .46, -1) + palmera(2020, 486, .42, 1) +
+        palmera(2560, 1058, .9, 1) + palmera(2790, 1010, .78, -1);
+      /* ---------- TRANSICIÓN 3: EL VERDE DEL CULTIVO SE VUELVE ARENA ---------- */
+      /* los bancales se secan, los surcos se pierden y la orilla acaba en arena */
+      s += `<path d="M2400 322 Q2600 314 2820 322 L2900 520 L2880 500 Q2700 500 2500 514 L2400 322 Z" fill="url(#egpXsiega)"/>`;
+      s += `<g fill="url(#egpXduna)" opacity=".85"><ellipse cx="2660" cy="374" rx="72" ry="20"/><ellipse cx="2780" cy="424" rx="86" ry="24"/>
+        <ellipse cx="2712" cy="468" rx="64" ry="18"/><ellipse cx="2842" cy="360" rx="58" ry="16"/><ellipse cx="2856" cy="470" rx="50" ry="14"/></g>
+        <g stroke="rgba(150,102,44,.24)" stroke-width="4" fill="none" stroke-linecap="round">
+        <path d="M2640 392 q18 -8 36 0 M2760 442 q18 -8 36 0 M2700 486 q18 -8 36 0"/></g>
+        <g stroke="#a8a05a" stroke-width="4" fill="none" stroke-linecap="round" opacity=".65">
+        <path d="M2600 348 q-7 -20 -16 -28 M2610 348 q0 -24 5 -34"/>
+        <path d="M2730 396 q-7 -20 -16 -28 M2740 396 q0 -24 5 -34"/></g>`;
+      /* la orilla derecha del río: arena mojada y luego el recinto seco */
+      s += `<path d="M2830 500 Q2900 700 2900 944 L3020 1040 Q3000 740 2930 496 Z" fill="url(#egpXduna)"/>
+        <path d="M2864 560 q22 32 34 78 M2884 700 q20 40 24 92" stroke="rgba(255,255,255,.28)" stroke-width="6" fill="none" stroke-linecap="round"/>`;
+      /* ---------- TRANSICIÓN 4: EL CAMINO PROCESIONAL HACIA EL TEMPLO ---------- */
+      /* del río sube una avenida empedrada, con muretes y mástiles de estandarte,
+         y muere justo en la puerta del pilono */
+      s += `<path d="M2666 1076 L2960 1060 L2940 812 L2790 820 Z" fill="url(#egpXpatio)"/>
+        <path d="M2666 1076 L2960 1060 L2958 1044 L2672 1060 Z" fill="#f2ddaa"/>`;
       s += `<g stroke="rgba(150,112,58,.3)" stroke-width="4" fill="none">`;
-      for (let y = 588; y < 756; y += 42) s += `<path d="M-40 ${y} L${466 + (y - 588) * .08} ${y}"/>`;
-      for (let x = 20; x < 460; x += 76) s += `<path d="M${x} 566 L${x} 756"/>`;
-      s += `</g>`;
-      /* la mastaba escalonada donde se apoya la cámara del tesoro */
-      s += `<path d="M262 542 L282 346 L380 346 L400 542 Z" fill="url(#egpXcaliza)"/>
-        <path d="M282 346 L380 346 L400 542 L340 542 L336 380 Z" fill="#d8b87e"/>
-        <path d="M276 388 L386 388 M270 442 L392 442 M266 492 L396 492" stroke="rgba(150,112,58,.35)" stroke-width="5"/>
-        <path d="M274 346 L388 346 L388 362 L274 362 Z" fill="#f6e6bf"/>`;
-      /* el patio empedrado de la esfinge, con su murete */
-      s += `<path d="M244 750 L556 748 L580 860 L228 862 Z" fill="url(#egpXpatio)"/>
-        <path d="M244 750 L556 748 L558 764 L244 766 Z" fill="#f2ddaa"/>`;
-      s += `<g stroke="rgba(150,112,58,.28)" stroke-width="4" fill="none">
-        <path d="M238 792 L570 790 M234 828 L576 826 M310 766 L316 860 M400 766 L406 860 M490 766 L498 860"/></g>
-        <path d="M520 748 L560 746 L566 700 L524 702 Z" fill="url(#egpXcaliza)"/>
-        <path d="M196 862 L616 858 L624 890 L188 894 Z" fill="#d3ae6f"/>`;
-      /* el obelisco sobre su podio, con una greca en el zócalo */
-      s += `<path d="M498 700 L706 698 L716 792 L488 794 Z" fill="url(#egpXcaliza)"/>
-        <path d="M498 700 L706 698 L708 716 L498 718 Z" fill="#f6e6bf"/>
-        <path d="M546 481 L654 481 L664 700 L536 700 Z" fill="url(#egpXpiedra)"/>
-        <path d="M600 481 L654 481 L664 700 L604 700 Z" fill="#d8b87e"/>
-        <path d="M540 500 L660 500 M536 524 L664 524" stroke="rgba(150,112,58,.35)" stroke-width="5"/>`;
-      s += `<g fill="rgba(150,112,58,.35)">`;
-      for (let i = 0; i < 6; i++) s += `<path d="M${548 + i * 19} 736 l10 -14 l10 14 Z"/>`;
-      s += `</g>`;
-      /* la duna donde camina el camello */
-      s += `<path d="M624 830 Q690 720 748 690 L858 692 Q938 726 992 826 L992 866 L624 866 Z" fill="url(#egpXduna)"/>
-        <path d="M660 792 q24 -10 48 0 M896 800 q24 -10 48 0" stroke="rgba(150,102,44,.28)" stroke-width="5" fill="none" stroke-linecap="round"/>
-        <g fill="url(#egpXduna2)"><ellipse cx="596" cy="880" rx="46" ry="18"/><ellipse cx="1004" cy="892" rx="38" ry="15"/></g>`;
-      /* ---------- EL TEMPLO: patio, columnatas, pilono y capilla ---------- */
-      s += `<path d="M1854 800 L2600 796 L2600 1100 L1830 1100 Z" fill="url(#egpXpatio)"/>
-        <path d="M1854 800 L2600 796 L2600 818 L1852 822 Z" fill="#f2ddaa"/>`;
+      for (let i = 1; i < 7; i++) {
+        const t = i / 7, y = 1064 - t * 244, x1 = 2666 + t * 124, x2 = 2960 - t * 20;
+        s += `<path d="M${x1.toFixed(0)} ${y.toFixed(0)} L${x2.toFixed(0)} ${(y - 12).toFixed(0)}"/>`;
+      }
+      s += `<path d="M2740 1070 L2864 816 M2830 1066 L2906 814"/></g>`;
+      s += `<path d="M2636 1080 L2676 1076 L2800 818 L2778 816 Z" fill="url(#egpXcaliza)"/>
+        <path d="M2954 1060 L2990 1058 L2966 810 L2944 812 Z" fill="url(#egpXcaliza)"/>`;
+      /* los mástiles de estandarte que flanqueaban las avenidas y los pilonos */
+      [[2732, 866, 1], [2812, 866, .92]].forEach(m => {
+        s += `<g><rect x="${m[0]}" y="${(1030 - 164 * m[2]).toFixed(0)}" width="14" height="${(164 * m[2]).toFixed(0)}" rx="6" fill="url(#egpXgranito)"/>
+          <rect x="${m[0] - 10}" y="${(1030 - 176 * m[2]).toFixed(0)}" width="34" height="16" rx="4" fill="#d3b077"/>
+          <path d="M${m[0] + 14} ${(1024 - 164 * m[2]).toFixed(0)} q34 8 34 30 q-34 6 -34 -6 Z" fill="#c8862f">
+          <animate attributeName="opacity" values="1;.72;1" dur="6s" repeatCount="indefinite"/></path></g>`;
+      });
+      /* ---------- EL RECINTO DEL TEMPLO: patio, pilono, capillas y lago ---------- */
+      s += `<path d="M2900 806 L4200 800 L4200 1100 L2880 1100 Z" fill="url(#egpXpatio)"/>
+        <path d="M2900 806 L4200 800 L4200 824 L2898 828 Z" fill="#f2ddaa"/>`;
       s += `<g stroke="rgba(150,112,58,.26)" stroke-width="4" fill="none">`;
-      for (let y = 846; y < 1096; y += 46) s += `<path d="M1836 ${y} L2600 ${y}"/>`;
-      for (let x = 1880; x < 2600; x += 86) s += `<path d="M${x} 822 L${x - 14} 1096"/>`;
-      s += `</g>`;
-      /* la columnata de la izquierda, con su arquitrabe */
-      s += columna(1866, 430, 800, 27) + columna(1948, 430, 800, 27);
-      s += `<path d="M1822 388 L1998 388 L1998 430 L1822 430 Z" fill="url(#egpXpiedra)"/>
-        <path d="M1816 372 L2004 372 L2004 390 L1816 390 Z" fill="#f2ddaa"/>`;
-      s += `<g fill="rgba(150,112,58,.32)">`;
-      for (let i = 0; i < 8; i++) s += `<path d="M${1828 + i * 21} 420 l9 -16 l9 16 Z"/>`;
+      for (let y = 852; y < 1096; y += 46) s += `<path d="M2886 ${y} L4200 ${y}"/>`;
+      for (let x = 2930; x < 4200; x += 88) s += `<path d="M${x} 828 L${x - 14} 1096"/>`;
       s += `</g>`;
       /* el pilono: muro macizo con gola egipcia, cenefas y su puerta */
-      s += `<path d="M2044 800 L2064 296 L2258 296 L2280 800 Z" fill="url(#egpXpiedra)"/>
-        <path d="M2166 296 L2258 296 L2280 800 L2170 800 Z" fill="#dcbc85"/>
-        <path d="M2050 296 Q2044 250 2068 238 L2256 238 Q2280 250 2274 296 Z" fill="url(#egpXcaliza)"/>
-        <path d="M2044 296 L2280 296 L2280 314 L2044 314 Z" fill="#c39c62"/>`;
+      s += `<path d="M2884 810 L2906 306 L3268 306 L3292 810 Z" fill="url(#egpXpiedra)"/>
+        <path d="M3090 306 L3268 306 L3292 810 L3096 810 Z" fill="#dcbc85"/>
+        <path d="M2892 306 Q2886 258 2910 246 L3264 246 Q3288 258 3282 306 Z" fill="url(#egpXcaliza)"/>
+        <path d="M2884 306 L3292 306 L3292 326 L2884 326 Z" fill="#c39c62"/>`;
       s += `<g stroke="rgba(150,112,58,.4)" stroke-width="4" fill="none">`;
-      for (let i = 0; i < 11; i++) s += `<path d="M${2062 + i * 20} 296 L${2064 + i * 19.4} 244"/>`;
+      for (let i = 0; i < 19; i++) s += `<path d="M${2904 + i * 20} 306 L${2906 + i * 19.6} 252"/>`;
       s += `</g>`;
-      s += `<path d="M2036 620 L2288 618 L2290 642 L2034 644 Z" fill="url(#egpXcaliza)"/>
-        <path d="M2036 620 L2288 618 L2288 628 L2036 630 Z" fill="#f6e6bf"/>`;
+      s += `<path d="M2876 618 L3300 614 L3302 640 L2874 644 Z" fill="url(#egpXcaliza)"/>
+        <path d="M2876 618 L3300 614 L3300 626 L2876 630 Z" fill="#f6e6bf"/>`;
+      s += greca(2898, 3278, 700, 22, 18, ".3");
       s += `<g fill="rgba(150,112,58,.3)">`;
-      for (let i = 0; i < 10; i++) s += `<path d="M${2058 + i * 22} 690 l11 -18 l11 18 Z"/>`;
-      for (let i = 0; i < 9; i++) s += `<rect x="${2060 + i * 24}" y="380" width="12" height="13"/>`;
+      /* la cenefa de dados se interrumpe donde está el cartucho, para no
+         amontonarse justo detrás de su icono */
+      for (let i = 0; i < 16; i++) if (libre(2900 + i * 24, 392, 12, 14)) s += `<rect x="${2900 + i * 24}" y="392" width="12" height="14"/>`;
       s += `</g>`;
-      s += `<path d="M2122 800 L2126 704 L2202 704 L2206 800 Z" fill="#8a6a3c"/>
-        <path d="M2118 704 L2210 704 L2210 690 L2118 690 Z" fill="#c39c62"/>
-        <path d="M2136 800 L2138 720 L2190 720 L2192 800 Z" fill="#6b4f2a"/>`;
-      /* la columnata de la derecha */
-      s += columna(2228, 472, 800, 26) + columna(2300, 472, 800, 26);
-      s += `<path d="M2186 431 L2344 431 L2344 472 L2186 472 Z" fill="url(#egpXpiedra)"/>
-        <path d="M2180 416 L2350 416 L2350 433 L2180 433 Z" fill="#f2ddaa"/>`;
-      s += `<g fill="rgba(150,112,58,.3)">`;
-      for (let i = 0; i < 7; i++) s += `<rect x="${2192 + i * 21}" y="452" width="11" height="12"/>`;
-      s += `</g>`;
+      /* la puerta del pilono, donde muere el camino procesional */
+      s += `<path d="M3096 810 L3100 706 L3200 706 L3206 810 Z" fill="#8a6a3c"/>
+        <path d="M3092 706 L3212 706 L3212 690 L3092 690 Z" fill="#c39c62"/>
+        <path d="M3114 810 L3118 724 L3186 724 L3190 810 Z" fill="#6b4f2a"/>`;
+      /* el plinto de granito del faraón, delante del pilono */
+      s += `<path d="M3168 810 L3172 660 L3272 658 L3276 810 Z" fill="url(#egpXgranito)"/>
+        <path d="M3164 660 L3280 658 L3280 644 L3164 646 Z" fill="#d3b077"/>
+        <path d="M3222 660 L3222 810" stroke="rgba(255,255,255,.12)" stroke-width="6"/>`;
+      /* el plinto alto sobre la gola, donde se posa el halcón */
+      s += `<path d="M3222 306 L3278 306 L3274 244 L3226 244 Z" fill="url(#egpXgranito)"/>
+        <path d="M3218 246 L3282 246 L3282 232 L3218 232 Z" fill="#d3b077"/>`;
+      /* la capilla del escriba, con su gola y su hornacina */
+      s += `<path d="M3316 810 L3320 340 L3612 338 L3618 810 Z" fill="url(#egpXpiedra)"/>
+        <path d="M3480 339 L3612 338 L3618 810 L3486 810 Z" fill="#dcbc85"/>
+        <path d="M3312 340 Q3306 300 3328 290 L3606 288 Q3628 298 3622 338 Z" fill="url(#egpXcaliza)"/>
+        <path d="M3310 340 L3622 338 L3622 356 L3310 358 Z" fill="#c39c62"/>
+        <path d="M3410 592 L3414 356 L3552 354 L3556 592 Z" fill="#8a6a3c"/>
+        <path d="M3406 356 L3560 354 L3560 340 L3406 342 Z" fill="#c39c62"/>
+        <path d="M3424 574 L3428 372 L3538 370 L3542 574 Z" fill="#6b4f2a" opacity=".7"/>`;
+      /* la banqueta de piedra de la hornacina: aquí se sienta el escriba */
+      s += `<path d="M3412 448 L3556 446 L3558 464 L3412 466 Z" fill="url(#egpXpiedra)"/>
+        <path d="M3412 434 L3556 432 L3556 450 L3412 452 Z" fill="#e9d3a2"/>
+        <path d="M3426 466 L3542 464 L3538 512 L3430 514 Z" fill="#b08a52" opacity=".9"/>`;
+      s += `<g stroke="rgba(150,112,58,.34)" stroke-width="4" fill="none">
+        <path d="M3324 640 L3612 638 M3326 700 L3614 698"/></g>`;
+      s += greca(3330, 3606, 762, 23, 16, ".3");
       /* la estela donde se posa el escarabajo */
-      s += `<path d="M2346 800 L2350 748 Q2394 716 2438 748 L2442 800 Z" fill="url(#egpXcaliza)"/>
-        <path d="M2352 726 Q2394 700 2436 726 L2438 748 Q2394 720 2350 748 Z" fill="#f2ddaa"/>
-        <path d="M2358 776 L2432 776" stroke="rgba(150,112,58,.34)" stroke-width="5"/>`;
-      /* la capilla del sarcófago, con su cornisa */
-      s += `<path d="M2452 800 L2456 556 L2586 556 L2590 800 Z" fill="url(#egpXpiedra)"/>
-        <path d="M2524 556 L2586 556 L2590 800 L2528 800 Z" fill="#dcbc85"/>
-        <path d="M2446 556 Q2440 534 2460 528 L2582 528 Q2602 534 2596 556 Z" fill="url(#egpXcaliza)"/>
-        <path d="M2440 532 L2600 532 L2600 546 L2440 546 Z" fill="#f6e6bf"/>
-        <path d="M2492 800 L2494 700 L2552 700 L2554 800 Z" fill="#8a6a3c"/>
-        <path d="M2488 700 L2558 700 L2558 688 L2488 688 Z" fill="#c39c62"/>`;
+      s += `<path d="M3672 810 L3676 746 Q3720 712 3764 746 L3768 810 Z" fill="url(#egpXcaliza)"/>
+        <path d="M3678 724 Q3720 698 3762 724 L3764 746 Q3720 716 3676 746 Z" fill="#f2ddaa"/>
+        <path d="M3684 790 L3758 790" stroke="rgba(150,112,58,.34)" stroke-width="5"/>`;
+      /* la columnata de capitel de papiro que cierra el patio */
+      s += columna(3822, 486, 810, 20) + columna(3902, 486, 810, 20);
+      s += `<path d="M3782 444 L3942 444 L3942 486 L3782 486 Z" fill="url(#egpXpiedra)"/>
+        <path d="M3776 428 L3948 428 L3948 446 L3776 446 Z" fill="#f2ddaa"/>`;
       s += `<g fill="rgba(150,112,58,.3)">`;
-      for (let i = 0; i < 6; i++) s += `<rect x="${2466 + i * 21}" y="620" width="11" height="12"/>`;
+      for (let i = 0; i < 7; i++) s += `<rect x="${3790 + i * 21}" y="466" width="11" height="12"/>`;
       s += `</g>`;
-      /* los escalones que suben de la orilla al patio */
-      s += `<g fill="url(#egpXcaliza)"><path d="M1740 1096 L1866 1090 L1868 1040 L1758 1046 Z"/>
-        <path d="M1766 1042 L1868 1036 L1870 992 L1782 998 Z"/><path d="M1790 994 L1870 988 L1872 946 L1804 952 Z"/>
-        <path d="M1812 948 L1872 942 L1874 900 L1826 906 Z"/><path d="M1832 902 L1874 896 L1876 856 L1844 862 Z"/></g>
-        <g fill="#f6e6bf" opacity=".7"><path d="M1740 1096 L1866 1090 L1866 1080 L1740 1086 Z"/><path d="M1766 1042 L1868 1036 L1868 1028 L1766 1034 Z"/>
-        <path d="M1790 994 L1870 988 L1870 980 L1790 986 Z"/><path d="M1812 948 L1872 942 L1872 934 L1812 940 Z"/></g>`;
-      /* el lago sagrado del templo, con sus escalones */
-      s += `<path d="M2168 900 L2508 896 L2528 1026 L2154 1032 Z" fill="#c39c62"/>
-        <path d="M2186 916 L2492 912 L2508 1010 L2172 1016 Z" fill="url(#egpXnilo)"/>
-        <path d="M2186 916 L2492 912 L2494 928 L2186 932 Z" fill="#8ad8f2" opacity=".6"/>
+      /* la capilla del sarcófago, con su cornisa de gola */
+      s += `<path d="M3958 810 L3962 430 L4136 428 L4142 810 Z" fill="url(#egpXpiedra)"/>
+        <path d="M4056 429 L4136 428 L4142 810 L4062 810 Z" fill="#dcbc85"/>
+        <path d="M3954 430 Q3948 402 3970 394 L4130 392 Q4152 400 4146 428 Z" fill="url(#egpXcaliza)"/>
+        <path d="M3948 396 L4152 394 L4152 410 L3948 412 Z" fill="#f6e6bf"/>
+        <path d="M3990 810 L3992 542 L4070 540 L4074 810 Z" fill="#8a6a3c"/>
+        <path d="M3986 542 L4078 540 L4078 526 L3986 528 Z" fill="#c39c62"/>
+        <path d="M4004 800 L4006 562 L4058 560 L4060 800 Z" fill="#6b4f2a" opacity=".7"/>`;
+      s += `<g fill="rgba(150,112,58,.3)">`;
+      for (let i = 0; i < 8; i++) s += `<rect x="${3970 + i * 21}" y="466" width="11" height="12"/>`;
+      s += `</g>`;
+      s += greca(3966, 4134, 762, 24, 16, ".3");
+      /* el lago sagrado del templo, con su brocal escalonado */
+      s += `<path d="M3340 906 L3900 898 L3924 1030 L3320 1040 Z" fill="#c39c62"/>
+        <path d="M3364 922 L3878 914 L3898 1012 L3344 1022 Z" fill="url(#egpXnilo)"/>
+        <path d="M3364 922 L3878 914 L3880 932 L3364 940 Z" fill="#8ad8f2" opacity=".6"/>
         <g stroke="rgba(255,255,255,.45)" stroke-width="4" fill="none" stroke-linecap="round">
-        <path d="M2216 954 q26 -11 52 0 M2330 984 q26 -11 52 0 M2412 946 q26 -11 52 0"/></g>
-        <path d="M2154 1032 L2528 1026 L2532 1050 L2150 1056 Z" fill="#d8b87e"/>`;
-      /* el murete bajo del patio, con su greca */
-      s += `<path d="M1836 1064 L2600 1056 L2600 1090 L1832 1098 Z" fill="url(#egpXcaliza)"/>
-        <path d="M1836 1064 L2600 1056 L2600 1068 L1836 1076 Z" fill="#f6e6bf"/>`;
-      s += `<g fill="rgba(150,112,58,.3)">`;
-      for (let i = 0; i < 16; i++) s += `<path d="M${1856 + i * 46} 1090 l12 -16 l12 16 Z"/>`;
-      s += `</g>`;
-      /* dos macetones con palmas y un pilar bajo, en el patio */
-      [[1962, 892, .5], [2586, 940, .46]].forEach(m => {
+        <path d="M3410 958 q26 -11 52 0 M3580 988 q26 -11 52 0 M3760 950 q26 -11 52 0 M3660 926 q26 -11 52 0"/></g>
+        <path d="M3320 1040 L3924 1030 L3930 1056 L3316 1066 Z" fill="#d8b87e"/>`;
+      /* el murete bajo del recinto, con su greca */
+      s += `<path d="M2900 1068 L4200 1058 L4200 1092 L2896 1100 Z" fill="url(#egpXcaliza)"/>
+        <path d="M2900 1068 L4200 1058 L4200 1070 L2900 1080 Z" fill="#f6e6bf"/>`;
+      s += greca(2920, 4190, 1094, 46, 17, ".3");
+      /* dos macetones con palmas, en el patio */
+      [[3286, 900, .5], [4166, 950, .46]].forEach(m => {
         s += `<g transform="translate(${m[0]} ${m[1]}) scale(${m[2]})">
           <path d="M-44 0 L44 0 L32 74 L-32 74 Z" fill="#c08a4a"/><path d="M-50 -10 L50 -10 L50 6 L-50 6 Z" fill="#d8ad6e"/>
           <g stroke="#3f8b4a" stroke-width="12" fill="none" stroke-linecap="round">
           <path d="M0 -10 Q-46 -50 -70 -96"/><path d="M0 -10 Q-16 -66 -4 -116"/><path d="M0 -10 Q40 -54 72 -92"/></g></g>`;
       });
-      return decoSvg(s, 2600);
+      /* la mesa de ofrendas y las tinajas del patio, para que el suelo del
+         recinto no quede como una plaza vacía */
+      const tinaja = (x, y, k) => `<g transform="translate(${x} ${y}) scale(${k})">
+        <path d="M-26 -34 Q-34 0 -18 22 L18 22 Q34 0 26 -34 Z" fill="#b5763c"/>
+        <path d="M-26 -34 Q-34 0 -18 22 L-4 22 Q-18 0 -12 -34 Z" fill="#c98d52"/>
+        <path d="M-16 -34 L16 -34 L20 -44 L-20 -44 Z" fill="#a26732"/>
+        <path d="M-22 -8 Q0 2 22 -8" stroke="rgba(255,236,200,.35)" stroke-width="5" fill="none"/></g>`;
+      s += `<g><path d="M2952 986 L3068 982 L3070 996 L2952 1000 Z" fill="url(#egpXcaliza)"/>
+        <path d="M2966 1000 L2970 1030 L2988 1030 L2984 1000 Z" fill="#c39c62"/>
+        <path d="M3036 998 L3040 1028 L3058 1028 L3054 998 Z" fill="#c39c62"/>
+        <path d="M2984 982 q10 -18 26 -18 q16 0 26 18 Z" fill="#e8c07a"/>
+        <circle cx="3010" cy="966" r="9" fill="#f2d79a"/></g>`;
+      s += tinaja(3120, 1000, .82) + tinaja(3170, 1006, .7) + tinaja(3986, 996, .78) + tinaja(4032, 1004, .66);
+      s += `<g><path d="M4076 1000 L4166 996 L4168 1010 L4076 1014 Z" fill="url(#egpXcaliza)"/>
+        <path d="M4090 1014 L4094 1038 L4108 1038 L4104 1014 Z" fill="#c39c62"/>
+        <path d="M4140 1012 L4144 1036 L4158 1036 L4154 1012 Z" fill="#c39c62"/>
+        <path d="M4102 996 q8 -16 20 -16 q12 0 20 16 Z" fill="#e8c07a"/></g>`;
+      /* ---------- COSTURAS DE CALINA ENTRE ETAPAS ---------- */
+      [1000, 1740, 2820].forEach(x => {
+        s += `<rect x="${x - 100}" y="240" width="200" height="860" fill="url(#egpXcalina)" mask="url(#egpXcalinaM)"/>`;
+      });
+      return decoSvg(s, 4200);
     }
   },
 

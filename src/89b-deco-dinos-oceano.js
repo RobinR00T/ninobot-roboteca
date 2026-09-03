@@ -365,268 +365,774 @@
         s += `<g><animateMotion dur="${d[1]}s" repeatCount="indefinite" rotate="auto" path="${d[0]}"/>${libelula(d[2], d[3])}</g>`;
       });
 
-      /* lo nuevo detrás, lo de siempre delante */
-      return decoSvg(s + interior(previo), e.width);
+      /* ---------- ISLAS ALTAS DEL HORIZONTE ----------
+         entre la costa y el hielo el cielo se quedaba vacío: unas islas
+         volcánicas más altas, con su penacho, le dan fondo a esa franja */
+      [[2960, 498, 210, "rgba(122,138,150,.4)"], [3320, 556, 165, "rgba(134,148,158,.32)"],
+      [3660, 470, 240, "rgba(116,134,148,.38)"], [3930, 566, 150, "rgba(140,154,164,.28)"]].forEach((is, i) => {
+        /* conos volcánicos, no lomas: la silueta va recta hasta un cráter mellado */
+        const m = is[2], cx = is[0], cy = is[1];
+        s += `<path d="M${n(cx - m)} 700L${n(cx - m * 0.16)} ${n(cy)}q${n(m * 0.16)} -9 ${n(m * 0.32)} 0L${n(cx + m)} 700Z" fill="${is[3]}"/>
+          <path d="M${n(cx + m * 0.05)} ${n(cy + 3)}L${n(cx + m)} 700L${n(cx + m * 0.3)} 700Z" fill="rgba(40,52,60,.14)"/>
+          <path d="M${n(cx - m * 0.3)} ${n(cy + 46)}q${n(m * 0.3)} -22 ${n(m * 0.6)} 0" stroke="rgba(255,255,255,.18)" stroke-width="6" fill="none"/>`;
+        if (i % 2 === 0) s += humo(cx, cy - 10, 0.55, 17 + i * 3, i * 4);
+      });
+      /* nubes altas y finas sobre el mar, para que la franja no quede muerta */
+      [[2900, 96, .5, "#fff8ec", .5], [3380, 74, .42, "#fff9f0", .44], [3760, 116, .56, "#fdf7ee", .4]].forEach(c => {
+        s += `<g opacity="${c[4]}">${nube(c[0], c[1], c[2], c[3])}</g>`;
+      });
+
+      /* ============================================================
+         PRIMER PLANO: se pinta DELANTE del paisaje de siempre.
+         El decorado antiguo tapa con un suelo liso y opaco todo lo de
+         abajo, así que aquí se resuelven tres cosas que solo se ven
+         por encima: el asiento de cada dinosaurio, la costura entre la
+         tierra y el mar, y la que separaba el mar del hielo.
+         ============================================================ */
+      let f = "";
+      f += `<defs>
+        <linearGradient id="dnoFRoca" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#9e8464"/><stop offset="100%" stop-color="#5f4630"/></linearGradient>
+        <linearGradient id="dnoFArena" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#f0dcae"/><stop offset="60%" stop-color="#dcc088"/>
+          <stop offset="100%" stop-color="#bda171"/></linearGradient>
+        <linearGradient id="dnoFOrilla" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#8fe3e0" stop-opacity=".75"/><stop offset="100%" stop-color="#8fe3e0" stop-opacity="0"/></linearGradient>
+        <linearGradient id="dnoFBanquisa" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#bcdcee"/></linearGradient>
+        <linearGradient id="dnoFAguaFria" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#cfeaf6" stop-opacity="0"/><stop offset="100%" stop-color="#dff2fb" stop-opacity=".8"/></linearGradient>
+        <linearGradient id="dnoFSuperficie" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#bfecff" stop-opacity=".46"/><stop offset="100%" stop-color="#bfecff" stop-opacity="0"/></linearGradient>
+        <radialGradient id="dnoFHondo" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#042c4a" stop-opacity=".34"/><stop offset="56%" stop-color="#042c4a" stop-opacity=".2"/>
+          <stop offset="100%" stop-color="#042c4a" stop-opacity="0"/></radialGradient>
+      </defs>`;
+
+      /* una curva mansa que pasa por todos los puntos, con la pendiente
+         horizontal en cada uno: así cada repisa queda plana */
+      const suave = p => {
+        let d = "M" + n(p[0][0]) + " " + n(p[0][1]);
+        for (let i = 1; i < p.length; i++) {
+          const a = p[i - 1], b = p[i], dx = (b[0] - a[0]) / 3;
+          d += `C${n(a[0] + dx)} ${n(a[1])} ${n(b[0] - dx)} ${n(b[1])} ${n(b[0])} ${n(b[1])}`;
+        }
+        return d;
+      };
+
+      /* ---------- LOMAS DEL PRIMER PLANO ----------
+         una loma redonda debajo de cada dinosaurio de tierra: se solapan
+         entre ellas, así el borde de arriba ondula y no queda un serrucho */
+      const lomaPts = (cx, cima, w) => {
+        const h = 1046 - cima;
+        return [[n(cx - w), 1046], [n(cx - w * 0.5), n(cima + h * 0.06)], [n(cx), n(cima)],
+        [n(cx + w * 0.5), n(cima + h * 0.06)], [n(cx + w), 1046]];
+      };
+      /* cx, cima (justo bajo las patas del punto), ancho y tono */
+      const LOMAS = [[200, 624, 215, 0], [340, 684, 160, 1], [404, 492, 225, 2],
+      [552, 618, 185, 0], [682, 464, 235, 1], [764, 638, 215, 2], [980, 762, 200, 0],
+      [1424, 676, 205, 1], [1620, 576, 165, 2], [2010, 644, 175, 0], [2250, 926, 205, 1],
+      [2440, 892, 195, 2]];
+      /* tonos muy parecidos: así las lomas se funden y no se ven las juntas */
+      const TONOS_LOMA = ["#3f7c28", "#3a742a", "#356c28"];
+      const crestas = [];
+      LOMAS.forEach(l => {
+        const p = lomaPts(l[0], l[1], l[2]);
+        crestas.push(p);
+        /* solo se ilumina la coronilla, no todo el borde: si no, la raya de
+           una loma cruzaba por encima de la de al lado */
+        f += `<path d="${trazo(p)}L${p[4][0]} 1100L${p[0][0]} 1100Z" fill="${TONOS_LOMA[l[3]]}"/>
+          <path d="M${n(l[0] - l[2] * 0.42)} ${n(alturaEn(p, l[0] - l[2] * 0.42) + 7)}Q${n(l[0])} ${n(l[1] + 4)} ${n(l[0] + l[2] * 0.42)} ${n(alturaEn(p, l[0] + l[2] * 0.42) + 7)}" stroke="rgba(178,228,140,.3)" stroke-width="9" fill="none" stroke-linecap="round"/>`;
+      });
+
+      /* ---------- EL RISCO ESCALONADO ----------
+         tres repisas de roca, una para cada punto: el Anquilosaurio abajo,
+         el Parasaurolophus arriba del todo y el Triceratops a media altura */
+      const risco = [[1012, 1046], [1046, 722], [1072, 636], [1142, 632],
+      [1156, 452], [1168, 370], [1240, 366], [1254, 452], [1264, 522],
+      [1336, 526], [1356, 730], [1386, 1046]];
+      f += `<path d="${suave(risco)}L1386 1100L1012 1100Z" fill="url(#dnoFRoca)"/>`;
+      /* la cara de sombra, para que la roca tenga volumen */
+      f += `<path d="M1240 366L1254 452L1264 522L1336 526L1356 730L1386 1046L1386 1100L1300 1100Z" fill="rgba(58,40,26,.24)"/>`;
+      /* estratos: la roca se lee mejor con sus capas */
+      f += `<path d="M1026 812q166 -24 344 -6M1034 902q166 -22 340 -4M1168 524q72 -12 98 -4" stroke="rgba(255,238,206,.2)" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <path d="M1030 858q164 -22 342 -6M1180 450q58 -10 80 -4" stroke="rgba(64,44,28,.26)" stroke-width="6" fill="none" stroke-linecap="round"/>`;
+      /* hierba en el filo de cada repisa y un pedregal al pie */
+      f += `<path d="M1072 634q70 -6 70 -2q0 9 -70 11ZM1168 368q72 -4 72 0q0 9 -72 11ZM1264 524q72 -4 72 0q0 9 -72 11Z" fill="#3d7a2a"/>
+        <path d="M1004 1046q26 -78 62 -104q40 -28 78 -6q34 20 44 110Z" fill="#7d6247"/>
+        <path d="M1300 1046q22 -70 56 -94q38 -26 74 -4q32 20 40 98Z" fill="#71583f"/>`;
+      f += cicada(1104, 630, .5, "#3d7a2a") + cicada(1310, 520, .46, "#42832d");
+
+      /* ---------- matas y helechos por las lomas, lejos de los iconos ---------- */
+      let mata = "";
+      crestas.forEach((p, ci) => {
+        for (let x = p[0][0] + 26, i = 0; x < p[4][0] - 20; x += 44, i++) {
+          const y = n(alturaEn(p, x) + 12 + 8 * rnd(i + ci * 17 + 811));
+          if (y > 1030 || !lib(x - 18, y - 42, 36, 48)) continue;
+          mata += `M${n(x)} ${y}q-8 -26 -18 -36M${n(x + 7)} ${y}q1 -32 6 -42M${n(x + 16)} ${y}q9 -24 20 -32`;
+        }
+      });
+      if (mata) f += `<path d="${mata}" stroke="#2c6420" stroke-width="5.4" fill="none" stroke-linecap="round"/>`;
+      /* helechos y cicadáceas grandes rematando alguna loma */
+      [[0, -0.62, .74], [2, -0.5, .66], [4, 0, .8], [4, 0.52, .6], [5, 0.5, .7],
+      [6, -0.44, .66], [7, 0.46, .62], [9, 0.5, .6], [10, -0.4, .72], [11, 0.3, .6]].forEach((c, i) => {
+        const p = crestas[c[0]], w = p[4][0] - p[2][0], x = n(p[2][0] + w * c[1]);
+        const y = n(alturaEn(p, x) + 14);
+        if (!lib(x - 62 * c[2], y - 134 * c[2], 124 * c[2], 140 * c[2])) return;
+        f += i % 2 ? helecho(x, y, c[2], "#2f6b23") : cicada(x, y, c[2] * 1.05, "#357326");
+      });
+
+      /* ---------- LA TIERRA DE DELANTE ----------
+         una franja de barro seco con sus capas, sus piedras y unas huellas:
+         cierra el mapa por abajo y separa el primer plano del resto */
+      const bordeTierra = [[-70, 1002], [280, 972], [640, 1008], [980, 976],
+      [1340, 1010], [1700, 978], [2060, 1006], [2400, 984]];
+      f += `<path d="${suave(bordeTierra)}L2400 1100L-70 1100Z" fill="#54381f"/>
+        <path d="${suave(bordeTierra)}" stroke="rgba(226,196,148,.34)" stroke-width="7" fill="none"/>
+        <path d="${suave(bordeTierra.map(p => [p[0], p[1] + 46]))}" stroke="rgba(120,86,54,.6)" stroke-width="9" fill="none"/>`;
+      /* guijarros y raíces en el barro */
+      let guijarros = "";
+      for (let i = 0; i < 26; i++) {
+        const x = n(-40 + rnd(i + 861) * 2420), y = n(1024 + rnd(i + 883) * 62);
+        guijarros += `<ellipse cx="${x}" cy="${y}" rx="${q(6 + 8 * rnd(i + 907))}" ry="${q(4 + 5 * rnd(i + 929))}" fill="#6d4c2e" opacity=".8"/>`;
+      }
+      f += guijarros;
+      f += `<path d="M180 1042q60 22 130 12M760 1064q70 -20 140 -8M1560 1046q80 20 150 6M2140 1070q70 -18 140 -6" stroke="rgba(140,102,64,.5)" stroke-width="6" fill="none" stroke-linecap="round"/>`;
+      for (let i = 0; i < 8; i++) {
+        f += huella(150 + i * 296, 1046 + (i % 2 ? 26 : 0), 0.86, i % 2 ? 14 : -10, .3);
+      }
+
+      /* ---------- EL ÁMBAR: la resina necesita su árbol ----------
+         el punto quedaba colgado del cielo; ahora gotea de una rama */
+      f += `<g>
+        <path d="M2338 646q-10 -80 6 -132q4 -22 16 -34q10 12 12 34q6 52 -2 132Z" fill="#6b4d31"/>
+        <path d="M2352 512q-26 -16 -46 -46q26 8 44 26M2360 500q22 -20 48 -30q-16 24 -40 42" stroke="#6b4d31" stroke-width="11" fill="none" stroke-linecap="round"/>
+        <path d="M2300 462q22 -8 44 4M2384 456q22 4 34 18" stroke="#3f7d2f" stroke-width="13" fill="none" stroke-linecap="round"/>
+        <path d="M2318 486q-4 16 4 24q8 6 12 -4q2 -12 -6 -22Z" fill="rgba(240,176,54,.85)"/>
+        <path d="M2398 480q-4 14 3 22q8 5 11 -4q2 -10 -6 -20Z" fill="rgba(240,176,54,.7)"/>
+        <path d="M2330 640q22 10 44 2" stroke="rgba(255,232,190,.4)" stroke-width="6" fill="none" stroke-linecap="round"/></g>`;
+
+      /* ---------- LA CHARCA ----------
+         el lago de siempre quedaba tapado por las lomas y los bichos de
+         agua se quedaban sobre la hierba: aquí vuelve a haber agua */
+      f += `<ellipse cx="1832" cy="812" rx="188" ry="82" fill="#b79a6c"/>
+        <ellipse cx="1832" cy="816" rx="172" ry="70" fill="url(#dnoLago)"/>
+        <ellipse cx="1832" cy="816" rx="172" ry="70" fill="none" stroke="rgba(255,248,225,.42)" stroke-width="6"/>
+        <g stroke="rgba(255,255,255,.55)" stroke-width="5" fill="none" stroke-linecap="round">
+          <path d="M1712 800q28 -12 56 0M1900 844q28 -12 56 0"><animate attributeName="opacity" values=".8;.3;.8" dur="5.6s" repeatCount="indefinite"/></path>
+          <path d="M1780 848q26 -11 52 0M1868 788q26 -11 52 0"><animate attributeName="opacity" values=".3;.8;.3" dur="5.6s" repeatCount="indefinite"/></path></g>`;
+      let canas = "";
+      [[1676, 828], [1706, 848], [1962, 830], [1990, 852]].forEach(j => {
+        canas += `M${j[0]} ${j[1]}q-5 -44 -14 -60M${j[0] + 8} ${j[1]}q2 -48 9 -66M${j[0] + 17} ${j[1]}q8 -40 17 -52`;
+      });
+      f += `<path d="${canas}" stroke="#3f7f2c" stroke-width="5" fill="none" stroke-linecap="round"/>`;
+
+      /* ---------- LA COSTA: un cabo y su cala ----------
+         antes el verde chocaba de canto con el azul y quedaba una raya
+         vertical; ahora la tierra acaba en un cabo de roca y a su pie hay
+         un banco de arena que el agua lame */
+      const cabo = [[2340, 1046], [2412, 880], [2496, 748], [2588, 702],
+      [2652, 764], [2700, 892], [2736, 1012], [2762, 1046]];
+      /* el pie de la izquierda se abre en talud y muere dentro del barro: antes
+         el cabo cerraba en vertical sobre x=2340 y la roca chocaba de canto
+         contra la tierra de primer término */
+      f += `<path d="${suave(cabo)}L2762 1100L2036 1100Q2152 1084 2242 1040Q2298 1012 2340 1046Z" fill="url(#dnoFRoca)"/>
+        <path d="M2652 764L2700 892L2736 1012L2762 1046L2762 1100L2670 1100Z" fill="rgba(58,40,26,.26)"/>
+        <path d="M2360 940q170 -34 336 8M2374 1000q176 -30 350 10" stroke="rgba(255,238,206,.18)" stroke-width="7" fill="none" stroke-linecap="round"/>`;
+      /* la hierba corona el cabo en una banda que se afila en las dos puntas:
+         cerrada como estaba dejaba un canto verde vertical en x=2340 */
+      const cresta = cabo.map(p => [p[0], p[1] + 4]);
+      const GRUESO = [0, 62, 96, 108, 98, 78, 40, 6];
+      const falda = cabo.map((p, i) => [p[0], p[1] + 4 + GRUESO[i]]);
+      f += `<path d="${suave(cresta)}L${suave(falda.slice().reverse()).slice(1)}Z" fill="#3d7a2a" opacity=".95"/>`;
+      /* la costura roca-barro se cose por los dos lados: lenguas de barro que
+         suben al talud y cantos de roca tumbados en la tierra */
+      f += `<path d="M2196 1100q14 -46 58 -62q46 -14 66 18q22 32 4 44ZM2338 1100q10 -34 44 -44q40 -8 54 24q10 26 -6 20Z" fill="#54381f" opacity=".85"/>
+        <path d="M2100 1074q30 -30 74 -34M2270 1092q26 -26 66 -30" stroke="rgba(120,86,54,.55)" stroke-width="7" fill="none" stroke-linecap="round"/>`;
+      [[2124, 1062, 26], [2246, 1030, 22], [2038, 1084, 18]].forEach(r => {
+        f += `<path d="M${r[0] - r[2]} ${r[1]}q${n(r[2] * 0.3)} ${n(-r[2] * 1.2)} ${n(r[2] * 1.1)} ${n(-r[2] * 1.05)}q${n(r[2] * 0.85)} 4 ${n(r[2] * 0.9)} ${n(r[2] * 1.05)}Z" fill="url(#dnoFRoca)"/>`;
+      });
+      f += `<path d="M2222 1034q-8 -28 -18 -38M2230 1032q1 -32 6 -42M2240 1034q9 -26 20 -34M2318 1006q-8 -26 -18 -36M2326 1004q1 -30 6 -40M2336 1006q9 -24 20 -32" stroke="#2c6420" stroke-width="5.4" fill="none" stroke-linecap="round"/>`;
+      /* matojos asomando por el filo del cabo: sin ellos el borde de la hierba
+         se recortaba como una raya contra la boca oscura de la cueva */
+      f += `<path d="M2364 1002q-10 -26 -22 -34M2372 1000q0 -30 4 -40M2380 952q-11 -24 -24 -30M2388 950q-1 -30 3 -40M2398 900q-12 -22 -26 -28M2406 898q-2 -28 2 -38" stroke="#4a8331" stroke-width="5" fill="none" stroke-linecap="round" opacity=".92"/>`;
+      f += cicada(2452, 812, .66, "#42832d") + helecho(2560, 728, .54, "#357326");
+      /* el banco de arena de la cala, con su espuma */
+      f += `<path d="M2620 1100q54 -108 190 -138q142 -28 250 26q84 42 140 112Z" fill="url(#dnoFArena)"/>
+        <path d="M2660 1044q70 -74 186 -88q124 -14 214 44q56 34 96 100" stroke="rgba(255,252,232,.6)" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <path d="M2680 1058q76 -66 182 -78q118 -10 202 44" stroke="rgba(255,255,255,.75)" stroke-width="8" fill="none" stroke-linecap="round">
+          <animate attributeName="opacity" values=".85;.35;.85" dur="6s" repeatCount="indefinite"/></path>
+        <path d="M2712 1084q80 -58 178 -68q108 -8 186 40" stroke="rgba(255,255,255,.45)" stroke-width="6" fill="none" stroke-linecap="round">
+          <animate attributeName="opacity" values=".35;.85;.35" dur="6s" repeatCount="indefinite"/></path>`;
+      /* el agua somera de la cala, que se apaga mar adentro */
+      f += `<path d="M2600 1100q40 -130 200 -168q168 -38 292 30q96 40 168 138L3320 1100Z" fill="url(#dnoFOrilla)" opacity=".4"/>`;
+      /* piedras al pie del cabo y un rastro de huellas bajando a la orilla */
+      [[2648, 1042, 28], [2800, 1078, 22], [2372, 1058, 34]].forEach(r => {
+        f += `<path d="M${r[0] - r[2]} ${r[1]}q${n(r[2] * 0.3)} ${n(-r[2] * 1.2)} ${n(r[2] * 1.1)} ${n(-r[2] * 1.05)}q${n(r[2] * 0.85)} 4 ${n(r[2] * 0.9)} ${n(r[2] * 1.05)}Z" fill="url(#dnoFRoca)"/>`;
+      });
+      for (let i = 0; i < 4; i++) {
+        f += huella(2860 + i * 68, 1010 + i * 16, 0.72, i % 2 ? 26 : 12, .2);
+      }
+      /* dos peñascos con espuma justo a la boca de la cala: dan vida al agua y
+         de paso tapan el canto que el mar de siempre deja detrás del cabo */
+      [[2618, 736, 36, 23], [2684, 716, 23, 15]].forEach(r => {
+        f += `<ellipse cx="${r[0]}" cy="${r[1] + 4}" rx="${n(r[2] * 1.6)}" ry="${n(r[3] * 0.5)}" fill="rgba(214,244,255,.5)"/>
+          <path d="M${r[0] - r[2]} ${r[1] + 4}q${n(r[2] * 0.32)} ${n(-r[3] * 2.3)} ${n(r[2] * 1.06)} ${n(-r[3] * 2.1)}q${n(r[2] * 0.8)} 5 ${n(r[2] * 0.94)} ${n(r[3] * 2.1)}Z" fill="url(#dnoFRoca)"/>
+          <path d="M${n(r[0] - r[2] * 0.86)} ${r[1] + 6}q${n(r[2] * 0.9)} 11 ${n(r[2] * 1.8)} -1" stroke="rgba(255,255,255,.62)" stroke-width="5" fill="none" stroke-linecap="round"/>`;
+      });
+
+      /* ---------- EL MAR, QUE ERA UNA MANCHA LISA ----------
+         una banda clara bajo el horizonte, olas largas y el fondo más
+         oscuro: así el agua tiene planos y no parece un papel azul */
+      /* la banda clara nace en punta pasado el cabo y se abre hacia el
+         horizonte: antes arrancaba con canto recto en x=2620, encima de la
+         roca del cabo, y dejaba una raya vertical de arriba abajo */
+      f += `<path d="M2800 768Q3180 688 3560 678Q3800 672 4000 692L4000 838Q3800 822 3560 812Q3180 798 2800 768Z" fill="url(#dnoFSuperficie)"/>`;
+      /* y la hondura del fondo ya no es un rectángulo con canto, sino dos
+         manchas redondas que se apagan solas por los bordes */
+      f += `<ellipse cx="3620" cy="1108" rx="560" ry="220" fill="url(#dnoFHondo)"/>
+        <ellipse cx="3160" cy="1120" rx="320" ry="150" fill="url(#dnoFHondo)"/>`;
+      let oleaje = "";
+      for (let i = 0; i < 26; i++) {
+        const x = n(2860 + rnd(i + 941) * 1080), y = n(806 + rnd(i + 967) * 280);
+        /* nada de olas encima del banco de arena de la cala: allí no hay agua */
+        if (y > 940 && x < 3260) continue;
+        if (!eje(x - 60, y - 12, 120, 24)) continue;
+        oleaje += `M${x} ${y}q${n(30 + 18 * rnd(i + 983))} -13 ${n(64 + 26 * rnd(i + 997))} 0`;
+      }
+      if (oleaje) f += `<path d="${oleaje}" stroke="rgba(214,244,255,.32)" stroke-width="5" fill="none" stroke-linecap="round"/>`;
+
+      /* ---------- EL HIELO: la banquisa se come el mar poco a poco ----------
+         antes el azul terminaba en seco; ahora salen placas sueltas que
+         van juntándose hasta ser el campo de nieve */
+      f += `<path d="M3560 806L4260 806L4260 1100L3660 1100q-20 -70 -60 -130q-44 -66 -40 -164Z" fill="url(#dnoFAguaFria)" opacity=".55"/>`;
+      /* placas sueltas flotando, de menos a más según se acercan al hielo */
+      [[3536, 792, 46, .5], [3634, 838, 62, .62], [3742, 800, 78, .72],
+      [3818, 866, 96, .82], [3906, 812, 116, .9], [3980, 880, 140, .96]].forEach(p => {
+        f += `<path d="M${n(p[0] - p[2])} ${p[1]}q${n(p[2] * 0.4)} -18 ${p[2]} -14q${n(p[2] * 0.7)} 4 ${p[2]} 14q${n(-p[2] * 0.5)} 20 ${n(-p[2])} 22q${n(-p[2] * 0.7)} -2 ${n(-p[2])} -22Z" fill="url(#dnoFBanquisa)" opacity="${p[3]}"/>
+          <path d="M${n(p[0] - p[2] * 0.5)} ${n(p[1] + 12)}q${n(p[2] * 0.5)} 8 ${p[2]} -2" stroke="rgba(140,190,220,.5)" stroke-width="4" fill="none" stroke-linecap="round"/>`;
+      });
+      /* el frente del glaciar: la pared de hielo que se mete en el agua.
+         Es lo que borra la raya vertical donde el azul se cortaba en seco */
+      f += `<path d="M3894 902q-8 -104 46 -178q52 -70 150 -84q118 -14 190 62q56 60 60 168L4260 1100L3900 1100Z" fill="url(#dnoFBanquisa)"/>
+        <path d="M4090 640q118 -14 190 62q56 60 60 168L4260 1100L4090 1100Z" fill="rgba(158,206,232,.42)"/>
+        <path d="M3936 806q54 -34 122 -30M3960 890q66 -32 142 -26M4132 726q58 -6 100 22" stroke="rgba(150,200,228,.5)" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <path d="M3890 902q80 26 190 22q120 -4 182 -26" stroke="rgba(255,255,255,.8)" stroke-width="8" fill="none" stroke-linecap="round">
+          <animate attributeName="opacity" values=".85;.4;.85" dur="7s" repeatCount="indefinite"/></path>`;
+      /* la banquisa firme, ya pegada al campo de nieve */
+      f += `<path d="M4040 906q120 -22 240 -8L4700 890L4700 1100L3960 1100q-16 -70 20 -122q30 -34 60 -72Z" fill="url(#dnoFBanquisa)"/>
+        <path d="M4060 946q160 -26 320 -12M4120 1000q180 -20 360 -8" stroke="rgba(150,200,228,.45)" stroke-width="6" fill="none" stroke-linecap="round"/>`;
+
+      /* ---------- LOS ANIMALES DEL HIELO TAMBIÉN QUIEREN SUELO ----------
+         el mamut y el rinoceronte se quedaban en el aire sobre el glaciar */
+      const duna = (cx, cima, w) => `<path d="M${n(cx - w)} 1100q${n(w * 0.12)} ${n(cima - 1100)} ${n(w * 0.9)} ${n(cima - 1096)}q${n(w * 0.5)} -6 ${n(w * 0.86)} ${n(1092 - cima)}q${n(w * 0.16)} ${n(1100 - cima)} ${n(w * 0.24)} ${n(cima - 1100 + 8)}Z" fill="url(#dnoFBanquisa)"/>`;
+      f += duna(4176, 684, 196) + duna(4404, 830, 150) + duna(4548, 602, 206);
+      f += `<path d="M4090 758q80 -46 172 -40M4360 880q56 -26 120 -22M4452 668q86 -50 190 -44" stroke="rgba(148,198,226,.5)" stroke-width="7" fill="none" stroke-linecap="round"/>`;
+      /* un par de pinos nevados en las dunas, para dar escala */
+      [[4066, 826, .46], [4300, 902, .4], [4676, 800, .5]].forEach(p => {
+        if (lib(p[0] - 30, p[1] - 200, 60, 206)) f += pino(p[0], p[1], p[2]);
+      });
+      /* piedras asomando y pisadas en la nieve: el campo blanco estaba vacío */
+      [[4262, 1006, 30], [4470, 1042, 24], [4620, 986, 34], [4092, 1044, 26]].forEach(r => {
+        f += `<path d="M${r[0] - r[2]} ${r[1]}q${n(r[2] * 0.3)} ${n(-r[2] * 1.2)} ${n(r[2] * 1.1)} ${n(-r[2] * 1.05)}q${n(r[2] * 0.85)} 4 ${n(r[2] * 0.9)} ${n(r[2] * 1.05)}Z" fill="#8fa3ad"/>
+          <path d="M${n(r[0] - r[2] * 0.8)} ${n(r[1] - r[2] * 0.5)}q${n(r[2] * 0.7)} ${n(-r[2] * 0.5)} ${n(r[2] * 1.5)} ${n(-r[2] * 0.1)}q${n(-r[2] * 0.6)} ${n(r[2] * 0.4)} ${n(-r[2] * 1.5)} ${n(r[2] * 0.1)}Z" fill="#eef8fd"/>`;
+      });
+      let pisadas = "";
+      for (let i = 0; i < 9; i++) {
+        const x = n(4120 + i * 62), y = n(1058 + (i % 2 ? 22 : 0));
+        pisadas += `<ellipse cx="${x}" cy="${y}" rx="15" ry="11" fill="rgba(150,196,224,.4)"/>
+          <ellipse cx="${n(x - 9)}" cy="${n(y - 15)}" rx="6" ry="5" fill="rgba(150,196,224,.34)"/>
+          <ellipse cx="${n(x + 9)}" cy="${n(y - 15)}" rx="6" ry="5" fill="rgba(150,196,224,.34)"/>`;
+      }
+      f += pisadas;
+
+      /* lo nuevo detrás, lo de siempre en medio y el primer plano delante */
+      return decoSvg(s + interior(previo) + f, e.width);
     };
   })();
 
-
   /* ============================================================
-     OCÉANO: el mar contado por profundidades, de la superficie
-     iluminada al abismo con nieve marina.
+     OCÉANO: el mar contado por profundidades (superficie, media y
+     abismo) y, de izquierda a derecha, una travesía de 4200 px:
+     costa y arrecife somero, praderas de algas, mar abierto,
+     cañón submarino y abismo. Los tramos se solapan, así que el
+     color y la fauna del fondo cambian poco a poco.
+     El escenario se dibuja entero aquí: el que venía de antes
+     estaba medido para 2600 de ancho y dejaba vacía media pantalla.
      ============================================================ */
   (function () {
-    const orig = THEMES.oceano.content.explore.deco;
-    THEMES.oceano.content.explore.deco = function (e) {
-      const previo = orig ? orig.call(this, e) : "";
-      const finas = reservas(e, 1.5, true), anchas = reservas(e, 1.05, false);
+
+    function marPorProfundidades(e) {
+      const W = e.width || 4200, H = 1100;
+
+      /* Los quince lugares base llegan recolocados por 62-oceano-icons.js con
+         las coordenadas del mapa estrecho, y otros tres se añaden allí mismo.
+         Aquí se les da a todos su sitio en el ancho nuevo, antes de reservar
+         huecos. Las claves son el emoji de cada lugar, que no se repite. */
+      const SITIOS = {
+        "\u{1F41A}": [160, 560], "\u{1F422}": [390, 300], "\u{1F980}": [620, 620],
+        "\u{1FAB8}": [860, 640], "\u{1F420}": [1090, 430], "\u{1F419}": [1320, 700], "\u{1F421}": [1550, 440],
+        "\u{1F42C}": [1800, 250], "\u{1F40B}": [2060, 520], "\u{1F988}": [2320, 760], "\u{1FABC}": [2540, 430],
+        "\u{1F433}": [2760, 270], "\u{1F991}": [2985, 560], "\u{1F30B}": [3205, 910],
+        "\u{1FA93}": [3425, 560], "\u{1F526}": [3645, 860], "\u{1F3A3}": [3870, 580], "\u{1F573}️": [4072, 900]
+      };
+      (e.pois || []).forEach(p => { const c = SITIOS[p.emoji]; if (c) { p.x = c[0]; p.y = c[1]; } });
+
+      /* ---------- huecos reservados alrededor de cada lugar ---------- */
+      const finas = reservas(e, 1.5, true), anchas = reservas(e, 1.1, false);
       const lib = (x, y, w, h) => hueco(finas, x, y, w, h);
       const eje = (x, y, w, h) => hueco(anchas, x, y, w, h, 0);
+
+      /* ---------- los cinco tramos de la travesía, con solape ---------- */
+      const TRAMOS = {
+        costa: [-20, 900], praderas: [820, 1620], abierto: [1560, 2620],
+        canon: [2560, 3260], abismo: [3200, W + 20]
+      };
+      /* cuánto manda un tramo en esa x: 1 dentro, y de 1 a 0 en los bordes */
+      const peso = (r, x) => {
+        const b = 220;
+        if (x <= r[0] - b || x >= r[1] + b) return 0;
+        if (x < r[0]) return (x - r[0] + b) / b;
+        if (x > r[1]) return (r[1] + b - x) / b;
+        return 1;
+      };
+
+      /* ---------- el fondo del mar: baja despacio y se hunde en la fosa ---------- */
+      const FONDO = [[-20, 560], [420, 618], [860, 720], [1300, 800], [1700, 848], [2100, 886],
+      [2500, 908], [2740, 946], [2990, 1002], [3230, 1030], [3470, 1044], [3800, 1056], [W + 20, 1064]];
+      const fondo = x => {
+        for (let i = 1; i < FONDO.length; i++) {
+          if (x <= FONDO[i][0]) {
+            const a = FONDO[i - 1], b = FONDO[i];
+            const t = (x - a[0]) / (b[0] - a[0]);
+            return a[1] + (b[1] - a[1]) * (0.5 - Math.cos(Math.PI * t) / 2);
+          }
+        }
+        return FONDO[FONDO.length - 1][1];
+      };
+      /* la arena del fondo lejano queda más alta: eso da sensación de hondura */
+      const banco = x => fondo(x) - 120 - 26 * Math.sin(x / 420);
+
       let s = "";
 
-      /* la plataforma de arena que ya dibuja el mapa: sirve de guía */
-      const plataforma = [[0, 480], [220, 470], [420, 520], [700, 610], [1000, 700],
-      [1400, 810], [1800, 900], [2100, 960], [2320, 1000]];
-      const fondo = x => alturaEn(plataforma, Math.max(0, Math.min(2320, x)));
-      /* la arena del fondo lejano queda un poco más alta: eso da profundidad */
-      const banco = plataforma.map(p => [p[0], p[1] - 128]).concat([[2460, 884], [2600, 902]]);
-
-      /* ---------- degradados propios ---------- */
+      /* ---------- degradados propios (prefijo ocnX, no chocan con nadie) ---------- */
       s += `<defs>
-        <linearGradient id="ocnAgua" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#bdefff" stop-opacity=".5"/><stop offset="16%" stop-color="#6cc8ef" stop-opacity=".32"/>
-          <stop offset="40%" stop-color="#1877b4" stop-opacity=".28"/><stop offset="66%" stop-color="#083c68" stop-opacity=".42"/>
-          <stop offset="86%" stop-color="#021b33" stop-opacity=".66"/><stop offset="100%" stop-color="#000a14" stop-opacity=".8"/></linearGradient>
-        <linearGradient id="ocnRayo" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#fff" stop-opacity=".3"/><stop offset="55%" stop-color="#dff4ff" stop-opacity=".09"/>
-          <stop offset="100%" stop-color="#dff4ff" stop-opacity="0"/></linearGradient>
-        <linearGradient id="ocnArena" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#e8d09a"/><stop offset="100%" stop-color="#a98a5c"/></linearGradient>
-        <linearGradient id="ocnRoca" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#4e6675"/><stop offset="100%" stop-color="#1d2c38"/></linearGradient>
-        <linearGradient id="ocnAbismo" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#00121f" stop-opacity="0"/><stop offset="100%" stop-color="#00060d" stop-opacity=".82"/></linearGradient>
-        <radialGradient id="ocnBrillo" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#9ff6ff" stop-opacity=".85"/><stop offset="100%" stop-color="#9ff6ff" stop-opacity="0"/></radialGradient>
+        <linearGradient id="ocnXAgua" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#bfeaff" stop-opacity=".34"/>
+          <stop offset="26%" stop-color="#5ec3ef" stop-opacity=".2"/>
+          <stop offset="58%" stop-color="#0b5f92" stop-opacity=".22"/>
+          <stop offset="82%" stop-color="#052a45" stop-opacity=".44"/>
+          <stop offset="100%" stop-color="#01111f" stop-opacity=".66"/>
+        </linearGradient>
+        <radialGradient id="ocnXVeloTurquesa" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#7ff0e0" stop-opacity=".3"/><stop offset="100%" stop-color="#7ff0e0" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="ocnXVeloVerde" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#8fdca0" stop-opacity=".26"/><stop offset="100%" stop-color="#8fdca0" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="ocnXVeloAzul" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#3fa8e0" stop-opacity=".24"/><stop offset="100%" stop-color="#3fa8e0" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="ocnXVeloHondo" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#0a2f52" stop-opacity=".4"/><stop offset="100%" stop-color="#0a2f52" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="ocnXVeloAbismo" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#02080f" stop-opacity=".54"/><stop offset="100%" stop-color="#02080f" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="ocnXArena" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#f0dda6"/>
+          <stop offset="18%" stop-color="#e4cf96"/>
+          <stop offset="34%" stop-color="#c9bd85"/>
+          <stop offset="48%" stop-color="#a8a780"/>
+          <stop offset="62%" stop-color="#7d8a78"/>
+          <stop offset="76%" stop-color="#4d5f63"/>
+          <stop offset="88%" stop-color="#2b3c46"/>
+          <stop offset="100%" stop-color="#16242e"/>
+        </linearGradient>
+        <linearGradient id="ocnXBanco" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#d9c48d" stop-opacity=".8"/>
+          <stop offset="40%" stop-color="#9aa584" stop-opacity=".7"/>
+          <stop offset="72%" stop-color="#42565f" stop-opacity=".6"/>
+          <stop offset="100%" stop-color="#132029" stop-opacity=".6"/>
+        </linearGradient>
+        <linearGradient id="ocnXPared" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#31474f"/><stop offset="100%" stop-color="#0c1720"/>
+        </linearGradient>
+        <linearGradient id="ocnXRayo" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#ffffff" stop-opacity=".16"/>
+          <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+        </linearGradient>
+        <radialGradient id="ocnXBrillo" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#c9fbff" stop-opacity=".75"/><stop offset="100%" stop-color="#c9fbff" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="ocnXAlga" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#7fc25a"/><stop offset="100%" stop-color="#1f5c34"/>
+        </linearGradient>
+        <linearGradient id="ocnXHumo" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0%" stop-color="#d9c9bd" stop-opacity=".5"/>
+          <stop offset="100%" stop-color="#d9c9bd" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="ocnXRegla" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1180" y2="0">
+          <stop offset="0%" stop-color="#dff3ff" stop-opacity=".2"/>
+          <stop offset="52%" stop-color="#dff3ff" stop-opacity=".12"/>
+          <stop offset="100%" stop-color="#dff3ff" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="ocnXReglaAlta" gradientUnits="userSpaceOnUse" x1="0" y1="96" x2="0" y2="1064">
+          <stop offset="0%" stop-color="#cfeaff" stop-opacity="0"/>
+          <stop offset="14%" stop-color="#cfeaff" stop-opacity=".16"/>
+          <stop offset="86%" stop-color="#cfeaff" stop-opacity=".16"/>
+          <stop offset="100%" stop-color="#cfeaff" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="ocnXDunaCerca" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#b9a170"/><stop offset="34%" stop-color="#978c67"/>
+          <stop offset="62%" stop-color="#54635e"/><stop offset="100%" stop-color="#0d1820"/>
+        </linearGradient>
       </defs>`;
 
-      /* ---------- LA COLUMNA DE AGUA, por profundidades ---------- */
-      s += `<rect width="2600" height="1100" fill="url(#ocnAgua)"/>`;
+      /* ---------- el agua y los velos de color de cada tramo ---------- */
+      s += `<rect x="0" y="0" width="${W}" height="${H}" fill="url(#ocnXAgua)"/>`;
+      /* los velos se solapan: por eso el color va cambiando sin costuras */
+      [["ocnXVeloTurquesa", 380, 420, 640, 400], ["ocnXVeloVerde", 1220, 560, 620, 400],
+      ["ocnXVeloAzul", 2100, 480, 760, 440], ["ocnXVeloHondo", 2900, 700, 640, 420],
+      ["ocnXVeloHondo", 3480, 520, 720, 400], ["ocnXVeloAbismo", 3800, 780, 700, 460],
+      ["ocnXVeloAbismo", 4120, 560, 640, 440]].forEach(v => {
+        s += `<ellipse cx="${v[1]}" cy="${v[2]}" rx="${v[3]}" ry="${v[4]}" fill="url(#${v[0]})"/>`;
+      });
+      /* y el agua se va apagando hacia el abismo con más velos redondos, que
+         no dejan ningún canto: antes la mitad derecha era tan clara como la
+         orilla y el fondo no parecía hondo */
+      [[2600, 980, 900, 380], [3200, 900, 900, 420], [3800, 1000, 900, 420],
+      [4200, 860, 800, 440]].forEach(v => {
+        s += `<ellipse cx="${v[0]}" cy="${v[1]}" rx="${v[2]}" ry="${v[3]}" fill="url(#ocnXVeloHondo)"/>`;
+      });
 
-      /* ---------- LA SUPERFICIE: olas y luz entrando ---------- */
-      s += `<path d="M0 0H2600V96Q2340 62 2080 96Q1820 130 1560 96Q1300 62 1040 96Q780 130 520 96Q260 62 0 96Z" fill="rgba(198,240,255,.4)"/>`;
-      [[0, .5, 26, 9], [14, .3, -22, 12]].forEach(o => {
-        let d = `M-40 ${58 + o[0]}`;
-        for (let x = -40, i = 0; x < 2640; x += 200, i++) d += `Q${x + 100} ${(i % 2 ? 82 : 34) + o[0]} ${x + 200} ${58 + o[0]}`;
-        s += `<g opacity="${o[1]}"><animateTransform attributeName="transform" type="translate" values="0 0;${o[2]} 0;0 0" dur="${o[3]}s" repeatCount="indefinite"/>
-          <path d="${d}" stroke="rgba(255,255,255,.7)" stroke-width="5" fill="none" stroke-linecap="round"/></g>`;
+      /* ---------- las tres profundidades, marcadas sin una sola letra ----------
+         una regla de muescas pegada al margen izquierdo y, saliendo de ella,
+         dos rayas que se apagan solas. Antes cruzaban los 4200 de punta a
+         punta y el mapa parecía una hoja de cuaderno rayada */
+      [[340, 1180], [700, 860]].forEach(l => {
+        s += `<line x1="0" y1="${l[0]}" x2="${l[1]}" y2="${l[0]}" stroke="url(#ocnXRegla)" stroke-width="2" stroke-dasharray="16 22"/>`;
       });
-      /* la espuma de la cresta, en trocitos */
-      let espuma = "";
-      for (let i = 0; i < 26; i++) espuma += `M${n(30 + rnd(i + 11) * 2540)} ${n(40 + rnd(i + 29) * 34)}q13 -9 27 0`;
-      s += `<path d="${espuma}" stroke="rgba(255,255,255,.5)" stroke-width="4" fill="none" stroke-linecap="round"/>`;
-      /* los rayos de sol, anchos y abiertos hacia el fondo */
-      [[120, 210, 780], [560, 250, 900], [1120, 200, 860], [1660, 280, 940], [2160, 190, 820]].forEach(r => {
-        s += `<polygon points="${r[0]},44 ${r[0] + r[1]},44 ${r[0] + r[1] + 130},${r[2]} ${r[0] + 82},${r[2]}" fill="url(#ocnRayo)"/>`;
+      let muescas = "";
+      for (let y = 120; y <= 1040; y += 80) {
+        const larga = (y - 120) % 240 === 0;
+        muescas += `M22 ${y}h${larga ? 40 : 22}`;
+      }
+      s += `<path d="${muescas}" stroke="#cfeaff" stroke-opacity=".2" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <line x1="22" y1="106" x2="22" y2="1054" stroke="url(#ocnXReglaAlta)" stroke-width="2" stroke-dasharray="4 10"/>`;
+
+      /* ---------- la superficie: olas que se mueven despacio ---------- */
+      let ola = "M-20 44";
+      for (let x = 100; x <= W + 20; x += 200) ola += `Q${n(x - 100)} ${20 + 26 * (x % 400 === 100 ? 0 : 1)} ${n(x)} 44`;
+      s += `<g><animateTransform attributeName="transform" type="translate" values="0 0;36 6;0 0" dur="9s" repeatCount="indefinite"/>
+        <path d="${ola}" stroke="#ffffff" stroke-opacity=".5" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <path d="${ola}" transform="translate(0 26)" stroke="#dff6ff" stroke-opacity=".3" stroke-width="4" fill="none"/></g>`;
+      /* espuma menuda pegada a la superficie */
+      for (let i = 0; i < 34; i++) {
+        const x = n(40 + rnd(i + 3) * (W - 80));
+        s += `<circle cx="${x}" cy="${n(60 + rnd(i + 51) * 26)}" r="${q(2 + rnd(i + 77) * 3)}" fill="#fff" opacity=".4"/>`;
+      }
+
+      /* ---------- rayos de luz: fuertes en la costa y apagándose al fondo ---------- */
+      /* en el mar abierto la luz sigue entrando, pero se queda arriba: unos
+         rayos cortos evitan que esa mitad del mapa parezca un muro de azul */
+      [3180, 3560, 3920, 4150].forEach((x, i) => {
+        const an = 120 + 60 * rnd(i + 1401);
+        s += `<polygon points="${n(x)},34 ${n(x + an)},34 ${n(x + an * 0.5)},${n(320 + 60 * rnd(i + 1421))} ${n(x - an * 0.2)},${n(300 + 50 * rnd(i + 1441))}"
+          fill="url(#ocnXRayo)" opacity=".34">
+          <animate attributeName="opacity" values=".34;.14;.34" dur="${q(8 + i)}s" repeatCount="indefinite"/></polygon>`;
       });
-      s += `<g opacity=".5"><animate attributeName="opacity" values=".5;.16;.5" dur="7s" repeatCount="indefinite"/>
-        <polygon points="330,44 470,44 620,760 460,760" fill="url(#ocnRayo)"/>
-        <polygon points="1400,44 1520,44 1680,800 1540,800" fill="url(#ocnRayo)"/></g>`;
-      /* cáusticas: la luz temblando justo bajo la superficie */
-      let caust = "";
+      for (let i = 0; i < 11; i++) {
+        const x = -60 + i * 300 + rnd(i + 9) * 120;
+        const fuerza = Math.max(0, 1 - x / 3000);
+        if (fuerza < 0.06) continue;
+        const an = 130 + 120 * rnd(i + 21), largo = 420 + 460 * fuerza;
+        s += `<polygon points="${n(x)},34 ${n(x + an)},34 ${n(x + an - an * .55)},${n(34 + largo)} ${n(x - an * .3)},${n(34 + largo)}"
+          fill="url(#ocnXRayo)" opacity="${q(0.3 + 0.7 * fuerza)}">
+          <animate attributeName="opacity" values="${q(0.3 + 0.7 * fuerza)};${q(0.12 + 0.4 * fuerza)};${q(0.3 + 0.7 * fuerza)}" dur="${q(7 + i % 5)}s" repeatCount="indefinite"/></polygon>`;
+      }
+
+      /* ---------- el banco de arena del fondo lejano ---------- */
+      let lejano = "M-20 " + n(banco(-20));
+      for (let x = 60; x <= W + 20; x += 80) lejano += "L" + n(x) + " " + n(banco(x));
+      s += `<path d="${lejano}L${W + 20} 1100L-20 1100Z" fill="url(#ocnXBanco)"/>`;
+
+      /* ---------- el cañón submarino: dos paredes que se abren ----------
+         entra a la mitad del recorrido y su boca da paso al abismo */
+      /* una sombra blanda marca la boca del cañón, sin ningún canto */
+      s += `<ellipse cx="2900" cy="1058" rx="540" ry="230" fill="url(#ocnXVeloAbismo)"/>`;
+      /* las dos paredes, en forma de cuña: los dos extremos de cada una mueren
+         sobre la arena, así no queda ninguna raya recta cortando el fondo */
+      s += `<path d="M2520 ${n(banco(2520))} Q2648 772 2704 908 Q2748 1024 2768 1100 L2648 1100 Q2632 992 2596 890 Q2564 806 2520 ${n(banco(2520))} Z" fill="url(#ocnXPared)" opacity=".8"/>
+        <path d="M3340 ${n(banco(3340))} Q3268 812 3240 928 Q3220 1022 3212 1100 L3320 1100 Q3336 1000 3364 912 Q3392 828 3340 ${n(banco(3340))} Z" fill="url(#ocnXPared)" opacity=".58"/>`;
+      /* un filo de luz en el canto de cada pared: sin él el cañón no se lee */
+      s += `<path d="M2520 ${n(banco(2520))} Q2648 772 2704 908" stroke="#7fb6c8" stroke-opacity=".28" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <path d="M3340 ${n(banco(3340))} Q3268 812 3240 928" stroke="#6fa4b8" stroke-opacity=".18" stroke-width="4" fill="none" stroke-linecap="round"/>`;
+      /* escalones de roca dentro del cañón, cada vez más oscuros */
+      [[2650, 880, 150, 44], [2830, 960, 190, 48], [3040, 1010, 170, 42], [3230, 1044, 140, 38]].forEach((r, i) => {
+        s += `<path d="M${n(r[0] - r[2])} ${n(r[1] + r[3])} L${n(r[0] - r[2] * .6)} ${r[1]} L${n(r[0] + r[2] * .6)} ${n(r[1] + 6)} L${n(r[0] + r[2])} ${n(r[1] + r[3])} Z"
+          fill="#22343d" opacity="${q(0.7 - i * 0.09)}"/>`;
+      });
+      /* la fosa del final: el corte más hondo de todos */
+      s += `<path d="M3900 ${n(banco(3900))} Q3980 1000 4040 1060 L4040 1100 L4220 1100 L4220 ${n(banco(4220))} Z" fill="#040d15" opacity=".8"/>
+        <path d="M3960 1044 Q4080 1006 4200 1040 L4200 1100 L3960 1100 Z" fill="#01070c"/>`;
+
+      /* ---------- la arena del primer plano, con el color de cada tramo ---------- */
+      let arena = "M-20 " + n(fondo(-20));
+      for (let x = 60; x <= W + 20; x += 60) arena += "L" + n(x) + " " + n(fondo(x));
+      s += `<path d="${arena}L${W + 20} 1100L-20 1100Z" fill="url(#ocnXArena)"/>`;
+      s += `<path d="${arena}" stroke="#ffffff" stroke-opacity=".14" stroke-width="5" fill="none"/>`;
+      /* ondulaciones de la arena: siete filas que bajan hacia el primer plano.
+         Antes solo había una hilera pegada al borde y todo el fondo de abajo
+         quedaba como una plancha lisa de color */
+      for (let fila = 0; fila < 7; fila++) {
+        let claro = "", oscuro = "";
+        for (let i = 0; i < 26; i++) {
+          const x = n(10 + i * 122 + 70 * rnd(i + fila * 13 + 21));
+          const y = n(fondo(x) + 28 + fila * 46 + 16 * rnd(i + fila * 13 + 41));
+          if (y > 1082 || x > W - 30) continue;
+          const largo = n(58 + fila * 14 + 44 * rnd(i + fila * 13 + 61));
+          const d = `M${x} ${y}q${n(largo * 0.5)} ${n(-9 - fila)} ${largo} 0`;
+          if (x < 2300) claro += d; else oscuro += d;
+        }
+        const gr = q(0.26 - fila * 0.022);
+        if (claro) s += `<path d="${claro}" stroke="#fff6d8" stroke-opacity="${gr}" stroke-width="${q(3 + fila * 0.4)}" fill="none" stroke-linecap="round"/>`;
+        if (oscuro) s += `<path d="${oscuro}" stroke="#cfe6ee" stroke-opacity="${q(gr * 0.55)}" stroke-width="${q(3 + fila * 0.4)}" fill="none" stroke-linecap="round"/>`;
+      }
+      /* conchas y erizos menudos repartidos por la arena clara */
+      for (let i = 0; i < 22; i++) {
+        const x = n(60 + rnd(i + 1301) * 2500), y = n(fondo(x) + 60 + rnd(i + 1321) * 400);
+        if (y > 1078 || !lib(x - 16, y - 14, 32, 28)) continue;
+        if (i % 3 === 0) {
+          s += `<path d="M${x} ${y}q-16 -6 -16 -16q0 -12 16 -12q16 0 16 12q0 10 -16 16Z" fill="#f3e0c0" opacity=".8"/>
+            <path d="M${x} ${y}l-6 -22M${x} ${y}l0 -24M${x} ${y}l6 -22" stroke="#d8bd94" stroke-width="2.4" fill="none" stroke-linecap="round"/>`;
+        } else if (i % 3 === 1) {
+          s += `<path d="M${n(x - 15)} ${y}q4 -20 15 -20q11 0 15 20Z" fill="#eddcbb" opacity=".76"/>`;
+        } else {
+          s += `<circle cx="${x}" cy="${y}" r="${q(6 + 3 * rnd(i + 1341))}" fill="#b9a684" opacity=".6"/>
+            <path d="M${x} ${n(y - 12)}v-6M${x} ${n(y + 12)}v6M${n(x - 12)} ${y}h-6M${n(x + 12)} ${y}h6" stroke="#a08d6c" stroke-width="2.4" stroke-linecap="round"/>`;
+        }
+      }
+
+      /* ---------- costa y arrecife somero: corales bajos y estrellas de mar ---------- */
+      const coral = (x, y, k, tono, tono2) => `<g transform="translate(${n(x)} ${n(y)}) scale(${q(k)})">
+        <path d="M0 0 q-4 -26 -20 -40 M0 0 q2 -30 0 -46 M0 0 q6 -24 22 -38" stroke="${tono}" stroke-width="11" fill="none" stroke-linecap="round"/>
+        <circle cx="-20" cy="-42" r="8" fill="${tono2}"/><circle cx="0" cy="-48" r="9" fill="${tono}"/><circle cx="22" cy="-40" r="8" fill="${tono2}"/>
+        <ellipse cx="0" cy="2" rx="26" ry="7" fill="${tono}" opacity=".5"/></g>`;
+      const TONOS = [["#ef8fa8", "#ffd0dc"], ["#f2b45c", "#ffe0a8"], ["#a98fe0", "#dcccff"], ["#5ec8b6", "#b8f0e6"]];
+      for (let i = 0; i < 26; i++) {
+        const x = 60 + i * 46 + 20 * rnd(i + 31);
+        const g = peso(TRAMOS.costa, x);
+        if (g < 0.12 || rnd(i + 61) > 0.3 + 0.62 * g) continue;
+        const y = fondo(x) + 6;
+        const k = (0.5 + 0.6 * g) * (0.8 + 0.5 * rnd(i + 91));
+        if (!lib(x - 34 * k, y - 58 * k, 68 * k, 62 * k)) continue;
+        const t = TONOS[i % TONOS.length];
+        s += coral(x, y, k, t[0], t[1]);
+      }
+      /* estrellas de mar tumbadas en la arena clara */
+      for (let i = 0; i < 7; i++) {
+        const x = 90 + i * 118 + 30 * rnd(i + 13), y = fondo(x) + 26;
+        if (!lib(x - 22, y - 22, 44, 44)) continue;
+        let br = "";
+        for (let b = 0; b < 5; b++) {
+          const a = (b / 5) * Math.PI * 2 - Math.PI / 2;
+          br += `M0 0 L${q(Math.cos(a) * 20)} ${q(Math.sin(a) * 20)}`;
+        }
+        s += `<g transform="translate(${n(x)} ${n(y)}) rotate(${n(rnd(i + 41) * 70)})">
+          <path d="${br}" stroke="#f2a15c" stroke-width="11" stroke-linecap="round" fill="none"/>
+          <circle r="6" fill="#ffc98a"/></g>`;
+      }
+      /* piedrecitas repartidas por la arena de todo el recorrido */
+      for (let i = 0; i < 46; i++) {
+        const x = 40 + rnd(i + 101) * (W - 80), y = fondo(x) + 14 + 40 * rnd(i + 131);
+        s += `<ellipse cx="${n(x)}" cy="${n(y)}" rx="${q(5 + 7 * rnd(i + 151))}" ry="${q(3 + 4 * rnd(i + 171))}"
+          fill="#7f8a86" opacity="${q(0.22 + 0.3 * Math.max(0, 1 - x / 3200))}"/>`;
+      }
+
+      /* ---------- praderas de algas: hojas que crecen y luego se van ---------- */
+      const alga = (x, y, alto, k, dur) => `<g transform="translate(${n(x)} ${n(y)})">
+        <path d="M0 0 q${n(-18 * k)} ${n(-alto * .34)} ${n(-4 * k)} ${n(-alto * .62)} q${n(14 * k)} ${n(-alto * .3)} ${n(2 * k)} ${n(-alto)}"
+          stroke="url(#ocnXAlga)" stroke-width="${q(9 * k)}" fill="none" stroke-linecap="round">
+          <animateTransform attributeName="transform" type="rotate" values="-3 0 0;3 0 0;-3 0 0" dur="${dur}s" repeatCount="indefinite"/></path></g>`;
+      for (let i = 0; i < 86; i++) {
+        const x = 700 + i * 12 + 10 * rnd(i + 201);
+        const g = peso(TRAMOS.praderas, x);
+        if (g < 0.1 || rnd(i + 231) > 0.24 + 0.66 * g) continue;
+        const y = fondo(x) + 8;
+        const alto = (110 + 210 * g) * (0.7 + 0.6 * rnd(i + 251));
+        const k = 0.6 + 0.5 * g;
+        if (!eje(x - 24 * k, y - alto, 48 * k, alto)) continue;
+        s += alga(x, y, alto, k, q(5 + 4 * rnd(i + 271)));
+      }
+      /* la pradera se despide poco a poco: cada vez menos algas y más bajas,
+         hasta que el mar abierto se queda solo */
       for (let i = 0; i < 24; i++) {
-        caust += `M${n(20 + rnd(i + 91) * 2560)} ${n(120 + rnd(i + 137) * 190)}q${n(22 + 14 * rnd(i + 7))} ${n(-14 - 8 * rnd(i + 3))} ${n(46 + 22 * rnd(i + 19))} 0`;
+        const x = 1620 + i * 30 + 18 * rnd(i + 301);
+        const merma = Math.max(0, 1 - (x - 1620) / 700);
+        if (rnd(i + 331) > 0.14 + 0.6 * merma) continue;
+        const y = fondo(x) + 6, alto = (54 + 128 * merma) * (0.7 + 0.5 * rnd(i + 351));
+        if (!eje(x - 18, y - alto, 36, alto)) continue;
+        s += alga(x, y, alto, q(0.34 + 0.34 * merma), q(6 + 3 * rnd(i + 371)));
       }
-      s += `<g><animate attributeName="opacity" values=".9;.4;.9" dur="6.4s" repeatCount="indefinite"/>
-        <path d="${caust}" stroke="rgba(224,248,255,.3)" stroke-width="4" fill="none" stroke-linecap="round"/></g>`;
+      /* una última mata de algas con su piedra, para que la del final no se
+         quede como un palo suelto en mitad de la arena */
+      [[2062, .42], [2098, .34], [2132, .3]].forEach((a, i) => {
+        s += alga(a[0], fondo(a[0]) + 6, 120 + 40 * i, a[1], q(6 + i));
+      });
+      s += `<ellipse cx="2108" cy="${n(fondo(2108) + 12)}" rx="46" ry="15" fill="#6f7c74" opacity=".5"/>`;
+      /* y una roca donde el pulpo pueda posarse */
+      s += `<path d="M1250 ${n(fondo(1250) + 22)}q22 -66 82 -62q58 4 78 62q-14 14 -80 16q-66 -2 -80 -16Z" fill="#7c8b83" opacity=".8"/>
+        <path d="M1274 ${n(fondo(1250) - 12)}q56 -18 116 -2" stroke="rgba(255,250,224,.24)" stroke-width="6" fill="none" stroke-linecap="round"/>`;
 
-      /* ---------- ZONA MEDIA: bancos de peces lejanos y burbujas ---------- */
-      /* un banco entero cabe en un solo trazo */
-      const banco2 = (cx, cy, ancho, alto, num, k, dir, c, semilla) => {
-        let d = "";
-        for (let i = 0; i < num; i++) {
-          const x = n(cx + (rnd(i + semilla) - 0.5) * ancho), y = n(cy + (rnd(i + semilla + 50) - 0.5) * alto);
-          const z = k * (0.8 + 0.4 * rnd(i + semilla + 90));
-          const w = n(21 * z) * dir, t = n(7 * z) * dir, h = n(6 * z), v = n(5 * z);
-          d += `M${x} ${y}q${n(w / 2)} ${-h} ${w} 0q${n(-w / 2)} ${h} ${-w} 0ZM${x} ${y}l${-t} ${-v}l0 ${v * 2}Z`;
+      /* ---------- fauna de fondo: bancos de pececillos, sin dar miedo ----------
+         muchos y menudos en la costa, sueltos en el mar abierto y ninguno en
+         el abismo, donde en su lugar hay nieve marina y luces */
+      const pez = (x, y, k, tono, op) => `<g transform="translate(${n(x)} ${n(y)}) scale(${q(k)})" opacity="${op}">
+        <path d="M-13 0 q7 -8 15 -8 q10 0 14 8 q-4 8 -14 8 q-8 0 -15 -8 Z" fill="${tono}"/>
+        <path d="M-13 0 L-22 -7 L-20 0 L-22 7 Z" fill="${tono}"/>
+        <circle cx="9" cy="-2" r="1.8" fill="#0d2430"/></g>`;
+      const BANCOS = [[300, 250, 12, .9], [640, 430, 10, .85], [1080, 620, 9, .8],
+      [1500, 300, 8, .75], [1980, 620, 7, .6], [2280, 330, 6, .55], [2660, 640, 5, .45]];
+      BANCOS.forEach((b, bi) => {
+        const cx = b[0], cy = b[1];
+        const fuerza = Math.max(0, 1 - cx / 3100);
+        if (fuerza < 0.05) return;
+        let grupo = "";
+        for (let i = 0; i < b[2]; i++) {
+          const x = cx + (rnd(i + bi * 17 + 401) - 0.5) * 190, y = cy + (rnd(i + bi * 17 + 431) - 0.5) * 120;
+          if (!lib(x - 24, y - 12, 48, 24)) continue;
+          const tono = bi % 3 === 0 ? "#ffd166" : (bi % 3 === 1 ? "#7fd8f2" : "#f5a3b4");
+          grupo += pez(x, y, q(b[3] * (0.7 + 0.6 * rnd(i + bi * 17 + 461))), tono, q(0.4 + 0.5 * fuerza));
         }
-        return `<path d="${d}" fill="${c}"/>`;
-      };
-      [[690, 240, 300, 120, 17, 1.05, 1, "rgba(226,246,255,.5)", 211, 34, 21],
-      [1250, 300, 340, 140, 20, .9, -1, "rgba(206,236,252,.45)", 307, -40, 26],
-      [2030, 650, 260, 120, 14, .8, 1, "rgba(180,220,244,.38)", 419, 30, 19]].forEach(b => {
-        /* solo se mira el centro del banco: son peces lejanos y difuminados */
-        if (!eje(b[0] - b[2] / 4, b[1] - b[3] / 4, b[2] / 2, b[3] / 2)) return;
-        s += `<g><animateTransform attributeName="transform" type="translate" values="0 0;${b[9]} ${n(b[9] / 3)};0 0" dur="${b[10]}s" repeatCount="indefinite"/>${banco2(b[0], b[1], b[2], b[3], b[4], b[5], b[6], b[7], b[8])}</g>`;
+        if (!grupo) return;
+        s += `<g><animateTransform attributeName="transform" type="translate" values="0 0;${n(26 + 20 * rnd(bi + 491))} ${n(-10 - 8 * rnd(bi + 521))};0 0" dur="${q(12 + bi * 2)}s" repeatCount="indefinite"/>${grupo}</g>`;
       });
 
-      /* columnas de burbujas subiendo del fondo */
-      [[300, 520, 15, 0], [1240, 760, 18, 2.5], [2180, 900, 21, 5]].forEach(col => {
-        let aro = "", luz = "";
-        for (let i = 0; i < 7; i++) {
-          const r = q(4 + 5 * rnd(i + col[0])), cx = n(col[0] + (rnd(i + 13) - 0.5) * 36), cy = col[1] - i * 62;
-          aro += `<circle cx="${cx}" cy="${cy}" r="${r}"/>`;
-          luz += `<circle cx="${q(cx - r * 0.3)}" cy="${q(cy - r * 0.3)}" r="${q(r * 0.28)}"/>`;
-        }
-        s += `<g><animateTransform attributeName="transform" type="translate" values="0 40;0 -420" dur="${col[2]}s" begin="${col[3]}s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values="0;.9;.75;0" dur="${col[2]}s" begin="${col[3]}s" repeatCount="indefinite"/>
-          <g fill="none" stroke="rgba(255,255,255,.5)" stroke-width="2.2">${aro}</g>
-          <g fill="rgba(255,255,255,.55)">${luz}</g></g>`;
-      });
-
-      /* ---------- EL FONDO LEJANO: banco de arena con ondulaciones ---------- */
-      s += `<path d="${trazo(banco)}L2600 1100L0 1100Z" fill="url(#ocnArena)" opacity=".9"/>
-        <path d="${trazo(banco)}" stroke="rgba(255,246,214,.5)" stroke-width="6" fill="none"/>`;
-      /* las ondulaciones de la arena, en la franja que se ve por encima */
-      let ondas = "";
-      for (let x = 40, i = 0; x < 2560; x += 58, i++) {
-        const y0 = alturaEn(banco, x) + 18 + 22 * rnd(i + 151);
-        if (y0 > fondo(x) - 10) continue;
-        ondas += `M${x} ${n(y0)}q${n(20 + 8 * rnd(i + 3))} ${n(-9 - 4 * rnd(i + 5))} ${n(44 + 10 * rnd(i + 9))} 0`;
+      /* ---------- burbujas: suben desde el fondo por todo el recorrido ---------- */
+      for (let i = 0; i < 26; i++) {
+        const x = 120 + rnd(i + 551) * (W - 240), y0 = fondo(x) - 20 - rnd(i + 581) * 160;
+        if (!lib(x - 12, y0 - 12, 24, 24)) continue;
+        const r = q(4 + 6 * rnd(i + 611)), sube = n(120 + 180 * rnd(i + 641));
+        s += `<circle cx="${n(x)}" cy="${n(y0)}" r="${r}" fill="none" stroke="#dff6ff" stroke-opacity=".38" stroke-width="2">
+          <animate attributeName="cy" values="${n(y0)};${n(y0 - sube)}" dur="${q(7 + 5 * rnd(i + 671))}s" repeatCount="indefinite"/>
+          <animate attributeName="stroke-opacity" values=".38;0" dur="${q(7 + 5 * rnd(i + 671))}s" repeatCount="indefinite"/></circle>`;
       }
-      if (ondas) s += `<path d="${ondas}" stroke="rgba(120,92,52,.24)" stroke-width="4" fill="none" stroke-linecap="round"/>`;
-      /* guijarros sueltos sobre la franja de arena que se ve */
-      let cantos = "";
-      for (let x = 70, i = 0; x < 2540; x += 47, i++) {
-        const y = alturaEn(banco, x) + 30 + 40 * rnd(i + 233);
-        if (y > fondo(x) - 12 || !eje(x - 14, y - 10, 28, 20)) continue;
-        cantos += `<ellipse cx="${x}" cy="${n(y)}" rx="${n(6 + 7 * rnd(i + 17))}" ry="${n(4 + 4 * rnd(i + 29))}"/>`;
+
+      /* ---------- la corriente del mar abierto ----------
+         unos hilos de agua muy tenues cruzando el azul: dan movimiento a la
+         mitad honda, que se quedaba como un muro liso */
+      let corriente = "";
+      for (let i = 0; i < 9; i++) {
+        const x = n(2500 + i * 190), y = n(300 + rnd(i + 1461) * 380);
+        if (!eje(x - 130, y - 30, 260, 60)) continue;
+        corriente += `M${x} ${y}q${n(70 + 30 * rnd(i + 1481))} ${n(-26 - 16 * rnd(i + 1501))} ${n(150 + 50 * rnd(i + 1521))} ${n(-6 - 8 * rnd(i + 1541))}`;
       }
-      if (cantos) s += `<g fill="rgba(122,96,58,.3)">${cantos}</g>`;
-      /* praderas de hierba marina en la parte somera, quietas y bajitas */
-      let pradera = "";
-      for (let x = 90, i = 0; x < 1700; x += 39, i++) {
-        const y = fondo(x) + 14;
-        if (!eje(x - 20, y - 86, 40, 90)) continue;
-        pradera += `M${x} ${n(y)}q-9 -42 -20 -60M${x + 8} ${n(y)}q3 -48 12 -68M${x + 17} ${n(y)}q12 -40 24 -52`;
-      }
-      if (pradera) s += `<path d="${pradera}" stroke="#2e7d52" stroke-width="5" fill="none" stroke-linecap="round" opacity=".7"/>`;
+      if (corriente) s += `<path d="${corriente}" stroke="rgba(190,230,255,.16)" stroke-width="7" fill="none" stroke-linecap="round">
+        <animate attributeName="stroke-opacity" values=".5;.9;.5" dur="12s" repeatCount="indefinite"/></path>`;
 
-      /* rocas del fondo, asomando por encima de la arena cercana */
-      const roca = (x, base, w, h) => `<g>
-        <path d="M${n(x - w)} ${n(base)}q${n(w * 0.1)} ${n(-h * 0.9)} ${n(w * 0.66)} ${-h}q${n(w * 0.7)} ${n(h * 0.06)} ${n(w * 0.9)} ${n(h * 0.72)}q${n(w * 0.18)} ${n(h * 0.24)} ${n(w * 0.44)} ${n(h * 0.28)}Z" fill="url(#ocnRoca)"/>
-        <path d="M${n(x - w * 0.72)} ${n(base - h * 0.42)}q${n(w * 0.52)} ${n(-h * 0.14)} ${n(w * 1.06)} ${n(h * 0.04)}" stroke="rgba(158,192,208,.3)" stroke-width="6" fill="none"/>
-        <path d="M${n(x - w * 0.5)} ${n(base - h * 0.68)}q${n(w * 0.4)} ${n(-h * 0.1)} ${n(w * 0.8)} ${n(h * 0.03)}" stroke="rgba(10,20,28,.4)" stroke-width="5" fill="none"/></g>`;
-      [[180, 96, 78], [640, 78, 62], [1700, 100, 84], [1900, 90, 74], [2050, 110, 90], [2280, 150, 126]].forEach(r => {
-        const base = fondo(r[0]) + 34;
-        if (eje(r[0] - r[1], base - r[2] * 1.15, r[1] * 2, r[2] * 1.3)) s += roca(r[0], base, r[1], r[2]);
-      });
-
-      /* ---------- EL ARRECIFE: corales, anémonas y esponjas ---------- */
-      /* coral de abanico: ramas gruesas y ramitas finas, dos trazos */
-      const abanico = (x, base, k, c) => {
-        let g1 = "", g2 = "";
-        for (let i = 0; i < 5; i++) {
-          const a = (-152 + i * 26) * Math.PI / 180, r = 118 + 22 * rnd(i + x / 53);
-          const px = n(r * Math.cos(a)), py = n(r * Math.sin(a));
-          g1 += `M0 0Q${n(px * 0.34)} ${n(py * 0.72)} ${px} ${py}`;
-          g2 += `M${n(px * 0.58)} ${n(py * 0.62)}q${n(px * 0.16)} ${n(py * 0.3)} ${n(px * 0.42)} ${n(py * 0.24)}`;
-        }
-        return `<g transform="translate(${x} ${n(base)}) scale(${q(k)})" stroke="${c}" fill="none" stroke-linecap="round">
-          <path d="${g1}" stroke-width="15"/><path d="${g2}" stroke-width="9"/></g>`;
-      };
-      /* coral cerebro: media esfera con surcos */
-      const cerebro = (x, base, rx, c1, c2) => {
-        let d = "";
-        for (let i = 0; i < 4; i++) {
-          const y = n(base - rx * 0.56 + i * rx * 0.3);
-          d += `M${n(x - rx * 0.82)} ${y}q${n(rx * 0.4)} ${n(-rx * 0.2)} ${n(rx * 0.82)} 0q${n(rx * 0.42)} ${n(rx * 0.2)} ${n(rx * 0.82)} 0`;
-        }
-        return `<ellipse cx="${x}" cy="${n(base)}" rx="${rx}" ry="${n(rx * 0.78)}" fill="${c1}"/>
-          <path d="${d}" stroke="${c2}" stroke-width="6" fill="none" stroke-linecap="round"/>`;
-      };
-      /* esponjas de tubo */
-      const tubos = (x, base, k, c, c2) => {
-        let d = "", bocas = "";
-        [[-30, 96, 20], [0, 132, 23], [28, 104, 18], [54, 74, 15]].forEach(t => {
-          d += `M${t[0] - t[2]} 0L${n(t[0] - t[2] * 0.8)} ${-t[1]}q${n(t[2] * 0.8)} -12 ${n(t[2] * 1.6)} 0L${t[0] + t[2]} 0Z`;
-          bocas += `<ellipse cx="${t[0]}" cy="${-t[1]}" rx="${n(t[2] * 0.8)}" ry="${n(t[2] * 0.34)}"/>`;
-        });
-        return `<g transform="translate(${x} ${n(base)}) scale(${q(k)})"><path d="${d}" fill="${c}"/><g fill="${c2}">${bocas}</g></g>`;
-      };
-      /* anémona: tentáculos que se mecen despacio */
-      const anemona = (x, base, k, c, punta, dur) => {
-        let d = "", puntas = "";
-        for (let i = 0; i < 11; i++) {
-          const a = (-168 + i * 15.6) * Math.PI / 180, r = 62 + 16 * rnd(i + x / 31);
-          const px = n(r * Math.cos(a)), py = n(r * Math.sin(a) * 0.95);
-          d += `M0 -4Q${n(px * 0.4)} ${n(py * 0.9)} ${px} ${py}`;
-          puntas += `<circle cx="${px}" cy="${py}" r="4.6"/>`;
-        }
-        return `<g transform="translate(${x} ${n(base)}) scale(${q(k)})"><ellipse rx="34" ry="14" fill="#b0745e"/>
-          <g><animateTransform attributeName="transform" type="skewX" values="0;7;0;-7;0" dur="${dur}s" repeatCount="indefinite"/>
-          <path d="${d}" stroke="${c}" stroke-width="8" fill="none" stroke-linecap="round"/>
-          <g fill="${punta}">${puntas}</g></g></g>`;
-      };
-      /* coral de mesa */
-      const mesa = (x, base, k, c) => `<g transform="translate(${x} ${n(base)}) scale(${q(k)})">
-        <path d="M-14 0L-9 -54L9 -54L14 0Z" fill="#a06a4a"/>
-        <ellipse cy="-58" rx="86" ry="20" fill="${c}"/><ellipse cy="-64" rx="86" ry="18" fill="rgba(255,255,255,.2)"/></g>`;
-
-      [[620, 1.3, "#ef6c4a"], [950, 1.1, "#e75f92"], [1420, 1.2, "#c77fdc"], [1550, 1, "#f08a5d"]].forEach(a => {
-        const base = fondo(a[0]) + 26;
-        if (eje(a[0] - 60, base - 150, 120, 156)) s += abanico(a[0], base, a[1], a[2]);
-      });
-      [[700, 74, "#f2a03f", "#c2661f"], [1080, 58, "#6fc9b6", "#2f8b78"], [1360, 80, "#e8788f", "#b23f5c"], [560, 52, "#8fbe5c", "#527c2c"], [1500, 66, "#f2a03f", "#c2661f"]].forEach(c => {
-        const base = fondo(c[0]) + 20;
-        if (eje(c[0] - c[1], base - c[1], c[1] * 2, c[1] * 1.6)) s += cerebro(c[0], base, c[1], c[2], c[3]);
-      });
-      [[760, 1.15, "#e0674f", "#7d2a1c"], [1480, .95, "#c884e0", "#6a3480"]].forEach(t => {
-        const base = fondo(t[0]) + 24;
-        if (eje(t[0] - 50, base - 150, 100, 156)) s += tubos(t[0], base, t[1], t[2], t[3]);
-      });
-      [[660, 1.3, "#ffb27a", "#ff7043", 6.2], [1040, 1.05, "#a8dff0", "#4fb3d9", 7.4], [1400, 1.15, "#f5a3c8", "#e0609c", 5.6]].forEach(a => {
-        const base = fondo(a[0]) + 22;
-        if (eje(a[0] - 60, base - 80, 120, 86)) s += anemona(a[0], base, a[1], a[2], a[3], a[4]);
-      });
-      [[990, 1.15, "#f0946d"], [1530, .95, "#8ccfa0"]].forEach(m => {
-        const base = fondo(m[0]) + 18;
-        if (eje(m[0] - 70, base - 90, 140, 96)) s += mesa(m[0], base, m[1], m[2]);
-      });
-
-      /* ---------- ALGAS QUE ONDULAN, en la zona somera ---------- */
-      [[[170, 250, 330], 6.6, "#2f7d43"], [[470, 560, 620], 8.2, "#39894b"],
-      [[860, 940, 1010], 7.2, "#2c7a4c"], [[1300, 1380, 1470], 9, "#367f45"]].forEach(grupo => {
-        let d = "";
-        grupo[0].forEach((x, i) => {
-          const base = fondo(x) + 26;
-          if (!eje(x - 24, base - 300, 48, 306)) return;
-          const alto = 190 + 90 * rnd(i + x / 17), ancho = 34 + 14 * rnd(i + 5);
-          d += `M${x} ${n(base)}Q${n(x - ancho)} ${n(base - alto * 0.42)} ${x} ${n(base - alto * 0.72)}Q${n(x + ancho)} ${n(base - alto)} ${n(x - ancho * 0.4)} ${n(base - alto * 1.24)}`;
-        });
-        if (d) s += `<g><animateTransform attributeName="transform" type="skewX" values="0;4.5;0;-4.5;0" dur="${grupo[1]}s" repeatCount="indefinite"/>
-          <path d="${d}" stroke="${grupo[2]}" stroke-width="13" fill="none" stroke-linecap="round" opacity=".88"/></g>`;
-      });
-
-      /* ---------- EL ABISMO: oscuridad, nieve marina y destellos ---------- */
-      s += `<rect y="700" width="2600" height="400" fill="url(#ocnAbismo)"/>`;
-      /* la nieve marina cayendo, muy despacio, en dos tandas */
-      [[0, 30], [7, 36]].forEach((t, g) => {
+      /* ---------- nieve marina: motitas que caen, cada vez más al fondo ---------- */
+      [[0, 13], [2.4, 15], [4.8, 17]].forEach((t, ti) => {
         let motas = "";
-        for (let i = 0; i < 30; i++) {
-          motas += `<circle cx="${n(20 + rnd(i + g * 60 + 701) * 2560)}" cy="${n(560 + rnd(i + g * 60 + 811) * 520)}" r="${q(1.6 + 2 * rnd(i + g * 60 + 907))}"/>`;
+        for (let i = 0; i < 26; i++) {
+          const x = 1700 + rnd(i + ti * 23 + 701) * (W - 1760), y = 380 + rnd(i + ti * 23 + 731) * 640;
+          const densidad = Math.min(1, Math.max(0, (x - 1700) / 1400));
+          if (rnd(i + ti * 23 + 761) > 0.25 + 0.7 * densidad) continue;
+          motas += `<circle cx="${n(x)}" cy="${n(y)}" r="${q(1.6 + 1.6 * rnd(i + ti * 23 + 791))}"/>`;
         }
-        s += `<g fill="rgba(228,244,255,.55)"><animateTransform attributeName="transform" type="translate" values="0 -70;12 240" dur="${t[1]}s" begin="${t[0]}s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values="0;.75;.6;0" dur="${t[1]}s" begin="${t[0]}s" repeatCount="indefinite"/>${motas}</g>`;
+        if (!motas) return;
+        s += `<g fill="#e4f4ff" fill-opacity=".5"><animateTransform attributeName="transform" type="translate" values="0 -80;14 230" dur="${t[1]}s" begin="${t[0]}s" repeatCount="indefinite"/>
+          <animate attributeName="fill-opacity" values="0;.5;.4;0" dur="${t[1]}s" begin="${t[0]}s" repeatCount="indefinite"/>${motas}</g>`;
       });
-      /* destellos bioluminiscentes, dos grupos que se turnan */
-      [[".85;.2;.85", 4.6, 0], [".2;.85;.2", 5.8, 30]].forEach(d => {
+
+      /* ---------- el relieve del abismo: crestas lejanas y bloques de roca ----------
+         sin esto la mitad honda del mapa se quedaba en un negro plano */
+      /* la cuña nace con grosor cero sobre la arena y va ganando altura, y
+         vuelve pegada a ella: así no queda ningún canto recto cortando el
+         fondo iluminado, que es lo que delataba el borde antes */
+      let crestaAbismo = "M2860 " + n(fondo(2860));
+      for (let x = 2940; x <= W + 20; x += 110) {
+        const entra = Math.min(1, Math.max(0, (x - 2860) / 560));
+        crestaAbismo += "L" + n(x) + " " + n(fondo(x) - entra * (66 + 62 * rnd(x + 1201)));
+      }
+      for (let x = W + 20; x >= 2860; x -= 110) crestaAbismo += "L" + n(x) + " " + n(fondo(x));
+      s += `<path d="${crestaAbismo}Z" fill="#0e1d26" opacity=".66"/>`;
+      const bloque = (x, y, k) => `<g transform="translate(${n(x)} ${n(y)}) scale(${q(k)})">
+        <path d="M-40 20 L-26 -16 L-4 -28 L22 -14 L40 18 Z" fill="#22343d"/>
+        <path d="M-26 -16 L-4 -28 L0 -8 L-16 2 Z" fill="#354a53" opacity=".8"/></g>`;
+      for (let i = 0; i < 20; i++) {
+        const x = 3060 + rnd(i + 901) * (W - 3120), y = fondo(x) + 8 - 34 * rnd(i + 931);
+        const k = q(0.55 + 0.95 * rnd(i + 961));
+        if (!lib(x - 46 * k, y - 36 * k, 92 * k, 46 * k)) continue;
+        s += bloque(x, y, k);
+      }
+      /* montículos blandos del fondo, con su corona de luz muy tenue */
+      [[3520, .9], [3760, .7], [4010, 1]].forEach((m, i) => {
+        const x = m[0], y = fondo(x) + 6, k = m[1];
+        s += `<ellipse cx="${n(x)}" cy="${n(y)}" rx="${n(96 * k)}" ry="${n(30 * k)}" fill="#1b2c35" opacity=".8"/>
+          <ellipse cx="${n(x)}" cy="${n(y - 12 * k)}" rx="${n(58 * k)}" ry="${n(18 * k)}" fill="#263a43" opacity=".7"/>
+          <ellipse cx="${n(x)}" cy="${n(y - 16 * k)}" rx="${n(70 * k)}" ry="${n(22 * k)}" fill="url(#ocnXBrillo)" opacity=".16">
+            <animate attributeName="opacity" values=".16;.05;.16" dur="${9 + i}s" repeatCount="indefinite"/></ellipse>`;
+      });
+
+      /* ---------- el mundo del abismo: chimeneas calientes y luces amables ---------- */
+      /* el montículo de roca sobre el que se apoyan las chimeneas del mapa */
+      s += `<path d="M3080 ${n(fondo(3080))} Q3150 946 3205 934 Q3262 946 3330 ${n(fondo(3330))} Z" fill="#2c3e46" opacity=".9"/>
+        <path d="M3140 962 Q3186 940 3205 936 Q3228 942 3272 964 Z" fill="#41565e" opacity=".7"/>`;
+      /* penachos de agua calentita que salen de las chimeneas, en tono cálido */
+      [[3160, 946, 1], [3252, 958, .8]].forEach((c, i) => {
+        s += `<path d="M${c[0]} ${c[1]} q${n(-14 * c[2])} -70 ${n(4 * c[2])} -140 q${n(16 * c[2])} -66 ${n(2 * c[2])} -132"
+          stroke="url(#ocnXHumo)" stroke-width="${q(26 * c[2])}" fill="none" stroke-linecap="round" opacity=".7">
+          <animate attributeName="opacity" values=".7;.32;.7" dur="${6 + i * 2}s" repeatCount="indefinite"/></path>`;
+      });
+      /* luces bioluminiscentes: dos grupos que se turnan, nunca a la vez */
+      [[".85;.2;.85", 4.8, 0], [".2;.85;.2", 6, 40]].forEach(d => {
         let halos = "", nucleos = "";
-        for (let i = 0; i < 9; i++) {
-          const x = n(1500 + rnd(i + d[2] + 1009) * 1060), y = n(700 + rnd(i + d[2] + 1103) * 370);
-          if (!lib(x - 22, y - 22, 44, 44)) continue;
-          halos += `<circle cx="${x}" cy="${y}" r="${n(14 + 10 * rnd(i + d[2] + 7))}"/>`;
+        for (let i = 0; i < 11; i++) {
+          const x = n(2700 + rnd(i + d[2] + 811) * 1420), y = n(660 + rnd(i + d[2] + 841) * 380);
+          if (!lib(x - 24, y - 24, 48, 48)) continue;
+          halos += `<circle cx="${x}" cy="${y}" r="${n(13 + 11 * rnd(i + d[2] + 871))}"/>`;
           nucleos += `<circle cx="${x}" cy="${y}" r="3"/>`;
         }
+        if (!nucleos) return;
         s += `<g><animate attributeName="opacity" values="${d[0]}" dur="${d[1]}s" repeatCount="indefinite"/>
-          <g fill="url(#ocnBrillo)">${halos}</g><g fill="#d9fbff">${nucleos}</g></g>`;
+          <g fill="url(#ocnXBrillo)">${halos}</g><g fill="#d9fbff">${nucleos}</g></g>`;
       });
-      /* algún destello suelto en la pared de la fosa */
-      s += `<g fill="url(#ocnBrillo)" opacity=".6"><animate attributeName="opacity" values=".6;.15;.6" dur="8s" repeatCount="indefinite"/>
-        <circle cx="2404" cy="1044" r="18"/><circle cx="2352" cy="986" r="12"/></g>`;
+      /* algún destello suelto en la pared de la fosa, para que no esté muerta */
+      s += `<g fill="url(#ocnXBrillo)" opacity=".55"><animate attributeName="opacity" values=".55;.14;.55" dur="8s" repeatCount="indefinite"/>
+        <circle cx="4056" cy="1032" r="18"/><circle cx="3986" cy="988" r="12"/><circle cx="3336" cy="1008" r="14"/></g>`;
 
-      /* lo nuevo detrás, lo de siempre delante */
-      return decoSvg(s + interior(previo), e.width);
+      /* ---------- LA DUNA DE DELANTE ----------
+         el borde de abajo del todo: una loma de arena muy cercana, con sus
+         piedras y unas hojas oscuras. Da el tercer plano y quita la sensación
+         de plancha lisa que tenía el fondo. Se retira antes de la fosa,
+         que tiene que seguir siendo el sitio más hondo del mapa */
+      const dunaCerca = [[-20, 1046], [420, 1016], [900, 1052], [1380, 1024],
+      [1860, 1058], [2340, 1030], [2820, 1062], [3200, 1092], [3460, 1104]];
+      let bordeDuna = "M-20 " + dunaCerca[0][1];
+      for (let i = 1; i + 1 < dunaCerca.length; i += 2) {
+        bordeDuna += `Q${dunaCerca[i][0]} ${dunaCerca[i][1]} ${dunaCerca[i + 1][0]} ${dunaCerca[i + 1][1]}`;
+      }
+      s += `<path d="${bordeDuna}L3460 1100L-20 1100Z" fill="url(#ocnXDunaCerca)"/>
+        <path d="${bordeDuna}" stroke="rgba(255,248,214,.2)" stroke-width="6" fill="none"/>`;
+      /* piedras y hojas en primer término, en silueta */
+      [[240, 1054, 40], [1020, 1072, 30], [1720, 1080, 46], [2560, 1084, 34]].forEach((r, i) => {
+        s += `<path d="M${n(r[0] - r[2])} ${r[1] + 22}q${n(r[2] * 0.24)} ${n(-r[2] * 1.3)} ${n(r[2] * 1.05)} ${n(-r[2] * 1.2)}q${n(r[2] * 0.8)} 6 ${n(r[2] * 0.95)} ${n(r[2] * 1.2)}Z" fill="${i % 2 ? "#5c6a63" : "#6c7a6f"}" opacity=".9"/>`;
+      });
+      let hojasCerca = "";
+      [[120, .8], [620, .66], [1240, .72], [1980, .6], [2420, .54]].forEach(h => {
+        const y = 1104;
+        hojasCerca += `M${h[0]} ${y}q${n(-32 * h[1])} ${n(-90 * h[1])} ${n(-8 * h[1])} ${n(-170 * h[1])}M${n(h[0] + 26 * h[1])} ${y}q${n(-14 * h[1])} ${n(-80 * h[1])} ${n(10 * h[1])} ${n(-146 * h[1])}`;
+      });
+      s += `<path d="${hojasCerca}" stroke="#2f4a3a" stroke-width="16" fill="none" stroke-linecap="round" opacity=".75"/>`;
+
+      return s;
+    }
+
+    /* El escenario se dibuja entero aquí y sale en un solo <svg>: lo que
+       venía de antes estaba medido para 2600 de ancho y se descarta. */
+    THEMES.oceano.content.explore.deco = function (e) {
+      return decoSvg(marPorProfundidades(e), e.width);
     };
   })();
 

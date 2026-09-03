@@ -172,7 +172,7 @@ h2 { font-size: 1.25rem; margin: 6px 0 10px; }
 .poi::before {
   content: ""; position: absolute; left: 50%; top: 46%;
   width: 124%; height: 124%; transform: translate(-50%, -50%); border-radius: 50%;
-  background: radial-gradient(circle, rgba(12,6,32,.34) 0%, rgba(12,6,32,.22) 46%, rgba(12,6,32,.08) 66%, transparent 76%);
+  background: radial-gradient(circle, rgba(12,6,32,.22) 0%, rgba(12,6,32,.14) 42%, rgba(12,6,32,.05) 62%, transparent 74%);
   pointer-events: none;
 }
 /* sombra oscura para despegarlos del fondo claro y filo claro para el fondo oscuro */
@@ -411,3 +411,12 @@ h2 { font-size: 1.25rem; margin: 6px 0 10px; }
 
 /* etiqueta que se sube sobre su dibujo cuando abajo no cabe */
 .poi .plabel.lblup { top: auto; bottom: calc(100% + 5px); }
+
+/* medición sin animación: los puntos se colocan ya a su tamaño final */
+.mapcanvas.nofx .poi { transition: none; }
+/* nombres a un lado cuando debajo y encima está ocupado */
+.poi .plabel.lblright { top: 50%; left: auto; right: -6px; transform: translate(100%, -50%); }
+.poi .plabel.lblleft { top: 50%; left: -6px; right: auto; transform: translate(-100%, -50%); }
+.poi .plabel.lblupright { top: -8px; left: auto; right: -6px; transform: translate(100%, -100%); }
+.poi .plabel.lblupleft { top: -8px; left: -6px; right: auto; transform: translate(-100%, -100%); }
+.poi .plabel.lbldown2 { top: calc(100% + 30px); }

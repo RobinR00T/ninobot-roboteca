@@ -242,12 +242,12 @@ Object.assign(THEMES.bomberos.content, {
 
   /* ---------- MAPA DE EXPLORACIÓN ---------- */
   explore: {
-    width: 2600, height: 1100, stars: false,
+    width: 4200, height: 1100, stars: false,
     bgCss: "radial-gradient(ellipse 34% 26% at 9% 11%, rgba(255,241,118,.55), transparent), linear-gradient(180deg,#79c4ee 0%,#a5daf4 28%,#cdeaf8 48%,#e4f0d6 62%,#cbe1ae 80%,#b0d08f 100%)",
     cats: [
-      { id: "parque", emoji: "🚒", x: 120, name: { es: "El parque de bomberos", ca: "El parc de bombers", en: "The fire station", cs: "Hasičská stanice", fr: "La caserne" } },
-      { id: "ciudad", emoji: "🏙️", x: 1080, name: { es: "La ciudad", ca: "La ciutat", en: "The city", cs: "Město", fr: "La ville" } },
-      { id: "bosque", emoji: "🌲", x: 1950, name: { es: "El bosque de los forestales", ca: "El bosc dels forestals", en: "The forest crew's woods", cs: "Les lesních hasičů", fr: "La forêt des forestiers" } }
+      { id: "parque", emoji: "🚒", x: 140, name: { es: "El parque de bomberos", ca: "El parc de bombers", en: "The fire station", cs: "Hasičská stanice", fr: "La caserne" } },
+      { id: "ciudad", emoji: "🏙️", x: 1900, name: { es: "La ciudad", ca: "La ciutat", en: "The city", cs: "Město", fr: "La ville" } },
+      { id: "bosque", emoji: "🌲", x: 3150, name: { es: "El bosque de los forestales", ca: "El bosc dels forestals", en: "The forest crew's woods", cs: "Les lesních hasičů", fr: "La forêt des forestiers" } }
     ],
     pois: [
       { cat: "parque", emoji: "🚒", x: 280, y: 720, size: 2, iw: 170, ih: 108,
@@ -270,7 +270,7 @@ Object.assign(THEMES.bomberos.content, {
           <circle cx="140" cy="82" r="12" fill="#263238"/><circle cx="140" cy="82" r="5" fill="#90a4ae"/></svg>`,
         name: { es: "El camión de bomberos", ca: "El camió de bombers", en: "The fire truck", cs: "Hasičské auto", fr: "Le camion de pompiers" },
         fact: { es: "El camión lleva agua, mangueras, escalera y herramientas: es una caja de ayudar con ruedas. Duerme en el garaje mirando a la puerta, listo para salir.", ca: "El camió porta aigua, mànegues, escala i eines: és una caixa d'ajudar amb rodes. Dorm al garatge mirant la porta, a punt per sortir.", en: "The truck carries water, hoses, a ladder and tools: it is a helping box on wheels. It sleeps in the garage facing the door, ready to go.", cs: "Auto veze vodu, hadice, žebřík a nářadí: je to pomáhací krabice na kolech. V garáži spí předkem ke vratům, připravené vyrazit.", fr: "Le camion transporte de l'eau, des tuyaux, une échelle et des outils : c'est une boîte à aider sur roues. Il dort au garage face à la porte, prêt à partir." } },
-      { cat: "parque", emoji: "🐕", x: 420, y: 850, iw: 76, ih: 66,
+      { cat: "parque", emoji: "🐕", x: 540, y: 860, iw: 76, ih: 66,
         svg: `<svg viewBox="0 0 110 96" width="100%" height="100%">
           <ellipse cx="58" cy="60" rx="34" ry="22" fill="#fff" stroke="#cfd8dc" stroke-width="2"/>
           <circle cx="26" cy="44" r="16" fill="#fff" stroke="#cfd8dc" stroke-width="2"/>
@@ -286,7 +286,7 @@ Object.assign(THEMES.bomberos.content, {
           <rect x="20" y="58" width="14" height="8" rx="4" fill="#e53935"/></svg>`,
         name: { es: "Chispa, el dálmata", ca: "Guspira, el dàlmata", en: "Sparky the dalmatian", cs: "Dalmatin Jiskra", fr: "Étincelle le dalmatien" },
         fact: { es: "Los dálmatas son las mascotas clásicas de los bomberos: hace muchos años corrían delante de los carros de caballos abriendo camino con sus ladridos.", ca: "Els dàlmates són les mascotes clàssiques dels bombers: fa molts anys corrien davant dels carros de cavalls obrint camí amb els seus lladrucs.", en: "Dalmatians are the classic firehouse mascots: long ago they ran ahead of the horse carts, clearing the way with their barks.", cs: "Dalmatini jsou odjakživa hasičští maskoti: kdysi běhali před koňskými povozy a štěkotem razili cestu.", fr: "Les dalmatiens sont les mascottes classiques des pompiers : il y a longtemps, ils couraient devant les chariots à chevaux en ouvrant la route avec leurs aboiements." } },
-      { cat: "parque", emoji: "🥾", x: 560, y: 800, iw: 66, ih: 62,
+      { cat: "parque", emoji: "🥾", x: 770, y: 810, iw: 66, ih: 62,
         svg: `<svg viewBox="0 0 100 94" width="100%" height="100%">
           <path d="M20 12 L44 12 L44 56 Q60 58 62 70 L62 80 L20 80 Z" fill="#263238"/>
           <path d="M20 70 L62 70 L62 80 L20 80 Z" fill="#4e342e"/>
@@ -298,7 +298,7 @@ Object.assign(THEMES.bomberos.content, {
           <path d="M46 18 Q58 12 70 18" stroke="#e53935" stroke-width="5" fill="none"/></svg>`,
         name: { es: "Las botas preparadas", ca: "Les botes preparades", en: "The ready boots", cs: "Připravené boty", fr: "Les bottes prêtes" },
         fact: { es: "Las botas duermen junto al camión con el pantalón bajado encima: al saltar dentro, ¡ya estás medio vestido! Así se sale en menos de dos minutos.", ca: "Les botes dormen al costat del camió amb el pantaló abaixat a sobre: en saltar-hi dins, ja estàs mig vestit! Així se surt en menys de dos minuts.", en: "The boots sleep next to the truck with the trousers rolled down over them: when you jump in, you are half dressed! That is how you leave in under two minutes.", cs: "Boty spí u auta a přes ně jsou shrnuté kalhoty: skočíš do nich a jsi napůl oblečený! Proto se vyráží za necelé dvě minuty.", fr: "Les bottes dorment près du camion avec le pantalon baissé dessus : en sautant dedans, on est déjà à moitié habillé ! C'est comme ça qu'on part en moins de deux minutes." } },
-      { cat: "parque", emoji: "🌀", x: 700, y: 720, iw: 70, ih: 64,
+      { cat: "parque", emoji: "🌀", x: 1230, y: 730, iw: 70, ih: 64,
         svg: `<svg viewBox="0 0 104 92" width="100%" height="100%">
           <circle cx="46" cy="46" r="32" fill="#ffb300" stroke="#fff" stroke-width="2"/>
           <circle cx="46" cy="46" r="24" fill="none" stroke="#e65100" stroke-width="6"/>
@@ -310,7 +310,7 @@ Object.assign(THEMES.bomberos.content, {
           <path d="M42 51 Q46 54 50 51" stroke="#4e2600" stroke-width="2" fill="none" stroke-linecap="round"/></svg>`,
         name: { es: "La manguera enrollada", ca: "La mànega enrotllada", en: "The rolled-up hose", cs: "Smotaná hadice", fr: "Le tuyau enroulé" },
         fact: { es: "Enrollada parece un caracol gigante, pero estirada es más larga que una piscina. Después de usarla se seca y se enrolla otra vez: una manguera cuidada dura años.", ca: "Enrotllada sembla un cargol gegant, però estirada és més llarga que una piscina. Després de fer-la servir s'asseca i s'enrotlla de nou: una mànega cuidada dura anys.", en: "Rolled up it looks like a giant snail, but stretched out it is longer than a swimming pool. After use it gets dried and rolled again: a well-kept hose lasts for years.", cs: "Smotaná vypadá jako obří šnek, ale natažená je delší než bazén. Po použití se usuší a zase smotá: opečovávaná hadice vydrží roky.", fr: "Enroulé, il ressemble à un escargot géant, mais déroulé, il est plus long qu'une piscine. Après usage, on le sèche et on l'enroule à nouveau : un tuyau soigné dure des années." } },
-      { cat: "parque", emoji: "🛝", x: 610, y: 520, iw: 56, ih: 96,
+      { cat: "parque", emoji: "🛝", x: 1000, y: 520, iw: 56, ih: 96,
         svg: `<svg viewBox="0 0 70 130" width="100%" height="100%">
           <rect x="6" y="6" width="58" height="14" rx="4" fill="#8d6e63"/>
           <ellipse cx="35" cy="13" rx="12" ry="5" fill="#4e342e"/>
@@ -322,7 +322,7 @@ Object.assign(THEMES.bomberos.content, {
           <ellipse cx="35" cy="118" rx="17" ry="5" fill="#cfd8dc"/></svg>`,
         name: { es: "La barra de bajar", ca: "La barra de baixar", en: "The sliding pole", cs: "Skluzná tyč", fr: "La barre de descente" },
         fact: { es: "¡Fiuuu! Por la barra se baja del dormitorio al garaje en dos segundos. La inventaron los bomberos hace casi 150 años porque las escaleras eran demasiado lentas.", ca: "Fiuuu! Per la barra es baixa del dormitori al garatge en dos segons. La van inventar els bombers fa gairebé 150 anys perquè les escales eren massa lentes.", en: "Wheee! You slide from the bedroom to the garage in two seconds. Firefighters invented it almost 150 years ago because stairs were too slow.", cs: "Fíí! Po tyči sjedeš z ložnice do garáže za dvě vteřiny. Hasiči ji vymysleli před skoro 150 lety, protože schody byly moc pomalé.", fr: "Fiouu ! On glisse du dortoir au garage en deux secondes. Les pompiers l'ont inventée il y a presque 150 ans parce que l'escalier était trop lent." } },
-      { cat: "parque", emoji: "⛑️", x: 800, y: 560, iw: 62, ih: 54,
+      { cat: "parque", emoji: "⛑️", x: 1450, y: 560, iw: 62, ih: 54,
         svg: `<svg viewBox="0 0 96 80" width="100%" height="100%">
           <path d="M12 52 Q12 18 48 18 Q84 18 84 52 Z" fill="#e53935" stroke="#fff" stroke-width="2"/>
           <ellipse cx="48" cy="54" rx="42" ry="10" fill="#c62828" stroke="#fff" stroke-width="2"/>
@@ -332,7 +332,7 @@ Object.assign(THEMES.bomberos.content, {
           <path d="M20 46 Q34 38 48 40" stroke="rgba(255,255,255,.45)" stroke-width="4" fill="none" stroke-linecap="round"/></svg>`,
         name: { es: "El casco", ca: "El casc", en: "The helmet", cs: "Helma", fr: "Le casque" },
         fact: { es: "El casco protege de golpes y de cosas que caen, y su visera cuida los ojos. Cada bombero revisa el suyo y lo deja siempre en el mismo sitio, listo para cogerlo a la primera.", ca: "El casc protegeix de cops i de coses que cauen, i la seva visera cuida els ulls. Cada bomber revisa el seu i el deixa sempre al mateix lloc, a punt per agafar-lo a la primera.", en: "The helmet protects from bumps and falling things, and its visor guards the eyes. Every firefighter checks their own and keeps it in the same spot, ready to grab first time.", cs: "Helma chrání před nárazy i padajícími věcmi a štítek hlídá oči. Každý hasič si tu svou kontroluje a nechává ji vždy na stejném místě, aby ji hned našel.", fr: "Le casque protège des chocs et des objets qui tombent, et sa visière garde les yeux. Chaque pompier vérifie le sien et le laisse toujours au même endroit, prêt à être saisi du premier coup." } },
-      { cat: "parque", emoji: "🗼", x: 920, y: 420, size: 2, iw: 92, ih: 150,
+      { cat: "parque", emoji: "🗼", x: 1690, y: 420, size: 2, iw: 92, ih: 150,
         svg: `<svg viewBox="0 0 92 150" width="100%" height="100%">
           <rect x="26" y="20" width="40" height="118" rx="4" fill="#bcaaa4" stroke="#8d6e63" stroke-width="2.4"/>
           <rect x="20" y="10" width="52" height="14" rx="4" fill="#8d6e63"/>
@@ -343,7 +343,7 @@ Object.assign(THEMES.bomberos.content, {
           <path d="M30 20 L30 8 L44 13 L30 18 Z" fill="#e53935"/></svg>`,
         name: { es: "La torre de prácticas", ca: "La torre de pràctiques", en: "The training tower", cs: "Cvičná věž", fr: "La tour d'entraînement" },
         fact: { es: "Es un edificio de mentira para entrenar de verdad: los bomberos practican subir con cuerdas, bajar con escaleras y rescatar muñecos. Cuando llega un rescate real, ya se lo saben de memoria.", ca: "És un edifici de mentida per entrenar de debò: els bombers practiquen pujar amb cordes, baixar amb escales i rescatar ninots. Quan arriba un rescat real, ja s'ho saben de memòria.", en: "It is a pretend building for real training: firefighters practise climbing with ropes, going down ladders and rescuing dummies. When a real rescue comes, they know it by heart.", cs: "Je to budova jen jako, ale trénink je opravdový: hasiči cvičí šplhání po lanech, slézání po žebřících a záchranu figurín. Když přijde skutečná záchrana, umí ji nazpaměť.", fr: "C'est un bâtiment pour de faux qui sert à s'entraîner pour de vrai : les pompiers s'exercent à monter à la corde, descendre à l'échelle et secourir des mannequins. Quand un vrai sauvetage arrive, ils le connaissent par cœur." } },
-      { cat: "ciudad", emoji: "🚰", x: 1160, y: 800, iw: 54, ih: 66,
+      { cat: "ciudad", emoji: "🚰", x: 1970, y: 820, iw: 54, ih: 66,
         svg: `<svg viewBox="0 0 76 96" width="100%" height="100%">
           <rect x="26" y="20" width="24" height="56" rx="8" fill="#e53935" stroke="#b71c1c" stroke-width="2.4"/>
           <ellipse cx="38" cy="18" rx="14" ry="7" fill="#c62828"/>
@@ -357,7 +357,7 @@ Object.assign(THEMES.bomberos.content, {
           <circle cx="62" cy="26" r="2.4" fill="#4fc3f7"><animate attributeName="cy" values="26;34;26" dur="2.2s" repeatCount="indefinite"/></circle></svg>`,
         name: { es: "El hidrante", ca: "L'hidrant", en: "The hydrant", cs: "Hydrant", fr: "La bouche d'incendie" },
         fact: { es: "Es un grifo gigante conectado a las tuberías de la ciudad. Los bomberos enchufan ahí la manguera y tienen agua sin parar. Por eso nunca se aparca delante de un hidrante.", ca: "És una aixeta gegant connectada a les canonades de la ciutat. Els bombers hi endollen la mànega i tenen aigua sense parar. Per això mai no s'aparca davant d'un hidrant.", en: "It is a giant tap connected to the city pipes. Firefighters plug the hose in and get endless water. That is why you never park in front of a hydrant.", cs: "Je to obří kohoutek napojený na městské trubky. Hasiči do něj zapojí hadici a mají vodu bez přestání. Proto se před hydrantem nikdy neparkuje.", fr: "C'est un robinet géant relié aux tuyaux de la ville. Les pompiers y branchent le tuyau et ont de l'eau sans fin. Voilà pourquoi on ne se gare jamais devant une bouche d'incendie." } },
-      { cat: "ciudad", emoji: "🐱", x: 1300, y: 590, iw: 96, ih: 120,
+      { cat: "ciudad", emoji: "🐱", x: 2210, y: 600, iw: 96, ih: 120,
         svg: `<svg viewBox="0 0 110 140" width="100%" height="100%">
           <path d="M50 70 L48 132 L62 132 L58 70 Z" fill="#6d4c41"/>
           <circle cx="34" cy="52" r="24" fill="#43a047"/><circle cx="76" cy="50" r="24" fill="#388e3c"/>
@@ -371,7 +371,7 @@ Object.assign(THEMES.bomberos.content, {
           <path d="M64 22 L70 20 M64 25 L70 26" stroke="#4e2600" stroke-width="1" stroke-linecap="round"/></svg>`,
         name: { es: "El gatito del árbol", ca: "El gatet de l'arbre", en: "The kitten in the tree", cs: "Koťátko na stromě", fr: "Le chaton dans l'arbre" },
         fact: { es: "Los gatos suben genial porque sus uñas miran hacia atrás... ¡pero por eso mismo bajar les cuesta! Si un gatito no baja en muchas horas, los bomberos ayudan con la escalera y mucha paciencia.", ca: "Els gats pugen molt bé perquè les seves ungles miren cap enrere... però per això mateix baixar els costa! Si un gatet no baixa en moltes hores, els bombers ajuden amb l'escala i molta paciència.", en: "Cats climb up easily because their claws point backwards... which is exactly why coming down is hard! If a kitten stays stuck for many hours, firefighters help with a ladder and lots of patience.", cs: "Kočky lezou nahoru skvěle, protože jejich drápky míří dozadu... a právě proto je pro ně cesta dolů těžká! Když koťátko dlouho nesleze, hasiči pomůžou žebříkem a velkou trpělivostí.", fr: "Les chats grimpent très bien parce que leurs griffes pointent vers l'arrière... et c'est justement pour ça que descendre est difficile ! Si un chaton reste coincé de longues heures, les pompiers aident avec une échelle et beaucoup de patience." } },
-      { cat: "ciudad", emoji: "🔔", x: 1440, y: 420, iw: 62, ih: 56,
+      { cat: "ciudad", emoji: "🔔", x: 2450, y: 420, iw: 62, ih: 56,
         svg: `<svg viewBox="0 0 92 82" width="100%" height="100%">
           <rect x="6" y="6" width="80" height="10" rx="3" fill="#b0bec5"/>
           <ellipse cx="46" cy="38" rx="30" ry="22" fill="#eceff1" stroke="#90a4ae" stroke-width="2.4"/>
@@ -382,7 +382,7 @@ Object.assign(THEMES.bomberos.content, {
           <path d="M24 66 Q28 60 26 54 M68 66 Q64 60 66 54" stroke="#90a4ae" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>`,
         name: { es: "El detector de humo", ca: "El detector de fum", en: "The smoke detector", cs: "Hlásič kouře", fr: "Le détecteur de fumée" },
         fact: { es: "Este platillo del techo huele el humo antes que nadie y pita fortísimo para avisar a toda la familia. Su pila se cambia una vez al año: es el vigilante más pequeño de la casa.", ca: "Aquest platet del sostre olora el fum abans que ningú i xiula fortíssim per avisar tota la família. La seva pila es canvia un cop l'any: és el vigilant més petit de la casa.", en: "This little ceiling saucer smells smoke before anyone and beeps super loud to warn the whole family. Its battery gets changed once a year: it is the smallest guard in the house.", cs: "Tenhle talířek na stropě ucítí kouř dřív než kdokoli a hlasitě pípá, aby varoval celou rodinu. Baterka se mu mění jednou za rok: je to nejmenší hlídač v domě.", fr: "Cette petite soucoupe au plafond sent la fumée avant tout le monde et sonne très fort pour prévenir toute la famille. On change sa pile une fois par an : c'est le plus petit gardien de la maison." } },
-      { cat: "ciudad", emoji: "🎧", x: 1590, y: 740, iw: 74, ih: 66,
+      { cat: "ciudad", emoji: "🎧", x: 2690, y: 760, iw: 74, ih: 66,
         svg: `<svg viewBox="0 0 108 96" width="100%" height="100%">
           <rect x="8" y="56" width="92" height="30" rx="6" fill="#5c6bc0" stroke="#3949ab" stroke-width="2"/>
           <rect x="16" y="62" width="34" height="18" rx="3" fill="#c5cae9"/>
@@ -398,7 +398,7 @@ Object.assign(THEMES.bomberos.content, {
             <animate attributeName="opacity" values="1;.3;1" dur="1.2s" repeatCount="indefinite"/></circle></svg>`,
         name: { es: "La centralita del 112", ca: "La centraleta del 112", en: "The 112 call centre", cs: "Dispečink 112", fr: "Le centre d'appel du 112" },
         fact: { es: "Cuando alguien marca el 112, contesta una persona entrenada que pregunta qué pasa y dónde. Con el nombre y la dirección, manda a los ayudantes perfectos: bomberos, médicos o policía.", ca: "Quan algú marca el 112, contesta una persona entrenada que pregunta què passa i on. Amb el nom i l'adreça, envia els ajudants perfectes: bombers, metges o policia.", en: "When someone dials 112, a trained person answers and asks what happened and where. With a name and address, they send the perfect helpers: firefighters, doctors or police.", cs: "Když někdo vytočí 112, ozve se vyškolený člověk a zeptá se, co se stalo a kde. Se jménem a adresou pošle ty pravé pomocníky: hasiče, doktory nebo policii.", fr: "Quand quelqu'un compose le 112, une personne formée répond et demande ce qui se passe et où. Avec le nom et l'adresse, elle envoie les parfaits assistants : pompiers, médecins ou police." } },
-      { cat: "ciudad", emoji: "📍", x: 1730, y: 560, iw: 58, ih: 70,
+      { cat: "ciudad", emoji: "📍", x: 2930, y: 580, iw: 58, ih: 70,
         svg: `<svg viewBox="0 0 84 102" width="100%" height="100%">
           <rect x="38" y="30" width="8" height="66" rx="4" fill="#78909c"/>
           <rect x="10" y="8" width="64" height="42" rx="8" fill="#43a047" stroke="#fff" stroke-width="2.4"/>
@@ -409,7 +409,7 @@ Object.assign(THEMES.bomberos.content, {
           <circle cx="56" cy="26" r="1.1" fill="#2e7d32"/><circle cx="60" cy="26" r="1.1" fill="#2e7d32"/></svg>`,
         name: { es: "El punto de encuentro", ca: "El punt de trobada", en: "The meeting point", cs: "Místo srazu", fr: "Le point de rassemblement" },
         fact: { es: "Es el sitio acordado donde se junta todo el mundo al salir en un simulacro: así se cuenta rapidito que no falte nadie. Tu familia también puede elegir el suyo, como un juego.", ca: "És el lloc acordat on s'ajunta tothom en sortir en un simulacre: així es compta rapidet que no falti ningú. La teva família també pot triar el seu, com un joc.", en: "It is the agreed spot where everyone gathers after walking out in a drill: that way you can quickly count that nobody is missing. Your family can pick one too, like a game.", cs: "Je to domluvené místo, kde se všichni sejdou po cvičném odchodu: rychle se tak spočítá, že nikdo nechybí. I vaše rodina si může jedno vybrat, jako hru.", fr: "C'est l'endroit convenu où tout le monde se retrouve après être sorti pendant un exercice : on compte ainsi très vite que personne ne manque. Ta famille peut aussi choisir le sien, comme un jeu." } },
-      { cat: "bosque", emoji: "🚁", x: 2060, y: 300, size: 2, iw: 150, ih: 110,
+      { cat: "bosque", emoji: "🚁", x: 3220, y: 300, size: 2, iw: 150, ih: 110,
         svg: `<svg viewBox="0 0 150 110" width="100%" height="100%">
           <ellipse cx="70" cy="44" rx="38" ry="20" fill="#fb8c00" stroke="#fff" stroke-width="2"/>
           <path d="M104 44 L134 40 L134 50 Q120 52 104 50 Z" fill="#fb8c00" stroke="#fff" stroke-width="1.6"/>
@@ -428,7 +428,7 @@ Object.assign(THEMES.bomberos.content, {
           ${[[64, 108], [72, 106], [78, 109]].map(p => `<circle cx="${p[0]}" cy="${p[1]}" r="2" fill="#4fc3f7"><animate attributeName="cy" values="${p[1]};${p[1] + 6};${p[1]}" dur="1.6s" repeatCount="indefinite"/></circle>`).join("")}</svg>`,
         name: { es: "El helicóptero de agua", ca: "L'helicòpter d'aigua", en: "The water helicopter", cs: "Vodní vrtulník", fr: "L'hélicoptère d'eau" },
         fact: { es: "Lleva colgando un cubo gigante que llena en lagos y pantanos. En cada viaje puede soltar miles de litros, como mil regaderas a la vez, para proteger el bosque.", ca: "Porta penjant un cubell gegant que omple en llacs i pantans. En cada viatge pot deixar anar milers de litres, com mil regadores alhora, per protegir el bosc.", en: "It carries a giant hanging bucket that it fills in lakes and reservoirs. Each trip it can drop thousands of litres, like a thousand watering cans at once, to protect the forest.", cs: "Nese zavěšený obří vak, který plní v jezerech a přehradách. Za jeden let dokáže vypustit tisíce litrů, jako tisíc konví najednou, aby ochránil les.", fr: "Il porte un seau géant suspendu qu'il remplit dans les lacs et les barrages. À chaque voyage, il peut lâcher des milliers de litres, comme mille arrosoirs à la fois, pour protéger la forêt." } },
-      { cat: "bosque", emoji: "🗼", x: 2260, y: 620, iw: 74, ih: 116,
+      { cat: "bosque", emoji: "🗼", x: 3740, y: 620, iw: 74, ih: 116,
         svg: `<svg viewBox="0 0 92 142" width="100%" height="100%">
           <path d="M26 40 L18 130 M66 40 L74 130" stroke="#6d4c41" stroke-width="6" stroke-linecap="round"/>
           <path d="M22 76 L70 76 M20 102 L72 102 M26 40 L70 76 M66 40 L22 76" stroke="#8d6e63" stroke-width="3.4"/>
@@ -441,7 +441,7 @@ Object.assign(THEMES.bomberos.content, {
           <circle cx="78" cy="9" r="3.4" fill="none" stroke="#37474f" stroke-width="2"/></svg>`,
         name: { es: "La torre de vigilancia", ca: "La torre de vigilància", en: "The lookout tower", cs: "Pozorovací věž", fr: "La tour de guet" },
         fact: { es: "Desde aquí arriba, los vigilantes del bosque miran el horizonte con prismáticos. Si ven una columna de humo lejana, avisan enseguida y la ayuda llega cuando todavía es facilísimo.", ca: "Des d'aquí dalt, els vigilants del bosc miren l'horitzó amb prismàtics. Si veuen una columna de fum llunyana, avisen de seguida i l'ajuda arriba quan encara és facilíssim.", en: "From up here, forest lookouts scan the horizon with binoculars. If they spot a faraway smoke column, they call it in right away and help arrives while it is still super easy.", cs: "Odsud shora sledují lesní hlídači obzor dalekohledem. Když uvidí vzdálený sloupek kouře, hned to nahlásí a pomoc dorazí, dokud je to ještě úplně snadné.", fr: "De là-haut, les guetteurs de la forêt scrutent l'horizon avec des jumelles. S'ils voient une colonne de fumée au loin, ils préviennent aussitôt et l'aide arrive quand tout est encore très facile." } },
-      { cat: "bosque", emoji: "🏞️", x: 2100, y: 870, iw: 110, ih: 60,
+      { cat: "bosque", emoji: "🏞️", x: 3480, y: 880, iw: 110, ih: 60,
         svg: `<svg viewBox="0 0 150 82" width="100%" height="100%">
           <ellipse cx="75" cy="46" rx="70" ry="28" fill="#4fc3f7" stroke="#0288d1" stroke-width="2.4"/>
           <ellipse cx="75" cy="46" rx="54" ry="20" fill="#81d4fa"/>
@@ -456,7 +456,7 @@ Object.assign(THEMES.bomberos.content, {
           <circle cx="111.5" cy="46.5" r=".9" fill="#37474f"/></svg>`,
         name: { es: "El lago de recarga", ca: "El llac de recàrrega", en: "The refill lake", cs: "Jezero na doplňování", fr: "Le lac de recharge" },
         fact: { es: "Aquí bajan el helicóptero y los aviones a llenar sus depósitos de agua. Los patos ya los conocen y les dejan sitio: saben que enseguida vuelven a su tranquilidad.", ca: "Aquí baixen l'helicòpter i els avions a omplir els seus dipòsits d'aigua. Els ànecs ja els coneixen i els deixen lloc: saben que de seguida tornen a la seva tranquil·litat.", en: "The helicopter and the planes come down here to fill their water tanks. The ducks know them by now and make room: they know their calm comes right back.", cs: "Sem slétají vrtulník a letadla doplnit nádrže vodou. Kachny je už znají a udělají jim místo: vědí, že klid se hned zase vrátí.", fr: "L'hélicoptère et les avions descendent ici remplir leurs réservoirs d'eau. Les canards les connaissent déjà et leur font de la place : ils savent que leur calme revient tout de suite." } },
-      { cat: "bosque", emoji: "🧑‍🚒", x: 2440, y: 740, iw: 66, ih: 92,
+      { cat: "bosque", emoji: "🧑‍🚒", x: 4020, y: 780, iw: 66, ih: 92,
         svg: `<svg viewBox="0 0 84 118" width="100%" height="100%">
           <path d="M18 34 Q18 12 42 12 Q66 12 66 34 Z" fill="#ffca28" stroke="#f57f17" stroke-width="2.4"/>
           <ellipse cx="42" cy="35" rx="28" ry="7" fill="#f9a825"/>
@@ -474,21 +474,32 @@ Object.assign(THEMES.bomberos.content, {
     ],
     deco() {
       let s = "";
-      /* ---------- degradados propios: los ids llevan prefijo para no chocar con otros mapas ---------- */
+      /* las cajas de los puntos de interés: sirven para dejarles aire alrededor */
+      const cajas = [[195, 666, 170, 108], [502, 827, 76, 66], [737, 779, 66, 62], [1195, 698, 70, 64], [972, 472, 56, 96], [1419, 533, 62, 54], [1644, 345, 92, 150],
+        [1943, 787, 54, 66], [2162, 540, 96, 120], [2419, 392, 62, 56], [2653, 727, 74, 66], [2901, 545, 58, 70],
+        [3145, 245, 150, 110], [3703, 562, 74, 116], [3425, 850, 110, 60], [3987, 734, 66, 92]];
+      const libre = (x, y, w, h) => !cajas.some(c => x < c[0] + c[2] + 14 && x + w > c[0] - 14 && y < c[1] + c[3] + 14 && y + h > c[1] - 14);
+      /* ---------- degradados propios: los ids llevan prefijo bmbX para no chocar con otros mapas ---------- */
       s += `<defs>
-        <linearGradient id="bmbFachada" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f9ccc0"/><stop offset="100%" stop-color="#dfa093"/></linearGradient>
-        <linearGradient id="bmbDentro" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3e2723"/><stop offset="100%" stop-color="#70503f"/></linearGradient>
-        <linearGradient id="bmbHormigon" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#d7dcdf"/><stop offset="100%" stop-color="#a8b0b6"/></linearGradient>
-        <linearGradient id="bmbAcera" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e6dfcd"/><stop offset="100%" stop-color="#c3baa6"/></linearGradient>
-        <linearGradient id="bmbAsfalto" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#717b84"/><stop offset="100%" stop-color="#464e56"/></linearGradient>
-        <linearGradient id="bmbPrado" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#a8d36d"/><stop offset="100%" stop-color="#588c31"/></linearGradient>
-        <linearGradient id="bmbMonte" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#adc7c9"/><stop offset="100%" stop-color="#7ea691"/></linearGradient>
-        <radialGradient id="bmbLago" cx="42%" cy="32%" r="74%"><stop offset="0%" stop-color="#bde8fd"/><stop offset="55%" stop-color="#4fc3f7"/><stop offset="100%" stop-color="#0277bd"/></radialGradient>
-        <radialGradient id="bmbSol" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#fff9c4" stop-opacity=".85"/><stop offset="100%" stop-color="#ffe082" stop-opacity="0"/></radialGradient>
+        <linearGradient id="bmbXFachada" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f9ccc0"/><stop offset="100%" stop-color="#dfa093"/></linearGradient>
+        <linearGradient id="bmbXDentro" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3e2723"/><stop offset="100%" stop-color="#70503f"/></linearGradient>
+        <linearGradient id="bmbXHormigon" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#d7dcdf"/><stop offset="100%" stop-color="#a8b0b6"/></linearGradient>
+        <linearGradient id="bmbXAcera" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e6dfcd"/><stop offset="100%" stop-color="#c3baa6"/></linearGradient>
+        <linearGradient id="bmbXAsfalto" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#717b84"/><stop offset="100%" stop-color="#464e56"/></linearGradient>
+        <linearGradient id="bmbXPrado" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#a8d36d"/><stop offset="100%" stop-color="#588c31"/></linearGradient>
+        <linearGradient id="bmbXMonte" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#adc7c9"/><stop offset="100%" stop-color="#7ea691"/></linearGradient>
+        <linearGradient id="bmbXTierra" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#dcbd8c"/><stop offset="100%" stop-color="#b98f5c"/></linearGradient>
+        <radialGradient id="bmbXLago" cx="42%" cy="32%" r="74%"><stop offset="0%" stop-color="#bde8fd"/><stop offset="55%" stop-color="#4fc3f7"/><stop offset="100%" stop-color="#0277bd"/></radialGradient>
+        <radialGradient id="bmbXSol" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#fff9c4" stop-opacity=".85"/><stop offset="100%" stop-color="#ffe082" stop-opacity="0"/></radialGradient>
+        <linearGradient id="bmbXLejos" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#bcd6de"/><stop offset="100%" stop-color="#cfe2df"/></linearGradient>
+        <linearGradient id="bmbXCamino" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#d8bb8b"/><stop offset="100%" stop-color="#bd965f"/></linearGradient>
+        <pattern id="bmbXMalla" width="18" height="18" patternUnits="userSpaceOnUse">
+          <path d="M0 0 L18 18 M18 0 L0 18" stroke="#b0bec5" stroke-width="2.4" fill="none" opacity=".85"/>
+        </pattern>
       </defs>`;
 
       /* ============ CIELO: sol, nubes lentas y pájaros ============ */
-      s += `<circle cx="215" cy="140" r="150" fill="url(#bmbSol)"/>
+      s += `<circle cx="215" cy="140" r="150" fill="url(#bmbXSol)"/>
         <circle cx="215" cy="140" r="64" fill="#fff59d" opacity=".92"/>`;
       /* cada nube va dentro de un grupo hijo para desplazarse muy despacio */
       const nube = (x, y, k, op, dur, dx) => `<g transform="translate(${x} ${y}) scale(${k})" opacity="${op}">
@@ -496,117 +507,160 @@ Object.assign(THEMES.bomberos.content, {
         <ellipse rx="86" ry="26" fill="#fff"/><ellipse cx="46" cy="-18" rx="52" ry="24" fill="#fff"/>
         <ellipse cx="-54" cy="-8" rx="42" ry="19" fill="#fff"/><ellipse cx="4" cy="-32" rx="36" ry="19" fill="#fff"/></g></g>`;
       s += nube(560, 118, 1, .82, 96, 70) + nube(1150, 92, .78, .68, 128, -58) + nube(1730, 152, 1.05, .72, 110, 64)
-        + nube(2330, 108, .9, .66, 140, -76) + nube(900, 214, .58, .44, 118, 48) + nube(1990, 176, .6, .4, 132, 54);
+        + nube(2330, 108, .9, .66, 140, -76) + nube(900, 214, .58, .44, 118, 48) + nube(1990, 176, .6, .4, 132, 54)
+        + nube(2860, 138, .95, .7, 118, 66) + nube(3420, 106, .82, .62, 146, -70) + nube(3960, 160, 1, .68, 126, 58)
+        + nube(3120, 208, .56, .38, 138, 46);
       /* dos bandadas dando su paseo por el cielo */
       const paja = `<path d="M0 0 q9 -10 18 0 q9 -10 18 0" stroke="#37474f" stroke-width="3" fill="none" stroke-linecap="round"/>`;
       s += `<g opacity=".65">${paja}<g transform="translate(30 22)">${paja}</g><g transform="translate(-34 30)">${paja}</g>
-        <animateMotion dur="64s" repeatCount="indefinite" path="M 360 316 Q 900 214 1480 292 Q 1760 330 1850 296 Q 1280 246 700 348 Q 460 384 360 316"/></g>
+        <animateMotion dur="78s" repeatCount="indefinite" path="M 360 316 Q 1400 208 2440 292 Q 3100 340 3980 296 Q 2900 240 1500 348 Q 700 388 360 316"/></g>
         <g opacity=".5"><g transform="scale(.75)">${paja}</g>
-        <animateMotion dur="48s" repeatCount="indefinite" path="M 1300 200 Q 900 152 520 214 Q 300 252 520 268 Q 950 292 1300 200"/></g>`;
+        <animateMotion dur="56s" repeatCount="indefinite" path="M 3260 200 Q 2200 146 1080 214 Q 620 250 1080 268 Q 2400 296 3260 200"/></g>`;
 
       /* ============ FONDOS LEJANOS ============ */
+      /* la sierra más lejana cruza el mapa entero: llena el cielo y deja claro qué está lejos */
+      s += `<path d="M-20 520 Q180 400 380 448 Q580 492 780 416 Q1000 336 1210 420 Q1410 498 1600 450 Q1800 402 1990 454 Q2210 512 2430 442 Q2650 376 2890 450 Q3120 520 3350 438 Q3570 360 3810 424 Q4010 478 4210 402 L4210 840 L-20 840 Z" fill="url(#bmbXLejos)" opacity=".55"/>`;
+      /* una loma verde más cerca, del lado del parque; la ciudad la tapa en cuanto empieza */
+      s += `<path d="M-20 690 Q220 596 460 646 Q700 694 940 628 Q1180 566 1420 640 Q1660 712 1990 656 L1990 820 L-20 820 Z" fill="#8fb39a" opacity=".55"/>`;
+      /* la arboleda que respalda el parque: copas apretadas que se pierden en la bruma */
+      let arboleda = "";
+      for (let i = 0; i < 45; i++) {
+        const ax = -20 + i * 46, ah = 62 + (i * 17) % 44;
+        arboleda += `<circle cx="${ax}" cy="${748 - ah}" r="${32 + (i * 11) % 18}"/>`;
+      }
+      s += `<g fill="#7fa885" opacity=".6">${arboleda}<rect x="-20" y="722" width="2020" height="94"/></g>`;
       /* silueta azulada de la ciudad, detrás de sus edificios */
-      s += `<g fill="#9fb4c6" opacity=".45">${[[1046, 606], [1122, 566], [1206, 620], [1300, 574], [1392, 540], [1490, 596], [1580, 552], [1672, 610], [1762, 566], [1850, 604]]
-        .map(b => `<rect x="${b[0]}" y="${b[1]}" width="74" height="${810 - b[1]}" rx="5"/>`).join("")}</g>`;
+      s += `<g fill="#9fb4c6" opacity=".45">${[[1856, 606], [1952, 566], [2050, 620], [2160, 574], [2266, 540], [2372, 596],
+        [2478, 552], [2584, 610], [2690, 566], [2796, 604], [2902, 572], [3006, 616]]
+        .map(b => `<rect x="${b[0]}" y="${b[1]}" width="86" height="${810 - b[1]}" rx="5"/>`).join("")}</g>`;
       /* montañas suaves al fondo del bosque */
-      s += `<path d="M1840 812 Q1990 618 2130 716 Q2250 800 2352 626 Q2452 466 2548 640 Q2586 706 2600 686 L2600 830 L1840 830 Z" fill="url(#bmbMonte)" opacity=".7"/>
-        <path d="M1840 852 Q2010 728 2178 806 Q2338 880 2470 764 Q2548 696 2600 728 L2600 900 L1840 900 Z" fill="#87a86f" opacity=".8"/>`;
+      s += `<path d="M3000 812 Q3240 596 3480 716 Q3670 812 3830 610 Q3990 428 4130 632 Q4176 706 4200 686 L4200 830 L3000 830 Z" fill="url(#bmbXMonte)" opacity=".7"/>
+        <path d="M3000 856 Q3280 716 3560 806 Q3830 886 4040 762 Q4140 694 4200 728 L4200 900 L3000 900 Z" fill="#87a86f" opacity=".8"/>`;
 
       /* ============ SUELOS ============ */
       /* patio de hormigón del parque, con juntas en fuga y líneas pintadas */
-      s += `<rect x="0" y="795" width="1035" height="205" fill="url(#bmbHormigon)"/>`;
-      for (let x = 60; x <= 1020; x += 120) s += `<line x1="${x}" y1="800" x2="${((x - 512) * 1.2 + 512).toFixed(0)}" y2="998" stroke="rgba(0,0,0,.10)" stroke-width="3"/>`;
-      s += `<path d="M0 868 H1035 M0 934 H1035" stroke="rgba(0,0,0,.07)" stroke-width="4" fill="none"/>
-        <path d="M150 810 H1015" stroke="#ffd54f" stroke-width="7" opacity=".85" fill="none"/>
-        <path d="M186 806 L132 992 M400 806 L420 992 M428 806 L452 992 M646 806 L722 992" stroke="rgba(255,255,255,.6)" stroke-width="7" fill="none" stroke-linecap="round"/>`;
-      /* acera, bordillo y calzada de la ciudad */
-      s += `<rect x="1035" y="795" width="866" height="180" fill="url(#bmbAcera)"/>`;
-      for (let x = 1035; x <= 1900; x += 62) s += `<line x1="${x}" y1="800" x2="${x - 14}" y2="975" stroke="rgba(0,0,0,.08)" stroke-width="3"/>`;
-      s += `<path d="M1035 858 H1901 M1035 918 H1901" stroke="rgba(0,0,0,.07)" stroke-width="3" fill="none"/>
-        <rect x="1035" y="972" width="866" height="24" fill="#b3ab99"/><rect x="1035" y="972" width="866" height="7" fill="#d8d0bd"/>
-        <rect x="0" y="994" width="1901" height="106" fill="url(#bmbAsfalto)"/>
-        <rect x="0" y="994" width="1901" height="6" fill="#8a939b" opacity=".7"/>
-        <path d="M0 1052 H1890" stroke="#eceff1" stroke-width="6" stroke-dasharray="46 40" opacity=".7" fill="none"/>
-        ${[0, 1, 2, 3, 4].map(i => `<rect x="${1424 + i * 34}" y="1002" width="20" height="92" rx="3" fill="#eceff1" opacity=".65"/>`).join("")}`;
+      s += `<rect x="0" y="795" width="1840" height="205" fill="url(#bmbXHormigon)"/>`;
+      for (let x = 60; x <= 1820; x += 130) s += `<line x1="${x}" y1="800" x2="${((x - 920) * 1.2 + 920).toFixed(0)}" y2="998" stroke="rgba(0,0,0,.10)" stroke-width="3"/>`;
+      s += `<path d="M0 868 H1840 M0 934 H1840" stroke="rgba(0,0,0,.07)" stroke-width="4" fill="none"/>
+        <path d="M150 810 H1800" stroke="#ffd54f" stroke-width="7" opacity=".85" fill="none"/>`;
+      /* acera y bordillo de la ciudad, y la calzada que recorre todo el frente */
+      s += `<rect x="1840" y="795" width="1240" height="180" fill="url(#bmbXAcera)"/>`;
+      for (let x = 1840; x <= 3080; x += 62) s += `<line x1="${x}" y1="800" x2="${x - 14}" y2="975" stroke="rgba(0,0,0,.08)" stroke-width="3"/>`;
+      s += `<path d="M1840 858 H3080 M1840 918 H3080" stroke="rgba(0,0,0,.07)" stroke-width="3" fill="none"/>
+        <rect x="1840" y="972" width="1240" height="24" fill="#b3ab99"/><rect x="1840" y="972" width="1240" height="7" fill="#d8d0bd"/>
+        <rect x="0" y="994" width="3090" height="106" fill="url(#bmbXAsfalto)"/>
+        <rect x="0" y="994" width="3090" height="6" fill="#8a939b" opacity=".7"/>
+        <path d="M0 1052 H3070" stroke="#eceff1" stroke-width="6" stroke-dasharray="46 40" opacity=".7" fill="none"/>
+        ${[0, 1, 2, 3, 4].map(i => `<rect x="${2380 + i * 34}" y="1002" width="20" height="92" rx="3" fill="#eceff1" opacity=".65"/>`).join("")}`;
 
       /* ============ PARQUE DE BOMBEROS ============ */
       /* el edificio: zócalo, dos plantas, cornisa y cartel */
-      s += `<rect x="140" y="400" width="710" height="400" rx="10" fill="url(#bmbFachada)"/>
-        <rect x="140" y="770" width="710" height="30" fill="#c98275"/>
-        <rect x="140" y="596" width="710" height="14" fill="#c62828" opacity=".6"/>
-        <rect x="116" y="382" width="758" height="34" rx="10" fill="#c62828"/>
-        <rect x="116" y="382" width="758" height="9" rx="4" fill="#ef5350" opacity=".7"/>`;
+      s += `<rect x="150" y="400" width="1410" height="400" rx="10" fill="url(#bmbXFachada)"/>
+        <rect x="150" y="770" width="1410" height="30" fill="#c98275"/>
+        <rect x="150" y="596" width="1410" height="14" fill="#c62828" opacity=".6"/>
+        <rect x="126" y="382" width="1458" height="34" rx="10" fill="#c62828"/>
+        <rect x="126" y="382" width="1458" height="9" rx="4" fill="#ef5350" opacity=".7"/>`;
       /* el cartel del parque: escudo con escalera y manguera cruzadas */
-      s += `<rect x="402" y="292" width="230" height="96" rx="14" fill="#c62828" stroke="#fff8e1" stroke-width="7"/>
-        <path d="M517 308 L568 324 Q568 362 517 378 Q466 362 466 324 Z" fill="#fff8e1"/>
-        <path d="M498 322 L498 366 M522 320 L522 364" stroke="#c62828" stroke-width="5" stroke-linecap="round"/>
-        <path d="M498 332 H522 M498 344 H522 M498 356 H522" stroke="#c62828" stroke-width="4"/>
-        <path d="M536 320 Q550 342 536 366" stroke="#0288d1" stroke-width="5" fill="none" stroke-linecap="round"/>
-        <circle cx="418" cy="308" r="7" fill="#ffd54f"/><circle cx="616" cy="308" r="7" fill="#ffd54f"/>`;
+      s += `<rect x="740" y="292" width="230" height="96" rx="14" fill="#c62828" stroke="#fff8e1" stroke-width="7"/>
+        <path d="M855 308 L906 324 Q906 362 855 378 Q804 362 804 324 Z" fill="#fff8e1"/>
+        <path d="M836 322 L836 366 M860 320 L860 364" stroke="#c62828" stroke-width="5" stroke-linecap="round"/>
+        <path d="M836 332 H860 M836 344 H860 M836 356 H860" stroke="#c62828" stroke-width="4"/>
+        <path d="M874 320 Q888 342 874 366" stroke="#0288d1" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <circle cx="756" cy="308" r="7" fill="#ffd54f"/><circle cx="954" cy="308" r="7" fill="#ffd54f"/>`;
       /* la luz roja del parque, siempre despierta */
       s += `<rect x="196" y="364" width="30" height="20" rx="7" fill="#b71c1c"/>
         <ellipse cx="211" cy="362" rx="17" ry="9" fill="#ef5350"><animate attributeName="opacity" values=".5;1;.5" dur="2.6s" repeatCount="indefinite"/></ellipse>
         <ellipse cx="211" cy="360" rx="42" ry="22" fill="rgba(255,138,128,.28)"><animate attributeName="opacity" values=".15;.5;.15" dur="2.6s" repeatCount="indefinite"/></ellipse>`;
       /* mástil con banderín */
-      s += `<rect x="802" y="286" width="7" height="100" rx="3" fill="#90a4ae"/>
-        <path d="M809 294 L856 306 L809 320 Z" fill="#e53935"/>`;
-      /* planta de arriba: las ventanas del dormitorio */
-      s += [178, 268, 358, 448].map((x, i) => `<g>
+      s += `<rect x="1500" y="286" width="7" height="100" rx="3" fill="#90a4ae"/>
+        <path d="M1507 294 L1554 306 L1507 320 Z" fill="#e53935"/>`;
+      /* planta de arriba: las ventanas del dormitorio, repartidas por toda la fachada */
+      s += [190, 300, 410, 520, 630, 1120, 1230, 1340].map((x, i) => libre(x, 448, 74, 92) ? `<g>
         <rect x="${x}" y="448" width="74" height="92" rx="6" fill="#fff8e1"/>
         <rect x="${x + 7}" y="455" width="60" height="78" rx="4" fill="${i === 1 ? "#ffe6a0" : "#cfe8f7"}"/>
         <path d="M${x + 37} 455 V533 M${x + 7} 494 H${x + 67}" stroke="#fff8e1" stroke-width="5"/>
         <rect x="${x - 6}" y="540" width="86" height="9" rx="4" fill="#f3e0c8"/>
-        ${i === 1 ? `<animate attributeName="opacity" values=".85;1;.85" dur="6s" repeatCount="indefinite"/>` : ""}</g>`).join("");
+        ${i === 1 ? `<animate attributeName="opacity" values=".85;1;.85" dur="6s" repeatCount="indefinite"/>` : ""}</g>` : "").join("");
       /* el hueco por donde baja la barra: interior, suelo de la planta alta y su agujero */
-      s += `<rect x="552" y="436" width="124" height="160" rx="6" fill="url(#bmbDentro)"/>
-        <rect x="546" y="430" width="136" height="12" rx="5" fill="#fff8e1"/>
-        <rect x="558" y="450" width="112" height="112" fill="rgba(255,213,79,.16)"/>
-        <rect x="558" y="562" width="112" height="18" fill="#8d6e63"/>
-        <ellipse cx="612" cy="571" rx="31" ry="9" fill="#241611"/>`;
-      /* el vestuario: perchas con trajes colgados y la balda del casco */
-      s += `<rect x="690" y="436" width="156" height="160" rx="6" fill="url(#bmbDentro)"/>
-        <rect x="684" y="430" width="168" height="12" rx="5" fill="#fff8e1"/>
-        <rect x="698" y="458" width="140" height="8" rx="4" fill="#b0bec5"/>`;
-      s += [706, 740].map(x => `<g>
+      s += `<rect x="938" y="436" width="124" height="176" rx="6" fill="url(#bmbXDentro)"/>
+        <rect x="932" y="430" width="136" height="12" rx="5" fill="#fff8e1"/>
+        <rect x="944" y="450" width="112" height="128" fill="rgba(255,213,79,.16)"/>
+        <rect x="944" y="578" width="112" height="18" fill="#8d6e63"/>
+        <ellipse cx="1000" cy="587" rx="31" ry="9" fill="#241611"/>
+        <rect x="994" y="592" width="9" height="196" rx="4" fill="#ffca28"/>
+        <ellipse cx="998" cy="790" rx="21" ry="7" fill="#90a4ae"/>`;
+      /* el vestuario: perchas con trajes colgados y la balda donde descansa el casco */
+      s += `<rect x="1364" y="436" width="176" height="160" rx="6" fill="url(#bmbXDentro)"/>
+        <rect x="1358" y="430" width="188" height="12" rx="5" fill="#fff8e1"/>
+        <rect x="1374" y="458" width="156" height="8" rx="4" fill="#b0bec5"/>`;
+      s += [1378, 1500].map(x => `<g>
         <path d="M${x + 15} 458 q0 -10 8 -10" stroke="#cfd8dc" stroke-width="3" fill="none"/>
         <path d="M${x + 15} 466 l-17 20 v58 h34 v-58 Z" fill="#ffb300"/>
         <rect x="${x - 2}" y="502" width="34" height="9" fill="#eceff1"/>
         <rect x="${x - 2}" y="524" width="34" height="7" fill="#546e7a"/></g>`).join("");
-      s += `<rect x="758" y="588" width="86" height="9" rx="4" fill="#a1887f"/>
-        <rect x="694" y="556" width="52" height="40" rx="5" fill="#5d4037"/>`;
+      s += `<rect x="1408" y="590" width="86" height="10" rx="5" fill="#a1887f"/>
+        <path d="M1422 600 v12 M1480 600 v12" stroke="#a1887f" stroke-width="5" stroke-linecap="round"/>`;
       /* las dos puertas de garaje, abiertas: primero el hueco oscuro del interior */
-      s += [172, 428].map(x => `<g>
-        <rect x="${x}" y="612" width="218" height="188" rx="5" fill="url(#bmbDentro)"/>
+      s += [172, 652].map(x => `<g>
+        <rect x="${x}" y="612" width="218" height="188" rx="5" fill="url(#bmbXDentro)"/>
         <rect x="${x + 10}" y="640" width="198" height="160" fill="rgba(255,213,79,.14)"/>
         <path d="M${x + 20} 792 H${x + 198}" stroke="rgba(255,255,255,.28)" stroke-width="5"/></g>`).join("");
-      /* dentro del garaje libre: estantería con cajas y la barra que sigue bajando hasta el suelo */
-      s += `<rect x="452" y="700" width="130" height="10" rx="4" fill="#5d4037"/>
-        <rect x="462" y="668" width="34" height="32" rx="4" fill="#a1887f" opacity=".8"/>
-        <rect x="504" y="676" width="30" height="24" rx="4" fill="#8d6e63" opacity=".8"/>
-        <rect x="542" y="672" width="32" height="28" rx="4" fill="#a1887f" opacity=".7"/>
-        <rect x="606" y="576" width="9" height="204" rx="4" fill="#ffca28"/>
-        <ellipse cx="610" cy="782" rx="21" ry="7" fill="#90a4ae"/>`;
+      /* la sombra del camión dentro de su garaje: así se ve que las ruedas tocan el suelo */
+      s += `<ellipse cx="282" cy="778" rx="96" ry="13" fill="rgba(0,0,0,.42)"/>`;
+      /* dentro del segundo garaje: estantería con cajas */
+      s += `<rect x="676" y="700" width="130" height="10" rx="4" fill="#5d4037"/>
+        <rect x="686" y="668" width="34" height="32" rx="4" fill="#a1887f" opacity=".8"/>
+        <rect x="728" y="676" width="30" height="24" rx="4" fill="#8d6e63" opacity=".8"/>
+        <rect x="766" y="672" width="32" height="28" rx="4" fill="#a1887f" opacity=".7"/>`;
       /* y por delante, la persiana recogida arriba, el marco y la luz de cada puerta */
-      s += [172, 428].map(x => `<g>
+      s += [172, 652].map(x => `<g>
         <rect x="${x}" y="612" width="218" height="34" rx="4" fill="#cfd8dc"/>
         <path d="M${x + 4} 621 H${x + 214} M${x + 4} 630 H${x + 214} M${x + 4} 639 H${x + 214}" stroke="#90a4ae" stroke-width="3"/>
         <rect x="${x - 9}" y="603" width="236" height="205" rx="7" fill="none" stroke="#fff8e1" stroke-width="9"/>
         <ellipse cx="${x + 109}" cy="600" rx="18" ry="9" fill="#fff3c4"><animate attributeName="opacity" values=".6;1;.6" dur="4.2s" repeatCount="indefinite"/></ellipse></g>`).join("");
-      /* el soporte de mangueras, el extintor y la puerta pequeña del personal */
-      s += `<rect x="654" y="664" width="116" height="9" rx="4" fill="#8d6e63"/>
-        <path d="M666 673 v14 M756 673 v14" stroke="#8d6e63" stroke-width="5" stroke-linecap="round"/>
-        <rect x="748" y="700" width="24" height="46" rx="8" fill="#e53935"/>
-        <rect x="754" y="690" width="12" height="12" rx="4" fill="#90a4ae"/>
-        <rect x="750" y="716" width="20" height="8" fill="#fff8e1"/>
-        <rect x="782" y="672" width="62" height="128" rx="6" fill="#8d6e63"/>
-        <rect x="789" y="680" width="48" height="60" rx="4" fill="#cfe8f7"/>
-        <circle cx="833" cy="748" r="5" fill="#ffd54f"/>`;
+      /* la devanadera de la manguera: el carrete gira en su eje y los dos brazos
+         asoman a los lados del punto, con el pie bien apoyado en el patio */
+      s += `<ellipse cx="1230" cy="796" rx="74" ry="12" fill="rgba(0,0,0,.16)"/>
+        <rect x="1164" y="784" width="132" height="14" rx="6" fill="#8d6e63"/>
+        <rect x="1176" y="690" width="15" height="98" rx="6" fill="#b0bec5"/>
+        <rect x="1269" y="690" width="15" height="98" rx="6" fill="#b0bec5"/>
+        <rect x="1176" y="723" width="108" height="9" rx="4" fill="#90a4ae"/>
+        <circle cx="1183" cy="728" r="9" fill="#e53935" stroke="#fff8e1" stroke-width="2.4"/>
+        <circle cx="1277" cy="728" r="9" fill="#e53935" stroke="#fff8e1" stroke-width="2.4"/>
+        <path d="M1176 746 Q1140 764 1148 786" stroke="#eceff1" stroke-width="8" fill="none" stroke-linecap="round"/>`;
+      /* el extintor, colgado de su armario de pared con la señal encima, y la puerta del personal */
+      s += `<rect x="1300" y="670" width="60" height="96" rx="9" fill="#ffebee" stroke="#c62828" stroke-width="4"/>
+        <rect x="1308" y="744" width="44" height="10" rx="4" fill="#c62828"/>
+        <rect x="1310" y="636" width="40" height="30" rx="6" fill="#c62828"/>
+        <rect x="1324" y="644" width="12" height="16" rx="4" fill="#fff8e1"/>
+        <rect x="1327" y="639" width="6" height="7" rx="2" fill="#fff8e1"/>
+        <rect x="1318" y="700" width="24" height="46" rx="8" fill="#e53935"/>
+        <rect x="1324" y="690" width="12" height="12" rx="4" fill="#90a4ae"/>
+        <rect x="1320" y="716" width="20" height="8" fill="#fff8e1"/>
+        <rect x="1456" y="672" width="62" height="128" rx="6" fill="#8d6e63"/>
+        <rect x="1463" y="680" width="48" height="60" rx="4" fill="#cfe8f7"/>
+        <circle cx="1507" cy="748" r="5" fill="#ffd54f"/>`;
+      /* la valla del recinto cierra el patio por la derecha: dos cipreses y unas matas
+         rellenan el trecho que va del edificio a la calle, y la torre pasa por delante */
+      const cipres = (x, alto, c1, c2) => `<g>
+        <path d="M${x} 798 Q${x - 21} 700 ${x - 12} ${alto + 84} Q${x - 6} ${alto + 20} ${x} ${alto} Q${x + 6} ${alto + 20} ${x + 12} ${alto + 84} Q${x + 21} 700 ${x} 798 Z" fill="${c1}"/>
+        <path d="M${x} 780 Q${x - 11} 700 ${x - 6} ${alto + 96} Q${x - 2} ${alto + 40} ${x} ${alto + 22} Z" fill="${c2}" opacity=".75"/>
+        <ellipse cx="${x}" cy="798" rx="26" ry="8" fill="rgba(0,0,0,.14)"/></g>`;
+      s += cipres(1600, 520, "#3f7a4a", "#5c9a5c") + cipres(1774, 566, "#38714a", "#569159");
+      s += `<rect x="1566" y="646" width="238" height="152" fill="url(#bmbXMalla)" opacity=".8"/>
+        <rect x="1566" y="646" width="238" height="8" rx="4" fill="#90a4ae"/>
+        <rect x="1566" y="720" width="238" height="5" rx="2" fill="#90a4ae" opacity=".8"/>
+        ${[1566, 1645, 1724, 1796].map(px => `<rect x="${px}" y="640" width="9" height="158" rx="4" fill="#78909c"/>`).join("")}
+        <rect x="1560" y="792" width="250" height="10" rx="4" fill="#b0bec5"/>`;
+      const matap = (x, y, k, c) => `<g transform="translate(${x} ${y}) scale(${k})">
+        <ellipse cx="-17" rx="23" ry="16" fill="${c}"/><ellipse cx="16" cy="-3" rx="25" ry="18" fill="${c}"/><ellipse cy="-13" rx="21" ry="15" fill="${c}"/></g>`;
+      s += matap(1592, 796, .9, "#4c8b3f") + matap(1770, 798, 1, "#417a36") + matap(1690, 800, .7, "#5d9b45");
       /* la torre de prácticas: el icono es la cima, aquí baja el fuste hasta el suelo */
-      s += `<rect x="876" y="774" width="88" height="28" rx="5" fill="#8d6e63"/>
-        <rect x="900" y="466" width="40" height="310" fill="#bcaaa4" stroke="#8d6e63" stroke-width="2.4"/>
-        ${[506, 550, 594, 638].map(y => `<rect x="906" y="${y}" width="11" height="14" rx="2" fill="#ffe082" stroke="#8d6e63" stroke-width="1.4"/><rect x="923" y="${y}" width="11" height="14" rx="2" fill="#ffe082" stroke="#8d6e63" stroke-width="1.4"/>`).join("")}
-        <rect x="906" y="692" width="28" height="82" rx="4" fill="#8d6e63"/><circle cx="928" cy="734" r="3.4" fill="#ffe082"/>
-        <path d="M950 410 Q972 546 956 700" stroke="#e65100" stroke-width="4" fill="none" stroke-linecap="round"/>`;
+      s += `<rect x="1636" y="774" width="108" height="28" rx="5" fill="#8d6e63"/>
+        <rect x="1660" y="466" width="60" height="310" fill="#bcaaa4" stroke="#8d6e63" stroke-width="2.4"/>
+        ${[506, 550, 594, 638].map(y => `<rect x="1668" y="${y}" width="14" height="16" rx="2" fill="#ffe082" stroke="#8d6e63" stroke-width="1.4"/><rect x="1696" y="${y}" width="14" height="16" rx="2" fill="#ffe082" stroke="#8d6e63" stroke-width="1.4"/>`).join("")}
+        <rect x="1666" y="692" width="30" height="84" rx="4" fill="#8d6e63"/><circle cx="1690" cy="734" r="3.4" fill="#ffe082"/>
+        <path d="M1734 470 Q1760 606 1742 700" stroke="#e65100" stroke-width="4" fill="none" stroke-linecap="round"/>`;
       /* el cartel de la entrada, a la izquierda del patio */
       s += `<rect x="26" y="628" width="106" height="86" rx="10" fill="#c62828" stroke="#fff8e1" stroke-width="6"/>
         <path d="M79 646 L106 655 Q106 678 79 690 Q52 678 52 655 Z" fill="#fff8e1"/>
@@ -614,16 +668,50 @@ Object.assign(THEMES.bomberos.content, {
         <rect x="44" y="712" width="10" height="84" fill="#90a4ae"/><rect x="104" y="712" width="10" height="84" fill="#90a4ae"/>
         <ellipse cx="79" cy="798" rx="56" ry="9" fill="rgba(0,0,0,.14)"/>`;
       /* sombras que asientan los puntos del patio, y los conos de siempre */
-      s += `<ellipse cx="286" cy="800" rx="96" ry="15" fill="rgba(0,0,0,.16)"/>
-        <ellipse cx="420" cy="890" rx="44" ry="11" fill="rgba(0,0,0,.14)"/>
-        <ellipse cx="560" cy="838" rx="36" ry="9" fill="rgba(0,0,0,.13)"/>
-        <ellipse cx="700" cy="760" rx="38" ry="9" fill="rgba(0,0,0,.10)"/>`;
+      s += `<ellipse cx="286" cy="798" rx="102" ry="16" fill="rgba(0,0,0,.16)"/>
+        <ellipse cx="540" cy="900" rx="46" ry="12" fill="rgba(0,0,0,.14)"/>
+        <ellipse cx="770" cy="848" rx="38" ry="10" fill="rgba(0,0,0,.13)"/>`;
       const cono = (x, y, k) => `<g transform="translate(${x} ${y}) scale(${k})">
         <ellipse cy="3" rx="26" ry="8" fill="rgba(0,0,0,.14)"/>
         <path d="M-19 0 L-5 -44 L5 -44 L19 0 Z" fill="#fb8c00"/>
         <rect x="-13" y="-28" width="26" height="10" fill="#fff3e0"/>
         <rect x="-25" y="-2" width="50" height="10" rx="4" fill="#ef6c00"/></g>`;
-      s += cono(330, 968, .95) + cono(492, 936, 1.05) + cono(660, 906, .9) + cono(782, 962, 1);
+      s += cono(400, 968, .95) + cono(650, 936, 1.05) + cono(900, 906, .9) + cono(1120, 962, 1) + cono(1500, 930, .95);
+
+      /* ============ TRANSICIÓN: LA CALZADA QUE SALE DEL GARAJE ============ */
+      /* las dos rampas de salida se abren desde cada puerta hasta la calzada */
+      [[172, 390], [652, 870]].forEach(g => {
+        const x0 = g[0], x1 = g[1];
+        s += `<path d="M${x0} 800 H${x1} L${x1 + 56} 994 H${x0 - 56} Z" fill="rgba(160,170,178,.5)"/>
+          <path d="M${x0 + 40} 804 L${x0 - 6} 990 M${x1 - 40} 804 L${x1 + 6} 990" stroke="rgba(255,255,255,.55)" stroke-width="7" fill="none" stroke-linecap="round"/>`;
+      });
+      /* la salida del patio a la ciudad: el hormigón y la acera se peinan en una banda
+         de adoquines en diagonal, con losas que saltan de un lado a otro. Ninguna raya recta */
+      s += `<path d="M1802 794 L1860 968 L1926 968 L1866 794 Z" fill="#cfc6b1"/>`;
+      for (let i = 0; i < 5; i++) {
+        const jy = 798 + i * 34, jx = 1804 + i * 12;
+        s += `<path d="M${jx} ${jy} L${jx + 62} ${jy} L${jx + 66} ${jy + 30} L${jx + 4} ${jy + 30} Z" fill="${i % 2 ? "#d8cfba" : "#c2b9a4"}"/>`;
+      }
+      s += `<rect x="1762" y="826" width="46" height="30" rx="4" fill="#cfc6b1" opacity=".95"/>
+        <rect x="1752" y="904" width="54" height="32" rx="4" fill="#cfc6b1" opacity=".85"/>
+        <rect x="1888" y="806" width="44" height="28" rx="4" fill="#c6ccd0" opacity=".85"/>
+        <rect x="1908" y="878" width="48" height="30" rx="4" fill="#c6ccd0" opacity=".75"/>`;
+      /* el imbornal por donde se va el agua de la lluvia */
+      s += `<rect x="1856" y="938" width="72" height="20" rx="5" fill="#8b939a"/>
+        ${[0, 1, 2, 3].map(i => `<rect x="${1863 + i * 16}" y="942" width="8" height="12" rx="2" fill="#5c6469"/>`).join("")}`;
+      /* el vado rebajado por donde sale el camión, que empalma con el bordillo de la acera */
+      s += `<path d="M1638 997 L1712 981 L1868 975 L1868 996 Z" fill="#c9c1ae"/>`;
+      /* bolardos y la señal de no pasar, mirando a la calle */
+      const bolardo = (x, y) => `<g><ellipse cx="${x}" cy="${y}" rx="13" ry="5" fill="rgba(0,0,0,.18)"/>
+        <rect x="${x - 7}" y="${y - 44}" width="14" height="44" rx="6" fill="#eceff1"/>
+        <rect x="${x - 7}" y="${y - 32}" width="14" height="9" fill="#e53935"/>
+        <rect x="${x - 7}" y="${y - 16}" width="14" height="7" fill="#e53935"/></g>`;
+      s += bolardo(1808, 812) + bolardo(1828, 858) + bolardo(1858, 916);
+      s += `<rect x="1868" y="700" width="12" height="106" rx="5" fill="#90a4ae"/>
+        <ellipse cx="1874" cy="806" rx="20" ry="7" fill="rgba(0,0,0,.16)"/>
+        <circle cx="1874" cy="682" r="24" fill="#c62828" stroke="#fff8e1" stroke-width="5"/>
+        <rect x="1858" y="676" width="32" height="11" rx="4" fill="#fff8e1"/>
+        <rect x="1866" y="712" width="16" height="20" rx="5" fill="#f9a825"><animate attributeName="opacity" values=".45;1;.45" dur="1.4s" repeatCount="indefinite"/></rect>`;
 
       /* ============ CIUDAD ============ */
       /* edificios de distinta altura, con sus ventanas */
@@ -632,81 +720,129 @@ Object.assign(THEMES.bomberos.content, {
           <rect x="${x - 8}" y="${y - 13}" width="${w + 16}" height="17" rx="6" fill="rgba(0,0,0,.16)"/>`;
         for (let wy = y + 36; wy < 764; wy += 48) {
           for (let wx = x + 18; wx < x + w - 24; wx += 40) {
+            if (!libre(wx, wy, 24, 30)) continue;
             b += `<rect x="${wx}" y="${wy}" width="24" height="30" rx="3" fill="${colw}" opacity=".8"/>`;
           }
         }
         return b;
       };
-      s += [[1040, 512, 112, "#a9c1d6", "#fff3c4"], [1158, 446, 92, "#cdc0ad", "#ffe9a8"], [1250, 700, 106, "#b6c1ca", "#e8f2f8"],
-        [1362, 330, 160, "#b8c9b6", "#fff3c4"], [1528, 468, 122, "#d6bfca", "#ffe9a8"], [1656, 640, 152, "#cbc4b6", "#fff3c4"],
-        [1814, 498, 96, "#aec0d1", "#e8f2f8"]].map(b => edificio(b[0], b[1], b[2], b[3], b[4])).join("");
+      /* al principio muy juntos, y hacia la carretera se van espaciando */
+      s += [[1896, 512, 124, "#a9c1d6", "#fff3c4"], [2026, 446, 104, "#cdc0ad", "#ffe9a8"], [2136, 700, 118, "#b6c1ca", "#e8f2f8"],
+        [2312, 330, 178, "#b8c9b6", "#fff3c4"], [2512, 468, 126, "#d6bfca", "#ffe9a8"], [2650, 640, 158, "#cbc4b6", "#fff3c4"],
+        [2826, 498, 104, "#aec0d1", "#e8f2f8"]].map(b => edificio(b[0], b[1], b[2], b[3], b[4])).join("");
       /* remates de azotea: depósito y antena */
-      s += `<rect x="1180" y="416" width="40" height="30" rx="6" fill="#9e9384"/>
-        <path d="M1466 330 V286" stroke="#78909c" stroke-width="5"/><circle cx="1466" cy="282" r="6" fill="#90a4ae"/>
-        <rect x="1846" y="474" width="34" height="24" rx="5" fill="#8fa0b0"/>`;
+      s += `<rect x="2048" y="416" width="40" height="30" rx="6" fill="#9e9384"/>
+        <path d="M2400 330 V286" stroke="#78909c" stroke-width="5"/><circle cx="2400" cy="282" r="6" fill="#90a4ae"/>
+        <rect x="2856" y="474" width="34" height="24" rx="5" fill="#8fa0b0"/>`;
       /* la habitación abierta donde vive el detector de humo: techo, soporte y luz cálida */
-      s += `<rect x="1384" y="356" width="122" height="128" rx="6" fill="url(#bmbDentro)"/>
-        <rect x="1378" y="350" width="134" height="12" rx="5" fill="#eceff1"/>
-        <rect x="1392" y="372" width="106" height="106" fill="rgba(255,213,79,.14)"/>
-        <rect x="1434" y="366" width="12" height="28" rx="3" fill="#b0bec5"/>
-        <rect x="1394" y="450" width="98" height="34" rx="5" fill="#5d4037"/>
-        <rect x="1408" y="440" width="26" height="12" rx="3" fill="#8d6e63"/>`;
+      s += `<rect x="2390" y="356" width="122" height="128" rx="6" fill="url(#bmbXDentro)"/>
+        <rect x="2384" y="350" width="134" height="12" rx="5" fill="#eceff1"/>
+        <rect x="2398" y="372" width="106" height="106" fill="rgba(255,213,79,.14)"/>
+        <rect x="2440" y="366" width="12" height="28" rx="3" fill="#b0bec5"/>
+        <rect x="2400" y="450" width="98" height="34" rx="5" fill="#5d4037"/>
+        <rect x="2414" y="440" width="26" height="12" rx="3" fill="#8d6e63"/>`;
       /* el árbol grande del gatito: la copa se abre y la rama pasa justo por debajo del punto */
-      s += `<rect x="1258" y="856" width="86" height="30" rx="7" fill="#6d4c41"/>
-        <path d="M1276 878 Q1288 766 1284 664 L1318 664 Q1314 766 1326 878 Z" fill="#795548"/>
-        <path d="M1290 700 Q1242 674 1198 658 M1312 706 Q1362 684 1404 666" stroke="#6d4c41" stroke-width="12" fill="none" stroke-linecap="round"/>
-        <path d="M1218 686 Q1300 626 1388 680" stroke="#795548" stroke-width="17" fill="none" stroke-linecap="round"/>
-        <g fill="#43a047"><circle cx="1300" cy="438" r="112"/><circle cx="1186" cy="496" r="80"/><circle cx="1414" cy="490" r="84"/></g>
-        <g fill="#66bb6a" opacity=".8"><circle cx="1252" cy="384" r="68"/><circle cx="1356" cy="388" r="72"/><circle cx="1300" cy="346" r="54"/></g>
-        <g fill="#2e7d32" opacity=".5"><circle cx="1172" cy="554" r="40"/><circle cx="1430" cy="548" r="38"/>
-        <circle cx="1210" cy="678" r="27"/><circle cx="1394" cy="670" r="25"/></g>`;
-      /* farolas de la calle */
+      s += `<rect x="2168" y="856" width="86" height="30" rx="7" fill="#6d4c41"/>
+        <path d="M2186 878 Q2198 780 2194 690 L2228 690 Q2224 780 2236 878 Z" fill="#795548"/>
+        <path d="M2200 722 Q2152 696 2108 680 M2222 728 Q2272 706 2314 688" stroke="#6d4c41" stroke-width="12" fill="none" stroke-linecap="round"/>
+        <path d="M2124 690 Q2210 630 2298 684" stroke="#795548" stroke-width="18" fill="none" stroke-linecap="round"/>
+        <g fill="#43a047"><circle cx="2210" cy="438" r="112"/><circle cx="2096" cy="496" r="80"/><circle cx="2324" cy="490" r="84"/></g>
+        <g fill="#66bb6a" opacity=".8"><circle cx="2162" cy="384" r="68"/><circle cx="2266" cy="388" r="72"/><circle cx="2210" cy="346" r="54"/></g>
+        <g fill="#2e7d32" opacity=".5"><circle cx="2082" cy="554" r="40"/><circle cx="2340" cy="548" r="38"/>
+        <circle cx="2120" cy="682" r="27"/><circle cx="2304" cy="674" r="25"/></g>`;
+      /* farolas de la calle: la última es la de 2860, donde acaba la acera pintada.
+         Más a la derecha empieza la tierra, que se dibuja después y enterraría el pie */
       const farola = (x, base) => `<g>
         <ellipse cx="${x}" cy="${base}" rx="21" ry="8" fill="rgba(0,0,0,.16)"/>
         <rect x="${x - 7}" y="${base - 252}" width="14" height="252" rx="6" fill="#546e7a"/>
         <path d="M${x} ${base - 250} q0 -32 44 -30" stroke="#546e7a" stroke-width="10" fill="none" stroke-linecap="round"/>
         <path d="M${x + 28} ${base - 280} h34 l-9 19 h-17 Z" fill="#78909c"/>
         <ellipse cx="${x + 45}" cy="${base - 258}" rx="16" ry="8" fill="#fff3c4"><animate attributeName="opacity" values=".6;1;.6" dur="5.4s" repeatCount="indefinite"/></ellipse></g>`;
-      s += farola(1078, 906) + farola(1362, 900) + farola(1642, 896) + farola(1866, 902);
-      /* la centralita: su caseta, la antena que parpadea y el mostrador */
-      s += `<rect x="1534" y="686" width="116" height="112" rx="9" fill="#cfd8dc" stroke="#90a4ae" stroke-width="4"/>
-        <rect x="1546" y="700" width="92" height="34" rx="5" fill="#37474f" opacity=".65"/>
-        <rect x="1588" y="646" width="7" height="42" fill="#78909c"/>
-        <circle cx="1591" cy="642" r="8" fill="#42a5f5"><animate attributeName="opacity" values="1;.25;1" dur="1.8s" repeatCount="indefinite"/></circle>
-        <rect x="1524" y="792" width="136" height="14" rx="6" fill="#b0bec5"/>`;
-      /* la plaza del punto de encuentro: círculo pintado, mástil y bancos */
-      s += `<circle cx="1730" cy="886" r="66" fill="rgba(102,187,106,.22)"/>
-        <circle cx="1730" cy="886" r="66" fill="none" stroke="#43a047" stroke-width="7" opacity=".75"/>
-        <rect x="1726" y="578" width="8" height="290" rx="4" fill="#78909c"/>
-        <ellipse cx="1730" cy="872" rx="26" ry="9" fill="#90a4ae"/>
-        ${[[1568, 930], [1812, 916]].map(b => `<g><rect x="${b[0]}" y="${b[1]}" width="76" height="12" rx="5" fill="#a1887f"/>
+      s += farola(1900, 906) + farola(2320, 900) + farola(2600, 896) + farola(2860, 902);
+      /* el hidrante se asienta en su acera */
+      s += `<ellipse cx="1970" cy="858" rx="36" ry="11" fill="rgba(0,0,0,.14)"/>
+        <rect x="1938" y="864" width="64" height="10" rx="5" fill="#b0bec5" opacity=".7"/>`;
+      /* la centralita: su caseta, la antena que parpadea y el mostrador bajo el icono */
+      s += `<rect x="2632" y="686" width="116" height="112" rx="9" fill="#cfd8dc" stroke="#90a4ae" stroke-width="4"/>
+        <rect x="2644" y="700" width="92" height="34" rx="5" fill="#37474f" opacity=".65"/>
+        <rect x="2686" y="646" width="7" height="42" fill="#78909c"/>
+        <circle cx="2689" cy="642" r="8" fill="#42a5f5"><animate attributeName="opacity" values="1;.25;1" dur="1.8s" repeatCount="indefinite"/></circle>
+        <rect x="2622" y="792" width="136" height="14" rx="6" fill="#b0bec5"/>`;
+      /* la plaza del punto de encuentro: mástil, círculo pintado y bancos.
+         Los dos bancos se sientan en la acera, a la izquierda del círculo pintado:
+         las patas acaban por encima del bordillo (y 972) y ninguno pisa el corro
+         donde se reúne la gente en un simulacro */
+      s += `<circle cx="2930" cy="898" r="66" fill="rgba(102,187,106,.22)"/>
+        <circle cx="2930" cy="898" r="66" fill="none" stroke="#43a047" stroke-width="7" opacity=".75"/>
+        <rect x="2926" y="618" width="8" height="266" rx="4" fill="#78909c"/>
+        <ellipse cx="2930" cy="884" rx="26" ry="9" fill="#90a4ae"/>
+        ${[[2588, 930], [2712, 936]].map(b => `<g><ellipse cx="${b[0] + 38}" cy="${b[1] + 30}" rx="46" ry="5" fill="rgba(0,0,0,.13)"/>
+          <rect x="${b[0]}" y="${b[1]}" width="76" height="12" rx="5" fill="#a1887f"/>
           <rect x="${b[0]}" y="${b[1] - 24}" width="76" height="10" rx="5" fill="#a1887f"/>
           <rect x="${b[0] + 6}" y="${b[1] + 12}" width="8" height="20" fill="#78909c"/><rect x="${b[0] + 62}" y="${b[1] + 12}" width="8" height="20" fill="#78909c"/></g>`).join("")}
-        ${[[1496, 858], [1870, 852]].map(j => `<g><rect x="${j[0]}" y="${j[1]}" width="52" height="40" rx="7" fill="#bcaaa4"/>
+        ${[[2560, 858], [2778, 838]].map(j => `<g><rect x="${j[0]}" y="${j[1]}" width="52" height="40" rx="7" fill="#bcaaa4"/>
           <circle cx="${j[0] + 14}" cy="${j[1] - 8}" r="17" fill="#66bb6a"/><circle cx="${j[0] + 38}" cy="${j[1] - 12}" r="19" fill="#43a047"/></g>`).join("")}`;
-      /* sombras de los puntos de la calle */
-      s += `<ellipse cx="1160" cy="838" rx="34" ry="10" fill="rgba(0,0,0,.14)"/>`;
+
+      /* ============ TRANSICIÓN: LA CARRETERA Y LOS PRIMEROS PINOS ============ */
+      /* las últimas casitas, más bajas y más separadas: el pueblo se deshace */
+      [[3060, 664, 96, "#e3d3bd"], [3200, 700, 84, "#d9c9b2"]].forEach(h => {
+        s += `<rect x="${h[0]}" y="${h[1]}" width="${h[2]}" height="${820 - h[1]}" rx="6" fill="${h[3]}" opacity=".9"/>
+          <path d="M${h[0] - 14} ${h[1]} L${h[0] + h[2] / 2} ${h[1] - 42} L${h[0] + h[2] + 14} ${h[1]} Z" fill="#c98d6a" opacity=".9"/>
+          <rect x="${h[0] + 18}" y="${h[1] + 30}" width="24" height="30" rx="4" fill="rgba(255,255,255,.6)"/>
+          <rect x="${h[0] + h[2] - 42}" y="${h[1] + 30}" width="24" height="30" rx="4" fill="rgba(255,255,255,.6)"/>`;
+      });
+      /* la calzada se va quedando sin pintura: las últimas rayas se borran antes de la tierra */
+      s += `<path d="M2946 1052 H3006 M3038 1050 H3078" stroke="#eceff1" stroke-width="6" opacity=".45" fill="none"/>`;
 
       /* ============ BOSQUE ============ */
-      /* prado y loma: la torre de vigilancia se apoya en lo alto */
-      s += `<path d="M1846 1100 L1858 902 Q2040 826 2240 866 Q2420 902 2600 806 L2600 1100 Z" fill="url(#bmbPrado)"/>
-        <path d="M2060 830 Q2262 520 2470 812 L2470 900 L2060 900 Z" fill="#7cb342"/>
-        <path d="M2124 800 Q2262 600 2400 786" stroke="#8bc34a" stroke-width="10" fill="none" opacity=".7"/>`;
-      /* el camino de tierra que cruza el bosque */
-      s += `<path d="M1852 1096 Q2080 1018 2296 946 Q2452 892 2626 846" stroke="#c9a56a" stroke-width="54" fill="none" stroke-linecap="round" opacity=".92"/>
-        <path d="M1860 1080 Q2086 1004 2298 932 Q2454 878 2624 834" stroke="#dcbd8c" stroke-width="18" fill="none" stroke-linecap="round" opacity=".55"/>
-        ${[[1980, 1024], [2168, 964], [2374, 900], [2530, 856]].map(p => `<ellipse cx="${p[0]}" cy="${p[1]}" rx="9" ry="5" fill="rgba(120,90,55,.35)"/>`).join("")}`;
+      /* prado y lomas: la torre de vigilancia se apoya en lo alto de la suya */
+      s += `<path d="M3016 1100 L3040 902 Q3320 820 3600 866 Q3880 906 4200 800 L4200 1100 Z" fill="url(#bmbXPrado)"/>
+        <path d="M3160 872 Q3400 606 3640 866 L3640 940 L3160 940 Z" fill="#7cb342"/>
+        <path d="M3560 880 Q3740 740 3920 872 L3920 946 L3560 946 Z" fill="#7cb342"/>
+        <path d="M3220 850 Q3400 660 3580 848" stroke="#8bc34a" stroke-width="10" fill="none" opacity=".7"/>
+        <path d="M3610 858 Q3740 776 3872 852" stroke="#8bc34a" stroke-width="9" fill="none" opacity=".7"/>`;
+
+      /* ============ COSTURA CIUDAD-BOSQUE: el asfalto se deshace en camino de tierra ============ */
+      /* el asfalto asoma un poco más, con el borde mordido, y se desmiga en grava */
+      s += `<path d="M2900 1100 L2900 992 Q2962 984 3004 1012 Q3042 1040 3038 1078 Q3037 1092 3044 1100 Z" fill="url(#bmbXAsfalto)"/>
+        <path d="M2900 986 Q2972 974 3020 1004 Q3072 1038 3070 1092 L3070 1100 L3044 1100 Q3046 1042 3000 1014 Q2958 990 2900 998 Z" fill="#b9ae9a" opacity=".85"/>
+        ${[[2924, 1010], [2966, 1032], [3004, 1058], [2946, 1076], [3024, 1090], [2908, 1050]]
+          .map(g => `<ellipse cx="${g[0]}" cy="${g[1]}" rx="7" ry="3.4" fill="rgba(205,184,150,.3)"/>`).join("")}`;
+      /* el camino de tierra sale de la calzada y sube hasta juntarse con la explanada */
+      s += `<path d="M2946 1100 Q2964 992 3000 942 Q3028 902 3080 874 L3116 906 Q3058 944 3026 992 Q2998 1032 3004 1100 Z" fill="url(#bmbXCamino)"/>`;
+      /* la explanada de tierra donde acaban la calle y las últimas casas: bordes mordidos */
+      s += `<path d="M3014 806 Q3086 792 3190 796 Q3300 800 3372 824 Q3406 838 3384 862 Q3300 842 3204 856 Q3100 872 3040 918 Q3012 950 3004 900 Q2988 866 3022 848 Q2998 826 3014 806 Z" fill="#cdb896"/>
+        <path d="M3030 830 Q3140 812 3260 826" stroke="#bda480" stroke-width="7" fill="none" opacity=".7" stroke-linecap="round"/>
+        ${[[3062, 872], [3148, 852], [3236, 842], [3320, 848], [3010, 902]]
+          .map(g => `<ellipse cx="${g[0]}" cy="${g[1]}" rx="11" ry="5" fill="rgba(120,90,55,.28)"/>`).join("")}`;
+      /* losas sueltas y matojos: la acera no acaba en línea recta, se deshilacha.
+         Cada losa va a caballo del filo de la tierra (media losa en el enlosado y
+         media sobre el terroso), que es lo que las hace leer como pavimento que se
+         descuelga y no como manchas sueltas en mitad de la acera */
+      s += `<g fill="#d9d1bd" opacity=".75"><rect x="3006" y="868" width="44" height="24" rx="4"/>
+        <rect x="2990" y="922" width="46" height="22" rx="4" opacity=".85"/>
+        <rect x="2998" y="810" width="38" height="20" rx="4" opacity=".8"/></g>
+        ${[[2996, 962], [3040, 934], [3096, 900], [3168, 880], [3268, 872], [2958, 996], [3010, 898]]
+          .map(t => `<path d="M${t[0] - 8} ${t[1]} q-6 -11 -11 -16 M${t[0] - 3} ${t[1]} q-3 -14 -1 -20 M${t[0] + 2} ${t[1]} q1 -15 4 -21 M${t[0] + 7} ${t[1]} q6 -12 11 -16" stroke="#4c8b3f" stroke-width="3" fill="none" stroke-linecap="round" opacity=".7"/>`).join("")}`;
+      /* la pista que sigue hasta el lago y se pierde tras la torre camino de la bombera */
+      s += `<path d="M3392 846 Q3478 806 3566 798 Q3668 788 3762 806 Q3872 828 3962 850" stroke="#c9a56a" stroke-width="21" fill="none" stroke-linecap="round" opacity=".9"/>
+        <path d="M3400 844 Q3480 810 3566 802 Q3666 793 3760 810 Q3868 831 3956 852" stroke="url(#bmbXTierra)" stroke-width="8" fill="none" stroke-linecap="round" opacity=".55"/>`;
+      /* las patas de la torre de vigilancia, clavadas en su loma */
+      s += `<g stroke="#6d4c41" stroke-width="9" fill="none" stroke-linecap="round">
+        <path d="M3712 672 L3688 812 M3768 672 L3792 812"/>
+        <path d="M3696 744 H3784 M3690 782 H3790"/></g>
+        <ellipse cx="3740" cy="816" rx="60" ry="12" fill="rgba(0,0,0,.14)"/>`;
       /* el lago de recarga: orilla de arena, agua irregular, reflejo, ondas y un pantalán */
-      s += `<path d="M1908 918 Q1928 848 2046 828 Q2168 808 2266 848 Q2320 874 2306 924 Q2292 978 2176 1008 Q2056 1034 1962 1000 Q1898 972 1908 918 Z" fill="#cfbd92" opacity=".65"/>
-        <path d="M1928 918 Q1948 864 2050 846 Q2160 828 2250 864 Q2300 886 2288 926 Q2276 972 2172 996 Q2062 1020 1978 990 Q1920 964 1928 918 Z" fill="url(#bmbLago)"/>
-        <ellipse cx="2010" cy="898" rx="54" ry="14" fill="rgba(255,255,255,.4)"/>
-        <ellipse cx="2186" cy="952" rx="40" ry="10" fill="rgba(255,255,255,.22)"/>
-        ${[[2058, 962, 0], [2196, 908, 1.6], [2124, 986, 3.2]].map(o => `<ellipse cx="${o[0]}" cy="${o[1]}" rx="6" ry="2" fill="none" stroke="#e1f5fe" stroke-width="3">
+      s += `<path d="M3300 930 Q3324 848 3452 826 Q3586 804 3694 850 Q3752 878 3736 934 Q3720 994 3592 1028 Q3462 1056 3358 1018 Q3288 986 3300 930 Z" fill="#cfbd92" opacity=".65"/>
+        <path d="M3322 930 Q3346 866 3458 844 Q3578 824 3676 866 Q3730 890 3716 936 Q3702 986 3588 1014 Q3468 1040 3376 1006 Q3312 978 3322 930 Z" fill="url(#bmbXLago)"/>
+        <ellipse cx="3410" cy="912" rx="58" ry="15" fill="rgba(255,255,255,.4)"/>
+        <ellipse cx="3600" cy="966" rx="44" ry="11" fill="rgba(255,255,255,.22)"/>
+        ${[[3466, 976, 0], [3616, 922, 1.6], [3538, 1000, 3.2]].map(o => `<ellipse cx="${o[0]}" cy="${o[1]}" rx="6" ry="2" fill="none" stroke="#e1f5fe" stroke-width="3">
           <animate attributeName="rx" values="6;46;6" dur="5s" begin="${o[2]}s" repeatCount="indefinite"/>
           <animate attributeName="ry" values="2;16;2" dur="5s" begin="${o[2]}s" repeatCount="indefinite"/>
           <animate attributeName="opacity" values=".8;0;.8" dur="5s" begin="${o[2]}s" repeatCount="indefinite"/></ellipse>`).join("")}
-        <g fill="#a1887f"><rect x="1960" y="898" width="92" height="11" rx="4"/><rect x="1972" y="909" width="8" height="24"/><rect x="2034" y="909" width="8" height="24"/></g>
-        ${[[1938, 986], [1960, 998], [2268, 946], [2290, 962]].map(j => `<g><path d="M${j[0]} ${j[1]} q-4 -34 2 -52" stroke="#558b2f" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <g fill="#a1887f"><rect x="3378" y="908" width="96" height="11" rx="4"/><rect x="3390" y="919" width="8" height="24"/><rect x="3456" y="919" width="8" height="24"/></g>
+        ${[[3336, 1000], [3358, 1012], [3696, 950], [3718, 966]].map(j => `<g><path d="M${j[0]} ${j[1]} q-4 -34 2 -52" stroke="#558b2f" stroke-width="5" fill="none" stroke-linecap="round"/>
           <rect x="${j[0] - 2}" y="${j[1] - 68}" width="8" height="18" rx="4" fill="#8d6e63"/></g>`).join("")}`;
       /* pinos de distintos verdes: los del fondo pequeños y suaves, los de delante grandes */
       const verdes = [["#2e7d32", "#388e3c", "#4caf50"], ["#1b5e20", "#2e7d32", "#43a047"], ["#33691e", "#43a047", "#66bb6a"]];
@@ -715,28 +851,36 @@ Object.assign(THEMES.bomberos.content, {
         <path d="M-54 -22 L0 -104 L54 -22 Z" fill="${verdes[v][0]}"/>
         <path d="M-44 -64 L0 -146 L44 -64 Z" fill="${verdes[v][1]}"/>
         <path d="M-32 -106 L0 -182 L32 -106 Z" fill="${verdes[v][2]}"/></g>`;
-      s += [[1912, 796, .52, .55, 0], [1968, 778, .48, .5, 2], [2036, 768, .55, .55, 1], [2158, 754, .58, .6, 0],
-        [2334, 746, .5, .55, 2], [2412, 736, .46, .5, 1], [2500, 726, .54, .55, 0], [2576, 750, .5, .5, 2],
-        [1892, 892, .9, .95, 1], [2332, 892, .82, .95, 0], [2566, 872, .86, .95, 2],
-        [1884, 1088, 1.16, 1, 1], [2270, 1096, 1.05, 1, 0], [2596, 1024, 1.1, 1, 2]]
+      /* los primeros pinos ya aparecen entre las últimas casas: la transición al bosque */
+      s += pino(2988, 826, .36, .45, 0) + pino(3130, 838, .42, .5, 2) + pino(3258, 848, .48, .55, 1);
+      /* los grandes van a los lados del camino, nunca encima: la costura se tiene que ver.
+         El pino joven (3108, 992) se planta en el prado, en el hombro derecho de la pista,
+         fuera de las roderas y lejos de las briznas de la linde */
+      s += [[3062, 812, .5, .5, 0], [3186, 796, .46, .5, 2], [3340, 786, .55, .55, 1], [3480, 776, .58, .6, 0],
+        [3640, 766, .5, .55, 2], [3800, 752, .46, .5, 1], [3940, 742, .54, .55, 0], [4100, 758, .5, .5, 2],
+        [3108, 992, .45, .9, 1], [3312, 942, .82, .95, 0], [3960, 900, .86, .95, 2], [4180, 872, .8, .95, 1],
+        [3290, 1096, 1.12, 1, 1], [3660, 1096, 1.05, 1, 0], [4190, 1024, 1.1, 1, 2]]
         .map(p => pino(p[0], p[1], p[2], p[3], p[4])).join("");
       /* matas, arbustos y piedrecitas sueltas */
       const mata = (x, y, k, c) => `<g transform="translate(${x} ${y}) scale(${k})">
         <ellipse cx="-19" rx="25" ry="18" fill="${c}"/><ellipse cx="17" cy="-4" rx="27" ry="20" fill="${c}"/><ellipse cy="-15" rx="23" ry="17" fill="${c}"/></g>`;
-      s += mata(1878, 992, 1, "#4c8b3f") + mata(1872, 1064, 1.1, "#417a36") + mata(2016, 792, .7, "#5d9b45")
-        + mata(2178, 806, .8, "#4c8b3f") + mata(2348, 822, .75, "#66a24a") + mata(2382, 1030, 1.05, "#417a36")
-        + mata(2506, 972, .9, "#4c8b3f") + mata(2596, 1042, 1, "#417a36") + mata(2242, 780, .6, "#6fa84e");
-      s += [[2058, 812, 13], [2306, 856, 11], [2520, 812, 12], [2160, 1058, 15]].map(p =>
-        `<ellipse cx="${p[0]}" cy="${p[1]}" rx="${p[2]}" ry="${(p[2] * .62).toFixed(0)}" fill="#9e9384"/>`).join("");
-      s += [[1990, 862], [2350, 900], [2470, 892], [2560, 1006]].map(g =>
-        `<path d="M${g[0]} ${g[1]} q-8 -18 -14 -24 M${g[0]} ${g[1]} q0 -20 3 -28 M${g[0]} ${g[1]} q9 -17 17 -22" stroke="#3f7a2a" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7"/>`).join("");
+      s += mata(3122, 1054, 1, "#4c8b3f") + mata(3216, 1092, 1.1, "#417a36") + mata(3220, 800, .7, "#5d9b45")
+        + mata(3420, 794, .8, "#4c8b3f") + mata(3640, 806, .75, "#66a24a") + mata(3560, 1046, 1.05, "#417a36")
+        + mata(3900, 966, .9, "#4c8b3f") + mata(4160, 1042, 1, "#417a36") + mata(3760, 776, .6, "#6fa84e")
+        + mata(4080, 880, .85, "#4c8b3f");
+      s += [[3280, 818], [3628, 890], [3990, 812], [3480, 1064], [4140, 764]].map(p =>
+        `<ellipse cx="${p[0]}" cy="${p[1]}" rx="${p[2] || 13}" ry="${((p[2] || 13) * .62).toFixed(0)}" fill="#9e9384"/>`).join("");
+      /* briznas de hierba: finas y en abanico, para que no parezcan marcas sueltas */
+      s += [[3200, 872], [3860, 900], [3980, 878], [4120, 1006], [3520, 776], [4060, 946]].map(g =>
+        `<path d="M${g[0] - 9} ${g[1]} q-8 -12 -13 -18 M${g[0] - 4} ${g[1]} q-4 -16 -2 -24 M${g[0] + 1} ${g[1]} q1 -18 4 -26 M${g[0] + 6} ${g[1]} q6 -15 12 -20 M${g[0] + 11} ${g[1]} q7 -10 13 -13" stroke="#3f7a2a" stroke-width="3" fill="none" stroke-linecap="round" opacity=".6"/>`).join("");
       /* la bombera forestal pisa un claro del camino */
-      s += `<ellipse cx="2440" cy="792" rx="52" ry="14" fill="rgba(0,0,0,.14)"/>`;
+      s += `<ellipse cx="4020" cy="834" rx="54" ry="15" fill="rgba(0,0,0,.14)"/>
+        <path d="M3956 852 Q4020 872 4104 846 Q4160 830 4200 826" stroke="#c9a56a" stroke-width="12" fill="none" opacity=".6" stroke-linecap="round"/>`;
       /* humo lejano, muy leve y tranquilo, tras las montañas */
-      s += `<g fill="#cfd8dc" opacity=".3">${[[2448, 560, 15], [2438, 526, 17], [2452, 492, 18], [2442, 458, 19], [2456, 424, 20], [2448, 390, 18]]
+      s += `<g fill="#cfd8dc" opacity=".3">${[[4082, 560, 15], [4072, 526, 17], [4086, 492, 18], [4076, 458, 19], [4090, 424, 20], [4082, 390, 18]]
         .map((h, i) => `<circle cx="${h[0]}" cy="${h[1]}" r="${h[2]}" opacity="${(0.92 - i * 0.12).toFixed(2)}">
           <animate attributeName="r" values="${h[2]};${h[2] + 5};${h[2]}" dur="${10 + i}s" repeatCount="indefinite"/></circle>`).join("")}</g>`;
-      return decoSvg(s, 2600);
+      return decoSvg(s, 4200);
     }
   },
 

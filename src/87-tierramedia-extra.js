@@ -6,10 +6,11 @@
    la aldea de Bree con su puerta y farolillos, el Abismo de
    Helm en herradura contra la montaña, y Rhosgobel, la casa
    de Radagast con sus animalillos.
-   No hace falta ampliar el ancho (2600) ni recolocar nada:
-   las "tierras oscuras" no están apelotonadas (mínimo 206 px
-   entre POIs) y los cuatro huecos elegidos respetan más de
-   120 px con todos los lugares existentes.
+   El mapa mide 4200 px de ancho y se recorre con scroll: cada
+   uno de los cuatro va en el hueco que le toca de la ruta, con
+   más de 200 px de aire respecto a los lugares vecinos. Estas
+   coordenadas son las buenas: el escenario de 69a las lee para
+   reservar su sitio y para dibujarles debajo un apoyo.
    ============================================================ */
 
 (function () {
@@ -21,7 +22,7 @@
 
     /* La Montaña Solitaria: pico gris con la puerta enana
        escondida y Smaug dormido sobre sus monedas, roncando */
-    { emoji: "🐉", cat: "montanas", x: 1430, y: 280, size: 2, w: 132, h: 118, vb: "0 0 148 130", art: `
+    { emoji: "🐉", cat: "montanas", x: 2020, y: 430, size: 2, w: 132, h: 118, vb: "0 0 148 130", art: `
         <defs>
           <linearGradient id="tmxErebor" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8fa3ad"/><stop offset="100%" stop-color="#40525c"/></linearGradient>
           <linearGradient id="tmxSmaug" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ef5350"/><stop offset="100%" stop-color="#b71c1c"/></linearGradient>
@@ -54,7 +55,7 @@
 
     /* Bree: aldea de casitas con tejados, la gran puerta del
        muro con su ventanilla y farolillos calentitos */
-    { emoji: "🏘️", cat: "comarca", x: 700, y: 630, w: 118, h: 92, vb: "0 0 130 100", art: `
+    { emoji: "🏘️", cat: "comarca", x: 490, y: 790, w: 118, h: 92, vb: "0 0 130 100", art: `
         <defs><linearGradient id="tmxBree" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8d6e63"/><stop offset="100%" stop-color="#5d4037"/></linearGradient></defs>
         <path d="M0 78 Q65 58 130 78 L130 100 L0 100 Z" fill="#7a9b4e"/>
         <rect x="18" y="42" width="26" height="30" rx="2" fill="#efe0c4"/>
@@ -88,7 +89,7 @@
     /* El Abismo de Helm: la fortaleza blanca en herradura
        abrazada a la montaña, con su muro, la torre del cuerno
        y el arroyo que sale por debajo */
-    { emoji: "🛡️", cat: "reinos", x: 1620, y: 760, w: 136, h: 100, vb: "0 0 150 112", art: `
+    { emoji: "🛡️", cat: "reinos", x: 2550, y: 700, w: 136, h: 100, vb: "0 0 150 112", art: `
         <defs>
           <linearGradient id="tmxHelmRoca" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#90a4ae"/><stop offset="100%" stop-color="#4b636e"/></linearGradient>
           <linearGradient id="tmxHelm" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#cfd8dc"/></linearGradient>
@@ -114,7 +115,7 @@
 
     /* Rhosgobel: la casita torcida de Radagast junto a un gran
        árbol, con erizo, pájaro, conejo, setas y su sombrero */
-    { emoji: "🦔", cat: "montanas", x: 1180, y: 730, w: 106, h: 92, vb: "0 0 120 104", art: `
+    { emoji: "🦔", cat: "montanas", x: 1240, y: 640, w: 106, h: 92, vb: "0 0 120 104", art: `
         <defs><radialGradient id="tmxRhos" cx="45%" cy="35%"><stop offset="0%" stop-color="#9ccc65"/><stop offset="100%" stop-color="#33691e"/></radialGradient></defs>
         <path d="M0 96 Q60 88 120 96 L120 104 L0 104 Z" fill="#4a7028"/>
         <path d="M78 96 Q82 66 78 44 L94 44 Q92 66 98 96 Z" fill="#6d4c41"/>

@@ -68,22 +68,32 @@
       <path d="M44 41 Q55 51 66 41" stroke="#7a3413" stroke-width="5" fill="none" stroke-linecap="round"/>
       <path d="M76 18 q7 3 8 10 M82 10 q10 4 11 14" stroke="rgba(255,255,255,.55)" stroke-width="2.2" fill="none" stroke-linecap="round"/>`, "0 0 105 115") },
 
-    /* Ceiba gigante: copa de paraguas y raíces de contrafuerte */
-    "🌳": { w: 165, h: 188, svg: am(`
-      <defs><linearGradient id="amCei" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#b7c2a5"/><stop offset="100%" stop-color="#7c8a6a"/></linearGradient></defs>
-      <circle cx="48" cy="54" r="34" fill="#2e7d32"/>
-      <circle cx="132" cy="54" r="34" fill="#2e7d32"/>
-      <circle cx="90" cy="32" r="42" fill="#388e3c"/>
-      <circle cx="62" cy="44" r="30" fill="#43a047"/>
-      <circle cx="118" cy="44" r="30" fill="#43a047"/>
-      <circle cx="90" cy="50" r="34" fill="#4caf50"/>
-      <circle cx="74" cy="26" r="10" fill="#66bb6a" opacity=".8"/><circle cx="112" cy="34" r="8" fill="#66bb6a" opacity=".8"/>
-      <path d="M80 76 L77 150 L103 150 L100 76 Z" fill="url(#amCei)"/>
-      <path d="M77 148 Q58 158 36 192 L79 192 Z" fill="#8a9b76"/>
-      <path d="M103 148 Q122 158 144 192 L101 192 Z" fill="#8a9b76"/>
-      <path d="M79 168 Q72 180 62 192 L84 192 Z" fill="#6f7f5c"/>
-      <path d="M101 168 Q108 180 118 192 L96 192 Z" fill="#6f7f5c"/>
-      <path d="M86 84 Q84 120 82 176 M95 84 Q97 120 99 176" stroke="rgba(0,0,0,.16)" stroke-width="3" fill="none"/>`, "0 0 180 200") },
+    /* Ceiba gigante: la copa de una ceiba de verdad es un paraguas mucho más
+       ancho que el tronco y casi plano por arriba, con las ramas horizontales.
+       Antes la copa medía poco más que el fuste y el árbol leía como una seta. */
+    "🌳": { w: 266, h: 188, svg: am(`
+      <defs><linearGradient id="amCei" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#9daa88"/><stop offset="100%" stop-color="#67714f"/></linearGradient></defs>
+      <g stroke="#7d8a68" stroke-width="8" fill="none" stroke-linecap="round">
+        <path d="M138 88 Q100 80 36 70"/><path d="M152 88 Q192 80 254 70"/>
+        <path d="M141 86 Q130 66 112 48"/><path d="M149 86 Q162 66 180 46"/></g>
+      <ellipse cx="145" cy="60" rx="137" ry="22" fill="#2e7d32"/>
+      <ellipse cx="78" cy="74" rx="34" ry="12" fill="#2e7d32"/>
+      <ellipse cx="212" cy="76" rx="30" ry="11" fill="#2e7d32"/>
+      <ellipse cx="16" cy="58" rx="18" ry="8" fill="#2e7d32"/><ellipse cx="274" cy="58" rx="16" ry="7" fill="#2e7d32"/>
+      <ellipse cx="70" cy="54" rx="56" ry="18" fill="#388e3c"/>
+      <ellipse cx="220" cy="54" rx="56" ry="18" fill="#388e3c"/>
+      <ellipse cx="145" cy="44" rx="100" ry="21" fill="#43a047"/>
+      <ellipse cx="95" cy="38" rx="48" ry="16" fill="#4caf50"/>
+      <ellipse cx="195" cy="38" rx="48" ry="16" fill="#4caf50"/>
+      <ellipse cx="145" cy="31" rx="56" ry="15" fill="#5cb860"/>
+      <ellipse cx="52" cy="46" rx="26" ry="10" fill="#66bb6a" opacity=".8"/>
+      <ellipse cx="240" cy="46" rx="24" ry="9" fill="#66bb6a" opacity=".8"/>
+      <ellipse cx="124" cy="24" rx="16" ry="7" fill="#66bb6a" opacity=".75"/>
+      <path d="M135 74 Q132 130 127 200 L163 200 Q158 130 155 74 Z" fill="url(#amCei)"/>
+      <path d="M141 84 Q138 130 133 194 M150 84 Q153 130 157 194" stroke="rgba(0,0,0,.14)" stroke-width="3" fill="none"/>
+      <path d="M145 88 Q145 140 145 196" stroke="rgba(255,255,255,.16)" stroke-width="4" fill="none"/>
+      <ellipse cx="131" cy="118" rx="7" ry="4" fill="#66bb6a" transform="rotate(-18 131 118)"/>
+      <ellipse cx="160" cy="150" rx="6" ry="3.4" fill="#4c9a3f" transform="rotate(14 160 150)"/>`, "0 0 290 200") },
 
     /* Orquídea rosa: cinco pétalos y su labelo con garganta amarilla */
     "🌸": { w: 44, h: 56, svg: am(`

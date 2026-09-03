@@ -299,15 +299,15 @@ Object.assign(THEMES.arboles.content, {
 
   /* ---------- MAPA DE EXPLORACIÓN ---------- */
   explore: {
-    width: 2600, height: 1100, stars: false,
-    bgCss: "radial-gradient(ellipse 40% 28% at 12% 12%, rgba(255,241,118,.45), transparent), linear-gradient(180deg,#aed9f5 0%,#d3ecc4 30%,#9ccc65 58%,#558b2f 80%,#33691e 100%)",
+    width: 4200, height: 1100, stars: false,
+    bgCss: "radial-gradient(ellipse 40% 28% at 12% 12%, rgba(255,241,118,.45), transparent), linear-gradient(90deg, rgba(226,240,250,0) 76%, rgba(226,240,250,.55) 92%, rgba(226,240,250,.8) 100%), linear-gradient(180deg,#aed9f5 0%,#d3ecc4 30%,#9ccc65 58%,#558b2f 80%,#33691e 100%)",
     cats: [
-      { id: "bosque", emoji: "🌲", x: 120, name: { es: "El bosque", ca: "El bosc", en: "The forest", cs: "Les", fr: "La forêt" } },
-      { id: "gigantes", emoji: "🌴", x: 1000, name: { es: "Los gigantes", ca: "Els gegants", en: "The giants", cs: "Obři", fr: "Les géants" } },
-      { id: "estaciones", emoji: "🍂", x: 1900, name: { es: "El año del árbol", ca: "L'any de l'arbre", en: "The tree's year", cs: "Rok stromu", fr: "L'année de l'arbre" } }
+      { id: "bosque", emoji: "🌲", x: 100, name: { es: "El bosque", ca: "El bosc", en: "The forest", cs: "Les", fr: "La forêt" } },
+      { id: "gigantes", emoji: "🌴", x: 1470, name: { es: "Los gigantes", ca: "Els gegants", en: "The giants", cs: "Obři", fr: "Les géants" } },
+      { id: "estaciones", emoji: "🍂", x: 2900, name: { es: "El año del árbol", ca: "L'any de l'arbre", en: "The tree's year", cs: "Rok stromu", fr: "L'année de l'arbre" } }
     ],
     pois: [
-      { cat: "bosque", emoji: "🌳", x: 190, y: 825, size: 2, iw: 120, ih: 130, svg: `<svg viewBox="0 0 120 130" width="100%" height="100%">
+      { cat: "bosque", emoji: "🌳", x: 200, y: 825, size: 2, iw: 120, ih: 130, svg: `<svg viewBox="0 0 120 130" width="100%" height="100%">
           <defs><radialGradient id="arRob" cx="35%" cy="30%" r="80%"><stop offset="0%" stop-color="#81c784"/><stop offset="100%" stop-color="#2e7d32"/></radialGradient></defs>
           <ellipse cx="60" cy="122" rx="46" ry="7" fill="#7cb342" opacity=".8"/>
           <path d="M55 60 L52 118 L68 118 L63 60 Z" fill="#6d4c41"/>
@@ -321,7 +321,7 @@ Object.assign(THEMES.arboles.content, {
         </svg>`,
         name: { es: "El roble", ca: "El roure", en: "The oak", cs: "Dub", fr: "Le chêne" },
         fact: { es: "El roble es un hotel del bosque: en uno solo viven cientos de bichitos, pájaros y ardillas. Su semilla es la bellota.", ca: "El roure és un hotel del bosc: en un de sol hi viuen centenars de bestioles, ocells i esquirols. La seva llavor és la gla.", en: "The oak is a forest hotel: hundreds of little creatures, birds and squirrels live in just one. Its seed is the acorn.", cs: "Dub je lesní hotel: na jediném stromě žijí stovky broučků, ptáků a veverek. Jeho semínkem je žalud.", fr: "Le chêne est un hôtel de la forêt : des centaines de petites bêtes, d'oiseaux et d'écureuils vivent dans un seul arbre. Sa graine est le gland." } },
-      { cat: "bosque", emoji: "🌲", x: 400, y: 820, iw: 90, ih: 140, svg: `<svg viewBox="0 0 90 140" width="100%" height="100%">
+      { cat: "bosque", emoji: "🌲", x: 430, y: 782, iw: 90, ih: 140, svg: `<svg viewBox="0 0 90 140" width="100%" height="100%">
           <ellipse cx="45" cy="132" rx="34" ry="6" fill="#7cb342" opacity=".8"/>
           <path d="M40 104 L38 130 L52 130 L50 104 Z" fill="#795548"/>
           <path d="M45 8 L26 42 L64 42 Z" fill="#388e3c"/>
@@ -332,7 +332,7 @@ Object.assign(THEMES.arboles.content, {
         </svg>`,
         name: { es: "El pino", ca: "El pi", en: "The pine", cs: "Borovice", fr: "Le pin" },
         fact: { es: "El pino no pierde sus agujas en invierno. Sus piñas se abren con el calorcito y se cierran cuando llueve.", ca: "El pi no perd les seves agulles a l'hivern. Les seves pinyes s'obren amb la caloreta i es tanquen quan plou.", en: "The pine keeps its needles in winter. Its cones open in warm weather and close when it rains.", cs: "Borovice v zimě neshazuje jehličí. Její šišky se v teple otevírají a za deště zavírají.", fr: "Le pin garde ses aiguilles en hiver. Ses pommes de pin s'ouvrent avec la chaleur et se ferment quand il pleut." } },
-      { cat: "bosque", emoji: "🌿", x: 580, y: 825, iw: 70, ih: 130, svg: `<svg viewBox="0 0 70 130" width="100%" height="100%">
+      { cat: "bosque", emoji: "🌿", x: 890, y: 843, iw: 70, ih: 130, svg: `<svg viewBox="0 0 70 130" width="100%" height="100%">
           <ellipse cx="35" cy="124" rx="26" ry="5" fill="#7cb342" opacity=".8"/>
           <circle cx="35" cy="26" r="17" fill="#c5e1a5"/><circle cx="19" cy="37" r="11" fill="#aed581"/>
           <circle cx="52" cy="35" r="11" fill="#aed581"/><circle cx="35" cy="44" r="13" fill="#9ccc65"/>
@@ -341,7 +341,7 @@ Object.assign(THEMES.arboles.content, {
         </svg>`,
         name: { es: "El abedul", ca: "El bedoll", en: "The birch", cs: "Bříza", fr: "Le bouleau" },
         fact: { es: "El abedul tiene la corteza blanca, y se despega en tiras finitas como papel. Es de los primeros árboles en llegar a un prado vacío.", ca: "El bedoll té l'escorça blanca, i es desenganxa en tires finetes com paper. És dels primers arbres a arribar a un prat buit.", en: "The birch has white bark that peels off in thin strips like paper. It is one of the first trees to arrive in an empty meadow.", cs: "Bříza má bílou kůru, která se odlupuje v tenkých proužcích jako papír. Je jedním z prvních stromů, které dorazí na prázdnou louku.", fr: "Le bouleau a une écorce blanche qui se détache en fines bandes, comme du papier. C'est l'un des premiers arbres à s'installer dans un pré vide." } },
-      { cat: "bosque", emoji: "🌰", x: 770, y: 830, iw: 100, ih: 120, svg: `<svg viewBox="0 0 100 120" width="100%" height="100%">
+      { cat: "bosque", emoji: "🌰", x: 1120, y: 806, iw: 100, ih: 120, svg: `<svg viewBox="0 0 100 120" width="100%" height="100%">
           <ellipse cx="50" cy="113" rx="38" ry="6" fill="#7cb342" opacity=".8"/>
           <path d="M46 58 L44 110 L58 110 L55 58 Z" fill="#5d4037"/>
           <circle cx="32" cy="40" r="19" fill="#558b2f"/><circle cx="68" cy="40" r="19" fill="#558b2f"/>
@@ -352,7 +352,7 @@ Object.assign(THEMES.arboles.content, {
         </svg>`,
         name: { es: "El castaño", ca: "El castanyer", en: "The chestnut", cs: "Kaštanovník", fr: "Le châtaignier" },
         fact: { es: "Las castañas viajan dentro de un erizo con pinchos que las protege. Cuando están listas, el erizo se abre solo.", ca: "Les castanyes viatgen dins d'un eriçó amb punxes que les protegeix. Quan estan a punt, l'eriçó s'obre tot sol.", en: "Chestnuts travel inside a spiky case that protects them. When they are ready, the case opens all by itself.", cs: "Kaštany cestují uvnitř pichlavé bodlinaté slupky, která je chrání. Když dozrají, slupka se sama otevře.", fr: "Les châtaignes voyagent dans une bogue pleine de piquants qui les protège. Quand elles sont prêtes, la bogue s'ouvre toute seule." } },
-      { cat: "bosque", emoji: "💬", x: 470, y: 938, iw: 150, ih: 60, svg: `<svg viewBox="0 0 150 60" width="100%" height="100%">
+      { cat: "bosque", emoji: "💬", x: 660, y: 1005, iw: 150, ih: 60, svg: `<svg viewBox="0 0 150 60" width="100%" height="100%">
           <path d="M12 6 Q20 20 16 36 M24 4 Q28 22 36 32 M32 8 Q38 18 34 36" stroke="#8d6e63" stroke-width="4" fill="none" stroke-linecap="round"/>
           <path d="M138 6 Q130 20 134 36 M126 4 Q122 22 114 32 M118 8 Q112 18 116 36" stroke="#8d6e63" stroke-width="4" fill="none" stroke-linecap="round"/>
           <path d="M20 38 Q50 54 75 46 Q105 38 130 42" stroke="#ffe082" stroke-width="2.4" fill="none" opacity=".9"/>
@@ -363,7 +363,7 @@ Object.assign(THEMES.arboles.content, {
         </svg>`,
         name: { es: "La red de raíces", ca: "La xarxa d'arrels", en: "The root network", cs: "Síť kořenů", fr: "Le réseau de racines" },
         fact: { es: "Bajo tus pies, los hilos de los hongos conectan las raíces de los árboles: por ahí se mandan azúcar y avisos. ¡Es el internet del bosque!", ca: "Sota els teus peus, els fils dels fongs connecten les arrels dels arbres: per allà s'envien sucre i avisos. És l'internet del bosc!", en: "Under your feet, fungus threads connect the roots of the trees: they send sugar and warnings along them. It is the internet of the forest!", cs: "Pod tvýma nohama propojují houbová vlákna kořeny stromů: posílají si po nich cukr i varování. Je to lesní internet!", fr: "Sous tes pieds, les fils des champignons relient les racines des arbres : ils s'y envoient du sucre et des messages. C'est l'internet de la forêt !" } },
-      { cat: "bosque", emoji: "🍄", x: 900, y: 870, iw: 60, ih: 60, svg: `<svg viewBox="0 0 60 60" width="100%" height="100%">
+      { cat: "bosque", emoji: "🍄", x: 1350, y: 888, iw: 60, ih: 60, svg: `<svg viewBox="0 0 60 60" width="100%" height="100%">
           <path d="M8 30 Q30 4 52 30 Q30 38 8 30 Z" fill="#e53935"/>
           <circle cx="20" cy="21" r="3" fill="#fff"/><circle cx="34" cy="15" r="3" fill="#fff"/><circle cx="43" cy="23" r="2.4" fill="#fff"/>
           <path d="M22 32 Q22 52 26 55 L36 55 Q39 51 38 32 Z" fill="#fff3e0"/>
@@ -373,7 +373,7 @@ Object.assign(THEMES.arboles.content, {
         </svg>`,
         name: { es: "La seta amiga", ca: "El bolet amic", en: "The friendly mushroom", cs: "Kamarádka houba", fr: "Le champignon ami" },
         fact: { es: "La seta es solo el sombrerito: el hongo de verdad es una red enorme que vive bajo tierra y ayuda a los árboles a hablarse.", ca: "El bolet és només el barretet: el fong de debò és una xarxa enorme que viu sota terra i ajuda els arbres a parlar-se.", en: "The mushroom is just the little hat: the real fungus is a huge net living underground that helps the trees talk to each other.", cs: "Houba nad zemí je jen klobouček: ta pravá houba je obrovská síť pod zemí, která pomáhá stromům si povídat.", fr: "Le champignon n'est que le petit chapeau : le vrai champignon est un immense réseau sous terre qui aide les arbres à se parler." } },
-      { cat: "gigantes", emoji: "🗼", x: 1060, y: 765, size: 2, iw: 80, ih: 250, svg: `<svg viewBox="0 0 80 250" width="100%" height="100%">
+      { cat: "gigantes", emoji: "🗼", x: 1590, y: 765, size: 2, iw: 80, ih: 250, svg: `<svg viewBox="0 0 80 250" width="100%" height="100%">
           <ellipse cx="40" cy="242" rx="30" ry="6" fill="#7cb342" opacity=".8"/>
           <path d="M35 40 L31 240 L51 240 L46 40 Z" fill="#a1543a"/>
           <path d="M37 120 Q35 180 36 232 M45 100 Q46 170 45 226" stroke="rgba(0,0,0,.18)" stroke-width="2.4" fill="none"/>
@@ -384,7 +384,7 @@ Object.assign(THEMES.arboles.content, {
         </svg>`,
         name: { es: "La secuoya gigante", ca: "La sequoia gegant", en: "The giant sequoia", cs: "Obří sekvoje", fr: "Le séquoia géant" },
         fact: { es: "La secuoya es el ser vivo más alto del mundo: pasa de los 100 metros, ¡como 30 pisos! Su corteza gruesa la protege hasta del fuego.", ca: "La sequoia és l'ésser viu més alt del món: passa dels 100 metres, com 30 pisos! La seva escorça gruixuda la protegeix fins i tot del foc.", en: "The sequoia is the tallest living thing in the world: over 100 metres, like 30 floors! Its thick bark even protects it from fire.", cs: "Sekvoje je nejvyšší živý tvor na světě: měří přes 100 metrů, jako 30 pater! Její tlustá kůra ji chrání dokonce i před ohněm.", fr: "Le séquoia est l'être vivant le plus haut du monde : plus de 100 mètres, comme 30 étages ! Son écorce épaisse le protège même du feu." } },
-      { cat: "gigantes", emoji: "🌴", x: 1260, y: 835, iw: 120, ih: 110, svg: `<svg viewBox="0 0 120 110" width="100%" height="100%">
+      { cat: "gigantes", emoji: "🌴", x: 1820, y: 845, iw: 120, ih: 110, svg: `<svg viewBox="0 0 120 110" width="100%" height="100%">
           <ellipse cx="60" cy="103" rx="42" ry="6" fill="#c0a060" opacity=".8"/>
           <path d="M42 100 Q26 62 36 32 Q39 20 48 18 L46 8 L54 16 L60 4 L64 16 L72 7 L74 18 Q83 20 86 32 Q94 62 80 100 Z" fill="#8d6e63"/>
           <circle cx="48" cy="9" r="7" fill="#7cb342"/><circle cx="61" cy="4" r="7.6" fill="#8bc34a"/><circle cx="73" cy="8" r="7" fill="#7cb342"/>
@@ -393,7 +393,7 @@ Object.assign(THEMES.arboles.content, {
         </svg>`,
         name: { es: "El baobab", ca: "El baobab", en: "The baobab", cs: "Baobab", fr: "Le baobab" },
         fact: { es: "El baobab guarda miles de litros de agua en su tronco barrigudo, para aguantar los meses en que no llueve nada.", ca: "El baobab guarda milers de litres d'aigua al seu tronc panxut, per aguantar els mesos en què no plou gens.", en: "The baobab stores thousands of litres of water in its round belly trunk, to survive the months with no rain at all.", cs: "Baobab si v břichatém kmeni schovává tisíce litrů vody, aby vydržel měsíce, kdy vůbec neprší.", fr: "Le baobab garde des milliers de litres d'eau dans son tronc ventru, pour tenir pendant les mois sans aucune pluie." } },
-      { cat: "gigantes", emoji: "🫒", x: 1440, y: 840, iw: 100, ih: 100, svg: `<svg viewBox="0 0 100 100" width="100%" height="100%">
+      { cat: "gigantes", emoji: "🫒", x: 2050, y: 812, iw: 100, ih: 100, svg: `<svg viewBox="0 0 100 100" width="100%" height="100%">
           <ellipse cx="50" cy="94" rx="36" ry="5.6" fill="#c8b78a" opacity=".8"/>
           <path d="M44 92 Q36 70 48 56 Q56 46 48 36" stroke="#6d4c41" stroke-width="10" fill="none" stroke-linecap="round"/>
           <path d="M57 92 Q64 72 53 58 Q45 48 55 38" stroke="#5d4037" stroke-width="7" fill="none" stroke-linecap="round"/>
@@ -403,7 +403,7 @@ Object.assign(THEMES.arboles.content, {
         </svg>`,
         name: { es: "El olivo milenario", ca: "L'olivera mil·lenària", en: "The thousand-year olive", cs: "Tisíciletý olivovník", fr: "L'olivier millénaire" },
         fact: { es: "Hay olivos con más de dos mil años. Su tronco se retuerce como una trenza, y siguen dando aceitunas cada otoño.", ca: "Hi ha oliveres amb més de dos mil anys. El seu tronc es recargola com una trena, i segueixen donant olives cada tardor.", en: "Some olive trees are over two thousand years old. Their trunks twist like a braid, and they still give olives every autumn.", cs: "Některé olivovníky jsou přes dva tisíce let staré. Jejich kmen se kroutí jako cop a každý podzim pořád dávají olivy.", fr: "Certains oliviers ont plus de deux mille ans. Leur tronc se tord comme une tresse, et ils donnent encore des olives chaque automne." } },
-      { cat: "gigantes", emoji: "🎋", x: 1600, y: 815, iw: 70, ih: 150, svg: `<svg viewBox="0 0 70 150" width="100%" height="100%">
+      { cat: "gigantes", emoji: "🎋", x: 2280, y: 831, iw: 70, ih: 150, svg: `<svg viewBox="0 0 70 150" width="100%" height="100%">
           <ellipse cx="35" cy="143" rx="26" ry="5" fill="#7cb342" opacity=".8"/>
           <path d="M18 142 L18 34" stroke="#7cb342" stroke-width="8" stroke-linecap="round"/>
           <path d="M14 118 h8 M14 88 h8 M14 58 h8" stroke="#558b2f" stroke-width="2.6"/>
@@ -418,7 +418,7 @@ Object.assign(THEMES.arboles.content, {
         </svg>`,
         name: { es: "El bambú", ca: "El bambú", en: "The bamboo", cs: "Bambus", fr: "Le bambou" },
         fact: { es: "El bambú puede crecer casi un metro en un solo día: ¡se le oye crujir! Y en realidad no es un árbol: es una hierba gigante.", ca: "El bambú pot créixer gairebé un metre en un sol dia: se'l sent cruixir! I en realitat no és un arbre: és una herba gegant.", en: "Bamboo can grow almost a metre in a single day: you can hear it creak! And it is not really a tree: it is a giant grass.", cs: "Bambus vyroste skoro o metr za jediný den: je slyšet, jak vrže! A ve skutečnosti to není strom: je to obří tráva.", fr: "Le bambou peut grandir de presque un mètre en un seul jour : on l'entend craquer ! Et en vrai, ce n'est pas un arbre : c'est une herbe géante." } },
-      { cat: "gigantes", emoji: "🐉", x: 1760, y: 835, iw: 100, ih: 110, svg: `<svg viewBox="0 0 100 110" width="100%" height="100%">
+      { cat: "gigantes", emoji: "🐉", x: 2510, y: 817, iw: 100, ih: 110, svg: `<svg viewBox="0 0 100 110" width="100%" height="100%">
           <ellipse cx="50" cy="103" rx="36" ry="5.6" fill="#c8b78a" opacity=".8"/>
           <path d="M40 100 Q38 74 30 60 M50 96 L50 56 M60 100 Q62 74 70 60" stroke="#a1887f" stroke-width="10" fill="none" stroke-linecap="round"/>
           <path d="M10 56 Q50 10 90 56 Q70 64 50 62 Q30 64 10 56 Z" fill="#33691e"/>
@@ -427,7 +427,7 @@ Object.assign(THEMES.arboles.content, {
         </svg>`,
         name: { es: "El drago de Canarias", ca: "El drago de Canàries", en: "The Canary dragon tree", cs: "Dračinec kanárský", fr: "Le dragonnier des Canaries" },
         fact: { es: "El drago crece despacísimo y su savia es roja: la llaman sangre de dragón. El más famoso vive en Tenerife desde hace siglos.", ca: "El drago creix a poc a poc i la seva saba és vermella: en diuen sang de drac. El més famós viu a Tenerife des de fa segles.", en: "The dragon tree grows very slowly and its sap is red: people call it dragon's blood. The most famous one has lived in Tenerife for centuries.", cs: "Dračinec roste pomaloučku a jeho míza je červená: říká se jí dračí krev. Ten nejslavnější žije na Tenerife už celá staletí.", fr: "Le dragonnier pousse très lentement et sa sève est rouge : on l'appelle le sang de dragon. Le plus célèbre vit à Tenerife depuis des siècles." } },
-      { cat: "gigantes", emoji: "🦀", x: 1900, y: 815, iw: 130, ih: 90, svg: `<svg viewBox="0 0 130 90" width="100%" height="100%">
+      { cat: "gigantes", emoji: "🦀", x: 2740, y: 873, iw: 130, ih: 90, svg: `<svg viewBox="0 0 130 90" width="100%" height="100%">
           <rect x="2" y="62" width="126" height="24" rx="8" fill="#4fc3f7" opacity=".85"/>
           <ellipse cx="65" cy="22" rx="44" ry="17" fill="#2e7d32"/>
           <ellipse cx="40" cy="15" rx="19" ry="9" fill="#43a047"/><ellipse cx="92" cy="15" rx="17" ry="8.4" fill="#43a047"/>
@@ -438,7 +438,7 @@ Object.assign(THEMES.arboles.content, {
         </svg>`,
         name: { es: "El manglar", ca: "El manglar", en: "The mangrove", cs: "Mangrovy", fr: "La mangrove" },
         fact: { es: "El manglar crece en el agua salada del mar, de puntillas sobre raíces zancudas. Entre ellas se esconden los peces bebé.", ca: "El manglar creix a l'aigua salada del mar, de puntetes sobre arrels com xanques. Entre elles s'hi amaguen els peixos nadons.", en: "The mangrove grows in salty sea water, on tiptoe on stilt roots. Baby fish hide between them.", cs: "Mangrovy rostou ve slané mořské vodě, na špičkách na kořenech jako na chůdách. Mezi nimi se schovávají rybí miminka.", fr: "La mangrove pousse dans l'eau salée de la mer, sur la pointe de ses racines en échasses. Les bébés poissons se cachent entre elles." } },
-      { cat: "estaciones", emoji: "🌸", x: 2060, y: 835, iw: 90, ih: 110, svg: `<svg viewBox="0 0 90 110" width="100%" height="100%">
+      { cat: "estaciones", emoji: "🌸", x: 3020, y: 837, iw: 90, ih: 110, svg: `<svg viewBox="0 0 90 110" width="100%" height="100%">
           <ellipse cx="45" cy="103" rx="32" ry="5.6" fill="#aed581" opacity=".85"/>
           <path d="M41 58 L39 100 L51 100 L49 58 Z" fill="#8d6e63"/>
           <circle cx="28" cy="40" r="14" fill="#c5e1a5"/><circle cx="62" cy="40" r="14" fill="#c5e1a5"/><circle cx="45" cy="26" r="17" fill="#dcedc8"/>
@@ -449,7 +449,7 @@ Object.assign(THEMES.arboles.content, {
         </svg>`,
         name: { es: "Primavera", ca: "Primavera", en: "Spring", cs: "Jaro", fr: "Printemps" },
         fact: { es: "En primavera el árbol despierta: la savia sube, las yemas se abren y las flores invitan a las abejas a desayunar.", ca: "A la primavera l'arbre es desperta: la saba puja, les gemmes s'obren i les flors conviden les abelles a esmorzar.", en: "In spring the tree wakes up: the sap rises, the buds open and the flowers invite the bees to breakfast.", cs: "Na jaře se strom probouzí: míza stoupá, pupeny se otevírají a květy zvou včely na snídani.", fr: "Au printemps, l'arbre se réveille : la sève monte, les bourgeons s'ouvrent et les fleurs invitent les abeilles au petit-déjeuner." } },
-      { cat: "estaciones", emoji: "☀️", x: 2210, y: 833, iw: 95, ih: 115, svg: `<svg viewBox="0 0 95 115" width="100%" height="100%">
+      { cat: "estaciones", emoji: "☀️", x: 3320, y: 827, iw: 95, ih: 115, svg: `<svg viewBox="0 0 95 115" width="100%" height="100%">
           <ellipse cx="47" cy="108" rx="34" ry="5.8" fill="#8bc34a" opacity=".85"/>
           <path d="M43 60 L41 105 L54 105 L51 60 Z" fill="#6d4c41"/>
           <circle cx="28" cy="42" r="17" fill="#43a047"/><circle cx="67" cy="42" r="17" fill="#43a047"/>
@@ -460,7 +460,7 @@ Object.assign(THEMES.arboles.content, {
         </svg>`,
         name: { es: "Verano", ca: "Estiu", en: "Summer", cs: "Léto", fr: "Été" },
         fact: { es: "En verano la copa está llena del todo: las hojas trabajan sin parar comiendo luz, y debajo hay la mejor sombra fresquita.", ca: "A l'estiu la capçada està plena del tot: les fulles treballen sense parar menjant llum, i a sota hi ha la millor ombra fresqueta.", en: "In summer the crown is completely full: the leaves work non-stop eating light, and underneath is the best cool shade.", cs: "V létě je koruna úplně plná: listy bez přestání jedí světlo a dole pod nimi je ten nejlepší chladivý stín.", fr: "En été, le feuillage est tout plein : les feuilles travaillent sans arrêt à manger la lumière, et dessous, c'est la meilleure ombre fraîche." } },
-      { cat: "estaciones", emoji: "🍂", x: 2360, y: 830, iw: 95, ih: 120, svg: `<svg viewBox="0 0 95 120" width="100%" height="100%">
+      { cat: "estaciones", emoji: "🍂", x: 3620, y: 836, iw: 95, ih: 120, svg: `<svg viewBox="0 0 95 120" width="100%" height="100%">
           <ellipse cx="47" cy="112" rx="34" ry="5.8" fill="#c0a060" opacity=".85"/>
           <path d="M18 108 Q47 98 78 108 Z" fill="#e65100" opacity=".75"/>
           <path d="M43 58 L41 106 L54 106 L51 58 Z" fill="#6d4c41"/>
@@ -475,7 +475,7 @@ Object.assign(THEMES.arboles.content, {
         </svg>`,
         name: { es: "Otoño", ca: "Tardor", en: "Autumn", cs: "Podzim", fr: "Automne" },
         fact: { es: "En otoño el verde se retira y aparecen el naranja y el amarillo, que estaban escondidos. El árbol suelta sus hojas para descansar.", ca: "A la tardor el verd es retira i apareixen el taronja i el groc, que estaven amagats. L'arbre deixa anar les fulles per descansar.", en: "In autumn the green fades and the orange and yellow appear from their hiding place. The tree lets its leaves go so it can rest.", cs: "Na podzim zelená ustoupí a objeví se oranžová a žlutá, které byly schované. Strom pouští listí, aby si odpočinul.", fr: "En automne, le vert s'en va et l'orange et le jaune sortent de leur cachette. L'arbre laisse partir ses feuilles pour se reposer." } },
-      { cat: "estaciones", emoji: "❄️", x: 2510, y: 835, iw: 90, ih: 110, svg: `<svg viewBox="0 0 90 110" width="100%" height="100%">
+      { cat: "estaciones", emoji: "❄️", x: 3920, y: 833, iw: 90, ih: 110, svg: `<svg viewBox="0 0 90 110" width="100%" height="100%">
           <ellipse cx="45" cy="103" rx="32" ry="5.6" fill="#e3f2fd" opacity=".9"/>
           <path d="M45 100 L45 40 M45 62 Q30 52 24 36 M45 56 Q60 46 66 32 M45 44 Q38 34 40 24 M52 40 Q58 32 58 24 M34 50 Q28 44 27 36" stroke="#6d4c41" stroke-width="5" fill="none" stroke-linecap="round"/>
           <path d="M24 36 Q30 46 38 52 M66 32 Q60 42 52 48" stroke="#6d4c41" stroke-width="3" fill="none" stroke-linecap="round"/>
@@ -490,16 +490,82 @@ Object.assign(THEMES.arboles.content, {
         fact: { es: "En invierno el árbol duerme desnudo bajo la nieve. Pero mira las puntas: las yemas ya están listas, esperando la primavera.", ca: "A l'hivern l'arbre dorm despullat sota la neu. Però mira les puntes: les gemmes ja estan a punt, esperant la primavera.", en: "In winter the tree sleeps bare under the snow. But look at the twig tips: the buds are already there, waiting for spring.", cs: "V zimě strom spí nahý pod sněhem. Ale podívej se na konečky větviček: pupeny už tam čekají na jaro.", fr: "En hiver, l'arbre dort tout nu sous la neige. Mais regarde le bout des branches : les bourgeons sont déjà prêts, ils attendent le printemps." } }
     ],
     /* el escenario: un bosque continuo que acaba recorriendo el año entero */
-    deco: function () {
+    deco: function (e) {
       let s = "";
-      /* las cajas de los iconos: sirven para dejarles aire alrededor */
-      const cajas = [[130, 760, 120, 130], [355, 750, 90, 140], [545, 760, 70, 130], [720, 770, 100, 120], [395, 908, 150, 60], [870, 840, 60, 60],
-        [1020, 640, 80, 250], [1200, 780, 120, 110], [1390, 790, 100, 100], [1565, 740, 70, 150], [1710, 780, 100, 110], [1835, 770, 130, 90],
-        [2015, 780, 90, 110], [2162, 775, 95, 115], [2312, 770, 95, 120], [2465, 780, 90, 110]];
-      const libre = (x, y, w, h) => !cajas.some(c => x < c[0] + c[2] + 12 && x + w > c[0] - 12 && y < c[1] + c[3] + 12 && y + h > c[1] - 12);
+      const SUB = 944;
+      /* las cajas de los iconos se sacan del propio mapa, así el bosque les
+         deja aire alrededor aunque cambien de sitio */
+      const cajas = (e && e.pois ? e.pois : []).map(p => {
+        const w = p.iw || (p.size || 1) * 44, h = p.ih || (p.size || 1) * 44;
+        return [p.x - w / 2 - 10, p.y - h / 2 - 10, w + 20, h + 46];
+      });
+      const libre = (x, y, w, h) => !cajas.some(c => x < c[0] + c[2] && x + w > c[0] && y < c[1] + c[3] && y + h > c[1]);
       /* numeros repetibles: el bosque sale igual en cada partida */
       let sem = 4211;
       const az = () => (sem = sem * 16807 % 2147483647) / 2147483647;
+      /* ---------- EL PERFIL DEL SUELO ----------
+         El terreno ondula y cada árbol del mapa se apoya justo en su punto:
+         estos son los mismos x/y que usan los iconos, de modo que ninguno
+         queda flotando ni enterrado. */
+      const cotas = [[0, 900], [200, 890], [430, 852], [660, 880], [890, 908], [1120, 866], [1350, 918],
+        [1590, 890], [1820, 900], [2050, 862], [2280, 906], [2510, 872], [2740, 918],
+        [3020, 892], [3320, 884], [3620, 896], [3920, 888], [4200, 894]];
+      const suelo = x => {
+        if (x <= cotas[0][0]) return cotas[0][1];
+        if (x >= cotas[cotas.length - 1][0]) return cotas[cotas.length - 1][1];
+        for (let i = 1; i < cotas.length; i++) {
+          if (x <= cotas[i][0]) {
+            const a = cotas[i - 1], b = cotas[i];
+            const t = (1 - Math.cos(Math.PI * (x - a[0]) / (b[0] - a[0]))) / 2;
+            return a[1] + (b[1] - a[1]) * t;
+          }
+        }
+        return 894;
+      };
+      /* la línea del suelo, muestreada para que salga redondita */
+      const lineaSuelo = (desde, hasta, dy) => {
+        let d = `M${desde} ${(suelo(desde) + dy).toFixed(0)}`;
+        for (let x = desde + 24; x <= hasta; x += 24) d += ` L${x} ${(suelo(x) + dy).toFixed(0)}`;
+        return d + ` L${hasta} ${(suelo(hasta) + dy).toFixed(0)}`;
+      };
+      /* mezclar dos colores: así una estación se vuelve la siguiente poco a poco */
+      const mez = (a, b, t) => {
+        const hx = c => [parseInt(c.slice(1, 3), 16), parseInt(c.slice(3, 5), 16), parseInt(c.slice(5, 7), 16)];
+        const A = hx(a), B = hx(b), u = Math.max(0, Math.min(1, t));
+        return "#" + A.map((v, i) => Math.round(v + (B[i] - v) * u).toString(16).padStart(2, "0")).join("");
+      };
+      /* ---------- EL AÑO DEL ÁRBOL: cinco hitos y lo que pasa ENTRE ellos ----------
+         2900 aún es bosque, 3020 primavera, 3320 verano, 3620 otoño, 3920 invierno.
+         Todo lo que se dibuja entre dos hitos se mezcla, para que el cambio de
+         estación se vea venir en vez de saltar de golpe. */
+      const hitos = [
+        { x: 2900, copa: "#43803a", claro: "#69ad4c", hojas: 1, brotes: 0, oro: 0, nieve: 0 },
+        { x: 3020, copa: "#a5d66c", claro: "#d7edb6", hojas: .72, brotes: 1, oro: 0, nieve: 0 },
+        { x: 3320, copa: "#2e7d32", claro: "#43a047", hojas: 1.16, brotes: .1, oro: 0, nieve: 0 },
+        { x: 3620, copa: "#ef6c00", claro: "#ffb300", hojas: .92, brotes: 0, oro: 1, nieve: 0 },
+        { x: 3920, copa: "#b9c6cc", claro: "#dbe6ea", hojas: .16, brotes: 0, oro: .15, nieve: 1 },
+        { x: 4200, copa: "#c3ced3", claro: "#e4eef1", hojas: .1, brotes: 0, oro: 0, nieve: 1 }
+      ];
+      const estacion = x => {
+        if (x <= hitos[0].x) return hitos[0];
+        if (x >= hitos[hitos.length - 1].x) return hitos[hitos.length - 1];
+        for (let i = 1; i < hitos.length; i++) {
+          if (x <= hitos[i].x) {
+            const a = hitos[i - 1], b = hitos[i], t = (x - a.x) / (b.x - a.x);
+            return { copa: mez(a.copa, b.copa, t), claro: mez(a.claro, b.claro, t),
+              hojas: a.hojas + (b.hojas - a.hojas) * t, brotes: a.brotes + (b.brotes - a.brotes) * t,
+              oro: a.oro + (b.oro - a.oro) * t, nieve: a.nieve + (b.nieve - a.nieve) * t };
+          }
+        }
+        return hitos[0];
+      };
+      /* la nieve va tapando el suelo: entra en lengüetas, no de golpe. La onda
+         hace que el borde avance y retroceda, así no queda una línea recta. */
+      const capaNieve = x => Math.max(0, Math.min(1,
+        (x - 3680) / 280 + Math.sin(x * .021) * .09 + Math.sin(x * .053) * .045));
+      /* la cara de arriba del manto: donde aún no hay nieve coincide con el suelo,
+         así que el manto nace de la nada en vez de empezar con un escalón */
+      const nieveTop = x => suelo(x) - 26 * capaNieve(x);
       /* ---------- DEGRADADOS (ids con prefijo arbX) ---------- */
       s += `<defs>
         <radialGradient id="arbXSol" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#fffde7"/><stop offset="100%" stop-color="#ffe57f"/></radialGradient>
@@ -508,6 +574,11 @@ Object.assign(THEMES.arboles.content, {
         <linearGradient id="arbXTierra" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#6d4c41"/><stop offset="55%" stop-color="#54382c"/><stop offset="100%" stop-color="#3b2620"/></linearGradient>
         <linearGradient id="arbXAgua" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#9fdcf5"/><stop offset="100%" stop-color="#3f9dc8"/></linearGradient>
         <linearGradient id="arbXCorteza" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#8d6a4a"/><stop offset="55%" stop-color="#6f5138"/><stop offset="100%" stop-color="#513a28"/></linearGradient>
+        <linearGradient id="arbXManto" gradientUnits="userSpaceOnUse" x1="3560" y1="0" x2="4010" y2="0"><stop offset="0%" stop-color="#ffffff" stop-opacity="0"/><stop offset="42%" stop-color="#ffffff" stop-opacity=".62"/><stop offset="100%" stop-color="#f6fbff" stop-opacity="1"/></linearGradient>
+        <linearGradient id="arbXSecano" gradientUnits="userSpaceOnUse" x1="3280" y1="0" x2="3760" y2="0"><stop offset="0%" stop-color="#c8a04a" stop-opacity="0"/><stop offset="55%" stop-color="#c8a04a" stop-opacity=".5"/><stop offset="100%" stop-color="#d8b98a" stop-opacity=".2"/></linearGradient>
+        <linearGradient id="arbXSequia" gradientUnits="userSpaceOnUse" x1="1700" y1="0" x2="2660" y2="0"><stop offset="0%" stop-color="#c8b78a" stop-opacity="0"/><stop offset="46%" stop-color="#c8b78a" stop-opacity=".52"/><stop offset="100%" stop-color="#c8b78a" stop-opacity="0"/></linearGradient>
+        <linearGradient id="arbXFundido" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1500" y2="0"><stop offset="0%" stop-color="#ffffff"/><stop offset="72%" stop-color="#ffffff"/><stop offset="100%" stop-color="#000000"/></linearGradient>
+        <mask id="arbXFinArroyo"><rect x="-40" y="700" width="1580" height="200" fill="url(#arbXFundido)"/></mask>
       </defs>`;
       /* ---------- EL SOL ENTRE LAS RAMAS Y LOS RAYOS QUE SE CUELAN ---------- */
       s += `<circle cx="330" cy="150" r="112" fill="rgba(255,238,88,.16)"><animate attributeName="r" values="112;128;112" dur="10s" repeatCount="indefinite"/></circle>
@@ -515,144 +586,430 @@ Object.assign(THEMES.arboles.content, {
         <path d="M170 62 Q300 122 430 98 Q502 86 566 40" stroke="#4e342e" stroke-width="14" fill="none" stroke-linecap="round"/>
         <path d="M238 88 Q248 66 242 44 M330 108 Q344 88 342 62 M432 98 Q446 76 442 54" stroke="#4e342e" stroke-width="7" fill="none" stroke-linecap="round"/>
         <circle cx="242" cy="44" r="13" fill="#33691e"/><circle cx="342" cy="60" r="15" fill="#2e7d32"/><circle cx="442" cy="52" r="13" fill="#33691e"/>`;
-      [[300, 396, 700], [980, 1064, 740], [1600, 1690, 700]].forEach((r, i) => {
+      [[300, 396, 700], [980, 1064, 740], [1600, 1690, 700], [2180, 2270, 720], [2800, 2890, 700], [3480, 3570, 730]].forEach((r, i) => {
         s += `<path d="M${r[0]} 30 L${r[1]} 30 L${r[1] + 150} ${r[2]} L${r[0] + 96} ${r[2]} Z" fill="url(#arbXRayo)" opacity=".3"><animate attributeName="opacity" values=".3;.12;.3" dur="${9 + i * 3}s" repeatCount="indefinite"/></path>`;
       });
       /* ---------- LAS COLINAS DEL FONDO, UNA DETRÁS DE OTRA ---------- */
-      s += `<path d="M0 700 Q300 580 650 660 Q1000 730 1350 640 Q1700 560 2050 660 Q2350 720 2600 650 L2600 1100 L0 1100 Z" fill="#33691e" opacity=".35"/>
-        <path d="M0 780 Q350 690 750 760 Q1150 825 1550 745 Q1950 675 2600 770 L2600 1100 L0 1100 Z" fill="#558b2f" opacity=".45"/>`;
-      /* ---------- EL DOSEL: las copas asomando por lo alto, con su color de estación ---------- */
+      s += `<path d="M0 700 Q320 580 680 660 Q1040 730 1400 640 Q1760 560 2120 660 Q2480 726 2840 646 Q3220 566 3560 656 Q3900 730 4200 660 L4200 1100 L0 1100 Z" fill="#33691e" opacity=".35"/>`;
+      /* la loma de detrás también se va poniendo blanca, con el mismo degradado
+         que el manto del suelo: si no, el invierno tendría el fondo verde */
+      s += `<path d="M3560 651 Q3900 725 4200 655 L4200 900 L3560 900 Z" fill="url(#arbXManto)" opacity=".8"/>`;
+      /* la cresta de la primera colina, para poder plantar copas justo encima */
+      const lomo = x => {
+        const t = Math.max(0, Math.min(1, (x - 2840) / 720));
+        return 646 * (1 - t) * (1 - t) + 2 * 566 * t * (1 - t) + 656 * t * t;
+      };
+      /* copas lejanas asomando por el lomo de la colina. En el tramo del año los
+         troncos altos van muy separados y entre las copas y la loma quedaba una
+         plancha de aire liso: estas copas la rompen y además marcan la estación */
+      [[2924, 54], [3040, 44], [3168, 58], [3288, 46], [3404, 56], [3520, 46]].forEach(c => {
+        const x = c[0], r = c[1], es = estacion(x), cy = lomo(x) - r * .58;
+        /* se les baja el tono hacia el verde del monte: con el color pelado de
+           la estación quedaban como pompas claras sobre el cielo */
+        const c1 = mez(es.copa, "#4a7f3a", .38), c2 = mez(es.claro, "#63a04c", .32);
+        s += `<g opacity=".58"><path d="M${x} ${(cy + r * 1.1).toFixed(0)} V${(cy - r * .2).toFixed(0)}" stroke="#7d6753" stroke-width="${(r * .2).toFixed(1)}" stroke-linecap="round"/>
+          <circle cx="${x}" cy="${cy.toFixed(0)}" r="${r}" fill="${c1}"/>
+          <circle cx="${(x + r * .64).toFixed(0)}" cy="${(cy - r * .24).toFixed(0)}" r="${(r * .6).toFixed(0)}" fill="${c2}"/>
+          <circle cx="${(x - r * .62).toFixed(0)}" cy="${(cy - r * .1).toFixed(0)}" r="${(r * .52).toFixed(0)}" fill="${c2}"/></g>`;
+      });
+      s += `<path d="M0 780 Q360 690 760 760 Q1160 826 1560 746 Q1980 674 2400 762 Q2820 840 3240 754 Q3660 672 4200 776 L4200 1100 L0 1100 Z" fill="#558b2f" opacity=".45"/>
+        <path d="M3240 749 Q3660 667 4200 771 L4200 940 L3240 940 Z" fill="url(#arbXManto)" opacity=".9"/>`;
+      /* ---------- EL DOSEL: las copas asomando por lo alto, con el color de su estación ---------- */
       const copas = ["#2e7d32", "#388e3c", "#33691e"];
-      for (let i = 0; i <= 21; i++) {
-        const x = i * 126 - 20;
-        const c = x > 2435 ? "#b0bec5" : x > 2285 ? "#ef6c00" : x > 2135 ? "#1b5e20" : x > 1985 ? "#9ccc65" : copas[i % 3];
-        s += `<circle cx="${x}" cy="${20 + (i % 2) * 28}" r="${58 + (i % 3) * 15}" fill="${c}" opacity=".6"/>`;
+      for (let i = 0; i <= 41; i++) {
+        const x = i * 104 - 20;
+        const es = estacion(x);
+        const c = x > 2900 ? es.copa : copas[i % 3];
+        const r = (58 + (i % 3) * 15) * (x > 2900 ? Math.max(.62, es.hojas) : 1);
+        s += `<circle cx="${x}" cy="${20 + (i % 2) * 28}" r="${r.toFixed(0)}" fill="${c}" opacity=".6"/>`;
+        /* al llegar al invierno la copa se queda nevada por encima */
+        if (es.nieve > .3) s += `<path d="M${(x - r * .8).toFixed(0)} ${(14 + (i % 2) * 28).toFixed(0)} q${(r * .8).toFixed(0)} -${(r * .5).toFixed(0)} ${(r * 1.6).toFixed(0)} 0" stroke="rgba(255,255,255,.9)" stroke-width="${(9 * es.nieve).toFixed(1)}" fill="none" stroke-linecap="round"/>`;
       }
       /* nubes suaves entre las copas */
       s += `<g fill="rgba(255,255,255,.55)"><ellipse cx="820" cy="132" rx="88" ry="25"/><ellipse cx="890" cy="116" rx="56" ry="18"/>
-        <ellipse cx="1510" cy="92" rx="92" ry="26"/><ellipse cx="1592" cy="110" rx="58" ry="18"/>
-        <ellipse cx="2246" cy="122" rx="72" ry="20"/><ellipse cx="2306" cy="108" rx="46" ry="15"/></g>`;
+        <ellipse cx="1610" cy="92" rx="92" ry="26"/><ellipse cx="1692" cy="110" rx="58" ry="18"/>
+        <ellipse cx="2420" cy="122" rx="72" ry="20"/><ellipse cx="2480" cy="108" rx="46" ry="15"/>
+        <ellipse cx="3260" cy="104" rx="86" ry="24"/><ellipse cx="3336" cy="120" rx="54" ry="17"/>
+        <ellipse cx="3980" cy="136" rx="94" ry="27"/><ellipse cx="4064" cy="118" rx="58" ry="19"/></g>`;
+      /* ---------- EL PLANO MEDIO: COPAS COLGANDO DEL DOSEL ----------
+         Entre el techo de hojas y las colinas quedaba un vacío enorme. Estas
+         copas cuelgan a media altura, más claras porque están lejos, y en la
+         zona del año también van cambiando de estación. */
+      for (let i = 0; i <= 26; i++) {
+        const x = i * 164 - 60, es = estacion(x);
+        const c1 = x > 2900 ? es.copa : ["#3f8a3c", "#357a33", "#4a9440"][i % 3];
+        const c2 = x > 2900 ? es.claro : ["#5aa84c", "#4f9d45", "#65b455"][i % 3];
+        const y = 166 + (i % 4) * 36;
+        const r = (72 + (i % 3) * 20) * (x > 2900 ? Math.max(.45, es.hojas) : 1);
+        s += `<g opacity=".4"><circle cx="${x}" cy="${y}" r="${r.toFixed(0)}" fill="${c1}"/>
+          <circle cx="${(x + r * .66).toFixed(0)}" cy="${(y - r * .3).toFixed(0)}" r="${(r * .6).toFixed(0)}" fill="${c2}"/>
+          <circle cx="${(x - r * .6).toFixed(0)}" cy="${(y - r * .16).toFixed(0)}" r="${(r * .5).toFixed(0)}" fill="${c2}"/>
+          <circle cx="${(x + r * .16).toFixed(0)}" cy="${(y + r * .58).toFixed(0)}" r="${(r * .46).toFixed(0)}" fill="${c1}"/></g>`;
+        /* en invierno esas copas se quedan casi transparentes y el aire de media
+           altura se vaciaba: aquí van ramas peladas con su nieve, que sí se ven */
+        if (es.nieve > .45) {
+          const rp = r * .92;
+          s += `<g opacity=".55" stroke="#8a7a70" fill="none" stroke-linecap="round">
+            <path d="M${x} ${(y + rp * .9).toFixed(0)} V${(y - rp * .7).toFixed(0)}" stroke-width="5"/>
+            <path d="M${x} ${(y + rp * .2).toFixed(0)} q${(-rp * .5).toFixed(0)} -${(rp * .3).toFixed(0)} ${(-rp * .8).toFixed(0)} -${(rp * .8).toFixed(0)}" stroke-width="4"/>
+            <path d="M${x} ${(y - rp * .1).toFixed(0)} q${(rp * .5).toFixed(0)} -${(rp * .3).toFixed(0)} ${(rp * .82).toFixed(0)} -${(rp * .72).toFixed(0)}" stroke-width="4"/>
+            <path d="M${x} ${(y - rp * .45).toFixed(0)} q${(-rp * .3).toFixed(0)} -${(rp * .3).toFixed(0)} ${(-rp * .44).toFixed(0)} -${(rp * .62).toFixed(0)}" stroke-width="3"/>
+            <path d="M${(x - rp * .84).toFixed(0)} ${(y - rp * .84).toFixed(0)} q${(rp * .4).toFixed(0)} -${(rp * .3).toFixed(0)} ${(rp * .8).toFixed(0)} -${(rp * .06).toFixed(0)}" stroke="rgba(255,255,255,.85)" stroke-width="5"/>
+            <path d="M${(x + rp * .1).toFixed(0)} ${(y - rp * .8).toFixed(0)} q${(rp * .38).toFixed(0)} -${(rp * .26).toFixed(0)} ${(rp * .76).toFixed(0)} -${(rp * .02).toFixed(0)}" stroke="rgba(255,255,255,.8)" stroke-width="4.4"/></g>`;
+        }
+      }
+      /* ramas que bajan desde el techo, para que el dosel no sea una raya */
+      /* las de 2960 y 3400 son de esta pasada: en el tramo del año el aire entre
+         el techo y la loma se leía como una plancha de color liso */
+      [[250, 1, 330], [1120, -1, 300], [2010, 1, 356], [2480, 1, 296], [2760, -1, 312], [2960, 1, 372], [3080, -1, 340], [3400, -1, 348], [3560, 1, 286]].forEach(b => {
+        const x = b[0], d = b[1], fin = b[2], es = estacion(x);
+        const c1 = x > 2900 ? es.copa : "#3a7f36", c2 = x > 2900 ? es.claro : "#54a044";
+        let g = `<g opacity=".72"><path d="M${x} -10 Q${(x + d * 54)} ${(fin * .55).toFixed(0)} ${(x + d * 26)} ${fin}" stroke="#4e342e" stroke-width="11" fill="none" stroke-linecap="round"/>`;
+        for (let j = 0; j < 3; j++) {
+          const py = 80 + j * (fin - 90) / 2.4, px = x + d * (18 + j * 12);
+          g += `<circle cx="${px.toFixed(0)}" cy="${py.toFixed(0)}" r="${(26 - j * 4).toFixed(0)}" fill="${c1}"/>
+            <circle cx="${(px + d * 20).toFixed(0)}" cy="${(py + 14).toFixed(0)}" r="${(18 - j * 3).toFixed(0)}" fill="${c2}"/>`;
+        }
+        s += g + "</g>";
+      });
+      /* lianas colgando del techo del bosque: llenan el aire de media altura,
+         que entre las copas y las colinas quedaba muy vacío tras ensanchar */
+      [[430, 300, 1], [905, 236, -1], [1355, 330, 1], [1870, 268, -1], [2340, 356, 1], [2700, 244, -1]].forEach((l, i) => {
+        const x = l[0], fin = l[1], d = l[2];
+        const pta = 40 + fin * 1.12, xp = x + d * 16;
+        s += `<g opacity=".5"><path d="M${x} 40 q${d * 26} ${(fin * .4).toFixed(0)} ${d * 12} ${fin} q${d * -16} ${(fin * .07).toFixed(0)} ${d * 4} ${(fin * .12).toFixed(0)}" stroke="#5d4632" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <ellipse cx="${(x + d * 18).toFixed(0)}" cy="${(fin * .38).toFixed(0)}" rx="13" ry="8" fill="#4f9440" transform="rotate(${d * 24} ${(x + d * 18).toFixed(0)} ${(fin * .38).toFixed(0)})"/>
+          <ellipse cx="${(x + d * 6).toFixed(0)}" cy="${(fin * .66).toFixed(0)}" rx="12" ry="7" fill="#5da84c" transform="rotate(${d * -18} ${(x + d * 6).toFixed(0)} ${(fin * .66).toFixed(0)})"/>
+          <ellipse cx="${(x + d * 20).toFixed(0)}" cy="${(fin * .88).toFixed(0)}" rx="11" ry="7" fill="#4f9440" transform="rotate(${d * 30} ${(x + d * 20).toFixed(0)} ${(fin * .88).toFixed(0)})"/>
+          <ellipse cx="${xp.toFixed(0)}" cy="${pta.toFixed(0)}" rx="10" ry="6.4" fill="#5da84c" transform="rotate(${d * -26} ${xp.toFixed(0)} ${pta.toFixed(0)})"/></g>`;
+      });
+      /* el resplandor del sol vuelve a colarse por delante de las hojas nuevas */
+      s += `<circle cx="330" cy="150" r="124" fill="rgba(255,241,118,.26)"/>
+        <circle cx="330" cy="150" r="62" fill="rgba(255,253,231,.5)"/>`;
+      /* motas de polen flotando en la luz, con su propia serie de números */
+      let sem2 = 90210;
+      const az2 = () => (sem2 = sem2 * 16807 % 2147483647) / 2147483647;
+      for (let i = 0; i < 40; i++) {
+        const x = 40 + az2() * 3520, y = 190 + az2() * 450;
+        s += `<circle cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" r="${(1.5 + az2() * 2.4).toFixed(1)}" fill="#fff9c4" opacity="${(.22 + az2() * .34).toFixed(2)}"/>`;
+      }
       /* ---------- EL RIACHUELO QUE CRUZA EL BOSQUE ---------- */
-      const cauce = "M-20 744 Q160 700 340 718 Q520 736 700 706 Q860 680 1012 702";
-      s += `<path d="${cauce}" stroke="#4d3a26" stroke-width="58" fill="none" stroke-linecap="round" opacity=".55"/>
+      /* el arroyo no se corta en seco: la máscara lo va apagando hacia el final,
+         de modo que el agua se pierde monte adentro en vez de acabar en un tajo.
+         Antes asomaban trozos de azul entre los árboles, como recortes sueltos. */
+      const cauce = "M-20 806 Q260 764 540 786 Q820 808 1100 774 Q1300 750 1498 768";
+      s += `<g mask="url(#arbXFinArroyo)">
+        <path d="${cauce}" stroke="#4d3a26" stroke-width="58" fill="none" stroke-linecap="round" opacity=".55"/>
         <path d="${cauce}" stroke="url(#arbXAgua)" stroke-width="44" fill="none" stroke-linecap="round"/>
         <path d="${cauce}" stroke="rgba(255,255,255,.35)" stroke-width="10" fill="none" stroke-linecap="round" stroke-dasharray="46 70">
-        <animate attributeName="stroke-dashoffset" values="0;-232" dur="14s" repeatCount="indefinite"/></path>`;
-      [[120, 736, 15], [430, 728, 12], [760, 700, 17], [930, 692, 11]].forEach(p => {
+        <animate attributeName="stroke-dashoffset" values="0;-232" dur="14s" repeatCount="indefinite"/></path>
+        </g>`;
+      [[140, 798, 15], [560, 788, 12], [980, 776, 17], [1230, 754, 11]].forEach(p => {
         s += `<ellipse cx="${p[0]}" cy="${p[1]}" rx="${p[2]}" ry="${(p[2] * .62).toFixed(0)}" fill="#8d8378"/><ellipse cx="${p[0] - 3}" cy="${p[1] - 3}" rx="${(p[2] * .55).toFixed(0)}" ry="${(p[2] * .3).toFixed(0)}" fill="#a99e91"/>`;
       });
-      /* troncos altos que suben hasta el dosel: el bosque por dentro */
-      [[60, 1.15], [355, .9], [700, 1.05], [1130, .95], [1490, 1.1], [1855, .85]].forEach(t => {
-        const x = t[0], w = 26 * t[1];
-        s += `<g opacity=".85"><path d="M${(x - w / 2).toFixed(0)} 890 q${(w * .18).toFixed(0)} -420 0 -840 h${w.toFixed(0)} q${(-w * .18).toFixed(0)} 420 0 840 Z" fill="url(#arbXCorteza)"/>
-          <path d="M${(x - w * .9).toFixed(0)} 380 q${(w * .8).toFixed(0)} 26 ${(w * 1.8).toFixed(0)} -14" stroke="#6f5138" stroke-width="${(w * .4).toFixed(0)}" fill="none" stroke-linecap="round"/>
-          <path d="M${x} 620 q-${(w * 1.6).toFixed(0)} -24 -${(w * 2.4).toFixed(0)} -66" stroke="#6f5138" stroke-width="${(w * .34).toFixed(0)}" fill="none" stroke-linecap="round"/></g>`;
-      });
-      /* ---------- EL BOSQUE DE FONDO: troncos y copas entre los árboles del mapa ---------- */
-      const fondo = (x, y, k, c1, c2, tr) => `<g transform="translate(${x} ${y}) scale(${k})" opacity=".9">
+      /* ---------- LOS TRONCOS QUE SUBEN HASTA EL DOSEL: EL BOSQUE POR DENTRO ----------
+         Van en dos planos. Los de atrás son finos y desvaídos; los de delante se
+         estrechan hacia arriba y llevan ramas con hojas a media altura, que es
+         justo donde el aire quedaba vacío. En la zona del año siguen la estación:
+         hojas nuevas, verdes, doradas o ramas peladas con nieve encima. */
+      const troncoAlto = (x, k, lejos) => {
+        const base = suelo(x), wb = 32 * k, wt = 13 * k, es = estacion(x);
+        const c1 = x > 2900 ? es.copa : "#3d8438", c2 = x > 2900 ? es.claro : "#57a548";
+        const esp = x > 2900 ? es.hojas : 1, nv = x > 2900 ? es.nieve : 0;
+        let g = `<g opacity="${lejos ? ".32" : ".92"}">`;
+        g += `<path d="M${(x - wb / 2).toFixed(1)} ${base.toFixed(0)} C${(x - wb / 2 - 6).toFixed(1)} ${(base - 320).toFixed(0)} ${(x - wt / 2 - 5).toFixed(1)} ${(base - 620).toFixed(0)} ${(x - wt / 2).toFixed(1)} -30 L${(x + wt / 2).toFixed(1)} -30 C${(x + wt / 2 + 5).toFixed(1)} ${(base - 620).toFixed(0)} ${(x + wb / 2 + 6).toFixed(1)} ${(base - 320).toFixed(0)} ${(x + wb / 2).toFixed(1)} ${base.toFixed(0)} Z" fill="url(#arbXCorteza)"/>`;
+        g += `<path d="M${(x - wb * .16).toFixed(1)} ${(base - 50).toFixed(0)} q${(wb * .12).toFixed(1)} -250 ${(wb * .04).toFixed(1)} -500" stroke="rgba(0,0,0,.15)" stroke-width="${(wb * .2).toFixed(1)}" fill="none" stroke-linecap="round"/>`;
+        /* las ramas, con su ramillete de hojas al final */
+        [[.30, -1, 1], [.51, 1, .86], [.71, -1, .68]].forEach((b, j) => {
+          if (lejos && j === 1) return;
+          const y = base - 840 * b[0], d = b[1], la = 104 * k * b[2];
+          const px = x + d * la, py = y - 52 * b[2];
+          g += `<path d="M${x.toFixed(0)} ${y.toFixed(0)} Q${(x + d * la * .58).toFixed(0)} ${(y - 6).toFixed(0)} ${px.toFixed(0)} ${py.toFixed(0)}" stroke="#6f5138" stroke-width="${(10 * k * b[2]).toFixed(1)}" fill="none" stroke-linecap="round"/>`;
+          const rr = 36 * k * b[2] * Math.max(.28, esp);
+          if (esp > .34) {
+            g += `<circle cx="${px.toFixed(0)}" cy="${py.toFixed(0)}" r="${rr.toFixed(0)}" fill="${c1}"/>
+              <circle cx="${(px + d * rr * .72).toFixed(0)}" cy="${(py + rr * .46).toFixed(0)}" r="${(rr * .66).toFixed(0)}" fill="${c2}"/>
+              <circle cx="${(px - d * rr * .5).toFixed(0)}" cy="${(py - rr * .52).toFixed(0)}" r="${(rr * .58).toFixed(0)}" fill="${c2}"/>`;
+          }
+          if (nv > .35) {
+            g += `<path d="M${(px - rr).toFixed(0)} ${(py - rr * .3).toFixed(0)} q${rr.toFixed(0)} -${(rr * .55).toFixed(0)} ${(rr * 2).toFixed(0)} 0" stroke="rgba(255,255,255,.9)" stroke-width="${(6 * nv).toFixed(1)}" fill="none" stroke-linecap="round"/>`;
+          }
+        });
+        return g + "</g>";
+      };
+      /* los de atrás primero, para que los de delante los tapen un poco */
+      [[315, .74], [775, .82], [1235, .7], [1705, .8], [2165, .72], [2625, .78], [3170, .74], [3770, .8], [3990, .76]]
+        .forEach(t => { s += troncoAlto(t[0], t[1], true); });
+      /* en el invierno los troncos van pelados y el aire se quedaba vacío: por
+         eso esta punta del mapa lleva dos troncos más que el resto */
+      /* el de 3245 rellena el salto de 600 px que había entre el de 2870 y el de
+         3470, que era donde el aire quedaba más vacío. Va justo a la izquierda
+         del punto del verano, sin meterse debajo de su dibujo */
+      [[60, 1.18], [545, .95], [1005, 1.08], [1465, .98], [1935, 1.12], [2395, .88], [2870, 1.02], [3245, .82], [3470, .94], [3690, .9], [4070, .86]]
+        .forEach(t => { s += troncoAlto(t[0], t[1], false); });
+      /* ---------- EL BOSQUE DE FONDO: copas entre los árboles del mapa ----------
+         En la parte de las estaciones el color y el espesor de la copa se van
+         mezclando con la estación siguiente: eso es la transición. */
+      const fondo = (x, y, k, c1, c2, tr, esp) => {
+        const f = esp === undefined ? 1 : Math.max(.12, esp);
+        return `<g transform="translate(${x} ${y}) scale(${k})" opacity=".9">
         <path d="M0 0 V-118" stroke="${tr}" stroke-width="17" stroke-linecap="round"/>
         <path d="M0 -74 q-26 -14 -40 -34 M0 -94 q26 -16 42 -34" stroke="${tr}" stroke-width="9" fill="none" stroke-linecap="round"/>
-        <circle cx="0" cy="-152" r="60" fill="${c1}"/><circle cx="-44" cy="-116" r="38" fill="${c1}"/><circle cx="46" cy="-120" r="40" fill="${c1}"/>
-        <circle cx="-16" cy="-186" r="34" fill="${c2}"/><circle cx="34" cy="-160" r="30" fill="${c2}"/></g>`;
-      [[90, 884, 1.05], [290, 878, .9], [490, 884, 1], [680, 876, .85], [840, 882, .95], [980, 872, 1.1],
-        [1160, 880, .95], [1350, 876, 1.05], [1520, 882, .9], [1680, 874, 1], [1830, 880, .95]].forEach((t, i) => {
-        s += fondo(t[0], t[1], t[2], ["#4c8b3f", "#43803a", "#57994a"][i % 3], ["#69ad4c", "#63a44a", "#76b855"][i % 3], "#6d4c41");
-      });
-      /* ---------- LA PRADERA Y EL SUELO DEL BOSQUE ---------- */
-      s += `<path d="M0 888 Q400 862 800 888 Q1300 912 1800 882 Q2200 862 2600 888 L2600 950 L0 950 Z" fill="url(#arbXPrado)"/>
-        <path d="M0 902 Q400 878 800 902 Q1300 924 1800 896 Q2200 878 2600 902 L2600 950 L0 950 Z" fill="#4f8a2c" opacity=".7"/>`;
-      /* matas de hierba, hojarasca y helechos por delante */
-      for (let x = 30; x < 2600; x += 78) {
-        const y = 894 + (x % 3) * 6;
-        if (!libre(x - 12, y - 24, 24, 26)) continue;
-        s += `<path d="M${x} ${y} q-5 -15 -11 -19 M${x} ${y} q0 -17 2 -23 M${x} ${y} q7 -15 13 -17" stroke="#8bc34a" stroke-width="3.6" fill="none" stroke-linecap="round"/>`;
+        <circle cx="0" cy="-152" r="${(60 * f).toFixed(0)}" fill="${c1}"/><circle cx="${(-44 * f).toFixed(0)}" cy="-116" r="${(38 * f).toFixed(0)}" fill="${c1}"/><circle cx="${(46 * f).toFixed(0)}" cy="-120" r="${(40 * f).toFixed(0)}" fill="${c1}"/>
+        <circle cx="-16" cy="-186" r="${(34 * f).toFixed(0)}" fill="${c2}"/><circle cx="34" cy="-160" r="${(30 * f).toFixed(0)}" fill="${c2}"/></g>`;
+      };
+      /* la fila más lejana, ladera arriba: pequeña y desvaída, para que se note
+         que hay bosque hasta el fondo y no un telón pintado */
+      /* el árbol de fondo no se planta justo encima de un punto del mapa: si su
+         copa taparía el icono, se aparta un poco a un lado en vez de borrarse,
+         que si no la ladera se queda calva. Así cada punto respira y el bosque
+         sigue igual de tupido */
+      /* el desplazamiento se busca de cuatro en cuatro píxeles y hasta 168 a cada
+         lado, así siempre aparece un hueco y ya no se pierde ningún árbol. Se
+         apunta dónde ha quedado plantado cada uno: primero se le pide un palmo
+         de separación (26) y solo si no cabe se le deja arrimarse a 12, que es
+         lo que antes dejaba dos árboles clavados en la misma x */
+      const plantados = [];
+      const desvios = [0];
+      for (let d = 4; d <= 168; d += 4) { desvios.push(-d); desvios.push(d); }
+      const sitio = (x, y, k) => {
+        const w = 92 * k, h = 172 * k;
+        for (const sep of [26, 12]) {
+          for (let i = 0; i < desvios.length; i++) {
+            const xx = x + desvios[i];
+            if (!libre(xx - w / 2, y - h, w, h + 6)) continue;
+            if (plantados.some(v => Math.abs(v - xx) < sep)) continue;
+            plantados.push(xx);
+            return xx;
+          }
+        }
+        return null;
+      };
+      /* esta fila va ladera arriba, pequeña y desvaída: no camufla a nadie, así
+         que se planta entera y es la que da fondo detrás de los puntos */
+      for (let i = 0; i < 34; i++) {
+        const x = 20 + i * 128, es = estacion(x), yn = suelo(x) - 148 - (i % 3) * 14;
+        const kf = [.5, .44, .54, .46][i % 4];
+        const c1 = x > 2900 ? mez(es.copa, "#cfe4bd", .42) : ["#6ea45c", "#77ad63", "#679c56"][i % 3];
+        const c2 = x > 2900 ? mez(es.claro, "#dcecca", .42) : ["#87ba6f", "#8fc077", "#7fb268"][i % 3];
+        const esp = x > 2900 ? Math.max(.3, es.hojas) : 1;
+        /* el tronco va casi del color de la ladera: si no, a lo lejos solo se
+           veían palitos marrones sueltos y las copas se perdían */
+        s += `<g opacity=".62">${fondo(x, yn.toFixed(0), kf, c1, c2, "#9d8570", esp)}</g>`;
       }
-      const hoja = (x, y, c, r) => `<path d="M${x} ${y} q9 -9 18 0 q-9 9 -18 0 Z" fill="${c}" transform="rotate(${r} ${x + 9} ${y})"/>`;
-      for (let i = 0; i < 22; i++) {
-        const x = 40 + az() * 2520, y = 908 + az() * 30;
+      for (let i = 0; i < 19; i++) {
+        const x = 100 + i * 158, yn = suelo(x) - 6, kf = [1.05, .9, 1, .85, .95, 1.1][i % 6];
+        const xx = sitio(x, yn, kf);
+        if (xx === null) continue;
+        s += fondo(xx, (suelo(xx) - 6).toFixed(0), kf, ["#4c8b3f", "#43803a", "#57994a"][i % 3], ["#69ad4c", "#63a44a", "#76b855"][i % 3], "#6d4c41");
+      }
+      /* al pie de la secuoya, dos coníferas enanas: puestas al lado se ve de un
+         vistazo lo alto que es el gigante, que si no parecía un arbolito más */
+      [[1494, .3], [1676, .26], [1712, .2]].forEach(p => {
+        const by = suelo(p[0]) - 4;
+        s += `<g transform="translate(${p[0]} ${by.toFixed(0)}) scale(${p[1]})" opacity=".9">
+          <path d="M-10 0 h20 V-46 h-20 Z" fill="#6d4c41"/>
+          <path d="M0 -230 L-56 -140 L56 -140 Z" fill="#33691e"/>
+          <path d="M0 -186 L-72 -78 L72 -78 Z" fill="#2e7d32"/>
+          <path d="M0 -130 L-86 -30 L86 -30 Z" fill="#33691e"/></g>`;
+      });
+      /* los árboles de fondo del año del árbol, cambiando de estación poco a poco */
+      for (let x = 2960; x <= 4160; x += 62) {
+        const y0 = suelo(x) - 6, kf = [.86, .96, .78, .9][Math.floor(x / 62) % 4];
+        const xx = sitio(x, y0, kf);
+        if (xx === null) continue;
+        /* la estación se lee en el sitio donde acaba plantado el árbol */
+        const es = estacion(xx);
+        s += fondo(xx, (suelo(xx) - 6).toFixed(0), kf, es.copa, es.claro, es.nieve > .6 ? "#7a5a3c" : "#6d4c41", es.hojas);
+        /* los brotes y las flores de la primavera, que se espesan hacia el verano */
+        if (es.brotes > .18) {
+          const n = Math.round(es.brotes * 4);
+          for (let k = 0; k < n; k++) {
+            const bx = xx - 26 + k * 16, by = suelo(xx) - 130 - (k % 3) * 22;
+            s += `<circle cx="${bx}" cy="${by.toFixed(0)}" r="${(3 + es.brotes * 3).toFixed(1)}" fill="${["#f8bbd0", "#fff176", "#f06292"][k % 3]}"/>`;
+          }
+        }
+        /* las hojas que empiezan a dorarse camino del otoño */
+        if (es.oro > .2 && es.nieve < .5) {
+          s += `<circle cx="${xx + 22}" cy="${(suelo(xx) - 176).toFixed(0)}" r="${(9 * es.oro).toFixed(0)}" fill="#ffca28" opacity=".8"/>
+            <circle cx="${xx - 30}" cy="${(suelo(xx) - 148).toFixed(0)}" r="${(8 * es.oro).toFixed(0)}" fill="#ff8f00" opacity=".75"/>`;
+        }
+        /* la nieve se posa encima de cada copa, cada una a su altura: así no
+           sale una cinta blanca continua de árbol en árbol */
+        if (es.nieve > .35) {
+          const cy = suelo(xx) - 6 - 152 * kf, rr = 60 * kf * Math.max(.35, es.hojas);
+          s += `<path d="M${(xx - rr * .82).toFixed(0)} ${(cy - rr * .28).toFixed(0)} q${(rr * .82).toFixed(0)} -${(rr * .66).toFixed(0)} ${(rr * 1.64).toFixed(0)} 0" stroke="rgba(255,255,255,.92)" stroke-width="${(7 * es.nieve * kf).toFixed(1)}" fill="none" stroke-linecap="round"/>`;
+        }
+      }
+      /* ---------- LA PRADERA Y EL SUELO DEL BOSQUE, SIGUIENDO EL PERFIL ---------- */
+      s += `<path d="${lineaSuelo(0, 4200, 0)} L4200 960 L0 960 Z" fill="url(#arbXPrado)"/>
+        <path d="${lineaSuelo(0, 4200, 14)} L4200 960 L0 960 Z" fill="#4f8a2c" opacity=".7"/>`;
+      /* el verde se seca camino del otoño: el prado toma color de paja antes de
+         que llegue la nieve, para que el suelo cambie a la vez que las copas */
+      s += `<path d="${lineaSuelo(3260, 3800, 0)} L3800 960 L3260 960 Z" fill="url(#arbXSecano)"/>`;
+      /* en la zona de los gigantes (baobab, olivo, drago) el suelo se vuelve
+         arenoso poco a poco y vuelve al verde antes del manglar: así se nota que
+         cambia el paisaje sin que haya ninguna raya que separe */
+      s += `<path d="${lineaSuelo(1700, 2660, 0)} L2660 960 L1700 960 Z" fill="url(#arbXSequia)"/>`;
+      /* matas de hierba y helechos por delante */
+      for (let x = 30; x < 4200; x += 74) {
+        const y = suelo(x) + 8 + (x % 3) * 5;
+        if (!libre(x - 12, y - 24, 24, 26) || capaNieve(x) > .3) continue;
+        s += `<path d="M${x} ${y.toFixed(0)} q-5 -15 -11 -19 M${x} ${y.toFixed(0)} q0 -17 2 -23 M${x} ${y.toFixed(0)} q7 -15 13 -17" stroke="#8bc34a" stroke-width="3.6" fill="none" stroke-linecap="round"/>`;
+      }
+      /* el giro va sobre el centro de la propia hoja: con números, no con texto,
+         que si no la hoja sale disparada lejos de su sitio */
+      const hoja = (x, y, c, r) => `<path d="M${x.toFixed(0)} ${y.toFixed(0)} q9 -9 18 0 q-9 9 -18 0 Z" fill="${c}" transform="rotate(${r} ${(x + 9).toFixed(0)} ${y.toFixed(0)})"/>`;
+      for (let i = 0; i < 46; i++) {
+        const x = 40 + az() * 4100, y = suelo(x) + 22 + az() * 24;
         if (!libre(x - 4, y - 6, 26, 14)) continue;
-        s += hoja(x.toFixed(0), y.toFixed(0), x > 2285 && x < 2435 ? "#e65100" : ["#8d6e63", "#a1887f", "#c69352"][i % 3], (az() * 120 - 60).toFixed(0));
+        const es = estacion(x);
+        const c = es.oro > .4 ? ["#e65100", "#ef6c00", "#bf360c"][i % 3] : ["#8d6e63", "#a1887f", "#c69352"][i % 3];
+        s += hoja(x, y, c, (az() * 120 - 60).toFixed(0));
       }
       const helecho = (x, y, k) => `<g transform="translate(${x} ${y}) scale(${k})" stroke="#3f7f33" stroke-width="7" fill="none" stroke-linecap="round">
         <path d="M0 0 Q-30 -38 -62 -48"/><path d="M0 0 Q0 -52 -10 -80"/><path d="M0 0 Q30 -38 62 -48"/><path d="M0 0 Q19 -48 40 -70"/><path d="M0 0 Q-19 -48 -40 -70"/></g>`;
-      s += helecho(300, 924, .7) + helecho(1130, 918, .62) + helecho(1670, 926, .58) + helecho(2130, 920, .5);
+      /* el de 1950 va en el hueco que queda entre la caja del baobab y la del
+         olivo: donde estaba antes (2098) se lo comía la etiqueta del olivo */
+      [[320, .7], [1000, .62], [1720, .58], [1950, .5], [2620, .6], [3140, .48]].forEach(h => {
+        s += helecho(h[0], (suelo(h[0]) + 22).toFixed(0), h[1]);
+      });
       /* setas del suelo, en corrillo */
       const seta = (x, y, k, c) => `<g transform="translate(${x} ${y}) scale(${k})">
         <path d="M-6 0 q-3 -18 6 -20 q9 2 6 20 Z" fill="#efebe0"/>
         <path d="M-19 -18 q4 -20 19 -20 q15 0 19 20 Z" fill="${c}"/>
         <g fill="rgba(255,255,255,.85)"><circle cx="-8" cy="-24" r="3.2"/><circle cx="7" cy="-28" r="2.6"/><circle cx="14" cy="-21" r="2.4"/></g></g>`;
-      s += seta(620, 930, 1, "#e53935") + seta(654, 936, .7, "#e53935") + seta(1290, 926, .85, "#c0703a") + seta(2020, 930, .75, "#8d6e63") + seta(1470, 932, .6, "#e53935");
+      /* la de 2130 estaba antes en 2160, justo debajo del tocón, que se dibuja
+         después y solo dejaba ver un trozo del sombrero */
+      [[770, 1, "#e53935"], [806, .7, "#e53935"], [1480, .85, "#c0703a"], [2130, .75, "#8d6e63"], [1900, .6, "#e53935"], [2660, .7, "#c0703a"]].forEach(m => {
+        s += seta(m[0], (suelo(m[0]) + 26).toFixed(0), m[1], m[2]);
+      });
       /* un tocón viejo con sus anillos */
-      s += `<g><ellipse cx="1970" cy="924" rx="40" ry="14" fill="#7a5a3c"/><path d="M1930 924 V896 q40 -14 80 0 v28 Z" fill="url(#arbXCorteza)"/>
-        <ellipse cx="1970" cy="896" rx="40" ry="14" fill="#b98d5e"/><ellipse cx="1970" cy="896" rx="26" ry="9" fill="none" stroke="#96683f" stroke-width="3"/>
-        <ellipse cx="1970" cy="896" rx="13" ry="4.6" fill="none" stroke="#96683f" stroke-width="3"/></g>`;
+      const toconY = suelo(2200) + 24;
+      s += `<g><ellipse cx="2200" cy="${toconY.toFixed(0)}" rx="40" ry="14" fill="#7a5a3c"/><path d="M2160 ${toconY.toFixed(0)} V${(toconY - 28).toFixed(0)} q40 -14 80 0 v28 Z" fill="url(#arbXCorteza)"/>
+        <ellipse cx="2200" cy="${(toconY - 28).toFixed(0)}" rx="40" ry="14" fill="#b98d5e"/><ellipse cx="2200" cy="${(toconY - 28).toFixed(0)}" rx="26" ry="9" fill="none" stroke="#96683f" stroke-width="3"/>
+        <ellipse cx="2200" cy="${(toconY - 28).toFixed(0)}" rx="13" ry="4.6" fill="none" stroke="#96683f" stroke-width="3"/></g>`;
       /* la charca del manglar, con sus raíces zancudas */
-      s += `<ellipse cx="1905" cy="856" rx="152" ry="34" fill="url(#arbXAgua)"/>
-        <ellipse cx="1870" cy="848" rx="54" ry="10" fill="rgba(255,255,255,.35)"/>
-        <path d="M1806 866 q22 -10 44 0 M1936 870 q22 -10 44 0" stroke="rgba(255,255,255,.45)" stroke-width="4" fill="none" stroke-linecap="round"/>
-        <g stroke="#6d4c41" stroke-width="7" fill="none" stroke-linecap="round"><path d="M1802 862 q-14 -30 -30 -44 M1818 866 q-6 -32 -2 -50 M2000 860 q16 -28 34 -40 M1984 864 q6 -30 2 -46"/></g>`;
-      /* ---------- EL SUBSUELO: la tierra abierta, con sus raíces y su red de hongos ---------- */
-      s += `<rect x="0" y="944" width="2600" height="156" fill="url(#arbXTierra)"/>
-        <path d="M0 944 Q650 936 1300 944 Q1950 952 2600 944 L2600 958 L0 958 Z" fill="#6b4a35"/>`;
-      [190, 400, 580, 770, 1060, 1260, 1440, 1600, 1760, 1900, 2060, 2210, 2360, 2510].forEach(x => {
+      s += `<ellipse cx="2740" cy="${(suelo(2740) + 4).toFixed(0)}" rx="168" ry="36" fill="url(#arbXAgua)"/>
+        <ellipse cx="2700" cy="${(suelo(2740) - 6).toFixed(0)}" rx="58" ry="10" fill="rgba(255,255,255,.35)"/>
+        <path d="M2628 ${(suelo(2740) + 14).toFixed(0)} q22 -10 44 0 M2778 ${(suelo(2740) + 18).toFixed(0)} q22 -10 44 0" stroke="rgba(255,255,255,.45)" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <g stroke="#6d4c41" stroke-width="7" fill="none" stroke-linecap="round"><path d="M2622 ${(suelo(2740) + 8).toFixed(0)} q-14 -30 -30 -44 M2640 ${(suelo(2740) + 12).toFixed(0)} q-6 -32 -2 -50 M2842 ${(suelo(2740) + 6).toFixed(0)} q16 -28 34 -40 M2824 ${(suelo(2740) + 10).toFixed(0)} q6 -30 2 -46"/></g>`;
+      /* ---------- LA NIEVE QUE VA CUBRIENDO EL SUELO HACIA EL INVIERNO ---------- */
+      /* primero unas manchas sueltas por delante del manto, cada vez más juntas */
+      for (let x = 3560; x < 4080; x += 26) {
+        const c = capaNieve(x);
+        if (c <= .02 || c > .66) continue;
+        const yy = suelo(x) + 8 + (x % 3) * 4;
+        if (!libre(x - 34, yy - 12, 68, 26)) continue;
+        s += `<ellipse cx="${x}" cy="${yy.toFixed(0)}" rx="${(10 + c * 30).toFixed(0)}" ry="${(4 + c * 8).toFixed(0)}" fill="#f4fbff" opacity="${(.3 + c * .55).toFixed(2)}"/>`;
+      }
+      /* el manto no tiene borde: se va volviendo blanco poco a poco de izquierda
+         a derecha, y por arriba ondula siguiendo las lengüetas de nieve */
+      let mantoA = "";
+      for (let x = 3540; x <= 4200; x += 12) mantoA += `${mantoA ? " L" : "M"}${x} ${nieveTop(x).toFixed(1)}`;
+      s += `<path d="${mantoA} L4200 972 L3540 972 Z" fill="url(#arbXManto)"/>`;
+      /* el filo de nieve fresca engorda con el manto: no empieza de golpe */
+      for (let x = 3580; x < 4200; x += 22) {
+        const c = capaNieve(x);
+        if (c < .08) continue;
+        s += `<path d="M${x} ${nieveTop(x).toFixed(1)} L${x + 22} ${nieveTop(x + 22).toFixed(1)}" stroke="#ffffff" stroke-width="${(9 * c).toFixed(1)}" fill="none" stroke-linecap="round" opacity="${Math.min(.92, c * 1.5).toFixed(2)}"/>`;
+      }
+      /* ---------- LO QUE CAE DEL CIELO EN CADA ESTACIÓN ---------- */
+      /* pétalos de primavera */
+      [[2990, 300, 13], [3096, 260, 16], [3184, 320, 14]].forEach(p => {
+        s += `<g><path d="M0 0 q7 -7 14 0 q-7 7 -14 0 Z" fill="#f8bbd0"/>
+          <animateMotion dur="${p[2]}s" repeatCount="indefinite" path="M${p[0]} ${p[1]} q40 130 -22 260 q-46 96 24 250 q30 60 6 ${860 - p[1]}"/></g>`;
+      });
+      /* hojas doradas de otoño */
+      [[3560, 210, "#ef6c00", 12], [3648, 250, "#ff9800", 15], [3736, 190, "#d84315", 18], [3480, 270, "#ffb300", 14]].forEach(l => {
+        s += `<g><path d="M0 0 q8 -8 16 0 q-8 8 -16 0 Z" fill="${l[2]}"/>
+          <animateMotion dur="${l[3]}s" repeatCount="indefinite" path="M${l[0]} ${l[1]} q46 140 -26 280 q-52 100 26 250 q34 60 8 ${856 - l[1]}"/></g>`;
+      });
+      /* copos de invierno */
+      [[3880, 300, 11], [3960, 250, 14], [4046, 330, 12], [4132, 210, 16], [3812, 240, 13]].forEach(c => {
+        s += `<g><circle r="4.5" fill="#fff"/><animateMotion dur="${c[2]}s" repeatCount="indefinite" path="M${c[0]} ${c[1]} q26 150 -18 300 q-30 110 20 ${840 - c[1] - 300}"/></g>`;
+      });
+      /* nevada quieta de fondo: sin ella el aire del invierno era una plancha
+         de color liso desde las copas hasta el suelo */
+      let sem4 = 77771;
+      const az4 = () => (sem4 = sem4 * 16807 % 2147483647) / 2147483647;
+      for (let i = 0; i < 54; i++) {
+        const x = 3640 + az4() * 560, y = 150 + az4() * 690, c = capaNieve(x);
+        if (c < .12) continue;
+        s += `<circle cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" r="${(1.6 + az4() * 2.6).toFixed(1)}" fill="#ffffff" opacity="${(.3 + c * .45).toFixed(2)}"/>`;
+      }
+      /* tres abetos de invierno, plantados sobre el manto y no dentro de él */
+      [[4010, 1], [4150, .85], [3796, .72]].forEach(t => {
+        const by = (nieveTop(t[0]) + 6).toFixed(0);
+        s += `<g transform="translate(${t[0]} ${by}) scale(${t[1]})">
+          <ellipse cx="0" cy="2" rx="42" ry="9" fill="#ffffff" opacity=".9"/>
+          <path d="M-6 0 h12 V-40 h-12 Z" fill="#795548"/>
+          <path d="M0 -132 L-30 -80 L30 -80 Z" fill="#2f6b34"/><path d="M0 -104 L-40 -44 L40 -44 Z" fill="#2a5f2e"/>
+          <path d="M0 -132 L-30 -80 L30 -80 Z" fill="none" stroke="rgba(255,255,255,.75)" stroke-width="5"/>
+          <path d="M-34 -50 q34 -16 68 0" stroke="rgba(255,255,255,.85)" stroke-width="7" fill="none" stroke-linecap="round"/></g>`;
+      });
+      /* ---------- EL SUBSUELO: LA TIERRA ABIERTA DE PUNTA A PUNTA ---------- */
+      s += `<rect x="0" y="${SUB}" width="4200" height="156" fill="url(#arbXTierra)"/>
+        <path d="M0 ${SUB} Q1050 936 2100 ${SUB} Q3150 952 4200 ${SUB} L4200 958 L0 958 Z" fill="#6b4a35"/>`;
+      /* una segunda capa de tierra, más honda, para que el subsuelo no sea un
+         rectángulo liso: se nota que la tierra tiene capas */
+      s += `<path d="M0 1042 Q700 1022 1400 1046 Q2100 1070 2800 1044 Q3500 1020 4200 1048 L4200 1100 L0 1100 Z" fill="#4a3126" opacity=".45"/>`;
+      /* chinitas y granos de tierra repartidos, con su propia serie de números */
+      let sem3 = 31337;
+      const az3 = () => (sem3 = sem3 * 16807 % 2147483647) / 2147483647;
+      for (let i = 0; i < 90; i++) {
+        const x = 20 + az3() * 4160, y = 968 + az3() * 122;
+        if (!libre(x - 5, y - 4, 10, 8)) continue;
+        s += `<ellipse cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" rx="${(1.6 + az3() * 2.6).toFixed(1)}" ry="${(1.2 + az3() * 1.8).toFixed(1)}" fill="#8a6a52" opacity="${(.2 + az3() * .3).toFixed(2)}"/>`;
+      }
+      /* una raíz maestra que recorre el mapa entero, de lado a lado */
+      s += `<path d="M-20 990 Q420 1016 860 992 Q1300 968 1740 998 Q2180 1028 2620 1000 Q3060 972 3500 1002 Q3860 1026 4220 1000" stroke="#8d6e63" stroke-width="11" fill="none" stroke-linecap="round" opacity=".7"/>
+        <path d="M-20 1002 Q420 1028 860 1004 Q1300 980 1740 1010 Q2180 1040 2620 1012 Q3060 984 3500 1014 Q3860 1038 4220 1012" stroke="#6d4c41" stroke-width="5" fill="none" stroke-linecap="round" opacity=".6"/>`;
+      /* y de cada árbol del mapa baja su propio manojo de raíces */
+      (e && e.pois ? e.pois : []).forEach(p => {
+        if (p.y > 960) return;
+        const x = p.x;
         s += `<path d="M${x} 948 Q${x - 28} 990 ${x - 54} 1028 M${x} 948 Q${x + 24} 996 ${x + 48} 1036 M${x} 948 L${x - 4} 1016" stroke="#8d6e63" stroke-width="5.5" fill="none" stroke-linecap="round" opacity=".75"/>`;
       });
-      s += `<g fill="#5d4037"><ellipse cx="930" cy="1020" rx="17" ry="10"/><ellipse cx="1985" cy="1036" rx="14" ry="8"/><ellipse cx="620" cy="1064" rx="20" ry="11"/><ellipse cx="2300" cy="1010" rx="15" ry="9"/></g>
-        <path d="M1330 1042 q8 -10 16 0 q8 10 16 0" stroke="#e57373" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="1364" cy="1040" r="1.6" fill="#3e2723"/>`;
-      s += `<path d="M150 1015 Q400 1062 660 1024 Q900 992 1120 1038 Q1350 1072 1560 1032 Q1780 996 2000 1030 Q2280 1068 2560 1024" stroke="#ffe082" stroke-width="3" fill="none" opacity=".5" stroke-dasharray="3 9"/>
-        <path d="M260 1052 Q520 1010 800 1046 Q1100 1080 1400 1044" stroke="#fff176" stroke-width="2.2" fill="none" opacity=".35" stroke-dasharray="2 8"/>`;
-      [[430, 1042], [1240, 1052], [1660, 1024], [2100, 1040]].forEach((p, i) => {
+      /* raicillas finas colgando de la raíz maestra, de punta a punta */
+      const raizY = x => 995 + 11 * Math.cos((x - 420) * Math.PI / 880);
+      for (let x = 70; x < 4200; x += 106) {
+        const y = raizY(x);
+        s += `<path d="M${x} ${y.toFixed(0)} q11 26 5 48 M${x} ${y.toFixed(0)} q-13 22 -20 42" stroke="#8d6e63" stroke-width="2.6" fill="none" stroke-linecap="round" opacity=".45"/>`;
+      }
+      /* el túnel del topo, que en el cuento lleva hasta la red de los hongos */
+      s += `<path d="M1780 1074 q60 -46 154 -40 q96 6 150 44" stroke="#4a3126" stroke-width="26" fill="none" stroke-linecap="round"/>
+        <path d="M1780 1074 q60 -46 154 -40 q96 6 150 44" stroke="#7a5a3c" stroke-width="17" fill="none" stroke-linecap="round" opacity=".55"/>`;
+      /* la despensa de la ardilla: una bellota dormida echando su primera raíz */
+      s += `<g transform="translate(392 1028)"><ellipse cx="0" cy="26" rx="34" ry="20" fill="#4a3126"/>
+        <path d="M-13 -8 q13 -12 26 0 q4 20 -13 30 q-17 -10 -13 -30 Z" fill="#a1663a"/>
+        <path d="M-15 -9 q15 -13 30 0 q-15 7 -30 0 Z" fill="#6d4326"/><path d="M0 -18 v-7" stroke="#6d4326" stroke-width="3" stroke-linecap="round"/>
+        <path d="M0 22 q-5 16 -14 26 M0 22 q6 14 13 22" stroke="#cdbfa6" stroke-width="3.4" fill="none" stroke-linecap="round"/></g>`;
+      /* el nido de las hormigas, con sus salitas y sus pasillos */
+      s += `<g transform="translate(2960 1030)"><path d="M0 -6 q34 4 46 30 M0 -6 q-32 8 -44 30 M0 -6 v34" stroke="#4a3126" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <ellipse cx="0" cy="-10" rx="20" ry="12" fill="#4a3126"/><ellipse cx="-50" cy="30" rx="16" ry="10" fill="#4a3126"/><ellipse cx="52" cy="30" rx="17" ry="11" fill="#4a3126"/>
+        <g fill="#5d4037"><ellipse cx="-4" cy="-10" rx="4" ry="3"/><ellipse cx="6" cy="-11" rx="3" ry="2.4"/><ellipse cx="-48" cy="30" rx="4" ry="3"/></g></g>`;
+      /* piedras, lombrices y la red de hongos que conecta unas raíces con otras */
+      s += `<g fill="#7a5a45"><ellipse cx="930" cy="1020" rx="17" ry="10"/><ellipse cx="1985" cy="1046" rx="14" ry="8"/><ellipse cx="620" cy="1064" rx="20" ry="11"/><ellipse cx="2560" cy="1016" rx="15" ry="9"/><ellipse cx="3320" cy="1058" rx="18" ry="10"/><ellipse cx="3960" cy="1024" rx="15" ry="9"/>
+        <ellipse cx="1140" cy="1076" rx="22" ry="12"/><ellipse cx="1620" cy="1030" rx="12" ry="7"/><ellipse cx="2300" cy="1070" rx="19" ry="10"/><ellipse cx="3040" cy="1012" rx="13" ry="8"/><ellipse cx="3660" cy="1080" rx="21" ry="11"/><ellipse cx="4120" cy="1064" rx="16" ry="9"/><ellipse cx="240" cy="1074" rx="18" ry="10"/></g>
+        <g fill="#a1887f" opacity=".7"><ellipse cx="925" cy="1015" rx="8" ry="4"/><ellipse cx="1981" cy="1042" rx="6" ry="3"/><ellipse cx="614" cy="1059" rx="9" ry="4.4"/><ellipse cx="2555" cy="1012" rx="7" ry="3.4"/><ellipse cx="3314" cy="1053" rx="8" ry="4"/><ellipse cx="1134" cy="1071" rx="10" ry="4.6"/><ellipse cx="2294" cy="1065" rx="9" ry="4"/><ellipse cx="3654" cy="1075" rx="9" ry="4.4"/><ellipse cx="234" cy="1069" rx="8" ry="4"/><ellipse cx="4115" cy="1060" rx="7" ry="3.4"/></g>
+        <path d="M1330 1062 q8 -10 16 0 q8 10 16 0" stroke="#e57373" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="1364" cy="1060" r="1.6" fill="#3e2723"/>
+        <path d="M2880 1044 q8 -10 16 0 q8 10 16 0" stroke="#e57373" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="2914" cy="1042" r="1.6" fill="#3e2723"/>
+        <path d="M3480 1076 q7 -9 14 0 q7 9 14 0" stroke="#ef9a9a" stroke-width="4.4" fill="none" stroke-linecap="round"/><circle cx="3510" cy="1074" r="1.5" fill="#3e2723"/>`;
+      s += `<path d="M150 1015 Q560 1064 980 1024 Q1400 986 1820 1040 Q2240 1076 2660 1032 Q3080 990 3500 1036 Q3860 1072 4180 1026" stroke="#ffe082" stroke-width="3" fill="none" opacity=".5" stroke-dasharray="3 9"/>
+        <path d="M260 1058 Q700 1012 1160 1052 Q1620 1086 2080 1046 Q2560 1006 3020 1050 Q3480 1088 3940 1044" stroke="#fff176" stroke-width="2.2" fill="none" opacity=".35" stroke-dasharray="2 8"/>`;
+      /* la red de hongos se espesa justo al llegar al punto de la red de raíces */
+      s += `<path d="M330 1044 Q470 1004 586 1006 M330 1066 Q480 1038 586 1020" stroke="#ffe082" stroke-width="2.6" fill="none" opacity=".55"/>
+        <path d="M736 1004 Q862 998 988 1034 M736 1018 Q880 1032 1012 1058" stroke="#ffe082" stroke-width="2.6" fill="none" opacity=".55"/>`;
+      [[430, 1042], [1240, 1058], [1960, 1024], [2740, 1046], [3420, 1030], [4060, 1052]].forEach((p, i) => {
         s += `<circle cx="${p[0]}" cy="${p[1]}" r="3.4" fill="#fff176"><animate attributeName="opacity" values="${i % 2 ? "1;.15;1" : ".25;1;.25"}" dur="${(1.8 + i * .4).toFixed(1)}s" repeatCount="indefinite"/></circle>`;
       });
-      /* ---------- EL AÑO DEL ÁRBOL: cuatro estaciones, una detrás de otra ---------- */
-      /* primavera: brotes, flores y pétalos que bajan girando */
-      s += `<rect x="1980" y="240" width="156" height="704" fill="rgba(255,224,240,.1)"/>`;
-      s += fondo(1990, 878, .95, "#a5d66c", "#c8e6a0", "#8d6e63") + fondo(2118, 872, .8, "#b6de84", "#d7edb6", "#8d6e63");
-      s += `<g fill="#f8bbd0"><circle cx="1968" cy="742" r="7"/><circle cx="2034" cy="700" r="6"/><circle cx="2100" cy="736" r="7"/><circle cx="2126" cy="690" r="6"/></g>`;
-      for (let i = 0; i < 5; i++) {
-        const x = 1994 + i * 30;
-        s += `<g><circle cx="${x}" cy="922" r="5" fill="${["#f06292", "#fff176", "#ba68c8"][i % 3]}"/><circle cx="${x}" cy="922" r="2" fill="#fff"/><path d="M${x} 928 v10" stroke="#7cb342" stroke-width="3" stroke-linecap="round"/></g>`;
-      }
-      [[2010, 300, 13], [2098, 260, 16]].forEach(p => {
-        s += `<g><path d="M0 0 q7 -7 14 0 q-7 7 -14 0 Z" fill="#f8bbd0"/>
-          <animateMotion dur="${p[2]}s" repeatCount="indefinite" path="M${p[0]} ${p[1]} q40 130 -22 260 q-46 96 24 250 q30 60 6 ${910 - p[1]}"/></g>`;
-      });
-      /* verano: la copa más espesa y la hierba alta */
-      s += `<rect x="2136" y="240" width="148" height="704" fill="rgba(255,213,79,.08)"/>`;
-      s += fondo(2146, 876, 1.05, "#2e7d32", "#43a047", "#5d4037") + fondo(2270, 870, .85, "#1b5e20", "#388e3c", "#5d4037");
-      s += `<path d="M2182 30 L2242 30 L2272 620 L2206 620 Z" fill="url(#arbXRayo)" opacity=".18"><animate attributeName="opacity" values=".18;.07;.18" dur="8s" repeatCount="indefinite"/></path>`;
-      for (let x = 2144; x < 2286; x += 22) {
-        if (!libre(x - 6, 900, 12, 34)) continue;
-        s += `<path d="M${x} 934 q-6 -20 -12 -28 M${x} 934 q2 -24 6 -32" stroke="#66a72e" stroke-width="4" fill="none" stroke-linecap="round"/>`;
-      }
-      /* otoño: la copa dorada y las hojas cayendo despacito */
-      s += `<rect x="2286" y="240" width="148" height="704" fill="rgba(255,152,0,.13)"/>`;
-      s += fondo(2296, 878, .95, "#ef6c00", "#ffb300", "#5d4037") + fondo(2420, 872, .8, "#d84315", "#f57c00", "#5d4037");
-      [[2300, 210, "#ef6c00", 12], [2372, 250, "#ff9800", 15], [2424, 190, "#d84315", 18]].forEach(l => {
-        s += `<g><path d="M0 0 q8 -8 16 0 q-8 8 -16 0 Z" fill="${l[2]}"/>
-          <animateMotion dur="${l[3]}s" repeatCount="indefinite" path="M${l[0]} ${l[1]} q46 140 -26 280 q-52 100 26 250 q34 60 8 ${906 - l[1]}"/></g>`;
-      });
-      for (let i = 0; i < 7; i++) s += hoja(2292 + i * 21, 920 + (i % 3) * 8, ["#e65100", "#ef6c00", "#bf360c"][i % 3], (az() * 140 - 70).toFixed(0));
-      /* invierno: ramas desnudas, nieve en el suelo y copos que bajan */
-      s += `<rect x="2434" y="240" width="166" height="704" fill="rgba(187,222,251,.14)"/>`;
-      [[2450, 878, 1], [2580, 872, .85]].forEach(t => {
-        s += `<g transform="translate(${t[0]} ${t[1]}) scale(${t[2]})" stroke="#7a5a3c" fill="none" stroke-linecap="round">
-          <path d="M0 0 V-120" stroke-width="16"/>
-          <path d="M0 -74 q-30 -18 -46 -46 M0 -96 q30 -20 48 -46 M0 -112 q-18 -26 -22 -50 M0 -116 q18 -28 24 -52" stroke-width="8"/>
-          <path d="M-46 -120 q-10 -14 -12 -26 M48 -142 q12 -12 16 -26" stroke-width="5"/>
-          <g stroke="rgba(255,255,255,.85)" stroke-width="5"><path d="M-40 -122 q20 -12 34 -30 M18 -140 q18 -10 28 -24"/></g></g>`;
-      });
-      s += `<path d="M2434 900 Q2500 884 2560 898 Q2590 904 2600 898 L2600 944 L2434 944 Z" fill="#f1f8ff"/>
-        <path d="M2434 900 Q2500 884 2560 898 Q2590 904 2600 898 L2600 910 Q2530 902 2470 914 Z" fill="#fff"/>`;
-      [[2456, 300, 11], [2510, 250, 14], [2564, 330, 12], [2588, 210, 16]].forEach(c => {
-        s += `<g><circle r="4.5" fill="#fff"/><animateMotion dur="${c[2]}s" repeatCount="indefinite" path="M${c[0]} ${c[1]} q26 150 -18 300 q-30 110 20 ${880 - c[1] - 300}"/></g>`;
-      });
       /* ---------- LOS PÁJAROS DEL BOSQUE ---------- */
-      s += `<path d="M1150 210 q12 -12 24 0 q12 -12 24 0 M1236 252 q10 -10 20 0 q10 -10 20 0 M1980 168 q11 -11 22 0 q11 -11 22 0" stroke="#455a64" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+      s += `<path d="M1150 210 q12 -12 24 0 q12 -12 24 0 M1236 252 q10 -10 20 0 q10 -10 20 0 M2360 168 q11 -11 22 0 q11 -11 22 0 M3180 196 q11 -11 22 0 q11 -11 22 0" stroke="#455a64" stroke-width="3" fill="none" stroke-linecap="round"/>`;
       s += `<g><path d="M0 0 q-12 -11 -26 -6 M0 0 q12 -11 26 -6" stroke="rgba(60,80,60,.7)" stroke-width="4" fill="none" stroke-linecap="round">
         <animate attributeName="d" values="M0 0 q-12 -11 -26 -6 M0 0 q12 -11 26 -6;M0 0 q-12 6 -26 11 M0 0 q12 6 26 11;M0 0 q-12 -11 -26 -6 M0 0 q12 -11 26 -6" dur="1.6s" repeatCount="indefinite"/></path>
-        <animateMotion dur="46s" repeatCount="indefinite" path="M 120 300 Q 700 210 1300 288 Q 1900 356 2540 250"/></g>`;
-      return decoSvg(s, 2600);
+        <animateMotion dur="58s" repeatCount="indefinite" path="M 120 300 Q 900 200 1700 290 Q 2500 380 3300 250 Q 3800 178 4120 262"/></g>`;
+      return decoSvg(s, 4200);
     }
   },
 

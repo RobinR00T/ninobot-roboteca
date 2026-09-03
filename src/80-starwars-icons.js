@@ -127,14 +127,14 @@
 
     /* Ala-X: alas abiertas en X, franjas rojas y motores encendidos */
     "✈️": { w: 96, h: 74, svg: sw(`
-      <defs><linearGradient id="swXw" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#90a4ae"/><stop offset="100%" stop-color="#eceff1"/></linearGradient></defs>
+      <defs><linearGradient id="swWing" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#90a4ae"/><stop offset="100%" stop-color="#eceff1"/></linearGradient></defs>
       <path d="M46 40 L6 10 L22 6 L58 34 Z" fill="#cfd8dc" stroke="#78909c" stroke-width="2"/>
       <path d="M46 56 L6 86 L22 90 L58 62 Z" fill="#b0bec5" stroke="#78909c" stroke-width="2"/>
       <path d="M12 8 L20 14 M12 88 L20 82" stroke="#c62828" stroke-width="5" stroke-linecap="round"/>
       <circle cx="14" cy="12" r="5" fill="#ef9a9a"/><circle cx="14" cy="84" r="5" fill="#ef9a9a"/>
       <path d="M30 34 L36 40 M30 62 L36 56" stroke="#78909c" stroke-width="7" stroke-linecap="round"/>
       <circle cx="27" cy="32" r="4.6" fill="#ffab91"/><circle cx="27" cy="64" r="4.6" fill="#ffab91"/>
-      <path d="M34 40 L96 42 Q126 44 132 48 Q126 52 96 54 L34 56 Q26 48 34 40 Z" fill="url(#swXw)" stroke="#78909c" stroke-width="2"/>
+      <path d="M34 40 L96 42 Q126 44 132 48 Q126 52 96 54 L34 56 Q26 48 34 40 Z" fill="url(#swWing)" stroke="#78909c" stroke-width="2"/>
       <path d="M70 43 L94 44 L94 52 L70 53 Z" fill="#c62828" opacity=".85"/>
       <path d="M46 42 Q54 34 62 42 L62 46 L46 46 Z" fill="#4fc3f7" stroke="#546e7a" stroke-width="1.8"/>
       <circle cx="40" cy="41" r="4.6" fill="#64b5f6" stroke="#37474f" stroke-width="1.6"/>`, "0 0 136 96") },

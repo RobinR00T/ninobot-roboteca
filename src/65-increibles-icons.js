@@ -119,11 +119,16 @@
     "⚗️": [1318, 242, "europa"],    /* Marie Curie: Polonia */
     "🚀": [1550, 185, "europa"],    /* Valentina Tereshkova: Rusia */
     "📐": [1335, 458, "africa"],    /* Hipatia: Egipto */
-    "🌳": [1438, 648, "africa"],    /* Wangari Maathai: Kenia */
+    "🌳": [1372, 606, "africa"],    /* Wangari Maathai: Kenia, justo debajo
+                                       del ecuador y en el lado de levante;
+                                       antes el retrato caía casi entero en
+                                       el índico */
     "🐒": [1312, 768, "africa"],    /* Jane Goodall: Tanzania */
     "📚": [1650, 425, "asia"],      /* Malala Yousafzai: Pakistán */
     "🏔️": [1805, 395, "asia"],     /* Junko Tabei: el Everest */
-    "🟡": [2170, 350, "asia"]       /* Yayoi Kusama: Japón */
+    "🟡": [2192, 376, "asia"]       /* Yayoi Kusama: Japón, sobre la parte
+                                       ancha de Honshu (nació en Matsumoto y
+                                       vive en Tokio) */
   };
   ex.pois.forEach(p => {
     const w = WHERE[p.emoji];
@@ -139,6 +144,11 @@
     // América del Norte + Groenlandia
     s += `<path d="M180 180 Q320 100 520 150 Q640 190 620 300 Q600 380 520 420 Q470 470 420 520 Q380 560 350 500 Q240 470 195 380 Q140 260 180 180 Z" fill="#7cc47f" ${borde}/>
           <path d="M840 125 Q920 90 960 140 Q950 210 880 235 Q815 205 840 125 Z" fill="#e3f4f7" ${borde}/>`;
+    // Centroamérica y las Antillas: el puente entre las dos Américas
+    s += `<path d="M334 500 Q360 542 404 580 Q440 610 470 606 Q476 592 448 570 Q404 536 356 486 Z" fill="#7cc47f" ${borde}/>
+          <ellipse cx="516" cy="498" rx="26" ry="12" fill="#7cc47f" ${borde} transform="rotate(-12 516 498)"/>
+          <ellipse cx="566" cy="516" rx="15" ry="8" fill="#7cc47f" ${borde} transform="rotate(-10 566 516)"/>
+          <ellipse cx="600" cy="530" rx="10" ry="6" fill="#7cc47f" ${borde}/>`;
     // América del Sur
     s += `<path d="M430 570 Q520 525 585 575 Q645 645 605 765 Q565 885 505 940 Q460 900 450 800 Q420 685 430 570 Z" fill="#8fce70" ${borde}/>`;
     // Europa + isla del Reino Unido
@@ -147,21 +157,28 @@
     // África + Madagascar
     s += `<path d="M1155 425 Q1255 380 1360 420 Q1450 462 1432 572 Q1420 685 1362 782 Q1322 882 1272 878 Q1212 838 1192 722 Q1132 562 1155 425 Z" fill="#f2b25e" ${borde}/>
           <ellipse cx="1478" cy="792" rx="26" ry="56" fill="#f2b25e" ${borde} transform="rotate(20 1478 792)"/>`;
-    // Asia + India + islas de Japón
+    // Asia + India
     s += `<path d="M1362 262 Q1400 140 1600 122 Q1900 92 2100 172 Q2200 222 2148 322 Q2098 382 2000 382 Q1948 462 1868 462 Q1798 522 1720 482 Q1638 522 1598 462 Q1478 432 1420 382 Q1368 332 1362 262 Z" fill="#9ccc74" ${borde}/>
-          <path d="M1640 470 Q1702 468 1712 542 Q1692 622 1660 642 Q1618 562 1640 470 Z" fill="#9ccc74" ${borde}/>
-          <ellipse cx="2158" cy="322" rx="20" ry="40" fill="#9ccc74" ${borde} transform="rotate(24 2158 322)"/>
-          <ellipse cx="2185" cy="392" rx="17" ry="32" fill="#9ccc74" ${borde} transform="rotate(30 2185 392)"/>`;
+          <path d="M1640 470 Q1702 468 1712 542 Q1692 622 1660 642 Q1618 562 1640 470 Z" fill="#9ccc74" ${borde}/>`;
+    // el arco de islas de Japón: Hokkaido arriba, Honshu (la grande, donde se
+    // posa Yayoi Kusama), y Shikoku y Kyushu en la punta de suroeste. Antes
+    // eran dos elipses tan pequeñas que el retrato las tapaba enteras.
+    s += `<path d="M2226 284 Q2258 300 2254 342 Q2252 390 2200 420 Q2170 448 2138 456
+            Q2112 460 2118 432 Q2126 392 2158 360 Q2198 330 2204 298 Q2208 280 2226 284 Z" fill="#9ccc74" ${borde}/>
+          <ellipse cx="2270" cy="238" rx="33" ry="26" fill="#9ccc74" ${borde} transform="rotate(-18 2270 238)"/>
+          <ellipse cx="2126" cy="476" rx="21" ry="13" fill="#9ccc74" ${borde} transform="rotate(-14 2126 476)"/>
+          <ellipse cx="2084" cy="490" rx="25" ry="19" fill="#9ccc74" ${borde} transform="rotate(14 2084 490)"/>`;
     // Australia + Nueva Zelanda
     s += `<path d="M2000 762 Q2080 700 2200 730 Q2300 762 2280 850 Q2222 922 2100 902 Q2000 862 2000 762 Z" fill="#f5c46b" ${borde}/>
           <ellipse cx="2382" cy="905" rx="16" ry="34" fill="#f5c46b" ${borde} transform="rotate(18 2382 905)"/>`;
     // Antártida
     s += `<path d="M0 1030 Q650 990 1300 1028 Q1950 1062 2600 1026 L2600 1100 L0 1100 Z" fill="rgba(240,250,252,.85)"/>`;
-    // el Everest (para Junko Tabei) y una palmera en África
-    s += `<path d="M1770 430 L1808 358 L1846 430 Z" fill="#e8edf2"/><path d="M1794 392 L1808 358 L1822 392 L1814 384 L1808 394 L1801 384 Z" fill="#fff"/>`;
-    // ecuador punteado y brújula
+    // el Everest, la cima donde se posa Junko Tabei
+    s += `<path d="M1742 448 L1808 336 L1874 448 Z" fill="#dbe4ec"/>
+          <path d="M1768 404 L1808 336 L1848 404 L1834 392 L1822 406 L1808 392 L1794 404 L1782 394 Z" fill="#ffffff"/>
+          <path d="M1762 430 L1808 350 L1854 430" stroke="rgba(255,255,255,.5)" stroke-width="4" fill="none"/>`;
+    // el ecuador, punteado
     s += `<line x1="0" y1="585" x2="2600" y2="585" stroke="rgba(255,255,255,.25)" stroke-width="3" stroke-dasharray="4 22"/>`;
-    s += `<g transform="translate(2455 150)"><circle r="52" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.5)" stroke-width="4"/><path d="M0 -34 L10 0 L0 34 L-10 0 Z" fill="#ef5350"/><path d="M0 -34 L10 0 L-10 0 Z" fill="#fff"/><text x="0" y="-58" text-anchor="middle" font-size="30" fill="rgba(255,255,255,.8)" font-weight="bold">N</text></g>`;
     return decoSvg(s);
   };
 })();

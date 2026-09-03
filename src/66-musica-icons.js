@@ -354,6 +354,8 @@ function playJingle(j) {
         <line x1="50" y1="68" x2="50" y2="86" stroke="#37474f" stroke-width="4"/>
         <line x1="36" y1="90" x2="64" y2="90" stroke="#37474f" stroke-width="5" stroke-linecap="round"/>
         <path d="M22 18 Q16 22 16 30 M78 18 Q84 22 84 30" stroke="#ffd54f" stroke-width="2.6" fill="none" stroke-linecap="round"/>`, "0 0 100 96") },
+    /* las palmas van dibujadas, no con emojis: la fuente del sistema
+       desentonaba al lado del vector y cambiaba de un aparato a otro */
     "El público": {
       jingle: { type: "applause" },
       w: 84, h: 52, svg: mm(`
@@ -363,7 +365,10 @@ function playJingle(j) {
           <circle cx="${p[0] - 4}" cy="46" r="1.6" fill="#222"/><circle cx="${p[0] + 4}" cy="46" r="1.6" fill="#222"/>
           <path d="M${p[0] - 4} 52 Q${p[0]} 55 ${p[0] + 4} 52" stroke="#222" stroke-width="1.4" fill="none"/>
           <path d="M${p[0] - 16} 68 L${p[0] - 8} 60 M${p[0] + 16} 68 L${p[0] + 8} 60" stroke="${p[1]}" stroke-width="5" stroke-linecap="round"/>`).join("")}
-        <text x="8" y="20" font-size="13">👏</text><text x="76" y="16" font-size="13">👏</text>`, "0 0 100 78") }
+        ${[[15, 1], [85, -1]].map(m => `<g transform="translate(${m[0]} 16) scale(${m[1]} 1)">
+          <path d="M-2 13 q-8 -3 -9 -11 q-1 -7 4 -9 q1 -6 6 -5 q3 -4 6 0 q4 3 2 9 q-1 8 -4 12 Z" fill="#f1c27d" stroke="#c98e62" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M-7 -4 q4 -2 7 1 M-8 1 q4 -2 8 1" stroke="#c98e62" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+          <path d="M4 -10 l5 -5 M6 -3 l7 -2" stroke="#ffd54f" stroke-width="2" stroke-linecap="round"/></g>`).join("")}`, "0 0 100 78") }
   };
 
   ex.pois.forEach(p => {
@@ -391,7 +396,11 @@ function playJingle(j) {
       <ellipse cx="40" cy="60" rx="8" ry="6" fill="none" stroke="#fff" stroke-width="2.6"/><line x1="47.4" y1="58" x2="47.4" y2="26" stroke="#fff" stroke-width="2.4"/>
       <ellipse cx="66" cy="60" rx="8" ry="6" fill="#fff"/><line x1="73.4" y1="58" x2="73.4" y2="26" stroke="#fff" stroke-width="2.4"/>
       <ellipse cx="90" cy="60" rx="8" ry="6" fill="#fff"/><line x1="97.4" y1="58" x2="97.4" y2="26" stroke="#fff" stroke-width="2.4"/><path d="M97.4 26 Q108 32 104 44" stroke="#fff" stroke-width="2.4" fill="none"/>
-      <text x="6" y="86" font-size="10" fill="#ffd54f">4</text><text x="36" y="86" font-size="10" fill="#ffd54f">2</text><text x="62" y="86" font-size="10" fill="#ffd54f">1</text><text x="86" y="86" font-size="10" fill="#ffd54f">½</text>`, "0 0 112 92"),
+      ${/* cuánto dura cada figura, en bloques que se cuentan con el dedo:
+            cuatro para la redonda, dos para la blanca, uno para la negra
+            y medio para la corchea. Antes eran cifras escritas con <text>. */
+        [[1.9, 5], [8.3, 5], [14.7, 5], [21.1, 5], [34.3, 5], [40.7, 5], [63.5, 5], [88.8, 2.4]]
+          .map(b => `<rect x="${b[0]}" y="78" width="${b[1]}" height="7" rx="3.4" fill="#ffd54f"/>`).join("")}`, "0 0 112 92"),
     name: { es: "Las figuras", ca: "Les figures", en: "The note values", cs: "Hodnoty not", fr: "Les figures de notes" },
     fact: { es: "Las figuras dicen cuánto dura cada nota: la redonda cuenta cuatro tiempos, la blanca dos, la negra uno y la corchea medio. ¡Escúchalas sonar de la más larga a la más cortita!", ca: "Les figures diuen quant dura cada nota: la rodona compta quatre temps, la blanca dos, la negra un i la corxera mig. Escolta-les sonar de la més llarga a la més curteta!", en: "Note values tell you how long each note lasts: the whole note counts four beats, the half note two, the quarter note one and the eighth note half. Listen to them from longest to shortest!", cs: "Hodnoty not říkají, jak dlouho každá nota trvá: celá nota počítá čtyři doby, půlová dvě, čtvrťová jednu a osminová půl. Poslechni si je od nejdelší po nejkratší!", fr: "Les figures disent combien dure chaque note : la ronde compte quatre temps, la blanche deux, la noire un et la croche un demi. Écoute-les de la plus longue à la plus courte !" }
   });

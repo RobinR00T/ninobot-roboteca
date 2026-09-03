@@ -212,15 +212,15 @@ Object.assign(THEMES.policia.content, {
 
   /* ---------- MAPA DE EXPLORACIÓN: la ciudad amable ---------- */
   explore: {
-    width: 2600, height: 1100, stars: false,
+    width: 4200, height: 1100, stars: false,
     bgCss: "radial-gradient(ellipse 26% 22% at 82% 11%, rgba(255,241,118,.6), transparent 70%), linear-gradient(180deg,#7ec6ec 0%,#a6dbf5 26%,#cbe9f7 44%,#e6f2e6 54%,#dfeee4 100%)",
     cats: [
-      { id: "comisaria", emoji: "🏢", x: 120, name: { es: "La comisaría", ca: "La comissaria", en: "The police station", cs: "Policejní stanice", fr: "Le commissariat" } },
-      { id: "calle", emoji: "🚦", x: 1000, name: { es: "La calle", ca: "El carrer", en: "The street", cs: "Ulice", fr: "La rue" } },
-      { id: "parque", emoji: "🌳", x: 1850, name: { es: "El parque", ca: "El parc", en: "The park", cs: "Park", fr: "Le parc" } }
+      { id: "comisaria", emoji: "🏢", x: 140, name: { es: "La comisaría", ca: "La comissaria", en: "The police station", cs: "Policejní stanice", fr: "Le commissariat" } },
+      { id: "calle", emoji: "🚦", x: 1700, name: { es: "La calle", ca: "El carrer", en: "The street", cs: "Ulice", fr: "La rue" } },
+      { id: "parque", emoji: "🌳", x: 3180, name: { es: "El parque", ca: "El parc", en: "The park", cs: "Park", fr: "Le parc" } }
     ],
     pois: [
-      { cat: "comisaria", emoji: "🏢", x: 200, y: 500, size: 2, iw: 120, ih: 94,
+      { cat: "comisaria", emoji: "🏢", x: 280, y: 470, size: 2, iw: 120, ih: 94,
         svg: polSvg(`
           <rect x="8" y="30" width="114" height="64" rx="6" fill="#90a4ae"/>
           <rect x="14" y="36" width="102" height="52" rx="4" fill="#cfd8dc"/>
@@ -235,7 +235,7 @@ Object.assign(THEMES.policia.content, {
           <rect x="0" y="92" width="130" height="6" rx="3" fill="#78909c"/>`, "0 0 130 100"),
         name: { es: "La comisaría amable", ca: "La comissaria amable", en: "The friendly police station", cs: "Milá policejní stanice", fr: "Le commissariat tout gentil" },
         fact: { es: "La comisaría está abierta día y noche. Si necesitas ayuda, puedes entrar y pedirla: para eso está.", ca: "La comissaria està oberta dia i nit. Si necessites ajuda, hi pots entrar i demanar-la: per a això hi és.", en: "The police station is open day and night. If you need help, you can walk in and ask: that is what it is for.", cs: "Policejní stanice je otevřená ve dne v noci. Když potřebuješ pomoc, můžeš vejít a říct si o ni: od toho tam je.", fr: "Le commissariat est ouvert jour et nuit. Si tu as besoin d'aide, tu peux entrer et la demander : il est là pour ça." } },
-      { cat: "comisaria", emoji: "🎒", x: 430, y: 680, iw: 100, ih: 80,
+      { cat: "comisaria", emoji: "🎒", x: 760, y: 700, iw: 100, ih: 80,
         svg: polSvg(`
           <rect x="4" y="6" width="102" height="74" rx="6" fill="#8d6e63"/>
           <rect x="10" y="12" width="90" height="62" rx="4" fill="#efebe9"/>
@@ -249,7 +249,7 @@ Object.assign(THEMES.policia.content, {
           <path d="M80 48 Q88 44 94 50 Q90 54 84 52 Q80 56 78 52 Z" fill="#ff7043"/>`, "0 0 110 86"),
         name: { es: "La oficina de objetos perdidos", ca: "L'oficina d'objectes perduts", en: "The lost and found office", cs: "Ztráty a nálezy", fr: "Le bureau des objets trouvés" },
         fact: { es: "Aquí esperan las cosas perdidas a sus dueños. En Tokio hay una oficina gigante que devuelve miles de paraguas cada año.", ca: "Aquí les coses perdudes esperen els seus amos. A Tòquio hi ha una oficina gegant que torna milers de paraigües cada any.", en: "Lost things wait for their owners here. In Tokyo there is a giant office that returns thousands of umbrellas every year.", cs: "Tady čekají ztracené věci na své majitele. V Tokiu je obří kancelář, která každý rok vrátí tisíce deštníků.", fr: "Ici, les objets perdus attendent leurs propriétaires. À Tokyo, un bureau géant rend des milliers de parapluies chaque année." } },
-      { cat: "comisaria", emoji: "🖐️", x: 430, y: 380, iw: 92, ih: 72,
+      { cat: "comisaria", emoji: "🖐️", x: 520, y: 380, iw: 92, ih: 72,
         svg: polSvg(`
           <rect x="6" y="6" width="62" height="64" rx="5" fill="#fff" stroke="#90a4ae" stroke-width="2"/>
           <path d="M12 14 L30 14 M12 20 L26 20" stroke="#b0bec5" stroke-width="2.4" stroke-linecap="round"/>
@@ -263,7 +263,7 @@ Object.assign(THEMES.policia.content, {
           <path d="M89 30 L96 37" stroke="#8d6e63" stroke-width="4" stroke-linecap="round"/>`, "0 0 100 78"),
         name: { es: "El archivo de las huellas", ca: "L'arxiu de les empremtes", en: "The fingerprint files", cs: "Kartotéka otisků", fr: "Les fiches d'empreintes" },
         fact: { es: "Cada persona tiene un dibujo distinto en la punta de los dedos. Por eso las huellas ayudan a saber quién tocó algo.", ca: "Cada persona té un dibuix diferent a la punta dels dits. Per això les empremtes ajuden a saber qui va tocar una cosa.", en: "Every person has a different pattern on their fingertips. That is why fingerprints help tell who touched something.", cs: "Každý člověk má na bříškách prstů jiný vzoreček. Proto otisky pomáhají zjistit, kdo se čeho dotkl.", fr: "Chaque personne a un dessin différent au bout des doigts. C'est pour ça que les empreintes aident à savoir qui a touché quoi." } },
-      { cat: "comisaria", emoji: "🔍", x: 650, y: 560, iw: 88, ih: 84,
+      { cat: "comisaria", emoji: "🔍", x: 1000, y: 560, iw: 88, ih: 84,
         svg: polSvg(`
           <circle cx="40" cy="36" r="27" fill="rgba(159,216,239,.45)" stroke="#f9a825" stroke-width="6"/>
           <path d="M59 57 L78 76" stroke="#8d6e63" stroke-width="11" stroke-linecap="round"/>
@@ -276,7 +276,7 @@ Object.assign(THEMES.policia.content, {
           <path d="M22 12 L24 16 L28 18 L24 20 L22 24 L20 20 L16 18 L20 16 Z" fill="#fff" opacity=".9"/>`, "0 0 96 92"),
         name: { es: "La lupa de detective", ca: "La lupa de detectiu", en: "The detective's magnifying glass", cs: "Detektivní lupa", fr: "La loupe de détective" },
         fact: { es: "Con la lupa, lo pequeño se ve grande: un pelito, una miguita o una huella cuentan toda la historia.", ca: "Amb la lupa, el que és petit es veu gran: un pelet, una miqueta o una petjada expliquen tota la història.", en: "With a magnifying glass, small things look big: a little hair, a crumb or a footprint can tell the whole story.", cs: "S lupou vypadá malé jako velké: chloupek, drobeček nebo stopa vyprávějí celý příběh.", fr: "Avec la loupe, le tout petit devient grand : un petit poil, une miette ou une empreinte racontent toute l'histoire." } },
-      { cat: "comisaria", emoji: "📯", x: 830, y: 400, iw: 92, ih: 60,
+      { cat: "comisaria", emoji: "📯", x: 1240, y: 380, iw: 92, ih: 60,
         svg: polSvg(`
           <circle cx="14" cy="16" r="6" fill="none" stroke="#c17900" stroke-width="3.4"/>
           <rect x="10" y="22" width="42" height="16" rx="8" fill="#f9a825"/>
@@ -287,7 +287,7 @@ Object.assign(THEMES.policia.content, {
           <path d="M84 18 Q92 12 94 4 M88 30 Q98 28 102 20 M88 42 Q98 46 104 44" stroke="#4fc3f7" stroke-width="3.4" fill="none" stroke-linecap="round"/>`, "0 0 106 62"),
         name: { es: "El silbato dorado", ca: "El xiulet daurat", en: "The golden whistle", cs: "Zlatá píšťalka", fr: "Le sifflet doré" },
         fact: { es: "Un pitido largo quiere decir alto. Con el silbato, el agente habla con toda la calle sin decir palabras.", ca: "Un xiulet llarg vol dir alto. Amb el xiulet, l'agent parla amb tot el carrer sense dir paraules.", en: "One long whistle means stop. With the whistle, the officer talks to the whole street without saying a word.", cs: "Dlouhé písknutí znamená stát. Píšťalkou mluví policista s celou ulicí beze slov.", fr: "Un long coup de sifflet veut dire stop. Avec le sifflet, l'agent parle à toute la rue sans dire un mot." } },
-      { cat: "comisaria", emoji: "📻", x: 850, y: 700, iw: 66, ih: 84,
+      { cat: "comisaria", emoji: "📻", x: 1480, y: 700, iw: 66, ih: 84,
         svg: polSvg(`
           <rect x="26" y="4" width="5" height="20" rx="2.5" fill="#263238"/>
           <circle cx="28" cy="4" r="3" fill="#ef5350"/>
@@ -300,7 +300,7 @@ Object.assign(THEMES.policia.content, {
             <animate attributeName="opacity" values="1;.3;1" dur="1.4s" repeatCount="indefinite"/></path>`, "0 0 70 92"),
         name: { es: "La radio de la comisaría", ca: "La ràdio de la comissaria", en: "The station radio", cs: "Policejní vysílačka", fr: "La radio du commissariat" },
         fact: { es: "Por la radio los agentes se avisan: aquí hace falta ayuda. Cambio... ¡y corto!", ca: "Per la ràdio els agents s'avisen: aquí cal ajuda. Canvi... i tallo!", en: "On the radio, officers let each other know: help is needed here. Over... and out!", cs: "Vysílačkou si policisté dávají vědět: tady je potřeba pomoc. Přepínám... a končím!", fr: "Par la radio, les agents se préviennent : ici, on a besoin d'aide. À toi... terminé !" } },
-      { cat: "calle", emoji: "🚦", x: 1060, y: 460, iw: 58, ih: 116,
+      { cat: "calle", emoji: "🚦", x: 1760, y: 470, iw: 58, ih: 116,
         svg: polSvg(`
           <rect x="24" y="70" width="8" height="46" rx="3" fill="#546e7a"/>
           <rect x="10" y="4" width="36" height="68" rx="9" fill="#37474f"/>
@@ -310,7 +310,7 @@ Object.assign(THEMES.policia.content, {
           <path d="M10 12 Q4 14 4 20 M46 12 Q52 14 52 20" stroke="#263238" stroke-width="3" fill="none"/>`, "0 0 56 118"),
         name: { es: "El semáforo gigante", ca: "El semàfor gegant", en: "The giant traffic light", cs: "Obří semafor", fr: "Le feu tricolore géant" },
         fact: { es: "El primer semáforo eléctrico se encendió en 1914. Desde entonces, el rojo y el verde ordenan las calles de todo el mundo.", ca: "El primer semàfor elèctric es va encendre el 1914. Des de llavors, el vermell i el verd ordenen els carrers de tot el món.", en: "The first electric traffic light was switched on in 1914. Since then, red and green have kept streets tidy all over the world.", cs: "První elektrický semafor se rozsvítil v roce 1914. Od té doby červená a zelená řídí ulice po celém světě.", fr: "Le premier feu électrique s'est allumé en 1914. Depuis, le rouge et le vert mettent de l'ordre dans les rues du monde entier." } },
-      { cat: "calle", emoji: "🦓", x: 1250, y: 660, iw: 128, ih: 76,
+      { cat: "calle", emoji: "🦓", x: 2240, y: 660, iw: 128, ih: 76,
         svg: polSvg(`
           <rect x="0" y="30" width="140" height="44" rx="4" fill="#546e7a"/>
           <rect x="14" y="34" width="13" height="36" rx="2" fill="#eceff1"/>
@@ -325,7 +325,7 @@ Object.assign(THEMES.policia.content, {
           <rect x="14" y="28" width="5" height="14" fill="#78909c"/>`, "0 0 140 82"),
         name: { es: "El paso de cebra", ca: "El pas de zebra", en: "The zebra crossing", cs: "Přechod zebra", fr: "Le passage piéton" },
         fact: { es: "El primer paso de cebra se pintó en Inglaterra en 1951. Sus rayas blancas se ven desde lejos, ¡como una cebra!", ca: "El primer pas de zebra es va pintar a Anglaterra el 1951. Les seves ratlles blanques es veuen des de lluny, com una zebra!", en: "The first zebra crossing was painted in England in 1951. Its white stripes can be seen from afar, just like a zebra!", cs: "První přechod zebra namalovali v Anglii v roce 1951. Jeho bílé pruhy jsou vidět zdaleka, jako pruhy zebry!", fr: "Le premier passage piéton rayé a été peint en Angleterre en 1951. Ses rayures blanches se voient de loin, comme un zèbre !" } },
-      { cat: "calle", emoji: "🚗", x: 1450, y: 460, iw: 128, ih: 90,
+      { cat: "calle", emoji: "🚗", x: 2480, y: 470, iw: 128, ih: 90,
         svg: polSvg(`
           <rect x="4" y="18" width="132" height="78" rx="6" fill="#b0bec5"/>
           <rect x="0" y="10" width="140" height="14" rx="6" fill="#78909c"/>
@@ -342,7 +342,7 @@ Object.assign(THEMES.policia.content, {
           <path d="M104 66 L114 60" stroke="#00838f" stroke-width="4" stroke-linecap="round"/>`, "0 0 140 100"),
         name: { es: "El garaje del coche y la moto", ca: "El garatge del cotxe i la moto", en: "The car and motorbike garage", cs: "Garáž auta a motorky", fr: "Le garage de la voiture et de la moto" },
         fact: { es: "Aquí duermen el coche patrulla y la moto, limpitos y con la batería cargada, listos para salir a ayudar.", ca: "Aquí dormen el cotxe patrulla i la moto, netets i amb la bateria carregada, a punt per sortir a ajudar.", en: "The patrol car and the motorbike sleep here, all clean and fully charged, ready to go out and help.", cs: "Tady spí hlídkové auto a motorka, čisté a s nabitou baterií, připravené vyrazit na pomoc.", fr: "Ici dorment la voiture de patrouille et la moto, toutes propres et bien chargées, prêtes à partir aider." } },
-      { cat: "calle", emoji: "🚲", x: 1630, y: 680, iw: 108, ih: 74,
+      { cat: "calle", emoji: "🚲", x: 2720, y: 690, iw: 108, ih: 74,
         svg: polSvg(`
           <circle cx="28" cy="58" r="16" fill="none" stroke="#37474f" stroke-width="4"/>
           <circle cx="88" cy="58" r="16" fill="none" stroke="#37474f" stroke-width="4"/>
@@ -354,7 +354,7 @@ Object.assign(THEMES.policia.content, {
           <path d="M46 12 Q58 18 70 12" stroke="#c17900" stroke-width="2.4" fill="none"/>`, "0 0 120 80"),
         name: { es: "La bici y su casco", ca: "La bici i el seu casc", en: "The bike and its helmet", cs: "Kolo a helma", fr: "Le vélo et son casque" },
         fact: { es: "La policía también patrulla en bici. El casco protege la cabeza como una cáscara dura: ¡póntelo siempre!", ca: "La policia també patrulla amb bici. El casc protegeix el cap com una closca dura: posa-te'l sempre!", en: "The police patrol on bikes too. The helmet protects your head like a hard shell: always put it on!", cs: "Policie hlídkuje i na kolech. Helma chrání hlavu jako tvrdá skořápka: vždycky si ji nasaď!", fr: "La police patrouille aussi à vélo. Le casque protège la tête comme une coquille dure : mets-le toujours !" } },
-      { cat: "calle", emoji: "🏫", x: 1290, y: 310, iw: 76, ih: 96,
+      { cat: "calle", emoji: "🏫", x: 2000, y: 330, iw: 76, ih: 96,
         svg: polSvg(`
           <rect x="38" y="58" width="8" height="46" rx="3" fill="#78909c"/>
           <path d="M42 4 L80 60 L4 60 Z" fill="#fff" stroke="#e53935" stroke-width="7" stroke-linejoin="round"/>
@@ -365,7 +365,7 @@ Object.assign(THEMES.policia.content, {
           <path d="M40 41 L44 39" stroke="#263238" stroke-width="2.2" stroke-linecap="round"/>`, "0 0 84 104"),
         name: { es: "La señal del cole", ca: "El senyal de l'escola", en: "The school sign", cs: "Značka u školy", fr: "Le panneau de l'école" },
         fact: { es: "Esta señal avisa: cuidado, niños cerca. Los coches van despacito cuando la ven.", ca: "Aquest senyal avisa: compte, nens a prop. Els cotxes van a poc a poc quan el veuen.", en: "This sign says: careful, children nearby. Cars slow right down when they see it.", cs: "Tahle značka říká: pozor, děti. Auta u ní jedou pomaloučku.", fr: "Ce panneau prévient : attention, enfants tout près. Les voitures ralentissent quand elles le voient." } },
-      { cat: "calle", emoji: "🚁", x: 1690, y: 300, iw: 120, ih: 82,
+      { cat: "calle", emoji: "🚁", x: 2960, y: 300, iw: 120, ih: 82,
         svg: polSvg(`
           <rect x="10" y="8" width="104" height="5" rx="2.5" fill="#546e7a"><animate attributeName="opacity" values="1;.35;1" dur=".5s" repeatCount="indefinite"/></rect>
           <rect x="59" y="12" width="6" height="9" fill="#546e7a"/>
@@ -378,7 +378,7 @@ Object.assign(THEMES.policia.content, {
           <path d="M36 66 L36 72 L78 72 L78 66 M30 72 L84 72" stroke="#546e7a" stroke-width="4" fill="none" stroke-linecap="round"/>`, "0 0 130 88"),
         name: { es: "El helicóptero de rescate", ca: "L'helicòpter de rescat", en: "The rescue helicopter", cs: "Záchranný vrtulník", fr: "L'hélicoptère de secours" },
         fact: { es: "Desde el cielo se ve todo el barrio. El helicóptero ayuda a encontrar rápido a las personas perdidas.", ca: "Des del cel es veu tot el barri. L'helicòpter ajuda a trobar de pressa les persones perdudes.", en: "From the sky you can see the whole neighbourhood. The helicopter helps find lost people fast.", cs: "Z nebe je vidět celá čtvrť. Vrtulník pomáhá rychle najít ztracené lidi.", fr: "Depuis le ciel, on voit tout le quartier. L'hélicoptère aide à retrouver vite les personnes perdues." } },
-      { cat: "parque", emoji: "🐕", x: 1950, y: 560, iw: 120, ih: 88,
+      { cat: "parque", emoji: "🐕", x: 3240, y: 560, iw: 120, ih: 88,
         svg: polSvg(`
           <rect x="0" y="88" width="130" height="6" rx="3" fill="#7cb342"/>
           <path d="M8 90 L8 52 L38 28 L68 52 L68 90 Z" fill="#8d6e63"/>
@@ -397,7 +397,7 @@ Object.assign(THEMES.policia.content, {
           <circle cx="66" cy="84" r="5" fill="#ef5350"/><path d="M62 84 A4 4 0 0 1 70 84" fill="#fff"/>`, "0 0 130 96"),
         name: { es: "La escuela de perros K9", ca: "L'escola de gossos K9", en: "The K9 dog school", cs: "Škola pro psy K9", fr: "L'école des chiens K9" },
         fact: { es: "Los perros policía aprenden jugando: buscan cosas escondidas y ganan su pelota. Su nariz huele muchísimo mejor que la nuestra.", ca: "Els gossos policia aprenen jugant: busquen coses amagades i guanyen la seva pilota. El seu nas olora moltíssim millor que el nostre.", en: "Police dogs learn by playing: they search for hidden things and win their ball. Their nose smells far better than ours.", cs: "Policejní psi se učí hrou: hledají schované věci a vyhrají svůj míček. Jejich nos cítí mnohem líp než náš.", fr: "Les chiens policiers apprennent en jouant : ils cherchent des choses cachées et gagnent leur balle. Leur nez sent bien mieux que le nôtre." } },
-      { cat: "parque", emoji: "🦆", x: 2210, y: 700, iw: 128, ih: 78,
+      { cat: "parque", emoji: "🦆", x: 3760, y: 700, iw: 128, ih: 78,
         svg: polSvg(`
           <ellipse cx="70" cy="58" rx="64" ry="24" fill="#4fc3f7"/>
           <ellipse cx="70" cy="58" rx="50" ry="17" fill="none" stroke="#81d4fa" stroke-width="2.4"/>
@@ -414,7 +414,7 @@ Object.assign(THEMES.policia.content, {
           <path d="M30 62 q6 -4 12 0 M64 66 q6 -4 12 0" stroke="#b3e5fc" stroke-width="2.4" fill="none" stroke-linecap="round"/>`, "0 0 140 86"),
         name: { es: "El estanque de los patitos", ca: "L'estany dels aneguets", en: "The duckling pond", cs: "Rybníček kachňátek", fr: "L'étang des canetons" },
         fact: { es: "A veces la policía corta el tráfico para que una familia de patos cruce la calle. ¡Ha pasado de verdad muchas veces!", ca: "De vegades la policia talla el trànsit perquè una família d'ànecs creui el carrer. Ha passat de debò moltes vegades!", en: "Sometimes the police stop traffic so a duck family can cross the street. It has really happened many times!", cs: "Policie někdy zastaví dopravu, aby kachní rodinka mohla přejít ulici. Doopravdy se to stalo už mnohokrát!", fr: "Parfois, la police arrête la circulation pour qu'une famille de canards traverse la rue. C'est vraiment arrivé plein de fois !" } },
-      { cat: "parque", emoji: "🧭", x: 2130, y: 400, iw: 84, ih: 92,
+      { cat: "parque", emoji: "🧭", x: 3500, y: 400, iw: 84, ih: 92,
         svg: polSvg(`
           <rect x="42" y="60" width="8" height="44" rx="3" fill="#78909c"/>
           <rect x="8" y="4" width="76" height="58" rx="8" fill="#2e7d32"/>
@@ -425,7 +425,7 @@ Object.assign(THEMES.policia.content, {
           <path d="M74 54 L60 54 L60 50 L68 50 L56 38 L59 35 L71 47 L71 40 L74 40 Z" fill="#fff"/>`, "0 0 92 104"),
         name: { es: "El punto de encuentro", ca: "El punt de trobada", en: "The meeting point", cs: "Místo setkání", fr: "Le point de rencontre" },
         fact: { es: "Si te pierdes, quédate quieto y busca este cartel: es el sitio donde las familias se vuelven a encontrar.", ca: "Si et perds, queda't quiet i busca aquest cartell: és el lloc on les famílies es tornen a trobar.", en: "If you get lost, stay put and look for this sign: it is the place where families find each other again.", cs: "Když se ztratíš, zůstaň na místě a hledej tuhle ceduli: tady se rodiny zase najdou.", fr: "Si tu te perds, reste sur place et cherche ce panneau : c'est l'endroit où les familles se retrouvent." } },
-      { cat: "parque", emoji: "🐴", x: 2430, y: 520, iw: 110, ih: 96,
+      { cat: "parque", emoji: "🐴", x: 4040, y: 540, iw: 110, ih: 96,
         svg: polSvg(`
           <rect x="0" y="98" width="120" height="5" rx="2.5" fill="#7cb342"/>
           <ellipse cx="58" cy="58" rx="34" ry="20" fill="#8d6e63"/>
@@ -450,9 +450,9 @@ Object.assign(THEMES.policia.content, {
     deco: function () {
       let s = "";
       /* las cajas de los puntos de interés: sirven para dejarles aire alrededor */
-      const cajas = [[140, 453, 120, 94], [380, 640, 100, 80], [384, 344, 92, 72], [606, 518, 88, 84], [784, 370, 92, 60], [817, 658, 66, 84],
-        [1031, 402, 58, 116], [1186, 622, 128, 76], [1386, 415, 128, 90], [1576, 643, 108, 74], [1252, 262, 76, 96], [1630, 259, 120, 82],
-        [1890, 516, 120, 88], [2146, 661, 128, 78], [2088, 354, 84, 92], [2375, 472, 110, 96]];
+      const cajas = [[220, 423, 120, 94], [710, 660, 100, 80], [474, 344, 92, 72], [956, 518, 88, 84], [1194, 350, 92, 60], [1447, 658, 66, 84],
+        [1731, 412, 58, 116], [2176, 622, 128, 76], [2416, 425, 128, 90], [2666, 653, 108, 74], [1962, 282, 76, 96], [2900, 259, 120, 82],
+        [3180, 516, 120, 88], [3696, 661, 128, 78], [3458, 354, 84, 92], [3985, 492, 110, 96]];
       const libre = (x, y, w, h) => !cajas.some(c => x < c[0] + c[2] + 14 && x + w > c[0] - 14 && y < c[1] + c[3] + 14 && y + h > c[1] - 14);
       /* una estrellita de cinco puntas, para el letrero y la bandera */
       const estrella = (cx, cy, r, c) => {
@@ -463,130 +463,266 @@ Object.assign(THEMES.policia.content, {
         }
         return `<path d="${d}Z" fill="${c}"/>`;
       };
-      /* degradados propios: ids con prefijo pol para no chocar con otros mapas */
+      /* degradados propios: ids con prefijo polX para no chocar con otros mapas */
       s += `<defs>
-        <radialGradient id="polSol" cx="45%" cy="40%" r="60%"><stop offset="0%" stop-color="#fffde7"/><stop offset="100%" stop-color="#ffd54f"/></radialGradient>
-        <linearGradient id="polAcera" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e9ebe6"/><stop offset="100%" stop-color="#c3c8c0"/></linearGradient>
-        <linearGradient id="polAsfalto" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7d8792"/><stop offset="100%" stop-color="#4e5761"/></linearGradient>
-        <linearGradient id="polCesped" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#9ccc65"/><stop offset="100%" stop-color="#5c9a3c"/></linearGradient>
-        <radialGradient id="polAgua" cx="50%" cy="36%" r="64%"><stop offset="0%" stop-color="#a8def3"/><stop offset="100%" stop-color="#4a9fce"/></radialGradient>
+        <radialGradient id="polXSol" cx="45%" cy="40%" r="60%"><stop offset="0%" stop-color="#fffde7"/><stop offset="100%" stop-color="#ffd54f"/></radialGradient>
+        <linearGradient id="polXAcera" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e9ebe6"/><stop offset="100%" stop-color="#c3c8c0"/></linearGradient>
+        <linearGradient id="polXAsfalto" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7d8792"/><stop offset="100%" stop-color="#4e5761"/></linearGradient>
+        <linearGradient id="polXCesped" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#9ccc65"/><stop offset="100%" stop-color="#5c9a3c"/></linearGradient>
+        <radialGradient id="polXAgua" cx="50%" cy="36%" r="64%"><stop offset="0%" stop-color="#a8def3"/><stop offset="100%" stop-color="#4a9fce"/></radialGradient>
+        <linearGradient id="polXBordillo" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f2f4ef"/><stop offset="100%" stop-color="#aeb4ac"/></linearGradient>
+        <linearGradient id="polXTierra" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#d8c7a2"/><stop offset="100%" stop-color="#b79f76"/></linearGradient>
+        <linearGradient id="polXSeto" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#2f5620"/><stop offset="45%" stop-color="#43742c"/><stop offset="100%" stop-color="#63a041"/></linearGradient>
+        <clipPath id="polXBoca"><path d="M1706 586 Q1560 614 1496 706 Q1560 798 1706 826 Z"/></clipPath>
       </defs>`;
       /* ---------- CIELO: sol, nubes lentas y pájaros ---------- */
-      s += `<g transform="translate(2140 118)">
+      s += `<g transform="translate(3540 118)">
         <circle r="106" fill="rgba(255,241,118,.20)"><animate attributeName="r" values="106;118;106" dur="9s" repeatCount="indefinite"/></circle>
-        <circle r="68" fill="url(#polSol)"/><circle cx="-24" cy="-22" r="15" fill="rgba(255,255,255,.5)"/></g>`;
+        <circle r="68" fill="url(#polXSol)"/><circle cx="-24" cy="-22" r="15" fill="rgba(255,255,255,.5)"/></g>`;
       const nube = (x, y, k) => `<g transform="translate(${x} ${y}) scale(${k})">
         <ellipse cx="0" cy="0" rx="84" ry="30" fill="#fff"/><ellipse cx="-52" cy="10" rx="44" ry="21" fill="#fff"/>
         <ellipse cx="46" cy="12" rx="50" ry="23" fill="#fff"/><ellipse cx="-6" cy="-22" rx="46" ry="26" fill="#fff"/></g>`;
-      [[300, 118, 1, .85, 54, 34], [880, 176, .72, .68, 70, 46], [1490, 112, .9, .78, 60, 38], [1980, 208, .6, .55, 78, 52], [2430, 158, .78, .66, 46, 30]].forEach(n => {
+      [[300, 118, 1, .85, 54, 34], [880, 176, .72, .68, 70, 46], [1490, 112, .9, .78, 60, 38], [2020, 200, .6, .55, 78, 52],
+        [2480, 132, .84, .7, 52, 36], [2960, 190, .66, .58, 74, 48], [3320, 118, .78, .66, 46, 30], [3900, 174, .92, .72, 64, 42]].forEach(n => {
         s += `<g opacity="${n[3]}"><animateTransform attributeName="transform" type="translate" values="0 0;${n[4]} 0;0 0" dur="${n[5]}s" repeatCount="indefinite"/>${nube(n[0], n[1], n[2])}</g>`;
       });
-      [[620, 214], [1180, 244], [2288, 252], [980, 168]].forEach(p => {
+      [[620, 214], [1180, 244], [1760, 232], [2420, 252], [3080, 226], [3720, 250], [980, 168]].forEach(p => {
         s += `<path d="M${p[0]} ${p[1]} q-11 -11 -23 -6 M${p[0]} ${p[1]} q11 -11 23 -6" stroke="rgba(70,95,115,.5)" stroke-width="3.4" fill="none" stroke-linecap="round"/>`;
       });
-      /* ---------- FONDO LEJANO: la ciudad en neblina ---------- */
-      for (let x = -30; x < 1900; x += 128) {
-        const h = 120 + (Math.abs(x * 13) % 150);
-        s += `<rect x="${x}" y="${606 - h}" width="108" height="${h}" rx="7" fill="rgba(146,176,196,.30)"/>`;
+      /* ---------- FONDO LEJANO: la ciudad en neblina, que se va apagando ---------- */
+      for (let x = -30; x < 3010; x += 128) {
+        /* los últimos edificios bajan y se aclaran: la ciudad se deshace antes del parque */
+        const baja = x > 2480 ? (x - 2480) / 530 : 0;
+        const h = (120 + (Math.abs(x * 13) % 150)) * (1 - 0.5 * baja);
+        s += `<rect x="${x}" y="${(606 - h).toFixed(0)}" width="108" height="${h.toFixed(0)}" rx="7" fill="rgba(146,176,196,${(0.3 - 0.13 * baja).toFixed(2)})"/>`;
       }
-      /* ---------- SUELO: acera clara de punta a punta, con su bordillo ---------- */
-      s += `<rect x="0" y="596" width="2600" height="504" fill="url(#polAcera)"/>
-        <rect x="0" y="590" width="2600" height="12" fill="#b5bbb2"/>`;
-      for (let x = 46; x < 1880; x += 94) s += `<line x1="${x}" y1="606" x2="${x}" y2="1100" stroke="rgba(255,255,255,.4)" stroke-width="2"/>`;
-      for (let y = 700; y < 1100; y += 96) s += `<line x1="0" y1="${y}" x2="1880" y2="${y}" stroke="rgba(255,255,255,.34)" stroke-width="2"/>`;
+      /* y detrás asoma la arboleda lejana: el relevo del ladrillo al verde */
+      [[2900, 556, 48], [3010, 546, 58], [3130, 536, 68], [3250, 548, 56], [3380, 538, 64],
+        [3520, 552, 50], [3670, 542, 60], [3830, 552, 52], [3990, 540, 62], [4140, 550, 56]].forEach(t => {
+        s += `<g fill="rgba(122,168,142,.26)"><circle cx="${t[0]}" cy="${t[1]}" r="${t[2]}"/>
+          <circle cx="${(t[0] - t[2] * .72).toFixed(0)}" cy="${t[1] + 16}" r="${(t[2] * .6).toFixed(0)}"/>
+          <circle cx="${(t[0] + t[2] * .72).toFixed(0)}" cy="${t[1] + 18}" r="${(t[2] * .56).toFixed(0)}"/></g>`;
+      });
+      /* ---------- MANZANA DE ENLACE: las casas que unen la comisaría con la calle ---------- */
+      [[1300, 404, 126, "#c3cdd7"], [1420, 356, 112, "#d1c5b7"], [1526, 428, 104, "#c0cec5"], [1616, 384, 98, "#cbd2da"]].forEach(b => {
+        s += `<rect x="${b[0]}" y="${b[1]}" width="${b[2]}" height="${596 - b[1]}" rx="6" fill="${b[3]}"/>
+          <rect x="${b[0] - 8}" y="${b[1] - 14}" width="${b[2] + 16}" height="18" rx="7" fill="rgba(70,92,108,.2)"/>`;
+        const cols = Math.max(2, Math.floor((b[2] - 16) / 40));
+        for (let r = 0; r < 5; r++) for (let c = 0; c < cols; c++) {
+          const wx = b[0] + 14 + c * 40, wy = b[1] + 26 + r * 52;
+          if (wy + 32 > 578) continue;
+          if (!libre(wx, wy, 24, 32)) continue;
+          s += `<rect x="${wx}" y="${wy}" width="24" height="32" rx="4" fill="rgba(255,255,255,.62)" stroke="rgba(90,110,125,.35)" stroke-width="2"/>`;
+        }
+      });
+      /* ---------- LA ACERA: la misma de punta a punta, con su bordillo ---------- */
+      /* es la costura que une las tres zonas: nunca se corta */
+      s += `<rect x="0" y="596" width="3220" height="504" fill="url(#polXAcera)"/>
+        <rect x="0" y="590" width="3220" height="12" fill="#b5bbb2"/>`;
+      for (let x = 46; x < 3220; x += 94) s += `<line x1="${x}" y1="606" x2="${x}" y2="1100" stroke="rgba(255,255,255,.4)" stroke-width="2"/>`;
+      for (let y = 700; y < 1100; y += 96) s += `<line x1="0" y1="${y}" x2="3220" y2="${y}" stroke="rgba(255,255,255,.34)" stroke-width="2"/>`;
       /* ---------- LA CALZADA: asfalto, bordillos y marcas ---------- */
-      s += `<rect x="986" y="600" width="854" height="206" fill="url(#polAsfalto)"/>
-        <rect x="986" y="588" width="854" height="14" rx="3" fill="#eceff1"/>
-        <rect x="986" y="806" width="554" height="14" rx="3" fill="#eceff1"/>
-        <rect x="1680" y="806" width="160" height="14" rx="3" fill="#eceff1"/>`;
-      /* el cruce que baja hacia el paseo */
-      s += `<rect x="1540" y="800" width="140" height="300" fill="url(#polAsfalto)"/>
-        <rect x="1528" y="820" width="13" height="280" rx="3" fill="#eceff1"/>
-        <rect x="1679" y="820" width="13" height="280" rx="3" fill="#eceff1"/>
-        <path d="M1610 906 V1086" stroke="#ffe082" stroke-width="7" stroke-dasharray="40 32" stroke-linecap="round"/>`;
-      /* el paso de peatones de la esquina */
-      for (let y = 838; y < 890; y += 17) s += `<rect x="1548" y="${y}" width="124" height="9" rx="3" fill="#fff" opacity=".55"/>`;
-      /* la línea discontinua central, partida donde cruza la gente */
-      s += `<path d="M1000 703 H1148 M1354 703 H1826" stroke="#ffe082" stroke-width="7" stroke-dasharray="44 34" stroke-linecap="round"/>`;
+      /* las dos bocas de la calle son redondas: la calzada no se corta en seco */
+      /* primero el empedrado que las recibe, y encima ya el asfalto */
+      s += `<path d="M1706 586 Q1560 614 1496 706 Q1560 798 1706 826 Z" fill="#dde0da"/>
+        <path d="M1700 600 Q1614 640 1588 706 Q1614 772 1700 812 Z" fill="url(#polXAsfalto)"/>
+        <path d="M3140 600 Q3178 648 3182 706 Q3178 764 3140 812 Z" fill="url(#polXAsfalto)"/>
+        <rect x="1690" y="600" width="1460" height="212" fill="url(#polXAsfalto)"/>
+        <rect x="1690" y="588" width="1460" height="14" rx="3" fill="url(#polXBordillo)"/>
+        <rect x="1690" y="812" width="1310" height="14" rx="3" fill="url(#polXBordillo)"/>
+        <rect x="3140" y="812" width="60" height="14" rx="3" fill="url(#polXBordillo)"/>`;
+      /* los adoquines de la boca: la losa de la plaza se vuelve asfalto poco a poco */
+      s += `<g clip-path="url(#polXBoca)">`;
+      for (let y = 582; y < 828; y += 29) {
+        for (let i = 0; i < 9; i++) {
+          const cx = 1478 + i * 30 + (((y - 582) / 29) % 2 ? 15 : 0);
+          const t = Math.max(0, Math.min(1, (cx - 1478) / 228));
+          const op = (0.08 + 0.34 * (1 - Math.abs(2 * t - 1))).toFixed(2);
+          s += `<rect x="${cx}" y="${y}" width="26" height="21" rx="8" fill="#8f99a3" opacity="${op}"/>`;
+        }
+      }
+      s += `</g>`;
+      /* el bordillo curvo que abraza cada boca */
+      s += `<path d="M1700 594 Q1606 636 1580 706 Q1606 776 1700 818" fill="none" stroke="url(#polXBordillo)" stroke-width="12" stroke-linecap="round"/>
+        <path d="M3140 594 Q3184 646 3188 706 Q3184 766 3140 818" fill="none" stroke="url(#polXBordillo)" stroke-width="12" stroke-linecap="round"/>`;
+      /* dos bolardos donde la plaza deja de ser calle: uno arriba y otro abajo
+         de la boca, los dos a la vista y fuera de la mesita de la radio */
+      [[1556, 640], [1566, 776]].forEach(b => {
+        s += `<g><ellipse cx="${b[0]}" cy="${b[1] + 5}" rx="19" ry="6" fill="rgba(0,0,0,.16)"/>
+          <rect x="${b[0] - 9}" y="${b[1] - 46}" width="18" height="52" rx="9" fill="#6f7b85"/>
+          <rect x="${b[0] - 9}" y="${b[1] - 40}" width="18" height="8" fill="#eceff1" opacity=".85"/>
+          <circle cx="${b[0]}" cy="${b[1] - 46}" r="9" fill="#8b96a0"/></g>`;
+      });
+      /* la línea discontinua central, que entra desde la boca y se parte en el paso */
+      s += `<path d="M1660 704 H2158 M2326 704 H3126" stroke="#ffe082" stroke-width="7" stroke-dasharray="44 34" stroke-linecap="round"/>`;
       /* el paso de cebra pintado, ancho, justo bajo su icono */
-      for (let x = 1158; x < 1346; x += 34) s += `<rect x="${x}" y="604" width="18" height="198" rx="3" fill="#fff" opacity=".6"/>`;
-      s += `<path d="M1000 788 H1520 M1700 788 H1826" stroke="rgba(255,255,255,.45)" stroke-width="5"/>
-        <ellipse cx="1082" cy="768" rx="20" ry="9" fill="rgba(0,0,0,.2)"/><ellipse cx="1766" cy="752" rx="20" ry="9" fill="rgba(0,0,0,.2)"/>`;
-      /* ---------- EL PARQUE: césped, seto, camino y estanque ---------- */
-      s += `<path d="M1836 626 Q1970 548 2150 586 Q2340 626 2600 556 L2600 1100 L1836 1100 Z" fill="url(#polCesped)"/>
-        <path d="M1836 626 Q1970 548 2150 586 Q2340 626 2600 556 L2600 590 Q2340 660 2150 620 Q1970 582 1836 660 Z" fill="rgba(46,90,30,.3)"/>
-        <rect x="1826" y="592" width="30" height="508" rx="15" fill="#4e7d33"/>`;
-      for (let i = 0; i < 11; i++) s += `<circle cx="${1841 + (i % 2 ? 7 : -7)}" cy="${620 + i * 46}" r="17" fill="#5f9440" opacity=".85"/>`;
-      s += `<path d="M1856 930 Q2040 970 2210 926 Q2390 880 2600 906" stroke="#cdb28c" stroke-width="52" fill="none" stroke-linecap="round" opacity=".9"/>
-        <path d="M1856 930 Q2040 970 2210 926 Q2390 880 2600 906" stroke="rgba(255,255,255,.16)" stroke-width="20" fill="none" stroke-linecap="round"/>`;
-      /* la pista de entrenamiento K9: tierra, aro y vallitas */
-      s += `<ellipse cx="1946" cy="812" rx="128" ry="62" fill="#d7c39a" opacity=".8"/>
-        <ellipse cx="1898" cy="768" rx="16" ry="44" fill="none" stroke="#ef5350" stroke-width="9"/>
-        <ellipse cx="1898" cy="768" rx="16" ry="44" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="14 14"/>`;
-      [[1958, 826], [1876, 818]].forEach(v => {
-        s += `<g><rect x="${v[0]}" y="${v[1]}" width="6" height="32" rx="3" fill="#8d6e63"/><rect x="${v[0] + 50}" y="${v[1]}" width="6" height="32" rx="3" fill="#8d6e63"/>
-          <rect x="${v[0] - 4}" y="${v[1] + 4}" width="64" height="8" rx="4" fill="#42a5f5"/><rect x="${v[0] - 4}" y="${v[1] + 17}" width="64" height="8" rx="4" fill="#eceff1"/></g>`;
-      });
-      /* el estanque, con sus ondas y sus patitos dando vueltas */
-      s += `<ellipse cx="2210" cy="758" rx="198" ry="84" fill="url(#polAgua)"/>
-        <ellipse cx="2210" cy="758" rx="198" ry="84" fill="none" stroke="#4d8a3c" stroke-width="9" opacity=".55"/>
-        <path d="M2086 792 q22 -12 44 0 M2250 806 q22 -12 44 0 M2158 722 q20 -11 40 0" stroke="rgba(255,255,255,.6)" stroke-width="4" fill="none" stroke-linecap="round"><animate attributeName="opacity" values=".85;.3;.85" dur="4.2s" repeatCount="indefinite"/></path>`;
-      [[2068, 794, 28, 9], [2340, 808, -24, 11]].forEach(d => {
-        s += `<g><animateTransform attributeName="transform" type="translate" values="0 0;${d[2]} 0;0 0" dur="${d[3]}s" repeatCount="indefinite"/>
-          <path d="M${d[0] - 15} ${d[1] + 8} q15 7 31 0" stroke="rgba(255,255,255,.6)" stroke-width="3" fill="none" stroke-linecap="round"/>
-          <ellipse cx="${d[0]}" cy="${d[1]}" rx="16" ry="9" fill="#fff8e1"/><circle cx="${d[0] + 12}" cy="${d[1] - 10}" r="7" fill="#fff8e1"/>
-          <path d="M${d[0] + 18} ${d[1] - 11} l10 3 l-10 3 z" fill="#fb8c00"/><circle cx="${d[0] + 14}" cy="${d[1] - 12}" r="1.6" fill="#3e2723"/></g>`;
-      });
-      [[2026, 812], [2394, 806], [2058, 704]].forEach(j => {
-        s += `<path d="M${j[0]} ${j[1]} q-4 -34 -12 -46 M${j[0] + 6} ${j[1]} q2 -38 10 -50 M${j[0] + 14} ${j[1]} q6 -30 14 -38" stroke="#4c8b3f" stroke-width="5" fill="none" stroke-linecap="round"/>`;
-      });
-      /* árboles y arbustos del parque */
-      const arbol = (x, y, k, c1, c2) => `<g transform="translate(${x} ${y}) scale(${k})">
-        <rect x="-11" y="-8" width="22" height="152" rx="10" fill="#7c5b3f"/>
-        <circle cx="0" cy="-48" r="62" fill="${c1}"/><circle cx="-48" cy="-8" r="42" fill="${c1}"/><circle cx="48" cy="-10" r="44" fill="${c1}"/>
-        <circle cx="-18" cy="-72" r="34" fill="${c2}"/><circle cx="34" cy="-48" r="28" fill="${c2}"/></g>`;
-      s += arbol(1874, 484, .8, "#4c8b3f", "#63a44a") + arbol(2312, 466, .95, "#448a3c", "#5da33f") + arbol(2544, 552, 1.05, "#4c8b3f", "#69ad4c");
-      [[1902, 698, 1], [2470, 862, .9], [2562, 692, .8], [1962, 1004, 1.05]].forEach(b => {
-        s += `<g transform="translate(${b[0]} ${b[1]}) scale(${b[2]})"><ellipse cx="0" cy="0" rx="42" ry="26" fill="#4e8a35"/>
-          <ellipse cx="-18" cy="-11" rx="24" ry="18" fill="#5da33f"/><ellipse cx="16" cy="-13" rx="22" ry="16" fill="#5da33f"/></g>`;
-      });
-      [[1900, 646], [1996, 692], [2326, 618], [2492, 664], [2566, 782], [2064, 1048], [2306, 1046]].forEach(f => {
-        s += `<g>${[0, 90, 180, 270].map(a => `<ellipse cx="${(f[0] + 9 * Math.cos(a * Math.PI / 180)).toFixed(1)}" cy="${(f[1] + 9 * Math.sin(a * Math.PI / 180)).toFixed(1)}" rx="5" ry="4" fill="#f8bbd0"/>`).join("")}<circle cx="${f[0]}" cy="${f[1]}" r="5" fill="#fff59d"/></g>`;
-      });
-      /* la vallita baja del paseo */
-      s += `<path d="M1874 1022 H2600 M1874 1046 H2600" stroke="#f7f7f5" stroke-width="7" stroke-linecap="round" opacity=".9"/>`;
-      for (let x = 1878; x < 2600; x += 62) s += `<rect x="${x}" y="1004" width="10" height="58" rx="5" fill="#fbfbf9" opacity=".95"/>`;
+      for (let x = 2168; x < 2318; x += 34) s += `<rect x="${x}" y="604" width="18" height="204" rx="3" fill="#fff" opacity=".6"/>`;
+      /* el carril bici pintado, donde va la bici con su casco */
+      s += `<rect x="2600" y="650" width="320" height="86" rx="10" fill="rgba(120,180,120,.35)"/>
+        <rect x="2600" y="650" width="320" height="86" rx="10" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="5" stroke-dasharray="26 18"/>
+        <g fill="rgba(255,255,255,.6)"><circle cx="2632" cy="716" r="11"/><circle cx="2662" cy="716" r="11"/><path d="M2632 716 L2648 692 L2664 716" stroke="rgba(255,255,255,.6)" stroke-width="4" fill="none"/></g>`;
+      /* el cruce que baja hacia el paseo del parque */
+      s += `<rect x="2960" y="806" width="150" height="300" fill="url(#polXAsfalto)"/>
+        <rect x="2948" y="826" width="13" height="274" rx="3" fill="url(#polXBordillo)"/>
+        <rect x="3109" y="826" width="13" height="274" rx="3" fill="url(#polXBordillo)"/>
+        <rect x="3116" y="812" width="28" height="14" rx="4" fill="url(#polXBordillo)"/>
+        <path d="M3035 912 V1086" stroke="#ffe082" stroke-width="7" stroke-dasharray="40 32" stroke-linecap="round"/>`;
+      for (let y = 844; y < 896; y += 17) s += `<rect x="2968" y="${y}" width="134" height="9" rx="3" fill="#fff" opacity=".55"/>`;
+      s += `<path d="M1714 794 H2940" stroke="rgba(255,255,255,.45)" stroke-width="5"/>
+        <ellipse cx="1840" cy="774" rx="20" ry="9" fill="rgba(0,0,0,.2)"/><ellipse cx="3060" cy="758" rx="20" ry="9" fill="rgba(0,0,0,.2)"/>`;
       /* ---------- LA COMISARÍA: edificio grande, letrero azul y bandera ---------- */
-      s += `<rect x="40" y="312" width="600" height="284" rx="8" fill="#b9c8d4"/>
-        <rect x="26" y="292" width="628" height="26" rx="8" fill="#94a9b8"/>
-        <rect x="40" y="562" width="600" height="34" fill="#a5b7c4"/>
-        <rect x="186" y="238" width="300" height="50" rx="12" fill="#1565c0"/>
-        ${estrella(224, 263, 19, "#ffd54f")}
-        <rect x="256" y="250" width="90" height="10" rx="5" fill="#e3f2fd"/><rect x="256" y="268" width="136" height="10" rx="5" fill="#e3f2fd"/>
-        <rect x="404" y="250" width="60" height="10" rx="5" fill="#90caf9"/><rect x="404" y="268" width="42" height="10" rx="5" fill="#90caf9"/>`;
-      for (let r = 0; r < 3; r++) for (let c = 0; c < 6; c++) {
-        const wx = 68 + c * 96, wy = 330 + r * 82;
-        if (wx < 412 && wx + 56 > 268 && wy + 46 > 460) continue;
+      s += `<rect x="60" y="312" width="840" height="284" rx="8" fill="#b9c8d4"/>
+        <rect x="44" y="292" width="872" height="26" rx="8" fill="#94a9b8"/>
+        <rect x="60" y="562" width="840" height="34" fill="#a5b7c4"/>
+        <rect x="170" y="238" width="300" height="50" rx="12" fill="#1565c0"/>
+        ${estrella(208, 263, 19, "#ffd54f")}
+        <rect x="240" y="250" width="90" height="10" rx="5" fill="#e3f2fd"/><rect x="240" y="268" width="136" height="10" rx="5" fill="#e3f2fd"/>
+        <rect x="388" y="250" width="60" height="10" rx="5" fill="#90caf9"/><rect x="388" y="268" width="42" height="10" rx="5" fill="#90caf9"/>`;
+      for (let r = 0; r < 3; r++) for (let c = 0; c < 9; c++) {
+        const wx = 88 + c * 92, wy = 330 + r * 82;
+        if (wx < 396 && wx + 56 > 252 && wy + 46 > 460) continue;
         if (!libre(wx, wy, 56, 46)) continue;
         s += `<rect x="${wx}" y="${wy}" width="56" height="46" rx="5" fill="#e8f4fb" stroke="#8fa6b5" stroke-width="3"/>
           <path d="M${wx} ${wy + 23} h56 M${wx + 28} ${wy} v46" stroke="#8fa6b5" stroke-width="2.4"/>`;
       }
-      /* la puerta con su marquesina y sus escalones */
-      s += `<rect x="262" y="452" width="156" height="18" rx="8" fill="#1565c0"/>
-        <rect x="276" y="470" width="128" height="126" rx="8" fill="#5d7f96"/>
-        <rect x="288" y="484" width="46" height="86" rx="6" fill="#cfe8f5"/><rect x="346" y="484" width="46" height="86" rx="6" fill="#cfe8f5"/>
-        <path d="M256 596 h168 l16 26 h-200 Z" fill="#d9ded6"/>`;
+      /* la puerta con su marquesina y sus escalones, bajo el icono del edificio */
+      s += `<rect x="202" y="452" width="156" height="18" rx="8" fill="#1565c0"/>
+        <rect x="216" y="470" width="128" height="126" rx="8" fill="#5d7f96"/>
+        <rect x="228" y="484" width="46" height="86" rx="6" fill="#cfe8f5"/><rect x="286" y="484" width="46" height="86" rx="6" fill="#cfe8f5"/>
+        <path d="M196 596 h168 l16 26 h-200 Z" fill="#d9ded6"/>`;
+      /* el panel iluminado del archivo de las huellas, en la fachada */
+      s += `<rect x="452" y="326" width="136" height="112" rx="9" fill="#22506e"/>
+        <rect x="462" y="336" width="116" height="92" rx="6" fill="#cfe8f5"/>
+        <g stroke="#4a7f9e" stroke-width="3" fill="none">${[0, 1, 2, 3].map(i => `<path d="M${478 + i * 26} 424 q-4 -44 8 -66 q10 -18 22 -6"/>`).join("")}</g>
+        <rect x="452" y="440" width="136" height="12" rx="5" fill="#1565c0"/>`;
       /* la bandera, meciéndose despacio */
-      s += `<rect x="596" y="172" width="9" height="146" rx="4" fill="#78909c"/>
-        <g transform="translate(605 212)"><g><animateTransform attributeName="transform" type="skewX" values="0;7;0;-7;0" dur="5s" repeatCount="indefinite"/>
+      s += `<rect x="856" y="172" width="9" height="146" rx="4" fill="#78909c"/>
+        <g transform="translate(865 212)"><g><animateTransform attributeName="transform" type="skewX" values="0;7;0;-7;0" dur="5s" repeatCount="indefinite"/>
         <path d="M0 -27 h98 v54 h-98 Z" fill="#1e88e5"/>${estrella(49, 0, 17, "#fff")}</g></g>`;
-      /* el garaje de las patrullas, al lado */
-      s += `<rect x="690" y="452" width="250" height="144" rx="8" fill="#c9b9a6"/>
-        <rect x="678" y="434" width="274" height="22" rx="8" fill="#a99a88"/>
-        <rect x="726" y="496" width="180" height="100" rx="6" fill="#8d9aa6"/>`;
-      for (let i = 0; i < 5; i++) s += `<rect x="732" y="${504 + i * 19}" width="168" height="12" rx="5" fill="#aab6c1"/>`;
+      /* la ventanilla de objetos perdidos: mostrador y toldito justo bajo su icono */
+      s += `<rect x="670" y="620" width="180" height="16" rx="7" fill="#1565c0"/>
+        <path d="M666 636 L690 620 L830 620 L854 636 Z" fill="#42a5f5" opacity=".9"/>
+        <rect x="678" y="744" width="164" height="20" rx="8" fill="#cfd8dc"/>
+        <rect x="686" y="764" width="148" height="66" rx="6" fill="#90a4ae"/>
+        <g fill="#78909c">${[0, 1, 2].map(i => `<rect x="${698 + i * 46}" y="${776 + (i % 2) * 8}" width="34" height="24" rx="4"/>`).join("")}</g>
+        <rect x="700" y="830" width="120" height="10" rx="5" fill="#b0bec5"/>`;
+      /* el garaje de las patrullas y el panel donde se apoyan la lupa y el silbato */
+      s += `<rect x="940" y="452" width="360" height="144" rx="8" fill="#c9b9a6"/>
+        <rect x="926" y="434" width="390" height="22" rx="8" fill="#a99a88"/>
+        <rect x="1092" y="496" width="170" height="100" rx="6" fill="#8d9aa6"/>`;
+      /* la caseta de arriba: es el muro del que cuelga la percha del silbato */
+      s += `<rect x="1152" y="312" width="160" height="140" rx="6" fill="#c9b9a6"/>
+        <rect x="1140" y="294" width="184" height="20" rx="8" fill="#a99a88"/>
+        <path d="M1150 294 L1232 262 L1314 294 Z" fill="#b08a70"/>
+        <rect x="1154" y="320" width="24" height="24" rx="5" fill="#1565c0"/>
+        ${estrella(1166, 332, 8, "#ffd54f")}
+        <rect x="1160" y="432" width="144" height="8" rx="4" fill="#b3a58f"/>`;
+      for (let i = 0; i < 5; i++) s += `<rect x="1098" y="${504 + i * 19}" width="158" height="12" rx="5" fill="#aab6c1"/>`;
+      /* el tablón de detectives donde cuelga la lupa */
+      s += `<rect x="944" y="500" width="112" height="112" rx="8" fill="#8d6e63"/>
+        <rect x="952" y="508" width="96" height="96" rx="5" fill="#f6efe2"/>
+        <g stroke="#b0a48c" stroke-width="3" fill="none"><path d="M962 534 h76 M962 556 h60 M962 578 h70"/></g>
+        <circle cx="1044" cy="516" r="6" fill="#ef5350"/>`;
+      /* la percha del silbato dorado, en el muro de arriba */
+      s += `<rect x="1184" y="336" width="112" height="14" rx="6" fill="#8d6e63"/>
+        <path d="M1200 350 v18 M1280 350 v18" stroke="#8d6e63" stroke-width="6" stroke-linecap="round"/>
+        <rect x="1188" y="418" width="104" height="10" rx="5" fill="#a1887f"/>`;
+      /* la mesita de la radio, al final de la plaza */
+      s += `<rect x="1414" y="744" width="132" height="18" rx="7" fill="#a1743f"/>
+        <rect x="1424" y="762" width="12" height="80" rx="5" fill="#8d6e63"/><rect x="1524" y="762" width="12" height="80" rx="5" fill="#8d6e63"/>
+        <rect x="1420" y="800" width="120" height="10" rx="5" fill="#b3853f"/>
+        <ellipse cx="1480" cy="848" rx="70" ry="11" fill="rgba(0,0,0,.12)"/>`;
+      /* ---------- LA PLAZA DE LA COMISARÍA: fuente, bancos, buzón y jardineras ---------- */
+      /* el círculo empedrado que sienta la fuente en medio de la plaza */
+      s += `<ellipse cx="760" cy="990" rx="198" ry="82" fill="#dfe3dc"/>
+        <ellipse cx="760" cy="990" rx="198" ry="82" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="6"/>
+        <ellipse cx="760" cy="990" rx="160" ry="66" fill="#d6dbd3"/>
+        <ellipse cx="760" cy="990" rx="160" ry="66" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="4"/>`;
+      /* la rayuela pintada en la losa: la esquina de abajo estaba pelada */
+      s += `<g fill="none" stroke="rgba(255,255,255,.8)" stroke-width="5">
+        <rect x="392" y="946" width="76" height="44" rx="9"/>
+        <rect x="392" y="994" width="76" height="44" rx="9"/>
+        <rect x="352" y="1042" width="76" height="44" rx="9"/><rect x="432" y="1042" width="76" height="44" rx="9"/></g>`;
+      /* parterres redondos que rompen la losa vacía de la plaza */
+      const parterre = (cx, cy, rx, ry) => `<g><ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="#c9ccc3"/>
+        <ellipse cx="${cx}" cy="${cy - 3}" rx="${rx - 9}" ry="${ry - 7}" fill="#5f9440"/>
+        ${[-0.55, -0.18, 0.2, 0.56].map((f, i) => `<circle cx="${(cx + rx * f).toFixed(0)}" cy="${(cy - 5 + (i % 2 ? 6 : -4)).toFixed(0)}" r="6" fill="${i % 2 ? "#f8bbd0" : "#fff59d"}"/>`).join("")}</g>`;
+      s += parterre(225, 790, 80, 28) + parterre(452, 742, 88, 30) + parterre(1078, 700, 68, 24)
+        + parterre(56, 812, 62, 22) + parterre(1046, 1026, 78, 26);
+      const banco = (x, y) => `<g><ellipse cx="${x + 85}" cy="${y + 88}" rx="100" ry="12" fill="rgba(0,0,0,.1)"/>
+        <rect x="${x}" y="${y + 30}" width="170" height="16" rx="8" fill="#a1743f"/><rect x="${x}" y="${y}" width="170" height="14" rx="7" fill="#b3853f"/>
+        <rect x="${x + 12}" y="${y + 44}" width="12" height="36" rx="5" fill="#6d7b86"/><rect x="${x + 146}" y="${y + 44}" width="12" height="36" rx="5" fill="#6d7b86"/></g>`;
+      s += banco(330, 834) + banco(812, 846);
+      s += `<g><ellipse cx="1014" cy="934" rx="30" ry="8" fill="rgba(0,0,0,.12)"/>
+        <rect x="1008" y="900" width="13" height="30" rx="6" fill="#8d6e63"/>
+        <rect x="984" y="824" width="60" height="80" rx="12" fill="#e53935"/>
+        <rect x="996" y="838" width="36" height="9" rx="4" fill="#ffcdd2"/><path d="M984 858 h60" stroke="#c62828" stroke-width="3"/></g>`;
+      s += `<ellipse cx="760" cy="990" rx="112" ry="48" fill="#ccd3ce"/>
+        <ellipse cx="760" cy="988" rx="92" ry="36" fill="url(#polXAgua)"/>
+        <ellipse cx="760" cy="988" rx="92" ry="36" fill="none" stroke="#eceeea" stroke-width="9"/>
+        <rect x="753" y="938" width="14" height="50" rx="7" fill="#b9c1bb"/><ellipse cx="760" cy="936" rx="28" ry="10" fill="#ccd3ce"/>
+        <g stroke="rgba(255,255,255,.75)" stroke-width="5" fill="none" stroke-linecap="round">
+        <path d="M760 930 q-24 14 -30 46"><animate attributeName="opacity" values=".9;.45;.9" dur="2.6s" repeatCount="indefinite"/></path>
+        <path d="M760 930 q24 14 30 46"><animate attributeName="opacity" values=".45;.9;.45" dur="2.6s" repeatCount="indefinite"/></path></g>`;
+      [[180, 1004], [1180, 992], [1500, 1018]].forEach(j => {
+        s += `<g><rect x="${j[0]}" y="${j[1]}" width="96" height="42" rx="9" fill="#a1887f"/><rect x="${j[0] + 6}" y="${j[1] + 6}" width="84" height="10" rx="5" fill="#8d6e63"/>
+          <ellipse cx="${j[0] + 30}" cy="${j[1] - 8}" rx="26" ry="18" fill="#4e8a35"/><ellipse cx="${j[0] + 66}" cy="${j[1] - 6}" rx="22" ry="16" fill="#5da33f"/>
+          ${[[j[0] + 22, j[1] - 18], [j[0] + 46, j[1] - 16], [j[0] + 70, j[1] - 14]].map(f => `<circle cx="${f[0]}" cy="${f[1]}" r="6" fill="#f8bbd0"/><circle cx="${f[0]}" cy="${f[1]}" r="2.4" fill="#fff59d"/>`).join("")}</g>`;
+      });
+      [[560, 1050, 1, 7], [620, 1064, -1, 9], [1290, 1046, 1, 8], [2150, 1040, -1, 10],
+        [300, 1078, 1, 8], [1180, 1080, -1, 11], [1740, 1058, 1, 12]].forEach(p => {
+        s += `<g><animateTransform attributeName="transform" type="translate" values="0 0;${8 * p[2]} 0;0 0" dur="${p[3]}s" repeatCount="indefinite"/>
+          <g transform="translate(${p[0]} ${p[1]}) scale(${p[2]} 1)"><ellipse cx="0" cy="0" rx="15" ry="10" fill="#98a6b0"/>
+          <path d="M-14 -2 q10 -8 20 -2 q-8 8 -20 2 Z" fill="#7d8b95"/><circle cx="10" cy="-11" r="7" fill="#a7b4bd"/>
+          <path d="M16 -12 l9 3 l-9 3 z" fill="#ffb300"/><circle cx="12" cy="-13" r="1.6" fill="#37474f"/>
+          <path d="M-15 0 l-12 -4 l12 -3 Z" fill="#7d8b95"/></g></g>`;
+      });
+      /* el poste indicador: a un lado la comisaría, al otro el parque */
+      s += `<g><ellipse cx="1296" cy="878" rx="30" ry="9" fill="rgba(0,0,0,.14)"/>
+        <rect x="1290" y="694" width="13" height="184" rx="6" fill="#8d6e63"/>
+        <path d="M1230 706 h66 v30 h-66 l-14 -15 Z" fill="#1565c0"/>
+        ${estrella(1252, 721, 10, "#ffd54f")}
+        <path d="M1298 748 h66 l14 15 l-14 15 h-66 Z" fill="#4c8b3f"/>
+        <circle cx="1330" cy="757" r="9" fill="#8bc34a"/><rect x="1327" y="761" width="6" height="12" rx="3" fill="#7c5b3f"/></g>`;
+      /* ---------- EL RASTRO DE ROCKY: huellas que llevan de la plaza al parque ---------- */
+      /* llena la acera vacía y va marcando el camino de izquierda a derecha */
+      const estorbo = [[330, 834, 170, 96], [812, 846, 170, 96], [564, 908, 396, 166], [984, 824, 60, 112],
+        [1112, 760, 30, 200], [1216, 690, 170, 200], [1410, 740, 140, 120], [1524, 826, 104, 70],
+        [1610, 820, 30, 190], [1646, 838, 56, 90], [2070, 830, 30, 190], [2550, 838, 30, 190], [2760, 840, 30, 190],
+        [1866, 880, 26, 100], [2350, 876, 30, 100], [2668, 866, 32, 110], [2846, 860, 36, 110],
+        [2238, 840, 26, 140], [2092, 856, 26, 124], [2914, 846, 28, 140],
+        [180, 1000, 96, 64], [1180, 988, 96, 64], [1500, 1014, 96, 64],
+        [145, 762, 160, 56], [364, 712, 176, 60], [1010, 676, 136, 48],
+        [352, 940, 156, 150], [-6, 786, 124, 48], [966, 998, 160, 56]];
+      const sueloLibre = (x, y) => !estorbo.some(c => x > c[0] - 20 && x < c[0] + c[2] + 20 && y > c[1] - 16 && y < c[1] + c[3] + 16);
+      const huella = (x, y, g) => `<g transform="translate(${x} ${y}) rotate(${g})" fill="rgba(116,102,84,.3)">
+        <ellipse cx="0" cy="0" rx="9" ry="7"/><circle cx="-7.5" cy="-9" r="3.2"/><circle cx="0" cy="-11.5" r="3.4"/><circle cx="7.5" cy="-9" r="3.2"/></g>`;
+      for (let i = 0; i < 46; i++) {
+        const hx = 292 + i * 60;
+        /* salen de la puerta de la comisaría y bajan a la plaza */
+        const sale = Math.max(0, Math.min(1, (450 - hx) / 150));
+        const sube = Math.max(0, Math.min(1, (hx - 1440) / 460));
+        const hy = 888 - 186 * sale + 168 * sube + Math.sin(i * 0.9) * 15;
+        if (hx > 2946) break;
+        if (!sueloLibre(hx, hy)) continue;
+        s += huella(hx.toFixed(0), hy.toFixed(0), (12 + Math.sin(i * 0.9) * 16).toFixed(0));
+      }
+      /* ---------- TRANSICIÓN COMISARÍA A CALLE: la plaza se empedra y nace la calle ---------- */
+      /* una papelera y un banco de espera despiden la plaza */
+      s += `<g><ellipse cx="1672" cy="916" rx="24" ry="8" fill="rgba(0,0,0,.14)"/>
+        <path d="M1652 856 h40 l-4 58 h-32 Z" fill="#7f8c96"/>
+        <rect x="1646" y="848" width="52" height="12" rx="6" fill="#5f6b74"/>
+        <path d="M1662 866 v38 M1682 866 v38" stroke="#98a4ad" stroke-width="4" stroke-linecap="round"/>
+        <path d="M1662 838 q10 -10 20 0" stroke="#5f6b74" stroke-width="5" fill="none" stroke-linecap="round"/></g>`;
+      /* la jardinera larga que despide la plaza */
+      s += `<g><rect x="1524" y="852" width="104" height="40" rx="10" fill="#a1887f"/>
+        <rect x="1530" y="858" width="92" height="10" rx="5" fill="#8d6e63"/>
+        <ellipse cx="1552" cy="844" rx="26" ry="18" fill="#4e8a35"/><ellipse cx="1594" cy="846" rx="24" ry="16" fill="#5da33f"/>
+        ${[[1544, 832], [1572, 830], [1600, 834]].map(f => `<circle cx="${f[0]}" cy="${f[1]}" r="6" fill="#f8bbd0"/><circle cx="${f[0]}" cy="${f[1]}" r="2.4" fill="#fff59d"/>`).join("")}</g>`;
       /* ---------- LA CALLE: edificios de distinta altura tras la calzada ---------- */
-      [[986, 300, 152, "#cdbfae"], [1146, 250, 138, "#a9c0d0"], [1292, 338, 122, "#d8b9a6"], [1422, 288, 164, "#bccbb6"], [1594, 382, 246, "#adbdca"]].forEach(b => {
+      [[1700, 300, 170, "#cdbfae"], [1880, 250, 150, "#a9c0d0"], [2040, 338, 140, "#d8b9a6"],
+        [2190, 288, 180, "#bccbb6"], [2380, 366, 170, "#adbdca"], [2560, 268, 190, "#cdbfae"],
+        [2760, 330, 140, "#b7c7d2"], [2910, 382, 230, "#adbdca"]].forEach(b => {
         s += `<rect x="${b[0]}" y="${b[1]}" width="${b[2]}" height="${596 - b[1]}" rx="6" fill="${b[3]}"/>
           <rect x="${b[0] - 10}" y="${b[1] - 16}" width="${b[2] + 20}" height="20" rx="7" fill="rgba(60,80,95,.22)"/>`;
         const cols = Math.max(2, Math.floor((b[2] - 20) / 42));
@@ -597,8 +733,8 @@ Object.assign(THEMES.policia.content, {
           s += `<rect x="${wx}" y="${wy}" width="26" height="34" rx="4" fill="rgba(255,255,255,.7)" stroke="rgba(90,110,125,.45)" stroke-width="2"/>`;
         }
       });
-      /* dos tiendecitas con toldo a rayas en los bajos */
-      [[1150, "#ef5350"], [1428, "#43a047"]].forEach(t => {
+      /* tres tiendecitas con toldo a rayas en los bajos */
+      [[1886, "#ef5350"], [2196, "#43a047"], [2766, "#42a5f5"]].forEach(t => {
         s += `<rect x="${t[0] + 6}" y="552" width="118" height="44" rx="4" fill="rgba(55,75,90,.4)"/>
           <rect x="${t[0] + 16}" y="562" width="42" height="34" rx="3" fill="rgba(255,255,255,.45)"/>
           <rect x="${t[0] + 70}" y="562" width="42" height="34" rx="3" fill="rgba(255,255,255,.45)"/>
@@ -606,69 +742,202 @@ Object.assign(THEMES.policia.content, {
           ${[0, 1, 2].map(i => `<path d="M${t[0] + 16 + i * 38} 552 L${t[0] + 26 + i * 36} 526 L${t[0] + 44 + i * 36} 526 L${t[0] + 36 + i * 38} 552 Z" fill="#fff" opacity=".85"/>`).join("")}
           <path d="M${t[0]} 552 h130 v8 h-130 Z" fill="rgba(0,0,0,.15)"/>`;
       });
-      /* el helipuerto de la azotea, con su H y sus luces */
-      s += `<rect x="1586" y="368" width="262" height="18" rx="7" fill="#8fa2af"/>
-        <ellipse cx="1714" cy="410" rx="98" ry="30" fill="#78909c"/>
-        <ellipse cx="1714" cy="410" rx="74" ry="21" fill="none" stroke="#eceff1" stroke-width="5"/>
-        <path d="M1692 400 v20 M1736 400 v20 M1692 410 h44" stroke="#eceff1" stroke-width="6" stroke-linecap="round"/>`;
-      [[1620, 410], [1808, 410], [1714, 384], [1714, 436]].forEach((l, i) => {
+      /* el garaje del coche y la moto: la puerta abierta queda justo bajo su icono */
+      s += `<rect x="2392" y="404" width="178" height="196" rx="7" fill="#8a704f"/>
+        <rect x="2404" y="424" width="154" height="176" fill="#4e4335"/>
+        <rect x="2412" y="432" width="138" height="160" fill="rgba(255,213,79,.16)"/>
+        <rect x="2392" y="404" width="178" height="30" rx="5" fill="#cfd8dc"/>
+        <path d="M2398 412 H2564 M2398 421 H2564 M2398 430 H2564" stroke="#90a4ae" stroke-width="3"/>
+        <rect x="2382" y="396" width="198" height="208" rx="7" fill="none" stroke="#f3ece0" stroke-width="9"/>
+        <ellipse cx="2481" cy="394" rx="18" ry="9" fill="#fff3c4"><animate attributeName="opacity" values=".6;1;.6" dur="4.2s" repeatCount="indefinite"/></ellipse>
+        <path d="M2404 592 H2558" stroke="rgba(255,255,255,.3)" stroke-width="5"/>`;
+      /* la rampa que sale del garaje y muere en la calzada */
+      s += `<path d="M2400 600 H2562 L2596 700 H2366 Z" fill="rgba(120,132,142,.55)"/>
+        <path d="M2430 604 L2410 696 M2532 604 L2552 696" stroke="rgba(255,255,255,.35)" stroke-width="5"/>`;
+      /* el helipuerto de la azotea, con su H y sus luces, bajo el helicóptero */
+      s += `<rect x="2862" y="366" width="262" height="18" rx="7" fill="#8fa2af"/>
+        <ellipse cx="2985" cy="418" rx="102" ry="32" fill="#78909c"/>
+        <ellipse cx="2985" cy="418" rx="76" ry="22" fill="none" stroke="#eceff1" stroke-width="5"/>
+        <path d="M2962 408 v20 M3008 408 v20 M2962 418 h46" stroke="#eceff1" stroke-width="6" stroke-linecap="round"/>`;
+      [[2886, 418], [3084, 418], [2985, 390], [2985, 446]].forEach((l, i) => {
         s += `<circle cx="${l[0]}" cy="${l[1]}" r="6" fill="#ffee58"><animate attributeName="opacity" values="1;.2;1" dur="2.4s" begin="${(i * .6).toFixed(1)}s" repeatCount="indefinite"/></circle>`;
       });
-      /* ---------- MOBILIARIO: farolas, banco, buzón, señales y arbolitos ---------- */
+      /* el mástil del semáforo gigante y el poste de la señal del cole */
+      s += `<rect x="1754" y="524" width="12" height="360" rx="6" fill="#546e7a"/>
+        <ellipse cx="1760" cy="886" rx="30" ry="10" fill="rgba(0,0,0,.16)"/>
+        <rect x="1994" y="374" width="12" height="512" rx="6" fill="#90a4ae"/>
+        <ellipse cx="2000" cy="888" rx="28" ry="9" fill="rgba(0,0,0,.14)"/>`;
+      /* el aparcabicis donde descansa la bici */
+      s += `<g stroke="#78909c" stroke-width="9" fill="none" stroke-linecap="round">
+        <path d="M2672 758 v-28 q0 -18 20 -18 q20 0 20 18 v28"/><path d="M2740 758 v-28 q0 -18 20 -18 q20 0 20 18 v28"/></g>
+        <ellipse cx="2724" cy="762" rx="72" ry="12" fill="rgba(0,0,0,.14)"/>`;
+      /* dos señales sencillas y el semáforo pequeño de la esquina */
+      s += `<g><rect x="2246" y="850" width="8" height="120" rx="4" fill="#90a4ae"/>
+        <circle cx="2250" cy="838" r="30" fill="#fff" stroke="#e53935" stroke-width="8"/><rect x="2232" y="832" width="36" height="12" rx="6" fill="#e53935"/></g>
+        <g><rect x="2100" y="866" width="8" height="104" rx="4" fill="#90a4ae"/>
+        <path d="M2104 802 L2140 864 L2068 864 Z" fill="#fff" stroke="#e53935" stroke-width="7" stroke-linejoin="round"/>
+        <circle cx="2104" cy="834" r="5" fill="#37474f"/><path d="M2104 840 v10 M2104 844 l-7 10 M2104 844 l7 10 M2098 842 h12" stroke="#37474f" stroke-width="3" stroke-linecap="round"/></g>
+        <g><rect x="2922" y="856" width="10" height="120" rx="5" fill="#546e7a"/>
+        <rect x="2906" y="768" width="42" height="94" rx="10" fill="#37474f"/>
+        <circle cx="2927" cy="792" r="12" fill="#e53935"><animate attributeName="opacity" values="1;1;.22;.22;1" dur="8s" repeatCount="indefinite"/></circle>
+        <circle cx="2927" cy="816" r="12" fill="#fdd835"><animate attributeName="opacity" values=".22;.22;1;.22;.22" dur="8s" repeatCount="indefinite"/></circle>
+        <circle cx="2927" cy="840" r="12" fill="#66bb6a"><animate attributeName="opacity" values=".22;1;.22;1;.22" dur="8s" repeatCount="indefinite"/></circle></g>`;
+      /* ---------- ÁRBOLES: el hilo verde que anuncia el parque desde la calle ---------- */
+      const arbol = (x, y, k, c1, c2) => `<g transform="translate(${x} ${y}) scale(${k})">
+        <rect x="-11" y="-8" width="22" height="152" rx="10" fill="#7c5b3f"/>
+        <circle cx="0" cy="-48" r="62" fill="${c1}"/><circle cx="-48" cy="-8" r="42" fill="${c1}"/><circle cx="48" cy="-10" r="44" fill="${c1}"/>
+        <circle cx="-18" cy="-72" r="34" fill="${c2}"/><circle cx="34" cy="-48" r="28" fill="${c2}"/></g>`;
+      /* van creciendo y juntándose a medida que uno se acerca al parque */
+      s += arbol(1330, 940, .5, "#4c8b3f", "#69ad4c") + arbol(1876, 966, .5, "#4c8b3f", "#63a44a")
+        + arbol(2360, 962, .56, "#448a3c", "#5da33f") + arbol(2680, 954, .68, "#4c8b3f", "#63a44a")
+        + arbol(2860, 950, .72, "#448a3c", "#5da33f");
+      /* sus alcorques en la acera, la pista que llevan las raíces */
+      [[1330, 946, .5], [1876, 972, .5], [2360, 968, .56], [2680, 960, .68], [2860, 956, .72]].forEach(a => {
+        s += `<ellipse cx="${a[0]}" cy="${a[1]}" rx="${(46 * a[2]).toFixed(0)}" ry="${(14 * a[2]).toFixed(0)}" fill="#8d7a5f" opacity=".55"/>`;
+      });
+      /* ---------- TRANSICIÓN CALLE A PARQUE: la acera se llena de hierba ---------- */
+      /* el bordillo se remata contra el seto: ni una raya suelta encima del asfalto */
+      s += `<rect x="3138" y="588" width="52" height="16" rx="6" fill="url(#polXBordillo)"/>`;
+      /* hierbecillas que van naciendo entre las losas antes de llegar al parque */
+      [[2874, 1064, .8], [2912, 986, .75], [2938, 1042, .9], [3120, 1080, .9],
+        [3132, 1044, 1], [3126, 858, .9], [3142, 1098, 1.05], [3116, 872, .85]].forEach(m => {
+        s += `<g transform="translate(${m[0]} ${m[1]}) scale(${m[2]})" stroke="#5f9440" stroke-width="4" fill="none" stroke-linecap="round">
+          <path d="M0 0 q-3 -12 -10 -18 M0 0 q0 -14 2 -22 M0 0 q4 -12 11 -17"/></g>`;
+      });
+      /* ---------- EL PARQUE: césped con borde vivo, seto, camino y estanque ---------- */
+      /* el borde del césped se mete en la acera a lengüetazos: nada de línea recta */
+      const bordeCesped = `M3196 626 Q3400 546 3660 588 Q3920 628 4200 556 L4200 1100 L3130 1100
+        Q3168 1040 3146 1000 Q3128 964 3162 934 Q3190 906 3172 876 Q3158 852 3196 830 Z`;
+      s += `<path d="${bordeCesped}" fill="url(#polXCesped)"/>
+        <path d="M3196 626 Q3400 546 3660 588 Q3920 628 4200 556 L4200 592 Q3920 664 3660 622 Q3400 582 3196 660 Z" fill="rgba(46,90,30,.3)"/>`;
+      /* el seto: un muro de hoja espesa, de una sola pieza, que separa la calle
+         del parque y se abre en la entrada. El lado de la calle se aparta de la
+         boca redonda del asfalto: cuanto más panzuda está la boca, más estrecho
+         se queda el seto. El del parque, en cambio, va suelto y despeinado. */
+      const setoIzq = (y) => {
+        const d = Math.abs(y - 706);
+        return 3182 + (d > 116 ? 0 : 16 * (1 - d / 116));
+      };
+      const setoDer = 3272;
+      const seto = (y0, y1) => {
+        const n = Math.max(3, Math.round((y1 - y0) / 27));
+        const dy = (y1 - y0) / n;
+        const r0 = v => v.toFixed(0);
+        const yy = i => y0 + i * dy;
+        /* los dos cantos van a bollos: ni el de la calle ni el del parque son una raya */
+        const xi = i => setoIzq(yy(i)) + 4 + Math.sin(i * 1.7 + y0 * 0.021) * 4;
+        const xd = i => setoDer - 6 + Math.cos(i * 1.31 + y0 * 0.017) * 8;
+        /* la sombra que lo sienta en la hierba, por el lado del parque */
+        let h = `<path d="M${setoDer - 4} ${y0 + 10} Q${setoDer + 21} ${r0((y0 + y1) / 2)} ${setoDer + 2} ${y1 - 8}
+          L${setoDer - 24} ${y1 - 8} Q${setoDer - 3} ${r0((y0 + y1) / 2)} ${setoDer - 26} ${y0 + 10} Z" fill="rgba(30,58,20,.22)"/>`;
+        /* el bulto entero: se baja por el lado de la calle y se sube por el del parque */
+        let d = `M${r0(xi(0))} ${r0(yy(0))}`;
+        for (let i = 1; i <= n; i++) d += ` Q${r0(Math.min(xi(i - 1), xi(i)) - 5)} ${r0((yy(i - 1) + yy(i)) / 2)} ${r0(xi(i))} ${r0(yy(i))}`;
+        d += ` Q${r0((xi(n) + xd(n)) / 2)} ${r0(y1 + 12)} ${r0(xd(n))} ${r0(yy(n))}`;
+        for (let i = n - 1; i >= 0; i--) d += ` Q${r0(Math.max(xd(i + 1), xd(i)) + 8)} ${r0((yy(i + 1) + yy(i)) / 2)} ${r0(xd(i))} ${r0(yy(i))}`;
+        d += ` Q${r0((xi(0) + xd(0)) / 2)} ${r0(y0 - 11)} ${r0(xi(0))} ${r0(yy(0))} Z`;
+        h += `<path d="${d}" fill="url(#polXSeto)"/>`;
+        /* la cara que mira a la calle, en sombra: es lo que le da grosor */
+        let li = `M${r0(xi(0) + 8)} ${r0(yy(0) + 7)}`;
+        for (let i = 1; i <= n; i++) li += ` Q${r0(Math.min(xi(i - 1), xi(i)) + 3)} ${r0((yy(i - 1) + yy(i)) / 2)} ${r0(xi(i) + 8)} ${r0(yy(i) - 3)}`;
+        h += `<path d="${li}" fill="none" stroke="rgba(22,44,12,.32)" stroke-width="16" stroke-linecap="round"/>`;
+        /* y el lomo por donde le da el sol, que corre por lo alto de la mata */
+        let lc = `M${r0(setoDer - 26)} ${r0(y0 + 12)}`;
+        for (let i = 1; i <= n; i++) lc += ` Q${r0(setoDer - 33 + Math.sin(i * 1.9) * 6)} ${r0((yy(i - 1) + yy(i)) / 2)} ${r0(setoDer - 24 + Math.cos(i * 1.4) * 5)} ${r0(yy(i) - 5)}`;
+        h += `<path d="${lc}" fill="none" stroke="rgba(150,203,99,.5)" stroke-width="14" stroke-linecap="round"/>`;
+        /* matojos por dentro, para que la masa no quede lisa */
+        for (let i = 0; y0 + 9 + i * 17 < y1 - 2; i++) {
+          const cy = y0 + 9 + i * 17, a = Math.sin(i * 2.3), b = Math.cos(i * 1.7);
+          h += `<ellipse cx="${r0((setoIzq(cy) + setoDer) / 2 + b * 16)}" cy="${cy}" rx="${r0(13 + a * 4)}" ry="${r0(10 + b * 3)}"
+            fill="${i % 3 ? "#4e8531" : "#59953a"}" opacity=".5"/>`;
+        }
+        /* y las ramas que se escapan del corte: la silueta nunca es un canto limpio */
+        for (let i = 0; y0 + 20 + i * 31 < y1 - 8; i++) {
+          const cy = y0 + 20 + i * 31, a = Math.sin(i * 3.4);
+          h += `<ellipse cx="${r0(setoDer + 3 + a * 5)}" cy="${cy}" rx="${r0(10 + a * 3)}" ry="${r0(8 - a * 2)}" fill="#4e7d33" opacity=".92"/>`;
+          if (i % 2) h += `<ellipse cx="${r0(setoIzq(cy + 11) + 6)}" cy="${cy + 11}" rx="8" ry="6" fill="#456f2b" opacity=".9"/>`;
+        }
+        return h;
+      };
+      s += seto(598, 838) + seto(1024, 1100);
+      /* el umbral de tierra: la acera entra en el parque y se convierte en camino.
+         se queda a este lado del bordillo del cruce (que acaba en x 3122) y su
+         borde de la izquierda va ondulado, no a escuadra: es tierra pisada, no una losa */
+      s += `<path d="M3132 900 Q3198 882 3284 914 L3288 988 Q3198 1012 3136 990 Q3126 966 3140 944 Q3128 920 3132 900 Z" fill="url(#polXTierra)" opacity=".92"/>
+        <path d="M3142 918 Q3202 900 3272 926" stroke="rgba(255,255,255,.3)" stroke-width="5" fill="none"/>`;
+      /* motitas de tierra que la acera se lleva pegada: deshacen el canto de arriba y el de abajo */
+      [[3152, 884, 17, 6], [3186, 876, 13, 5], [3216, 884, 11, 4],
+        [3150, 1002, 15, 6], [3190, 1010, 12, 5], [3232, 1000, 10, 4]].forEach(m => {
+        s += `<ellipse cx="${m[0]}" cy="${m[1]}" rx="${m[2]}" ry="${m[3]}" fill="url(#polXTierra)" opacity=".55"/>`;
+      });
+      /* la entrada: dos pilastras de piedra y un cartel con arbolitos */
+      s += `<g><ellipse cx="3232" cy="910" rx="24" ry="7" fill="rgba(0,0,0,.14)"/>
+        <rect x="3216" y="798" width="32" height="112" rx="6" fill="#c6cac2"/>
+        <rect x="3209" y="788" width="46" height="15" rx="7" fill="#dcdfd8"/>
+        <ellipse cx="3170" cy="1008" rx="32" ry="9" fill="rgba(0,0,0,.16)"/>
+        <rect x="3148" y="866" width="42" height="142" rx="7" fill="#cfd2cb"/>
+        <rect x="3140" y="854" width="58" height="18" rx="8" fill="#e3e6df"/>
+        <rect x="3150" y="816" width="100" height="36" rx="9" fill="#4c8b3f"/>
+        <circle cx="3178" cy="832" r="11" fill="#8bc34a"/><rect x="3175" y="838" width="7" height="13" rx="3" fill="#7c5b3f"/>
+        <circle cx="3216" cy="830" r="9" fill="#a5d16a"/><rect x="3213" y="836" width="6" height="12" rx="3" fill="#7c5b3f"/></g>`;
+      s += `<path d="M3216 950 Q3480 992 3720 946 Q3960 900 4200 926" stroke="#cdb28c" stroke-width="52" fill="none" stroke-linecap="round" opacity=".9"/>
+        <path d="M3216 950 Q3480 992 3720 946 Q3960 900 4200 926" stroke="rgba(255,255,255,.16)" stroke-width="20" fill="none" stroke-linecap="round"/>`;
+      /* la pista de entrenamiento K9: el terrizo donde se apoya la caseta, el aro y las vallitas */
+      s += `<ellipse cx="3346" cy="636" rx="62" ry="17" fill="url(#polXTierra)" opacity=".9"/>
+        <ellipse cx="3372" cy="712" rx="90" ry="60" fill="#d7c39a" opacity=".8"/>
+        <ellipse cx="3316" cy="676" rx="15" ry="44" fill="none" stroke="#ef5350" stroke-width="9"/>
+        <ellipse cx="3316" cy="676" rx="15" ry="44" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="14 14"/>`;
+      [[3324, 700], [3392, 730]].forEach(v => {
+        s += `<g><rect x="${v[0]}" y="${v[1]}" width="6" height="32" rx="3" fill="#8d6e63"/><rect x="${v[0] + 50}" y="${v[1]}" width="6" height="32" rx="3" fill="#8d6e63"/>
+          <rect x="${v[0] - 4}" y="${v[1] + 4}" width="64" height="8" rx="4" fill="#42a5f5"/><rect x="${v[0] - 4}" y="${v[1] + 17}" width="64" height="8" rx="4" fill="#eceff1"/></g>`;
+      });
+      /* el mástil del punto de encuentro, con su plinto y su círculo pintado */
+      s += `<rect x="3494" y="440" width="12" height="424" rx="6" fill="#78909c"/>
+        <ellipse cx="3500" cy="872" rx="30" ry="10" fill="#90a4ae"/>
+        <circle cx="3500" cy="884" r="62" fill="rgba(66,165,245,.2)"/>
+        <circle cx="3500" cy="884" r="62" fill="none" stroke="#1e88e5" stroke-width="7" opacity=".7"/>`;
+      /* el estanque, con sus ondas y sus patitos dando vueltas, justo bajo su icono */
+      s += `<ellipse cx="3760" cy="806" rx="204" ry="86" fill="url(#polXAgua)"/>
+        <ellipse cx="3760" cy="806" rx="204" ry="86" fill="none" stroke="#4d8a3c" stroke-width="9" opacity=".55"/>
+        <path d="M3632 840 q22 -12 44 0 M3800 854 q22 -12 44 0 M3708 770 q20 -11 40 0" stroke="rgba(255,255,255,.6)" stroke-width="4" fill="none" stroke-linecap="round"><animate attributeName="opacity" values=".85;.3;.85" dur="4.2s" repeatCount="indefinite"/></path>`;
+      [[3616, 842, 28, 9], [3892, 856, -24, 11]].forEach(d => {
+        s += `<g><animateTransform attributeName="transform" type="translate" values="0 0;${d[2]} 0;0 0" dur="${d[3]}s" repeatCount="indefinite"/>
+          <path d="M${d[0] - 15} ${d[1] + 8} q15 7 31 0" stroke="rgba(255,255,255,.6)" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <ellipse cx="${d[0]}" cy="${d[1]}" rx="16" ry="9" fill="#fff8e1"/><circle cx="${d[0] + 12}" cy="${d[1] - 10}" r="7" fill="#fff8e1"/>
+          <path d="M${d[0] + 18} ${d[1] - 11} l10 3 l-10 3 z" fill="#fb8c00"/><circle cx="${d[0] + 14}" cy="${d[1] - 12}" r="1.6" fill="#3e2723"/></g>`;
+      });
+      /* el prado del caballo: su valla de madera y la sombra que lo asienta */
+      s += `<g><path d="M3910 604 H4200 M3910 636 H4200" stroke="#c9a97e" stroke-width="9" stroke-linecap="round"/>
+        ${[3920, 4010, 4100, 4190].map(x => `<rect x="${x}" y="584" width="12" height="74" rx="5" fill="#b08a5c"/>`).join("")}</g>
+        <ellipse cx="4040" cy="600" rx="86" ry="16" fill="rgba(0,0,0,.14)"/>
+        <path d="M3946 632 Q4040 660 4140 634" stroke="#7cb342" stroke-width="10" fill="none" opacity=".55"/>`;
+      /* árboles, arbustos y flores del parque */
+      s += arbol(3260, 490, .8, "#4c8b3f", "#63a44a") + arbol(3660, 470, .95, "#448a3c", "#5da33f")
+        + arbol(3960, 452, .9, "#4c8b3f", "#69ad4c") + arbol(4170, 560, 1.05, "#4c8b3f", "#69ad4c");
+      [[3320, 940, 1], [3600, 1004, .9], [4020, 1010, 1.05], [4180, 900, .8], [3860, 970, .95]].forEach(b => {
+        s += `<g transform="translate(${b[0]} ${b[1]}) scale(${b[2]})"><ellipse cx="0" cy="0" rx="42" ry="26" fill="#4e8a35"/>
+          <ellipse cx="-18" cy="-11" rx="24" ry="18" fill="#5da33f"/><ellipse cx="16" cy="-13" rx="22" ry="16" fill="#5da33f"/></g>`;
+      });
+      [[3352, 1000], [3420, 620], [3600, 660], [3900, 680], [4130, 664], [3480, 1052], [3960, 1058]].forEach(f => {
+        s += `<g>${[0, 90, 180, 270].map(a => `<ellipse cx="${(f[0] + 9 * Math.cos(a * Math.PI / 180)).toFixed(1)}" cy="${(f[1] + 9 * Math.sin(a * Math.PI / 180)).toFixed(1)}" rx="5" ry="4" fill="#f8bbd0"/>`).join("")}<circle cx="${f[0]}" cy="${f[1]}" r="5" fill="#fff59d"/></g>`;
+      });
+      /* la vallita baja del paseo */
+      s += `<path d="M3240 1030 H4200 M3240 1054 H4200" stroke="#f7f7f5" stroke-width="7" stroke-linecap="round" opacity=".9"/>`;
+      for (let x = 3244; x < 4200; x += 62) s += `<rect x="${x}" y="1012" width="10" height="58" rx="5" fill="#fbfbf9" opacity=".95"/>`;
+      /* ---------- MOBILIARIO: las farolas, que van de la plaza al parque ---------- */
       const farola = (x, base) => `<g><ellipse cx="${x - 10}" cy="${base + 4}" rx="26" ry="8" fill="rgba(0,0,0,.12)"/>
         <rect x="${x - 5}" y="${base - 180}" width="10" height="182" rx="5" fill="#6b7883"/>
         <path d="M${x} ${base - 180} q0 -30 34 -30" stroke="#6b7883" stroke-width="10" fill="none" stroke-linecap="round"/>
         <ellipse cx="${x + 36}" cy="${base - 206}" rx="17" ry="11" fill="#ffe082"/><ellipse cx="${x + 36}" cy="${base - 200}" rx="24" ry="7" fill="rgba(255,241,118,.35)"/></g>`;
-      s += farola(130, 900) + farola(545, 922) + farola(950, 942) + farola(1240, 990) + farola(1790, 1000);
-      /* el banco de la plaza */
-      s += `<g><ellipse cx="335" cy="922" rx="100" ry="12" fill="rgba(0,0,0,.1)"/>
-        <rect x="250" y="864" width="170" height="16" rx="8" fill="#a1743f"/><rect x="250" y="834" width="170" height="14" rx="7" fill="#b3853f"/>
-        <rect x="262" y="878" width="12" height="36" rx="5" fill="#6d7b86"/><rect x="396" y="878" width="12" height="36" rx="5" fill="#6d7b86"/></g>`;
-      /* el buzón rojo */
-      s += `<g><ellipse cx="714" cy="934" rx="30" ry="8" fill="rgba(0,0,0,.12)"/>
-        <rect x="708" y="900" width="13" height="30" rx="6" fill="#8d6e63"/>
-        <rect x="684" y="824" width="60" height="80" rx="12" fill="#e53935"/>
-        <rect x="696" y="838" width="36" height="9" rx="4" fill="#ffcdd2"/><path d="M684 858 h60" stroke="#c62828" stroke-width="3"/></g>`;
-      /* la fuentecita de la plaza, con sus chorros */
-      s += `<ellipse cx="620" cy="982" rx="98" ry="44" fill="#ccd3ce"/>
-        <ellipse cx="620" cy="980" rx="80" ry="33" fill="url(#polAgua)"/>
-        <ellipse cx="620" cy="980" rx="80" ry="33" fill="none" stroke="#eceeea" stroke-width="9"/>
-        <rect x="613" y="934" width="14" height="46" rx="7" fill="#b9c1bb"/><ellipse cx="620" cy="932" rx="28" ry="10" fill="#ccd3ce"/>
-        <g stroke="rgba(255,255,255,.75)" stroke-width="5" fill="none" stroke-linecap="round">
-        <path d="M620 926 q-24 14 -30 44"><animate attributeName="opacity" values=".9;.45;.9" dur="2.6s" repeatCount="indefinite"/></path>
-        <path d="M620 926 q24 14 30 44"><animate attributeName="opacity" values=".45;.9;.45" dur="2.6s" repeatCount="indefinite"/></path></g>`;
-      /* dos jardineras y unas palomas en la plaza */
-      [[190, 1002], [880, 990]].forEach(j => {
-        s += `<g><rect x="${j[0]}" y="${j[1]}" width="96" height="42" rx="9" fill="#a1887f"/><rect x="${j[0] + 6}" y="${j[1] + 6}" width="84" height="10" rx="5" fill="#8d6e63"/>
-          <ellipse cx="${j[0] + 30}" cy="${j[1] - 8}" rx="26" ry="18" fill="#4e8a35"/><ellipse cx="${j[0] + 66}" cy="${j[1] - 6}" rx="22" ry="16" fill="#5da33f"/>
-          ${[[j[0] + 22, j[1] - 18], [j[0] + 46, j[1] - 16], [j[0] + 70, j[1] - 14]].map(f => `<circle cx="${f[0]}" cy="${f[1]}" r="6" fill="#f8bbd0"/><circle cx="${f[0]}" cy="${f[1]}" r="2.4" fill="#fff59d"/>`).join("")}</g>`;
-      });
-      [[350, 1044, 1, 7], [398, 1058, -1, 9], [1180, 1040, 1, 8]].forEach(p => {
-        s += `<g><animateTransform attributeName="transform" type="translate" values="0 0;${8 * p[2]} 0;0 0" dur="${p[3]}s" repeatCount="indefinite"/>
-          <g transform="translate(${p[0]} ${p[1]}) scale(${p[2]} 1)"><ellipse cx="0" cy="0" rx="15" ry="10" fill="#98a6b0"/>
-          <path d="M-14 -2 q10 -8 20 -2 q-8 8 -20 2 Z" fill="#7d8b95"/><circle cx="10" cy="-11" r="7" fill="#a7b4bd"/>
-          <path d="M16 -12 l9 3 l-9 3 z" fill="#ffb300"/><circle cx="12" cy="-13" r="1.6" fill="#37474f"/>
-          <path d="M-15 0 l-12 -4 l12 -3 Z" fill="#7d8b95"/></g></g>`;
-      });
-      /* dos señales sencillas en la acera */
-      s += `<g><rect x="1442" y="836" width="8" height="120" rx="4" fill="#90a4ae"/>
-        <circle cx="1446" cy="824" r="30" fill="#fff" stroke="#e53935" stroke-width="8"/><rect x="1428" y="818" width="36" height="12" rx="6" fill="#e53935"/></g>
-        <g><rect x="1330" y="852" width="8" height="104" rx="4" fill="#90a4ae"/>
-        <path d="M1334 788 L1370 850 L1298 850 Z" fill="#fff" stroke="#e53935" stroke-width="7" stroke-linejoin="round"/>
-        <circle cx="1334" cy="820" r="5" fill="#37474f"/><path d="M1334 826 v10 M1334 830 l-7 10 M1334 830 l7 10 M1328 828 h12" stroke="#37474f" stroke-width="3" stroke-linecap="round"/></g>`;
-      /* el semáforo pequeño de la esquina, guiñando sus luces */
-      s += `<g><rect x="1506" y="856" width="10" height="120" rx="5" fill="#546e7a"/>
-        <rect x="1490" y="768" width="42" height="94" rx="10" fill="#37474f"/>
-        <circle cx="1511" cy="792" r="12" fill="#e53935"><animate attributeName="opacity" values="1;1;.22;.22;1" dur="8s" repeatCount="indefinite"/></circle>
-        <circle cx="1511" cy="816" r="12" fill="#fdd835"><animate attributeName="opacity" values=".22;.22;1;.22;.22" dur="8s" repeatCount="indefinite"/></circle>
-        <circle cx="1511" cy="840" r="12" fill="#66bb6a"><animate attributeName="opacity" values=".22;1;.22;1;.22" dur="8s" repeatCount="indefinite"/></circle></g>`;
-      /* arbolitos de acera */
-      s += arbol(1080, 898, .62, "#4c8b3f", "#63a44a") + arbol(1700, 918, .58, "#448a3c", "#5da33f") + arbol(430, 940, .6, "#4c8b3f", "#69ad4c");
-      /* un pájaro cruzando el cielo sin prisa */
+      /* ninguna se planta en la calzada: en el cruce mandan el semáforo y las
+         pilastras de la entrada, así que la fila salta el asfalto de un lado al otro */
+      s += farola(130, 900) + farola(620, 924) + farola(1120, 948) + farola(1620, 1000)
+        + farola(2080, 1010) + farola(2560, 1018) + farola(2770, 1020) + farola(3600, 1002) + farola(4120, 984);
+      /* un pájaro cruzando el cielo sin prisa, de punta a punta del mapa */
       s += `<g><path d="M0 0 q-13 -12 -27 -6 M0 0 q13 -12 27 -6" stroke="rgba(60,85,105,.6)" stroke-width="4" fill="none" stroke-linecap="round">
         <animate attributeName="d" values="M0 0 q-13 -12 -27 -6 M0 0 q13 -12 27 -6;M0 0 q-13 5 -27 11 M0 0 q13 5 27 11;M0 0 q-13 -12 -27 -6 M0 0 q13 -12 27 -6" dur="1.8s" repeatCount="indefinite"/></path>
-        <animateMotion dur="48s" repeatCount="indefinite" path="M 120 200 Q 800 118 1500 190 Q 2100 250 2560 168"/></g>`;
-      return decoSvg(s, 2600);
+        <animateMotion dur="72s" repeatCount="indefinite" path="M 120 200 Q 1100 110 2100 192 Q 3100 268 4120 170"/></g>`;
+      return decoSvg(s, 4200);
     }
   },
 

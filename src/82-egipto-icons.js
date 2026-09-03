@@ -12,15 +12,17 @@
 
   const ICONS = {
 
-    /* La Gran Piramide: bloques de piedra, cara al sol y cara en sombra */
-    "🔺": { w: 150, h: 112, svg: eg(`
+    /* La Gran Piramide: bloques de piedra, cara al sol y cara en sombra.
+       Es la mayor de Giza y la ficha dice que fue el edificio mas alto del
+       mundo, asi que manda en tamano sobre las piramides del decorado */
+    "🔺": { w: 252, h: 180, svg: eg(`
       <path d="M6 96 L70 6 L134 96 Z" fill="#b07f36"/>
       <path d="M70 6 L134 96 L70 96 Z" fill="#ecc06a"/>
       <path d="M70 6 L83 24 L57 24 Z" fill="#ffd54f"/>
       <path d="M70 6 L83 24 L70 24 Z" fill="#f6b73c"/>
       <path d="M49 36 L91 36 M34 56 L106 56 M20 76 L120 76" stroke="rgba(90,60,20,.4)" stroke-width="2.5"/>
       <path d="M58 36 L58 56 M74 36 L74 56 M88 36 L88 56 M44 56 L44 76 M62 56 L62 76 M80 56 L80 76 M98 56 L98 76 M30 76 L30 96 M52 76 L52 96 M70 76 L70 96 M88 76 L88 96 M110 76 L110 96" stroke="rgba(90,60,20,.3)" stroke-width="2"/>
-      <path d="M78 96 L78 84 Q84 78 90 84 L90 96 Z" fill="#7a5220"/>`, "0 0 140 100") },
+      <path d="M78 96 L78 84 Q84 78 90 84 L90 96 Z" fill="#7a5220"/>`, "3 3 134 94") },
 
     /* La esfinge: cuerpo de leon tumbado, cabeza humana con nemes y kohl */
     "🦁": { w: 140, h: 88, svg: eg(`
@@ -279,7 +281,7 @@
      jeroglífico) y el halcón sagrado del dios Horus --- */
   const ex2 = THEMES.egipto.content.explore;
   ex2.pois.push(
-    { cat: "nilo", emoji: "🦩", x: 1240, y: 370, iw: 52, ih: 80,
+    { cat: "nilo", emoji: "🦩", x: 2010, y: 380, iw: 52, ih: 80,
       svg: eg(`
         <path d="M40 92 L40 66 M52 74 Q58 78 56 84" stroke="#e05a7a" stroke-width="4" fill="none" stroke-linecap="round"/>
         <ellipse cx="48" cy="52" rx="22" ry="16" fill="#f48caa"/>
@@ -290,7 +292,7 @@
         <path d="M42 44 Q54 40 62 48" stroke="#e05a7a" stroke-width="3" fill="none" opacity=".7"/>`, "0 0 80 100"),
       name: { es: "El flamenco", ca: "El flamenc", en: "The flamingo", cs: "Plameňák", fr: "Le flamant rose" },
       fact: { es: "Bandadas de flamencos rosas pescaban en el Nilo. Su silueta era un jeroglífico: ¡con ella se escribía la palabra rojo!", ca: "Estols de flamencs roses pescaven al Nil. La seva silueta era un jeroglífic: amb ella s'escrivia la paraula vermell!", en: "Flocks of pink flamingos fished in the Nile. Their shape was a hieroglyph: it was used to write the word red!", cs: "Hejna růžových plameňáků lovila v Nilu. Jejich silueta byla hieroglyf: psalo se s ní slovo červená!", fr: "Des groupes de flamants roses pêchaient dans le Nil. Leur silhouette était un hiéroglyphe : elle servait à écrire le mot rouge !" } },
-    { cat: "templo", emoji: "🦅", x: 2150, y: 190, iw: 56, ih: 82,
+    { cat: "templo", emoji: "🦅", x: 3250, y: 200, iw: 56, ih: 82,
       svg: eg(`
         <path d="M42 12 L50 2 L58 12 Z" fill="#fff"/><path d="M44 14 Q50 4 56 14 L56 22 L44 22 Z" fill="#c62828"/>
         <ellipse cx="50" cy="52" rx="19" ry="26" fill="#8d9aa8"/>

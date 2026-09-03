@@ -851,3 +851,45 @@ flotando se confunden". Medido y arreglado de raíz en los 21 mapas.
 - Verificación: recuento automático de solapes de icono y de etiqueta en los
   21 mapas con las cajas reales del navegador; 231 tema×modo + POIs + lecciones
   + llamada: 0 fallos, consola limpia.
+
+## v4.4 (3-9-2026, 21:00): mapas anchos, con transiciones y sin nada apelmazado
+
+Aviso de Daniel con captura de Tierra Media: "queda súper comprimido todo, el
+águila no se ve; separa más las cosas y si hace falta que se deba hacer scroll
+horizontal, y que haya transición entre etapas o escenarios".
+
+- **Causa:** el motor encaja el mapa entero a lo alto, así que un lienzo de
+  2600 cabía COMPLETO en una pantalla ancha y los 16 puntos se apelmazaban.
+- **17 mapas ensanchados de 2600 a 4200** (quedan fuera espacio y dinos, ya
+  anchos, y el cuerpo, que es una figura y no un recorrido): los puntos se
+  reparten por todo el ancho con 220 px mínimo entre vecinos, aparece el
+  scroll horizontal y cada zona ocupa su franja.
+- **Transiciones dibujadas entre escenarios** en todos: la Comarca que lleva
+  al río con puente y al bosque y a las montañas, el desierto de Tatooine que
+  da al cañón y a la ciudad, el verde del Nilo que se vuelve arena hasta Giza,
+  la cocina que sale al mercado por la jamba y el cambio de suelo, la hierba
+  que se seca antes de la sabana y el hielo que se rompe antes del desierto.
+- **Arreglos de motor (afectan a los 21 mapas):**
+  - Los nombres se colocaban midiendo los dibujos ANTES de que crecieran (la
+    animación de escala dura .15 s), y por eso en el cuerpo había 16 etiquetas
+    tapando cosas. Ahora se mide con el tamaño final (clase nofx).
+  - Una etiqueta que estorbe prueba seis colocaciones (encima, a los lados, en
+    diagonal, más abajo) y esquiva tanto otras etiquetas como los DIBUJOS
+    vecinos; si ninguna mejora, se queda donde estaba.
+  - Tope de agrandado de los puntos a 1.5 (antes 2.1) y halo de asiento más
+    sutil, que sobre la nieve se veía sucio.
+- **Cuerpo humano:** resolvedor propio que separa los órganos con sus cajas
+  reales (dibujo + etiqueta, ya con el aumento aplicado). De 16 solapes a 5,
+  y los 5 son anatómicamente correctos: columna tras las costillas, vesícula
+  pegada al hígado, delgado dentro del grueso, fémur en la pelvis.
+- **Revisión visual de los 21 mapas** con dos oleadas de agentes (repaso +
+  verificador independiente que renderiza y mira por tramos): 93 defectos
+  documentados con coordenadas y arreglados, entre ellos el rectángulo de
+  cielo asomando dentro del bosque de Endor, el suelo del hangar vacío,
+  Coruscant sin base, el doble toldo del puesto de frutas, la farola plantada
+  en mitad de la calzada, las orillas de la cala de Dalí trazadas a escuadra
+  y la corona de huevos incompleta del teatro-museo.
+- Comprobación final: 231 tema×modo + POIs + quiz + care por tema, 12 robots,
+  6 lecciones, libro (117 finales), misión, padres y llamada: 0 fallos. Cero
+  ids de gradiente repetidos, cero referencias huérfanas, cero rayas, cero
+  "Nina", consola limpia. Bundle: 5,72 MB.
