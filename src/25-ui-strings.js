@@ -247,6 +247,8 @@ const T = {
   aboutContact: { es: "Sugerencias, errores o ideas:", ca: "Suggeriments, errors o idees:", en: "Suggestions, bugs or ideas:", cs: "Návrhy, chyby nebo nápady:", fr: "Suggestions, erreurs ou idées :" },
 
   /* --- modo cuidar (vida práctica) --- */
+  onlyScenery: { es: "Solo paisaje", ca: "Només paisatge", en: "Just the scenery", cs: "Jen krajina", fr: "Rien que le paysage" },
+  onlySceneryOn: { es: "Mira qué bonito. Toca otra vez el botón para volver a los sitios.", ca: "Mira que bonic. Torna a tocar el botó per tornar als llocs.", en: "Look how pretty. Tap the button again to bring the places back.", cs: "Podívej, jak je to hezké. Ťukni znovu na tlačítko a místa se vrátí.", fr: "Regarde comme c'est joli. Touche encore le bouton pour revoir les lieux." },
   bigIcons: { es: "Dibujos grandes", ca: "Dibuixos grans", en: "Big pictures", cs: "Velké obrázky", fr: "Grands dessins" },
   mCare: { es: "Cuidar", ca: "Cuidar", en: "Care", cs: "Péče", fr: "Prendre soin" },
   careFirst: { es: "Primero toca:", ca: "Primer toca:", en: "First it's time to:", cs: "Nejdřív je na řadě:", fr: "D'abord, c'est le moment de :" },

@@ -423,3 +423,9 @@ h2 { font-size: 1.25rem; margin: 6px 0 10px; }
 
 /* dibujos grandes: también el nombre se lee mejor */
 .mapcanvas.poigrande .poi .plabel { font-size: .92rem; padding: 3px 11px; }
+
+/* modo solo paisaje: el dibujo del mapa a solas, sin los puntos ni sus nombres */
+.mapcanvas.paisaje .poi { opacity: 0; pointer-events: none; transition: opacity .25s ease; }
+
+/* con lupa el mapa no cabe a lo alto: se recorre también en vertical */
+.mapscroll.conlupa { overflow-y: auto; }

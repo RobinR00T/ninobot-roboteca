@@ -931,3 +931,28 @@ el resto de mapas).
 - Verificación final en ventana normal (1280x860), con lupa y sin ella: menor
   dibujo 30 px, 0 diminutos, 0 etiquetas tapadas, 2 solapes anatómicos. Los 92
   ficheros compilan y la consola queda limpia.
+
+## v4.6 (3-9-2026, 23:15): el bosque a escala, botón de paisaje y la lupa arreglada
+
+- **🌳 Árboles a escala real**: la secuoya gigante (85 m) medía 250 px y la seta
+  (10 cm) 60, o sea que una seta era casi un cuarto de una secuoya; el roble, el
+  baobab y el abedul medían casi lo mismo. Redibujados (no escalados) con las
+  proporciones reales: secuoya 420 px, pino 300, roble 286, castaño 272, bambú
+  264, baobab 250, abedul 240, estaciones 230, drago 206, olivo 190, manglar 180
+  y la seta 70. Cada especie con sus rasgos: corteza rojiza y fuste enorme en la
+  secuoya, tronco hinchado en el baobab, corteza blanca con marcas en el abedul,
+  cañas con nudos en el bambú, raíces zancudas en el manglar. El verificador
+  cazó y corrigió además vetas del castaño que se salían del tronco, hojas del
+  bambú cortadas por el marco y penachos del baobab fuera de su caja.
+- **🏞️ Botón "Solo paisaje"** en los 21 mapas, al final de la fila de zonas:
+  esconde los puntos y sus nombres para ver el dibujo entero como un cuadro, y
+  vuelve al tocarlo otra vez (con aviso hablado). Mientras está activo los
+  puntos no se pueden tocar sin querer. En los 5 idiomas.
+- **🔍 Arreglo grave del modo lupa (venía de la v4.5)**: con la lupa el mapa no
+  cabe a lo alto y NO se podía bajar (el arrastre solo movía en horizontal y la
+  regla de scroll vertical se había perdido), así que los puntos quedaban
+  cortados por abajo: en árboles, los 16. Ahora el dedo mueve el mapa también
+  en vertical y se entra encuadrando la parte baja, donde se apoyan los sitios.
+- Verificación final en ventana normal: 231 tema×modo, menor dibujo 30 px, 0
+  diminutos, 0 etiquetas tapadas, 2 solapes (los anatómicos del cuerpo), el
+  botón de paisaje probado en los 21 mapas, consola limpia.

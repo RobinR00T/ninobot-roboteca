@@ -842,6 +842,7 @@ function uiExplore(c) {
   box().innerHTML = `
     <div class="mapcats">
       ${e.cats.map((cat, ci) => `<button class="chip" id="mapcat${ci}" onclick="NB.mapCat(${ci})">${cat.emoji} ${tx(cat.name)}</button>`).join("")}
+      <button class="chip ${M.soloPaisaje ? "on" : ""}" id="chippaisaje" onclick="NB.soloPaisaje()">🏞️ ${t("onlyScenery")}</button>
     </div>
     <div class="mapwrap mapfull"><div class="mapscroll" id="mapscroll">
       <div class="mapsize" id="mapsize">
@@ -879,13 +880,22 @@ function uiExplore(c) {
   cv.style.setProperty("--poik", Math.min(e.poikMax || 1.5, Math.max(1, 0.95 / k)).toFixed(2));
   cv.classList.toggle("poigrande", !!S.settings.bigIcons);
   let drag = null;
-  sc.addEventListener("pointerdown", ev => { drag = { x: ev.clientX, l: sc.scrollLeft }; sc.classList.add("dragging"); });
-  sc.addEventListener("pointermove", ev => { if (!drag) return; sc.scrollLeft = drag.l - (ev.clientX - drag.x); });
+  sc.addEventListener("pointerdown", ev => { drag = { x: ev.clientX, y: ev.clientY, l: sc.scrollLeft, t: sc.scrollTop }; sc.classList.add("dragging"); });
+  sc.addEventListener("pointermove", ev => {
+    if (!drag) return;
+    sc.scrollLeft = drag.l - (ev.clientX - drag.x);
+    /* con lupa el mapa tampoco cabe a lo alto: el dedo lo mueve también en vertical */
+    if (sc.scrollHeight > sc.clientHeight + 2) sc.scrollTop = drag.t - (ev.clientY - drag.y);
+  });
   ["pointerup", "pointerleave"].forEach(evn => sc.addEventListener(evn, () => { drag = null; sc.classList.remove("dragging"); }));
   if (S.theme === "espacio") startOrbits(e);
+  /* con lupa se entra mirando la parte baja del mapa, que es donde se apoyan
+     los sitios; si no, se veía el cielo y los puntos quedaban cortados */
+  if (S.settings.bigIcons) requestAnimationFrame(() => { sc.scrollTop = Math.max(0, (sc.scrollHeight - sc.clientHeight) * 0.62); });
   /* los puntos crecen con una transición de .15 s: si midiéramos ya, los
      mediríamos a tamaño pequeño y los nombres quedarían mal puestos. Se
      congela la animación un instante para medir con el tamaño definitivo. */
+  cv.classList.toggle("paisaje", !!M.soloPaisaje);
   cv.classList.add("nofx");
   void cv.offsetWidth;
   /* suelo de tamaño EN PANTALLA: por muy reducido que se vea el mapa, ningún
@@ -1032,6 +1042,21 @@ function mapGoto(x) {
 
 /* submenú de zonas: desplaza el mapa a la zona Y resalta sus puntos
    (sin re-renderizar, para no romper las órbitas animadas) */
+/* Ver el paisaje a solas: esconde los puntos y sus nombres para poder mirar
+   el dibujo entero como si fuera un cuadro. Se vuelve con el mismo botón. */
+function soloPaisaje() {
+  M.soloPaisaje = !M.soloPaisaje;
+  const cv = document.getElementById("mapcanvas");
+  if (cv) cv.classList.toggle("paisaje", !!M.soloPaisaje);
+  const chip = document.getElementById("chippaisaje");
+  if (chip) chip.classList.toggle("on", !!M.soloPaisaje);
+  if (M.soloPaisaje) {
+    document.querySelectorAll("#mapcanvas .poi").forEach(p => p.classList.remove("dim"));
+    Speech.stop();
+    Speech.say(t("onlySceneryOn"));
+  }
+}
+
 function mapCat(ci) {
   const e = THEMES[S.theme].content.explore;
   const cat = e.cats[ci];
@@ -1991,7 +2016,7 @@ window.NB = {
   finishSetup, pickRobot, pickTheme, voiceCall, goHub, setMode,
   openCall, callRobot, callSend, callMic, hangUp, chipSay, buildView, buildDel, abcSay, famousSay,
   chatSend, chatMic, storyStart, storyGo, quizStart, quizPick, quizNext, cycleFantasy,
-  toggleBigIcons, transLang, transSay, mapGoto, mapCat, poi, speakAgain, songOpen, songPlay, leerOpen, leerLesson, leerPick, leerHear, trazoClear, bookOpen, parentsAsk, parentsGo, careDo, careAgain,
+  toggleBigIcons, soloPaisaje, transLang, transSay, mapGoto, mapCat, poi, speakAgain, songOpen, songPlay, leerOpen, leerLesson, leerPick, leerHear, trazoClear, bookOpen, parentsAsk, parentsGo, careDo, careAgain,
   abc, mathStart, mathPick, buildSet, buildSave, famous,
   openSettings, openAbout, closeModal, addTime, toggleMic, toggleSound, toggleVoiceKind,
   cycleVoice, editProfile, askErase, doErase, byeBack
