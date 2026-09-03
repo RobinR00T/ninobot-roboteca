@@ -823,3 +823,31 @@ cultural estricto + el modo Leer hecho en el motor.
   trabajar en paralelo), un solo SVG por mapa y sin NaN en los 21, 12 robots
   con sus textos completos, 231 tema×modo + POIs + llamada: 0 fallos, consola
   limpia. Bundle: 5,23 MB.
+
+## v4.3 (3-9-2026, 15:05): los puntos del mapa, separados y sin confundirse
+
+Aviso de Daniel: "los elementos se solapan y los muñecos o items a seleccionar
+flotando se confunden". Medido y arreglado de raíz en los 21 mapas.
+
+- **Causa encontrada:** los iconos tenían literalmente `animation: floaty` (se
+  balanceaban) y su única separación del fondo era un resplandor BLANCO, que
+  con los decorados nuevos (ricos y claros) ya no los despegaba de nada.
+- **Arreglo sistémico (los 21 mapas de golpe):** fuera el balanceo; halo de
+  asiento suave detrás de cada punto (radial oscuro al 34%), sombra proyectada
+  hacia abajo para que parezca apoyado y filo claro finísimo para que también
+  destaque sobre fondo oscuro; etiqueta con fondo casi opaco, borde claro y
+  sombra de texto.
+- **Etiquetas que se apartan solas** (`acomodaEtiquetas()` en el motor): tras
+  pintar el mapa, mide las cajas reales y, si dos nombres se pisan, sube el del
+  punto más alto sobre su dibujo y, si aún se tocan, los separa a los lados.
+  Resultado medido: **0 etiquetas solapadas en los 21 mapas** (antes había
+  solapes en el cuerpo).
+- **Cuerpo humano, el único con iconos superpuestos:** los órganos del tronco
+  pasan a 0,84 de tamaño (los pulmones medían 132 px de ancho en un torso de
+  260) y se recolocan con más aire: pulmones, corazón, estómago, hígado,
+  vesícula, páncreas, riñones e intestinos. De 8 solapes a 2, y los dos que
+  quedan son anatómicamente correctos y deliberados: el intestino delgado va
+  dentro del marco del grueso, y el fémur se articula EN la pelvis.
+- Verificación: recuento automático de solapes de icono y de etiqueta en los
+  21 mapas con las cajas reales del navegador; 231 tema×modo + POIs + lecciones
+  + llamada: 0 fallos, consola limpia.

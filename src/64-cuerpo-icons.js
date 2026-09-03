@@ -19,8 +19,8 @@
   /* posiciones anatómicas sobre el cuerpo vertical */
   const POS = {
     "🧠": [330, 126], "👀": [330, 196], "👂": [444, 196], "🦷": [330, 252],
-    "🫁": [330, 366], "❤️": [348, 408], "🦴rib": null,
-    "🍲": [372, 480], "➰": [330, 648], "🫘": [330, 592],
+    "🫁": [330, 348], "❤️": [352, 434], "🦴rib": null,
+    "🍲": [394, 502], "➰": [330, 688], "🫘": [330, 600],
     "💪": [168, 432], "🦴": [648, 648], "🩸": [1190, 320], "🖐️": [1350, 320], "🧬": [1270, 560]
   };
 
@@ -185,7 +185,7 @@
   });
 
   const NUEVOS = [
-    { emoji: "🥔", cat: "barriga", x: 270, y: 478, iw: 100, ih: 66,
+    { emoji: "🥔", cat: "barriga", x: 264, y: 500, iw: 100, ih: 66,
       svg: bb(`
         <defs><radialGradient id="cHig" cx="38%" cy="34%"><stop offset="0%" stop-color="#b05a48"/><stop offset="100%" stop-color="#7a3328"/></radialGradient></defs>
         <path d="M6 34 Q8 14 34 10 Q72 6 90 20 Q98 28 92 40 Q80 58 52 60 Q22 62 10 48 Q4 42 6 34 Z" fill="url(#cHig)" stroke="#5d241c" stroke-width="2.4"/>
@@ -193,21 +193,21 @@
         <path d="M16 30 Q30 24 44 28" stroke="#c97a66" stroke-width="3" fill="none" opacity=".7"/>`, "0 0 100 66"),
       name: { es: "El hígado", ca: "El fetge", en: "The liver", cs: "Játra", fr: "Le foie" },
       fact: { es: "El hígado es la gran fábrica del cuerpo: limpia la sangre y guarda energía. ¡Es el órgano más grande de tu barriga!", ca: "El fetge és la gran fàbrica del cos: neteja la sang i guarda energia. És l'òrgan més gran de la teva panxa!", en: "The liver is the body's great factory: it cleans the blood and stores energy. It is the biggest organ in your tummy!", cs: "Játra jsou velká továrna těla: čistí krev a ukládají energii. Jsou největší orgán v tvém bříšku!", fr: "Le foie est la grande usine du corps : il nettoie le sang et garde de l'énergie. C'est le plus grand organe de ton ventre !" } },
-    { emoji: "🫒", cat: "barriga", x: 300, y: 530, iw: 34, ih: 44,
+    { emoji: "🫒", cat: "barriga", x: 296, y: 558, iw: 34, ih: 44,
       svg: bb(`
         <path d="M50 8 L50 26" stroke="#5b8a4a" stroke-width="6" stroke-linecap="round"/>
         <path d="M50 26 Q76 34 74 62 Q70 90 50 92 Q30 90 26 62 Q24 34 50 26 Z" fill="#7aa85c" stroke="#4e7038" stroke-width="3"/>
         <ellipse cx="42" cy="52" rx="7" ry="12" fill="#a3c785" opacity=".8"/>`, "0 0 100 100"),
       name: { es: "La vesícula", ca: "La vesícula", en: "The gallbladder", cs: "Žlučník", fr: "La vésicule" },
       fact: { es: "La vesícula es una bolsita verde que guarda la bilis, un jugo que ayuda a digerir las comidas con grasa.", ca: "La vesícula és una bosseta verda que guarda la bilis, un suc que ajuda a pair els menjars amb greix.", en: "The gallbladder is a little green bag that stores bile, a juice that helps digest fatty foods.", cs: "Žlučník je zelený váček, který uchovává žluč, šťávu pomáhající trávit tučná jídla.", fr: "La vésicule est un petit sac vert qui garde la bile, un jus qui aide à digérer les repas gras." } },
-    { emoji: "🍌", cat: "barriga", x: 352, y: 545, iw: 88, ih: 34,
+    { emoji: "🍌", cat: "barriga", x: 372, y: 560, iw: 88, ih: 34,
       svg: bb(`
         <path d="M8 30 Q10 14 28 12 Q40 10 48 16 Q70 12 88 20 Q96 24 92 32 Q84 44 62 42 Q40 46 20 40 Q8 38 8 30 Z" fill="#e8c46b" stroke="#b8923e" stroke-width="2.6"/>
         <path d="M20 26 Q50 22 84 26" stroke="#b8923e" stroke-width="2.4" fill="none" opacity=".7"/>
         <circle cx="26" cy="28" r="3" fill="#d4a94e"/><circle cx="48" cy="30" r="3" fill="#d4a94e"/><circle cx="70" cy="29" r="3" fill="#d4a94e"/>`, "0 0 100 52"),
       name: { es: "El páncreas", ca: "El pàncrees", en: "The pancreas", cs: "Slinivka", fr: "Le pancréas" },
       fact: { es: "El páncreas fabrica jugos para deshacer la comida y una llave llamada insulina que regula el azúcar del cuerpo.", ca: "El pàncrees fabrica sucs per desfer el menjar i una clau anomenada insulina que regula el sucre del cos.", en: "The pancreas makes juices to break down food and a key called insulin that controls the body's sugar.", cs: "Slinivka vyrábí šťávy na trávení jídla a klíček jménem inzulin, který řídí cukr v těle.", fr: "Le pancréas fabrique des jus pour défaire la nourriture et une clé appelée insuline qui règle le sucre du corps." } },
-    { emoji: "🌀", cat: "barriga", x: 330, y: 645, iw: 82, ih: 68,
+    { emoji: "🌀", cat: "barriga", x: 330, y: 684, iw: 82, ih: 68,
       svg: bb(`
         <path d="M20 24 Q40 12 56 24 Q72 34 60 44 Q46 54 32 46 Q18 38 30 32 Q46 26 60 34 Q76 44 66 58 Q54 72 36 64 Q20 58 28 68 Q42 80 62 74 Q80 68 78 52" stroke="#e08a9a" stroke-width="11" fill="none" stroke-linecap="round"/>
         <path d="M20 24 Q40 12 56 24 Q72 34 60 44 Q46 54 32 46 Q18 38 30 32 Q46 26 60 34 Q76 44 66 58 Q54 72 36 64 Q20 58 28 68 Q42 80 62 74 Q80 68 78 52" stroke="#f2b0bd" stroke-width="5" fill="none" stroke-linecap="round"/>`, "0 0 100 90"),
@@ -274,4 +274,13 @@
     s += `<path d="M60 1075 L560 1075 L590 1075 L615 1030 L645 1098 L668 1075 L1440 1075" stroke="rgba(255,255,255,.4)" stroke-width="5" fill="none"/>`;
     return `<svg viewBox="0 0 1500 1100" preserveAspectRatio="none">${s}</svg>`;
   };
+  /* los órganos del tronco, algo más pequeños: en un torso de 260 px de ancho
+     nueve órganos a tamaño completo se pisaban entre ellos */
+  ex.pois.forEach(p => {
+    if ((p.cat === "pecho" || p.cat === "barriga") && p.iw && p.ih) {
+      p.iw = Math.round(p.iw * 0.84);
+      p.ih = Math.round(p.ih * 0.84);
+    }
+  });
+
 })();

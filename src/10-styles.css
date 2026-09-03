@@ -167,10 +167,23 @@ h2 { font-size: 1.25rem; margin: 6px 0 10px; }
   transform: translate(-50%, -50%) scale(var(--poik, 1)); transition: transform .15s ease;
 }
 .poi:active { transform: translate(-50%, -50%) scale(calc(var(--poik, 1) * .88)); }
-.poi .pemoji { font-size: 2.2rem; filter: drop-shadow(0 0 8px rgba(255,255,255,.45)); animation: floaty 3.4s ease-in-out infinite; }
-.poi .picon { display: block; filter: drop-shadow(0 0 10px rgba(255,255,255,.3)); animation: floaty 3.8s ease-in-out infinite; }
+/* halo de asiento: separa el punto del decorado sin taparlo (ahora los mapas
+   están muy dibujados y un resplandor blanco ya no bastaba para distinguirlos) */
+.poi::before {
+  content: ""; position: absolute; left: 50%; top: 46%;
+  width: 124%; height: 124%; transform: translate(-50%, -50%); border-radius: 50%;
+  background: radial-gradient(circle, rgba(12,6,32,.34) 0%, rgba(12,6,32,.22) 46%, rgba(12,6,32,.08) 66%, transparent 76%);
+  pointer-events: none;
+}
+/* sombra oscura para despegarlos del fondo claro y filo claro para el fondo oscuro */
+.poi .pemoji, .poi .picon {
+  position: relative;
+  filter: drop-shadow(0 4px 4px rgba(0,0,0,.55)) drop-shadow(0 0 2px rgba(255,255,255,.75));
+}
+.poi .pemoji { font-size: 2.2rem; }
+.poi .picon { display: block; }
 /* la etiqueta cuelga por debajo SIN desplazar el icono: el dibujo queda clavado en su punto (y en su órbita) */
-.poi .plabel { position: absolute; top: calc(100% + 2px); left: 50%; transform: translateX(-50%); background: rgba(0,0,0,.45); padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+.poi .plabel { position: absolute; top: calc(100% + 5px); left: 50%; transform: translateX(-50%); background: rgba(8,4,26,.82); border: 1px solid rgba(255,255,255,.28); padding: 2px 9px; border-radius: 999px; white-space: nowrap; text-shadow: 0 1px 2px rgba(0,0,0,.9); }
 /* los astros que orbitan no se balancean: siguen su raya exacta */
 .poi.orbiting .picon, .poi.orbiting .pemoji { animation: none; }
 @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
@@ -395,3 +408,6 @@ h2 { font-size: 1.25rem; margin: 6px 0 10px; }
 
 /* el texto del estado recorta con puntos suspensivos de verdad (el span interior) */
 .status .stxt { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; flex: 0 1 auto; }
+
+/* etiqueta que se sube sobre su dibujo cuando abajo no cabe */
+.poi .plabel.lblup { top: auto; bottom: calc(100% + 5px); }

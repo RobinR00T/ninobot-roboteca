@@ -874,6 +874,46 @@ function uiExplore(c) {
   sc.addEventListener("pointermove", ev => { if (!drag) return; sc.scrollLeft = drag.l - (ev.clientX - drag.x); });
   ["pointerup", "pointerleave"].forEach(evn => sc.addEventListener(evn, () => { drag = null; sc.classList.remove("dragging"); }));
   if (S.theme === "espacio") startOrbits(e);
+  acomodaEtiquetas();
+}
+
+/* Las etiquetas se apartan solas cuando dos caen encima: la de arriba se sube
+   sobre su dibujo y, si aún se tocan, se separan a los lados. Así ningún
+   nombre tapa a otro por muy junto que esté el mapa. */
+function acomodaEtiquetas() {
+  const cv = document.getElementById("mapcanvas");
+  if (!cv) return;
+  const labs = [...cv.querySelectorAll(".poi .plabel")];
+  if (labs.length < 2) return;
+  labs.forEach(l => { l.classList.remove("lblup"); l.style.marginLeft = ""; });
+  const leer = () => labs.map(l => { const r = l.getBoundingClientRect(); return { x: r.left, y: r.top, w: r.width, h: r.height }; });
+  const choca = (a, b) => Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x) > 2 &&
+                          Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y) > 2;
+
+  let r = leer();
+  const arriba = new Set();
+  for (let a = 0; a < labs.length; a++) {
+    for (let b = a + 1; b < labs.length; b++) {
+      if (arriba.has(a) || arriba.has(b) || !choca(r[a], r[b])) continue;
+      /* sube la del punto que esté más alto: se aleja de la otra */
+      arriba.add(r[a].y <= r[b].y ? a : b);
+    }
+  }
+  arriba.forEach(i => labs[i].classList.add("lblup"));
+  if (!arriba.size) return;
+
+  r = leer();
+  const movidas = new Set();
+  for (let a = 0; a < labs.length; a++) {
+    for (let b = a + 1; b < labs.length; b++) {
+      if (movidas.has(a) || movidas.has(b) || !choca(r[a], r[b])) continue;
+      const izq = r[a].x <= r[b].x ? a : b, der = izq === a ? b : a;
+      const empuje = Math.ceil((Math.min(r[izq].x + r[izq].w, r[der].x + r[der].w) - Math.max(r[izq].x, r[der].x)) / 2) + 6;
+      labs[izq].style.marginLeft = (-empuje) + "px";
+      labs[der].style.marginLeft = empuje + "px";
+      movidas.add(izq); movidas.add(der);
+    }
+  }
 }
 
 /* Los planetas dan la VUELTA COMPLETA a su órbita elíptica con velocidad
