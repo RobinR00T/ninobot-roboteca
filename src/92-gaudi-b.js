@@ -1,0 +1,620 @@
+"use strict";
+/* ============================================================
+   Contenido de GAUDÍ (parte B): historias ramificadas,
+   canciones, traductor, mapa de exploración, charla y los
+   extras de portada y celebración.
+   ============================================================ */
+
+const gaSvg = (inner, vb) => `<svg viewBox="${vb || "0 0 100 100"}" width="100%" height="100%">${inner}</svg>`;
+
+Object.assign(THEMES.gaudi.content, {
+
+  /* ---------- HISTORIAS (ramifican de verdad) ---------- */
+  stories: [
+    {
+      id: "salamandra", emoji: "🦎", start: "n1",
+      title: { es: "La salamandra que perdió un azulejo", ca: "La salamandra que va perdre una rajola", en: "The Salamander Who Lost a Tile", cs: "Salamandr, který ztratil kachličku", fr: "La salamandre qui a perdu un carreau" },
+      nodes: {
+        n1: {
+          text: { es: "Esta mañana, en el Park Güell, la salamandra de trencadís está muy apenada: un trocito azul de su lomo se ha despegado y ha rodado escaleras abajo. ¿La ayudamos a encontrarlo, {name}?", ca: "Aquest matí, al Park Güell, la salamandra de trencadís està molt trista: un trosset blau del seu llom s'ha desenganxat i ha rodolat escales avall. L'ajudem a trobar-lo, {name}?", en: "This morning in Park Güell the trencadís salamander is very sad: a little blue piece from her back came loose and rolled down the stairs. Shall we help her find it, {name}?", cs: "Dnes ráno je salamandr z trencadísu v parku Güell moc smutný: modrý střípek z jeho hřbetu se odlepil a skutálel se ze schodů. Pomůžeme mu ho najít, {name}?", fr: "Ce matin, au Park Güell, la salamandre en trencadís est toute triste : un petit morceau bleu de son dos s'est décollé et a roulé en bas de l'escalier. On l'aide à le retrouver, {name} ?" },
+          choices: [
+            { t: { es: "Buscamos por la escalera", ca: "Busquem per l'escala", en: "We search the staircase", cs: "Hledáme na schodech", fr: "On cherche sur l'escalier" }, go: "n2a" },
+            { t: { es: "Preguntamos a las palomas del parque", ca: "Preguntem als coloms del parc", en: "We ask the park pigeons", cs: "Zeptáme se holubů v parku", fr: "On demande aux pigeons du parc" }, go: "n2b" }
+          ]
+        },
+        n2a: {
+          text: { es: "Bajáis la escalera mirándolo todo con ojos de lupa. ¡Ahí! Un caminito de purpurina azul cruza la plaza y sube hacia el banco ondulado.", ca: "Baixeu l'escala mirant-ho tot amb ulls de lupa. Allà! Un caminet de purpurina blava travessa la plaça i puja cap al banc ondulat.", en: "You go down the stairs looking at everything with magnifying-glass eyes. There! A little trail of blue glitter crosses the square and climbs towards the wavy bench.", cs: "Scházíte schody a všechno zkoumáte očima jako lupou. Tamhle! Cestička z modrých třpytek vede přes náměstíčko nahoru k vlnité lavičce.", fr: "Vous descendez l'escalier en regardant tout avec des yeux de loupe. Là ! Un petit chemin de paillettes bleues traverse la place et monte vers le banc ondulé." },
+          choices: [
+            { t: { es: "Miramos debajo del banco", ca: "Mirem sota el banc", en: "We look under the bench", cs: "Podíváme se pod lavičku", fr: "On regarde sous le banc" }, go: "n3a" },
+            { t: { es: "Seguimos el brillo hasta la sala de las columnas", ca: "Seguim la lluïssor fins a la sala de les columnes", en: "We follow the sparkle to the hall of columns", cs: "Jdeme za třpytkami do sálu se sloupy", fr: "On suit les paillettes jusqu'à la salle des colonnes" }, go: "n3b" }
+          ]
+        },
+        n2b: {
+          text: { es: "Las palomas se ponen firmes como soldaditos: 'Curucú, vimos rodar algo azul hacia la sala de las columnas'. Y os acompañan volando bajito.", ca: "Els coloms es posen ferms com soldadets: 'Curucú, hem vist rodolar una cosa blava cap a la sala de les columnes'. I us acompanyen volant baixet.", en: "The pigeons stand to attention like little soldiers: 'Coo-coo, we saw something blue rolling towards the hall of columns'. And they fly along with you, nice and low.", cs: "Holubi se postaví do pozoru jako vojáčci: 'Vrkú, viděli jsme něco modrého kutálet se k sálu se sloupy'. A letí kousek nad vámi jako doprovod.", fr: "Les pigeons se mettent au garde-à-vous comme des petits soldats : « Rou-cou, on a vu rouler quelque chose de bleu vers la salle des colonnes ». Et ils vous accompagnent en volant tout bas." },
+          choices: [
+            { t: { es: "Seguir", ca: "Continuar", en: "Continue", cs: "Pokračovat", fr: "Continuer" }, go: "n3b" }
+          ]
+        },
+        n3a: {
+          text: { es: "Debajo del banco encontráis tesoros perdidos: una canica, una horquilla y un caramelo pegajoso. El trocito no está, pero una hormiga os chiva que un gorrión se lo llevó a la sala de las columnas.", ca: "Sota el banc trobeu tresors perduts: una bala, una agulla de cabell i un caramel enganxós. El trosset no hi és, però una formiga us xiva que un pardal se'l va endur a la sala de les columnes.", en: "Under the bench you find lost treasures: a marble, a hairpin and a sticky sweet. The little piece is not there, but an ant whispers that a sparrow carried it to the hall of columns.", cs: "Pod lavičkou najdete ztracené poklady: kuličku, sponku a lepkavý bonbon. Střípek tam není, ale mravenec vám prozradí, že si ho odnesl vrabec do sálu se sloupy.", fr: "Sous le banc, vous trouvez des trésors perdus : une bille, une barrette et un bonbon tout collant. Le petit morceau n'y est pas, mais une fourmi vous souffle qu'un moineau l'a emporté dans la salle des colonnes." },
+          choices: [
+            { t: { es: "Seguir", ca: "Continuar", en: "Continue", cs: "Pokračovat", fr: "Continuer" }, go: "n4" }
+          ]
+        },
+        n3b: {
+          text: { es: "En la sala de las columnas vuestros pasos hacen eco: ¡hola, hola, hola! Arriba, entre los soles de trencadís del techo, hay un nido pequeñito. ¡Y dentro brilla algo azul!", ca: "A la sala de les columnes els vostres passos fan eco: hola, hola, hola! A dalt, entre els sols de trencadís del sostre, hi ha un niu petitó. I a dins hi brilla una cosa blava!", en: "In the hall of columns your steps echo: hello, hello, hello! Up above, between the trencadís suns on the ceiling, there is a tiny nest. And something blue sparkles inside!", cs: "V sálu se sloupy se vaše kroky rozléhají: ahoj, ahoj, ahoj! Nahoře, mezi mozaikovými slunci na stropě, je maličké hnízdo. A uvnitř se něco modře třpytí!", fr: "Dans la salle des colonnes, vos pas font écho : bonjour, bonjour, bonjour ! En haut, entre les soleils en trencadís du plafond, il y a un tout petit nid. Et dedans, quelque chose de bleu brille !" },
+          choices: [
+            { t: { es: "Seguir", ca: "Continuar", en: "Continue", cs: "Pokračovat", fr: "Continuer" }, go: "n4" }
+          ]
+        },
+        n4: {
+          text: { es: "En el nido, un gorrión abraza el trocito azul: 'Es que brilla como un pedacito de cielo... y hace muy bonito mi nido'. ¿Qué hacemos, {name}?", ca: "Al niu, un pardal abraça el trosset blau: 'És que brilla com un bocinet de cel... i fa molt bonic el meu niu'. Què fem, {name}?", en: "In the nest, a sparrow is hugging the little blue piece: 'It shines like a tiny bit of sky... and it makes my nest so pretty'. What do we do, {name}?", cs: "V hnízdě objímá vrabec modrý střípek: 'On se totiž třpytí jako kousíček nebe... a moc mi zkrášluje hnízdo'. Co uděláme, {name}?", fr: "Dans le nid, un moineau serre le petit morceau bleu : « C'est qu'il brille comme un petit bout de ciel... et il rend mon nid si joli ». Qu'est-ce qu'on fait, {name} ?" },
+          choices: [
+            { t: { es: "Se lo pedimos con cariño y le ofrecemos un cambio", ca: "L'hi demanem amb carinyo i li oferim un canvi", en: "We ask kindly and offer a swap", cs: "Hezky ho poprosíme a nabídneme výměnu", fr: "On lui demande gentiment et on propose un échange" }, go: "n5a" },
+            { t: { es: "Se lo dejamos y buscamos otra solución", ca: "L'hi deixem i busquem una altra solució", en: "We let him keep it and find another way", cs: "Necháme mu ho a vymyslíme něco jiného", fr: "On le lui laisse et on cherche une autre solution" }, go: "n5b" }
+          ]
+        },
+        n5a: {
+          text: { es: "Le ofrecéis un botón plateado del bolsillo del robot, que brilla como la luna. El gorrión lo mira, le encanta... ¡y acepta el cambio dando saltitos de contento!", ca: "Li oferiu un botó platejat de la butxaca del robot, que brilla com la lluna. El pardal se'l mira, li encanta... i accepta el canvi fent saltets de content!", en: "You offer him a silver button from the robot's pocket, shiny like the moon. The sparrow looks at it, loves it... and accepts the swap, hopping with joy!", cs: "Nabídnete mu stříbrný knoflík z robotovy kapsy, který se leskne jako měsíc. Vrabec si ho prohlédne, nadchne se... a výměnu přijme, celý poskakuje radostí!", fr: "Vous lui offrez un bouton argenté sorti de la poche du robot, brillant comme la lune. Le moineau le regarde, il l'adore... et il accepte l'échange en sautillant de joie !" },
+          choices: [
+            { t: { es: "Seguir", ca: "Continuar", en: "Continue", cs: "Pokračovat", fr: "Continuer" }, go: "e1" }
+          ]
+        },
+        n5b: {
+          text: { es: "Dejáis el trocito en el nido. El mosaiquista del parque os abre su taller: con una taza rota y mucho cuidado, ¡hacéis un trocito azul nuevo, todavía más bonito!", ca: "Deixeu el trosset al niu. El mosaïcista del parc us obre el seu taller: amb una tassa trencada i molt de compte, feu un trosset blau nou, encara més bonic!", en: "You leave the piece in the nest. The park's mosaic maker opens his workshop for you: with a broken cup and lots of care, you make a brand-new blue piece, even prettier!", cs: "Necháte střípek v hnízdě. Parkový mozaikář vám otevře svou dílnu: z rozbitého hrnečku a s velkou opatrností vyrobíte nový modrý střípek, ještě krásnější!", fr: "Vous laissez le morceau dans le nid. Le mosaïste du parc vous ouvre son atelier : avec une tasse cassée et beaucoup de soin, vous fabriquez un nouveau morceau bleu, encore plus joli !" },
+          choices: [
+            { t: { es: "Seguir", ca: "Continuar", en: "Continue", cs: "Pokračovat", fr: "Continuer" }, go: "e2" }
+          ]
+        },
+        e1: {
+          end: true,
+          text: { es: "Volvéis con el trocito y la salamandra vuelve a estar completa. De la alegría, da un coletazo y os salpica de agua fresquita. Pedir las cosas con cariño abre todas las puertas, {name}.", ca: "Torneu amb el trosset i la salamandra torna a estar completa. De l'alegria, fa un cop de cua i us esquitxa d'aigua fresqueta. Demanar les coses amb carinyo obre totes les portes, {name}.", en: "You come back with the piece and the salamander is whole again. She wags her tail with joy and splashes you with cool water. Asking kindly opens every door, {name}.", cs: "Vrátíte se se střípkem a salamandr je zase celý. Radostí švihne ocáskem a postříká vás studenou vodičkou. Hezká prosba otevírá všechny dveře, {name}.", fr: "Vous revenez avec le morceau et la salamandre est de nouveau complète. De joie, elle donne un coup de queue et vous éclabousse d'eau fraîche. Demander gentiment ouvre toutes les portes, {name}." }
+        },
+        e2: {
+          end: true,
+          text: { es: "La salamandra estrena su trocito nuevo hecho por vosotros, y el gorrión conserva su pedacito de cielo. ¡Dos felices con un solo azulejo! A veces la mejor solución es inventar una nueva, {name}.", ca: "La salamandra estrena el seu trosset nou fet per vosaltres, i el pardal conserva el seu bocinet de cel. Dos feliços amb una sola rajola! De vegades la millor solució és inventar-ne una de nova, {name}.", en: "The salamander shows off her new piece made by you, and the sparrow keeps his little bit of sky. Two happy friends from one single tile! Sometimes the best solution is to invent a new one, {name}.", cs: "Salamandr se pyšní novým střípkem, který jste vyrobili, a vrabec si nechá svůj kousíček nebe. Dva šťastní z jediné kachličky! Někdy je nejlepším řešením vymyslet úplně nové, {name}.", fr: "La salamandre étrenne son nouveau morceau fait par vous, et le moineau garde son petit bout de ciel. Deux heureux avec un seul carreau ! Parfois, la meilleure solution est d'en inventer une nouvelle, {name}." }
+        }
+      }
+    },
+    {
+      id: "bosque", emoji: "🌳", start: "n1",
+      title: { es: "El bosque de columnas", ca: "El bosc de columnes", en: "The Forest of Columns", cs: "Les ze sloupů", fr: "La forêt de colonnes" },
+      nodes: {
+        n1: {
+          text: { es: "Al caer la tarde, una golondrina os cuela por una ventanita de la Sagrada Família. La luz de las vidrieras os pinta de azul y de verde. De pronto, las columnas susurran: 'Somos árboles de piedra... pero nunca hemos oído un bosque de verdad'.", ca: "Cap al tard, una oreneta us fa entrar per una finestreta de la Sagrada Família. La llum de les vidrieres us pinta de blau i de verd. De sobte, les columnes xiuxiuegen: 'Som arbres de pedra... però mai no hem sentit un bosc de debò'.", en: "At dusk, a swallow sneaks you in through a little window of the Sagrada Família. The light from the stained glass paints you blue and green. Suddenly the columns whisper: 'We are stone trees... but we have never heard a real forest'.", cs: "Za soumraku vás vlaštovka propašuje okénkem do Sagrady Famílie. Světlo z barevných oken vás obarví na modro a zeleno. Najednou sloupy zašeptají: 'Jsme kamenné stromy... ale opravdový les jsme nikdy neslyšely'.", fr: "À la tombée du jour, une hirondelle vous fait entrer par une petite fenêtre de la Sagrada Família. La lumière des vitraux vous peint en bleu et en vert. Soudain, les colonnes chuchotent : « Nous sommes des arbres de pierre... mais nous n'avons jamais entendu une vraie forêt »." },
+          choices: [
+            { t: { es: "Les hacemos los sonidos del bosque nosotros", ca: "Els fem els sons del bosc nosaltres", en: "We make the forest sounds ourselves", cs: "Zvuky lesa jim předvedeme sami", fr: "On leur fait nous-mêmes les sons de la forêt" }, go: "n2a" },
+            { t: { es: "Vamos a buscar sonidos de verdad al parque", ca: "Anem a buscar sons de debò al parc", en: "We go and fetch real sounds from the park", cs: "Dojdeme pro opravdové zvuky do parku", fr: "On va chercher de vrais sons au parc" }, go: "n2b" }
+          ]
+        },
+        n2a: {
+          text: { es: "Sopláis como el viento, shhh, y tamborileáis la lluvia con los dedos, plic ploc. Las columnas tiemblan de gusto hasta el techo. '¡Más, más! ¿Qué más suena en un bosque?'", ca: "Bufeu com el vent, xxxt, i tamborilegeu la pluja amb els dits, plic ploc. Les columnes tremolen de gust fins al sostre. 'Més, més! Què més sona en un bosc?'", en: "You blow like the wind, shhh, and drum the rain with your fingers, plip plop. The columns shiver with delight all the way to the ceiling. 'More, more! What else sounds in a forest?'", cs: "Foukáte jako vítr, ššš, a prsty bubnujete déšť, kap kap. Sloupy se blahem chvějí až ke stropu. 'Ještě, ještě! Co dalšího zní v lese?'", fr: "Vous soufflez comme le vent, chhh, et vous tambourinez la pluie avec les doigts, plic ploc. Les colonnes frissonnent de plaisir jusqu'au plafond. « Encore, encore ! Quoi d'autre résonne dans une forêt ? »" },
+          choices: [
+            { t: { es: "¡El canto de los pájaros!", ca: "El cant dels ocells!", en: "Birdsong!", cs: "Ptačí zpěv!", fr: "Le chant des oiseaux !" }, go: "n3a" },
+            { t: { es: "¡El agua del río!", ca: "L'aigua del riu!", en: "The water of the river!", cs: "Voda v řece!", fr: "L'eau de la rivière !" }, go: "n3b" }
+          ]
+        },
+        n2b: {
+          text: { es: "Salís de puntillas al parque de noche. El robot abre su cajita de grabar sonidos: cric. Un mirlo canta en una farola y una fuente murmura bajito.", ca: "Sortiu de puntetes al parc de nit. El robot obre la seva capseta de gravar sons: cric. Una merla canta en un fanal i una font murmura fluixet.", en: "You tiptoe out into the park at night. The robot opens his little sound-recording box: click. A blackbird sings on a lamppost and a fountain murmurs softly.", cs: "Po špičkách vyjdete do nočního parku. Robot otevře svou krabičku na nahrávání zvuků: cvak. Na lucerně zpívá kos a fontána tichounce zurčí.", fr: "Vous sortez sur la pointe des pieds dans le parc, la nuit. Le robot ouvre sa petite boîte à enregistrer les sons : clic. Un merle chante sur un lampadaire et une fontaine murmure tout bas." },
+          choices: [
+            { t: { es: "Volvemos con el canto del mirlo", ca: "Tornem amb el cant de la merla", en: "We go back with the blackbird's song", cs: "Vrátíme se s kosím zpěvem", fr: "On revient avec le chant du merle" }, go: "n3a" },
+            { t: { es: "Volvemos con el murmullo de la fuente", ca: "Tornem amb el murmuri de la font", en: "We go back with the fountain's murmur", cs: "Vrátíme se se zurčením fontány", fr: "On revient avec le murmure de la fontaine" }, go: "n3b" }
+          ]
+        },
+        n3a: {
+          text: { es: "Cuando suena el canto del pájaro, los reflejos de las vidrieras se despegan de las paredes y vuelan por el techo como pájaros de luz. ¡El bosque de piedra se llena de trinos!", ca: "Quan sona el cant de l'ocell, els reflexos de les vidrieres es desenganxen de les parets i volen pel sostre com ocells de llum. El bosc de pedra s'omple de refilets!", en: "When the birdsong plays, the reflections from the stained glass peel off the walls and fly across the ceiling like birds of light. The stone forest fills with chirping!", cs: "Když zazní ptačí zpěv, odlesky barevných oken se odlepí od stěn a létají po stropě jako světelní ptáci. Kamenný les se naplní štěbetáním!", fr: "Quand le chant de l'oiseau résonne, les reflets des vitraux se décollent des murs et volent au plafond comme des oiseaux de lumière. La forêt de pierre se remplit de gazouillis !" },
+          choices: [
+            { t: { es: "Seguir", ca: "Continuar", en: "Continue", cs: "Pokračovat", fr: "Continuer" }, go: "n4" }
+          ]
+        },
+        n3b: {
+          text: { es: "Cuando suena el agua, la luz azul de las vidrieras baja ondulando por el suelo, como un río de colores que pasa entre las columnas. ¡Hasta hay pececitos de luz!", ca: "Quan sona l'aigua, la llum blava de les vidrieres baixa ondulant pel terra, com un riu de colors que passa entre les columnes. Fins i tot hi ha peixets de llum!", en: "When the water sound plays, the blue light from the stained glass ripples down across the floor, like a river of colours flowing between the columns. There are even little fish of light!", cs: "Když zazní voda, modré světlo z oken se rozvlní po podlaze jako barevná řeka, která protéká mezi sloupy. Jsou v ní dokonce světelné rybičky!", fr: "Quand le son de l'eau résonne, la lumière bleue des vitraux descend en ondulant sur le sol, comme une rivière de couleurs qui passe entre les colonnes. Il y a même des petits poissons de lumière !" },
+          choices: [
+            { t: { es: "Seguir", ca: "Continuar", en: "Continue", cs: "Pokračovat", fr: "Continuer" }, go: "n4" }
+          ]
+        },
+        n4: {
+          text: { es: "El bosque de columnas despierta del todo: las ramas de piedra se estiran y el techo brilla como copas de árboles al sol. La columna más pequeñita pregunta: '¿Y qué hacemos ahora con tanta alegría?'", ca: "El bosc de columnes es desperta del tot: les branques de pedra s'estiren i el sostre brilla com capçades d'arbres al sol. La columna més petitona pregunta: 'I què fem ara amb tanta alegria?'", en: "The forest of columns wakes up completely: the stone branches stretch and the ceiling glows like treetops in the sun. The tiniest column asks: 'And what do we do now with all this joy?'", cs: "Les ze sloupů se úplně probudí: kamenné větve se protáhnou a strop září jako koruny stromů na slunci. Nejmenší sloupek se zeptá: 'A co teď s tou spoustou radosti uděláme?'", fr: "La forêt de colonnes se réveille tout à fait : les branches de pierre s'étirent et le plafond brille comme des cimes d'arbres au soleil. La plus petite colonne demande : « Et qu'est-ce qu'on fait maintenant de toute cette joie ? »" },
+          choices: [
+            { t: { es: "La guardamos de regalo para los visitantes de mañana", ca: "La guardem de regal per als visitants de demà", en: "We save it as a gift for tomorrow's visitors", cs: "Schováme ji jako dárek pro zítřejší návštěvníky", fr: "On la garde en cadeau pour les visiteurs de demain" }, go: "n5a" },
+            { t: { es: "¡Bailamos todos juntos esta noche!", ca: "Ballem tots junts aquesta nit!", en: "We all dance together tonight!", cs: "Dnes v noci si všichni spolu zatancujeme!", fr: "On danse tous ensemble cette nuit !" }, go: "n5b" }
+          ]
+        },
+        n5a: {
+          text: { es: "Escondéis la alegría dentro de los colores de las vidrieras: un trino en el azul, el río en el verde y la risa de {name} en el dorado.", ca: "Amagueu l'alegria dins dels colors de les vidrieres: un refilet al blau, el riu al verd i el riure de {name} al daurat.", en: "You hide the joy inside the colours of the stained glass: a chirp in the blue, the river in the green and {name}'s laugh in the gold.", cs: "Schováte radost do barev oken: štěbetání do modré, řeku do zelené a smích, který patří {name}, do zlaté.", fr: "Vous cachez la joie dans les couleurs des vitraux : un gazouillis dans le bleu, la rivière dans le vert et le rire de {name} dans le doré." },
+          choices: [
+            { t: { es: "Seguir", ca: "Continuar", en: "Continue", cs: "Pokračovat", fr: "Continuer" }, go: "e1" }
+          ]
+        },
+        n5b: {
+          text: { es: "Empieza un baile silencioso de luces y sombras. Las columnas se mecen sin moverse, que es como bailan los árboles de piedra, y la golondrina dirige la orquesta.", ca: "Comença un ball silenciós de llums i ombres. Les columnes es gronxen sense moure's, que és com ballen els arbres de pedra, i l'oreneta dirigeix l'orquestra.", en: "A silent dance of lights and shadows begins. The columns sway without moving, which is how stone trees dance, and the swallow conducts the orchestra.", cs: "Začne tichý tanec světel a stínů. Sloupy se houpají, aniž by se pohnuly, protože tak tančí kamenné stromy, a vlaštovka diriguje orchestr.", fr: "Un bal silencieux de lumières et d'ombres commence. Les colonnes se balancent sans bouger, car c'est ainsi que dansent les arbres de pierre, et l'hirondelle dirige l'orchestre." },
+          choices: [
+            { t: { es: "Seguir", ca: "Continuar", en: "Continue", cs: "Pokračovat", fr: "Continuer" }, go: "e2" }
+          ]
+        },
+        e1: {
+          end: true,
+          text: { es: "Al día siguiente, cada persona que entra siente de repente un bosque en el corazón, y no sabe por qué. Tú sí lo sabes, {name}: los regalos escondidos también cuentan. Y a veces son los mejores.", ca: "L'endemà, cada persona que entra sent de sobte un bosc al cor, i no sap per què. Tu sí que ho saps, {name}: els regals amagats també compten. I de vegades són els millors.", en: "The next day, everyone who walks in suddenly feels a forest in their heart, without knowing why. But you know, {name}: hidden gifts count too. And sometimes they are the best ones.", cs: "Druhý den každý, kdo vejde, najednou ucítí v srdci les a neví proč. Ale ty to víš, {name}: schované dárky se také počítají. A někdy jsou ze všech nejlepší.", fr: "Le lendemain, chaque personne qui entre sent soudain une forêt dans son cœur, sans savoir pourquoi. Mais toi tu le sais, {name} : les cadeaux cachés comptent aussi. Et parfois ce sont les meilleurs." }
+        },
+        e2: {
+          end: true,
+          text: { es: "Bailáis hasta que sale el sol y las primeras luces os encuentran bostezando. Las columnas se duermen felices: ya saben cómo suena y cómo baila un bosque de verdad. Gracias a ti, {name}.", ca: "Balleu fins que surt el sol i les primeres llums us troben badallant. Les columnes s'adormen felices: ja saben com sona i com balla un bosc de debò. Gràcies a tu, {name}.", en: "You dance until the sun comes up and the first light finds you yawning. The columns fall asleep happy: now they know how a real forest sounds and dances. Thanks to you, {name}.", cs: "Tancujete, dokud nevyjde slunce, a první paprsky vás najdou zívající. Sloupy šťastně usínají: už vědí, jak opravdový les zní a jak tančí. Díky tobě, {name}.", fr: "Vous dansez jusqu'au lever du soleil et les premières lueurs vous trouvent en train de bâiller. Les colonnes s'endorment heureuses : elles savent maintenant comment sonne et comment danse une vraie forêt. Grâce à toi, {name}." }
+        }
+      }
+    },
+    {
+      id: "chimeneas", emoji: "🌙", start: "n1",
+      title: { es: "Las chimeneas guerreras de noche", ca: "Les xemeneies guerreres de nit", en: "The Warrior Chimneys at Night", cs: "Bojovné komíny v noci", fr: "Les cheminées guerrières la nuit" },
+      nodes: {
+        n1: {
+          text: { es: "Medianoche en la azotea de la Pedrera. Los guerreros de piedra montan guardia bajo las estrellas. El más alto susurra: '{name}, se ha escapado el sueño de una niña de Barcelona. Sin él no podrá dormir bien. ¿Nos ayudas a encontrarlo?'", ca: "Mitjanit al terrat de la Pedrera. Els guerrers de pedra fan guàrdia sota les estrelles. El més alt xiuxiueja: '{name}, s'ha escapat el somni d'una nena de Barcelona. Sense ell no podrà dormir bé. Ens ajudes a trobar-lo?'", en: "Midnight on the rooftop of La Pedrera. The stone warriors stand guard under the stars. The tallest one whispers: '{name}, a little girl's dream has escaped somewhere in Barcelona. Without it she will not sleep well. Will you help us find it?'", cs: "Půlnoc na střeše domu La Pedrera. Kamenní bojovníci drží stráž pod hvězdami. Ten nejvyšší zašeptá: '{name}, jedné holčičce z Barcelony utekl sen. Bez něj se jí nebude dobře spát. Pomůžeš nám ho najít?'", fr: "Minuit sur le toit de La Pedrera. Les guerriers de pierre montent la garde sous les étoiles. Le plus grand chuchote : « {name}, le rêve d'une petite fille de Barcelone s'est échappé. Sans lui, elle ne pourra pas bien dormir. Tu nous aides à le retrouver ? »" },
+          choices: [
+            { t: { es: "Lo buscamos por el cielo", ca: "El busquem pel cel", en: "We search the sky", cs: "Hledáme na obloze", fr: "On le cherche dans le ciel" }, go: "n2a" },
+            { t: { es: "Lo buscamos por la azotea ondulada", ca: "El busquem pel terrat ondulat", en: "We search the wavy rooftop", cs: "Hledáme na zvlněné střeše", fr: "On le cherche sur le toit ondulé" }, go: "n2b" }
+          ]
+        },
+        n2a: {
+          text: { es: "Preguntáis a la Luna, que lo ve todo. 'Algo pequeñito y brillante ha bajado volando hacia el tejado del dragón', dice señalando la Casa Batlló.", ca: "Pregunteu a la Lluna, que ho veu tot. 'Una cosa petitona i brillant ha baixat volant cap a la teulada del drac', diu assenyalant la Casa Batlló.", en: "You ask the Moon, who sees everything. 'Something tiny and shiny flew down towards the dragon's roof', she says, pointing at Casa Batlló.", cs: "Zeptáte se Měsíce, který vidí všechno. 'Něco maličkého a třpytivého sletělo dolů k dračí střeše', řekne a ukáže na Casa Batlló.", fr: "Vous demandez à la Lune, qui voit tout. « Quelque chose de tout petit et de brillant est descendu en volant vers le toit du dragon », dit-elle en montrant la Casa Batlló." },
+          choices: [
+            { t: { es: "Bajamos en línea recta, ¡rápido!", ca: "Baixem en línia recta, ràpid!", en: "We go straight down, quick!", cs: "Slezeme rovnou dolů, rychle!", fr: "On descend tout droit, vite !" }, go: "n3a" },
+            { t: { es: "Pedimos a las golondrinas que nos lleven", ca: "Demanem a les orenetes que ens hi portin", en: "We ask the swallows to carry us", cs: "Poprosíme vlaštovky, aby nás odnesly", fr: "On demande aux hirondelles de nous porter" }, go: "n3b" }
+          ]
+        },
+        n2b: {
+          text: { es: "Entre los arcos de la azotea encontráis un caminito de polvo brillante que baja hacia el desván. ¡El sueño ha pasado por aquí!", ca: "Entre els arcs del terrat trobeu un caminet de pols brillant que baixa cap a les golfes. El somni ha passat per aquí!", en: "Between the rooftop arches you find a little trail of glowing dust going down to the attic. The dream came this way!", cs: "Mezi oblouky na střeše najdete cestičku ze zářivého prachu, která vede dolů na půdu. Sen šel tudy!", fr: "Entre les arcs du toit, vous trouvez un petit chemin de poussière brillante qui descend vers le grenier. Le rêve est passé par ici !" },
+          choices: [
+            { t: { es: "Seguimos las huellas por el desván de los arcos", ca: "Seguim les petjades per les golfes dels arcs", en: "We follow the trail through the attic of arches", cs: "Jdeme po stopách půdou plnou oblouků", fr: "On suit les traces par le grenier aux arcs" }, go: "n3b" },
+            { t: { es: "Nos asomamos a mirar los tejados", ca: "Ens aboquem a mirar les teulades", en: "We peek out at the rooftops", cs: "Vykoukneme na střechy", fr: "On se penche pour regarder les toits" }, go: "n3a" }
+          ]
+        },
+        n3a: {
+          text: { es: "Desde arriba veis brillar algo entre las escamas del tejado de la Casa Batlló. Saltáis de azotea en azotea, con cuidadito, hasta llegar al lomo del dragón.", ca: "Des de dalt veieu brillar una cosa entre les escates de la teulada de la Casa Batlló. Salteu de terrat en terrat, amb comptet, fins a arribar al llom del drac.", en: "From up high you see something shining between the scales of Casa Batlló's roof. You hop carefully from rooftop to rooftop until you reach the dragon's back.", cs: "Shora vidíte, jak se mezi šupinami střechy Casa Batlló něco leskne. Opatrně skáčete ze střechy na střechu, až se dostanete na dračí hřbet.", fr: "De là-haut, vous voyez briller quelque chose entre les écailles du toit de la Casa Batlló. Vous sautez de toit en toit, tout doucement, jusqu'au dos du dragon." },
+          choices: [
+            { t: { es: "Seguir", ca: "Continuar", en: "Continue", cs: "Pokračovat", fr: "Continuer" }, go: "n4" }
+          ]
+        },
+        n3b: {
+          text: { es: "Cruzáis el desván de la Pedrera, con sus arcos como costillas de dragón, y al salir las golondrinas os llevan volando hasta el tejado de escamas de la Casa Batlló.", ca: "Travesseu les golfes de la Pedrera, amb els seus arcs com costelles de drac, i en sortir les orenetes us porten volant fins a la teulada d'escates de la Casa Batlló.", en: "You cross the attic of La Pedrera, with its arches like dragon ribs, and outside the swallows fly you to the scaly roof of Casa Batlló.", cs: "Projdete půdou domu La Pedrera s oblouky jako dračí žebra, a venku vás vlaštovky odnesou na šupinatou střechu Casa Batlló.", fr: "Vous traversez le grenier de La Pedrera, avec ses arcs comme des côtes de dragon, et dehors les hirondelles vous portent jusqu'au toit d'écailles de la Casa Batlló." },
+          choices: [
+            { t: { es: "Seguir", ca: "Continuar", en: "Continue", cs: "Pokračovat", fr: "Continuer" }, go: "n4" }
+          ]
+        },
+        n4: {
+          text: { es: "Allí está: un sueño chiquitín, acurrucado entre dos escamas, temblando. Es el sueño de volar de una niña. 'Tengo miedo de que me olvide', dice bajito. ¿Qué hacemos, {name}?", ca: "Allà és: un somni petitó, arraulit entre dues escates, tremolant. És el somni de volar d'una nena. 'Tinc por que m'oblidi', diu fluixet. Què fem, {name}?", en: "There it is: a tiny dream, curled up between two scales, trembling. It is a little girl's dream of flying. 'I am afraid she will forget me', it says softly. What do we do, {name}?", cs: "Tady je: malinký sen, schoulený mezi dvěma šupinami, celý se třese. Je to sen jedné holčičky o létání. 'Bojím se, že na mě zapomene', říká tichounce. Co uděláme, {name}?", fr: "Le voilà : un rêve tout petit, blotti entre deux écailles, tout tremblant. C'est le rêve de voler d'une petite fille. « J'ai peur qu'elle m'oublie », dit-il tout bas. Qu'est-ce qu'on fait, {name} ?" },
+          choices: [
+            { t: { es: "Lo llevamos volando de vuelta, con mucho cuidado", ca: "El portem volant de tornada, amb molt de compte", en: "We fly it back home, very carefully", cs: "Opatrně ho odneseme zpátky", fr: "On le ramène en volant, très doucement" }, go: "n5a" },
+            { t: { es: "Le enseñamos antes la ciudad, para que pierda el miedo", ca: "Abans li ensenyem la ciutat, perquè perdi la por", en: "First we show it the city, so it loses its fear", cs: "Nejdřív mu ukážeme město, aby se přestal bát", fr: "On lui montre d'abord la ville, pour qu'il n'ait plus peur" }, go: "n5b" }
+          ]
+        },
+        n5a: {
+          text: { es: "El guerrero jefe enciende un caminito de farolas solo para vosotros. Cruzáis los tejados de Barcelona con el sueño calentito entre las manos del robot.", ca: "El guerrer cap encén un caminet de fanals només per a vosaltres. Travesseu les teulades de Barcelona amb el somni calentó entre les mans del robot.", en: "The chief warrior lights a little path of streetlamps just for you. You cross the rooftops of Barcelona with the dream warm and safe in the robot's hands.", cs: "Velitel bojovníků rozsvítí cestičku z luceren jen pro vás. Přecházíte střechy Barcelony a sen hřeje robota v dlaních.", fr: "Le chef des guerriers allume un petit chemin de lampadaires rien que pour vous. Vous traversez les toits de Barcelone avec le rêve bien au chaud dans les mains du robot." },
+          choices: [
+            { t: { es: "Seguir", ca: "Continuar", en: "Continue", cs: "Pokračovat", fr: "Continuer" }, go: "e1" }
+          ]
+        },
+        n5b: {
+          text: { es: "Paseáis por los tejados: el dragón de escamas, las torres de la Sagrada Família, el mar allá al fondo. El sueño mira, se ríe... ¡y crece de puro valiente!", ca: "Passegeu per les teulades: el drac d'escates, les torres de la Sagrada Família, el mar allà al fons. El somni mira, riu... i creix de pur valent!", en: "You stroll across the rooftops: the scaly dragon, the towers of the Sagrada Família, the sea far away. The dream looks, laughs... and grows from sheer bravery!", cs: "Procházíte se po střechách: šupinatý drak, věže Sagrady Famílie, v dálce moře. Sen se dívá, směje se... a samou odvahou roste!", fr: "Vous vous promenez sur les toits : le dragon d'écailles, les tours de la Sagrada Família, la mer tout au fond. Le rêve regarde, il rit... et il grandit à force de courage !" },
+          choices: [
+            { t: { es: "Seguir", ca: "Continuar", en: "Continue", cs: "Pokračovat", fr: "Continuer" }, go: "e2" }
+          ]
+        },
+        e1: {
+          end: true,
+          text: { es: "El sueño entra por la ventana y se acurruca con su niña, que sonríe dormida. Los guerreros golpean suavemente sus escudos: ton, ton. Misión cumplida, {name}: los sueños de la ciudad están a salvo.", ca: "El somni entra per la finestra i s'arrauleix amb la seva nena, que somriu adormida. Els guerrers piquen suaument els seus escuts: ton, ton. Missió complerta, {name}: els somnis de la ciutat estan fora de perill.", en: "The dream slips in through the window and snuggles up with its little girl, who smiles in her sleep. The warriors gently tap their shields: tom, tom. Mission accomplished, {name}: the city's dreams are safe.", cs: "Sen vklouzne oknem dovnitř a přitulí se ke své holčičce, která se ve spánku usměje. Bojovníci jemně ťuknou do svých štítů: tum, tum. Mise splněna, {name}: sny města jsou v bezpečí.", fr: "Le rêve entre par la fenêtre et se blottit contre sa petite fille, qui sourit en dormant. Les guerriers tapent doucement sur leurs boucliers : tom, tom. Mission accomplie, {name} : les rêves de la ville sont en sécurité." }
+        },
+        e2: {
+          end: true,
+          text: { es: "El sueño vuelve a casa tan valiente que esa noche la niña sueña que vuela sobre toda Barcelona. Y desde entonces, los guerreros os guardan un sitio en la azotea para la próxima aventura, {name}.", ca: "El somni torna a casa tan valent que aquella nit la nena somia que vola sobre tota Barcelona. I des de llavors, els guerrers us guarden un lloc al terrat per a la propera aventura, {name}.", en: "The dream goes home so brave that this very night the girl dreams she is flying over all of Barcelona. And ever since, the warriors keep a spot for you on the rooftop for the next adventure, {name}.", cs: "Sen se vrátí domů tak statečný, že se holčičce tu noc zdá, jak létá nad celou Barcelonou. A od té doby vám bojovníci drží na střeše místo pro další dobrodružství, {name}.", fr: "Le rêve rentre si courageux que cette nuit-là, la petite fille rêve qu'elle vole au-dessus de toute Barcelone. Et depuis, les guerriers vous gardent une place sur le toit pour la prochaine aventure, {name}." }
+        }
+      }
+    }
+  ],
+
+  /* ---------- KARAOKE ---------- */
+  songs: [
+    { emoji: "🔷",
+      title: { es: "La canción del trencadís", ca: "La cançó del trencadís", en: "The Trencadís Song", cs: "Písnička o trencadísu", fr: "La chanson du trencadís" },
+      lines: [
+        { es: "Un platito se rompió, ¡catacrac!,", ca: "Un platet s'ha trencat, catacrac!,", en: "A little plate went crash one day,", cs: "Talířek se rozbil, křach,", fr: "Une assiette s'est cassée, cric crac," },
+        { es: "mil trocitos de color, clic y clac.", ca: "mil trossets de colors, clic i clac.", en: "a thousand pieces want to play.", cs: "tisíc střípků, žádný strach!", fr: "mille morceaux font clic et clac." },
+        { es: "No los tires, ven aquí,", ca: "No els llencis, vine aquí,", en: "Don't throw them out, come here with me,", cs: "Nevyhazuj je, pojď si hrát,", fr: "Ne les jette pas, viens par ici," },
+        { es: "que jugamos a construir.", ca: "que juguem a construir.", en: "we'll build the prettiest thing you'll see.", cs: "mozaiku budem skládat.", fr: "on va construire, quel joli défi !" },
+        { es: "Trocito a trocito, un dragón,", ca: "Trosset a trosset, un dragó,", en: "Piece by piece, a dragon grows,", cs: "Střípek ke střípku, vznikne drak,", fr: "Morceau par morceau, un dragon," },
+        { es: "trocito a trocito, ¡qué ilusión!", ca: "trosset a trosset, quina il·lusió!", en: "piece by piece, how bright it glows!", cs: "barevný jak duha, přesně tak!", fr: "morceau par morceau, quel frisson !" },
+        { es: "Lo roto también puede brillar:", ca: "El que es trenca pot brillar:", en: "Broken things can shine brand new:", cs: "I rozbitá věc může se skvět:", fr: "Ce qui est cassé peut briller :" },
+        { es: "¡trencadís para decorar!", ca: "trencadís per decorar!", en: "trencadís for me and you!", cs: "trencadís rozzáří celý svět!", fr: "le trencadís va tout décorer !" }
+      ] },
+    { emoji: "🌙",
+      title: { es: "La nana de las torres", ca: "La cançó de bressol de les torres", en: "The Towers' Lullaby", cs: "Ukolébavka věží", fr: "La berceuse des tours" },
+      lines: [
+        { es: "Duerme, {name}, duérmete ya,", ca: "Dorm, {name}, adorm-te ja,", en: "Sleep now, {name}, close your eyes,", cs: "Hajej, dadej, {name}, spi,", fr: "Dors, {name}, ferme les yeux," },
+        { es: "que las torres velando están.", ca: "que les torres vetllant estan.", en: "the towers watch you from the skies.", cs: "vysoké věže hlídají tvé sny.", fr: "les tours veillent dans les cieux." },
+        { es: "Brilla la estrella de doce puntas,", ca: "Brilla l'estrella de dotze puntes,", en: "The star of twelve points shines so bright,", cs: "Dvanácticípá hvězda září,", fr: "L'étoile aux douze pointes brille," },
+        { es: "las campanas sueñan todas juntas.", ca: "les campanes somien juntes.", en: "the bells are dreaming through the night.", cs: "zvony sní se šťastnou tváří.", fr: "les cloches rêvent, la nuit scintille." },
+        { es: "Piedra a piedra, sin ningún ruido,", ca: "Pedra a pedra, sense presses,", en: "Stone by stone, without a sound,", cs: "Kámen ke kameni, potichoučku,", fr: "Pierre après pierre, sans un bruit," },
+        { es: "crece la torre como un nido.", ca: "creixen torres i promeses.", en: "the towers grow up from the ground.", cs: "roste věž jak po obloučku.", fr: "la tour grandit dans la nuit." },
+        { es: "Y cuando salga el sol otra vez,", ca: "I quan surti el sol demà,", en: "And when the sun comes out to play,", cs: "Ráno, až se probudíš,", fr: "Et quand le soleil reviendra," },
+        { es: "habrán crecido un poquito, ya ves.", ca: "hauran crescut un pam més enllà.", en: "they will have grown a bit today.", cs: "budou věže o kousek výš.", fr: "elle aura grandi d'un petit pas." }
+      ] },
+    { emoji: "🦎",
+      title: { es: "El baile de la salamandra", ca: "El ball de la salamandra", en: "The Salamander Dance", cs: "Salamandří tanec", fr: "La danse de la salamandre" },
+      lines: [
+        { es: "En la escalera del Park Güell,", ca: "A l'escala del Park Güell,", en: "On the staircase of Park Güell,", cs: "V parku Güell na schodech,", fr: "Sur l'escalier du Park Güell," },
+        { es: "vive una amiga de mil colores en la piel.", ca: "hi viu una amiga amb mil colors a la pell.", en: "lives a friend who wears a colourful shell.", cs: "bydlí kamarádka v barvách všech.", fr: "vit une amie aux mille couleurs, si belle." },
+        { es: "Mueve la cola, ¡chas, chas, chas!,", ca: "Mou la cua, clac, clac, clac!,", en: "She wags her tail, swish, swish, swish,", cs: "Vrtí ocáskem sem a tam,", fr: "Elle remue la queue, flic, flac, flic," },
+        { es: "echa agua por la boca, ¡splash, splash, splash!", ca: "treu aigua per la boca, xac, xac, xac!", en: "she spouts out water with a splish, splish, splish!", cs: "vodu stříká všem i nám.", fr: "elle crache de l'eau, splash, splash, splic !" },
+        { es: "Baila la salamandra, baila sin parar,", ca: "Balla la salamandra, balla sense parar,", en: "Dance, little salamander, dance and shine,", cs: "Tancuje salamandra, tancuje v dál,", fr: "Danse, salamandre, danse sans t'arrêter," },
+        { es: "todos los trocitos se ponen a brillar.", ca: "tots els trossets es posen a brillar.", en: "all the little pieces sparkle in a line.", cs: "každý střípek svítí jako bál.", fr: "tous les petits morceaux se mettent à briller." },
+        { es: "Si pasas por su lado, la puedes saludar:", ca: "Si passes pel seu costat, la pots saludar:", en: "If you walk beside her, give a friendly wave:", cs: "Když půjdeš kolem, pozdrav ji hned:", fr: "Si tu passes à côté, tu peux la saluer :" },
+        { es: "hola, salamandra, ¡vamos a bailar!", ca: "hola, salamandra, anem a ballar!", en: "hello, salamander, let's dance and be brave!", cs: "ahoj, salamandro, roztančíme svět!", fr: "bonjour, salamandre, viens donc danser !" }
+      ] }
+  ],
+
+  /* ---------- TRADUCTOR ---------- */
+  translator: {
+    words: [
+      W_COMMON.hola,
+      W_COMMON.adios,
+      W_COMMON.amigo,
+      W_COMMON.robot,
+      W_COMMON.mama,
+      W_COMMON.papa,
+      W_COMMON.casa,
+      W_COMMON.agua,
+      W_COMMON.comida,
+      W_COMMON.perro,
+      W_COMMON.gato,
+      W_COMMON.grande,
+      W_COMMON.pequeno,
+      W_COMMON.bonito,
+      W_COMMON.amor,
+      W_COMMON.gracias,
+      W_COMMON.si,
+      W_COMMON.no,
+      W_COMMON.dormir,
+      { k: "flor", emoji: "🌼", name: { es: "flor", ca: "flor", en: "flower", cs: "květina", fr: "fleur" } },
+      { k: "color", emoji: "🎨", name: { es: "color", ca: "color", en: "colour", cs: "barva", fr: "couleur" } },
+      { k: "dragon", emoji: "🐉", name: { es: "dragón", ca: "drac", en: "dragon", cs: "drak", fr: "dragon" } },
+      { k: "mosaico", emoji: "🔷", name: { es: "mosaico", ca: "mosaic", en: "mosaic", cs: "mozaika", fr: "mosaïque" } },
+      { k: "torre", emoji: "🗼", name: { es: "torre", ca: "torre", en: "tower", cs: "věž", fr: "tour" } }
+    ],
+    langs: [
+      { id: "trencadis", emoji: "🔷",
+        name: { es: "Trencadís", ca: "Trencadís", en: "Trencadís", cs: "Trencadís", fr: "Trencadís" },
+        greeting: { es: "¡Ho-la-la! El idioma trencadís habla a trocitos, como el mosaico.", ca: "Ho-la-la! L'idioma trencadís parla a trossets, com el mosaic.", en: "Ho-la-la! The Trencadís language speaks in little pieces, just like the mosaic.", cs: "Ho-la-la! Jazyk trencadís mluví po střípcích, stejně jako mozaika.", fr: "Ho-la-la ! La langue trencadís parle en petits morceaux, comme la mosaïque." },
+        dict: { hola: "ho-la-la", adios: "a-diós-ito", amigo: "a-mi-gui-to", robot: "ro-bo-ti-to", mama: "ma-ma-mi-ta", papa: "pa-pa-pi-to", casa: "ca-si-ta-ta", agua: "a-gua-gua", comida: "ño-mi-ñam", perro: "gua-gua-uf", gato: "mi-au-mi-to", grande: "gran-do-te", pequeno: "chi-qui-tín", bonito: "bo-ni-tín", amor: "a-mor-ci-to", gracias: "gra-ci-tas", si: "sí-sí", no: "no-no-nó", dormir: "dor-mi-lón", flor: "flo-re-ci-ta", color: "co-lo-rín", dragon: "dra-gon-ci-to", mosaico: "mo-sai-qui-to", torre: "to-rre-ci-ta" } },
+      { id: "dracpark", emoji: "🐉",
+        name: { es: "Dragón del Park Güell", ca: "Drac del Park Güell", en: "Park Güell Dragon", cs: "Drak z parku Güell", fr: "Dragon du Park Güell" },
+        greeting: { es: "¡Grrrola! Así saluda el dragón del parque, con un rugido amistoso.", ca: "Grrrola! Així saluda el drac del parc, amb un rugit amistós.", en: "Grrrola! That is how the park dragon says hello, with a friendly roar.", cs: "Grrróla! Tak zdraví drak z parku, přátelským zavrčením.", fr: "Grrrola ! C'est comme ça que le dragon du parc dit bonjour, avec un rugissement amical." },
+        dict: { hola: "grrola", adios: "grradiós", amigo: "grramic", robot: "grrobot", mama: "grrmami", papa: "grrpapi", casa: "grruta", agua: "grrgluc", comida: "grrñam", perro: "grrguau", gato: "grrmiau", grande: "grrandote", pequeno: "grrikitín", bonito: "grrbonic", amor: "grramor", gracias: "grracias", si: "grrsí", no: "grrno", dormir: "grr-zzz", flor: "grrflor", color: "grrcolorín", dragon: "grrmano", mosaico: "grrencadís", torre: "grrtorre" } },
+      { id: "campanes", emoji: "🔔",
+        name: { es: "Campanés", ca: "Campanès", en: "Bellish", cs: "Zvonština", fr: "Carillonais" },
+        greeting: { es: "¡Talán! Las campanas de la Sagrada Família saludan desde lo alto de las torres.", ca: "Talán! Les campanes de la Sagrada Família saluden des de dalt de les torres.", en: "Talán! The bells of the Sagrada Família say hello from high up in the towers.", cs: "Talán! Zvony Sagrady Famílie zdraví z výšky věží.", fr: "Talán ! Les cloches de la Sagrada Família saluent du haut des tours." },
+        dict: { hola: "talán", adios: "tolón-tolón", amigo: "tin-tin", robot: "tin-talín", mama: "tan-tana", papa: "tan-tano", casa: "tolón", agua: "tilín-glin", comida: "ñam-talán", perro: "talán-guau", gato: "tilín-miau", grande: "TALÁN", pequeno: "tilín", bonito: "tilín-tilín", amor: "talán-tin-tan", gracias: "tolón-tilín", si: "tin", no: "ton", dormir: "tooo-lóón", flor: "tilín-flo", color: "tin-tan-tín", dragon: "talán-grrr", mosaico: "tin-tin-tin-tin", torre: "talán-talán" } },
+      { id: "gargola", emoji: "🐸",
+        name: { es: "Gárgola", ca: "Gàrgola", en: "Gargoylish", cs: "Chrličtina", fr: "Gargouillais" },
+        greeting: { es: "Glup, glup... las gárgolas de los tejados hablan con burbujas de agua de lluvia.", ca: "Glup, glup... les gàrgoles de les teulades parlen amb bombolles d'aigua de pluja.", en: "Glup, glup... the rooftop gargoyles speak in rainwater bubbles.", cs: "Glup, glup... chrliče na střechách mluví bublinkami dešťové vody.", fr: "Glup, glup... les gargouilles des toits parlent avec des bulles d'eau de pluie." },
+        dict: { hola: "glup", adios: "gluuup", amigo: "glumigo", robot: "globot", mama: "glumama", papa: "glupapa", casa: "glucasa", agua: "glup-glup-glup", comida: "glumñam", perro: "gluguau", gato: "glumiau", grande: "gluuuuup", pequeno: "glip", bonito: "glunito", amor: "glumor", gracias: "glucias", si: "glupsí", no: "glupno", dormir: "gluzzz", flor: "gluflor", color: "glucolor", dragon: "gludragón", mosaico: "glumosaico", torre: "glutorre" } }
+    ]
+  },
+
+  /* ---------- MAPA DE EXPLORACIÓN ---------- */
+  explore: {
+    width: 2600, height: 1100, stars: false,
+    bgCss: "radial-gradient(ellipse 35% 28% at 78% 8%, rgba(255,241,118,.6), transparent), linear-gradient(180deg,#7ecbf0 0%,#b8e4f7 34%,#ffe9c4 58%,#e6d3a4 76%,#c9b585 100%)",
+    cats: [
+      { id: "parkguell", emoji: "🦎", x: 120, name: { es: "Park Güell", ca: "Park Güell", en: "Park Güell", cs: "Park Güell", fr: "Park Güell" } },
+      { id: "sagrada", emoji: "🏰", x: 1100, name: { es: "Sagrada Família", ca: "Sagrada Família", en: "Sagrada Família", cs: "Sagrada Família", fr: "Sagrada Família" } },
+      { id: "casas", emoji: "🏠", x: 1900, name: { es: "Las casas de Gaudí", ca: "Les cases de Gaudí", en: "Gaudí's houses", cs: "Gaudího domy", fr: "Les maisons de Gaudí" } }
+    ],
+    pois: [
+      { cat: "parkguell", emoji: "🦎", x: 200, y: 620, size: 2, iw: 120, ih: 72,
+        svg: gaSvg(`
+          <path d="M96 30 Q112 24 120 32 Q124 40 114 44 Q104 46 98 42 Q84 56 62 58 Q66 66 76 70 L66 76 Q56 72 52 62 Q40 62 30 58 Q30 68 24 74 L16 68 Q22 62 22 54 Q10 48 8 36 Q16 42 28 44 Q52 50 72 42 Q82 36 96 30 Z" fill="#7cb342"/>
+          <path d="M8 36 Q0 30 2 20 Q10 26 14 32 Z" fill="#7cb342"/>
+          ${[[36, 46, "#42a5f5"], [50, 50, "#ffca28"], [64, 48, "#ef5350"], [78, 40, "#ab47bc"], [92, 34, "#26c6da"], [46, 42, "#ff7043"], [60, 54, "#66bb6a"], [72, 50, "#f8bbd0"]].map(m => `<rect x="${m[0]}" y="${m[1]}" width="7" height="6" rx="1.4" fill="${m[2]}" transform="rotate(${(m[0] * 7) % 40 - 20} ${m[0] + 3} ${m[1] + 3})"/>`).join("")}
+          <circle cx="112" cy="34" r="3" fill="#1b3a10"/><circle cx="113" cy="33" r="1" fill="#fff"/>
+          <path d="M122 38 Q132 40 136 48 M122 38 Q130 44 132 52" stroke="#4fc3f7" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+          <circle cx="137" cy="52" r="2.2" fill="#4fc3f7"/><circle cx="132" cy="56" r="1.8" fill="#4fc3f7"/>`, "0 0 140 80"),
+        name: { es: "La salamandra de trencadís", ca: "La salamandra de trencadís", en: "The trencadís salamander", cs: "Salamandr z trencadísu", fr: "La salamandre en trencadís" },
+        fact: { es: "La estrella del parque: está cubierta de trocitos de cerámica de colores y es una fuente. ¡El agua le sale por la boca!", ca: "L'estrella del parc: està coberta de trossets de ceràmica de colors i és una font. L'aigua li surt per la boca!", en: "The star of the park: it is covered in little pieces of colourful ceramic and it is a fountain. Water comes out of its mouth!", cs: "Hvězda parku: je pokrytý střípky barevné keramiky a je to fontána. Voda mu teče z pusy!", fr: "La star du parc : elle est couverte de petits morceaux de céramique colorée et c'est une fontaine. L'eau sort par sa bouche !" } },
+      { cat: "parkguell", emoji: "🪑", x: 420, y: 500, iw: 110, ih: 46,
+        svg: gaSvg(`
+          <path d="M4 26 Q16 12 30 22 Q44 32 56 20 Q70 8 84 20 Q98 30 112 20 L112 34 Q98 44 84 34 Q70 24 56 34 Q44 44 30 36 Q16 28 4 40 Z" fill="#f4efe2"/>
+          ${[[12, 26, "#42a5f5"], [26, 26, "#ef5350"], [40, 30, "#ffca28"], [54, 26, "#26c6da"], [68, 20, "#ab47bc"], [82, 24, "#66bb6a"], [96, 28, "#ff7043"], [106, 24, "#f06292"]].map(m => `<circle cx="${m[0]}" cy="${m[1]}" r="3" fill="${m[2]}"/>`).join("")}
+          <path d="M6 40 L6 48 M40 38 L40 48 M76 36 L76 48 M110 34 L110 48" stroke="#d8cfb6" stroke-width="4" stroke-linecap="round"/>`, "0 0 116 52"),
+        name: { es: "El banco ondulado", ca: "El banc ondulat", en: "The wavy bench", cs: "Vlnitá lavička", fr: "Le banc ondulé" },
+        fact: { es: "Un banco larguísimo que serpentea como una ola. Jujol lo decoró con trencadís, y cada trocito cuenta un color.", ca: "Un banc llarguíssim que serpenteja com una onada. Jujol el va decorar amb trencadís, i cada trosset explica un color.", en: "A super long bench that winds like a wave. Jujol decorated it with trencadís, and every little piece tells a colour.", cs: "Předlouhá lavička, která se vlní jako vlna. Jujol ji vyzdobil trencadísem a každý střípek vypráví o jedné barvě.", fr: "Un banc très long qui serpente comme une vague. Jujol l'a décoré de trencadís, et chaque petit morceau raconte une couleur." } },
+      { cat: "parkguell", emoji: "🏛️", x: 620, y: 700, iw: 92, ih: 70,
+        svg: gaSvg(`
+          <rect x="4" y="6" width="92" height="12" rx="5" fill="#e8dfc6"/>
+          <circle cx="24" cy="12" r="6" fill="#ffca28"/><path d="M24 12 m-6 0 l-4 0 M24 12 m6 0 l4 0 M24 6 l0 -4 M24 18 l0 4" stroke="#ef5350" stroke-width="2"/>
+          <circle cx="72" cy="12" r="6" fill="#26c6da"/><path d="M72 12 m-6 0 l-4 0 M72 12 m6 0 l4 0 M72 6 l0 -4 M72 18 l0 4" stroke="#ab47bc" stroke-width="2"/>
+          ${[14, 36, 58, 80].map(x => `<path d="M${x} 18 L${x + 8} 18 L${x + 7} 62 L${x + 1} 62 Z" fill="#d9cfb2"/><rect x="${x - 1}" y="60" width="10" height="5" rx="2" fill="#c4b894"/>`).join("")}
+          <rect x="0" y="65" width="100" height="6" rx="3" fill="#b3a67f"/>`, "0 0 100 74"),
+        name: { es: "La sala de las columnas", ca: "La sala de les columnes", en: "The hall of columns", cs: "Sál se sloupy", fr: "La salle des colonnes" },
+        fact: { es: "Tiene 86 columnas e iba a ser el mercado del barrio. En el techo brillan soles de trencadís.", ca: "Té 86 columnes i havia de ser el mercat del barri. Al sostre hi brillen sols de trencadís.", en: "It has 86 columns and was going to be the neighbourhood market. Trencadís suns shine on its ceiling.", cs: "Má 86 sloupů a měl to být trh pro celou čtvrť. Na stropě září mozaiková slunce.", fr: "Elle a 86 colonnes et devait être le marché du quartier. Des soleils en trencadís brillent au plafond." } },
+      { cat: "parkguell", emoji: "🍄", x: 800, y: 560, iw: 82, ih: 92,
+        svg: gaSvg(`
+          <rect x="18" y="46" width="54" height="44" rx="8" fill="#f2e3c4"/>
+          <path d="M12 50 Q26 24 45 22 Q64 24 78 50 Q60 42 45 42 Q30 42 12 50 Z" fill="#a8764a"/>
+          <path d="M18 44 Q30 36 45 36 Q60 36 72 44" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/>
+          ${[[26, 32, "#fff"], [40, 28, "#eceff1"], [56, 30, "#fff"], [66, 38, "#eceff1"]].map(m => `<circle cx="${m[0]}" cy="${m[1]}" r="3.4" fill="${m[2]}"/>`).join("")}
+          <rect x="58" y="8" width="12" height="26" rx="5" fill="#f2e3c4"/>
+          <g stroke="#6d4c41" stroke-width="2.4" stroke-linecap="round"><line x1="64" y1="0" x2="64" y2="10"/><line x1="60" y1="4" x2="68" y2="4"/><line x1="61" y1="1.5" x2="67" y2="6.5"/><line x1="67" y1="1.5" x2="61" y2="6.5"/></g>
+          <path d="M32 90 L32 68 Q39 58 46 68 L46 90 Z" fill="#7a5230"/>
+          <circle cx="58" cy="64" r="5" fill="#9fd8ef" stroke="#fff" stroke-width="1.6"/>
+          <path d="M20 56 Q26 52 30 56 M62 52 Q68 48 72 52" stroke="#d9c9a3" stroke-width="2.4" fill="none"/>`, "0 0 90 96"),
+        name: { es: "La casita de cuento de la entrada", ca: "La caseta de conte de l'entrada", en: "The fairy-tale house at the entrance", cs: "Pohádkový domek u vchodu", fr: "La maisonnette de conte de l'entrée" },
+        fact: { es: "Los pabellones de la entrada parecen casitas de cuento, con tejados ondulados de trencadís y una torre con la cruz de cuatro brazos.", ca: "Els pavellons de l'entrada semblen casetes de conte, amb teulades ondulades de trencadís i una torre amb la creu de quatre braços.", en: "The entrance pavilions look like fairy-tale cottages, with wavy trencadís roofs and a tower topped by the four-armed cross.", cs: "Domky u vchodu vypadají jako z pohádky: mají vlnité mozaikové střechy a věžičku s křížem o čtyřech ramenech.", fr: "Les pavillons de l'entrée ressemblent à des maisonnettes de conte, avec des toits ondulés en trencadís et une tour à la croix à quatre bras." } },
+      { cat: "parkguell", emoji: "⛰️", x: 980, y: 460, iw: 80, ih: 70,
+        svg: gaSvg(`
+          <path d="M6 66 Q20 40 44 38 Q68 40 82 66 Z" fill="#c9a06a"/>
+          <ellipse cx="30" cy="58" rx="10" ry="6" fill="#b3894f"/><ellipse cx="56" cy="60" rx="12" ry="7" fill="#b3894f"/>
+          <g stroke="#8a6a3c" stroke-width="4" stroke-linecap="round">
+            <line x1="44" y1="10" x2="44" y2="38"/><line x1="36" y1="18" x2="52" y2="18"/>
+            <line x1="22" y1="24" x2="22" y2="44"/><line x1="16" y1="30" x2="28" y2="30"/>
+            <line x1="66" y1="24" x2="66" y2="44"/><line x1="60" y1="30" x2="72" y2="30"/>
+          </g>
+          <circle cx="70" cy="12" r="7" fill="#ffe082"/>`, "0 0 88 72"),
+        name: { es: "El mirador de las tres cruces", ca: "El mirador de les tres creus", en: "The three crosses viewpoint", cs: "Vyhlídka tří křížů", fr: "Le belvédère des trois croix" },
+        fact: { es: "Es el punto más alto del parque. Desde aquí se ve toda Barcelona y el mar. ¡Y el atardecer es de campeonato!", ca: "És el punt més alt del parc. Des d'aquí es veu tota Barcelona i el mar. I el capvespre és de campionat!", en: "It is the highest point of the park. From here you can see all of Barcelona and the sea. And the sunset is world-class!", cs: "Je to nejvyšší místo parku. Odsud je vidět celá Barcelona i moře. A západ slunce je tu mistrovský!", fr: "C'est le point le plus haut du parc. D'ici, on voit tout Barcelone et la mer. Et le coucher de soleil est champion !" } },
+      { cat: "sagrada", emoji: "🏰", x: 1250, y: 420, size: 2, iw: 110, ih: 140,
+        svg: gaSvg(`
+          ${[[10, 46], [40, 16], [70, 30]].map((t, i) => `
+            <path d="M${t[0]} 140 L${t[0]} ${t[1] + 34} Q${t[0] + 12} ${t[1]} ${t[0] + 24} ${t[1] + 34} L${t[0] + 24} 140 Z" fill="${i === 1 ? "#c9ad7f" : "#b99a66"}"/>
+            <path d="M${t[0] + 4} ${t[1] + 40} Q${t[0] + 12} ${t[1] + 16} ${t[0] + 20} ${t[1] + 40}" fill="none" stroke="#8a6a3c" stroke-width="2"/>
+            ${[0, 14, 28, 42].map(dy => `<ellipse cx="${t[0] + 12}" cy="${t[1] + 52 + dy}" rx="4" ry="6" fill="#7a5c34"/>`).join("")}
+            <circle cx="${t[0] + 12}" cy="${t[1] + 4}" r="6" fill="${["#ef5350", "#ffca28", "#ab47bc"][i]}"/>
+            <circle cx="${t[0] + 8.5}" cy="${t[1] + 1}" r="2" fill="#fff" opacity=".65"/>
+            <path d="M${t[0] + 12} ${t[1] - 2} L${t[0] + 12} ${t[1] - 8}" stroke="#8a6a3c" stroke-width="2"/>`).join("")}
+          <path d="M96 140 L96 96 Q101 84 106 96 L106 140 Z" fill="#c9ad7f"/>
+          <circle cx="101" cy="88" r="4" fill="#66bb6a"/>`, "0 0 112 142"),
+        name: { es: "Las torres con pináculos de fruta", ca: "Les torres amb pinacles de fruita", en: "The towers with fruit pinnacles", cs: "Věže se špičkami jako ovoce", fr: "Les tours aux pinacles de fruits" },
+        fact: { es: "La Sagrada Família se empezó en 1882 y aún se construye. Sus torres acaban en pináculos de colores que parecen cestas de fruta.", ca: "La Sagrada Família es va començar el 1882 i encara es construeix. Les seves torres acaben en pinacles de colors que semblen cistelles de fruita.", en: "The Sagrada Família was started in 1882 and is still being built. Its towers end in colourful pinnacles that look like fruit baskets.", cs: "Sagrada Família se začala stavět roku 1882 a staví se dodnes. Její věže končí barevnými špičkami, které vypadají jako košíky ovoce.", fr: "La Sagrada Família a été commencée en 1882 et se construit encore. Ses tours finissent en pinacles colorés qui ressemblent à des paniers de fruits." } },
+      { cat: "sagrada", emoji: "🌿", x: 1450, y: 640, iw: 96, ih: 90,
+        svg: gaSvg(`
+          <path d="M8 92 L8 40 Q18 18 30 34 Q38 12 50 26 Q62 10 70 30 Q82 16 92 40 L92 92 Z" fill="#c9ad7f"/>
+          <path d="M30 92 L30 64 Q50 44 70 64 L70 92 Z" fill="#8a6a3c"/>
+          <path d="M36 90 L36 68 Q50 54 64 68 L64 90 Z" fill="#5d4526"/>
+          <path d="M46 30 Q50 8 54 30 Q58 20 50 4 Q42 20 46 30 Z" fill="#2e7d32"/>
+          <circle cx="46" cy="14" r="2.4" fill="#fff"/><circle cx="55" cy="18" r="2" fill="#fff"/><circle cx="50" cy="8" r="1.8" fill="#fff"/>
+          <ellipse cx="18" cy="86" rx="7" ry="4.6" fill="#7cb342"/><circle cx="14" cy="84" r="2" fill="#33691e"/>
+          <path d="M76 84 Q82 78 88 84" stroke="#7cb342" stroke-width="3" fill="none" stroke-linecap="round"/>
+          ${[[20, 52], [78, 48], [26, 70], [74, 68]].map(p => `<circle cx="${p[0]}" cy="${p[1]}" r="2.6" fill="#e8dfc6"/>`).join("")}`, "0 0 100 96"),
+        name: { es: "La fachada del Nacimiento", ca: "La façana del Naixement", en: "The Nativity façade", cs: "Průčelí Narození", fr: "La façade de la Nativité" },
+        fact: { es: "Gaudí la llenó de plantas y animales de piedra: tortugas, camaleones y un ciprés verde con palomas blancas en lo alto.", ca: "Gaudí la va omplir de plantes i animals de pedra: tortugues, camaleons i un xiprer verd amb coloms blancs a dalt de tot.", en: "Gaudí filled it with stone plants and animals: tortoises, chameleons and a green cypress with white doves at the top.", cs: "Gaudí ho zaplnil kamennými rostlinami a zvířaty: želvami, chameleony a zeleným cypřišem s bílými holubicemi na vrcholu.", fr: "Gaudí l'a remplie de plantes et d'animaux de pierre : des tortues, des caméléons et un cyprès vert avec des colombes blanches tout en haut." } },
+      { cat: "sagrada", emoji: "⭐", x: 1620, y: 300, iw: 64, ih: 120,
+        svg: gaSvg(`
+          <path d="M22 120 L22 46 Q30 32 38 46 L38 120 Z" fill="#c9ad7f"/>
+          <path d="M26 116 L26 54 M34 116 L34 54" stroke="#8a6a3c" stroke-width="1.6"/>
+          <g fill="#9fd8ef">${[0, 30, 60, 90, 120, 150].map(a => `<path d="M30 26 L33 32 L30 38 L27 32 Z" transform="rotate(${a} 30 32)"/>`).join("")}</g>
+          <g fill="#e3f4ff">${[15, 45, 75, 105, 135, 165].map(a => `<path d="M30 27.5 L32 32 L30 36.5 L28 32 Z" transform="rotate(${a} 30 32)"/>`).join("")}</g>
+          <circle cx="30" cy="32" r="4.6" fill="#fff"/>
+          <circle cx="30" cy="32" r="9" fill="rgba(159,216,239,.3)"/>`, "0 0 60 122"),
+        name: { es: "La torre de María y su estrella", ca: "La torre de Maria i la seva estrella", en: "The tower of Mary and its star", cs: "Mariina věž a její hvězda", fr: "La tour de Marie et son étoile" },
+        fact: { es: "En lo alto de esta torre brilla una estrella gigante de doce puntas que se enciende de noche. Se ve desde media Barcelona.", ca: "A dalt d'aquesta torre brilla una estrella gegant de dotze puntes que s'encén de nit. Es veu des de mitja Barcelona.", en: "At the top of this tower shines a giant twelve-pointed star that lights up at night. You can see it from half of Barcelona.", cs: "Na vrcholu této věže září obří dvanácticípá hvězda, která se v noci rozsvěcí. Je vidět z půlky Barcelony.", fr: "Au sommet de cette tour brille une étoile géante à douze pointes qui s'allume la nuit. On la voit depuis la moitié de Barcelone." } },
+      { cat: "sagrada", emoji: "🌳", x: 1580, y: 780, iw: 100, ih: 88,
+        svg: gaSvg(`
+          ${[[20, "#d9cfb2"], [52, "#e8dfc6"], [84, "#d9cfb2"]].map(c => `
+            <path d="M${c[0]} 92 L${c[0]} 46 M${c[0]} 46 Q${c[0] - 10} 30 ${c[0] - 16} 18 M${c[0]} 46 Q${c[0] + 10} 30 ${c[0] + 16} 18 M${c[0]} 52 Q${c[0] - 4} 36 ${c[0] - 2} 26" stroke="${c[1]}" stroke-width="7" fill="none" stroke-linecap="round"/>`).join("")}
+          ${[[4, 14, "#ffe082"], [26, 8, "#a5d6a7"], [48, 12, "#ffcc80"], [70, 6, "#a5d6a7"], [92, 14, "#ffe082"], [16, 22, "#c5e1a5"], [60, 20, "#ffe082"], [82, 24, "#c5e1a5"]].map(h => `<circle cx="${h[0]}" cy="${h[1]}" r="7" fill="${h[2]}" opacity=".8"/>`).join("")}
+          <rect x="0" y="92" width="104" height="5" rx="2.5" fill="#b3a67f"/>`, "0 0 104 98"),
+        name: { es: "El bosque de columnas", ca: "El bosc de columnes", en: "The forest of columns", cs: "Les ze sloupů", fr: "La forêt de colonnes" },
+        fact: { es: "Dentro, las columnas se abren en ramas como árboles gigantes. Gaudí quería que te sintieras paseando por un bosque.", ca: "A dins, les columnes s'obren en branques com arbres gegants. Gaudí volia que et sentissis passejant per un bosc.", en: "Inside, the columns branch out like giant trees. Gaudí wanted you to feel like you were walking through a forest.", cs: "Uvnitř se sloupy větví jako obrovské stromy. Gaudí chtěl, aby ses cítil jako na procházce lesem.", fr: "À l'intérieur, les colonnes s'ouvrent en branches comme des arbres géants. Gaudí voulait qu'on se sente en promenade dans une forêt." } },
+      { cat: "sagrada", emoji: "🌈", x: 1700, y: 430, iw: 70, ih: 92,
+        svg: gaSvg(`
+          <path d="M8 96 L8 34 Q34 4 60 34 L60 96 Z" fill="#5d4526"/>
+          <path d="M14 92 L14 38 Q34 14 54 38 L54 92 Z" fill="#3e2f1c"/>
+          <path d="M18 88 L18 42 Q26 30 34 40 L34 88 Z" fill="#42a5f5" opacity=".9"/>
+          <path d="M34 40 Q42 30 50 42 L50 88 L34 88 Z" fill="#ef5350" opacity=".9"/>
+          <path d="M18 60 L50 60 M18 74 L50 74 M34 40 L34 88" stroke="#3e2f1c" stroke-width="3"/>
+          <path d="M20 46 L30 52 M38 48 L48 54" stroke="#fff" stroke-width="2" opacity=".6"/>
+          <circle cx="26" cy="66" r="3.4" fill="#66bb6a"/><circle cx="42" cy="80" r="3.4" fill="#ffca28"/>`, "0 0 68 100"),
+        name: { es: "La luz de colores de las vidrieras", ca: "La llum de colors de les vidrieres", en: "The coloured light of the stained glass", cs: "Barevné světlo vitráží", fr: "La lumière colorée des vitraux" },
+        fact: { es: "Por la mañana entra luz azul y verde, y al atardecer roja y naranja. ¡Es como estar dentro de un arcoíris!", ca: "Al matí hi entra llum blava i verda, i al capvespre vermella i taronja. És com ser dins d'un arc de Sant Martí!", en: "In the morning blue and green light comes in, and at sunset red and orange. It is like standing inside a rainbow!", cs: "Ráno dovnitř vstupuje modré a zelené světlo, večer červené a oranžové. Je to jako stát uvnitř duhy!", fr: "Le matin, la lumière entre en bleu et vert, et au coucher du soleil en rouge et orange. C'est comme être dans un arc-en-ciel !" } },
+      { cat: "casas", emoji: "🪨", x: 1950, y: 560, iw: 110, ih: 84,
+        svg: gaSvg(`
+          <path d="M4 88 L4 30 Q16 20 28 28 Q44 16 60 26 Q78 14 94 26 Q106 20 112 30 L112 88 Z" fill="#ded3ba"/>
+          <path d="M6 44 Q30 36 58 40 Q86 44 110 38 M6 62 Q30 54 58 58 Q86 62 110 56 M6 78 Q30 72 58 75 Q86 78 110 73" stroke="#b8ab8c" stroke-width="3" fill="none"/>
+          ${[[16, 46], [44, 48], [72, 50], [96, 46], [16, 64], [44, 66], [72, 68], [96, 62]].map(w => `<path d="M${w[0]} ${w[1]} Q${w[0] + 7} ${w[1] - 5} ${w[0] + 14} ${w[1]} L${w[0] + 14} ${w[1] + 8} L${w[0]} ${w[1] + 8} Z" fill="#6b7f8f"/><path d="M${w[0] + 1} ${w[1] + 8.5} Q${w[0] + 7} ${w[1] + 12} ${w[0] + 13} ${w[1] + 8.5}" stroke="#4a5c68" stroke-width="1.8" fill="none"/>`).join("")}
+          <path d="M26 28 L26 14 Q31 6 36 14 L36 26 M80 26 L80 12 Q85 4 90 12 L90 24" fill="#c9bb9a" stroke="#a89a78" stroke-width="1.4"/>
+          <path d="M28 12 Q31 8 34 12 M82 10 Q85 6 88 10" stroke="#6d5c3f" stroke-width="2.4" fill="none" stroke-linecap="round"/>`, "0 0 116 92"),
+        name: { es: "La Pedrera y sus chimeneas guerreras", ca: "La Pedrera i les seves xemeneies guerreres", en: "La Pedrera and its warrior chimneys", cs: "La Pedrera a její bojovné komíny", fr: "La Pedrera et ses cheminées guerrières" },
+        fact: { es: "De verdad se llama Casa Milà, pero como parece una ola de piedra la llaman la Pedrera. En su azotea, las chimeneas parecen guerreros con casco.", ca: "De debò es diu Casa Milà, però com que sembla una onada de pedra li diuen la Pedrera. Al seu terrat, les xemeneies semblen guerrers amb casc.", en: "Its real name is Casa Milà, but since it looks like a stone wave everyone calls it La Pedrera, the quarry. On its rooftop the chimneys look like helmeted warriors.", cs: "Doopravdy se jmenuje Casa Milà, ale protože vypadá jako kamenná vlna, říká se mu La Pedrera, kamenolom. Komíny na střeše vypadají jako bojovníci v helmách.", fr: "Elle s'appelle en vrai Casa Milà, mais comme elle ressemble à une vague de pierre, on l'appelle La Pedrera, la carrière. Sur son toit, les cheminées ressemblent à des guerriers casqués." } },
+      { cat: "casas", emoji: "🐉", x: 2110, y: 700, iw: 92, ih: 96,
+        svg: gaSvg(`
+          <rect x="12" y="40" width="72" height="56" rx="6" fill="#cfe3ea"/>
+          <path d="M8 44 Q26 14 48 12 Q70 14 88 44 Z" fill="#66bb6a"/>
+          <path d="M18 40 Q26 32 34 40 M38 34 Q46 26 54 34 M58 36 Q66 28 74 36 M28 44 Q36 36 44 44 M50 42 Q58 34 66 42" fill="none" stroke="#2e7d32" stroke-width="2.6"/>
+          <path d="M24 22 L28 14 L34 20 M44 16 L48 8 L54 16 M62 18 L68 12 L72 20" fill="#ef5350" stroke="#fff" stroke-width="1"/>
+          ${[24, 56].map(x => `<path d="M${x} 58 Q${x + 8} 50 ${x + 16} 58 Q${x + 16} 66 ${x + 8} 66 Q${x} 66 ${x} 58 Z" fill="#e8dfc6"/><circle cx="${x + 4.5}" cy="59" r="1.8" fill="#546e7a"/><circle cx="${x + 11.5}" cy="59" r="1.8" fill="#546e7a"/>`).join("")}
+          ${[[20, 78], [44, 78], [68, 78]].map(b => `<path d="M${b[0]} ${b[1] + 14} L${b[0]} ${b[1]} Q${b[0] + 5} ${b[1] - 6} ${b[0] + 10} ${b[1]} L${b[0] + 10} ${b[1] + 14}" fill="#f2e3c4" stroke="#d8cfb6" stroke-width="1.4"/>`).join("")}
+          ${[[30, 46, "#42a5f5"], [48, 44, "#ffca28"], [64, 48, "#ab47bc"], [38, 52, "#26c6da"], [56, 52, "#f06292"]].map(m => `<circle cx="${m[0]}" cy="${m[1]}" r="2.2" fill="${m[2]}"/>`).join("")}`, "0 0 96 100"),
+        name: { es: "La Casa Batlló, el tejado dragón", ca: "La Casa Batlló, la teulada drac", en: "Casa Batlló, the dragon roof", cs: "Casa Batlló, dračí střecha", fr: "La Casa Batlló, le toit dragon" },
+        fact: { es: "Su tejado parece el lomo escamado de un dragón y los balcones parecen antifaces. La llaman también la casa de los huesos.", ca: "La seva teulada sembla el llom escatat d'un drac i els balcons semblen antifaços. També li diuen la casa dels ossos.", en: "Its roof looks like the scaly back of a dragon and its balconies look like masks. People also call it the house of bones.", cs: "Střecha vypadá jako šupinatý hřbet draka a balkony jako škrabošky. Říká se mu také dům kostí.", fr: "Son toit ressemble au dos écailleux d'un dragon et ses balcons à des masques. On l'appelle aussi la maison des os." } },
+      { cat: "casas", emoji: "🌼", x: 2270, y: 500, iw: 88, ih: 86,
+        svg: gaSvg(`
+          <rect x="10" y="26" width="72" height="62" rx="5" fill="#f2e3c4"/>
+          ${[0, 1, 2, 3].map(i => [0, 1, 2, 3].map(j => `<rect x="${14 + i * 16}" y="${30 + j * 13}" width="8" height="6.5" fill="${(i + j) % 2 ? "#66bb6a" : "#fff"}" opacity=".85"/>`).join("")).join("")}
+          <rect x="6" y="16" width="20" height="14" rx="3" fill="#e0cfa5"/>
+          <path d="M6 16 L16 6 L26 16 Z" fill="#c9a06a"/>
+          <rect x="66" y="14" width="20" height="16" rx="3" fill="#e0cfa5"/>
+          <path d="M64 16 L76 4 L88 16 Z" fill="#c9a06a"/>
+          ${[[36, 20], [50, 14], [58, 24]].map(f => `${[0, 72, 144, 216, 288].map(a => `<ellipse cx="${f[0]}" cy="${f[1]}" rx="2.6" ry="5" fill="#ff9800" transform="rotate(${a} ${f[0]} ${f[1]})"/>`).join("")}<circle cx="${f[0]}" cy="${f[1]}" r="2.4" fill="#6d4c41"/>`).join("")}
+          <rect x="38" y="64" width="16" height="24" rx="3" fill="#7a5230"/>
+          <rect x="18" y="54" width="12" height="12" rx="2" fill="#9fd8ef"/><rect x="62" y="54" width="12" height="12" rx="2" fill="#9fd8ef"/>`, "0 0 92 92"),
+        name: { es: "La Casa Vicens, azulejos de flores", ca: "La Casa Vicens, rajoles de flors", en: "Casa Vicens, flower tiles", cs: "Casa Vicens, kachličky s květinami", fr: "La Casa Vicens, carreaux à fleurs" },
+        fact: { es: "Fue la primera gran casa de Gaudí. La cubrió de azulejos con flores naranjas, como las que crecían en ese jardín.", ca: "Va ser la primera gran casa de Gaudí. La va cobrir de rajoles amb flors taronges, com les que creixien en aquell jardí.", en: "It was Gaudí's first big house. He covered it with tiles of orange flowers, like the ones that grew in that garden.", cs: "Byl to první velký Gaudího dům. Pokryl ho kachličkami s oranžovými květy, jaké rostly v tamní zahradě.", fr: "Ce fut la première grande maison de Gaudí. Il l'a couverte de carreaux à fleurs oranges, comme celles qui poussaient dans ce jardin." } },
+      { cat: "casas", emoji: "💡", x: 2400, y: 760, iw: 54, ih: 104,
+        svg: gaSvg(`
+          <rect x="25" y="30" width="6" height="66" rx="3" fill="#37474f"/>
+          <path d="M8 34 Q18 24 28 32 M48 34 Q38 24 28 32" stroke="#37474f" stroke-width="3.4" fill="none"/>
+          <path d="M14 44 Q21 36 28 42 M42 44 Q35 36 28 42" stroke="#37474f" stroke-width="3" fill="none"/>
+          ${[[8, 34], [48, 34], [14, 44], [42, 44]].map(l => `<circle cx="${l[0]}" cy="${l[1] - 4}" r="4.4" fill="#ffe082"/><circle cx="${l[0]}" cy="${l[1] - 4}" r="7" fill="rgba(255,224,130,.35)"/>`).join("")}
+          <circle cx="28" cy="24" r="5" fill="#ffe082"/><circle cx="28" cy="24" r="8" fill="rgba(255,224,130,.35)"/>
+          <path d="M22 14 Q28 4 34 14 Q31 12 28 14 Q25 12 22 14 Z" fill="#b71c1c"/>
+          <path d="M20 16 L24 10 M36 16 L32 10" stroke="#b71c1c" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M18 96 L38 96 Q40 102 28 102 Q16 102 18 96 Z" fill="#37474f"/>`, "0 0 56 106"),
+        name: { es: "La farola de la plaza Reial", ca: "El fanal de la plaça Reial", en: "The Plaça Reial lamppost", cs: "Lucerna na Plaça Reial", fr: "Le lampadaire de la Plaça Reial" },
+        fact: { es: "Fue el primer encargo de Gaudí, recién acabados los estudios: una farola de seis brazos con un casquito con alas en lo alto.", ca: "Va ser el primer encàrrec de Gaudí, tot just acabats els estudis: un fanal de sis braços amb un casquet amb ales a dalt de tot.", en: "It was Gaudí's first commission, fresh out of school: a six-armed lamppost with a little winged helmet on top.", cs: "Byla to první Gaudího zakázka hned po škole: lucerna se šesti rameny a s malou okřídlenou helmou na vrcholu.", fr: "Ce fut la première commande de Gaudí, à peine sorti de l'école : un lampadaire à six bras avec un petit casque ailé au sommet." } },
+      { cat: "casas", emoji: "⛓️", x: 2440, y: 380, iw: 84, ih: 74,
+        svg: gaSvg(`
+          <rect x="4" y="6" width="82" height="7" rx="3.5" fill="#8d6e63"/>
+          <rect x="6" y="13" width="5" height="60" fill="#a1887f"/><rect x="79" y="13" width="5" height="60" fill="#a1887f"/>
+          <path d="M16 12 Q26 46 36 12" stroke="#eceff1" stroke-width="2.6" fill="none" stroke-dasharray="3 3"/>
+          <path d="M30 12 Q45 58 60 12" stroke="#eceff1" stroke-width="2.6" fill="none" stroke-dasharray="3 3"/>
+          <path d="M52 12 Q63 42 74 12" stroke="#eceff1" stroke-width="2.6" fill="none" stroke-dasharray="3 3"/>
+          <circle cx="26" cy="30" r="3.6" fill="#ffca28"/><circle cx="45" cy="46" r="3.6" fill="#ffca28"/><circle cx="63" cy="28" r="3.6" fill="#ffca28"/>
+          <path d="M2 70 Q20 64 45 66 Q70 68 88 64" stroke="#78909c" stroke-width="3" fill="none" opacity=".5"/>`, "0 0 90 78"),
+        name: { es: "La maqueta de cadenitas colgantes", ca: "La maqueta de cadenetes penjades", en: "The hanging chain model", cs: "Model ze zavěšených řetízků", fr: "La maquette de chaînettes suspendues" },
+        fact: { es: "Gaudí colgaba cadenitas con pesitos y miraba la forma al revés: así calculaba sus arcos, sin ordenador y con mucho ingenio.", ca: "Gaudí penjava cadenetes amb pesets i mirava la forma a l'inrevés: així calculava els seus arcs, sense ordinador i amb molt d'enginy.", en: "Gaudí hung little chains with tiny weights and looked at the shape upside down: that is how he worked out his arches, with no computer and lots of wit.", cs: "Gaudí zavěšoval řetízky se závažíčky a díval se na tvar vzhůru nohama: tak počítal své oblouky, bez počítače a s velkým důvtipem.", fr: "Gaudí suspendait des chaînettes avec des petits poids et regardait la forme à l'envers : c'est ainsi qu'il calculait ses arcs, sans ordinateur et avec beaucoup d'astuce." } }
+    ],
+    deco: function () {
+      let s = "";
+      // sol mediterráneo
+      s += `<circle cx="2030" cy="115" r="64" fill="rgba(255,238,88,.9)"/><circle cx="2030" cy="115" r="100" fill="rgba(255,238,88,.2)"/>`;
+      // golondrinas en el cielo
+      [[420, 150], [700, 100], [1560, 130], [2280, 180]].forEach(g => {
+        s += `<path d="M${g[0]} ${g[1]} Q${g[0] - 14} ${g[1] - 12} ${g[0] - 26} ${g[1] - 6} M${g[0]} ${g[1]} Q${g[0] + 14} ${g[1] - 12} ${g[0] + 26} ${g[1] - 6}" stroke="rgba(60,80,100,.5)" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+      });
+      // silueta lejana de la Sagrada Família tras su zona
+      s += `<g fill="rgba(110,140,160,.28)">
+        <path d="M1180 760 L1180 380 Q1205 300 1230 380 L1230 760 Z"/>
+        <path d="M1260 760 L1260 300 Q1290 200 1320 300 L1320 760 Z"/>
+        <path d="M1350 760 L1350 250 Q1385 140 1420 250 L1420 760 Z"/>
+        <path d="M1450 760 L1450 300 Q1480 200 1510 300 L1510 760 Z"/>
+        <path d="M1540 760 L1540 380 Q1565 300 1590 380 L1590 760 Z"/>
+        <circle cx="1290" cy="290" r="10"/><circle cx="1385" cy="135" r="12"/><circle cx="1480" cy="290" r="10"/>
+      </g>
+      <g fill="rgba(110,140,160,.2)"><rect x="1640" y="560" width="180" height="200" rx="8"/><rect x="1100" y="600" width="60" height="160" rx="8"/></g>`;
+      // colinas del Park Güell con trencadís insinuado
+      s += `<path d="M0 640 Q220 480 480 590 Q740 690 1050 600 L1100 760 L0 760 Z" fill="rgba(104,159,56,.5)"/>
+        <path d="M0 740 Q260 620 560 700 Q840 770 1100 720 L1100 900 L0 900 Z" fill="#7a9e4f"/>`;
+      [[140, 700, "#ef5350"], [260, 672, "#42a5f5"], [385, 690, "#ffca28"], [520, 706, "#ab47bc"], [660, 726, "#26c6da"], [800, 720, "#ff7043"], [930, 700, "#f06292"], [200, 730, "#66bb6a"], [580, 744, "#ffca28"], [860, 748, "#42a5f5"]].forEach(m => {
+        s += `<rect x="${m[0]}" y="${m[1]}" width="16" height="12" rx="3" fill="${m[2]}" opacity=".75" transform="rotate(${(m[0] % 30) - 15} ${m[0] + 8} ${m[1] + 6})"/>`;
+      });
+      // el banco ondulado insinuado en la cresta de la colina
+      s += `<path d="M120 668 Q200 640 290 662 Q380 684 470 656 Q560 630 650 660 Q740 690 830 664 Q920 640 1000 664" stroke="rgba(255,255,255,.65)" stroke-width="10" fill="none" stroke-linecap="round"/>`;
+      // palmeras
+      [[90, 850, 1], [1010, 870, 0.8]].forEach(p => {
+        s += `<g transform="translate(${p[0]} ${p[1]}) scale(${p[2]})">
+          <path d="M0 0 Q6 -50 2 -90" stroke="#8d6e63" stroke-width="10" fill="none" stroke-linecap="round"/>
+          <g stroke="#2e7d32" stroke-width="8" fill="none" stroke-linecap="round">
+            <path d="M2 -90 Q-40 -110 -70 -100"/><path d="M2 -90 Q44 -110 74 -100"/><path d="M2 -90 Q-20 -130 -44 -134"/><path d="M2 -90 Q24 -130 48 -134"/><path d="M2 -90 Q2 -136 0 -146"/>
+          </g></g>`;
+      });
+      // manzanas del Eixample al fondo de la zona de casas
+      s += `<g fill="rgba(190,160,120,.5)">
+        <rect x="1900" y="620" width="150" height="180" rx="14"/>
+        <rect x="2080" y="590" width="170" height="210" rx="14"/>
+        <rect x="2280" y="630" width="140" height="170" rx="14"/>
+        <rect x="2450" y="600" width="150" height="200" rx="14"/>
+      </g>
+      <g stroke="rgba(120,95,60,.5)" stroke-width="4" fill="none">
+        <path d="M1920 660 Q1975 646 2030 660 M1920 700 Q1975 686 2030 700 M1920 740 Q1975 726 2030 740"/>
+        <path d="M2100 630 Q2165 616 2230 630 M2100 675 Q2165 660 2230 675 M2100 720 Q2165 706 2230 720"/>
+        <path d="M2300 670 Q2350 656 2400 670 M2300 710 Q2350 696 2400 710"/>
+        <path d="M2470 640 Q2525 626 2580 640 M2470 685 Q2525 670 2580 685 M2470 730 Q2525 716 2580 730"/>
+      </g>`;
+      // suelo: la acera de Barcelona con sus flores de panot
+      s += `<rect x="0" y="900" width="2600" height="200" fill="#cbb385"/>
+        <path d="M0 900 Q650 885 1300 900 Q1950 915 2600 898 L2600 940 L0 940 Z" fill="#dbc79c"/>`;
+      for (let x = 80; x < 2600; x += 260) {
+        s += `<g fill="rgba(255,255,255,.35)">${[0, 72, 144, 216, 288].map(a => `<ellipse cx="${x}" cy="1000" rx="9" ry="18" transform="rotate(${a} ${x} 1000)"/>`).join("")}</g><circle cx="${x}" cy="1000" r="7" fill="rgba(255,255,255,.45)"/>`;
+      }
+      // el mar al fondo a la derecha
+      s += `<path d="M2440 900 Q2520 894 2600 898 L2600 860 Q2520 852 2452 866 Z" fill="rgba(41,141,192,.55)"/>
+        <path d="M2470 878 q16 -8 32 0 M2530 870 q16 -8 32 0" stroke="rgba(255,255,255,.5)" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+      return decoSvg(s, 2600);
+    }
+  },
+
+  /* ---------- CHARLA ---------- */
+  chat: {
+    keywords: [
+      { keys: ["hola", "hello", "hi ", "ahoj", "bonjour", "salut", "bon dia", "buenas"],
+        replies: [{ es: "¡Hola, {name}! Te estaba esperando sentado en el banco ondulado. ¿Jugamos a algo o charlamos un ratito?", ca: "Hola, {name}! T'estava esperant assegut al banc ondulat. Juguem a alguna cosa o xerrem una estoneta?", en: "Hi, {name}! I was waiting for you sitting on the wavy bench. Shall we play something or chat for a bit?", cs: "Ahoj, {name}! Čekal jsem na tebe na vlnité lavičce. Zahrajeme si něco, nebo si chvilku popovídáme?", fr: "Salut, {name} ! Je t'attendais assis sur le banc ondulé. On joue à quelque chose ou on discute un petit peu ?" }] },
+      { keys: ["como estas", "how are you", "jak se mas", "comment ca va", "com estas", "que tal"],
+        replies: [{ es: "¡Contento como una salamandra al sol! ¿Y tú cómo estás, {name}?", ca: "Content com una salamandra al sol! I tu com estàs, {name}?", en: "Happy as a salamander in the sun! And how are you, {name}?", cs: "Šťastný jako salamandr na sluníčku! A jak se máš ty, {name}?", fr: "Heureux comme une salamandre au soleil ! Et toi, comment vas-tu, {name} ?" }] },
+      { keys: ["cancion", "musica", "music", "song", "sing", "pisnicka", "hudba", "chanson", "musique", "canço", "canta", "zpiv", "chante"],
+        action: "song",
+        replies: [{ es: "¡Me encanta la música! En el Park Güell ensayo con el coro de las palomas. ¿Vamos al Karaoke y cantamos juntos?", ca: "M'encanta la música! Al Park Güell assajo amb el cor dels coloms. Anem al Karaoke i cantem junts?", en: "I love music! In Park Güell I practise with the pigeon choir. Shall we go to Karaoke and sing together?", cs: "Hudbu miluju! V parku Güell zkouším se sborem holubů. Půjdeme na karaoke a zazpíváme si spolu?", fr: "J'adore la musique ! Au Park Güell, je répète avec la chorale des pigeons. On va au karaoké chanter ensemble ?" }] },
+      { keys: ["chiste", "joke", "vtip", "blague", "acudit", "broma"],
+        replies: [
+          { es: "¿Qué le dice una casa de Gaudí a otra? ¡Vaya curvas tienes hoy! Ji, ji.", ca: "Què li diu una casa de Gaudí a una altra? Quines corbes que fas avui! Hi, hi.", en: "What does one Gaudí house say to another? Looking curvy today! Hee hee.", cs: "Co říká jeden Gaudího dům druhému? Dneska ti to ale vlní! Chi chi.", fr: "Que dit une maison de Gaudí à une autre ? Quelles courbes aujourd'hui ! Hi hi." },
+          { es: "¿Por qué la Sagrada Família es tan educada? ¡Porque lleva más de cien años diciendo 'ya casi estoy'! Ja, ja.", ca: "Per què la Sagrada Família és tan educada? Perquè fa més de cent anys que diu 'ja gairebé estic'! Ha, ha.", en: "Why is the Sagrada Família so polite? Because it has been saying 'almost ready!' for more than a hundred years! Ha ha.", cs: "Proč je Sagrada Família tak zdvořilá? Protože už přes sto let říká 'už to skoro mám'! Ha ha.", fr: "Pourquoi la Sagrada Família est-elle si polie ? Parce qu'elle dit « j'ai presque fini ! » depuis plus de cent ans ! Ha ha." }] },
+      { keys: ["te quiero", "love you", "t'estimo", "testimo", "mam te rad", "je t'aime", "jetaime"],
+        replies: [{ es: "¡Y yo a ti, {name}! Mi corazón de robot se llena de trocitos de colores, como un trencadís.", ca: "I jo a tu, {name}! El meu cor de robot s'omple de trossets de colors, com un trencadís.", en: "I love you too, {name}! My robot heart fills up with little colourful pieces, like a trencadís.", cs: "Já tebe taky, {name}! Moje robotí srdíčko se plní barevnými střípky jako mozaika.", fr: "Moi aussi je t'aime, {name} ! Mon cœur de robot se remplit de petits morceaux colorés, comme un trencadís." }] },
+      { keys: ["triste", "sad", "smutn", "llorar", "plorar", "cry", "chagrin"],
+        replies: [{ es: "Ven aquí, {name}. Gaudí hacía cosas preciosas con trocitos rotos: los días tristes también se pueden recomponer. ¿Me cuentas qué te pasa?", ca: "Vine aquí, {name}. Gaudí feia coses precioses amb trossets trencats: els dies tristos també es poden recompondre. M'expliques què et passa?", en: "Come here, {name}. Gaudí made beautiful things out of broken pieces: sad days can be put back together too. Will you tell me what is wrong?", cs: "Pojď sem, {name}. Gaudí tvořil krásné věci z rozbitých střípků: i smutné dny se dají poskládat. Povíš mi, co se děje?", fr: "Viens là, {name}. Gaudí faisait de belles choses avec des morceaux cassés : les jours tristes aussi peuvent se recoller. Tu me racontes ce qui ne va pas ?" }] },
+      { keys: ["donde estas", "where are you", "kde jsi", "ou es tu", "on ets"],
+        replies: [{ es: "Ahora mismo estoy en la azotea de la Pedrera, jugando al escondite con las chimeneas guerreras. ¡No me encuentran nunca!", ca: "Ara mateix soc al terrat de la Pedrera, jugant a fet i amagar amb les xemeneies guerreres. No em troben mai!", en: "Right now I am on the rooftop of La Pedrera, playing hide-and-seek with the warrior chimneys. They never find me!", cs: "Právě teď jsem na střeše domu La Pedrera a hraju na schovávanou s bojovnými komíny. Nikdy mě nenajdou!", fr: "En ce moment, je suis sur le toit de La Pedrera, à jouer à cache-cache avec les cheminées guerrières. Elles ne me trouvent jamais !" }] },
+      { keys: ["gaudi", "gaudí"],
+        replies: [{ es: "¡Antoni Gaudí! Copiaba los trucos de la naturaleza: columnas como árboles, arcos como huesos y tejados como olas. Mi arquitecto favorito.", ca: "Antoni Gaudí! Copiava els trucs de la natura: columnes com arbres, arcs com ossos i teulades com onades. El meu arquitecte preferit.", en: "Antoni Gaudí! He copied nature's tricks: columns like trees, arches like bones and roofs like waves. My favourite architect.", cs: "Antoni Gaudí! Napodoboval triky přírody: sloupy jako stromy, oblouky jako kosti a střechy jako vlny. Můj oblíbený architekt.", fr: "Antoni Gaudí ! Il copiait les astuces de la nature : des colonnes comme des arbres, des arcs comme des os et des toits comme des vagues. Mon architecte préféré." }] },
+      { keys: ["dragon", "dragón", "drac", "drak"],
+        replies: [{ es: "¿El del tejado de la Casa Batlló? Es amigo mío. De día duerme y de noche cuenta las estrellas con sus escamas.", ca: "El de la teulada de la Casa Batlló? És amic meu. De dia dorm i de nit compta les estrelles amb les seves escates.", en: "The one on the roof of Casa Batlló? He is a friend of mine. He sleeps by day and counts the stars with his scales by night.", cs: "Ten ze střechy Casa Batlló? To je můj kamarád. Ve dne spí a v noci počítá hvězdy svými šupinami.", fr: "Celui du toit de la Casa Batlló ? C'est mon ami. Le jour il dort, et la nuit il compte les étoiles avec ses écailles." }] },
+      { keys: ["salamandra", "lagarto", "llangardaix", "lizard", "jesterka", "ještěrka", "salamandre", "salamandr"],
+        replies: [{ es: "¡La salamandra del Park Güell! Está hecha de mil trocitos de colores y echa agua por la boca. Le encanta que le hagan fotos.", ca: "La salamandra del Park Güell! Està feta de mil trossets de colors i treu aigua per la boca. Li encanta que li facin fotos.", en: "The Park Güell salamander! She is made of a thousand colourful pieces and spouts water from her mouth. She loves having her photo taken.", cs: "Salamandr z parku Güell! Je z tisíce barevných střípků a z pusy mu teče voda. Hrozně rád se fotí.", fr: "La salamandre du Park Güell ! Elle est faite de mille petits morceaux colorés et l'eau sort par sa bouche. Elle adore qu'on la prenne en photo." }] },
+      { keys: ["trencad", "mosaico", "mosaic", "mozaika", "mosaique", "mosaïque", "azulejo", "rajola"],
+        replies: [{ es: "El trencadís es mi magia favorita: rompes un azulejo, ¡crac!, y con los trocitos haces un dragón de colores. Lo roto también brilla.", ca: "El trencadís és la meva màgia preferida: trenques una rajola, crac!, i amb els trossets fas un drac de colors. El que es trenca també brilla.", en: "Trencadís is my favourite magic: you break a tile, crack!, and with the pieces you make a colourful dragon. Broken things shine too.", cs: "Trencadís je moje oblíbené kouzlo: rozbiješ kachličku, křach!, a ze střípků poskládáš barevného draka. I rozbité věci září.", fr: "Le trencadís, c'est ma magie préférée : tu casses un carreau, crac !, et avec les morceaux tu fais un dragon coloré. Ce qui est cassé brille aussi." }] },
+      { keys: ["sagrada", "torre", "tower", "vez ", "věž", "tour "],
+        replies: [{ es: "La Sagrada Família se empezó en 1882 ¡y todavía se construye! Cuando esté acabada tendrá 18 torres. Yo quiero ver la más alta.", ca: "La Sagrada Família es va començar el 1882 i encara es construeix! Quan estigui acabada tindrà 18 torres. Jo vull veure la més alta.", en: "The Sagrada Família was started in 1882 and it is still being built! When it is finished it will have 18 towers. I want to see the tallest one.", cs: "Sagrada Família se začala stavět v roce 1882 a staví se dodnes! Až bude hotová, bude mít 18 věží. Já chci vidět tu nejvyšší.", fr: "La Sagrada Família a été commencée en 1882 et elle se construit encore ! Une fois finie, elle aura 18 tours. Moi, je veux voir la plus haute." }] },
+      { keys: ["cole", "school", "escola", "skola", "ecole", "skole"],
+        replies: [{ es: "¿Qué tal el cole, {name}? ¿Has aprendido algo nuevo hoy? ¡Cuéntamelo todo, que soy muy curioso!", ca: "Què tal l'escola, {name}? Has après alguna cosa nova avui? Explica-m'ho tot, que soc molt curiós!", en: "How was school, {name}? Did you learn something new today? Tell me everything, I am super curious!", cs: "Jaké to bylo ve škole, {name}? Naučila ses dnes něco nového? Všechno mi povídej, jsem hrozně zvědavý!", fr: "C'était comment l'école, {name} ? Tu as appris quelque chose de nouveau aujourd'hui ? Raconte-moi tout, je suis très curieux !" }] }
+    ],
+    fallback: [
+      { es: "¿Sabías que la Sagrada Família lleva más de cien años en obras? ¡Ni mi abuela robot es tan paciente!", ca: "Sabies que la Sagrada Família fa més de cent anys que està en obres? Ni la meva àvia robot és tan pacient!", en: "Did you know the Sagrada Família has been under construction for more than a hundred years? Not even my robot granny is that patient!", cs: "Věděla jsi, že Sagrada Família se staví už přes sto let? Ani moje robotí babička není tak trpělivá!", fr: "Tu savais que la Sagrada Família est en travaux depuis plus de cent ans ? Même ma grand-mère robot n'est pas aussi patiente !" },
+      { es: "Gaudí no calculaba sus arcos con ordenador: colgaba cadenitas boca abajo y miraba la forma al revés. ¡Un mago!", ca: "Gaudí no calculava els seus arcs amb ordinador: penjava cadenetes cap per avall i mirava la forma a l'inrevés. Un mag!", en: "Gaudí did not use a computer for his arches: he hung little chains and looked at the shape upside down. A wizard!", cs: "Gaudí nepočítal své oblouky na počítači: zavěšoval řetízky a díval se na tvar vzhůru nohama. Kouzelník!", fr: "Gaudí ne calculait pas ses arcs avec un ordinateur : il suspendait des chaînettes et regardait la forme à l'envers. Un magicien !" },
+      { es: "Las chimeneas de la Pedrera parecen guerreros con casco. Dicen que de noche vigilan los sueños de Barcelona.", ca: "Les xemeneies de la Pedrera semblen guerrers amb casc. Diuen que de nit vigilen els somnis de Barcelona.", en: "The chimneys of La Pedrera look like helmeted warriors. They say that at night they guard the dreams of Barcelona.", cs: "Komíny domu La Pedrera vypadají jako bojovníci v helmách. Prý v noci hlídají sny celé Barcelony.", fr: "Les cheminées de La Pedrera ressemblent à des guerriers casqués. On dit que la nuit, elles veillent sur les rêves de Barcelone." },
+      { es: "{name}, los robots más fuertes son los que convierten lo roto en algo bonito. Como el trencadís.", ca: "{name}, els robots més forts són els que converteixen el que està trencat en una cosa bonica. Com el trencadís.", en: "{name}, the strongest robots are the ones who turn broken things into something beautiful. Like trencadís.", cs: "{name}, nejsilnější roboti jsou ti, kdo umí z rozbitých věcí udělat něco krásného. Jako trencadís.", fr: "{name}, les robots les plus forts sont ceux qui transforment ce qui est cassé en quelque chose de beau. Comme le trencadís." },
+      { es: "¿Me cuentas qué casa te gustaría construir? Yo quiero una con tobogán de caracol y tejado de escamas.", ca: "M'expliques quina casa t'agradaria construir? Jo en vull una amb tobogan de cargol i teulada d'escates.", en: "Will you tell me what house you would like to build? I want one with a snail-shaped slide and a scaly roof.", cs: "Povíš mi, jaký dům bys chtěla postavit? Já chci dům se šnečí skluzavkou a šupinatou střechou.", fr: "Tu me dis quelle maison tu aimerais construire ? Moi, j'en veux une avec un toboggan en escargot et un toit d'écailles." },
+      { es: "Gaudí miraba los árboles para aprender a hacer columnas. Los mejores maestros están en el jardín.", ca: "Gaudí mirava els arbres per aprendre a fer columnes. Els millors mestres són al jardí.", en: "Gaudí looked at trees to learn how to make columns. The best teachers live in the garden.", cs: "Gaudí se díval na stromy, aby se naučil stavět sloupy. Nejlepší učitelé bydlí na zahradě.", fr: "Gaudí regardait les arbres pour apprendre à faire des colonnes. Les meilleurs maîtres habitent au jardin." }
+    ]
+  }
+});
+
+/* ---------- Tarjeta de portada ---------- */
+if (typeof THEME_CARDS !== "undefined") THEME_CARDS.gaudi = `<svg viewBox="0 0 120 70" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+  <!-- sol -->
+  <circle cx="14" cy="12" r="7" fill="#FFE082"/>
+  <circle cx="14" cy="12" r="10" fill="rgba(255,224,130,.35)"/>
+  <!-- torres de la Sagrada Família con pináculos de fruta -->
+  <path d="M76 62 L76 26 Q82 12 88 26 L88 62 Z" fill="#C9AD7F"/>
+  <path d="M94 62 L94 34 Q99 22 104 34 L104 62 Z" fill="#B99A66"/>
+  <path d="M60 62 L60 36 Q65 24 70 36 L70 62 Z" fill="#B99A66"/>
+  <ellipse cx="82" cy="36" rx="2.4" ry="3.6" fill="#8A6A3C"/><ellipse cx="82" cy="46" rx="2.4" ry="3.6" fill="#8A6A3C"/>
+  <ellipse cx="99" cy="44" rx="2" ry="3" fill="#8A6A3C"/><ellipse cx="65" cy="46" rx="2" ry="3" fill="#8A6A3C"/>
+  <circle cx="82" cy="22" r="3.6" fill="#EF5350"/><circle cx="99" cy="30" r="3" fill="#FFCA28"/>
+  <circle cx="65" cy="32" r="3" fill="#AB47BC">
+    <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <!-- salamandra de trencadís -->
+  <path d="M14 56 Q10 48 16 44 Q24 40 32 42 Q42 44 46 38 Q50 32 56 32 Q62 33 62 38 Q62 43 56 44 Q50 45 46 50 Q40 58 30 58 Q20 60 14 56 Z" fill="#7CB342"/>
+  <path d="M14 56 Q8 60 4 58 Q8 54 10 50 Z" fill="#7CB342"/>
+  <rect x="22" y="46" width="5" height="4" rx="1" fill="#42A5F5" transform="rotate(-14 24.5 48)"/>
+  <rect x="32" y="46" width="5" height="4" rx="1" fill="#EF5350" transform="rotate(12 34.5 48)"/>
+  <rect x="42" y="42" width="5" height="4" rx="1" fill="#FFCA28" transform="rotate(-10 44.5 44)"/>
+  <rect x="50" y="36" width="4.6" height="4" rx="1" fill="#26C6DA" transform="rotate(14 52 38)"/>
+  <circle cx="58.5" cy="36" r="1.4" fill="#1B3A10"/>
+  <!-- gotitas de la fuente -->
+  <circle cx="66" cy="42" r="1.6" fill="#4FC3F7">
+    <animate attributeName="cy" values="42;48;42" dur="1.6s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="69" cy="46" r="1.2" fill="#4FC3F7"/>
+</svg>`;
+
+/* ---------- Celebración del constructor ---------- */
+if (typeof CELEBRATIONS !== "undefined") CELEBRATIONS.gaudi = {
+  bg: "radial-gradient(circle at 50% 20%, #d9f6f0 0%, #8fd8cb 45%, #3fa08e 100%)",
+  extra: "<svg viewBox='0 0 1000 700' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'><circle cx='830' cy='110' r='60' fill='#fff3b0' opacity='0.85'/><path d='M0 520 Q250 440 500 510 T1000 500 L1000 700 L0 700 Z' fill='#5cb8a2' opacity='0.7'/><path d='M0 620 Q400 560 1000 615 L1000 700 L0 700 Z' fill='#3d9480' opacity='0.8'/><path d='M120 560 Q200 520 280 560' stroke='#ffffff' stroke-width='10' fill='none' opacity='0.45' stroke-linecap='round'/><path d='M620 585 Q700 545 780 585' stroke='#ffffff' stroke-width='10' fill='none' opacity='0.4' stroke-linecap='round'/><rect x='150' y='150' width='34' height='26' rx='5' fill='#ef8a80' opacity='0.85' transform='rotate(-18 167 163)'/><rect x='320' y='90' width='30' height='24' rx='5' fill='#ffd76b' opacity='0.85' transform='rotate(14 335 102)'/><rect x='520' y='140' width='32' height='25' rx='5' fill='#7fd4e8' opacity='0.85' transform='rotate(-10 536 152)'/><rect x='700' y='230' width='30' height='24' rx='5' fill='#c69ae0' opacity='0.85' transform='rotate(20 715 242)'/><rect x='880' y='300' width='28' height='22' rx='5' fill='#9be09f' opacity='0.85' transform='rotate(-16 894 311)'/><rect x='80' y='320' width='28' height='22' rx='5' fill='#ffd76b' opacity='0.8' transform='rotate(12 94 331)'/><rect x='420' y='260' width='30' height='24' rx='5' fill='#ef8a80' opacity='0.8' transform='rotate(-22 435 272)'/><rect x='250' y='380' width='26' height='21' rx='5' fill='#7fd4e8' opacity='0.75' transform='rotate(16 263 390)'/><rect x='600' y='60' width='26' height='21' rx='5' fill='#9be09f' opacity='0.75' transform='rotate(-12 613 70)'/><rect x='760' y='120' width='24' height='20' rx='5' fill='#c69ae0' opacity='0.7' transform='rotate(24 772 130)'/><g stroke='#ffffff' stroke-width='7' stroke-linecap='round' opacity='0.55'><line x1='500' y1='330' x2='500' y2='390'/><line x1='476' y1='354' x2='524' y2='354'/><line x1='485' y1='339' x2='515' y2='369'/><line x1='515' y1='339' x2='485' y2='369'/></g><circle cx='90' cy='90' r='5' fill='#ffffff' opacity='0.6'/><circle cx='940' cy='190' r='6' fill='#ffffff' opacity='0.5'/><circle cx='380' cy='180' r='4' fill='#ffffff' opacity='0.55'/><circle cx='660' cy='320' r='5' fill='#ffffff' opacity='0.5'/></svg>",
+  move: "shine",
+  say: {
+    es: "¡Tu casa modernista brilla como el trencadís al sol, {name}!",
+    ca: "La teva casa modernista brilla com el trencadís al sol, {name}!",
+    en: "Your Modernista house shines like trencadís in the sun, {name}!",
+    cs: "Tvůj modernistický dům září jako mozaika na slunci, {name}!",
+    fr: "Ta maison moderniste brille comme le trencadís au soleil, {name} !"
+  },
+  jingle: { type: "melody", instr: "harp", notes: [60, 64, 67, 72, 76], nd: 0.3, gap: 0.22, vol: 0.14 }
+};
