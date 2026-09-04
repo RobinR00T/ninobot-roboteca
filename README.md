@@ -1016,3 +1016,11 @@ centro de su dibujo).
   consola limpia, 92 ficheros compilando.
 - Lección de método (en memoria): verificar LO QUE HACE EL USUARIO (el toque),
   no solo lo que se ve; y a la 3a iteración sobre lo mismo, parar y preguntar.
+
+## v4.9 (4-9-2026, 15:55): el páncreas en su sitio
+
+Ajuste de Daniel: "el páncreas debería estar debajo del hígado en el dibujo".
+Movido: la cabeza queda pegada bajo el borde del hígado (19 px de hueco medido
+sobre la tinta), en la C del duodeno, con la cola cruzando hacia el estómago.
+Prueba del dedo repetida en los 7 órganos del abdomen: todos responden (69-96%)
+y cero etiquetas sobre tinta ajena.
