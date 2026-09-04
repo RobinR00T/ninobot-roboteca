@@ -24,8 +24,9 @@
    El ORDEN de la lista de puntos es el orden de pintado, y aquí
    hace tres trabajos a la vez:
      1. los solapes que deben verse (corazón sobre los pulmones,
-        vesícula pegada al hígado, páncreas tras el estómago,
-        riñones detrás de todo, delgado dentro del grueso);
+        vesícula colgando del hígado, delgado dentro del grueso,
+        riñones y páncreas por delante del paquete intestinal y
+        la vejiga en la pelvis, por delante de todo);
      2. que ningún nombre quede debajo de otro dibujo;
      3. que cada punto conserve sitio libre donde tocarlo.
    Por eso cada ficha lleva su capa y al final se ordena por ella.
@@ -51,6 +52,7 @@
      rompe las proporciones) y con un mínimo de escala del mapa entero para
      que nada quede diminuto; si no cabe a lo alto, se recorre en vertical */
   ex.sinSuelo = true;
+  ex.tintaClick = true;
   ex.kMin = 0.5;
   ex.vista0 = 0.1;
 
@@ -182,34 +184,38 @@
     <path d="M25 10 C31 18 45 26 45 42 C45 56 36 62 25 62 C14 62 5 56 5 42 C5 26 19 18 25 10 Z" fill="url(#cuaVesicG)" stroke="#40602a" stroke-width="3"/>
     <ellipse cx="17" cy="41" rx="6" ry="11" fill="#c8e2a8" opacity=".5"/>`, "0 0 50 64");
 
-  /* EL PÁNCREAS: la cabeza, GRUESA, queda en el lado derecho del niño
-     (izquierda de pantalla), metida en la C del duodeno; la cola sube en
-     diagonal y AFINA hacia el bazo, pasando por detrás del estómago. */
+  /* EL PÁNCREAS: como en la lámina, se ve ENTERO por debajo del
+     estómago (no detrás): alargado en diagonal, con la cabeza GRUESA
+     abajo a la izquierda de pantalla (hacia la C del duodeno, lado
+     derecho del niño) y la cola AFINANDO arriba hacia el bazo. Se
+     pinta por delante del paquete intestinal y enhebrado entre los
+     dos riñones, sin tapar ninguna judía. */
   const svgPancreas = bb(`
     <defs><linearGradient id="cuaPancreasG" x1="0" y1="1" x2="1" y2="0">
       <stop offset="0%" stop-color="#dcaa5e"/><stop offset="100%" stop-color="#f4d99f"/></linearGradient></defs>
-    <path d="M46 40 C76 30 118 19 154 12 C168 9 178 8 183 8 C188 8 188 16 183 17 C158 21 122 29 90 38 C74 42 58 47 48 51 Z" fill="url(#cuaPancreasG)" stroke="#a8802f" stroke-width="3" stroke-linejoin="round"/>
-    <path d="M34 8 C49 10 58 24 54 38 C60 41 61 49 55 53 C47 59 34 62 24 58 C11 53 4 40 8 27 C11 15 22 6 34 8 Z" fill="url(#cuaPancreasG)" stroke="#a8802f" stroke-width="3"/>
-    <path d="M52 44 C86 34 138 22 176 14" fill="none" stroke="#b98f36" stroke-width="3" opacity=".7"/>
+    <path d="M46 66 C64 50 86 32 101 16 C104 13 108 10 110 9 C113 8 114 13 111 16 C96 32 76 52 58 72 C54 76 48 72 46 66 Z" fill="url(#cuaPancreasG)" stroke="#a8802f" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M38 36 C53 38 62 52 58 66 C64 69 65 77 59 81 C51 87 38 90 28 86 C15 81 8 68 12 55 C15 43 26 34 38 36 Z" fill="url(#cuaPancreasG)" stroke="#a8802f" stroke-width="3"/>
+    <path d="M50 64 C70 48 88 32 104 16" fill="none" stroke="#b98f36" stroke-width="3" opacity=".7"/>
     <g fill="#c9993f" opacity=".45">
-      <circle cx="24" cy="34" r="4.6"/><circle cx="38" cy="44" r="4"/><circle cx="36" cy="22" r="3.8"/>
-      <circle cx="82" cy="34" r="3.4"/><circle cx="118" cy="26" r="3.2"/><circle cx="152" cy="18" r="2.8"/>
-    </g>`, "0 0 190 64");
+      <circle cx="28" cy="62" r="4.6"/><circle cx="42" cy="74" r="4"/><circle cx="40" cy="50" r="3.8"/>
+      <circle cx="66" cy="52" r="3.4"/><circle cx="82" cy="38" r="3"/><circle cx="96" cy="26" r="2.6"/>
+    </g>`, "0 0 112 92");
 
-  /* LOS RIÑONES: pareja a los lados de la columna y DETRÁS de todo (van
-     pintados los primeros): el polo de arriba queda tras el borde del
-     hígado y del estómago, como en el cuerpo de verdad. El hilio mira
-     hacia dentro, con sus vasos y los uréteres bajando hacia el centro. */
+  /* LOS RIÑONES: par VISIBLE flanqueando la línea media, como en la
+     lámina: cada judía entera con el hilio hacia dentro, los vasos
+     cruzando hacia el centro y los uréteres bajando hacia la vejiga.
+     Se pintan DELANTE del paquete intestinal: solo su polo inferior
+     queda con el colon pasando por detrás. */
   const rinon = `
     <path d="M30 3 C13 6 3 25 4 44 C5 66 17 74 36 74 C49 74 57 66 49 60 C38 50 36 33 47 24 C55 17 44 2 30 3 Z" fill="url(#cuaRinonG)" stroke="#5e2427" stroke-width="3.2"/>
     <path d="M12 22 C8 34 9 48 16 58" fill="none" stroke="#d38b8d" stroke-width="4" opacity=".45"/>
-    <path d="M50 34 C60 34 68 31 76 28" fill="none" stroke="#c0392b" stroke-width="5" stroke-linecap="round"/>
-    <path d="M50 45 C62 47 70 45 78 41" fill="none" stroke="#5b86c9" stroke-width="5" stroke-linecap="round"/>
-    <path d="M51 54 C64 60 74 66 80 76" fill="none" stroke="#e0c060" stroke-width="6" stroke-linecap="round"/>`;
+    <path d="M50 34 C70 33 92 30 111 28" fill="none" stroke="#c0392b" stroke-width="5" stroke-linecap="round"/>
+    <path d="M50 45 C72 47 94 44 111 40" fill="none" stroke="#5b86c9" stroke-width="5" stroke-linecap="round"/>
+    <path d="M51 54 C68 62 84 70 96 77" fill="none" stroke="#e0c060" stroke-width="6" stroke-linecap="round"/>`;
   const svgRinones = bb(`
     <defs><linearGradient id="cuaRinonG" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#bb6165"/><stop offset="100%" stop-color="#7c3336"/></linearGradient></defs>
-    ${rinon}${espejo(176, rinon)}`, "0 0 176 82");
+    ${rinon}${espejo(224, rinon)}`, "0 0 224 82");
 
   /* EL ESTÓMAGO: bolsa en jota, arriba a la izquierda del niño y en
      contacto con el hígado. Entra el esófago por arriba y sale el
@@ -227,34 +233,52 @@
       <path d="M34 110 C52 100 76 104 92 112"/>
     </g>`, "0 -5 130 148");
 
-  /* EL INTESTINO GRUESO: enmarca el abdomen bajo, ya con la cadera de
-     niño (más alta). Sube por la derecha del niño desde el ciego con su
-     apéndice (hacia dentro, no hacia la ingle), cruza bajo el hígado y
-     el estómago, baja por el otro lado y acaba en el recto. */
-  const marcoColon = "M20 112 C20 90 18 62 20 40 C21 26 30 16 44 15 C100 18 210 18 274 15 C288 14 298 24 298 38 C299 62 298 88 296 106 C294 128 262 142 228 136 C206 132 190 140 190 152";
+  /* EL INTESTINO GRUESO: el marco del abdomen bajo, ahora compacto y
+     hundido en la cadera, como en la lámina: el colon transverso cruza
+     por DETRÁS de los polos inferiores de los riñones (nunca por encima
+     de ellos), los lados bajan cortos, el ciego lleva su apéndice hacia
+     dentro y la sigma acaba en el recto, en el centro de la pelvis.
+     El ciego va GRANDE a propósito (es la parte más ancha del colon de
+     verdad): es la esquina que nada tapa y donde el dedo siempre acierta. */
+  const marcoColon = "M32 72 C32 58 32 44 34 38 C36 29 44 26 56 26 L254 26 C268 26 280 32 280 44 C280 56 278 64 272 70 C264 78 248 82 234 86 C220 90 208 96 206 104";
   const svgGrueso = bb(`
-    <ellipse cx="20" cy="116" rx="21" ry="18" fill="#c07a58"/>
+    <ellipse cx="32" cy="82" rx="21" ry="17" fill="#c07a58"/>
     <path d="${marcoColon}" fill="none" stroke="#c07a58" stroke-width="26" stroke-linecap="round"/>
-    <path d="M22 130 C18 138 17 146 21 152" fill="none" stroke="#c07a58" stroke-width="9" stroke-linecap="round"/>
-    <ellipse cx="20" cy="116" rx="12" ry="10" fill="#eba97f"/>
+    <path d="M40 94 C44 102 52 106 60 104" fill="none" stroke="#c07a58" stroke-width="9" stroke-linecap="round"/>
+    <path d="M206 102 C204 110 204 116 208 122" fill="none" stroke="#c07a58" stroke-width="9" stroke-linecap="round"/>
+    <ellipse cx="32" cy="82" rx="13" ry="11" fill="#eba97f"/>
     <path d="${marcoColon}" fill="none" stroke="#eba97f" stroke-width="16" stroke-linecap="round"/>
-    <path d="M22 130 C18 138 17 146 21 152" fill="none" stroke="#eba97f" stroke-width="4" stroke-linecap="round"/>
+    <path d="M40 94 C44 102 52 106 60 104" fill="none" stroke="#eba97f" stroke-width="4" stroke-linecap="round"/>
+    <path d="M206 102 C204 110 204 116 208 122" fill="none" stroke="#eba97f" stroke-width="4" stroke-linecap="round"/>
     <g stroke="#a5613f" stroke-width="4" opacity=".75" stroke-linecap="round">
-      <path d="M8 48 h24 M8 72 h24 M8 96 h24"/>
-      <path d="M84 5 v22 M124 6 v22 M164 6 v22 M204 6 v22 M244 5 v22"/>
-      <path d="M286 50 h24 M285 74 h24 M284 98 h24"/>
-      <path d="M250 122 l6 17 M218 124 l2 17"/>
-    </g>`, "-5 0 330 170");
+      <path d="M20 44 h24 M20 58 h24"/>
+      <path d="M90 15 v22 M130 15 v22 M170 15 v22 M210 15 v22"/>
+      <path d="M268 50 h24"/>
+      <path d="M248 78 l4 15 M224 88 l2 15"/>
+    </g>`, "0 0 310 132");
 
   /* EL INTESTINO DELGADO: el tubo fino y larguísimo, enrollado en tres
      pisos de asas que llenan la ventana que deja el marco del grueso */
-  const asas = "M30 14 C72 5 150 6 182 15 C202 22 146 28 86 26 C36 24 22 36 52 42 C98 48 176 40 206 46 C226 51 172 58 116 56 C66 54 32 58 44 68 C62 78 152 72 188 78";
+  const asas = "M24 10 C64 2 132 3 168 10 C186 15 138 20 88 19 C40 18 24 28 50 33 C92 39 160 32 186 37 C204 42 156 48 106 46 C60 44 30 48 42 56 C58 65 138 60 172 65";
   const svgDelgado = bb(`
     <path d="${asas}" fill="none" stroke="#d4788a" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="${asas}" fill="none" stroke="#f4b3bf" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round"/>
     <g stroke="#b95a70" stroke-width="3" opacity=".5" stroke-linecap="round">
-      <path d="M62 9 v10 M108 10 v10 M154 12 v10 M112 22 v10 M60 22 v10 M54 37 v10 M104 42 v10 M158 41 v10 M186 46 v9 M132 50 v9 M78 51 v9 M66 64 v9 M116 68 v9 M162 66 v9"/>
-    </g>`, "0 0 240 96");
+      <path d="M58 5 v10 M102 5 v10 M146 7 v10 M104 15 v10 M56 16 v10 M52 28 v10 M98 33 v10 M148 32 v10 M172 37 v9 M124 41 v9 M74 41 v9 M62 52 v9 M108 56 v9 M150 54 v9"/>
+    </g>`, "0 0 230 78");
+
+  /* LA VEJIGA: la bolsita elástica de la pelvis, debajo del paquete
+     intestinal, donde se guarda el pipí que bajan los uréteres de los
+     riñones. Amarilla anaranjada y bien legible, del tamaño de la
+     vesícula o un poco mayor. */
+  const svgVejiga = bb(`
+    <defs><linearGradient id="cuaVejigaG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f6c445"/><stop offset="100%" stop-color="#e08a2d"/></linearGradient></defs>
+    <path d="M16 4 C14 12 18 20 27 25" fill="none" stroke="#e0c060" stroke-width="5" stroke-linecap="round"/>
+    <path d="M56 4 C58 12 54 20 45 25" fill="none" stroke="#e0c060" stroke-width="5" stroke-linecap="round"/>
+    <path d="M36 18 C52 18 63 27 63 38 C63 50 51 56 36 56 C21 56 9 50 9 38 C9 27 20 18 36 18 Z" fill="url(#cuaVejigaG)" stroke="#a8641f" stroke-width="3"/>
+    <path d="M15 40 C23 45 30 46 36 46 C44 46 53 44 57 39" fill="none" stroke="#c47a24" stroke-width="2.4" opacity=".55"/>
+    <ellipse cx="26" cy="33" rx="7" ry="9" fill="#f8dc9a" opacity=".55"/>`, "0 0 72 60");
 
   /* LOS MÚSCULOS, LA SANGRE, LA PIEL Y EL ADN: fichas de sistemas, no
      piezas a escala. Se conservan como estaban, ajustadas de tamaño. */
@@ -439,18 +463,25 @@
        su nombre y el de los pulmones se anclan a su altura ---- */
     "Los pulmones": { x: CO, y: 457, w: 300, h: 200, z: 10, svg: svgPulmones, lx: -95, ly: -57 },
     "El corazón": { x: CO + 26, y: 470, w: 126, h: 209, z: 24, svg: svgCorazon, lx: 170, ly: -98 },
-    /* ---- barriga: riñones detrás de todo, hígado, páncreas, encima
-       el estómago y el paquete intestinal en la cadera de niño ---- */
-    "Los riñones": { x: CO, y: 640, w: 176, h: 82, z: 12, svg: svgRinones, lx: 235, ly: -36 },
+    /* ---- barriga, con la composición de la lámina: hígado y estómago
+       arriba, la vesícula colgando del hígado, los riñones como par
+       visible flanqueando la línea media (delante del colon, que solo
+       les pasa por detrás de los polos inferiores), el páncreas entero
+       en diagonal bajo el estómago y por delante del paquete
+       intestinal, y la vejiga en la pelvis, bajo los intestinos ---- */
     "El hígado": { x: CO - 66, y: 595, w: 234, h: 122, z: 20, svg: svgHigado, lx: -54, ly: -101 },
-    "El páncreas": { x: CO + 30, y: 676, w: 190, h: 64, z: 30, svg: svgPancreas, lx: -265, ly: -23 },
     "El estómago": { x: CO + 90, y: 598, w: 130, h: 148, z: 34, svg: svgEstomago, lx: 15, ly: -81 },
-    "El intestino grueso": { x: CO, y: 726, w: 330, h: 170, z: 40, svg: svgGrueso, lx: -88 },
-    "El intestino delgado": { x: CO - 6, y: 718, w: 240, h: 96, z: 46, svg: svgDelgado, lx: 92, ly: 45 },
-    "La vesícula": { x: CO - 110, y: 648, w: 50, h: 64, z: 50, svg: svgVesicula, lx: -125, ly: -35 },
-    /* ---- huesos: fémur y luego pelvis, columna y encima las costillas ---- */
-    "El fémur": { x: CH - 99, y: 798, w: 78, h: 182, z: 12, svg: svgFemur },
-    "La pelvis": { x: CH, y: 703, w: 300, h: 154, z: 16, svg: svgPelvis },
+    "El intestino grueso": { x: CO, y: 764, w: 310, h: 132, z: 40, svg: svgGrueso, lx: -160 },
+    "El intestino delgado": { x: CO, y: 776, w: 230, h: 78, z: 46, svg: svgDelgado, lx: 92, ly: 52 },
+    "Los riñones": { x: CO, y: 692, w: 224, h: 82, z: 48, svg: svgRinones, lx: 235, ly: -36 },
+    "La vesícula": { x: CO - 128, y: 650, w: 50, h: 64, z: 50, svg: svgVesicula, lx: -125, ly: -35 },
+    "El páncreas": { x: CO, y: 700, w: 112, h: 92, z: 52, svg: svgPancreas, lx: -265, ly: -23 },
+    "La vejiga": { x: CO, y: 796, w: 72, h: 60, z: 56, svg: svgVejiga },
+    /* ---- huesos: pelvis primero y el fémur ENCIMA (la cabeza redonda
+       queda anidada en la cavidad, como en las láminas de esqueleto, y
+       así el dedo encuentra el fémur entero); luego columna y costillas ---- */
+    "La pelvis": { x: CH, y: 703, w: 300, h: 154, z: 12, svg: svgPelvis },
+    "El fémur": { x: CH - 99, y: 798, w: 78, h: 182, z: 16, svg: svgFemur },
     "La columna": { x: CH, y: 536, w: 66, h: 472, z: 22, svg: svgColumna, ly: 36 },
     "Las costillas": { x: CH, y: 495, w: 322, h: 206, z: 26, svg: svgCostillas, lx: 105 },
     "El cráneo": { x: CH, y: 165, w: 244, h: 288, z: 70, svg: svgCraneo, lx: 95, ly: -45 },
@@ -521,6 +552,11 @@
       emoji: "🌀", cat: "barriga",
       name: { es: "El intestino delgado", ca: "L'intestí prim", en: "The small intestine", cs: "Tenké střevo", fr: "L'intestin grêle" },
       fact: { es: "El intestino delgado es un tubo finito y larguísimo, ¡de unos seis metros!, enrollado como una madeja dentro del grueso: ahí la comida buena pasa a la sangre.", ca: "L'intestí prim és un tub finet i llarguíssim, d'uns sis metres!, enrotllat com un cabdell dins del gros: allà el menjar bo passa a la sang.", en: "The small intestine is a thin, super long tube, about six metres, coiled like a ball of wool inside the large one: that is where the good food passes into the blood.", cs: "Tenké střevo je tenounká, předlouhá trubice, asi šest metrů!, smotaná jako klubíčko uvnitř tlustého: tam přechází dobré jídlo do krve.", fr: "L'intestin grêle est un tube tout fin et très long, environ six mètres, enroulé comme une pelote à l'intérieur du gros : c'est là que la bonne nourriture passe dans le sang." }
+    },
+    {
+      emoji: "💧", cat: "barriga",
+      name: { es: "La vejiga", ca: "La bufeta", en: "The bladder", cs: "Močový měchýř", fr: "La vessie" },
+      fact: { es: "La vejiga es una bolsita elástica que guarda el pipí que fabrican los riñones. Cuando se llena, te avisa: ¡hora de ir al baño!", ca: "La bufeta és una bosseta elàstica que guarda el pipí que fabriquen els ronyons. Quan s'omple, t'avisa: hora d'anar al lavabo!", en: "The bladder is a stretchy little bag that stores the pee your kidneys make. When it fills up, it lets you know: time to go to the toilet!", cs: "Močový měchýř je pružný váček, kde se schovává čůrání, které vyrobí ledviny. Když se naplní, dá ti vědět: je čas jít na záchod!", fr: "La vessie est un petit sac élastique qui garde le pipi fabriqué par les reins. Quand elle est pleine, elle te prévient : c'est l'heure d'aller aux toilettes !" }
     }
   ];
 

@@ -903,6 +903,19 @@ function uiExplore(c) {
   /* los puntos crecen con una transición de .15 s: si midiéramos ya, los
      mediríamos a tamaño pequeño y los nombres quedarían mal puestos. Se
      congela la animación un instante para medir con el tamaño definitivo. */
+  /* donde dos cajas se superponen, el dibujo PEQUEÑO va encima del grande:
+     si no, el grande roba el toque del pequeño entero (y visualmente también
+     es lo natural). Los mapas anatómicos ordenan sus capas ellos mismos. */
+  if (!e.tintaClick) {
+    const orden = [...document.querySelectorAll("#mapcanvas .poi")]
+      .map((el, i) => ({ el, area: (e.pois[i].iw || 44) * (e.pois[i].ih || 44) }))
+      .sort((a, b) => b.area - a.area);
+    orden.forEach((o, rango) => { o.el.style.zIndex = 10 + rango; });
+  }
+  /* en los mapas anatómicos los dibujos se superponen a propósito: el toque
+     debe responder a la TINTA de cada dibujo, no a su caja invisible, o el de
+     encima roba los toques de todos los de debajo */
+  cv.classList.toggle("tintaclick", !!e.tintaClick);
   cv.classList.toggle("paisaje", !!M.soloPaisaje);
   cv.classList.add("nofx");
   void cv.offsetWidth;

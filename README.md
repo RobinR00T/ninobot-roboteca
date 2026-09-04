@@ -986,3 +986,33 @@ dibujo corregidos y reverificados uno a uno en la ronda 2):
   de iconos fuera de los anatómicos, consola limpia, 92 ficheros compilando.
 - Nota de proceso: el corrector nocturno se reinició 6 veces por el tamaño del
   encargo; el trabajo aterrizaba en disco y el intento final lo cerró todo.
+
+## v4.8 (4-9-2026, 13:55): todo se puede tocar, el abdomen como la lámina, y la vejiga
+
+Queja de Daniel con lámina educativa de referencia: no se podían seleccionar
+los riñones ni el páncreas (ni la mayoría de los huesos). La causa era de motor:
+los botones eran RECTANGULOS invisibles y donde dos se superponen el de encima
+robaba el toque entero (medido: 6 de 26 puntos del cuerpo no respondían en el
+centro de su dibujo).
+
+- **Toque por tinta** (ex.tintaClick, cuerpo): el toque lo captura la forma
+  pintada del dibujo, no su caja. Con ello respondieron 24 de 26 al instante,
+  todos los huesos incluidos (la columna se toca hasta entre las costillas).
+- **Abdomen recolocado a la manera de la lámina**: riñones como par visible
+  flanqueando la línea media por delante del colon, páncreas entero y visible
+  bajo el estómago (cabeza gruesa al duodeno), vesícula VERDE de verdad colgando
+  del hígado, delgado en su ventana.
+- **🆕 La vejiga**: órgano nuevo bajo los intestinos, con uréteres, ficha en los
+  5 idiomas ("guarda el pipí hasta que toca ir al baño") y toque verificado.
+- **Motor, todos los mapas**: donde dos cajas se superponen, el dibujo pequeño
+  queda siempre por encima del grande (evita robos de toque futuros).
+- **PRUEBA DEL DEDO, nueva verificación obligatoria**: muestrear la tinta de
+  cada dibujo y simular el toque (elementFromPoint) en el DOM real. Resultado
+  en el juego compilado: los 27 puntos del cuerpo responden (mínimo la columna
+  66%, natural por ir tras las costillas; vejiga 100%, ficha abierta con clic
+  real). Pasada también a los otros 20 mapas: limpios (7 sospechosos resultaron
+  artefactos del banco de pruebas, verificado centrando el mapa).
+- Regresión: 231 tema×modo sin errores, 0 etiquetas sobre dibujos, mínimo 30 px,
+  consola limpia, 92 ficheros compilando.
+- Lección de método (en memoria): verificar LO QUE HACE EL USUARIO (el toque),
+  no solo lo que se ve; y a la 3a iteración sobre lo mismo, parar y preguntar.

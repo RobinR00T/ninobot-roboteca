@@ -429,3 +429,10 @@ h2 { font-size: 1.25rem; margin: 6px 0 10px; }
 
 /* con lupa el mapa no cabe a lo alto: se recorre también en vertical */
 .mapscroll.conlupa { overflow-y: auto; }
+
+/* toque por tinta: el botón deja pasar el toque y solo lo capturan las formas
+   pintadas del dibujo (y el nombre); así un dibujo no roba el toque del vecino */
+.mapcanvas.tintaclick .poi { pointer-events: none; }
+.mapcanvas.tintaclick .poi .plabel, .mapcanvas.tintaclick .poi .pemoji { pointer-events: auto; }
+.mapcanvas.tintaclick .poi .picon svg { pointer-events: none; }
+.mapcanvas.tintaclick .poi .picon svg * { pointer-events: auto; }

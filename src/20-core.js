@@ -12,7 +12,7 @@ const LANGS = {
   fr: { flag: "🇫🇷", code: "fr-FR", label: "Français" }
 };
 
-const APP_VERSION = "4.7";
+const APP_VERSION = "4.8";
 const STORE_KEY = "ninobot-roboteca-v1";
 
 const DEFAULTS = {
