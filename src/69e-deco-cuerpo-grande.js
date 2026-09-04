@@ -43,7 +43,7 @@
 
   ex.deco = function (e) {
     const W = e.width || 2600;
-    const libre = libreCon(cajas(e, 1.15, 16));
+    const libre = libreCon(cajas(e, (e.poikMax || 1.15), 16));
     const SUELO = 1012;      /* donde empieza el suelo */
     const RIEL = 700;        /* la moldura que parte la pared */
     /* los centros de las dos siluetas se leen de los propios puntos:

@@ -410,7 +410,7 @@ const LANGS = {
   fr: { flag: "🇫🇷", code: "fr-FR", label: "Français" }
 };
 
-const APP_VERSION = "4.6";
+const APP_VERSION = "4.7";
 const STORE_KEY = "ninobot-roboteca-v1";
 
 const DEFAULTS = {
@@ -9838,233 +9838,457 @@ THEMES.increibles.content.explore.deco = function (e) {
 "use strict";
 
 (function () {
-  const bb = (inner, vb) => `<svg viewBox="${vb || "0 0 100 100"}" width="100%" height="100%">${inner}</svg>`;
+  const bb = (inner, vb) => `<svg viewBox="${vb}" width="100%" height="100%">${inner}</svg>`;
   const ex = THEMES.cuerpo.content.explore;
 
   ex.width = 2600;
-  ex.poikMax = 1.15; /* los órganos no se inflan: proporción fiel con el cuerpo */
+  ex.poikMax = 1;
+  ex.sinSuelo = true;
+  ex.kMin = 0.5;
+  ex.vista0 = 0.1;
 
   const CO = 560;    /* cuerpo de los ÓRGANOS */
   const CH = 1480;   /* cuerpo de los HUESOS */
 
   ex.cats.forEach((c, i) => { c.x = i < 3 ? 250 : 1900; });
-  ex.cats.splice(3, 0, { id: "huesos", emoji: "🦴", x: 1170, name: { es: "Los huesos", ca: "Els ossos", en: "The bones", cs: "Kosti", fr: "Les os" } });
-
-  const POS = {
-    "🧠": [CO, 100], "👀": [CO, 208], "👂": [CO + 142, 215], "🦷": [CO, 282],
-    "🫁": [CO - 25, 435], "❤️": [CO + 100, 455], "🦴rib": null,
-    "🍲": [CO + 80, 562], "➰": [CO, 850], "🫘": [CO - 5, 742],
-    "💪": [CO - 248, 468], "🦴": [CH - 248, 505], "🩸": [2110, 360], "🖐️": [2350, 368], "🧬": [2230, 550]
-  };
-
-  const ICONS = {
-    "🧠": { w: 130, h: 105, svg: bb(`
-      <defs><radialGradient id="cBr" cx="40%" cy="35%"><stop offset="0%" stop-color="#f8bbd0"/><stop offset="100%" stop-color="#e57ba0"/></radialGradient></defs>
-      <path d="M22 62 Q8 54 12 40 Q6 28 20 22 Q24 10 40 12 Q50 4 60 12 Q76 10 80 24 Q92 30 86 42 Q92 54 78 62 Q70 72 54 68 Q36 74 22 62 Z" fill="url(#cBr)" stroke="#c2557d" stroke-width="2.4"/>
-      <path d="M50 12 Q48 40 50 68 M28 26 Q40 34 34 48 M70 24 Q58 34 66 48 M20 44 Q32 44 30 56 M80 44 Q68 46 72 58" stroke="#c2557d" stroke-width="2.4" fill="none" stroke-linecap="round"/>`, "0 0 100 80") },
-
-    "👀": { w: 100, h: 50, svg: bb(`
-      <ellipse cx="26" cy="24" rx="22" ry="16" fill="#fff" stroke="#7a5a48" stroke-width="2"/>
-      <ellipse cx="74" cy="24" rx="22" ry="16" fill="#fff" stroke="#7a5a48" stroke-width="2"/>
-      <circle cx="28" cy="24" r="8" fill="#5a8bc4"/><circle cx="28" cy="24" r="3.6" fill="#161616"/><circle cx="30" cy="22" r="1.4" fill="#fff"/>
-      <circle cx="76" cy="24" r="8" fill="#5a8bc4"/><circle cx="76" cy="24" r="3.6" fill="#161616"/><circle cx="78" cy="22" r="1.4" fill="#fff"/>`, "0 0 100 48") },
-
-    "👂": { w: 60, h: 84, svg: bb(`
-      <path d="M30 34 Q26 8 52 8 Q78 10 74 40 Q70 62 54 74 Q40 84 34 72 Q30 64 40 60 Q52 56 52 44 Q52 32 42 34 Q34 36 34 44" fill="#f3c39e" stroke="#c98d64" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>`, "22 4 60 84") },
-
-    "🦷": { w: 90, h: 52, svg: bb(`
-      <path d="M6 30 Q50 6 94 30 L94 44 Q50 24 6 44 Z" fill="#e8938c"/>
-      ${[14, 30, 46, 62, 78].map(x => `<rect x="${x}" y="34" width="13" height="18" rx="5" fill="#fff" stroke="#cfd4da" stroke-width="1.4"/>`).join("")}`, "0 0 100 58") },
-
-    "❤️": { w: 74, h: 77, svg: bb(`
-      <defs><radialGradient id="cCo" cx="42%" cy="38%"><stop offset="0%" stop-color="#f36c6c"/><stop offset="100%" stop-color="#b71c1c"/></radialGradient></defs>
-      <rect x="42" y="4" width="14" height="16" rx="6" fill="#7ba7d9"/>
-      <rect x="58" y="8" width="12" height="14" rx="5" fill="#d97b7b" transform="rotate(24 64 15)"/>
-      <path d="M50 26 Q30 10 18 26 Q8 42 22 62 Q34 80 50 90 Q70 76 80 58 Q90 40 78 26 Q66 14 50 26 Z" fill="url(#cCo)"/>
-      <path d="M38 34 Q48 44 44 60" stroke="#7f1414" stroke-width="3" fill="none" stroke-linecap="round"/>
-      <path d="M30 40 Q26 50 32 58" stroke="#e89a9a" stroke-width="2.4" fill="none" stroke-linecap="round"/>`, "6 2 88 92") },
-
-    "🫁": { w: 92, h: 99, svg: bb(`
-      <rect x="46" y="4" width="8" height="26" rx="4" fill="#e8c8b0"/>
-      <path d="M46 24 Q36 26 34 34 M54 24 Q64 26 66 34" stroke="#e8c8b0" stroke-width="7" fill="none" stroke-linecap="round"/>
-      <path d="M40 32 Q16 40 12 66 Q10 86 26 88 Q42 88 44 68 L44 38 Z" fill="#f0958f" stroke="#c9645e" stroke-width="2.4"/>
-      <path d="M60 32 Q84 40 88 66 Q90 86 74 88 Q58 88 56 68 L56 38 Z" fill="#f0958f" stroke="#c9645e" stroke-width="2.4"/>
-      <path d="M24 52 Q32 56 38 52 M62 52 Q68 56 76 52" stroke="#c9645e" stroke-width="2" fill="none"/>`, "10 2 82 88") },
-
-    "🍲": { w: 62, h: 75, svg: bb(`
-      <path d="M40 6 Q38 20 44 28 Q70 30 80 48 Q88 66 72 80 Q54 92 36 82 Q18 72 22 52 Q26 36 44 28" fill="none"/>
-      <path d="M42 4 L54 8 Q48 20 52 28 Q78 32 84 54 Q88 74 68 84 Q46 92 30 78 Q16 64 26 46 Q32 36 44 30 Q40 18 42 4 Z" fill="#f2a08c" stroke="#c86a54" stroke-width="2.6"/>
-      <path d="M36 52 Q48 44 62 52 M34 64 Q48 56 66 64" stroke="#c86a54" stroke-width="2.4" fill="none" stroke-linecap="round"/>`, "14 2 76 92") },
-
-    "➰": { w: 92, h: 92, svg: bb(`
-      <path d="M14 22 Q50 10 86 22 Q94 34 84 40 Q56 30 20 40 Q6 34 14 22 Z" fill="#e8a58c"/>
-      <path d="M16 44 Q16 58 30 58 Q44 58 44 48 Q44 40 56 40 Q68 40 68 52 Q68 64 54 64 Q40 64 40 74 Q40 84 56 84 Q74 84 80 70" stroke="#d97f60" stroke-width="13" fill="none" stroke-linecap="round"/>
-      <path d="M16 44 Q16 58 30 58 Q44 58 44 48 Q44 40 56 40 Q68 40 68 52 Q68 64 54 64 Q40 64 40 74 Q40 84 56 84 Q74 84 80 70" stroke="#f2b096" stroke-width="7" fill="none" stroke-linecap="round"/>`, "5 8 92 92") },
-
-    "🫘": { w: 62, h: 60, svg: bb(`
-      <path d="M34 12 Q12 16 12 40 Q12 64 32 66 Q44 66 44 54 Q34 50 34 40 Q34 28 44 26 Q44 14 34 12 Z" fill="#a34f52" stroke="#7c3336" stroke-width="2.4"/>
-      <path d="M66 12 Q88 16 88 40 Q88 64 68 66 Q56 66 56 54 Q66 50 66 40 Q66 28 56 26 Q56 14 66 12 Z" fill="#a34f52" stroke="#7c3336" stroke-width="2.4"/>
-      <rect x="46" y="66" width="3.4" height="20" rx="1.7" fill="#e0c060"/><rect x="52" y="66" width="3.4" height="20" rx="1.7" fill="#e0c060"/>`, "10 10 80 78") },
-
-    "💪": { w: 84, h: 66, svg: bb(`
-      <path d="M12 70 L44 70 Q44 48 30 42 Q40 22 62 22 L84 26 Q92 30 88 40 L64 38 Q56 40 58 48 Q80 52 84 68 Q86 82 70 84 L20 84 Q10 80 12 70 Z" fill="#e8956d" stroke="#b56542" stroke-width="2.6"/>
-      <path d="M34 62 Q46 52 58 60" stroke="#b56542" stroke-width="3" fill="none" stroke-linecap="round"/>`, "8 20 86 68") },
-
-    "🦴": { w: 56, h: 108, svg: bb(`
-      <path d="M32 20 Q32 6 42 6 Q52 6 52 16 Q62 16 62 26 Q62 36 50 34 L46 66 Q58 68 56 78 Q54 88 44 86 Q44 96 34 94 Q24 92 28 82 Q18 80 20 70 Q22 62 34 64 L38 34 Q26 36 26 26 Q26 20 32 20 Z" fill="#f5efe4" stroke="#c9bfa8" stroke-width="2.4"/>`, "16 3 50 96") },
-
-    "🩸": { w: 60, h: 87, svg: bb(`
-      <path d="M50 6 Q78 44 78 62 Q78 88 50 88 Q22 88 22 62 Q22 44 50 6 Z" fill="#d63a3a" stroke="#9e1f1f" stroke-width="2.6"/>
-      <circle cx="40" cy="62" r="7" fill="#f08585"/><circle cx="58" cy="70" r="5.4" fill="#f08585"/><circle cx="56" cy="52" r="4.6" fill="#fff" opacity=".85"/>`, "20 4 60 87") },
-
-    "🖐️": { w: 84, h: 70, svg: bb(`
-      <rect x="10" y="20" width="80" height="26" rx="8" fill="#f3c39e"/>
-      <rect x="10" y="46" width="80" height="16" rx="6" fill="#e8938c"/>
-      <rect x="10" y="62" width="80" height="14" rx="6" fill="#f0d060"/>
-      <path d="M30 20 Q30 8 38 8 Q44 8 44 18 M58 20 Q58 10 66 10 Q72 10 72 18" stroke="#5d4037" stroke-width="3.4" fill="none" stroke-linecap="round"/>`, "8 4 84 78") },
-
-    "🧬": { w: 58, h: 107, svg: bb(`
-      <path d="M28 6 Q28 30 50 40 Q72 50 72 74 M72 6 Q72 30 50 40 Q28 50 28 74 M28 74 Q28 88 36 94 M72 74 Q72 88 64 94" stroke="#7e57c2" stroke-width="5" fill="none" stroke-linecap="round"/>
-      ${[14, 26, 54, 66, 80].map(y => `<line x1="34" y1="${y}" x2="66" y2="${y}" stroke="#4dd0e1" stroke-width="4" stroke-linecap="round"/>`).join("")}`, "24 2 52 96") }
-  };
-
-  ICONS["🦴rib"] = null;
-
-  ex.pois.forEach(p => {
-    const key = p.emoji === "🦴" && p.cat === "pecho" ? "🦴rib" : p.emoji;
-    const pos = POS[p.emoji === "🦴" && p.cat === "pecho" ? "🦴rib" : p.emoji];
-    if (pos) { p.x = pos[0]; p.y = pos[1]; }
-    const ic = ICONS[key];
-    if (ic) { p.svg = ic.svg; p.iw = ic.w; p.ih = ic.h; }
-  });
-  const rib = ex.pois.find(p => p.cat === "pecho" && p.emoji === "🦴");
-  if (rib) {
-    rib.cat = "huesos";
-    rib.x = CH; rib.y = 470;
-    rib.iw = 100; rib.ih = 116;
-    rib.svg = bb(`
-      <line x1="50" y1="2" x2="50" y2="98" stroke="#e8dfd0" stroke-width="6"/>
-      ${[10, 24, 38, 52, 66].map(y => `<path d="M50 ${y} Q16 ${y + 3} 12 ${y + 14} Q11 ${y + 20} 20 ${y + 20} Q42 ${y + 16} 50 ${y + 9} M50 ${y} Q84 ${y + 3} 88 ${y + 14} Q89 ${y + 20} 80 ${y + 20} Q58 ${y + 16} 50 ${y + 9}" stroke="#e8dfd0" stroke-width="5" fill="none" stroke-linecap="round"/>`).join("")}`, "7 0 86 100");
+  if (!ex.cats.some(c => c.id === "huesos")) {
+    ex.cats.splice(3, 0, { id: "huesos", emoji: "🦴", x: 1170, name: { es: "Los huesos", ca: "Els ossos", en: "The bones", cs: "Kosti", fr: "Les os" } });
   }
 
-  const gordo = ex.pois.find(p => p.emoji === "➰");
-  if (gordo) {
-    gordo.name = { es: "El intestino grueso", ca: "L'intestí gros", en: "The large intestine", cs: "Tlusté střevo", fr: "Le gros intestin" };
-    gordo.fact = { es: "El intestino grueso es el tubo ancho del final: recoge lo que no se aprovecha y absorbe el agua. ¡Mide un metro y medio!", ca: "L'intestí gros és el tub ample del final: recull el que no s'aprofita i absorbeix l'aigua. Fa un metre i mig!", en: "The large intestine is the wide tube at the end: it collects what is not needed and absorbs the water. It is one and a half metres long!", cs: "Tlusté střevo je široká trubice na konci: sbírá, co tělo nepotřebuje, a vstřebává vodu. Měří metr a půl!", fr: "Le gros intestin est le gros tube de la fin : il ramasse ce qui ne sert plus et absorbe l'eau. Il mesure un mètre et demi !" };
-    gordo.svg = bb(`
-      <path d="M22 82 L22 34 Q22 16 40 16 L64 16 Q82 16 82 34 L82 78" fill="none" stroke="#c98a6b" stroke-width="15" stroke-linecap="round"/>
-      <path d="M22 82 L22 34 Q22 16 40 16 L64 16 Q82 16 82 34 L82 78" fill="none" stroke="#e8ab8c" stroke-width="8" stroke-linecap="round"/>
-      ${[[22, 66], [22, 48], [28, 22], [52, 14], [76, 22], [82, 44], [82, 62]].map(pt => `<line x1="${pt[0] - 7}" y1="${pt[1]}" x2="${pt[0] + 7}" y2="${pt[1]}" stroke="#a96a4e" stroke-width="3"/>`).join("")}
-      <path d="M82 78 Q82 92 70 92" fill="none" stroke="#c98a6b" stroke-width="13" stroke-linecap="round"/>`, "6 6 92 92");
-    gordo.iw = 92; gordo.ih = 92;
-  }
+  const HUE = "#f5efe4", HUEB = "#c9bfa8", HUES = "#e4dac4";
+  const HUECO = "#b9ab8e";
+  const espejo = (an, s) => `<g transform="translate(${an} 0) scale(-1 1)">${s}</g>`;
 
-  const huesosPoi = ex.pois.find(p => p.name && p.name.es === "Los huesos");
-  if (huesosPoi) huesosPoi.cat = "huesos";
 
-  const HUESOS_NUEVOS = [
-    { emoji: "💀", cat: "huesos", x: CH, y: 152, iw: 92, ih: 103,
-      svg: bb(`
-        <defs><radialGradient id="cCra" cx="42%" cy="36%"><stop offset="0%" stop-color="#faf4e6"/><stop offset="100%" stop-color="#d8ccb4"/></radialGradient></defs>
-        <path d="M50 6 Q86 6 88 44 Q88 62 76 70 L76 84 Q76 92 68 92 L32 92 Q24 92 24 84 L24 70 Q12 62 12 44 Q14 6 50 6 Z" fill="url(#cCra)" stroke="#b5a888" stroke-width="2.6"/>
-        <ellipse cx="36" cy="46" rx="9" ry="11" fill="#6b6152"/>
-        <ellipse cx="64" cy="46" rx="9" ry="11" fill="#6b6152"/>
-        <path d="M50 58 L44 68 L56 68 Z" fill="#6b6152"/>
-        <path d="M36 80 L36 90 M46 80 L46 92 M56 80 L56 92 M66 80 L66 90" stroke="#b5a888" stroke-width="3"/>`, "9 3 82 92"),
-      name: { es: "El cráneo", ca: "El crani", en: "The skull", cs: "Lebka", fr: "Le crâne" },
-      fact: { es: "El cráneo es el casco de hueso que protege tu cerebro. ¡Naciste con casco de serie!", ca: "El crani és el casc d'os que protegeix el teu cervell. Vas néixer amb casc de sèrie!", en: "The skull is the bone helmet that protects your brain. You were born with a built-in helmet!", cs: "Lebka je kostěná helma, která chrání tvůj mozek. Narodila ses s helmou v základní výbavě!", fr: "Le crâne est le casque en os qui protège ton cerveau. Tu es née avec un casque de série !" } },
-    { emoji: "🪜", cat: "huesos", x: CH, y: 600, iw: 55, ih: 150,
-      svg: bb(`
-        <line x1="50" y1="4" x2="50" y2="96" stroke="#e8dfd0" stroke-width="8"/>
-        ${[10, 24, 38, 52, 66, 80].map(y => `<rect x="34" y="${y}" width="32" height="9" rx="4.5" fill="#f5efe4" stroke="#c9bfa8" stroke-width="1.8"/>`).join("")}
-        <circle cx="50" cy="96" r="6" fill="#f5efe4" stroke="#c9bfa8" stroke-width="2"/>`, "31 2 38 103"),
-      name: { es: "La columna", ca: "La columna", en: "The spine", cs: "Páteř", fr: "La colonne" },
-      fact: { es: "La columna es una torre de 33 huesitos llamados vértebras: te mantiene de pie, te deja doblarte y protege los nervios.", ca: "La columna és una torre de 33 ossets anomenats vèrtebres: et manté dret, et deixa doblegar-te i protegeix els nervis.", en: "The spine is a tower of 33 little bones called vertebrae: it keeps you upright, lets you bend and protects your nerves.", cs: "Páteř je věž z 33 kůstek zvaných obratle: drží tě zpříma, umožňuje ti ohýbat se a chrání nervy.", fr: "La colonne est une tour de 33 petits os appelés vertèbres : elle te tient debout, te laisse te plier et protège les nerfs." } },
-    { emoji: "🦴", cat: "huesos", x: CH + 248, y: 445, iw: 56, ih: 140,
-      svg: bb(`
-        <path d="M50 8 Q38 2 34 10 Q30 18 40 22 L42 78 Q32 82 36 90 Q40 98 50 92 Q60 98 64 90 Q68 82 58 78 L60 22 Q70 18 66 10 Q62 2 50 8 Z" fill="#f5efe4" stroke="#c9bfa8" stroke-width="2.6"/>`, "30 0 40 100"),
-      name: { es: "El húmero", ca: "L'húmer", en: "The humerus", cs: "Pažní kost", fr: "L'humérus" },
-      fact: { es: "El húmero va del hombro al codo. Cuando te das un golpe en el codo y notas un cosquilleo eléctrico, el travieso es un nervio que pasa junto a él.", ca: "L'húmer va de l'espatlla al colze. Quan et dones un cop al colze i notes un pessigolleig elèctric, l'entremaliat és un nervi que hi passa a la vora.", en: "The humerus goes from your shoulder to your elbow. When you bump your elbow and feel an electric tickle, the prankster is a nerve running right next to it.", cs: "Pažní kost vede od ramene k lokti. Když se uhodíš do lokte a ucítíš elektrické brnění, ten šibal je nerv, který vede hned vedle ní.", fr: "L'humérus va de l'épaule au coude. Quand tu te cognes le coude et que ça picote comme l'électricité, le farceur est un nerf qui passe juste à côté." } },
-    { emoji: "🦴", cat: "huesos", x: CH + 248, y: 615, iw: 58, ih: 96,
-      svg: bb(`
-        <path d="M36 8 Q28 6 28 14 L32 86 Q32 94 39 93 Q46 92 44 84 L42 16 Q42 10 36 8 Z" fill="#f5efe4" stroke="#c9bfa8" stroke-width="2.6"/>
-        <path d="M64 8 Q72 6 72 14 L68 86 Q68 94 61 93 Q54 92 56 84 L58 16 Q58 10 64 8 Z" fill="#f5efe4" stroke="#c9bfa8" stroke-width="2.6"/>`, "21 2 58 96"),
-      name: { es: "El cúbito y el radio", ca: "El cúbit i el radi", en: "The ulna and the radius", cs: "Loketní a vřetenní kost", fr: "Le cubitus et le radius" },
-      fact: { es: "El antebrazo tiene dos huesos, el cúbito y el radio, que se cruzan como bailarines cada vez que giras la muñeca.", ca: "L'avantbraç té dos ossos, el cúbit i el radi, que es creuen com ballarins cada cop que gires el canell.", en: "Your forearm has two bones, the ulna and the radius, and they cross like dancers every time you turn your wrist.", cs: "Předloktí má dvě kosti, loketní a vřetenní, a ty se kříží jako tanečníci pokaždé, když otočíš zápěstím.", fr: "L'avant-bras a deux os, le cubitus et le radius, qui se croisent comme des danseurs chaque fois que tu tournes le poignet." } },
-    { emoji: "🦴", cat: "huesos", x: CH, y: 830, iw: 88, ih: 91,
-      svg: bb(`
-        <path d="M50 12 Q88 8 90 34 Q90 52 70 60 L60 82 Q56 90 50 90 Q44 90 40 82 L30 60 Q10 52 10 34 Q12 8 50 12 Z" fill="#f5efe4" stroke="#c9bfa8" stroke-width="2.6"/>
-        <circle cx="32" cy="38" r="9" fill="#d8ccb4"/><circle cx="68" cy="38" r="9" fill="#d8ccb4"/>`, "7 5 86 89"),
-      name: { es: "La pelvis", ca: "La pelvis", en: "The pelvis", cs: "Pánev", fr: "Le bassin" },
-      fact: { es: "La pelvis es un cuenco de hueso que une el tronco con las piernas y sujeta la barriga por abajo.", ca: "La pelvis és un bol d'os que uneix el tronc amb les cames i aguanta la panxa per sota.", en: "The pelvis is a bowl of bone that joins your body to your legs and holds your tummy from below.", cs: "Pánev je kostěná mísa, která spojuje trup s nohama a zespodu drží bříško.", fr: "Le bassin est un bol en os qui relie le tronc aux jambes et soutient le ventre par en dessous." } },
-    { emoji: "🦴", cat: "huesos", x: CH - 105, y: 925, iw: 68, ih: 121,
-      svg: bb(`
-        <circle cx="30" cy="14" r="11" fill="#f5efe4" stroke="#c9bfa8" stroke-width="2.6"/>
-        <path d="M38 20 Q50 12 54 20 L50 78 Q60 82 56 90 Q50 97 44 91 Q36 95 34 87 Q33 81 41 78 L42 26 Q38 24 38 20 Z" fill="#f5efe4" stroke="#c9bfa8" stroke-width="2.6"/>`, "15 0 56 100"),
-      name: { es: "El fémur", ca: "El fèmur", en: "The femur", cs: "Stehenní kost", fr: "Le fémur" },
-      fact: { es: "El fémur, en el muslo, es el hueso más largo y fuerte de tu cuerpo: aguanta más peso que el hormigón.", ca: "El fèmur, a la cuixa, és l'os més llarg i fort del teu cos: aguanta més pes que el formigó.", en: "The femur, in your thigh, is the longest and strongest bone in your body: it can take more weight than concrete.", cs: "Stehenní kost je nejdelší a nejsilnější kost tvého těla: unese víc váhy než beton.", fr: "Le fémur, dans la cuisse, est l'os le plus long et le plus fort de ton corps : il supporte plus de poids que le béton." } },
-    { emoji: "🦴", cat: "huesos", x: CH + 105, y: 1004, iw: 66, ih: 111,
-      svg: bb(`
-        <path d="M34 6 Q24 4 24 14 L30 84 Q30 94 39 93 Q48 92 46 82 L42 16 Q42 8 34 6 Z" fill="#f5efe4" stroke="#c9bfa8" stroke-width="2.6"/>
-        <path d="M66 10 Q74 8 74 16 L70 86 Q70 94 63 93 Q57 92 58 84 L60 18 Q60 12 66 10 Z" fill="#f5efe4" stroke="#c9bfa8" stroke-width="2.2"/>`, "21 3 56 94"),
-      name: { es: "La tibia y el peroné", ca: "La tíbia i el peroné", en: "The tibia and the fibula", cs: "Holenní a lýtková kost", fr: "Le tibia et le péroné" },
-      fact: { es: "La tibia es tu espinilla y el peroné es su compañero delgadito. Juntos te llevan andando a todas partes.", ca: "La tíbia és la teva canyella i el peroné és el seu company primet. Junts et porten caminant a tot arreu.", en: "The tibia is your shin and the fibula is its slim partner. Together they walk you everywhere.", cs: "Holenní kost je tvoje holeň a lýtková kost je její štíhlý parťák. Společně tě všude odnesou.", fr: "Le tibia est ton tibia sous le genou et le péroné est son copain tout fin. Ensemble, ils te portent partout." } }
-  ];
-  HUESOS_NUEVOS.forEach(o => {
-    ex.pois.push({ cat: o.cat, emoji: o.emoji, x: o.x, y: o.y, svg: o.svg, iw: o.iw, ih: o.ih, name: o.name, fact: o.fact });
-  });
+  const svgCerebro = bb(`
+    <defs><linearGradient id="cuaCerebroG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f9c4d3"/><stop offset="100%" stop-color="#df7ea1"/></linearGradient></defs>
+    <path d="M100 100 L124 100 L124 118 C126 128 118 132 112 130 C106 132 98 128 100 118 Z" fill="#d1849c" stroke="#b04a72" stroke-width="3"/>
+    <path d="M112 10 Q86 2 62 16 Q34 24 26 40 Q6 52 13 70 Q6 90 26 99 Q38 122 63 118 Q86 130 112 124 Z" fill="url(#cuaCerebroG)" stroke="#c2557d" stroke-width="3.2"/>
+    <path d="M112 10 Q138 2 162 16 Q190 24 198 40 Q218 52 211 70 Q218 90 198 99 Q186 122 161 118 Q138 130 112 124 Z" fill="url(#cuaCerebroG)" stroke="#c2557d" stroke-width="3.2"/>
+    <g stroke="#c2557d" stroke-width="3" fill="none" stroke-linecap="round" opacity=".78">
+      <path d="M40 44 Q58 38 62 52 Q66 68 48 72 Q32 78 44 92"/>
+      <path d="M74 26 Q64 46 80 56 Q96 66 82 80 Q70 94 86 106"/>
+      <path d="M22 62 Q34 60 36 72"/>
+      <path d="M184 44 Q166 38 162 52 Q158 68 176 72 Q192 78 180 92"/>
+      <path d="M150 26 Q160 46 144 56 Q128 66 142 80 Q154 94 138 106"/>
+      <path d="M202 62 Q190 60 188 72"/>
+      <path d="M112 12 L112 124" stroke-width="3.4"/>
+    </g>`, "0 0 224 132");
+
+  const ojo = (cx) => `
+    <path d="M${cx - 32} 32 Q${cx} 6 ${cx + 32} 32 Q${cx} 58 ${cx - 32} 32 Z" fill="#fff" stroke="#8a6a52" stroke-width="2.6"/>
+    <circle cx="${cx}" cy="32" r="14" fill="#7b4a26"/>
+    <circle cx="${cx}" cy="32" r="6.4" fill="#1d140d"/>
+    <circle cx="${cx - 5}" cy="26" r="3.6" fill="#fff" opacity=".92"/>
+    <path d="M${cx - 32} 32 Q${cx} 6 ${cx + 32} 32" fill="none" stroke="#6b4a34" stroke-width="4.4" stroke-linecap="round"/>
+    <path d="M${cx - 22} 18 l-5 -7 M${cx} 9 l0 -7 M${cx + 22} 18 l5 -7" stroke="#6b4a34" stroke-width="3" stroke-linecap="round"/>`;
+  const svgOjos = bb(`
+    ${ojo(40)}${ojo(110)}
+    <path d="M72 32 l6 -5 l0 10 Z" fill="#f0a8a8"/><path d="M78 32 l-6 -5 l0 10 Z" fill="#f0a8a8"/>`, "0 0 150 64");
+
+  const svgOido = bb(`
+    <path d="M23 3 C36 3 43 14 42 28 C41 44 33 56 24 60 C17 63 11 59 12 52 C13 45 20 42 21 34 C22 26 17 22 12 24 C7 26 5 32 6 38 C2 30 5 13 12 8 C15 5 19 3 23 3 Z" fill="#f6c9a6" stroke="#c98d64" stroke-width="3"/>
+    <path d="M22 20 C28 24 28 34 23 42 C20 47 15 49 13 46 C11 42 15 38 16 32 C17 26 17 21 22 20 Z" fill="#e2ab83"/>
+    <path d="M27 12 C34 16 36 24 34 32" fill="none" stroke="#c98d64" stroke-width="2.6" stroke-linecap="round"/>`, "0 0 46 64");
+
+  const dienteFila = (base, h, arr) => arr.map(x => {
+    const dy = Math.round(5 * (1 - Math.pow((x - 52) / 50, 2)));
+    return `<rect x="${x}" y="${base + dy}" width="12" height="${h}" rx="4" fill="#fffdf7" stroke="#dcd6c8" stroke-width="1.4"/>`;
+  }).join("");
+  const svgDientes = bb(`
+    <path d="M6 12 Q58 -5 110 12 L110 42 Q58 60 6 42 Z" fill="#7d2f2f"/>
+    <path d="M3 11 Q58 -7 113 11 L113 22 Q58 5 3 22 Z" fill="#e8908c"/>
+    ${dienteFila(15, 15, [10, 24, 38, 52, 66, 80, 94])}
+    <path d="M3 45 Q58 63 113 45 L113 34 Q58 51 3 34 Z" fill="#e0817d"/>
+    ${dienteFila(29, 12, [17, 31, 45, 59, 73, 87])}`, "0 0 116 56");
+
+  const svgPulmones = bb(`
+    <defs><linearGradient id="cuaPulmonG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f8ada4"/><stop offset="100%" stop-color="#dc7b74"/></linearGradient></defs>
+    <path d="M150 2 L150 36" stroke="#e3c7ae" stroke-width="20" stroke-linecap="round"/>
+    <path d="M150 34 L119 60 M150 34 L181 60" stroke="#e3c7ae" stroke-width="14" stroke-linecap="round"/>
+    <path d="M141 9 h18 M141 18 h18 M141 27 h18" stroke="#cbab8f" stroke-width="3.4"/>
+    <path d="M126 30 C102 26 72 42 52 66 C28 94 22 128 30 152 C36 168 60 175 86 170 C112 165 128 149 131 126 C135 100 133 57 126 30 Z" fill="url(#cuaPulmonG)" stroke="#c4635c" stroke-width="3.4"/>
+    <path d="M174 30 C198 26 228 42 248 66 C272 94 278 128 270 152 C264 168 240 175 216 170 C198 166 188 154 191 140 C196 124 214 122 215 106 C216 90 198 84 194 70 C190 54 172 47 174 30 Z" fill="url(#cuaPulmonG)" stroke="#c4635c" stroke-width="3.4"/>
+    <g stroke="#b8574f" stroke-width="3" fill="none" opacity=".7" stroke-linecap="round">
+      <path d="M50 68 C74 96 100 124 122 150"/>
+      <path d="M72 94 C94 92 116 91 130 91"/>
+      <path d="M250 68 C230 96 210 122 196 146"/>
+      <path d="M119 62 C124 74 126 84 127 98"/>
+      <path d="M181 62 C178 70 176 78 176 88"/>
+    </g>`, "0 -9 300 200");
+
+  const svgCorazon = bb(`
+    <defs><linearGradient id="cuaCorazonG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e2564e"/><stop offset="100%" stop-color="#a5211f"/></linearGradient></defs>
+    <path d="M34 28 L34 9" stroke="#5b86c9" stroke-width="13" stroke-linecap="round"/>
+    <path d="M48 30 C45 17 55 10 64 14" fill="none" stroke="#6d9ad8" stroke-width="11" stroke-linecap="round"/>
+    <path d="M58 30 C56 12 78 7 86 20 C90 29 88 38 86 47" fill="none" stroke="#c0392b" stroke-width="12" stroke-linecap="round"/>
+    <path d="M26 44 C22 24 42 16 58 26 C72 14 94 22 92 44 C96 70 84 98 70 119 C50 109 30 74 26 44 Z" fill="url(#cuaCorazonG)" stroke="#7f1414" stroke-width="3"/>
+    <path d="M26 44 C22 24 42 16 58 26 C72 14 94 22 92 44 C74 54 44 54 26 44 Z" fill="#8e2c33" opacity=".75"/>
+    <g stroke="#f2a49e" fill="none" stroke-linecap="round" opacity=".85">
+      <path d="M56 48 C62 70 64 94 68 114" stroke-width="4"/>
+      <path d="M28 48 C46 58 72 56 90 46" stroke-width="3.4"/>
+      <path d="M40 72 C48 78 56 80 62 78" stroke-width="3"/>
+    </g>`, "20 0 76 124");
+
+  const svgHigado = bb(`
+    <defs><linearGradient id="cuaHigadoG" x1="0.2" y1="0" x2="0.8" y2="1">
+      <stop offset="0%" stop-color="#b06054"/><stop offset="100%" stop-color="#7a352c"/></linearGradient></defs>
+    <path d="M12 56 C8 26 34 8 70 5 C118 1 168 8 206 20 C226 26 234 36 228 46 C216 58 190 63 160 63 C124 65 96 90 66 98 C36 106 16 84 12 56 Z" fill="url(#cuaHigadoG)" stroke="#54201a" stroke-width="3.4"/>
+    <path d="M162 12 C158 28 157 46 159 62" fill="none" stroke="#54201a" stroke-width="4" opacity=".65"/>
+    <path d="M30 32 C52 18 86 14 118 18" fill="none" stroke="#d6958a" stroke-width="6" opacity=".4" stroke-linecap="round"/>
+    <path d="M52 92 C62 84 74 84 82 90" fill="none" stroke="#3f1712" stroke-width="2.6" opacity=".35"/>
+    <path d="M186 26 C202 30 214 34 222 39" fill="none" stroke="#3f1712" stroke-width="2.6" opacity=".3"/>`, "0 0 234 122");
+
+  const svgVesicula = bb(`
+    <defs><linearGradient id="cuaVesicG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#a9d07b"/><stop offset="100%" stop-color="#5c8436"/></linearGradient></defs>
+    <path d="M27 8 C31 3 39 3 41 9" fill="none" stroke="#5f8a3f" stroke-width="5" stroke-linecap="round"/>
+    <path d="M25 10 C31 18 45 26 45 42 C45 56 36 62 25 62 C14 62 5 56 5 42 C5 26 19 18 25 10 Z" fill="url(#cuaVesicG)" stroke="#40602a" stroke-width="3"/>
+    <ellipse cx="17" cy="41" rx="6" ry="11" fill="#c8e2a8" opacity=".5"/>`, "0 0 50 64");
+
+  const svgPancreas = bb(`
+    <defs><linearGradient id="cuaPancreasG" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#dcaa5e"/><stop offset="100%" stop-color="#f4d99f"/></linearGradient></defs>
+    <path d="M46 40 C76 30 118 19 154 12 C168 9 178 8 183 8 C188 8 188 16 183 17 C158 21 122 29 90 38 C74 42 58 47 48 51 Z" fill="url(#cuaPancreasG)" stroke="#a8802f" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M34 8 C49 10 58 24 54 38 C60 41 61 49 55 53 C47 59 34 62 24 58 C11 53 4 40 8 27 C11 15 22 6 34 8 Z" fill="url(#cuaPancreasG)" stroke="#a8802f" stroke-width="3"/>
+    <path d="M52 44 C86 34 138 22 176 14" fill="none" stroke="#b98f36" stroke-width="3" opacity=".7"/>
+    <g fill="#c9993f" opacity=".45">
+      <circle cx="24" cy="34" r="4.6"/><circle cx="38" cy="44" r="4"/><circle cx="36" cy="22" r="3.8"/>
+      <circle cx="82" cy="34" r="3.4"/><circle cx="118" cy="26" r="3.2"/><circle cx="152" cy="18" r="2.8"/>
+    </g>`, "0 0 190 64");
+
+  const rinon = `
+    <path d="M30 3 C13 6 3 25 4 44 C5 66 17 74 36 74 C49 74 57 66 49 60 C38 50 36 33 47 24 C55 17 44 2 30 3 Z" fill="url(#cuaRinonG)" stroke="#5e2427" stroke-width="3.2"/>
+    <path d="M12 22 C8 34 9 48 16 58" fill="none" stroke="#d38b8d" stroke-width="4" opacity=".45"/>
+    <path d="M50 34 C60 34 68 31 76 28" fill="none" stroke="#c0392b" stroke-width="5" stroke-linecap="round"/>
+    <path d="M50 45 C62 47 70 45 78 41" fill="none" stroke="#5b86c9" stroke-width="5" stroke-linecap="round"/>
+    <path d="M51 54 C64 60 74 66 80 76" fill="none" stroke="#e0c060" stroke-width="6" stroke-linecap="round"/>`;
+  const svgRinones = bb(`
+    <defs><linearGradient id="cuaRinonG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#bb6165"/><stop offset="100%" stop-color="#7c3336"/></linearGradient></defs>
+    ${rinon}${espejo(176, rinon)}`, "0 0 176 82");
+
+  const svgEstomago = bb(`
+    <defs><linearGradient id="cuaEstomagoG" x1="0.2" y1="0" x2="0.8" y2="1">
+      <stop offset="0%" stop-color="#f6b49f"/><stop offset="100%" stop-color="#dd8067"/></linearGradient></defs>
+    <path d="M24 2 L24 22" stroke="#e3b4a0" stroke-width="13" stroke-linecap="round"/>
+    <path d="M20 4 C48 -2 92 14 106 46 C120 78 108 116 78 126 C52 134 26 118 20 96 C16 80 26 68 40 62 C52 56 46 40 34 34 C24 28 16 16 20 4 Z" fill="url(#cuaEstomagoG)" stroke="#bb6448" stroke-width="3.4"/>
+    <path d="M22 100 C18 110 14 118 10 126" fill="none" stroke="#dd8067" stroke-width="14" stroke-linecap="round"/>
+    <path d="M22 100 C18 110 14 118 10 126" fill="none" stroke="#f0a68c" stroke-width="6" stroke-linecap="round"/>
+    <g stroke="#bb6448" stroke-width="3" fill="none" opacity=".5" stroke-linecap="round">
+      <path d="M34 74 C50 66 70 68 84 78"/>
+      <path d="M30 92 C48 82 74 84 90 96"/>
+      <path d="M34 110 C52 100 76 104 92 112"/>
+    </g>`, "0 -5 130 148");
+
+  const marcoColon = "M20 112 C20 90 18 62 20 40 C21 26 30 16 44 15 C100 18 210 18 274 15 C288 14 298 24 298 38 C299 62 298 88 296 106 C294 128 262 142 228 136 C206 132 190 140 190 152";
+  const svgGrueso = bb(`
+    <ellipse cx="20" cy="116" rx="21" ry="18" fill="#c07a58"/>
+    <path d="${marcoColon}" fill="none" stroke="#c07a58" stroke-width="26" stroke-linecap="round"/>
+    <path d="M22 130 C18 138 17 146 21 152" fill="none" stroke="#c07a58" stroke-width="9" stroke-linecap="round"/>
+    <ellipse cx="20" cy="116" rx="12" ry="10" fill="#eba97f"/>
+    <path d="${marcoColon}" fill="none" stroke="#eba97f" stroke-width="16" stroke-linecap="round"/>
+    <path d="M22 130 C18 138 17 146 21 152" fill="none" stroke="#eba97f" stroke-width="4" stroke-linecap="round"/>
+    <g stroke="#a5613f" stroke-width="4" opacity=".75" stroke-linecap="round">
+      <path d="M8 48 h24 M8 72 h24 M8 96 h24"/>
+      <path d="M84 5 v22 M124 6 v22 M164 6 v22 M204 6 v22 M244 5 v22"/>
+      <path d="M286 50 h24 M285 74 h24 M284 98 h24"/>
+      <path d="M250 122 l6 17 M218 124 l2 17"/>
+    </g>`, "-5 0 330 170");
+
+  const asas = "M30 14 C72 5 150 6 182 15 C202 22 146 28 86 26 C36 24 22 36 52 42 C98 48 176 40 206 46 C226 51 172 58 116 56 C66 54 32 58 44 68 C62 78 152 72 188 78";
+  const svgDelgado = bb(`
+    <path d="${asas}" fill="none" stroke="#d4788a" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="${asas}" fill="none" stroke="#f4b3bf" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <g stroke="#b95a70" stroke-width="3" opacity=".5" stroke-linecap="round">
+      <path d="M62 9 v10 M108 10 v10 M154 12 v10 M112 22 v10 M60 22 v10 M54 37 v10 M104 42 v10 M158 41 v10 M186 46 v9 M132 50 v9 M78 51 v9 M66 64 v9 M116 68 v9 M162 66 v9"/>
+    </g>`, "0 0 240 96");
+
+  const svgMusculos = bb(`
+    <path d="M12 70 L44 70 Q44 48 30 42 Q40 22 62 22 L84 26 Q92 30 88 40 L64 38 Q56 40 58 48 Q80 52 84 68 Q86 82 70 84 L20 84 Q10 80 12 70 Z" fill="#e8956d" stroke="#b56542" stroke-width="2.6"/>
+    <path d="M34 62 Q46 52 58 60" stroke="#b56542" stroke-width="3" fill="none" stroke-linecap="round"/>`, "8 20 86 68");
+  const svgSangre = bb(`
+    <path d="M50 6 Q78 44 78 62 Q78 88 50 88 Q22 88 22 62 Q22 44 50 6 Z" fill="#d63a3a" stroke="#9e1f1f" stroke-width="2.6"/>
+    <circle cx="40" cy="62" r="7" fill="#f08585"/><circle cx="58" cy="70" r="5.4" fill="#f08585"/><circle cx="56" cy="52" r="4.6" fill="#fff" opacity=".85"/>`, "20 4 60 87");
+  const svgPiel = bb(`
+    <rect x="10" y="20" width="80" height="26" rx="8" fill="#f3c39e"/>
+    <rect x="10" y="46" width="80" height="16" rx="6" fill="#e8938c"/>
+    <rect x="10" y="62" width="80" height="14" rx="6" fill="#f0d060"/>
+    <path d="M30 20 Q30 8 38 8 Q44 8 44 18 M58 20 Q58 10 66 10 Q72 10 72 18" stroke="#5d4037" stroke-width="3.4" fill="none" stroke-linecap="round"/>`, "8 4 84 78");
+  const svgAdn = bb(`
+    <path d="M28 6 Q28 30 50 40 Q72 50 72 74 M72 6 Q72 30 50 40 Q28 50 28 74 M28 74 Q28 88 36 94 M72 74 Q72 88 64 94" stroke="#7e57c2" stroke-width="5" fill="none" stroke-linecap="round"/>
+    ${[14, 26, 54, 66, 80].map(y => `<line x1="34" y1="${y}" x2="66" y2="${y}" stroke="#4dd0e1" stroke-width="4" stroke-linecap="round"/>`).join("")}`, "24 2 52 96");
+  const svgHuesoFicha = bb(`
+    <path d="M32 20 Q32 6 42 6 Q52 6 52 16 Q62 16 62 26 Q62 36 50 34 L46 66 Q58 68 56 78 Q54 88 44 86 Q44 96 34 94 Q24 92 28 82 Q18 80 20 70 Q22 62 34 64 L38 34 Q26 36 26 26 Q26 20 32 20 Z" fill="${HUE}" stroke="${HUEB}" stroke-width="2.4"/>`, "16 3 50 96");
+
+
+  const dienteCra = (y, h, xs) => xs.map(x => `<rect x="${x}" y="${y}" width="11" height="${h}" rx="3.4" fill="#fffdf6" stroke="#d8ceb6" stroke-width="1.4"/>`).join("");
+  const orbita = (cx) => `
+    <ellipse cx="${cx}" cy="94" rx="20" ry="16" fill="${HUECO}"/>
+    <circle cx="${cx + 6}" cy="89" r="4.6" fill="#fdf8ec" opacity=".85"/>`;
+  const svgCraneo = bb(`
+    <defs><linearGradient id="cuaCraneoG" x1="0.3" y1="0" x2="0.7" y2="1">
+      <stop offset="0%" stop-color="#fdf8ec"/><stop offset="100%" stop-color="#ddd0b6"/></linearGradient></defs>
+    <path d="M34 150 C34 158 38 190 44 200 C54 218 76 228 100 228 C124 228 146 218 156 200 C162 190 166 158 166 150 L152 162 C150 182 144 194 134 202 C126 209 114 212 100 212 C86 212 74 209 66 202 C56 194 50 182 48 162 Z" fill="url(#cuaCraneoG)" stroke="#b5a888" stroke-width="3"/>
+    <path d="M100 6 C42 6 6 46 8 98 C9 122 19 143 34 154 L38 176 C42 186 57 192 72 192 L128 192 C143 192 158 186 162 176 L166 154 C181 143 191 122 192 98 C194 46 158 6 100 6 Z" fill="url(#cuaCraneoG)" stroke="#b5a888" stroke-width="3.4"/>
+    ${orbita(62)}${orbita(138)}
+    <path d="M100 122 L94 137 C97 140 103 140 106 137 Z" fill="${HUECO}"/>
+    <g fill="none" stroke="#c9bda0" stroke-width="4.4" stroke-linecap="round">
+      <path d="M26 116 C38 128 50 133 62 135"/>
+      <path d="M174 116 C162 128 150 133 138 135"/>
+      <path d="M100 8 L100 40"/><path d="M50 34 C70 44 130 44 150 34"/>
+    </g>
+    ${dienteCra(164, 16, [64, 77, 90, 103, 116, 129])}
+    ${dienteCra(194, 13, [66, 79, 92, 105, 118, 131])}`, "0 0 200 236");
+
+  const svgColumna = (() => {
+    const filas = [];
+    for (let i = 0; i < 7; i++) filas.push({ h: 12, w: 24 + i * 1.1, p: 0 });
+    for (let i = 0; i < 12; i++) filas.push({ h: 14, w: 30 + i * 0.9, p: 1 });
+    for (let i = 0; i < 5; i++) filas.push({ h: 18.5, w: 40 + i * 1.3, p: 1 });
+    let y = 4, s = "";
+    filas.forEach(f => {
+      const x = 33 - f.w / 2;
+      if (f.p) {
+        s += `<rect x="${(x - 9).toFixed(1)}" y="${(y + f.h * 0.26).toFixed(1)}" width="11" height="${(f.h * 0.46).toFixed(1)}" rx="3" fill="${HUES}" stroke="${HUEB}" stroke-width="1.6"/>`;
+        s += `<rect x="${(x + f.w - 2).toFixed(1)}" y="${(y + f.h * 0.26).toFixed(1)}" width="11" height="${(f.h * 0.46).toFixed(1)}" rx="3" fill="${HUES}" stroke="${HUEB}" stroke-width="1.6"/>`;
+      }
+      s += `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${f.w.toFixed(1)}" height="${f.h}" rx="${(f.h * 0.34).toFixed(1)}" fill="${HUE}" stroke="${HUEB}" stroke-width="2"/>`;
+      y += f.h + 2.4;
+    });
+    s += `<path d="M11 ${y.toFixed(1)} L55 ${y.toFixed(1)} L47 ${(y + 36).toFixed(1)} Q33 ${(y + 48).toFixed(1)} 19 ${(y + 36).toFixed(1)} Z" fill="${HUE}" stroke="${HUEB}" stroke-width="2.2"/>`;
+    s += `<g fill="${HUEB}" opacity=".8"><circle cx="22" cy="${(y + 9).toFixed(1)}" r="3.2"/><circle cx="44" cy="${(y + 9).toFixed(1)}" r="3.2"/><circle cx="24" cy="${(y + 21).toFixed(1)}" r="3"/><circle cx="42" cy="${(y + 21).toFixed(1)}" r="3"/></g>`;
+    s += `<path d="M27 ${(y + 46).toFixed(1)} q6 10 12 0 q0 9 -6 11 q-6 -2 -6 -11 Z" fill="${HUE}" stroke="${HUEB}" stroke-width="2"/>`;
+    return bb(s, "0 0 66 472");
+  })();
+
+  const svgCostillas = (() => {
+    const cx = 161;
+    const dato = (i) => {
+      const y0 = 22 + i * 12.5;                                /* nacimiento atrás */
+      const wm = 60 + i * 9.5;                                 /* lo que se abre */
+      const xe = i < 7 ? 16 + i * 2.5 : 40 + (i - 7) * 20;     /* dónde acaba delante */
+      const ye = i < 7 ? 32 + i * 14 : 132 + (i - 7) * 20;
+      const yl = y0 + (ye - y0) * 0.55;                        /* el punto más ancho */
+      return { y0, wm, yl, xe, ye };
+    };
+    const n1 = (v) => (Math.round(v * 10) / 10);
+    let s = `<g fill="none" stroke="${HUE}" stroke-linecap="round">`;
+    for (let i = 0; i < 10; i++) {
+      const d = dato(i), gr = 9 - i * 0.2;
+      const lado = (sg) => `M${cx + sg * 15} ${d.y0} C${n1(cx + sg * d.wm * 0.55)} ${n1(d.y0 - 3)}, ${n1(cx + sg * d.wm)} ${n1(d.yl - 12)}, ${n1(cx + sg * d.wm)} ${n1(d.yl)} C${n1(cx + sg * d.wm)} ${n1(d.yl + 12)}, ${n1(cx + sg * d.wm * 0.72)} ${n1(d.ye + 7)}, ${n1(cx + sg * d.xe)} ${n1(d.ye)}`;
+      s += `<path d="${lado(-1)}" stroke-width="${n1(gr)}"/><path d="${lado(1)}" stroke-width="${n1(gr)}"/>`;
+    }
+    [0, 1].forEach(j => {
+      const y0 = 150 + j * 14, wm = 112 - j * 16;
+      const lado = (sg) => `M${cx + sg * 15} ${y0} C${n1(cx + sg * wm * 0.6)} ${y0 - 4}, ${cx + sg * wm} ${y0 + 14}, ${n1(cx + sg * (wm - 8))} ${y0 + 32}`;
+      s += `<path d="${lado(-1)}" stroke-width="6.6"/><path d="${lado(1)}" stroke-width="6.6"/>`;
+    });
+    s += `</g><g fill="none" stroke="#e7e0cd" stroke-linecap="round" stroke-width="7">`;
+    for (let i = 0; i < 7; i++) {
+      const d = dato(i);
+      s += `<path d="M${cx - d.xe} ${n1(d.ye)} C${n1(cx - d.xe + 6)} ${n1(d.ye - 5)}, ${cx - 18} ${n1(d.ye - 6)}, ${cx - 13} ${n1(d.ye - 12)}"/>`;
+      s += `<path d="M${cx + d.xe} ${n1(d.ye)} C${n1(cx + d.xe - 6)} ${n1(d.ye - 5)}, ${cx + 18} ${n1(d.ye - 6)}, ${cx + 13} ${n1(d.ye - 12)}"/>`;
+    }
+    s += `</g><g fill="none" stroke="${HUE}" stroke-width="11" stroke-linecap="round">
+      <path d="M138 24 C112 12 78 6 48 11"/><path d="M184 24 C210 12 244 6 274 11"/></g>`;
+    s += `<path d="M143 16 h36 a6 6 0 0 1 6 7 l-9 18 v62 c0 12 -6 22 -15 28 c-9 -6 -15 -16 -15 -28 v-62 l-9 -18 a6 6 0 0 1 6 -7 Z" fill="${HUE}" stroke="${HUEB}" stroke-width="3"/>`;
+    s += `<path d="M147 42 h28 M150 100 h22" stroke="${HUEB}" stroke-width="2.6" opacity=".7" fill="none"/>`;
+    return bb(s, "0 0 322 206");
+  })();
+
+  const medioHueso = `
+    <path d="M128 14 C92 4 44 8 24 30 C8 48 12 74 30 88 C40 96 48 106 54 118 C60 132 76 140 92 136 C108 132 118 120 122 106 L130 84 C112 78 104 62 106 46 C107 32 118 20 128 14 Z" fill="${HUE}" stroke="${HUEB}" stroke-width="3.2"/>
+    <ellipse cx="94" cy="124" rx="17" ry="13" fill="rgba(120,80,60,.32)" transform="rotate(-14 94 124)"/>
+    <circle cx="62" cy="96" r="22" fill="${HUES}" stroke="${HUEB}" stroke-width="3"/>
+    <circle cx="62" cy="96" r="12" fill="rgba(120,80,60,.28)"/>
+    <path d="M40 30 C64 20 96 18 120 24" fill="none" stroke="${HUEB}" stroke-width="2.6" opacity=".7"/>`;
+  const svgPelvis = bb(`
+    ${medioHueso}${espejo(300, medioHueso)}
+    <path d="M112 116 C126 126 140 134 146 142 L154 142 C160 134 174 126 188 116" fill="none" stroke="${HUE}" stroke-width="15" stroke-linecap="round"/>
+    <path d="M148 139 L152 139" stroke="${HUEB}" stroke-width="4"/>`, "0 0 300 154");
+
+  const svgFemur = bb(`
+    <path d="M50 4 C64 3 73 13 71 26 C69 37 58 43 48 39 L44 48 C40 35 30 31 22 35 C14 39 15 52 24 56 C29 72 31 94 30 114 C29 132 28 146 29 156 C22 160 16 166 17 173 C18 179 25 181 31 178 C34 177 36 174 37 171 C39 174 43 178 47 177 C53 176 57 170 56 164 C55 158 50 154 46 151 C45 134 45 114 46 96 C47 78 48 62 50 50 Z" fill="${HUE}" stroke="${HUEB}" stroke-width="3.2"/>
+    <path d="M35 60 C38 84 39 116 38 146" fill="none" stroke="${HUEB}" stroke-width="2.4" opacity=".5"/>
+    <ellipse cx="61" cy="17" rx="9" ry="7" fill="${HUES}" opacity=".8"/>
+    <path d="M31 176 L33 168 M45 175 L43 167" stroke="${HUEB}" stroke-width="2.4" opacity=".7"/>`, "0 0 78 182");
+
+  const svgTibia = bb(`
+    <path d="M10 6 C5 6 3 13 5 20 L14 46 C16 68 16 90 15 106 C14 120 17 130 25 131 C33 132 37 125 36 114 C34 92 35 64 37 42 L41 16 C42 8 38 4 31 4 Z" fill="${HUE}" stroke="${HUEB}" stroke-width="3"/>
+    <ellipse cx="24" cy="136" rx="8" ry="6.5" fill="${HUE}" stroke="${HUEB}" stroke-width="2.6"/>
+    <path d="M52 20 C46 20 44 26 45 32 L48 52 C50 74 50 96 49 110 C48 120 51 127 56 127 C61 127 63 120 62 110 C60 92 60 68 59 48 L59 30 C59 23 57 20 52 20 Z" fill="${HUE}" stroke="${HUEB}" stroke-width="2.6"/>
+    <ellipse cx="57" cy="132" rx="5.5" ry="5" fill="${HUE}" stroke="${HUEB}" stroke-width="2.2"/>
+    <path d="M24 30 C26 56 27 82 26 102" fill="none" stroke="${HUEB}" stroke-width="2.2" opacity=".5"/>`, "0 0 66 146");
+
+  const svgHumero = bb(`
+    <path d="M29 4 C14 3 4 11 4 21 C4 31 13 38 21 35 L27 44 C27 60 27 80 27 96 C27 108 27 116 27 122 C19 126 13 132 14 139 C15 146 22 149 28 147 C31 146 33 144 34 141 C36 144 39 147 43 146 C49 145 52 139 51 133 C50 127 45 123 40 120 C39.5 104 39.5 90 39.5 74 C39.5 62 39.5 52 40 44 L41 36 C41 26 38 12 29 4 Z" fill="${HUE}" stroke="${HUEB}" stroke-width="3.2"/>
+    <path d="M31 48 C33 72 33 100 32 122" fill="none" stroke="${HUEB}" stroke-width="2.4" opacity=".5"/>
+    <ellipse cx="17" cy="19" rx="8" ry="7" fill="${HUES}" opacity=".8"/>
+    <ellipse cx="33" cy="138" rx="8" ry="6" fill="${HUES}"/>`, "0 0 64 150");
+
+  const svgCubito = bb(`
+    <path d="M14 3 C6 4 3 11 5 19 L9 32 C11 52 12 74 13 92 C13 102 13 110 14 116 C15 121 23 121 24 115 C25 104 24 90 23 74 C22 52 21 32 20 20 C20 10 19 4 14 3 Z" fill="${HUE}" stroke="${HUEB}" stroke-width="3"/>
+    <path d="M8 11 C15 8 21 13 22 21 C23 29 17 33 10 31" fill="${HUES}" stroke="${HUEB}" stroke-width="2.4"/>
+    <path d="M45 18 C38 18 35 24 36 32 L38 52 C39 72 40 92 41 106 C37 111 36 117 40 121 C44 124 50 123 52 118 C54 113 52 107 48 104 C47 88 47 68 47 50 L48 32 C49 24 50 18 45 18 Z" fill="${HUE}" stroke="${HUEB}" stroke-width="2.8"/>
+    <ellipse cx="44" cy="23" rx="8" ry="5.5" fill="${HUES}" stroke="${HUEB}" stroke-width="2.2"/>`, "0 0 60 124");
+
+  const PLAN = {
+    "El cerebro": { x: CO, y: 114, w: 224, h: 132, z: 70, svg: svgCerebro },
+    "Los ojos": { x: CO, y: 214, w: 150, h: 64, z: 70, svg: svgOjos },
+    "El oído": { x: CO + 147, y: 195, w: 52, h: 72, z: 70, svg: svgOido },
+    "Los dientes": { x: CO, y: 266, w: 116, h: 56, z: 70, svg: svgDientes },
+    "Los pulmones": { x: CO, y: 457, w: 300, h: 200, z: 10, svg: svgPulmones, lx: -95, ly: -57 },
+    "El corazón": { x: CO + 26, y: 470, w: 126, h: 209, z: 24, svg: svgCorazon, lx: 170, ly: -98 },
+    "Los riñones": { x: CO, y: 640, w: 176, h: 82, z: 12, svg: svgRinones, lx: 235, ly: -36 },
+    "El hígado": { x: CO - 66, y: 595, w: 234, h: 122, z: 20, svg: svgHigado, lx: -54, ly: -101 },
+    "El páncreas": { x: CO + 30, y: 676, w: 190, h: 64, z: 30, svg: svgPancreas, lx: -265, ly: -23 },
+    "El estómago": { x: CO + 90, y: 598, w: 130, h: 148, z: 34, svg: svgEstomago, lx: 15, ly: -81 },
+    "El intestino grueso": { x: CO, y: 726, w: 330, h: 170, z: 40, svg: svgGrueso, lx: -88 },
+    "El intestino delgado": { x: CO - 6, y: 718, w: 240, h: 96, z: 46, svg: svgDelgado, lx: 92, ly: 45 },
+    "La vesícula": { x: CO - 110, y: 648, w: 50, h: 64, z: 50, svg: svgVesicula, lx: -125, ly: -35 },
+    "El fémur": { x: CH - 99, y: 798, w: 78, h: 182, z: 12, svg: svgFemur },
+    "La pelvis": { x: CH, y: 703, w: 300, h: 154, z: 16, svg: svgPelvis },
+    "La columna": { x: CH, y: 536, w: 66, h: 472, z: 22, svg: svgColumna, ly: 36 },
+    "Las costillas": { x: CH, y: 495, w: 322, h: 206, z: 26, svg: svgCostillas, lx: 105 },
+    "El cráneo": { x: CH, y: 165, w: 244, h: 288, z: 70, svg: svgCraneo, lx: 95, ly: -45 },
+    "La tibia y el peroné": { x: CH + 99, y: 967, w: 66, h: 146, z: 70, svg: svgTibia },
+    "El húmero": { x: CH + 246, y: 455, w: 64, h: 150, z: 70, svg: svgHumero, ly: -75 },
+    "El cúbito y el radio": { x: CH + 246, y: 601, w: 60, h: 124, z: 70, svg: svgCubito },
+    "Los huesos": { x: 1240, y: 236, w: 72, h: 138, z: 70, svg: svgHuesoFicha },
+    "Los músculos": { x: CO - 248, y: 468, w: 76, h: 60, z: 70, svg: svgMusculos },
+    "La sangre": { x: 2110, y: 360, w: 72, h: 104, z: 70, svg: svgSangre },
+    "La piel": { x: 2350, y: 368, w: 100, h: 84, z: 70, svg: svgPiel },
+    "El ADN": { x: 2230, y: 550, w: 70, h: 129, z: 70, svg: svgAdn }
+  };
 
   const NUEVOS = [
-    { emoji: "🥔", cat: "barriga", x: CO - 115, y: 565, iw: 96, ih: 64,
-      svg: bb(`
-        <defs><radialGradient id="cHig" cx="38%" cy="34%"><stop offset="0%" stop-color="#b05a48"/><stop offset="100%" stop-color="#7a3328"/></radialGradient></defs>
-        <path d="M6 34 Q8 14 34 10 Q72 6 90 20 Q98 28 92 40 Q80 58 52 60 Q22 62 10 48 Q4 42 6 34 Z" fill="url(#cHig)" stroke="#5d241c" stroke-width="2.4"/>
-        <path d="M60 14 Q58 34 66 52" stroke="#5d241c" stroke-width="2.4" fill="none" opacity=".6"/>
-        <path d="M16 30 Q30 24 44 28" stroke="#c97a66" stroke-width="3" fill="none" opacity=".7"/>`, "3 5 94 60"),
+    {
+      emoji: "💀", cat: "huesos",
+      name: { es: "El cráneo", ca: "El crani", en: "The skull", cs: "Lebka", fr: "Le crâne" },
+      fact: { es: "El cráneo es el casco de hueso que protege tu cerebro. ¡Naciste con casco de serie!", ca: "El crani és el casc d'os que protegeix el teu cervell. Vas néixer amb casc de sèrie!", en: "The skull is the bone helmet that protects your brain. You were born with a built-in helmet!", cs: "Lebka je kostěná helma, která chrání tvůj mozek. Narodila ses s helmou v základní výbavě!", fr: "Le crâne est le casque en os qui protège ton cerveau. Tu es née avec un casque de série !" }
+    },
+    {
+      emoji: "🪜", cat: "huesos",
+      name: { es: "La columna", ca: "La columna", en: "The spine", cs: "Páteř", fr: "La colonne" },
+      fact: { es: "La columna es una torre de 33 huesitos llamados vértebras: va de la cabeza al sacro, te mantiene de pie, te deja doblarte y protege los nervios.", ca: "La columna és una torre de 33 ossets anomenats vèrtebres: va del cap al sacre, et manté dret, et deixa doblegar-te i protegeix els nervis.", en: "The spine is a tower of 33 little bones called vertebrae: it runs from your head to your sacrum, keeps you upright, lets you bend and protects your nerves.", cs: "Páteř je věž z 33 kůstek zvaných obratle: vede od hlavy ke kosti křížové, drží tě zpříma, umožňuje ti ohýbat se a chrání nervy.", fr: "La colonne est une tour de 33 petits os appelés vertèbres : elle va de la tête au sacrum, te tient debout, te laisse te plier et protège les nerfs." }
+    },
+    {
+      emoji: "🦴", cat: "huesos",
+      name: { es: "El húmero", ca: "L'húmer", en: "The humerus", cs: "Pažní kost", fr: "L'humérus" },
+      fact: { es: "El húmero va del hombro al codo. Cuando te das un golpe en el codo y notas un cosquilleo eléctrico, el travieso es un nervio que pasa junto a él.", ca: "L'húmer va de l'espatlla al colze. Quan et dones un cop al colze i notes un pessigolleig elèctric, l'entremaliat és un nervi que hi passa a la vora.", en: "The humerus goes from your shoulder to your elbow. When you bump your elbow and feel an electric tickle, the prankster is a nerve running right next to it.", cs: "Pažní kost vede od ramene k lokti. Když se uhodíš do lokte a ucítíš elektrické brnění, ten šibal je nerv, který vede hned vedle ní.", fr: "L'humérus va de l'épaule au coude. Quand tu te cognes le coude et que ça picote comme l'électricité, le farceur est un nerf qui passe juste à côté." }
+    },
+    {
+      emoji: "🦴", cat: "huesos",
+      name: { es: "El cúbito y el radio", ca: "El cúbit i el radi", en: "The ulna and the radius", cs: "Loketní a vřetenní kost", fr: "Le cubitus et le radius" },
+      fact: { es: "El antebrazo tiene dos huesos, el cúbito y el radio, que se cruzan como bailarines cada vez que giras la muñeca.", ca: "L'avantbraç té dos ossos, el cúbit i el radi, que es creuen com ballarins cada cop que gires el canell.", en: "Your forearm has two bones, the ulna and the radius, and they cross like dancers every time you turn your wrist.", cs: "Předloktí má dvě kosti, loketní a vřetenní, a ty se kříží jako tanečníci pokaždé, když otočíš zápěstím.", fr: "L'avant-bras a deux os, le cubitus et le radius, qui se croisent comme des danseurs chaque fois que tu tournes le poignet." }
+    },
+    {
+      emoji: "🦴", cat: "huesos",
+      name: { es: "La pelvis", ca: "La pelvis", en: "The pelvis", cs: "Pánev", fr: "Le bassin" },
+      fact: { es: "La pelvis es un cuenco de hueso que une el tronco con las piernas y sujeta la barriga por abajo. En sus dos huecos redondos encaja la cabeza del fémur.", ca: "La pelvis és un bol d'os que uneix el tronc amb les cames i aguanta la panxa per sota. Als seus dos forats rodons encaixa el cap del fèmur.", en: "The pelvis is a bowl of bone that joins your body to your legs and holds your tummy from below. The head of the femur fits into its two round sockets.", cs: "Pánev je kostěná mísa, která spojuje trup s nohama a zespodu drží bříško. Do jejích dvou kulatých jamek zapadá hlavice stehenní kosti.", fr: "Le bassin est un bol en os qui relie le tronc aux jambes et soutient le ventre par en dessous. La tête du fémur s'emboîte dans ses deux cavités rondes." }
+    },
+    {
+      emoji: "🦴", cat: "huesos",
+      name: { es: "El fémur", ca: "El fèmur", en: "The femur", cs: "Stehenní kost", fr: "Le fémur" },
+      fact: { es: "El fémur, en el muslo, es el hueso más largo y fuerte de tu cuerpo: va de la cadera a la rodilla y aguanta más peso que el hormigón.", ca: "El fèmur, a la cuixa, és l'os més llarg i fort del teu cos: va del maluc al genoll i aguanta més pes que el formigó.", en: "The femur, in your thigh, is the longest and strongest bone in your body: it runs from the hip to the knee and can take more weight than concrete.", cs: "Stehenní kost je nejdelší a nejsilnější kost tvého těla: vede od kyčle ke koleni a unese víc váhy než beton.", fr: "Le fémur, dans la cuisse, est l'os le plus long et le plus fort de ton corps : il va de la hanche au genou et supporte plus de poids que le béton." }
+    },
+    {
+      emoji: "🦴", cat: "huesos",
+      name: { es: "La tibia y el peroné", ca: "La tíbia i el peroné", en: "The tibia and the fibula", cs: "Holenní a lýtková kost", fr: "Le tibia et le péroné" },
+      fact: { es: "La tibia es tu espinilla y el peroné es su compañero delgadito. Van de la rodilla al tobillo y juntos te llevan andando a todas partes.", ca: "La tíbia és la teva canyella i el peroné és el seu company primet. Van del genoll al turmell i junts et porten caminant a tot arreu.", en: "The tibia is your shin and the fibula is its slim partner. They run from the knee to the ankle and together they walk you everywhere.", cs: "Holenní kost je tvoje holeň a lýtková kost je její štíhlý parťák. Vedou od kolena ke kotníku a společně tě všude odnesou.", fr: "Le tibia est ton tibia sous le genou et le péroné est son copain tout fin. Ils vont du genou à la cheville et ensemble ils te portent partout." }
+    },
+    {
+      emoji: "🥔", cat: "barriga",
       name: { es: "El hígado", ca: "El fetge", en: "The liver", cs: "Játra", fr: "Le foie" },
-      fact: { es: "El hígado es la gran fábrica del cuerpo: limpia la sangre y guarda energía. ¡Es el órgano más grande de tu barriga!", ca: "El fetge és la gran fàbrica del cos: neteja la sang i guarda energia. És l'òrgan més gran de la teva panxa!", en: "The liver is the body's great factory: it cleans the blood and stores energy. It is the biggest organ in your tummy!", cs: "Játra jsou velká továrna těla: čistí krev a ukládají energii. Jsou největší orgán v tvém bříšku!", fr: "Le foie est la grande usine du corps : il nettoie le sang et garde de l'énergie. C'est le plus grand organe de ton ventre !" } },
-    { emoji: "🫒", cat: "barriga", x: CO - 105, y: 665, iw: 55, ih: 86,
-      svg: bb(`
-        <path d="M50 8 L50 26" stroke="#5b8a4a" stroke-width="6" stroke-linecap="round"/>
-        <path d="M50 26 Q76 34 74 62 Q70 90 50 92 Q30 90 26 62 Q24 34 50 26 Z" fill="#7aa85c" stroke="#4e7038" stroke-width="3"/>
-        <ellipse cx="42" cy="52" rx="7" ry="12" fill="#a3c785" opacity=".8"/>`, "21 4 58 91"),
+      fact: { es: "El hígado es la gran fábrica del cuerpo: limpia la sangre y guarda energía. ¡Es el órgano más grande de tu barriga, como dos manos juntas!", ca: "El fetge és la gran fàbrica del cos: neteja la sang i guarda energia. És l'òrgan més gran de la teva panxa, com dues mans juntes!", en: "The liver is the body's great factory: it cleans the blood and stores energy. It is the biggest organ in your tummy, as big as two hands together!", cs: "Játra jsou velká továrna těla: čistí krev a ukládají energii. Jsou největší orgán v tvém bříšku, velký jako dvě ruce vedle sebe!", fr: "Le foie est la grande usine du corps : il nettoie le sang et garde de l'énergie. C'est le plus grand organe de ton ventre, comme deux mains l'une à côté de l'autre !" }
+    },
+    {
+      emoji: "🫒", cat: "barriga",
       name: { es: "La vesícula", ca: "La vesícula", en: "The gallbladder", cs: "Žlučník", fr: "La vésicule" },
-      fact: { es: "La vesícula es una bolsita verde que guarda la bilis, un jugo que ayuda a digerir las comidas con grasa.", ca: "La vesícula és una bosseta verda que guarda la bilis, un suc que ajuda a pair els menjars amb greix.", en: "The gallbladder is a little green bag that stores bile, a juice that helps digest fatty foods.", cs: "Žlučník je zelený váček, který uchovává žluč, šťávu pomáhající trávit tučná jídla.", fr: "La vésicule est un petit sac vert qui garde la bile, un jus qui aide à digérer les repas gras." } },
-    { emoji: "🍌", cat: "barriga", x: CO + 40, y: 658, iw: 110, ih: 48,
-      svg: bb(`
-        <path d="M8 30 Q10 14 28 12 Q40 10 48 16 Q70 12 88 20 Q96 24 92 32 Q84 44 62 42 Q40 46 20 40 Q8 38 8 30 Z" fill="#e8c46b" stroke="#b8923e" stroke-width="2.6"/>
-        <path d="M20 26 Q50 22 84 26" stroke="#b8923e" stroke-width="2.4" fill="none" opacity=".7"/>
-        <circle cx="26" cy="28" r="3" fill="#d4a94e"/><circle cx="48" cy="30" r="3" fill="#d4a94e"/><circle cx="70" cy="29" r="3" fill="#d4a94e"/>`, "6 8 92 40"),
+      fact: { es: "La vesícula es una bolsita verde del tamaño de una nuez, pegada debajo del hígado. Guarda la bilis, un jugo que ayuda a digerir las comidas con grasa.", ca: "La vesícula és una bosseta verda de la mida d'una nou, enganxada sota el fetge. Guarda la bilis, un suc que ajuda a pair els menjars amb greix.", en: "The gallbladder is a little green bag the size of a walnut, tucked under the liver. It stores bile, a juice that helps digest fatty foods.", cs: "Žlučník je zelený váček velký jako ořech, přilepený pod játry. Uchovává žluč, šťávu, která pomáhá trávit tučná jídla.", fr: "La vésicule est un petit sac vert de la taille d'une noix, collé sous le foie. Elle garde la bile, un jus qui aide à digérer les repas gras." }
+    },
+    {
+      emoji: "🍌", cat: "barriga",
       name: { es: "El páncreas", ca: "El pàncrees", en: "The pancreas", cs: "Slinivka", fr: "Le pancréas" },
-      fact: { es: "El páncreas fabrica jugos para deshacer la comida y una llave llamada insulina que regula el azúcar del cuerpo.", ca: "El pàncrees fabrica sucs per desfer el menjar i una clau anomenada insulina que regula el sucre del cos.", en: "The pancreas makes juices to break down food and a key called insulin that controls the body's sugar.", cs: "Slinivka vyrábí šťávy na trávení jídla a klíček jménem inzulin, který řídí cukr v těle.", fr: "Le pancréas fabrique des jus pour défaire la nourriture et une clé appelée insuline qui règle le sucre du corps." } },
-    { emoji: "🌀", cat: "barriga", x: CO, y: 854, iw: 68, ih: 76,
-      svg: bb(`
-        <path d="M20 24 Q40 12 56 24 Q72 34 60 44 Q46 54 32 46 Q18 38 30 32 Q46 26 60 34 Q76 44 66 58 Q54 72 36 64 Q20 58 28 68 Q42 80 62 74 Q80 68 78 52" stroke="#e08a9a" stroke-width="11" fill="none" stroke-linecap="round"/>
-        <path d="M20 24 Q40 12 56 24 Q72 34 60 44 Q46 54 32 46 Q18 38 30 32 Q46 26 60 34 Q76 44 66 58 Q54 72 36 64 Q20 58 28 68 Q42 80 62 74 Q80 68 78 52" stroke="#f2b0bd" stroke-width="5" fill="none" stroke-linecap="round"/>`, "13 5 74 82"),
+      fact: { es: "El páncreas cruza por detrás del estómago. Fabrica jugos para deshacer la comida y una llave llamada insulina que regula el azúcar del cuerpo.", ca: "El pàncrees creua per darrere de l'estómac. Fabrica sucs per desfer el menjar i una clau anomenada insulina que regula el sucre del cos.", en: "The pancreas crosses behind the stomach. It makes juices to break down food and a key called insulin that controls the body's sugar.", cs: "Slinivka leží za žaludkem. Vyrábí šťávy na trávení jídla a klíček jménem inzulin, který řídí cukr v těle.", fr: "Le pancréas passe derrière l'estomac. Il fabrique des jus pour défaire la nourriture et une clé appelée insuline qui règle le sucre du corps." }
+    },
+    {
+      emoji: "🌀", cat: "barriga",
       name: { es: "El intestino delgado", ca: "L'intestí prim", en: "The small intestine", cs: "Tenké střevo", fr: "L'intestin grêle" },
-      fact: { es: "El intestino delgado es un tubo finito y larguísimo, ¡de unos seis metros!, enrollado como una madeja: ahí la comida buena pasa a la sangre.", ca: "L'intestí prim és un tub finet i llarguíssim, d'uns sis metres!, enrotllat com un cabdell: allà el menjar bo passa a la sang.", en: "The small intestine is a thin, super long tube, about six metres, coiled up like a ball of wool: that is where the good food passes into the blood.", cs: "Tenké střevo je tenounká, předlouhá trubice, asi šest metrů!, smotaná jako klubíčko: tam přechází dobré jídlo do krve.", fr: "L'intestin grêle est un tube tout fin et très long, environ six mètres, enroulé comme une pelote : c'est là que la bonne nourriture passe dans le sang." } }
+      fact: { es: "El intestino delgado es un tubo finito y larguísimo, ¡de unos seis metros!, enrollado como una madeja dentro del grueso: ahí la comida buena pasa a la sangre.", ca: "L'intestí prim és un tub finet i llarguíssim, d'uns sis metres!, enrotllat com un cabdell dins del gros: allà el menjar bo passa a la sang.", en: "The small intestine is a thin, super long tube, about six metres, coiled like a ball of wool inside the large one: that is where the good food passes into the blood.", cs: "Tenké střevo je tenounká, předlouhá trubice, asi šest metrů!, smotaná jako klubíčko uvnitř tlustého: tam přechází dobré jídlo do krve.", fr: "L'intestin grêle est un tube tout fin et très long, environ six mètres, enroulé comme une pelote à l'intérieur du gros : c'est là que la bonne nourriture passe dans le sang." }
+    }
   ];
-  NUEVOS.forEach(o => {
-    ex.pois.push({ cat: o.cat, emoji: o.emoji, x: o.x, y: o.y, svg: o.svg, iw: o.iw, ih: o.ih, name: o.name, fact: o.fact });
+
+  const busca = (nom) => ex.pois.find(p => p.name && p.name.es === nom);
+
+  const rib = busca("Las costillas");
+  if (rib) rib.cat = "huesos";
+  const fichaHuesos = busca("Los huesos");
+  if (fichaHuesos) fichaHuesos.cat = "huesos";
+
+  const gordo = busca("El intestino");
+  if (gordo) {
+    gordo.name = { es: "El intestino grueso", ca: "L'intestí gros", en: "The large intestine", cs: "Tlusté střevo", fr: "Le gros intestin" };
+    gordo.fact = { es: "El intestino grueso es el tubo ancho del final: rodea a su hermano delgado, recoge lo que no se aprovecha y absorbe el agua. ¡Mide un metro y medio!", ca: "L'intestí gros és el tub ample del final: envolta el seu germà prim, recull el que no s'aprofita i absorbeix l'aigua. Fa un metre i mig!", en: "The large intestine is the wide tube at the end: it frames its thin brother, collects what is not needed and absorbs the water. It is one and a half metres long!", cs: "Tlusté střevo je široká trubice na konci: obklopuje svého tenkého bratra, sbírá, co tělo nepotřebuje, a vstřebává vodu. Měří metr a půl!", fr: "Le gros intestin est le gros tube de la fin : il encadre son frère grêle, ramasse ce qui ne sert plus et absorbe l'eau. Il mesure un mètre et demi !" };
+  }
+
+  const pul = busca("Los pulmones");
+  if (pul) pul.fact = { es: "Dos esponjas rosas que llenan el pecho entero y se hinchan de aire unas veinte mil veces al día. ¡Y tú sin enterarte!", ca: "Dues esponges roses que omplen el pit sencer i s'inflen d'aire unes vint mil vegades al dia. I tu sense adonar-te'n!", en: "Two pink sponges that fill your whole chest and puff up with air about twenty thousand times a day. Without you even noticing!", cs: "Dvě růžové houby, které vyplní celý hrudník a nafouknou se vzduchem asi dvacettisíckrát denně. A ty o tom ani nevíš!", fr: "Deux éponges roses qui remplissent toute la poitrine et se gonflent d'air environ vingt mille fois par jour. Sans que tu t'en aperçoives !" };
+  const rin = busca("Los riñones");
+  if (rin) rin.fact = { es: "Dos lavadoras con forma de judía, una a cada lado de la columna, que limpian toda tu sangre muchas veces al día.", ca: "Dues rentadores amb forma de mongeta, una a cada costat de la columna, que netegen tota la teva sang moltes vegades al dia.", en: "Two bean-shaped washing machines, one on each side of your spine, that clean all your blood many times a day.", cs: "Dvě pračky ve tvaru fazole, jedna po každé straně páteře, které mnohokrát denně vyperou všechnu tvou krev.", fr: "Deux machines à laver en forme de haricot, une de chaque côté de la colonne, qui nettoient tout ton sang plusieurs fois par jour." };
+
+  NUEVOS.forEach(o => { if (!busca(o.name.es)) ex.pois.push({ cat: o.cat, emoji: o.emoji, x: 0, y: 0, name: o.name, fact: o.fact }); });
+
+  ex.pois.forEach(p => {
+    const d = p.name && PLAN[p.name.es];
+    if (!d) { p._capa = 70; return; }
+    p.x = d.x; p.y = d.y; p.iw = d.w; p.ih = d.h; p._capa = d.z;
+    if (d.lx) p.lblDx = d.lx;
+    if (d.ly) p.lblDy = d.ly;
+    if (d.svg) p.svg = d.svg;
   });
+
+  ex.pois.sort((a, b) => (a._capa || 70) - (b._capa || 70));
+
+  const SITIOS_LBL = ["lblup", "lblright", "lblleft", "lblupright", "lblupleft", "lbldown2"];
+  const colocaEtiquetasCuerpo = () => {
+    if (typeof S === "undefined" || S.theme !== "cuerpo") return;
+    const cv = document.getElementById("mapcanvas");
+    if (!cv) return;
+    const nodos = [...cv.querySelectorAll(".poi")];
+    if (nodos.length !== ex.pois.length) return;
+    nodos.forEach((el, i) => {
+      const l = el.querySelector(".plabel");
+      if (!l) return;
+      SITIOS_LBL.forEach(c => l.classList.remove(c));
+      l.style.marginLeft = "";
+      const dx = ex.pois[i].lblDx || 0;
+      if (dx) l.style.left = `calc(50% + ${dx}px)`;
+    });
+    if (typeof acomodaEtiquetas === "function") acomodaEtiquetas();
+  };
 
   ex.decoCuerpos = function () {
     const skin = "rgba(255,203,166,.62)";
-    const bone = "rgba(255,255,255,.62)";
+    const bone = "rgba(255,255,255,.6)";
     const bordeSkin = "rgba(196,120,86,.55)";
     let s = "";
 
     const silueta = (cx) => `<g fill="${skin}" stroke="${bordeSkin}" stroke-width="2.8" filter="url(#cgrBulto)">
         <circle cx="${cx}" cy="165" r="145"/>
-        <circle cx="${cx - 148}" cy="195" r="30"/><circle cx="${cx + 148}" cy="195" r="30"/>
+        <circle cx="${cx - 147}" cy="197" r="36"/><circle cx="${cx + 147}" cy="197" r="36"/>
         <rect x="${cx - 54}" y="282" width="108" height="86" rx="30"/>
-        <path d="M${cx - 196} 368 Q${cx} 326 ${cx + 196} 368 C${cx + 172} 560 ${cx + 216} 700 ${cx + 200} 840 Q${cx} 962 ${cx - 200} 840 C${cx - 216} 700 ${cx - 172} 560 ${cx - 196} 368 Z"/>
-        <rect x="${cx - 284}" y="366" width="76" height="386" rx="38"/>
-        <circle cx="${cx - 246}" cy="780" r="38"/>
-        <rect x="${cx + 208}" y="366" width="76" height="386" rx="38"/>
-        <circle cx="${cx + 246}" cy="780" r="38"/>
-        <rect x="${cx - 166}" y="848" width="134" height="192" rx="62"/>
-        <rect x="${cx + 32}" y="848" width="134" height="192" rx="62"/>
+        <path d="M${cx - 196} 368 Q${cx} 326 ${cx + 196} 368 C${cx + 176} 540 ${cx + 206} 650 ${cx + 196} 760 C${cx + 150} 850 ${cx - 150} 850 ${cx - 196} 760 C${cx - 206} 650 ${cx - 176} 540 ${cx - 196} 368 Z"/>
+        <rect x="${cx - 284}" y="366" width="76" height="340" rx="38"/>
+        <circle cx="${cx - 246}" cy="735" r="38"/>
+        <rect x="${cx + 208}" y="366" width="76" height="340" rx="38"/>
+        <circle cx="${cx + 246}" cy="735" r="38"/>
+        <rect x="${cx - 166}" y="778" width="134" height="262" rx="62"/>
+        <rect x="${cx + 32}" y="778" width="134" height="262" rx="62"/>
         <rect x="${cx - 182}" y="1026" width="132" height="48" rx="23"/>
         <rect x="${cx + 50}" y="1026" width="132" height="48" rx="23"/>
       </g>`;
@@ -10080,15 +10304,17 @@ THEMES.increibles.content.explore.deco = function (e) {
     s += `<ellipse cx="${CH}" cy="1066" rx="360" ry="36" fill="rgba(0,0,0,.16)"/>`;
     s += silueta(CH);
     s += `<g stroke="${bone}" fill="none" stroke-linecap="round">
-      <circle cx="${CH}" cy="162" r="100" stroke-width="7"/>
-      <line x1="${CH}" y1="290" x2="${CH}" y2="792" stroke-width="10"/>
-      <line x1="${CH - 55}" y1="372" x2="${CH + 55}" y2="372" stroke-width="7"/>
-      <line x1="${CH - 246}" y1="386" x2="${CH - 246}" y2="540" stroke-width="7"/><line x1="${CH - 246}" y1="556" x2="${CH - 246}" y2="742" stroke-width="7"/><circle cx="${CH - 246}" cy="548" r="7" stroke-width="4"/>
-      <line x1="${CH + 246}" y1="386" x2="${CH + 246}" y2="540" stroke-width="7"/><line x1="${CH + 246}" y1="556" x2="${CH + 246}" y2="742" stroke-width="7"/><circle cx="${CH + 246}" cy="548" r="7" stroke-width="4"/>
-      <line x1="${CH - 99}" y1="866" x2="${CH - 99}" y2="948" stroke-width="8"/><line x1="${CH - 99}" y1="964" x2="${CH - 99}" y2="1036" stroke-width="8"/><circle cx="${CH - 99}" cy="956" r="8" stroke-width="4"/>
-      <line x1="${CH + 99}" y1="866" x2="${CH + 99}" y2="948" stroke-width="8"/><line x1="${CH + 99}" y1="964" x2="${CH + 99}" y2="1036" stroke-width="8"/><circle cx="${CH + 99}" cy="956" r="8" stroke-width="4"/>
+      <line x1="${CH - 246}" y1="386" x2="${CH - 246}" y2="522" stroke-width="9"/>
+      <circle cx="${CH - 246}" cy="532" r="8" stroke-width="4"/>
+      <line x1="${CH - 257}" y1="544" x2="${CH - 257}" y2="650" stroke-width="7"/>
+      <line x1="${CH - 235}" y1="546" x2="${CH - 235}" y2="648" stroke-width="6"/>
+      <line x1="${CH + 99}" y1="764" x2="${CH + 99}" y2="886" stroke-width="9"/>
+      <line x1="${CH - 106}" y1="906" x2="${CH - 106}" y2="1034" stroke-width="8"/>
+      <line x1="${CH - 90}" y1="910" x2="${CH - 90}" y2="1030" stroke-width="6"/>
     </g>`;
     s += `<g transform="translate(${CH + 232} 96) scale(1.7)"><path d="M-16 4 Q-24 4 -24 -2 Q-24 -8 -18 -7 Q-18 -13 -12 -12 Q-6 -11 -8 -4 L8 -1 Q10 -8 16 -7 Q22 -6 21 0 Q27 1 26 7 Q25 13 18 11 Q12 10 14 3 L-2 0 Q-4 7 -10 6 Q-16 5 -16 4 Z" fill="rgba(245,239,228,.8)"/></g>`;
+
+    setTimeout(colocaEtiquetasCuerpo, 0);
 
     return `<svg viewBox="0 0 ${ex.width} 1100" preserveAspectRatio="none"><defs><filter id="cgrBulto" x="-12%" y="-8%" width="126%" height="120%"><feDropShadow dx="0" dy="6" stdDeviation="9" flood-color="rgba(120,60,40,.35)"/></filter></defs>${s}</svg>`;
   };
@@ -14001,7 +14227,7 @@ function playJingle(j) {
 
   ex.deco = function (e) {
     const W = e.width || 2600;
-    const libre = libreCon(cajas(e, 1.15, 16));
+    const libre = libreCon(cajas(e, (e.poikMax || 1.15), 16));
     const SUELO = 1012;      /* donde empieza el suelo */
     const RIEL = 700;        /* la moldura que parte la pared */
     const busca = (nom, alt) => { const p = (e.pois || []).find(q => q.name && q.name.es === nom); return p ? p.x : alt; };
@@ -33886,17 +34112,18 @@ function uiExplore(c) {
           ${p.svg
             ? `<span class="picon" style="width:${tamPoi(p).w}px;height:${tamPoi(p).h}px">${p.svg}</span>`
             : `<span class="pemoji" style="font-size:${((p.size || 1) * 2.2 * (p.size ? 1 : 1.15)).toFixed(2)}rem">${p.emoji}</span>`}
-          <span class="plabel ${M.visited.has(i) ? "seenlbl" : ""}">${esc(tx(p.name))}</span>
+          <span class="plabel ${M.visited.has(i) ? "seenlbl" : ""}"${(p.lblDx || p.lblDy) ? ` style="margin-left:${p.lblDx || 0}px;margin-top:${p.lblDy || 0}px"` : ""}>${esc(tx(p.name))}</span>
         </button>`).join("")}
       </div>
       </div>
     </div></div>
     <p class="muted center" style="margin-top:6px">🧭 ${t("exploreHint")}</p>`;
   const sc = document.getElementById("mapscroll");
-  sc.classList.toggle("conlupa", !!S.settings.bigIcons);
   const lupa = S.settings.bigIcons ? 1.5 : 1;
-  const k = Math.min(1.3, Math.max(0.28, sc.clientHeight / e.height)) * lupa;
+  let k = Math.min(1.3, Math.max(0.28, sc.clientHeight / e.height)) * lupa;
+  if (e.kMin) k = Math.max(k, e.kMin);
   M.mapK = k;
+  sc.classList.toggle("conlupa", S.settings.bigIcons || e.height * k > sc.clientHeight + 2);
   const size = document.getElementById("mapsize");
   size.style.width = (e.width * k) + "px";
   size.style.height = (e.height * k) + "px";
@@ -33914,11 +34141,14 @@ function uiExplore(c) {
   });
   ["pointerup", "pointerleave"].forEach(evn => sc.addEventListener(evn, () => { drag = null; sc.classList.remove("dragging"); }));
   if (S.theme === "espacio") startOrbits(e);
-  if (S.settings.bigIcons) requestAnimationFrame(() => { sc.scrollTop = Math.max(0, (sc.scrollHeight - sc.clientHeight) * 0.62); });
+  if (S.settings.bigIcons || e.height * k > sc.clientHeight + 2) {
+    const v0 = S.settings.bigIcons ? 0.62 : (e.vista0 != null ? e.vista0 : 0.15);
+    requestAnimationFrame(() => { sc.scrollTop = Math.max(0, (sc.scrollHeight - sc.clientHeight) * v0); });
+  }
   cv.classList.toggle("paisaje", !!M.soloPaisaje);
   cv.classList.add("nofx");
   void cv.offsetWidth;
-  const MIN_PX = 30;
+  const MIN_PX = e.sinSuelo ? 0 : 30;
   document.querySelectorAll("#mapcanvas .poi .picon").forEach(el => {
     const r = el.getBoundingClientRect();
     const m = Math.min(r.width, r.height);

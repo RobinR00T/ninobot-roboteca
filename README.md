@@ -956,3 +956,33 @@ el resto de mapas).
 - Verificación final en ventana normal: 231 tema×modo, menor dibujo 30 px, 0
   diminutos, 0 etiquetas tapadas, 2 solapes (los anatómicos del cuerpo), el
   botón de paisaje probado en los 21 mapas, consola limpia.
+
+## v4.7 (4-9-2026, 08:45): la anatomía del cuerpo humano, de verdad
+
+Aviso de Daniel: "los órganos no son proporcionales al cuerpo y no están bien
+posicionados, lo mismo con los huesos". Dos rondas de trabajo con un verificador
+anatómico exigente en medio (18 hallazgos medidos en la ronda 1, los 14 de
+dibujo corregidos y reverificados uno a uno en la ronda 2):
+
+- **Motor**: el suelo de 30 px inflaba unos órganos sí y otros no en pantallas
+  pequeñas y rompía las proporciones. Los mapas anatómicos quedan exentos
+  (ex.sinSuelo) y a cambio tienen escala mínima del mapa entero (ex.kMin 0.5)
+  con scroll vertical cuando no cabe a lo alto. Y las etiquetas admiten ajuste
+  fino por punto (lblDx/lblDy).
+- **La silueta** tiene ahora proporciones de niño reales: cadera alta y piernas
+  largas. Consecuencia medida: el fémur es POR FIN el hueso más largo (179 px,
+  1,21 veces el húmero, como dice su propia ficha; antes era el más corto), el
+  antebrazo mide 0,83 del brazo (antes 1,14) y los huesos tienen grosor real
+  (diáfisis 1:9,5; antes 1:16, parecían bastoncillos).
+- **Órganos a proporción y en su sitio**: corazón a 0,47 de los pulmones (antes
+  0,28), vesícula colgando de verdad del hígado (tinta en contacto), riñones
+  retroperitoneales tras hígado y colon, páncreas con cabeza gruesa en la C
+  duodenal, delgado centrado en la ventana del colon, apéndice dentro de la
+  silueta, oreja dentro del bulto de la oreja, hueco lumbar del 30% al 10,7%.
+- **Cráneo amable**: llena la bóveda (79% del ancho de la cabeza) con órbitas
+  claras y sonrisa, nada de calavera de Halloween.
+- Verificación final sobre el juego compilado: 0 píxeles de ninguna etiqueta
+  sobre la tinta de un dibujo ajeno (medido al píxel, no por cajas), 0 solapes
+  de iconos fuera de los anatómicos, consola limpia, 92 ficheros compilando.
+- Nota de proceso: el corrector nocturno se reinició 6 veces por el tamaño del
+  encargo; el trabajo aterrizaba en disco y el intento final lo cerró todo.

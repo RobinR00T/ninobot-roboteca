@@ -853,7 +853,7 @@ function uiExplore(c) {
           ${p.svg
             ? `<span class="picon" style="width:${tamPoi(p).w}px;height:${tamPoi(p).h}px">${p.svg}</span>`
             : `<span class="pemoji" style="font-size:${((p.size || 1) * 2.2 * (p.size ? 1 : 1.15)).toFixed(2)}rem">${p.emoji}</span>`}
-          <span class="plabel ${M.visited.has(i) ? "seenlbl" : ""}">${esc(tx(p.name))}</span>
+          <span class="plabel ${M.visited.has(i) ? "seenlbl" : ""}"${(p.lblDx || p.lblDy) ? ` style="margin-left:${p.lblDx || 0}px;margin-top:${p.lblDy || 0}px"` : ""}>${esc(tx(p.name))}</span>
         </button>`).join("")}
       </div>
       </div>
@@ -861,12 +861,16 @@ function uiExplore(c) {
     <p class="muted center" style="margin-top:6px">🧭 ${t("exploreHint")}</p>`;
   // El mapa se encaja entero a lo alto: solo queda un scroll, el horizontal.
   const sc = document.getElementById("mapscroll");
-  sc.classList.toggle("conlupa", !!S.settings.bigIcons);
   /* con "dibujos grandes" el mapa se ve como con lupa: crece todo a la vez
      (decorado incluido), así que nada se pisa y se recorre con el dedo */
   const lupa = S.settings.bigIcons ? 1.5 : 1;
-  const k = Math.min(1.3, Math.max(0.28, sc.clientHeight / e.height)) * lupa;
+  let k = Math.min(1.3, Math.max(0.28, sc.clientHeight / e.height)) * lupa;
+  /* los mapas que son una figura (el cuerpo) no admiten verse muy reducidos:
+     mejor un mapa grande que se recorre que una figura ilegible */
+  if (e.kMin) k = Math.max(k, e.kMin);
   M.mapK = k;
+  /* si el mapa no cabe a lo alto (lupa o kMin), se puede recorrer en vertical */
+  sc.classList.toggle("conlupa", S.settings.bigIcons || e.height * k > sc.clientHeight + 2);
   const size = document.getElementById("mapsize");
   size.style.width = (e.width * k) + "px";
   size.style.height = (e.height * k) + "px";
@@ -890,8 +894,12 @@ function uiExplore(c) {
   ["pointerup", "pointerleave"].forEach(evn => sc.addEventListener(evn, () => { drag = null; sc.classList.remove("dragging"); }));
   if (S.theme === "espacio") startOrbits(e);
   /* con lupa se entra mirando la parte baja del mapa, que es donde se apoyan
-     los sitios; si no, se veía el cielo y los puntos quedaban cortados */
-  if (S.settings.bigIcons) requestAnimationFrame(() => { sc.scrollTop = Math.max(0, (sc.scrollHeight - sc.clientHeight) * 0.62); });
+     los sitios; si no, se veía el cielo y los puntos quedaban cortados. En los
+     mapas con kMin (figuras) se entra por arriba, que es donde está la cabeza. */
+  if (S.settings.bigIcons || e.height * k > sc.clientHeight + 2) {
+    const v0 = S.settings.bigIcons ? 0.62 : (e.vista0 != null ? e.vista0 : 0.15);
+    requestAnimationFrame(() => { sc.scrollTop = Math.max(0, (sc.scrollHeight - sc.clientHeight) * v0); });
+  }
   /* los puntos crecen con una transición de .15 s: si midiéramos ya, los
      mediríamos a tamaño pequeño y los nombres quedarían mal puestos. Se
      congela la animación un instante para medir con el tamaño definitivo. */
@@ -899,8 +907,10 @@ function uiExplore(c) {
   cv.classList.add("nofx");
   void cv.offsetWidth;
   /* suelo de tamaño EN PANTALLA: por muy reducido que se vea el mapa, ningún
-     dibujo baja de 30 px, que es lo que cuesta ver y acertar con el dedo */
-  const MIN_PX = 30;
+     dibujo baja de 30 px, que es lo que cuesta ver y acertar con el dedo.
+     Los mapas anatómicos (e.sinSuelo) quedan fuera: inflar un órgano sí y otro
+     no rompe las proporciones del cuerpo; ahí el tamaño lo garantiza e.kMin. */
+  const MIN_PX = e.sinSuelo ? 0 : 30;
   document.querySelectorAll("#mapcanvas .poi .picon").forEach(el => {
     const r = el.getBoundingClientRect();
     const m = Math.min(r.width, r.height);
