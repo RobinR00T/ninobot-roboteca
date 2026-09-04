@@ -14,7 +14,7 @@ A. IDIOMA: checo poco natural o sin diacríticos; catalán con castellanismos;
    desalineadas entre idiomas; guion largo o raya; ortografía.
 B. CONCEPTOS: datos falsos o dudosos; emojis que no representan lo que dicen;
    conceptos culturalmente mal usados; contenido inapropiado para 3-10 años;
-   la palabra "Nina" (vetada: se usa {name}).
+   el nombre real de la niña (vetado: se usa {name}).
 C. COHERENCIA: claves o textos que se contradicen entre sí.
 
 Sé exigente pero no inventes problemas. Si una categoría sale limpia, dilo.

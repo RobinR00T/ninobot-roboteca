@@ -25,7 +25,7 @@ Antes de escribir una sola línea de código, pregunta SIEMPRE al usuario lo sig
 ### Identidad y temática
 1. **¿Cuál es la temática exacta?** (ej: piratas, superhéroes, animales marinos, Harry Potter, mitología griega...)
 2. **¿Qué personaje es Ninobot en esta temática?** Define su rol: un robot pirata, un robot superhéroe, un elfo robot... Esto afecta a TODOS los textos del chat, greetings, y personalidad.
-3. **¿Nombre del niño/a protagonista por defecto?** (las 3 apps actuales usan "Nina" como ejemplo, pero se personaliza en setup)
+3. **¿Nombre del niño/a protagonista por defecto?** (las 3 apps actuales usan un nombre de ejemplo, pero se personaliza en setup)
 
 ### Las 8 localizaciones (CRÍTICO)
 4. **¿Cuáles son las 8 localizaciones del mapa de exploración?** Necesitamos exactamente 8. Ejemplos:

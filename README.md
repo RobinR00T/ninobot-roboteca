@@ -81,7 +81,7 @@ del propio niño).
   batería de regex del catálogo de errores. Todo en verde.
 - **Posible F5 (no hecha, decisión de Daniel):** idioma fantástico como 6º idioma de
   INTERFAZ completo por aventura, al estilo del Sindarin original (multiplica todas las
-  cadenas; recomendado solo si Nina lo pide tras probar).
+  cadenas; recomendado solo si la peque lo pide tras probar).
 
 ## Reglas de estilo de los textos
 
@@ -637,7 +637,7 @@ cultural estricto + el modo Leer hecho en el motor.
 - Verificado: 18/18 rutinas cargadas con 4 pasos, control del error probado
   (tocar fuera de orden no avanza), rutina completa 🥀→🌻 con estrellas
   progresivas (1 y 2 al repetir), los 18 temas renderizan el modo, 0 errores
-  de consola. Auditoría de estilo en los 7 ficheros care: 0 rayas, 0 "Nina",
+  de consola. Auditoría de estilo en los 7 ficheros care: 0 rayas, 0 nombres propios de la niña,
   5 idiomas completos. Bundle: 4,66 MB.
 
 ## v3.8 (3-9-2026, 09:30): el robot se disfraza en cada aventura
@@ -892,7 +892,7 @@ horizontal, y que haya transición entre etapas o escenarios".
 - Comprobación final: 231 tema×modo + POIs + quiz + care por tema, 12 robots,
   6 lecciones, libro (117 finales), misión, padres y llamada: 0 fallos. Cero
   ids de gradiente repetidos, cero referencias huérfanas, cero rayas, cero
-  "Nina", consola limpia. Bundle: 5,72 MB.
+  nombres propios de la niña, consola limpia. Bundle: 5,72 MB.
 
 ## v4.5 (3-9-2026, 22:00): accesibilidad, música a escala con gong, y el cuerpo con aire
 

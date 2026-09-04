@@ -16,7 +16,7 @@ Cada plantilla lleva dentro las reglas duras del proyecto. Cómo usarlas:
 - ¡ y ¿ de apertura SOLO en español. Francés con espacio antes de ! y ?.
 - Checo natural e idiomático, con todos los diacríticos.
 - 5 idiomas siempre: es, ca, en, cs, fr. Mismo significado en los cinco.
-- Nunca la palabra "Nina": el juego usa {name}.
+- Nunca el nombre real de la niña: el juego usa {name}.
 - Validación cultural e histórica ESTRICTA: el emoji debe representar de verdad
   lo que dice (jamás un moái 🗿 para una esfinge), las épocas correctas (el
   mamut no es de la era de los dinosaurios), los datos verificados. Ante la

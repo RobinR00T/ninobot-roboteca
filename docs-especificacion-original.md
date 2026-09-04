@@ -101,7 +101,7 @@ En la cabecera hay una etiqueta de estado que alterna entre `Conectado desde…`
   - 🌌 **Galaxias y nebulosas** (6) — Andrómeda, del Sombrero, Remolino, del Triángulo, Nebulosa del Cangrejo, Nebulosa de Orión
 - **Famosos:** Yuri Gagarin, Neil Armstrong, Buzz Aldrin, Valentina Tereshkova, Mae Jemison, Sally Ride, Chris Hadfield, Samantha Cristoforetti
 - **Historias:** "El cristal de las estrellas", "La fiesta de los planetas", "El mapa del tesoro cósmico"
-- **Karaoke:** "Brilla estrellita", "Cohete de Nina" (el nombre va fijo en el título, no interpolado), "Los planetas amigos"
+- **Karaoke:** "Brilla estrellita", "Cohete de {name}" (el nombre va interpolado en el título), "Los planetas amigos"
 - **Traductor:** Klingon, Vulcano, Wookiee y **Marciano**
 - **Tono de los datos:** "Sabías que Mercurio no tiene luna?", "En la Luna puedes saltar 6 veces más alto que en la Tierra. Boing boing!"
 
@@ -323,7 +323,7 @@ terror). Actualiza también el <title>.
 - "Bip Bop entre los organios" → "los órganos".
 - El `@import` de Google Fonts rompe el funcionamiento offline.
 - Las historias no ramifican: la elección del niño se lee en voz alta pero no cambia nada. Es la mejora con más impacto de todas.
-- "Cohete de Nina" tiene el nombre fijo en vez de usar `{name}`.
+- "Cohete de {name}": el nombre del título se interpola con `{name}`.
 
 **Ideas nuevas:**
 
