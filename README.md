@@ -1033,3 +1033,10 @@ seguían escondidos e intocables. Ahora elegir cualquier zona apaga el modo
 paisaje y los sitios vuelven. Verificado con la secuencia exacta en los 21
 mapas (paisaje→zona, zona×2, paisaje×2, y toque a un punto atenuado), consola
 limpia.
+
+## v4.11 (4-9-2026, 16:25): el páncreas junto a la vesícula, sin tapar el riñón
+
+Ajuste de Daniel: el páncreas tapaba el riñón. Subido y colocado al lado de la
+vesícula, por encima de los riñones. Medido: el riñón pasa de un 17% tapado a
+un 8% (solo el cruce natural de la cola por el borde superior), la vesícula 0%
+tapada, riñones al 84% de toque, cero etiquetas sobre tinta ajena.

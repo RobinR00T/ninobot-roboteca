@@ -475,7 +475,7 @@
     "El intestino delgado": { x: CO, y: 776, w: 230, h: 78, z: 46, svg: svgDelgado, lx: 92, ly: 52 },
     "Los riñones": { x: CO, y: 692, w: 224, h: 82, z: 48, svg: svgRinones, lx: 235, ly: -36 },
     "La vesícula": { x: CO - 128, y: 650, w: 50, h: 64, z: 50, svg: svgVesicula, lx: -125, ly: -35 },
-    "El páncreas": { x: CO - 52, y: 684, w: 112, h: 92, z: 52, svg: svgPancreas, lx: -238, ly: -8 },
+    "El páncreas": { x: CO - 58, y: 628, w: 112, h: 92, z: 52, svg: svgPancreas, lx: -244, ly: 12 },
     "La vejiga": { x: CO, y: 796, w: 72, h: 60, z: 56, svg: svgVejiga },
     /* ---- huesos: pelvis primero y el fémur ENCIMA (la cabeza redonda
        queda anidada en la cavidad, como en las láminas de esqueleto, y
