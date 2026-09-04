@@ -414,39 +414,47 @@
      del hueco de la cadera a la rodilla, con la cabeza redonda mirando
      hacia dentro, el trocánter hacia fuera y los dos cóndilos abajo.
      Diáfisis gruesa, de hueso que aguanta más peso que el hormigón. */
-  const svgFemur = bb(`
+  const svgFemurUno = `
     <path d="M50 4 C64 3 73 13 71 26 C69 37 58 43 48 39 L44 48 C40 35 30 31 22 35 C14 39 15 52 24 56 C29 72 31 94 30 114 C29 132 28 146 29 156 C22 160 16 166 17 173 C18 179 25 181 31 178 C34 177 36 174 37 171 C39 174 43 178 47 177 C53 176 57 170 56 164 C55 158 50 154 46 151 C45 134 45 114 46 96 C47 78 48 62 50 50 Z" fill="${HUE}" stroke="${HUEB}" stroke-width="3.2"/>
     <path d="M35 60 C38 84 39 116 38 146" fill="none" stroke="${HUEB}" stroke-width="2.4" opacity=".5"/>
     <ellipse cx="61" cy="17" rx="9" ry="7" fill="${HUES}" opacity=".8"/>
-    <path d="M31 176 L33 168 M45 175 L43 167" stroke="${HUEB}" stroke-width="2.4" opacity=".7"/>`, "0 0 78 182");
+    <path d="M31 176 L33 168 M45 175 L43 167" stroke="${HUEB}" stroke-width="2.4" opacity=".7"/>`;
+  /* el mismo hueso en las dos extremidades: copia y espejo */
+  const svgFemur = bb(`<g transform="translate(0,0)">${svgFemurUno}</g><g transform="matrix(-1,0,0,1,276,0)">${svgFemurUno}</g>`, "0 0 276 182");
 
   /* LA TIBIA Y EL PERONÉ: de la rodilla al tobillo. La tibia, gruesa y
      por dentro, con su meseta arriba y el maléolo abajo; el peroné,
      fino y por fuera, con la cabeza más baja. */
-  const svgTibia = bb(`
+  const svgTibiaUno = `
     <path d="M10 6 C5 6 3 13 5 20 L14 46 C16 68 16 90 15 106 C14 120 17 130 25 131 C33 132 37 125 36 114 C34 92 35 64 37 42 L41 16 C42 8 38 4 31 4 Z" fill="${HUE}" stroke="${HUEB}" stroke-width="3"/>
     <ellipse cx="24" cy="136" rx="8" ry="6.5" fill="${HUE}" stroke="${HUEB}" stroke-width="2.6"/>
     <path d="M52 20 C46 20 44 26 45 32 L48 52 C50 74 50 96 49 110 C48 120 51 127 56 127 C61 127 63 120 62 110 C60 92 60 68 59 48 L59 30 C59 23 57 20 52 20 Z" fill="${HUE}" stroke="${HUEB}" stroke-width="2.6"/>
     <ellipse cx="57" cy="132" rx="5.5" ry="5" fill="${HUE}" stroke="${HUEB}" stroke-width="2.2"/>
-    <path d="M24 30 C26 56 27 82 26 102" fill="none" stroke="${HUEB}" stroke-width="2.2" opacity=".5"/>`, "0 0 66 146");
+    <path d="M24 30 C26 56 27 82 26 102" fill="none" stroke="${HUEB}" stroke-width="2.2" opacity=".5"/>`;
+  /* el mismo hueso en las dos extremidades: copia y espejo */
+  const svgTibia = bb(`<g transform="translate(198,0)">${svgTibiaUno}</g><g transform="matrix(-1,0,0,1,66,0)">${svgTibiaUno}</g>`, "0 0 264 146");
 
   /* EL HÚMERO: del hombro al codo, ya con diáfisis de hueso de verdad
      (no de bastoncillo). La cabeza redonda mira hacia dentro y abajo
      se ensancha para formar el codo. */
-  const svgHumero = bb(`
+  const svgHumeroUno = `
     <path d="M29 4 C14 3 4 11 4 21 C4 31 13 38 21 35 L27 44 C27 60 27 80 27 96 C27 108 27 116 27 122 C19 126 13 132 14 139 C15 146 22 149 28 147 C31 146 33 144 34 141 C36 144 39 147 43 146 C49 145 52 139 51 133 C50 127 45 123 40 120 C39.5 104 39.5 90 39.5 74 C39.5 62 39.5 52 40 44 L41 36 C41 26 38 12 29 4 Z" fill="${HUE}" stroke="${HUEB}" stroke-width="3.2"/>
     <path d="M31 48 C33 72 33 100 32 122" fill="none" stroke="${HUEB}" stroke-width="2.4" opacity=".5"/>
     <ellipse cx="17" cy="19" rx="8" ry="7" fill="${HUES}" opacity=".8"/>
-    <ellipse cx="33" cy="138" rx="8" ry="6" fill="${HUES}"/>`, "0 0 64 150");
+    <ellipse cx="33" cy="138" rx="8" ry="6" fill="${HUES}"/>`;
+  /* el mismo hueso en las dos extremidades: copia y espejo */
+  const svgHumero = bb(`<g transform="translate(492,0)">${svgHumeroUno}</g><g transform="matrix(-1,0,0,1,64,0)">${svgHumeroUno}</g>`, "0 0 556 150");
 
   /* EL CÚBITO Y EL RADIO: del codo a la muñeca, más cortos que el
      húmero (como en el brazo de verdad). El cúbito es grueso arriba
      (el pico del codo) y fino abajo; el radio, al revés. */
-  const svgCubito = bb(`
+  const svgCubitoUno = `
     <path d="M14 3 C6 4 3 11 5 19 L9 32 C11 52 12 74 13 92 C13 102 13 110 14 116 C15 121 23 121 24 115 C25 104 24 90 23 74 C22 52 21 32 20 20 C20 10 19 4 14 3 Z" fill="${HUE}" stroke="${HUEB}" stroke-width="3"/>
     <path d="M8 11 C15 8 21 13 22 21 C23 29 17 33 10 31" fill="${HUES}" stroke="${HUEB}" stroke-width="2.4"/>
     <path d="M45 18 C38 18 35 24 36 32 L38 52 C39 72 40 92 41 106 C37 111 36 117 40 121 C44 124 50 123 52 118 C54 113 52 107 48 104 C47 88 47 68 47 50 L48 32 C49 24 50 18 45 18 Z" fill="${HUE}" stroke="${HUEB}" stroke-width="2.8"/>
-    <ellipse cx="44" cy="23" rx="8" ry="5.5" fill="${HUES}" stroke="${HUEB}" stroke-width="2.2"/>`, "0 0 60 124");
+    <ellipse cx="44" cy="23" rx="8" ry="5.5" fill="${HUES}" stroke="${HUEB}" stroke-width="2.2"/>`;
+  /* el mismo hueso en las dos extremidades: copia y espejo */
+  const svgCubito = bb(`<g transform="translate(492,0)">${svgCubitoUno}</g><g transform="matrix(-1,0,0,1,60,0)">${svgCubitoUno}</g>`, "0 0 552 124");
 
   /* ============================================================
      COLOCACIÓN: caja, sitio, capa de pintado y desplazamiento de
@@ -481,13 +489,13 @@
        queda anidada en la cavidad, como en las láminas de esqueleto, y
        así el dedo encuentra el fémur entero); luego columna y costillas ---- */
     "La pelvis": { x: CH, y: 703, w: 300, h: 154, z: 12, svg: svgPelvis },
-    "El fémur": { x: CH - 99, y: 798, w: 78, h: 182, z: 16, svg: svgFemur },
+    "El fémur": { x: CH, y: 798, w: 276, h: 182, z: 16, svg: svgFemur, lx: -99, ly: -26 },
     "La columna": { x: CH, y: 536, w: 66, h: 472, z: 22, svg: svgColumna, ly: 36 },
     "Las costillas": { x: CH, y: 495, w: 322, h: 206, z: 26, svg: svgCostillas, lx: 105 },
     "El cráneo": { x: CH, y: 165, w: 244, h: 288, z: 70, svg: svgCraneo, lx: 95, ly: -45 },
-    "La tibia y el peroné": { x: CH + 99, y: 967, w: 66, h: 146, z: 70, svg: svgTibia },
-    "El húmero": { x: CH + 246, y: 455, w: 64, h: 150, z: 70, svg: svgHumero, ly: -75 },
-    "El cúbito y el radio": { x: CH + 246, y: 601, w: 60, h: 124, z: 70, svg: svgCubito },
+    "La tibia y el peroné": { x: CH, y: 967, w: 264, h: 146, z: 70, svg: svgTibia, lx: 99 },
+    "El húmero": { x: CH, y: 455, w: 556, h: 150, z: 70, svg: svgHumero, lx: 246, ly: -75 },
+    "El cúbito y el radio": { x: CH, y: 601, w: 552, h: 124, z: 70, svg: svgCubito, lx: 246 },
     /* ---- fichas de sistemas ---- */
     "Los huesos": { x: 1240, y: 236, w: 72, h: 138, z: 70, svg: svgHuesoFicha },
     "Los músculos": { x: CO - 248, y: 468, w: 76, h: 60, z: 70, svg: svgMusculos },
@@ -673,15 +681,20 @@
        extremidad se ve vacía y nada se pisa con los dibujos. */
     s += `<ellipse cx="${CH}" cy="1066" rx="360" ry="36" fill="rgba(0,0,0,.16)"/>`;
     s += silueta(CH);
-    s += `<g stroke="${bone}" fill="none" stroke-linecap="round">
-      <line x1="${CH - 246}" y1="386" x2="${CH - 246}" y2="522" stroke-width="9"/>
-      <circle cx="${CH - 246}" cy="532" r="8" stroke-width="4"/>
-      <line x1="${CH - 257}" y1="544" x2="${CH - 257}" y2="650" stroke-width="7"/>
-      <line x1="${CH - 235}" y1="546" x2="${CH - 235}" y2="648" stroke-width="6"/>
-      <line x1="${CH + 99}" y1="764" x2="${CH + 99}" y2="886" stroke-width="9"/>
-      <line x1="${CH - 106}" y1="906" x2="${CH - 106}" y2="1034" stroke-width="8"/>
-      <line x1="${CH - 90}" y1="910" x2="${CH - 90}" y2="1030" stroke-width="6"/>
-    </g>`;
+    /* los huesecillos de las manos, en las dos manos: la palma y los
+       cinco dedos en abanico (carpo, metacarpos y falanges de juguete) */
+    const manoHueso = (hx) => {
+      let m = `<ellipse cx="${hx}" cy="722" rx="13" ry="9" fill="${HUE}" stroke="${HUEB}" stroke-width="2.4"/>`;
+      [-38, -19, 0, 19, 38].forEach((ang, di) => {
+        const rad = ang * Math.PI / 180, largo = di === 0 || di === 4 ? 22 : 28;
+        const x2 = hx + Math.sin(rad) * largo, y2 = 730 + Math.cos(rad) * largo;
+        m += `<line x1="${hx + Math.sin(rad) * 8}" y1="${730 + Math.cos(rad) * 8}" x2="${x2}" y2="${y2}" stroke="${HUEB}" stroke-width="7.5" stroke-linecap="round"/>`;
+        m += `<line x1="${hx + Math.sin(rad) * 8}" y1="${730 + Math.cos(rad) * 8}" x2="${x2}" y2="${y2}" stroke="${HUE}" stroke-width="5" stroke-linecap="round"/>`;
+        m += `<circle cx="${x2 + Math.sin(rad) * 6}" cy="${y2 + Math.cos(rad) * 6}" r="3.4" fill="${HUE}" stroke="${HUEB}" stroke-width="1.8"/>`;
+      });
+      return m;
+    };
+    s += `<g>${manoHueso(CH - 246)}${manoHueso(CH + 246)}</g>`;
     /* su distintivo: un huesito flotando al lado de la cabeza */
     s += `<g transform="translate(${CH + 232} 96) scale(1.7)"><path d="M-16 4 Q-24 4 -24 -2 Q-24 -8 -18 -7 Q-18 -13 -12 -12 Q-6 -11 -8 -4 L8 -1 Q10 -8 16 -7 Q22 -6 21 0 Q27 1 26 7 Q25 13 18 11 Q12 10 14 3 L-2 0 Q-4 7 -10 6 Q-16 5 -16 4 Z" fill="rgba(245,239,228,.8)"/></g>`;
 

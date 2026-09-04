@@ -1040,3 +1040,13 @@ Ajuste de Daniel: el páncreas tapaba el riñón. Subido y colocado al lado de l
 vesícula, por encima de los riñones. Medido: el riñón pasa de un 17% tapado a
 un 8% (solo el cruce natural de la cola por el borde superior), la vesícula 0%
 tapada, riñones al 84% de toque, cero etiquetas sobre tinta ajena.
+
+## v4.12 (4-9-2026, 16:50): huesos en las dos extremidades y manos con huesecillos
+
+Petición de Daniel: los huesos de brazos y piernas deben estar en TODAS las
+extremidades que correspondan. Antes: fémur solo en un muslo, tibia y peroné
+solo en una pierna, húmero y cúbito/radio solo en un brazo, y unas líneas de
+palo en las contrarias. Ahora cada hueso se dibuja en espejo en las dos
+extremidades (los dos lados responden al toque: 80-98% en la prueba del dedo)
+y las dos manos llevan sus huesecillos (carpo y cinco dedos en abanico). Los
+huesos de palo desaparecen. Cero etiquetas sobre tinta ajena, consola limpia.
