@@ -1083,6 +1083,15 @@ function soloPaisaje() {
 function mapCat(ci) {
   const e = THEMES[S.theme].content.explore;
   const cat = e.cats[ci];
+  /* si el paisaje estaba a solas, elegir una zona vuelve a enseñar los sitios:
+     si no, el mapa se movía pero no había nada que tocar */
+  if (M.soloPaisaje) {
+    M.soloPaisaje = false;
+    const cv = document.getElementById("mapcanvas");
+    if (cv) cv.classList.remove("paisaje");
+    const chp = document.getElementById("chippaisaje");
+    if (chp) chp.classList.remove("on");
+  }
   M.catSel = M.catSel === ci ? null : ci;
   e.cats.forEach((c2, j) => {
     const ch = document.getElementById("mapcat" + j);

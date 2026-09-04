@@ -415,7 +415,7 @@ const LANGS = {
   fr: { flag: "🇫🇷", code: "fr-FR", label: "Français" }
 };
 
-const APP_VERSION = "4.9";
+const APP_VERSION = "4.10";
 const STORE_KEY = "ninobot-roboteca-v1";
 
 const DEFAULTS = {
@@ -34319,6 +34319,13 @@ function soloPaisaje() {
 function mapCat(ci) {
   const e = THEMES[S.theme].content.explore;
   const cat = e.cats[ci];
+  if (M.soloPaisaje) {
+    M.soloPaisaje = false;
+    const cv = document.getElementById("mapcanvas");
+    if (cv) cv.classList.remove("paisaje");
+    const chp = document.getElementById("chippaisaje");
+    if (chp) chp.classList.remove("on");
+  }
   M.catSel = M.catSel === ci ? null : ci;
   e.cats.forEach((c2, j) => {
     const ch = document.getElementById("mapcat" + j);

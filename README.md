@@ -1024,3 +1024,12 @@ Movido: la cabeza queda pegada bajo el borde del hígado (19 px de hueco medido
 sobre la tinta), en la C del duodeno, con la cola cruzando hacia el estómago.
 Prueba del dedo repetida en los 7 órganos del abdomen: todos responden (69-96%)
 y cero etiquetas sobre tinta ajena.
+
+## v4.10 (4-9-2026, 16:05): elegir zona vuelve a enseñar los sitios
+
+Bug de Daniel en frutas (pero era del motor, en los 21 mapas): con "Solo
+paisaje" activo, al pulsar una zona el mapa se desplazaba pero los sitios
+seguían escondidos e intocables. Ahora elegir cualquier zona apaga el modo
+paisaje y los sitios vuelven. Verificado con la secuencia exacta en los 21
+mapas (paisaje→zona, zona×2, paisaje×2, y toque a un punto atenuado), consola
+limpia.
